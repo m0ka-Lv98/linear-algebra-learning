@@ -5,9 +5,9 @@
 ## 学び方
 
 <div class="entry-grid">
-  <a href="/slides/orthogonal-projection/">スライドで概要を掴む</a>
-  <a href="/textbook/orthogonal-projection">教科書で詳しく理解する</a>
-  <a href="/exercises/orthogonal-projection">演習問題で確認する</a>
+  <a href="./slides/orthogonal-projection/">スライドで概要を掴む</a>
+  <a href="./textbook/orthogonal-projection">教科書で詳しく理解する</a>
+  <a href="./exercises/orthogonal-projection">演習問題で確認する</a>
 </div>
 
 ## コース

@@ -6,7 +6,7 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   cleanUrls: true,
   // Slidev is built separately into the combined dist/ directory.
-  ignoreDeadLinks: [/^\/slides\/orthogonal-projection/],
+  ignoreDeadLinks: [/^\/(slides|textbook|exercises)\/orthogonal-projection/],
   themeConfig: {
     nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }, { text: '用語集', link: '/glossary/' }],
     sidebar: {
