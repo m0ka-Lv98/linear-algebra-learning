@@ -1,5 +1,7 @@
 # Courseカタログ
 
+機械可読な台帳とデータモデルは [content/courses.yml](../content/courses.yml)、[content/curriculum.yml](../content/curriculum.yml)、[カリキュラムデータモデル](curriculum-data-model.md) を参照してください。
+
 各Courseは、MITの講義名やUnit構成をそのまま再現するものではない。参照先を手がかりに、日本語学習者が前提知識を補いながら進められる独自の順序と到達目標を定める。
 
 ## Course 00：学習準備

@@ -21,3 +21,5 @@
 完了前に lint、typecheck、test、build を実行する。テストを削除・無効化して成功扱いにしない。依頼されていない大量の本文生成、コミット、pushは行わない。
 
 新規テーマは原則 `pnpm new:topic` から開始し、同じ骨組みを手作業で複製しない。テーマ追加後はコンテンツ検証を実行する。公開済みテーマのIDとルートは変更しない。詳細は [content model](docs/content-model.md) と [Codex workflow](docs/codex-workflow.md) を参照する。
+
+教材追加前に `content/curriculum.yml` を確認する。計画Topicと実装Topicを `implementation_topic` で対応付け、計画だけのTopicに空の教材ファイルを作らない。

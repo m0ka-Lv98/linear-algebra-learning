@@ -58,3 +58,5 @@ Phase 1の基盤から、教材テンプレート、基礎教材、WLSM、機械
 - [カリキュラム設計](docs/curriculum-blueprint.md)
 - [Courseカタログ](docs/course-catalog.md)
 - [出典とライセンスの方針](docs/source-and-license-policy.md)
+
+カリキュラム確認: `pnpm curriculum:check`

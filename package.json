@@ -8,9 +8,10 @@
   "scripts": {
     "dev:portal": "pnpm --filter @linear-algebra/portal dev",
     "dev:slides": "pnpm --filter @linear-algebra/slides dev",
-    "lint": "node tools/check-content.mjs",
+    "lint": "node tools/check-content.mjs && node tools/check-curriculum.mjs",
     "typecheck": "pnpm --filter @linear-algebra/visualizations typecheck",
-    "test": "node tools/check-content.mjs --test",
+    "test": "node tools/check-content.mjs --test && node tools/check-curriculum.mjs --test",
+    "curriculum:check": "node tools/check-curriculum.mjs",
     "build": "node tools/build.mjs",
     "new:topic": "node tools/new-topic.mjs",
     "build:portal": "pnpm --filter @linear-algebra/portal build",
