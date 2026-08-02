@@ -52,3 +52,9 @@ pnpm new:topic -- --id vector-basics --title "ベクトルの基礎" --course fo
 ## ロードマップ
 
 Phase 1の基盤から、教材テンプレート、基礎教材、WLSM、機械学習、発展トピックへ進みます。詳細は `docs/roadmap.md` を参照してください。
+
+## カリキュラム設計
+
+- [カリキュラム設計](docs/curriculum-blueprint.md)
+- [Courseカタログ](docs/course-catalog.md)
+- [出典とライセンスの方針](docs/source-and-license-policy.md)
