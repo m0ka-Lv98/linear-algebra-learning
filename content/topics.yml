@@ -9,10 +9,26 @@
     - subspaces
   estimated_minutes:
     slides: 15
-    textbook: 30
-    exercises: 20
+    textbook: 45
+    exercises: 40
   routes:
     home: /courses/foundation/orthogonal-projection
     slides: /slides/orthogonal-projection/
     textbook: /textbook/orthogonal-projection
     exercises: /exercises/orthogonal-projection
+- id: prep-symbols-types-shapes
+  title: 数式・記号・型・次元
+  course: foundation
+  order: 1
+  summary: スカラー、ベクトル、行列、テンソルと、数式・配列の型や次元を区別する
+  status: draft
+  prerequisites: []
+  estimated_minutes:
+    slides: 15
+    textbook: 30
+    exercises: 20
+  routes:
+    home: /courses/foundation/prep-symbols-types-shapes
+    slides: /slides/prep-symbols-types-shapes/
+    textbook: /textbook/prep-symbols-types-shapes
+    exercises: /exercises/prep-symbols-types-shapes

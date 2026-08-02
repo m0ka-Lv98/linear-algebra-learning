@@ -5,9 +5,9 @@
 ## 学び方
 
 <div class="entry-grid">
-  <a href="./slides/orthogonal-projection/">スライドで概要を掴む</a>
-  <a href="./textbook/orthogonal-projection">教科書で詳しく理解する</a>
-  <a href="./exercises/orthogonal-projection">演習問題で確認する</a>
+  <a href="./courses/foundation/prep-symbols-types-shapes">最初から学ぶ</a>
+  <a href="./textbook/prep-symbols-types-shapes">教科書で詳しく理解する</a>
+  <a href="./exercises/prep-symbols-types-shapes">演習問題で確認する</a>
 </div>
 
 ## コース
@@ -17,9 +17,11 @@
 - [機械学習の線形代数](/courses/machine-learning/)
 - [発展・最先端](/courses/advanced/)
 
-## サンプルテーマ
+## 現在の教材
 
-[直交射影](/courses/foundation/orthogonal-projection)で、テーマホームからスライド、教科書、演習へ移動できます。
+[数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)から学習を始められます。
+
+[直交射影](/courses/foundation/orthogonal-projection)は現在の線形代数サンプルとして、テーマホームからスライド、教科書、演習へ移動できます。
 
 <style>
 .entry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }

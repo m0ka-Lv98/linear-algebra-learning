@@ -6,13 +6,13 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   cleanUrls: true,
   // Slidev is built separately into the combined dist/ directory.
-  ignoreDeadLinks: [/^\/(slides|textbook|exercises)\/orthogonal-projection/],
+  ignoreDeadLinks: [/^\/(slides|textbook|exercises)\/(orthogonal-projection|prep-symbols-types-shapes)/],
   themeConfig: {
     nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }, { text: '用語集', link: '/glossary/' }],
     sidebar: {
-      '/courses/': [{ text: '線形代数の基礎', items: [{ text: '直交射影', link: '/courses/foundation/orthogonal-projection' }] }],
-      '/textbook/': [{ text: '教科書', items: [{ text: '直交射影', link: '/textbook/orthogonal-projection' }] }],
-      '/exercises/': [{ text: '演習', items: [{ text: '直交射影', link: '/exercises/orthogonal-projection' }] }]
+      '/courses/': [{ text: '学習準備', items: [{ text: '数式・記号・型・次元', link: '/courses/foundation/prep-symbols-types-shapes' }] }, { text: '線形代数の基礎', items: [{ text: '直交射影', link: '/courses/foundation/orthogonal-projection' }] }],
+      '/textbook/': [{ text: '教科書', items: [{ text: '数式・記号・型・次元', link: '/textbook/prep-symbols-types-shapes' }, { text: '直交射影', link: '/textbook/orthogonal-projection' }] }],
+      '/exercises/': [{ text: '演習', items: [{ text: '数式・記号・型・次元', link: '/exercises/prep-symbols-types-shapes' }, { text: '直交射影', link: '/exercises/orthogonal-projection' }] }]
     },
     socialLinks: []
   }
