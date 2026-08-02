@@ -1,0 +1,10 @@
+- id: orthogonal-projection
+  title: 直交射影
+  course: foundation
+  prerequisites:
+    - inner-product
+    - subspaces
+  slides: /slides/orthogonal-projection/
+  textbook: /textbook/orthogonal-projection
+  exercises: /exercises/orthogonal-projection
+  status: draft

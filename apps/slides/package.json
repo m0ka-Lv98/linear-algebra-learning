@@ -1,0 +1,7 @@
+{
+  "name": "@linear-algebra/slides",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "slidev decks/orthogonal-projection.md", "build": "slidev build decks/orthogonal-projection.md --out ../../../dist/slides/orthogonal-projection --base ${BASE_PATH:-/} --download false" },
+  "dependencies": { "@linear-algebra/visualizations": "workspace:*", "@slidev/cli": "52.1.0", "@slidev/theme-default": "0.25.0", "vue": "3.5.13" }
+}

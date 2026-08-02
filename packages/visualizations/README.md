@@ -1,0 +1,3 @@
+# Shared visualizations
+
+将来、VitePressとSlidevの両方から利用するVue可視化コンポーネントを置くパッケージです。今回は直交射影の模式図だけを提供し、数学計算や専用描画基盤は追加しません。
