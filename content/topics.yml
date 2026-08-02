@@ -1,10 +1,18 @@
 - id: orthogonal-projection
   title: 直交射影
   course: foundation
+  order: 10
+  summary: ベクトルを部分空間上の最も近い点へ写す操作を学ぶ
+  status: draft
   prerequisites:
     - inner-product
     - subspaces
-  slides: /slides/orthogonal-projection/
-  textbook: /textbook/orthogonal-projection
-  exercises: /exercises/orthogonal-projection
-  status: draft
+  estimated_minutes:
+    slides: 15
+    textbook: 30
+    exercises: 20
+  routes:
+    home: /courses/foundation/orthogonal-projection
+    slides: /slides/orthogonal-projection/
+    textbook: /textbook/orthogonal-projection
+    exercises: /exercises/orthogonal-projection

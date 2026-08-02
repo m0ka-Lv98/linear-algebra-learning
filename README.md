@@ -37,7 +37,13 @@ pnpm build
 
 ## 教材追加の流れ
 
-テーマIDを決め、テーマホーム・教科書・概要スライド・演習を個別に追加し、`content/topics.yml` と相互リンクを更新します。詳細は `docs/codex-workflow.md` を参照してください。
+テーマの骨組みは次のコマンドで生成します。
+
+```bash
+pnpm new:topic -- --id vector-basics --title "ベクトルの基礎" --course foundation --order 20
+```
+
+生成後に4成果物を個別に執筆し、`content/topics.yml` と相互リンクを検証します。詳細は `docs/codex-workflow.md` を参照してください。
 
 ## 現在のサンプル
 

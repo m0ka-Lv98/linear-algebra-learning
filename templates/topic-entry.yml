@@ -1,0 +1,16 @@
+- id: {{TOPIC_ID}}
+  title: "{{TOPIC_TITLE}}"
+  course: {{COURSE}}
+  order: {{ORDER}}
+  summary: "{{SUMMARY}}"
+  status: {{STATUS}}
+  prerequisites: []
+  estimated_minutes:
+    slides: 15
+    textbook: 30
+    exercises: 20
+  routes:
+    home: /courses/{{COURSE}}/{{TOPIC_ID}}
+    slides: /slides/{{TOPIC_ID}}/
+    textbook: /textbook/{{TOPIC_ID}}
+    exercises: /exercises/{{TOPIC_ID}}

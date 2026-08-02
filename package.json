@@ -2,7 +2,9 @@
   "name": "linear-algebra-learning",
   "private": true,
   "packageManager": "pnpm@11.9.0",
-  "engines": { "node": ">=22.0.0" },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev:portal": "pnpm --filter @linear-algebra/portal dev",
     "dev:slides": "pnpm --filter @linear-algebra/slides dev",
@@ -10,7 +12,11 @@
     "typecheck": "pnpm --filter @linear-algebra/visualizations typecheck",
     "test": "node tools/check-content.mjs --test",
     "build": "node tools/build.mjs",
+    "new:topic": "node tools/new-topic.mjs",
     "build:portal": "pnpm --filter @linear-algebra/portal build",
     "build:slides": "pnpm --filter @linear-algebra/slides build"
+  },
+  "devDependencies": {
+    "yaml": "2.9.0"
   }
 }
