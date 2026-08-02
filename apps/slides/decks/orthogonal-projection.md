@@ -45,8 +45,8 @@ drawings:
 
 # 次に読む
 
-<p><a href="../../../textbook/orthogonal-projection">教科書：直交射影</a></p>
-<p><a href="../../../exercises/orthogonal-projection">演習：直交射影</a></p>
+<p><a href="../../textbook/orthogonal-projection">教科書：直交射影</a></p>
+<p><a href="../../exercises/orthogonal-projection">演習：直交射影</a></p>
 
 ---
 
