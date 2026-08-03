@@ -4,6 +4,8 @@
 
 [数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)から、数式と配列の型・shapeを確認します。
 
+[集合・関数・写像](/courses/foundation/prep-sets-functions-mappings)で、数学的な入力と出力の関係を学びます。
+
 ## Course 02：線形代数
 
 現在の線形代数サンプルとして[直交射影](/courses/foundation/orthogonal-projection)を用意しています。

@@ -44,3 +44,5 @@
 
 - 集合・関数・写像
 - 総和・積・添字
+
+[次のTopic：集合・関数・写像](/courses/foundation/prep-sets-functions-mappings)

@@ -32,3 +32,20 @@
     slides: /slides/prep-symbols-types-shapes/
     textbook: /textbook/prep-symbols-types-shapes
     exercises: /exercises/prep-symbols-types-shapes
+- id: prep-sets-functions-mappings
+  title: 集合・関数・写像
+  course: foundation
+  order: 2
+  summary: 集合、関数、定義域、終域、値域、合成、逆関数の基本を学ぶ
+  status: draft
+  prerequisites:
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 15
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/prep-sets-functions-mappings
+    slides: /slides/prep-sets-functions-mappings/
+    textbook: /textbook/prep-sets-functions-mappings
+    exercises: /exercises/prep-sets-functions-mappings
