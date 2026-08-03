@@ -19,5 +19,5 @@ Course 00「学習準備」第8 Topic。数学の意味と計算機上の表現�
 ## 前後Topic
 
 - [前のTopic](/courses/foundation/prep-numpy-arrays-shapes)
-- 次のTopic：Course 00の次項目
-
+- 次の学習先：Course 01：微積分
+- 次の学習先：Course 02：線形代数
