@@ -67,3 +67,89 @@
     slides: /slides/prep-sums-products-indices/
     textbook: /textbook/prep-sums-products-indices
     exercises: /exercises/prep-sums-products-indices
+- id: prep-exponents-logarithms
+  title: 指数と対数
+  course: foundation
+  order: 4
+  summary: 指数法則、対数法則、指数関数と対数関数の関係を学ぶ
+  status: draft
+  prerequisites:
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 15
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/prep-exponents-logarithms
+    slides: /slides/prep-exponents-logarithms/
+    textbook: /textbook/prep-exponents-logarithms
+    exercises: /exercises/prep-exponents-logarithms
+- id: prep-definitions-theorems-proofs
+  title: 定義・命題・証明の読み方
+  course: foundation
+  order: 5
+  summary: 数学的な定義、仮定、結論、例、反例、証明を区別する
+  status: draft
+  prerequisites:
+    - prep-sets-functions-mappings
+  estimated_minutes:
+    slides: 15
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/prep-definitions-theorems-proofs
+    slides: /slides/prep-definitions-theorems-proofs/
+    textbook: /textbook/prep-definitions-theorems-proofs
+    exercises: /exercises/prep-definitions-theorems-proofs
+- id: prep-python-expressions-functions
+  title: Pythonの式・変数・関数
+  course: foundation
+  order: 6
+  summary: 数学計算に必要なPythonの式、変数、条件、反復、関数を学ぶ
+  status: draft
+  prerequisites:
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 15
+    textbook: 55
+    exercises: 50
+  routes:
+    home: /courses/foundation/prep-python-expressions-functions
+    slides: /slides/prep-python-expressions-functions/
+    textbook: /textbook/prep-python-expressions-functions
+    exercises: /exercises/prep-python-expressions-functions
+- id: prep-numpy-arrays-shapes
+  title: NumPy配列・shape・indexing
+  course: foundation
+  order: 7
+  summary: NumPy配列の次元、shape、indexing、基本演算を学ぶ
+  status: draft
+  prerequisites:
+    - prep-python-expressions-functions
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 15
+    textbook: 60
+    exercises: 55
+  routes:
+    home: /courses/foundation/prep-numpy-arrays-shapes
+    slides: /slides/prep-numpy-arrays-shapes/
+    textbook: /textbook/prep-numpy-arrays-shapes
+    exercises: /exercises/prep-numpy-arrays-shapes
+- id: prep-numerical-checks-reproducibility
+  title: 数値検算と再現性
+  course: foundation
+  order: 8
+  summary: 許容誤差、乱数シード、検算、再現可能な実験の基本を学ぶ
+  status: draft
+  prerequisites:
+    - prep-numpy-arrays-shapes
+  estimated_minutes:
+    slides: 15
+    textbook: 55
+    exercises: 50
+  routes:
+    home: /courses/foundation/prep-numerical-checks-reproducibility
+    slides: /slides/prep-numerical-checks-reproducibility/
+    textbook: /textbook/prep-numerical-checks-reproducibility
+    exercises: /exercises/prep-numerical-checks-reproducibility
