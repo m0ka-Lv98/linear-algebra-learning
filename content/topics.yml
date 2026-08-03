@@ -22,11 +22,12 @@
   order: 1
   summary: スカラー、ベクトル、行列、テンソルと、数式・配列の型や次元を区別する
   status: draft
-  prerequisites: []
+  prerequisites:
+    []
   estimated_minutes:
     slides: 15
-    textbook: 30
-    exercises: 20
+    textbook: 50
+    exercises: 45
   routes:
     home: /courses/foundation/prep-symbols-types-shapes
     slides: /slides/prep-symbols-types-shapes/
@@ -49,3 +50,20 @@
     slides: /slides/prep-sets-functions-mappings/
     textbook: /textbook/prep-sets-functions-mappings
     exercises: /exercises/prep-sets-functions-mappings
+- id: prep-sums-products-indices
+  title: 総和・積・添字
+  course: foundation
+  order: 3
+  summary: 総和記号、積記号、添字を展開し、ベクトルと行列の計算へつなげる
+  status: draft
+  prerequisites:
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 15
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/prep-sums-products-indices
+    slides: /slides/prep-sums-products-indices/
+    textbook: /textbook/prep-sums-products-indices
+    exercises: /exercises/prep-sums-products-indices

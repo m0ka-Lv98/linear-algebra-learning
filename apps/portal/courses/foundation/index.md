@@ -6,6 +6,8 @@
 
 [集合・関数・写像](/courses/foundation/prep-sets-functions-mappings)で、数学的な入力と出力の関係を学びます。
 
+[総和・積・添字](/courses/foundation/prep-sums-products-indices)で、添字を使った和と行列計算を学びます。
+
 ## Course 02：線形代数
 
 現在の線形代数サンプルとして[直交射影](/courses/foundation/orthogonal-projection)を用意しています。
