@@ -153,3 +153,231 @@
     slides: /slides/prep-numerical-checks-reproducibility/
     textbook: /textbook/prep-numerical-checks-reproducibility
     exercises: /exercises/prep-numerical-checks-reproducibility
+- id: calc-functions-limits-continuity
+  title: 関数・極限・連続
+  course: foundation
+  order: 101
+  summary: 一変数関数の極限と連続性を定義し、微分を学ぶための基礎を整える
+  status: draft
+  prerequisites:
+    - prep-sets-functions-mappings
+    - prep-exponents-logarithms
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-functions-limits-continuity
+    slides: /slides/calc-functions-limits-continuity/
+    textbook: /textbook/calc-functions-limits-continuity
+    exercises: /exercises/calc-functions-limits-continuity
+- id: calc-derivatives-rates
+  title: 微分と変化率
+  course: foundation
+  order: 102
+  summary: 微分を局所的な変化率と接線の傾きとして理解する
+  status: draft
+  prerequisites:
+    - calc-functions-limits-continuity
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-derivatives-rates
+    slides: /slides/calc-derivatives-rates/
+    textbook: /textbook/calc-derivatives-rates
+    exercises: /exercises/calc-derivatives-rates
+- id: calc-differentiation-rules-chain-rule
+  title: 微分法則と一変数の連鎖律
+  course: foundation
+  order: 103
+  summary: 基本的な微分法則と連鎖律を使って合成関数を微分する
+  status: draft
+  prerequisites:
+    - calc-derivatives-rates
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-differentiation-rules-chain-rule
+    slides: /slides/calc-differentiation-rules-chain-rule/
+    textbook: /textbook/calc-differentiation-rules-chain-rule
+    exercises: /exercises/calc-differentiation-rules-chain-rule
+- id: calc-one-variable-optimization
+  title: 一変数の最適化
+  course: foundation
+  order: 104
+  summary: 導関数を使って一変数関数の極値と最適解を調べる
+  status: draft
+  prerequisites:
+    - calc-differentiation-rules-chain-rule
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-one-variable-optimization
+    slides: /slides/calc-one-variable-optimization/
+    textbook: /textbook/calc-one-variable-optimization
+    exercises: /exercises/calc-one-variable-optimization
+- id: calc-integrals-fundamental-theorem
+  title: 積分と微積分学の基本定理
+  course: foundation
+  order: 105
+  summary: 積分を蓄積量として理解し、微分との関係を学ぶ
+  status: draft
+  prerequisites:
+    - calc-derivatives-rates
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-integrals-fundamental-theorem
+    slides: /slides/calc-integrals-fundamental-theorem/
+    textbook: /textbook/calc-integrals-fundamental-theorem
+    exercises: /exercises/calc-integrals-fundamental-theorem
+- id: calc-taylor-approximation
+  title: Taylor展開と局所近似
+  course: foundation
+  order: 106
+  summary: 関数を局所的な多項式で近似し、近似誤差を捉える
+  status: draft
+  prerequisites:
+    - calc-differentiation-rules-chain-rule
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-taylor-approximation
+    slides: /slides/calc-taylor-approximation/
+    textbook: /textbook/calc-taylor-approximation
+    exercises: /exercises/calc-taylor-approximation
+- id: calc-multivariable-functions-partial-derivatives
+  title: 多変数関数と偏微分
+  course: foundation
+  order: 107
+  summary: 多変数関数と各入力変数に関する偏微分を学ぶ
+  status: draft
+  prerequisites:
+    - calc-differentiation-rules-chain-rule
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-multivariable-functions-partial-derivatives
+    slides: /slides/calc-multivariable-functions-partial-derivatives/
+    textbook: /textbook/calc-multivariable-functions-partial-derivatives
+    exercises: /exercises/calc-multivariable-functions-partial-derivatives
+- id: calc-gradient-directional-derivative
+  title: 勾配と方向微分
+  course: foundation
+  order: 108
+  summary: 勾配と方向微分から多変数関数の変化方向を理解する
+  status: draft
+  prerequisites:
+    - calc-multivariable-functions-partial-derivatives
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-gradient-directional-derivative
+    slides: /slides/calc-gradient-directional-derivative/
+    textbook: /textbook/calc-gradient-directional-derivative
+    exercises: /exercises/calc-gradient-directional-derivative
+- id: calc-total-derivative-jacobian
+  title: 全微分とJacobian
+  course: foundation
+  order: 109
+  summary: 全微分とJacobianによって多変数写像の局所線形近似を表す
+  status: draft
+  prerequisites:
+    - calc-gradient-directional-derivative
+    - prep-numpy-arrays-shapes
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-total-derivative-jacobian
+    slides: /slides/calc-total-derivative-jacobian/
+    textbook: /textbook/calc-total-derivative-jacobian
+    exercises: /exercises/calc-total-derivative-jacobian
+- id: calc-hessian-second-order
+  title: Hessianと二次近似
+  course: foundation
+  order: 110
+  summary: Hessianによって多変数関数の曲率と二次近似を表す
+  status: draft
+  prerequisites:
+    - calc-total-derivative-jacobian
+    - calc-taylor-approximation
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-hessian-second-order
+    slides: /slides/calc-hessian-second-order/
+    textbook: /textbook/calc-hessian-second-order
+    exercises: /exercises/calc-hessian-second-order
+- id: calc-multivariable-chain-rule
+  title: 多変数の連鎖律
+  course: foundation
+  order: 111
+  summary: 多変数写像の合成をJacobianの積として微分する
+  status: draft
+  prerequisites:
+    - calc-total-derivative-jacobian
+    - calc-differentiation-rules-chain-rule
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-multivariable-chain-rule
+    slides: /slides/calc-multivariable-chain-rule/
+    textbook: /textbook/calc-multivariable-chain-rule
+    exercises: /exercises/calc-multivariable-chain-rule
+- id: calc-unconstrained-optimization
+  title: 多変数の制約なし最適化
+  course: foundation
+  order: 112
+  summary: 勾配とHessianを使って多変数関数の停留点と最小点を調べる
+  status: draft
+  prerequisites:
+    - calc-gradient-directional-derivative
+    - calc-hessian-second-order
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-unconstrained-optimization
+    slides: /slides/calc-unconstrained-optimization/
+    textbook: /textbook/calc-unconstrained-optimization
+    exercises: /exercises/calc-unconstrained-optimization
+- id: calc-lagrange-multipliers
+  title: Lagrange乗数法
+  course: foundation
+  order: 113
+  summary: 等式制約付き最適化を勾配の釣り合いとして理解する
+  status: draft
+  prerequisites:
+    - calc-gradient-directional-derivative
+    - calc-unconstrained-optimization
+  estimated_minutes:
+    slides: 20
+    textbook: 50
+    exercises: 45
+  routes:
+    home: /courses/foundation/calc-lagrange-multipliers
+    slides: /slides/calc-lagrange-multipliers/
+    textbook: /textbook/calc-lagrange-multipliers
+    exercises: /exercises/calc-lagrange-multipliers

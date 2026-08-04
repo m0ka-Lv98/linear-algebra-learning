@@ -1,11 +1,12 @@
 # 線形代数学習ポータル
 
-大学初年級の線形代数から、重み付き最小二乗法（WLSM）、数値線形代数、機械学習までを段階的に学ぶための教材基盤です。Course 00「学習準備」の全8 Topicを公開しています。
+大学初年級の線形代数から、重み付き最小二乗法（WLSM）、数値線形代数、機械学習までを段階的に学ぶための教材基盤です。Course 00とCourse 01「微積分」を公開しています。
 
 ## 学び方
 
 <div class="entry-grid">
   <a href="./courses/foundation/prep-symbols-types-shapes">最初から学ぶ</a>
+  <a href="./courses/foundation/calc-functions-limits-continuity">微積分を学ぶ</a>
   <a href="./textbook/prep-symbols-types-shapes">教科書で詳しく理解する</a>
   <a href="./exercises/prep-symbols-types-shapes">演習問題で確認する</a>
 </div>
