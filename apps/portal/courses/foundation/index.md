@@ -72,6 +72,24 @@ Course 00は全8 Topicで構成されています。
 
 [線形回帰の確率モデル](/courses/foundation/stat-linear-regression-probabilistic-model)、[エントロピー・交差エントロピー・KLダイバージェンス](/courses/foundation/stat-entropy-cross-entropy-kl-divergence)。
 
+## Course 04：離散数学と証明
+
+### 論理と証明
+
+[命題・論理演算・真理値表](/courses/foundation/dm-propositions-connectives-truth-tables)、[述語・量化記号・否定](/courses/foundation/dm-predicates-quantifiers-negation)、[含意・同値・必要十分条件](/courses/foundation/dm-implication-equivalence-conditions)、[直接証明・対偶・背理法・場合分け](/courses/foundation/dm-proof-methods)、[数学的帰納法・強い帰納法・整列原理](/courses/foundation/dm-induction-well-ordering)。
+
+### 離散構造と数え上げ
+
+[関係・同値関係・半順序](/courses/foundation/dm-relations-equivalence-partial-orders)、[整除性と合同算術](/courses/foundation/dm-divisibility-modular-arithmetic)、[加法原理・乗法原理・鳩の巣原理](/courses/foundation/dm-counting-principles-pigeonhole)、[順列・組合せ・二項係数](/courses/foundation/dm-permutations-combinations-binomial)、[包含排除原理と二重数え上げ](/courses/foundation/dm-inclusion-exclusion-double-counting)。
+
+### アルゴリズム・不変量・計算量
+
+[アルゴリズムの仕様と正しさ](/courses/foundation/dm-algorithm-specifications-correctness)、[ループ不変量と停止性](/courses/foundation/dm-loop-invariants-termination)、[漸近記法と増加率](/courses/foundation/dm-asymptotic-notation-growth-rates)、[漸化式](/courses/foundation/dm-recurrence-relations)、[分割統治法とMaster theorem](/courses/foundation/dm-divide-conquer-master-theorem)。
+
+### グラフと離散確率
+
+[グラフ・表現・次数](/courses/foundation/dm-graphs-representations-degrees)、[道・閉路・連結性](/courses/foundation/dm-paths-cycles-connectivity)、[木と全域木](/courses/foundation/dm-trees-spanning-trees)、[有向グラフ・DAG・トポロジカル順序](/courses/foundation/dm-directed-graphs-dags-topological-order)、[離散確率・指示変数・乱択アルゴリズム](/courses/foundation/dm-discrete-probability-indicators-randomized-algorithms)。
+
 ## Course 02：線形代数
 
 現在の線形代数サンプルとして[直交射影](/courses/foundation/orthogonal-projection)を用意しています。

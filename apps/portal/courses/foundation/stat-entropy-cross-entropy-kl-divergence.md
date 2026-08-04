@@ -39,4 +39,4 @@ Course 03の301〜320の順に学ぶ。
 
 - [前のTopic](/courses/foundation/stat-linear-regression-probabilistic-model)
 
-- 次はCourse 04以降の未詳細化領域
+- [次のTopic：命題・論理演算・真理値表](/courses/foundation/dm-propositions-connectives-truth-tables)

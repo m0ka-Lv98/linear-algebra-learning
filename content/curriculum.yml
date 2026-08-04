@@ -16,6 +16,11 @@ units:
   - { id: stat-inference, course: "03", order: 30, title: 統計的推測 }
   - { id: stat-regression-information, course: "03", order: 40, title: 回帰モデルと情報量 }
 
+  - { id: dm-logic-proof, course: "04", order: 10, title: 論理と証明 }
+  - { id: dm-relations-counting, course: "04", order: 20, title: 離散構造と数え上げ }
+  - { id: dm-algorithms-complexity, course: "04", order: 30, title: アルゴリズム・不変量・計算量 }
+  - { id: dm-graphs-probability, course: "04", order: 40, title: グラフと離散確率 }
+
 topics:
   - { id: prep-symbols-types-shapes, course: "00", unit: prep-mathematical-literacy, order: 10, title: 数式・記号・型・次元, summary: スカラー、ベクトル、行列、テンソルと各記号の型・次元を区別する, status: draft, kind: required, prerequisites: [], implementation_topic: prep-symbols-types-shapes, outcomes: [スカラー、ベクトル、行列、テンソルを区別できる, 添字を読み式の各項の型と次元を確認できる] }
   - { id: prep-sets-functions-mappings, course: "00", unit: prep-mathematical-literacy, order: 20, title: 集合・関数・写像, summary: 集合、定義域、終域、値域、関数、写像の基本を学ぶ, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes], implementation_topic: prep-sets-functions-mappings, outcomes: [定義域、終域、値域を区別できる, 関数の合成と逆関数の意味を説明できる] }
@@ -330,3 +335,263 @@ topics:
     outcomes:
       - 定義・導出を説明できる
       - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: dm-propositions-connectives-truth-tables
+    course: "04"
+    unit: dm-logic-proof
+    order: 10
+    title: 命題・論理演算・真理値表
+    summary: 命題・論理演算・真理値表の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prep-definitions-theorems-proofs]
+    implementation_topic: dm-propositions-connectives-truth-tables
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-predicates-quantifiers-negation
+    course: "04"
+    unit: dm-logic-proof
+    order: 20
+    title: 述語・量化記号・否定
+    summary: 述語・量化記号・否定の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-propositions-connectives-truth-tables, prep-sets-functions-mappings]
+    implementation_topic: dm-predicates-quantifiers-negation
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-implication-equivalence-conditions
+    course: "04"
+    unit: dm-logic-proof
+    order: 30
+    title: 含意・同値・必要十分条件
+    summary: 含意・同値・必要十分条件の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-propositions-connectives-truth-tables, dm-predicates-quantifiers-negation]
+    implementation_topic: dm-implication-equivalence-conditions
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-proof-methods
+    course: "04"
+    unit: dm-logic-proof
+    order: 40
+    title: 直接証明・対偶・背理法・場合分け
+    summary: 直接証明・対偶・背理法・場合分けの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-implication-equivalence-conditions]
+    implementation_topic: dm-proof-methods
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-induction-well-ordering
+    course: "04"
+    unit: dm-logic-proof
+    order: 50
+    title: 数学的帰納法・強い帰納法・整列原理
+    summary: 数学的帰納法・強い帰納法・整列原理の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-proof-methods, prep-sums-products-indices]
+    implementation_topic: dm-induction-well-ordering
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-relations-equivalence-partial-orders
+    course: "04"
+    unit: dm-relations-counting
+    order: 10
+    title: 関係・同値関係・半順序
+    summary: 関係・同値関係・半順序の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prep-sets-functions-mappings, dm-predicates-quantifiers-negation]
+    implementation_topic: dm-relations-equivalence-partial-orders
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-divisibility-modular-arithmetic
+    course: "04"
+    unit: dm-relations-counting
+    order: 20
+    title: 整除性と合同算術
+    summary: 整除性と合同算術の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-proof-methods]
+    implementation_topic: dm-divisibility-modular-arithmetic
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-counting-principles-pigeonhole
+    course: "04"
+    unit: dm-relations-counting
+    order: 30
+    title: 加法原理・乗法原理・鳩の巣原理
+    summary: 加法原理・乗法原理・鳩の巣原理の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-proof-methods, prep-sums-products-indices]
+    implementation_topic: dm-counting-principles-pigeonhole
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-permutations-combinations-binomial
+    course: "04"
+    unit: dm-relations-counting
+    order: 40
+    title: 順列・組合せ・二項係数
+    summary: 順列・組合せ・二項係数の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-counting-principles-pigeonhole]
+    implementation_topic: dm-permutations-combinations-binomial
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-inclusion-exclusion-double-counting
+    course: "04"
+    unit: dm-relations-counting
+    order: 50
+    title: 包含排除原理と二重数え上げ
+    summary: 包含排除原理と二重数え上げの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-counting-principles-pigeonhole, dm-permutations-combinations-binomial]
+    implementation_topic: dm-inclusion-exclusion-double-counting
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-algorithm-specifications-correctness
+    course: "04"
+    unit: dm-algorithms-complexity
+    order: 10
+    title: アルゴリズムの仕様と正しさ
+    summary: アルゴリズムの仕様と正しさの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-proof-methods, prep-python-expressions-functions]
+    implementation_topic: dm-algorithm-specifications-correctness
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-loop-invariants-termination
+    course: "04"
+    unit: dm-algorithms-complexity
+    order: 20
+    title: ループ不変量と停止性
+    summary: ループ不変量と停止性の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-algorithm-specifications-correctness, dm-induction-well-ordering]
+    implementation_topic: dm-loop-invariants-termination
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-asymptotic-notation-growth-rates
+    course: "04"
+    unit: dm-algorithms-complexity
+    order: 30
+    title: 漸近記法と増加率
+    summary: 漸近記法と増加率の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prep-exponents-logarithms, prep-sums-products-indices]
+    implementation_topic: dm-asymptotic-notation-growth-rates
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-recurrence-relations
+    course: "04"
+    unit: dm-algorithms-complexity
+    order: 40
+    title: 漸化式
+    summary: 漸化式の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-induction-well-ordering, dm-asymptotic-notation-growth-rates]
+    implementation_topic: dm-recurrence-relations
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-divide-conquer-master-theorem
+    course: "04"
+    unit: dm-algorithms-complexity
+    order: 50
+    title: 分割統治法とMaster theorem
+    summary: 分割統治法とMaster theoremの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-recurrence-relations]
+    implementation_topic: dm-divide-conquer-master-theorem
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-graphs-representations-degrees
+    course: "04"
+    unit: dm-graphs-probability
+    order: 10
+    title: グラフ・表現・次数
+    summary: グラフ・表現・次数の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-relations-equivalence-partial-orders, prep-numpy-arrays-shapes]
+    implementation_topic: dm-graphs-representations-degrees
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-paths-cycles-connectivity
+    course: "04"
+    unit: dm-graphs-probability
+    order: 20
+    title: 道・閉路・連結性
+    summary: 道・閉路・連結性の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-graphs-representations-degrees]
+    implementation_topic: dm-paths-cycles-connectivity
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-trees-spanning-trees
+    course: "04"
+    unit: dm-graphs-probability
+    order: 30
+    title: 木と全域木
+    summary: 木と全域木の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-paths-cycles-connectivity, dm-induction-well-ordering]
+    implementation_topic: dm-trees-spanning-trees
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-directed-graphs-dags-topological-order
+    course: "04"
+    unit: dm-graphs-probability
+    order: 40
+    title: 有向グラフ・DAG・トポロジカル順序
+    summary: 有向グラフ・DAG・トポロジカル順序の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-graphs-representations-degrees, dm-loop-invariants-termination]
+    implementation_topic: dm-directed-graphs-dags-topological-order
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+  - id: dm-discrete-probability-indicators-randomized-algorithms
+    course: "04"
+    unit: dm-graphs-probability
+    order: 50
+    title: 離散確率・指示変数・乱択アルゴリズム
+    summary: 離散確率・指示変数・乱択アルゴリズムの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
+    status: draft
+    kind: required
+    prerequisites: [dm-counting-principles-pigeonhole, dm-algorithm-specifications-correctness]
+    implementation_topic: dm-discrete-probability-indicators-randomized-algorithms
+    outcomes:
+      - 定義・証明・理論的説明ができる
+      - 問題解法とアルゴリズム解析・実装読解へ応用できる

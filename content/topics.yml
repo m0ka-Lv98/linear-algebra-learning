@@ -1265,3 +1265,377 @@
     slides: /slides/stat-entropy-cross-entropy-kl-divergence/
     textbook: /textbook/stat-entropy-cross-entropy-kl-divergence
     exercises: /exercises/stat-entropy-cross-entropy-kl-divergence
+- id: dm-propositions-connectives-truth-tables
+  title: 命題・論理演算・真理値表
+  course: foundation
+  order: 401
+  summary: 離散数学の命題・論理演算・真理値表を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - prep-definitions-theorems-proofs
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-propositions-connectives-truth-tables
+    slides: /slides/dm-propositions-connectives-truth-tables/
+    textbook: /textbook/dm-propositions-connectives-truth-tables
+    exercises: /exercises/dm-propositions-connectives-truth-tables
+- id: dm-predicates-quantifiers-negation
+  title: 述語・量化記号・否定
+  course: foundation
+  order: 402
+  summary: 離散数学の述語・量化記号・否定を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-propositions-connectives-truth-tables
+    - prep-sets-functions-mappings
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-predicates-quantifiers-negation
+    slides: /slides/dm-predicates-quantifiers-negation/
+    textbook: /textbook/dm-predicates-quantifiers-negation
+    exercises: /exercises/dm-predicates-quantifiers-negation
+- id: dm-implication-equivalence-conditions
+  title: 含意・同値・必要十分条件
+  course: foundation
+  order: 403
+  summary: 離散数学の含意・同値・必要十分条件を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-propositions-connectives-truth-tables
+    - dm-predicates-quantifiers-negation
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-implication-equivalence-conditions
+    slides: /slides/dm-implication-equivalence-conditions/
+    textbook: /textbook/dm-implication-equivalence-conditions
+    exercises: /exercises/dm-implication-equivalence-conditions
+- id: dm-proof-methods
+  title: 直接証明・対偶・背理法・場合分け
+  course: foundation
+  order: 404
+  summary: 離散数学の直接証明・対偶・背理法・場合分けを定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-implication-equivalence-conditions
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-proof-methods
+    slides: /slides/dm-proof-methods/
+    textbook: /textbook/dm-proof-methods
+    exercises: /exercises/dm-proof-methods
+- id: dm-induction-well-ordering
+  title: 数学的帰納法・強い帰納法・整列原理
+  course: foundation
+  order: 405
+  summary: 離散数学の数学的帰納法・強い帰納法・整列原理を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-proof-methods
+    - prep-sums-products-indices
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-induction-well-ordering
+    slides: /slides/dm-induction-well-ordering/
+    textbook: /textbook/dm-induction-well-ordering
+    exercises: /exercises/dm-induction-well-ordering
+- id: dm-relations-equivalence-partial-orders
+  title: 関係・同値関係・半順序
+  course: foundation
+  order: 406
+  summary: 離散数学の関係・同値関係・半順序を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - prep-sets-functions-mappings
+    - dm-predicates-quantifiers-negation
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-relations-equivalence-partial-orders
+    slides: /slides/dm-relations-equivalence-partial-orders/
+    textbook: /textbook/dm-relations-equivalence-partial-orders
+    exercises: /exercises/dm-relations-equivalence-partial-orders
+- id: dm-divisibility-modular-arithmetic
+  title: 整除性と合同算術
+  course: foundation
+  order: 407
+  summary: 離散数学の整除性と合同算術を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-proof-methods
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-divisibility-modular-arithmetic
+    slides: /slides/dm-divisibility-modular-arithmetic/
+    textbook: /textbook/dm-divisibility-modular-arithmetic
+    exercises: /exercises/dm-divisibility-modular-arithmetic
+- id: dm-counting-principles-pigeonhole
+  title: 加法原理・乗法原理・鳩の巣原理
+  course: foundation
+  order: 408
+  summary: 離散数学の加法原理・乗法原理・鳩の巣原理を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-proof-methods
+    - prep-sums-products-indices
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-counting-principles-pigeonhole
+    slides: /slides/dm-counting-principles-pigeonhole/
+    textbook: /textbook/dm-counting-principles-pigeonhole
+    exercises: /exercises/dm-counting-principles-pigeonhole
+- id: dm-permutations-combinations-binomial
+  title: 順列・組合せ・二項係数
+  course: foundation
+  order: 409
+  summary: 離散数学の順列・組合せ・二項係数を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-counting-principles-pigeonhole
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-permutations-combinations-binomial
+    slides: /slides/dm-permutations-combinations-binomial/
+    textbook: /textbook/dm-permutations-combinations-binomial
+    exercises: /exercises/dm-permutations-combinations-binomial
+- id: dm-inclusion-exclusion-double-counting
+  title: 包含排除原理と二重数え上げ
+  course: foundation
+  order: 410
+  summary: 離散数学の包含排除原理と二重数え上げを定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-counting-principles-pigeonhole
+    - dm-permutations-combinations-binomial
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-inclusion-exclusion-double-counting
+    slides: /slides/dm-inclusion-exclusion-double-counting/
+    textbook: /textbook/dm-inclusion-exclusion-double-counting
+    exercises: /exercises/dm-inclusion-exclusion-double-counting
+- id: dm-algorithm-specifications-correctness
+  title: アルゴリズムの仕様と正しさ
+  course: foundation
+  order: 411
+  summary: 離散数学のアルゴリズムの仕様と正しさを定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-proof-methods
+    - prep-python-expressions-functions
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-algorithm-specifications-correctness
+    slides: /slides/dm-algorithm-specifications-correctness/
+    textbook: /textbook/dm-algorithm-specifications-correctness
+    exercises: /exercises/dm-algorithm-specifications-correctness
+- id: dm-loop-invariants-termination
+  title: ループ不変量と停止性
+  course: foundation
+  order: 412
+  summary: 離散数学のループ不変量と停止性を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-algorithm-specifications-correctness
+    - dm-induction-well-ordering
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-loop-invariants-termination
+    slides: /slides/dm-loop-invariants-termination/
+    textbook: /textbook/dm-loop-invariants-termination
+    exercises: /exercises/dm-loop-invariants-termination
+- id: dm-asymptotic-notation-growth-rates
+  title: 漸近記法と増加率
+  course: foundation
+  order: 413
+  summary: 離散数学の漸近記法と増加率を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - prep-exponents-logarithms
+    - prep-sums-products-indices
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-asymptotic-notation-growth-rates
+    slides: /slides/dm-asymptotic-notation-growth-rates/
+    textbook: /textbook/dm-asymptotic-notation-growth-rates
+    exercises: /exercises/dm-asymptotic-notation-growth-rates
+- id: dm-recurrence-relations
+  title: 漸化式
+  course: foundation
+  order: 414
+  summary: 離散数学の漸化式を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-induction-well-ordering
+    - dm-asymptotic-notation-growth-rates
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-recurrence-relations
+    slides: /slides/dm-recurrence-relations/
+    textbook: /textbook/dm-recurrence-relations
+    exercises: /exercises/dm-recurrence-relations
+- id: dm-divide-conquer-master-theorem
+  title: 分割統治法とMaster theorem
+  course: foundation
+  order: 415
+  summary: 離散数学の分割統治法とMaster theoremを定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-recurrence-relations
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-divide-conquer-master-theorem
+    slides: /slides/dm-divide-conquer-master-theorem/
+    textbook: /textbook/dm-divide-conquer-master-theorem
+    exercises: /exercises/dm-divide-conquer-master-theorem
+- id: dm-graphs-representations-degrees
+  title: グラフ・表現・次数
+  course: foundation
+  order: 416
+  summary: 離散数学のグラフ・表現・次数を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-relations-equivalence-partial-orders
+    - prep-numpy-arrays-shapes
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-graphs-representations-degrees
+    slides: /slides/dm-graphs-representations-degrees/
+    textbook: /textbook/dm-graphs-representations-degrees
+    exercises: /exercises/dm-graphs-representations-degrees
+- id: dm-paths-cycles-connectivity
+  title: 道・閉路・連結性
+  course: foundation
+  order: 417
+  summary: 離散数学の道・閉路・連結性を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-graphs-representations-degrees
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-paths-cycles-connectivity
+    slides: /slides/dm-paths-cycles-connectivity/
+    textbook: /textbook/dm-paths-cycles-connectivity
+    exercises: /exercises/dm-paths-cycles-connectivity
+- id: dm-trees-spanning-trees
+  title: 木と全域木
+  course: foundation
+  order: 418
+  summary: 離散数学の木と全域木を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-paths-cycles-connectivity
+    - dm-induction-well-ordering
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-trees-spanning-trees
+    slides: /slides/dm-trees-spanning-trees/
+    textbook: /textbook/dm-trees-spanning-trees
+    exercises: /exercises/dm-trees-spanning-trees
+- id: dm-directed-graphs-dags-topological-order
+  title: 有向グラフ・DAG・トポロジカル順序
+  course: foundation
+  order: 419
+  summary: 離散数学の有向グラフ・DAG・トポロジカル順序を定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-graphs-representations-degrees
+    - dm-loop-invariants-termination
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-directed-graphs-dags-topological-order
+    slides: /slides/dm-directed-graphs-dags-topological-order/
+    textbook: /textbook/dm-directed-graphs-dags-topological-order
+    exercises: /exercises/dm-directed-graphs-dags-topological-order
+- id: dm-discrete-probability-indicators-randomized-algorithms
+  title: 離散確率・指示変数・乱択アルゴリズム
+  course: foundation
+  order: 420
+  summary: 離散数学の離散確率・指示変数・乱択アルゴリズムを定義・証明・アルゴリズムと計算量へ接続する
+  status: draft
+  prerequisites:
+    - dm-counting-principles-pigeonhole
+    - dm-algorithm-specifications-correctness
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/dm-discrete-probability-indicators-randomized-algorithms
+    slides: /slides/dm-discrete-probability-indicators-randomized-algorithms/
+    textbook: /textbook/dm-discrete-probability-indicators-randomized-algorithms
+    exercises: /exercises/dm-discrete-probability-indicators-randomized-algorithms

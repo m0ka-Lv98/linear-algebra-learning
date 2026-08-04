@@ -9,6 +9,7 @@
   <a href="./courses/foundation/calc-functions-limits-continuity">微積分を学ぶ</a>
   <a href="./courses/foundation/la-vectors-linear-combinations">線形代数を学ぶ</a>
   <a href="./courses/foundation/prob-counting-sample-spaces">確率統計を学ぶ</a>
+  <a href="./courses/foundation/dm-propositions-connectives-truth-tables">離散数学と証明を学ぶ</a>
   <a href="./textbook/prep-symbols-types-shapes">教科書で詳しく理解する</a>
   <a href="./exercises/prep-symbols-types-shapes">演習問題で確認する</a>
 </div>
@@ -27,6 +28,8 @@
 [直交射影](/courses/foundation/orthogonal-projection)を含むCourse 02「線形代数」の全29 Topicを公開しています。
 
 [数え上げ・標本空間・事象](/courses/foundation/prob-counting-sample-spaces)からCourse 03「確率統計」を始められます。
+
+[命題・論理演算・真理値表](/courses/foundation/dm-propositions-connectives-truth-tables)からCourse 04「離散数学と証明」を始められます。
 
 <style>
 .entry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }

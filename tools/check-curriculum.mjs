@@ -72,12 +72,13 @@ async function runTests() {
   }
   const real = await runCurriculumCheck(root)
   assert.equal(real.courses.length, 11)
-  assert.equal(real.units.length, 13)
-  assert.equal(real.topics.length, 70)
+  assert.equal(real.units.length, 17)
+  assert.equal(real.topics.length, 90)
   assert.equal(real.topics.filter((topic) => topic.course === '00').length, 8)
   assert.equal(real.topics.filter((topic) => topic.course === '01').length, 13)
   assert.equal(real.topics.filter((topic) => topic.course === '02').length, 29)
   assert.equal(real.topics.filter((topic) => topic.course === '03').length, 20)
+  assert.equal(real.topics.filter((topic) => topic.course === '04').length, 20)
   assert.equal(real.topics.filter((topic) => topic.implementation_topic === 'orthogonal-projection').length, 1)
   console.log('curriculum tests passed (schema, dependencies, implementation mapping)')
 }

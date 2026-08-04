@@ -38,7 +38,7 @@ courses:
     slug: discrete-mathematics
     title: 離散数学と証明
     layer: core
-    status: planned
+    status: active
     prerequisites: ["00"]
     mit_references:
       - { code: 6.042J, title: Mathematics for Computer Science }
