@@ -39,5 +39,4 @@ Course 01の13/13。
 ## 前後Topic
 
 - [前のTopic](/courses/foundation/calc-unconstrained-optimization)
-- 次の学習先：ベクトルと線形結合（未実装）
-
+- [次のTopic：ベクトルと線形結合](/courses/foundation/la-vectors-linear-combinations)

@@ -1,12 +1,13 @@
 - id: orthogonal-projection
   title: 直交射影
   course: foundation
-  order: 10
+  order: 215
   summary: ベクトルを部分空間上の最も近い点へ写す操作を学ぶ
   status: draft
   prerequisites:
-    - inner-product
-    - subspaces
+    - la-span-subspaces
+    - la-inner-products-norms-angles
+    - la-orthogonal-orthonormal-bases
   estimated_minutes:
     slides: 15
     textbook: 45
@@ -381,3 +382,500 @@
     slides: /slides/calc-lagrange-multipliers/
     textbook: /textbook/calc-lagrange-multipliers
     exercises: /exercises/calc-lagrange-multipliers
+- id: la-vectors-linear-combinations
+  title: ベクトルと線形結合
+  course: foundation
+  order: 201
+  summary: ベクトルと線形結合を幾何と代数の両面から捉える
+  status: draft
+  prerequisites:
+    - prep-symbols-types-shapes
+    - prep-sums-products-indices
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-vectors-linear-combinations
+    slides: /slides/la-vectors-linear-combinations/
+    textbook: /textbook/la-vectors-linear-combinations
+    exercises: /exercises/la-vectors-linear-combinations
+- id: la-matrices-data-linear-maps
+  title: 行列をデータと線形写像として見る
+  course: foundation
+  order: 202
+  summary: 行列を表と線形写像の二つの見方で整理する
+  status: draft
+  prerequisites:
+    - la-vectors-linear-combinations
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-matrices-data-linear-maps
+    slides: /slides/la-matrices-data-linear-maps/
+    textbook: /textbook/la-matrices-data-linear-maps
+    exercises: /exercises/la-matrices-data-linear-maps
+- id: la-matrix-multiplication
+  title: 行列積
+  course: foundation
+  order: 203
+  summary: 行列積を線形写像の合成と添字計算で理解する
+  status: draft
+  prerequisites:
+    - la-matrices-data-linear-maps
+    - prep-sums-products-indices
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-matrix-multiplication
+    slides: /slides/la-matrix-multiplication/
+    textbook: /textbook/la-matrix-multiplication
+    exercises: /exercises/la-matrix-multiplication
+- id: la-linear-systems-elimination
+  title: 連立一次方程式とガウス消去法
+  course: foundation
+  order: 204
+  summary: 連立一次方程式を行基本変形とガウス消去法で解く
+  status: draft
+  prerequisites:
+    - la-matrix-multiplication
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-linear-systems-elimination
+    slides: /slides/la-linear-systems-elimination/
+    textbook: /textbook/la-linear-systems-elimination
+    exercises: /exercises/la-linear-systems-elimination
+- id: la-invertibility-inverse-matrices
+  title: 可逆性と逆行列
+  course: foundation
+  order: 205
+  summary: 可逆な線形写像と逆行列の条件を調べる
+  status: draft
+  prerequisites:
+    - la-linear-systems-elimination
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-invertibility-inverse-matrices
+    slides: /slides/la-invertibility-inverse-matrices/
+    textbook: /textbook/la-invertibility-inverse-matrices
+    exercises: /exercises/la-invertibility-inverse-matrices
+- id: la-lu-factorization
+  title: LU分解
+  course: foundation
+  order: 206
+  summary: ガウス消去法を三角行列の積として表す
+  status: draft
+  prerequisites:
+    - la-linear-systems-elimination
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-lu-factorization
+    slides: /slides/la-lu-factorization/
+    textbook: /textbook/la-lu-factorization
+    exercises: /exercises/la-lu-factorization
+- id: la-span-subspaces
+  title: spanと部分空間
+  course: foundation
+  order: 207
+  summary: ベクトルのspanと部分空間の閉性を定義する
+  status: draft
+  prerequisites:
+    - la-vectors-linear-combinations
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-span-subspaces
+    slides: /slides/la-span-subspaces/
+    textbook: /textbook/la-span-subspaces
+    exercises: /exercises/la-span-subspaces
+- id: la-column-space-null-space
+  title: 列空間と零空間
+  course: foundation
+  order: 208
+  summary: 行列の列空間と零空間を方程式の解集合として見る
+  status: draft
+  prerequisites:
+    - la-matrix-multiplication
+    - la-span-subspaces
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-column-space-null-space
+    slides: /slides/la-column-space-null-space/
+    textbook: /textbook/la-column-space-null-space
+    exercises: /exercises/la-column-space-null-space
+- id: la-linear-independence
+  title: 線形独立と線形従属
+  course: foundation
+  order: 209
+  summary: ベクトルの冗長性を線形結合の一意性から判定する
+  status: draft
+  prerequisites:
+    - la-span-subspaces
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-linear-independence
+    slides: /slides/la-linear-independence/
+    textbook: /textbook/la-linear-independence
+    exercises: /exercises/la-linear-independence
+- id: la-basis-coordinates-dimension
+  title: 基底・座標・次元
+  course: foundation
+  order: 210
+  summary: 基底と座標表示を用いてベクトル空間の次元を理解する
+  status: draft
+  prerequisites:
+    - la-linear-independence
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-basis-coordinates-dimension
+    slides: /slides/la-basis-coordinates-dimension/
+    textbook: /textbook/la-basis-coordinates-dimension
+    exercises: /exercises/la-basis-coordinates-dimension
+- id: la-rank-rank-nullity
+  title: 階数とrank-nullity
+  course: foundation
+  order: 211
+  summary: 階数、零化度、rank-nullity定理で線形方程式を整理する
+  status: draft
+  prerequisites:
+    - la-column-space-null-space
+    - la-basis-coordinates-dimension
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-rank-rank-nullity
+    slides: /slides/la-rank-rank-nullity/
+    textbook: /textbook/la-rank-rank-nullity
+    exercises: /exercises/la-rank-rank-nullity
+- id: la-linear-maps-change-of-basis
+  title: 線形写像と基底変換
+  course: foundation
+  order: 212
+  summary: 線形写像の行列表現と基底変換の関係を学ぶ
+  status: draft
+  prerequisites:
+    - la-matrices-data-linear-maps
+    - la-basis-coordinates-dimension
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-linear-maps-change-of-basis
+    slides: /slides/la-linear-maps-change-of-basis/
+    textbook: /textbook/la-linear-maps-change-of-basis
+    exercises: /exercises/la-linear-maps-change-of-basis
+- id: la-inner-products-norms-angles
+  title: 内積・ノルム・角度
+  course: foundation
+  order: 213
+  summary: 内積からノルム、距離、角度を定義し幾何を数式化する
+  status: draft
+  prerequisites:
+    - la-vectors-linear-combinations
+    - prep-exponents-logarithms
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-inner-products-norms-angles
+    slides: /slides/la-inner-products-norms-angles/
+    textbook: /textbook/la-inner-products-norms-angles
+    exercises: /exercises/la-inner-products-norms-angles
+- id: la-orthogonal-orthonormal-bases
+  title: 直交基底と正規直交基底
+  course: foundation
+  order: 214
+  summary: 直交基底と正規直交基底を構成し座標を抽出する
+  status: draft
+  prerequisites:
+    - la-basis-coordinates-dimension
+    - la-inner-products-norms-angles
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-orthogonal-orthonormal-bases
+    slides: /slides/la-orthogonal-orthonormal-bases/
+    textbook: /textbook/la-orthogonal-orthonormal-bases
+    exercises: /exercises/la-orthogonal-orthonormal-bases
+- id: la-gram-schmidt-qr
+  title: Gram–Schmidt法とQR分解
+  course: foundation
+  order: 215
+  summary: Gram–Schmidt法で直交化しQR分解へ接続する
+  status: draft
+  prerequisites:
+    - la-orthogonal-orthonormal-bases
+    - orthogonal-projection
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-gram-schmidt-qr
+    slides: /slides/la-gram-schmidt-qr/
+    textbook: /textbook/la-gram-schmidt-qr
+    exercises: /exercises/la-gram-schmidt-qr
+- id: la-least-squares-geometry
+  title: 最小二乗法の幾何学
+  course: foundation
+  order: 216
+  summary: 最小二乗解を列空間への射影と残差の直交性から理解する
+  status: draft
+  prerequisites:
+    - la-column-space-null-space
+    - orthogonal-projection
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-least-squares-geometry
+    slides: /slides/la-least-squares-geometry/
+    textbook: /textbook/la-least-squares-geometry
+    exercises: /exercises/la-least-squares-geometry
+- id: la-least-squares-computation-pseudoinverse
+  title: 最小二乗法の計算と擬似逆行列
+  course: foundation
+  order: 217
+  summary: QRと擬似逆行列を用いた最小二乗計算の考え方を学ぶ
+  status: draft
+  prerequisites:
+    - la-gram-schmidt-qr
+    - la-least-squares-geometry
+    - la-rank-rank-nullity
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-least-squares-computation-pseudoinverse
+    slides: /slides/la-least-squares-computation-pseudoinverse/
+    textbook: /textbook/la-least-squares-computation-pseudoinverse
+    exercises: /exercises/la-least-squares-computation-pseudoinverse
+- id: la-weighted-least-squares-introduction
+  title: 重み付き最小二乗法の導入
+  course: foundation
+  order: 218
+  summary: 観測ごとの信頼度を重みとして導入し重み付き最小二乗法を理解する
+  status: draft
+  prerequisites:
+    - la-least-squares-geometry
+    - la-inner-products-norms-angles
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-weighted-least-squares-introduction
+    slides: /slides/la-weighted-least-squares-introduction/
+    textbook: /textbook/la-weighted-least-squares-introduction
+    exercises: /exercises/la-weighted-least-squares-introduction
+- id: la-determinants-volume-invertibility
+  title: 行列式・体積・可逆性
+  course: foundation
+  order: 219
+  summary: 行列式を符号付き体積、可逆性、行基本変形から理解する
+  status: draft
+  prerequisites:
+    - la-linear-systems-elimination
+    - la-invertibility-inverse-matrices
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-determinants-volume-invertibility
+    slides: /slides/la-determinants-volume-invertibility/
+    textbook: /textbook/la-determinants-volume-invertibility
+    exercises: /exercises/la-determinants-volume-invertibility
+- id: la-eigenvalues-eigenvectors
+  title: 固有値と固有ベクトル
+  course: foundation
+  order: 220
+  summary: 不変方向と固有値方程式から固有構造を理解する
+  status: draft
+  prerequisites:
+    - la-matrix-multiplication
+    - la-determinants-volume-invertibility
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-eigenvalues-eigenvectors
+    slides: /slides/la-eigenvalues-eigenvectors/
+    textbook: /textbook/la-eigenvalues-eigenvectors
+    exercises: /exercises/la-eigenvalues-eigenvectors
+- id: la-diagonalization-matrix-powers
+  title: 対角化と行列の累乗
+  course: foundation
+  order: 221
+  summary: 固有基底を用いて対角化と行列累乗を計算する
+  status: draft
+  prerequisites:
+    - la-eigenvalues-eigenvectors
+    - la-basis-coordinates-dimension
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-diagonalization-matrix-powers
+    slides: /slides/la-diagonalization-matrix-powers/
+    textbook: /textbook/la-diagonalization-matrix-powers
+    exercises: /exercises/la-diagonalization-matrix-powers
+- id: la-symmetric-matrices-spectral-theorem
+  title: 対称行列とスペクトル定理
+  course: foundation
+  order: 222
+  summary: 対称行列の直交対角化と実固有値を理解する
+  status: draft
+  prerequisites:
+    - la-orthogonal-orthonormal-bases
+    - la-eigenvalues-eigenvectors
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-symmetric-matrices-spectral-theorem
+    slides: /slides/la-symmetric-matrices-spectral-theorem/
+    textbook: /textbook/la-symmetric-matrices-spectral-theorem
+    exercises: /exercises/la-symmetric-matrices-spectral-theorem
+- id: la-quadratic-forms-positive-definite
+  title: 二次形式と正定値行列
+  course: foundation
+  order: 223
+  summary: 二次形式の曲率と正定値性を固有値から判定する
+  status: draft
+  prerequisites:
+    - la-inner-products-norms-angles
+    - la-symmetric-matrices-spectral-theorem
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-quadratic-forms-positive-definite
+    slides: /slides/la-quadratic-forms-positive-definite/
+    textbook: /textbook/la-quadratic-forms-positive-definite
+    exercises: /exercises/la-quadratic-forms-positive-definite
+- id: la-cholesky-factorization
+  title: Cholesky分解
+  course: foundation
+  order: 224
+  summary: 対称正定値行列を下三角行列の積へ分解する
+  status: draft
+  prerequisites:
+    - la-quadratic-forms-positive-definite
+    - la-lu-factorization
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-cholesky-factorization
+    slides: /slides/la-cholesky-factorization/
+    textbook: /textbook/la-cholesky-factorization
+    exercises: /exercises/la-cholesky-factorization
+- id: la-singular-value-decomposition
+  title: 特異値分解
+  course: foundation
+  order: 225
+  summary: 行列を直交方向と伸縮量へ分解し特異値分解の構造を理解する
+  status: draft
+  prerequisites:
+    - la-rank-rank-nullity
+    - la-orthogonal-orthonormal-bases
+    - la-symmetric-matrices-spectral-theorem
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-singular-value-decomposition
+    slides: /slides/la-singular-value-decomposition/
+    textbook: /textbook/la-singular-value-decomposition
+    exercises: /exercises/la-singular-value-decomposition
+- id: la-pseudoinverse-rank-deficient-systems
+  title: 擬似逆行列とrank不足の連立方程式
+  course: foundation
+  order: 226
+  summary: rank不足の系を擬似逆行列と最小ノルム解から理解する
+  status: draft
+  prerequisites:
+    - la-singular-value-decomposition
+    - la-least-squares-computation-pseudoinverse
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-pseudoinverse-rank-deficient-systems
+    slides: /slides/la-pseudoinverse-rank-deficient-systems/
+    textbook: /textbook/la-pseudoinverse-rank-deficient-systems
+    exercises: /exercises/la-pseudoinverse-rank-deficient-systems
+- id: la-low-rank-approximation
+  title: 低ランク近似
+  course: foundation
+  order: 227
+  summary: 特異値を切り詰めて圧縮・ノイズ除去・PCAへ接続する
+  status: draft
+  prerequisites:
+    - la-singular-value-decomposition
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-low-rank-approximation
+    slides: /slides/la-low-rank-approximation/
+    textbook: /textbook/la-low-rank-approximation
+    exercises: /exercises/la-low-rank-approximation
+- id: la-matrix-norms-condition-number
+  title: 行列ノルムと条件数
+  course: foundation
+  order: 228
+  summary: 行列ノルムと条件数で感度と数値誤差を評価する
+  status: draft
+  prerequisites:
+    - la-singular-value-decomposition
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/la-matrix-norms-condition-number
+    slides: /slides/la-matrix-norms-condition-number/
+    textbook: /textbook/la-matrix-norms-condition-number
+    exercises: /exercises/la-matrix-norms-condition-number
