@@ -39,6 +39,6 @@ Course 02の29 Topic中、29/29。
 ## 前後Topic
 
 - [前のTopic](/courses/foundation/la-singular-value-decomposition)
-- 次の学習先：Course 03：確率統計（未詳細化）
+- [次のTopic：数え上げ・標本空間・事象](/courses/foundation/prob-counting-sample-spaces)
 - 次の学習先：Course 05：数値計算（未詳細化）
 - 次の学習先：Course 07：データ解析の行列手法（未詳細化）

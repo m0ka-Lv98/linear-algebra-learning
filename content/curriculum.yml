@@ -11,6 +11,11 @@ units:
   - { id: la-eigenvalues-positive-definite, course: "02", order: 40, title: 固有値・対称行列・正定値行列 }
   - { id: la-svd-low-rank, course: "02", order: 50, title: 特異値分解と低ランク構造 }
 
+  - { id: prob-foundations, course: "03", order: 10, title: 確率の基礎 }
+  - { id: prob-random-variables-distributions, course: "03", order: 20, title: 確率変数・分布・多変量確率 }
+  - { id: stat-inference, course: "03", order: 30, title: 統計的推測 }
+  - { id: stat-regression-information, course: "03", order: 40, title: 回帰モデルと情報量 }
+
 topics:
   - { id: prep-symbols-types-shapes, course: "00", unit: prep-mathematical-literacy, order: 10, title: 数式・記号・型・次元, summary: スカラー、ベクトル、行列、テンソルと各記号の型・次元を区別する, status: draft, kind: required, prerequisites: [], implementation_topic: prep-symbols-types-shapes, outcomes: [スカラー、ベクトル、行列、テンソルを区別できる, 添字を読み式の各項の型と次元を確認できる] }
   - { id: prep-sets-functions-mappings, course: "00", unit: prep-mathematical-literacy, order: 20, title: 集合・関数・写像, summary: 集合、定義域、終域、値域、関数、写像の基本を学ぶ, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes], implementation_topic: prep-sets-functions-mappings, outcomes: [定義域、終域、値域を区別できる, 関数の合成と逆関数の意味を説明できる] }
@@ -64,3 +69,264 @@ topics:
   - { id: la-pseudoinverse-rank-deficient-systems, course: "02", unit: la-svd-low-rank, order: 20, title: 擬似逆行列とrank不足の連立方程式, summary: SVDを用いてrank不足の系と最小ノルム解を扱う, status: draft, kind: required, prerequisites: [la-singular-value-decomposition, la-least-squares-computation-pseudoinverse], implementation_topic: la-pseudoinverse-rank-deficient-systems, outcomes: [擬似逆行列の定義をSVDから説明できる, rank不足の小さな系を解ける] }
   - { id: la-low-rank-approximation, course: "02", unit: la-svd-low-rank, order: 30, title: 低ランク近似, summary: SVDの上位成分で行列を近似し情報量を調べる, status: draft, kind: required, prerequisites: [la-singular-value-decomposition], implementation_topic: la-low-rank-approximation, outcomes: [低ランク近似の最適性を説明できる, 特異値を切って近似誤差を計算できる] }
   - { id: la-matrix-norms-condition-number, course: "02", unit: la-svd-low-rank, order: 40, title: 行列ノルムと条件数, summary: 行列ノルムと条件数で入力誤差の増幅を評価する, status: draft, kind: required, prerequisites: [la-inner-products-norms-angles, la-singular-value-decomposition], implementation_topic: la-matrix-norms-condition-number, outcomes: [行列ノルムと条件数を定義・解釈できる, 小さな系の条件数と誤差増幅を計算できる] }
+
+  - id: prob-counting-sample-spaces
+    course: "03"
+    unit: prob-foundations
+    order: 10
+    title: 数え上げ・標本空間・事象
+    summary: 数え上げ・標本空間・事象の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prep-sets-functions-mappings, prep-sums-products-indices]
+    implementation_topic: prob-counting-sample-spaces
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-axioms-event-operations
+    course: "03"
+    unit: prob-foundations
+    order: 20
+    title: 確率の公理と事象の演算
+    summary: 確率の公理と事象の演算の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-counting-sample-spaces]
+    implementation_topic: prob-axioms-event-operations
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-conditional-probability-independence
+    course: "03"
+    unit: prob-foundations
+    order: 30
+    title: 条件付き確率と独立
+    summary: 条件付き確率と独立の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-axioms-event-operations]
+    implementation_topic: prob-conditional-probability-independence
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-bayes-theorem
+    course: "03"
+    unit: prob-foundations
+    order: 40
+    title: Bayesの定理
+    summary: Bayesの定理の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-conditional-probability-independence]
+    implementation_topic: prob-bayes-theorem
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-random-variables-cdf-pmf-pdf
+    course: "03"
+    unit: prob-foundations
+    order: 50
+    title: 確率変数・CDF・PMF・PDF
+    summary: 確率変数・CDF・PMF・PDFの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-axioms-event-operations, prep-exponents-logarithms]
+    implementation_topic: prob-random-variables-cdf-pmf-pdf
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-expectation-variance-moments
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 10
+    title: 期待値・分散・モーメント
+    summary: 期待値・分散・モーメントの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-random-variables-cdf-pmf-pdf, calc-integrals-fundamental-theorem]
+    implementation_topic: prob-expectation-variance-moments
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-joint-marginal-conditional-distributions
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 20
+    title: 同時分布・周辺分布・条件付き分布
+    summary: 同時分布・周辺分布・条件付き分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-conditional-probability-independence, prob-random-variables-cdf-pmf-pdf]
+    implementation_topic: prob-joint-marginal-conditional-distributions
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-covariance-correlation
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 30
+    title: 共分散と相関
+    summary: 共分散と相関の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-expectation-variance-moments, prob-joint-marginal-conditional-distributions]
+    implementation_topic: prob-covariance-correlation
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-discrete-distributions
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 40
+    title: 主要な離散分布
+    summary: 主要な離散分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-random-variables-cdf-pmf-pdf, prob-expectation-variance-moments]
+    implementation_topic: prob-discrete-distributions
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-continuous-distributions
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 50
+    title: 主要な連続分布
+    summary: 主要な連続分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-random-variables-cdf-pmf-pdf, prob-expectation-variance-moments, calc-integrals-fundamental-theorem]
+    implementation_topic: prob-continuous-distributions
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-transformations-sums-random-variables
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 60
+    title: 確率変数の変換と和
+    summary: 確率変数の変換と和の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-joint-marginal-conditional-distributions, prob-discrete-distributions, prob-continuous-distributions]
+    implementation_topic: prob-transformations-sums-random-variables
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-laws-large-numbers-central-limit-theorem
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 70
+    title: 大数の法則と中心極限定理
+    summary: 大数の法則と中心極限定理の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-expectation-variance-moments, prob-transformations-sums-random-variables]
+    implementation_topic: prob-laws-large-numbers-central-limit-theorem
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: prob-multivariate-normal-distribution
+    course: "03"
+    unit: prob-random-variables-distributions
+    order: 80
+    title: 多変量正規分布
+    summary: 多変量正規分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-covariance-correlation, prob-continuous-distributions, la-quadratic-forms-positive-definite]
+    implementation_topic: prob-multivariate-normal-distribution
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-estimators-bias-variance-mse
+    course: "03"
+    unit: stat-inference
+    order: 10
+    title: 推定量・バイアス・分散・MSE
+    summary: 推定量・バイアス・分散・MSEの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-expectation-variance-moments, prob-laws-large-numbers-central-limit-theorem]
+    implementation_topic: stat-estimators-bias-variance-mse
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-likelihood-maximum-likelihood
+    course: "03"
+    unit: stat-inference
+    order: 20
+    title: 尤度と最尤推定
+    summary: 尤度と最尤推定の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [stat-estimators-bias-variance-mse, prob-discrete-distributions, prob-continuous-distributions, prep-exponents-logarithms]
+    implementation_topic: stat-likelihood-maximum-likelihood
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-bayesian-inference-map
+    course: "03"
+    unit: stat-inference
+    order: 30
+    title: Bayesian推論とMAP推定
+    summary: Bayesian推論とMAP推定の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-bayes-theorem, stat-likelihood-maximum-likelihood]
+    implementation_topic: stat-bayesian-inference-map
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-confidence-intervals
+    course: "03"
+    unit: stat-inference
+    order: 40
+    title: 信頼区間
+    summary: 信頼区間の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [stat-estimators-bias-variance-mse, prob-laws-large-numbers-central-limit-theorem, stat-likelihood-maximum-likelihood]
+    implementation_topic: stat-confidence-intervals
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-hypothesis-testing
+    course: "03"
+    unit: stat-inference
+    order: 50
+    title: 仮説検定
+    summary: 仮説検定の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [stat-confidence-intervals]
+    implementation_topic: stat-hypothesis-testing
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-linear-regression-probabilistic-model
+    course: "03"
+    unit: stat-regression-information
+    order: 10
+    title: 線形回帰の確率モデル
+    summary: 線形回帰の確率モデルの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-covariance-correlation, prob-multivariate-normal-distribution, stat-likelihood-maximum-likelihood, la-least-squares-geometry]
+    implementation_topic: stat-linear-regression-probabilistic-model
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
+  - id: stat-entropy-cross-entropy-kl-divergence
+    course: "03"
+    unit: stat-regression-information
+    order: 20
+    title: エントロピー・交差エントロピー・KLダイバージェンス
+    summary: エントロピー・交差エントロピー・KLダイバージェンスの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
+    status: draft
+    kind: required
+    prerequisites: [prob-discrete-distributions, prob-continuous-distributions, stat-likelihood-maximum-likelihood, prep-exponents-logarithms]
+    implementation_topic: stat-entropy-cross-entropy-kl-divergence
+    outcomes:
+      - 定義・導出を説明できる
+      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる

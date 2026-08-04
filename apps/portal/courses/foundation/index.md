@@ -54,6 +54,24 @@ Course 00は全8 Topicで構成されています。
 
 [特異値分解](/courses/foundation/la-singular-value-decomposition)、[擬似逆行列とrank不足の連立方程式](/courses/foundation/la-pseudoinverse-rank-deficient-systems)、[低ランク近似](/courses/foundation/la-low-rank-approximation)、[行列ノルムと条件数](/courses/foundation/la-matrix-norms-condition-number)。
 
+## Course 03：確率統計
+
+### 確率の基礎
+
+[数え上げ・標本空間・事象](/courses/foundation/prob-counting-sample-spaces)、[確率の公理と事象の演算](/courses/foundation/prob-axioms-event-operations)、[条件付き確率と独立](/courses/foundation/prob-conditional-probability-independence)、[Bayesの定理](/courses/foundation/prob-bayes-theorem)、[確率変数・CDF・PMF・PDF](/courses/foundation/prob-random-variables-cdf-pmf-pdf)。
+
+### 確率変数・分布・多変量確率
+
+[期待値・分散・モーメント](/courses/foundation/prob-expectation-variance-moments)、[同時分布・周辺分布・条件付き分布](/courses/foundation/prob-joint-marginal-conditional-distributions)、[共分散と相関](/courses/foundation/prob-covariance-correlation)、[主要な離散分布](/courses/foundation/prob-discrete-distributions)、[主要な連続分布](/courses/foundation/prob-continuous-distributions)、[確率変数の変換と和](/courses/foundation/prob-transformations-sums-random-variables)、[大数の法則と中心極限定理](/courses/foundation/prob-laws-large-numbers-central-limit-theorem)、[多変量正規分布](/courses/foundation/prob-multivariate-normal-distribution)。
+
+### 統計的推測
+
+[推定量・バイアス・分散・MSE](/courses/foundation/stat-estimators-bias-variance-mse)、[尤度と最尤推定](/courses/foundation/stat-likelihood-maximum-likelihood)、[Bayesian推論とMAP推定](/courses/foundation/stat-bayesian-inference-map)、[信頼区間](/courses/foundation/stat-confidence-intervals)、[仮説検定](/courses/foundation/stat-hypothesis-testing)。
+
+### 回帰モデルと情報量
+
+[線形回帰の確率モデル](/courses/foundation/stat-linear-regression-probabilistic-model)、[エントロピー・交差エントロピー・KLダイバージェンス](/courses/foundation/stat-entropy-cross-entropy-kl-divergence)。
+
 ## Course 02：線形代数
 
 現在の線形代数サンプルとして[直交射影](/courses/foundation/orthogonal-projection)を用意しています。

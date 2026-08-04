@@ -30,7 +30,7 @@ courses:
     slug: probability-statistics
     title: 確率統計
     layer: core
-    status: planned
+    status: active
     prerequisites: ["00", "01", "02"]
     mit_references:
       - { code: "18.05", title: Introduction to Probability and Statistics }

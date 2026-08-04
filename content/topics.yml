@@ -879,3 +879,389 @@
     slides: /slides/la-matrix-norms-condition-number/
     textbook: /textbook/la-matrix-norms-condition-number
     exercises: /exercises/la-matrix-norms-condition-number
+- id: prob-counting-sample-spaces
+  title: 数え上げ・標本空間・事象
+  course: foundation
+  order: 301
+  summary: 確率統計の数え上げ・標本空間・事象を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prep-sets-functions-mappings
+    - prep-sums-products-indices
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-counting-sample-spaces
+    slides: /slides/prob-counting-sample-spaces/
+    textbook: /textbook/prob-counting-sample-spaces
+    exercises: /exercises/prob-counting-sample-spaces
+- id: prob-axioms-event-operations
+  title: 確率の公理と事象の演算
+  course: foundation
+  order: 302
+  summary: 確率統計の確率の公理と事象の演算を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-counting-sample-spaces
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-axioms-event-operations
+    slides: /slides/prob-axioms-event-operations/
+    textbook: /textbook/prob-axioms-event-operations
+    exercises: /exercises/prob-axioms-event-operations
+- id: prob-conditional-probability-independence
+  title: 条件付き確率と独立
+  course: foundation
+  order: 303
+  summary: 確率統計の条件付き確率と独立を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-axioms-event-operations
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-conditional-probability-independence
+    slides: /slides/prob-conditional-probability-independence/
+    textbook: /textbook/prob-conditional-probability-independence
+    exercises: /exercises/prob-conditional-probability-independence
+- id: prob-bayes-theorem
+  title: Bayesの定理
+  course: foundation
+  order: 304
+  summary: 確率統計のBayesの定理を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-conditional-probability-independence
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-bayes-theorem
+    slides: /slides/prob-bayes-theorem/
+    textbook: /textbook/prob-bayes-theorem
+    exercises: /exercises/prob-bayes-theorem
+- id: prob-random-variables-cdf-pmf-pdf
+  title: 確率変数・CDF・PMF・PDF
+  course: foundation
+  order: 305
+  summary: 確率統計の確率変数・CDF・PMF・PDFを定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-axioms-event-operations
+    - prep-exponents-logarithms
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-random-variables-cdf-pmf-pdf
+    slides: /slides/prob-random-variables-cdf-pmf-pdf/
+    textbook: /textbook/prob-random-variables-cdf-pmf-pdf
+    exercises: /exercises/prob-random-variables-cdf-pmf-pdf
+- id: prob-expectation-variance-moments
+  title: 期待値・分散・モーメント
+  course: foundation
+  order: 306
+  summary: 確率統計の期待値・分散・モーメントを定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-random-variables-cdf-pmf-pdf
+    - calc-integrals-fundamental-theorem
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-expectation-variance-moments
+    slides: /slides/prob-expectation-variance-moments/
+    textbook: /textbook/prob-expectation-variance-moments
+    exercises: /exercises/prob-expectation-variance-moments
+- id: prob-joint-marginal-conditional-distributions
+  title: 同時分布・周辺分布・条件付き分布
+  course: foundation
+  order: 307
+  summary: 確率統計の同時分布・周辺分布・条件付き分布を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-conditional-probability-independence
+    - prob-random-variables-cdf-pmf-pdf
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-joint-marginal-conditional-distributions
+    slides: /slides/prob-joint-marginal-conditional-distributions/
+    textbook: /textbook/prob-joint-marginal-conditional-distributions
+    exercises: /exercises/prob-joint-marginal-conditional-distributions
+- id: prob-covariance-correlation
+  title: 共分散と相関
+  course: foundation
+  order: 308
+  summary: 確率統計の共分散と相関を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-expectation-variance-moments
+    - prob-joint-marginal-conditional-distributions
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-covariance-correlation
+    slides: /slides/prob-covariance-correlation/
+    textbook: /textbook/prob-covariance-correlation
+    exercises: /exercises/prob-covariance-correlation
+- id: prob-discrete-distributions
+  title: 主要な離散分布
+  course: foundation
+  order: 309
+  summary: 確率統計の主要な離散分布を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-random-variables-cdf-pmf-pdf
+    - prob-expectation-variance-moments
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-discrete-distributions
+    slides: /slides/prob-discrete-distributions/
+    textbook: /textbook/prob-discrete-distributions
+    exercises: /exercises/prob-discrete-distributions
+- id: prob-continuous-distributions
+  title: 主要な連続分布
+  course: foundation
+  order: 310
+  summary: 確率統計の主要な連続分布を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-random-variables-cdf-pmf-pdf
+    - prob-expectation-variance-moments
+    - calc-integrals-fundamental-theorem
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-continuous-distributions
+    slides: /slides/prob-continuous-distributions/
+    textbook: /textbook/prob-continuous-distributions
+    exercises: /exercises/prob-continuous-distributions
+- id: prob-transformations-sums-random-variables
+  title: 確率変数の変換と和
+  course: foundation
+  order: 311
+  summary: 確率統計の確率変数の変換と和を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-joint-marginal-conditional-distributions
+    - prob-discrete-distributions
+    - prob-continuous-distributions
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-transformations-sums-random-variables
+    slides: /slides/prob-transformations-sums-random-variables/
+    textbook: /textbook/prob-transformations-sums-random-variables
+    exercises: /exercises/prob-transformations-sums-random-variables
+- id: prob-laws-large-numbers-central-limit-theorem
+  title: 大数の法則と中心極限定理
+  course: foundation
+  order: 312
+  summary: 確率統計の大数の法則と中心極限定理を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-expectation-variance-moments
+    - prob-transformations-sums-random-variables
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-laws-large-numbers-central-limit-theorem
+    slides: /slides/prob-laws-large-numbers-central-limit-theorem/
+    textbook: /textbook/prob-laws-large-numbers-central-limit-theorem
+    exercises: /exercises/prob-laws-large-numbers-central-limit-theorem
+- id: prob-multivariate-normal-distribution
+  title: 多変量正規分布
+  course: foundation
+  order: 313
+  summary: 確率統計の多変量正規分布を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-covariance-correlation
+    - prob-continuous-distributions
+    - la-quadratic-forms-positive-definite
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/prob-multivariate-normal-distribution
+    slides: /slides/prob-multivariate-normal-distribution/
+    textbook: /textbook/prob-multivariate-normal-distribution
+    exercises: /exercises/prob-multivariate-normal-distribution
+- id: stat-estimators-bias-variance-mse
+  title: 推定量・バイアス・分散・MSE
+  course: foundation
+  order: 314
+  summary: 確率統計の推定量・バイアス・分散・MSEを定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-expectation-variance-moments
+    - prob-laws-large-numbers-central-limit-theorem
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-estimators-bias-variance-mse
+    slides: /slides/stat-estimators-bias-variance-mse/
+    textbook: /textbook/stat-estimators-bias-variance-mse
+    exercises: /exercises/stat-estimators-bias-variance-mse
+- id: stat-likelihood-maximum-likelihood
+  title: 尤度と最尤推定
+  course: foundation
+  order: 315
+  summary: 確率統計の尤度と最尤推定を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - stat-estimators-bias-variance-mse
+    - prob-discrete-distributions
+    - prob-continuous-distributions
+    - prep-exponents-logarithms
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-likelihood-maximum-likelihood
+    slides: /slides/stat-likelihood-maximum-likelihood/
+    textbook: /textbook/stat-likelihood-maximum-likelihood
+    exercises: /exercises/stat-likelihood-maximum-likelihood
+- id: stat-bayesian-inference-map
+  title: Bayesian推論とMAP推定
+  course: foundation
+  order: 316
+  summary: 確率統計のBayesian推論とMAP推定を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-bayes-theorem
+    - stat-likelihood-maximum-likelihood
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-bayesian-inference-map
+    slides: /slides/stat-bayesian-inference-map/
+    textbook: /textbook/stat-bayesian-inference-map
+    exercises: /exercises/stat-bayesian-inference-map
+- id: stat-confidence-intervals
+  title: 信頼区間
+  course: foundation
+  order: 317
+  summary: 確率統計の信頼区間を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - stat-estimators-bias-variance-mse
+    - prob-laws-large-numbers-central-limit-theorem
+    - stat-likelihood-maximum-likelihood
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-confidence-intervals
+    slides: /slides/stat-confidence-intervals/
+    textbook: /textbook/stat-confidence-intervals
+    exercises: /exercises/stat-confidence-intervals
+- id: stat-hypothesis-testing
+  title: 仮説検定
+  course: foundation
+  order: 318
+  summary: 確率統計の仮説検定を定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - stat-confidence-intervals
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-hypothesis-testing
+    slides: /slides/stat-hypothesis-testing/
+    textbook: /textbook/stat-hypothesis-testing
+    exercises: /exercises/stat-hypothesis-testing
+- id: stat-linear-regression-probabilistic-model
+  title: 線形回帰の確率モデル
+  course: foundation
+  order: 319
+  summary: 確率統計の線形回帰の確率モデルを定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-covariance-correlation
+    - prob-multivariate-normal-distribution
+    - stat-likelihood-maximum-likelihood
+    - la-least-squares-geometry
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-linear-regression-probabilistic-model
+    slides: /slides/stat-linear-regression-probabilistic-model/
+    textbook: /textbook/stat-linear-regression-probabilistic-model
+    exercises: /exercises/stat-linear-regression-probabilistic-model
+- id: stat-entropy-cross-entropy-kl-divergence
+  title: エントロピー・交差エントロピー・KLダイバージェンス
+  course: foundation
+  order: 320
+  summary: 確率統計のエントロピー・交差エントロピー・KLダイバージェンスを定義から数値計算と機械学習への接続まで理解する
+  status: draft
+  prerequisites:
+    - prob-discrete-distributions
+    - prob-continuous-distributions
+    - stat-likelihood-maximum-likelihood
+    - prep-exponents-logarithms
+
+  estimated_minutes:
+    slides: 20
+    textbook: 65
+    exercises: 55
+  routes:
+    home: /courses/foundation/stat-entropy-cross-entropy-kl-divergence
+    slides: /slides/stat-entropy-cross-entropy-kl-divergence/
+    textbook: /textbook/stat-entropy-cross-entropy-kl-divergence
+    exercises: /exercises/stat-entropy-cross-entropy-kl-divergence

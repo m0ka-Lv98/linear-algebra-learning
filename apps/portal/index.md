@@ -1,6 +1,6 @@
 # 線形代数学習ポータル
 
-大学初年級の線形代数から、重み付き最小二乗法（WLSM）、数値線形代数、機械学習までを段階的に学ぶための教材基盤です。Course 00とCourse 01「微積分」を公開しています。
+大学初年級の線形代数から、確率統計、重み付き最小二乗法（WLSM）、数値線形代数、機械学習までを段階的に学ぶための教材基盤です。
 
 ## 学び方
 
@@ -8,6 +8,7 @@
   <a href="./courses/foundation/prep-symbols-types-shapes">最初から学ぶ</a>
   <a href="./courses/foundation/calc-functions-limits-continuity">微積分を学ぶ</a>
   <a href="./courses/foundation/la-vectors-linear-combinations">線形代数を学ぶ</a>
+  <a href="./courses/foundation/prob-counting-sample-spaces">確率統計を学ぶ</a>
   <a href="./textbook/prep-symbols-types-shapes">教科書で詳しく理解する</a>
   <a href="./exercises/prep-symbols-types-shapes">演習問題で確認する</a>
 </div>
@@ -24,6 +25,8 @@
 [数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)から学習を始められます。
 
 [直交射影](/courses/foundation/orthogonal-projection)を含むCourse 02「線形代数」の全29 Topicを公開しています。
+
+[数え上げ・標本空間・事象](/courses/foundation/prob-counting-sample-spaces)からCourse 03「確率統計」を始められます。
 
 <style>
 .entry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
