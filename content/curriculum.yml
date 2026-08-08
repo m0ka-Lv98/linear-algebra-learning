@@ -1,597 +1,3298 @@
 version: 1
-
 units:
-  - { id: prep-mathematical-literacy, course: "00", order: 10, title: 数学を読むための基礎 }
-  - { id: prep-computing, course: "00", order: 20, title: 数学のためのPythonとNumPy }
-  - { id: calc-single-variable, course: "01", order: 10, title: 一変数微積分 }
-  - { id: calc-multivariable, course: "01", order: 20, title: 多変数微積分 }
-  - { id: la-vectors-matrices-systems, course: "02", order: 10, title: ベクトル・行列・連立一次方程式 }
-  - { id: la-vector-spaces, course: "02", order: 20, title: ベクトル空間と線形写像 }
-  - { id: la-orthogonality-least-squares, course: "02", order: 30, title: 直交・射影・最小二乗法 }
-  - { id: la-eigenvalues-positive-definite, course: "02", order: 40, title: 固有値・対称行列・正定値行列 }
-  - { id: la-svd-low-rank, course: "02", order: 50, title: 特異値分解と低ランク構造 }
-
-  - { id: prob-foundations, course: "03", order: 10, title: 確率の基礎 }
-  - { id: prob-random-variables-distributions, course: "03", order: 20, title: 確率変数・分布・多変量確率 }
-  - { id: stat-inference, course: "03", order: 30, title: 統計的推測 }
-  - { id: stat-regression-information, course: "03", order: 40, title: 回帰モデルと情報量 }
-
-  - { id: dm-logic-proof, course: "04", order: 10, title: 論理と証明 }
-  - { id: dm-relations-counting, course: "04", order: 20, title: 離散構造と数え上げ }
-  - { id: dm-algorithms-complexity, course: "04", order: 30, title: アルゴリズム・不変量・計算量 }
-  - { id: dm-graphs-probability, course: "04", order: 40, title: グラフと離散確率 }
-
+- id: prep-mathematical-literacy
+  course: '00'
+  order: 10
+  title: 数学を読むための基礎
+- id: prep-computing
+  course: '00'
+  order: 20
+  title: 数学のためのPythonとNumPy
+- id: calc-single-variable
+  course: '01'
+  order: 10
+  title: 一変数微積分
+- id: calc-multivariable
+  course: '01'
+  order: 20
+  title: 多変数微積分
+- id: la-vectors-matrices-systems
+  course: '02'
+  order: 10
+  title: ベクトル・行列・連立一次方程式
+- id: la-vector-spaces
+  course: '02'
+  order: 20
+  title: ベクトル空間と線形写像
+- id: la-orthogonality-least-squares
+  course: '02'
+  order: 30
+  title: 直交・射影・最小二乗法
+- id: la-eigenvalues-positive-definite
+  course: '02'
+  order: 40
+  title: 固有値・対称行列・正定値行列
+- id: la-svd-low-rank
+  course: '02'
+  order: 50
+  title: 特異値分解と低ランク構造
+- id: prob-foundations
+  course: '03'
+  order: 10
+  title: 確率の基礎
+- id: prob-random-variables-distributions
+  course: '03'
+  order: 20
+  title: 確率変数・分布・多変量確率
+- id: stat-inference
+  course: '03'
+  order: 30
+  title: 統計的推測
+- id: stat-regression-information
+  course: '03'
+  order: 40
+  title: 回帰モデルと情報量
+- id: dm-logic-proof
+  course: '04'
+  order: 10
+  title: 論理と証明
+- id: dm-relations-counting
+  course: '04'
+  order: 20
+  title: 離散構造と数え上げ
+- id: dm-algorithms-complexity
+  course: '04'
+  order: 30
+  title: アルゴリズム・不変量・計算量
+- id: dm-graphs-probability
+  course: '04'
+  order: 40
+  title: グラフと離散確率
+- id: num-foundations
+  course: '05'
+  order: 10
+  title: 数値計算の基礎
+- id: num-approximation-quadrature
+  course: '05'
+  order: 20
+  title: 近似・補間・数値積分
+- id: num-linear-algebra
+  course: '05'
+  order: 30
+  title: 数値線形代数
+- id: num-low-rank-inverse
+  course: '05'
+  order: 40
+  title: 低ランク計算と逆問題
+- id: num-differential-equations-experiments
+  course: '05'
+  order: 50
+  title: 微分方程式と数値実験
+- id: opt-formulation-convexity
+  course: '06'
+  order: 10
+  title: 最適化問題と凸性
+- id: opt-first-second-order
+  course: '06'
+  order: 20
+  title: 一階法・二階法
+- id: opt-constrained-duality
+  course: '06'
+  order: 30
+  title: 制約・双対・近接法
+- id: opt-ml-large-scale
+  course: '06'
+  order: 40
+  title: 機械学習と大規模最適化
+- id: mat-data-geometry
+  course: '07'
+  order: 10
+  title: データ行列と幾何
+- id: mat-regression-estimation
+  course: '07'
+  order: 20
+  title: 回帰・推定・重み付け
+- id: mat-signal-latent
+  course: '07'
+  order: 30
+  title: 信号・潜在構造・分解
+- id: mat-high-dimensional
+  course: '07'
+  order: 40
+  title: 高次元データと構造化行列
+- id: ml-foundations-supervised
+  course: 08
+  order: 10
+  title: 機械学習の基礎と教師あり学習
+- id: ml-models-kernels-ensembles
+  course: 08
+  order: 20
+  title: 非線形モデル・kernel・ensemble
+- id: ml-unsupervised-representation
+  course: 08
+  order: 30
+  title: 教師なし学習と表現
+- id: ml-evaluation-deployment
+  course: 08
+  order: 40
+  title: 評価・不確実性・運用
+- id: dl-neural-foundations
+  course: 09
+  order: 10
+  title: ニューラルネットワークの基礎
+- id: dl-architectures
+  course: 09
+  order: 20
+  title: 主要architecture
+- id: dl-generative-representation
+  course: 09
+  order: 30
+  title: 生成・自己教師あり・表現学習
+- id: dl-systems-evaluation
+  course: 09
+  order: 40
+  title: 学習system・評価・安全性
+- id: frontier-foundation-models
+  course: '10'
+  order: 10
+  title: Foundation modelと適応
+- id: frontier-agents-retrieval
+  course: '10'
+  order: 20
+  title: RAG・agent・tool use
+- id: frontier-alignment-evaluation
+  course: '10'
+  order: 30
+  title: alignment・評価・解釈
+- id: frontier-systems-science-governance
+  course: '10'
+  order: 40
+  title: 効率化・科学応用・governance
 topics:
-  - { id: prep-symbols-types-shapes, course: "00", unit: prep-mathematical-literacy, order: 10, title: 数式・記号・型・次元, summary: スカラー、ベクトル、行列、テンソルと各記号の型・次元を区別する, status: draft, kind: required, prerequisites: [], implementation_topic: prep-symbols-types-shapes, outcomes: [スカラー、ベクトル、行列、テンソルを区別できる, 添字を読み式の各項の型と次元を確認できる] }
-  - { id: prep-sets-functions-mappings, course: "00", unit: prep-mathematical-literacy, order: 20, title: 集合・関数・写像, summary: 集合、定義域、終域、値域、関数、写像の基本を学ぶ, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes], implementation_topic: prep-sets-functions-mappings, outcomes: [定義域、終域、値域を区別できる, 関数の合成と逆関数の意味を説明できる] }
-  - { id: prep-sums-products-indices, course: "00", unit: prep-mathematical-literacy, order: 30, title: 総和・積・添字, summary: 総和記号、積記号、添字を展開し行列計算へつなげる, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes], implementation_topic: prep-sums-products-indices, outcomes: [総和記号と積記号を有限個の項へ展開できる, 自由変数と総和変数を区別できる] }
-  - { id: prep-exponents-logarithms, course: "00", unit: prep-mathematical-literacy, order: 40, title: 指数と対数, summary: 指数法則、対数法則、指数関数と対数関数の関係を学ぶ, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes], implementation_topic: prep-exponents-logarithms, outcomes: [指数法則と対数法則で式を変形できる, 指数関数と対数関数が逆関数であることを説明できる] }
-  - { id: prep-definitions-theorems-proofs, course: "00", unit: prep-mathematical-literacy, order: 50, title: 定義・命題・証明の読み方, summary: 数学的な定義、仮定、結論、例、反例、証明を区別する, status: draft, kind: required, prerequisites: [prep-sets-functions-mappings], implementation_topic: prep-definitions-theorems-proofs, outcomes: [定義、命題、例、反例を区別できる, 定理の仮定と結論を取り出せる] }
-  - { id: prep-python-expressions-functions, course: "00", unit: prep-computing, order: 10, title: Pythonの式・変数・関数, summary: 数学計算に必要なPythonの式、変数、条件、反復、関数を学ぶ, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes], implementation_topic: prep-python-expressions-functions, outcomes: [小規模な数式をPython関数として表現できる, 入力と出力を確認して計算を検算できる] }
-  - { id: prep-numpy-arrays-shapes, course: "00", unit: prep-computing, order: 20, title: NumPy配列・shape・indexing, summary: NumPy配列の次元、shape、indexing、基本演算を学ぶ, status: draft, kind: required, prerequisites: [prep-python-expressions-functions, prep-symbols-types-shapes], implementation_topic: prep-numpy-arrays-shapes, outcomes: [NumPy配列のshapeを予測できる, 数学上のベクトル・行列とNumPy配列を対応付けられる] }
-  - { id: prep-numerical-checks-reproducibility, course: "00", unit: prep-computing, order: 30, title: 数値検算と再現性, summary: 許容誤差、乱数シード、検算、再現可能な実験の基本を学ぶ, status: draft, kind: required, prerequisites: [prep-numpy-arrays-shapes], implementation_topic: prep-numerical-checks-reproducibility, outcomes: [浮動小数点数を完全一致で比較すべきでない理由を説明できる, 乱数シードと許容誤差で計算を検証できる] }
-
-  - { id: calc-functions-limits-continuity, course: "01", unit: calc-single-variable, order: 10, title: 関数・極限・連続, summary: 一変数関数の極限と連続性を定義し変化の基礎を整える, status: draft, kind: required, prerequisites: [prep-sets-functions-mappings, prep-exponents-logarithms], implementation_topic: calc-functions-limits-continuity, outcomes: [極限と連続性を定義から説明できる, 小さな関数の極限を計算し学習曲線へ接続できる] }
-  - { id: calc-derivatives-rates, course: "01", unit: calc-single-variable, order: 20, title: 微分と変化率, summary: 微分を局所的な変化率として定義し関数の挙動を調べる, status: draft, kind: required, prerequisites: [calc-functions-limits-continuity], implementation_topic: calc-derivatives-rates, outcomes: [微分係数を極限から導出できる, 基本関数を微分し変化率を計算できる] }
-  - { id: calc-differentiation-rules-chain-rule, course: "01", unit: calc-single-variable, order: 30, title: 微分法則と一変数の連鎖律, summary: 積の法則、商の法則、連鎖律を用いて合成関数を微分する, status: draft, kind: required, prerequisites: [calc-derivatives-rates], implementation_topic: calc-differentiation-rules-chain-rule, outcomes: [微分法則と連鎖律を導出・適用できる, 合成関数の勾配計算を機械学習の微分へ接続できる] }
-  - { id: calc-one-variable-optimization, course: "01", unit: calc-single-variable, order: 40, title: 一変数の最適化, summary: 一変数関数の停留点と局所的な最小・最大を調べる, status: draft, kind: required, prerequisites: [calc-differentiation-rules-chain-rule], implementation_topic: calc-one-variable-optimization, outcomes: [停留点と二階微分による分類を説明できる, 小さな損失関数の最小点を計算できる] }
-  - { id: calc-integrals-fundamental-theorem, course: "01", unit: calc-single-variable, order: 50, title: 積分と微積分学の基本定理, summary: 積分を蓄積量として捉え微分との関係を学ぶ, status: draft, kind: required, prerequisites: [calc-derivatives-rates], implementation_topic: calc-integrals-fundamental-theorem, outcomes: [定積分と原始関数の関係を説明できる, 簡単な密度や損失の累積量を計算できる] }
-  - { id: calc-taylor-approximation, course: "01", unit: calc-single-variable, order: 60, title: Taylor展開と局所近似, summary: Taylor展開で関数を多項式近似し局所誤差を捉える, status: draft, kind: required, prerequisites: [calc-differentiation-rules-chain-rule], implementation_topic: calc-taylor-approximation, outcomes: [Taylor展開を導出し剰余の意味を説明できる, 小さな近似計算を数値的に検算できる] }
-  - { id: calc-multivariable-functions-partial-derivatives, course: "01", unit: calc-multivariable, order: 10, title: 多変数関数と偏微分, summary: 多変数関数と各変数方向の偏微分を定義する, status: draft, kind: required, prerequisites: [calc-differentiation-rules-chain-rule, prep-symbols-types-shapes], implementation_topic: calc-multivariable-functions-partial-derivatives, outcomes: [偏微分を定義から説明できる, 多変数関数の偏微分を計算し特徴量へ接続できる] }
-  - { id: calc-gradient-directional-derivative, course: "01", unit: calc-multivariable, order: 20, title: 勾配と方向微分, summary: 勾配を最も急な変化方向と方向微分から理解する, status: draft, kind: required, prerequisites: [calc-multivariable-functions-partial-derivatives], implementation_topic: calc-gradient-directional-derivative, outcomes: [勾配と方向微分の関係を導出できる, 勾配方向の小さな更新を計算できる] }
-  - { id: calc-total-derivative-jacobian, course: "01", unit: calc-multivariable, order: 30, title: 全微分とJacobian, summary: 全微分とJacobianで多変数写像の局所線形近似を表す, status: draft, kind: required, prerequisites: [calc-gradient-directional-derivative, prep-numpy-arrays-shapes], implementation_topic: calc-total-derivative-jacobian, outcomes: [全微分とJacobianを定義・導出できる, Jacobianを配列で計算し変換の局所近似に使える] }
-  - { id: calc-hessian-second-order, course: "01", unit: calc-multivariable, order: 40, title: Hessianと二次近似, summary: Hessianで多変数関数の二次近似と曲率を表す, status: draft, kind: required, prerequisites: [calc-total-derivative-jacobian, calc-taylor-approximation], implementation_topic: calc-hessian-second-order, outcomes: [Hessianと二次Taylor近似を導出できる, 小さな二次損失の曲率を計算できる] }
-  - { id: calc-multivariable-chain-rule, course: "01", unit: calc-multivariable, order: 50, title: 多変数の連鎖律, summary: 多変数写像の合成をJacobianの積として微分する, status: draft, kind: required, prerequisites: [calc-total-derivative-jacobian, calc-differentiation-rules-chain-rule], implementation_topic: calc-multivariable-chain-rule, outcomes: [多変数の連鎖律をJacobianで導出できる, 計算グラフの微分を小規模に追跡できる] }
-  - { id: calc-unconstrained-optimization, course: "01", unit: calc-multivariable, order: 60, title: 多変数の制約なし最適化, summary: 勾配とHessianを用いて多変数の停留点を分類する, status: draft, kind: required, prerequisites: [calc-gradient-directional-derivative, calc-hessian-second-order], implementation_topic: calc-unconstrained-optimization, outcomes: [多変数の停留条件と曲率条件を説明できる, 二変数の目的関数の更新を計算できる] }
-  - { id: calc-lagrange-multipliers, course: "01", unit: calc-multivariable, order: 70, title: Lagrange乗数法, summary: 制約付き最適化を勾配の釣り合いとして定式化する, status: draft, kind: required, prerequisites: [calc-gradient-directional-derivative, calc-unconstrained-optimization], implementation_topic: calc-lagrange-multipliers, outcomes: [Lagrange条件を導出し制約の意味を説明できる, 小さな制約付き問題の解を計算できる] }
-
-  - { id: la-vectors-linear-combinations, course: "02", unit: la-vectors-matrices-systems, order: 10, title: ベクトルと線形結合, summary: ベクトルと線形結合を幾何と代数の両面から捉える, status: draft, kind: required, prerequisites: [prep-symbols-types-shapes, prep-sums-products-indices], implementation_topic: la-vectors-linear-combinations, outcomes: [線形結合と生成の定義を説明できる, ベクトルの線形結合を手計算できる] }
-  - { id: la-matrices-data-linear-maps, course: "02", unit: la-vectors-matrices-systems, order: 20, title: 行列をデータと線形写像として見る, summary: 行列を表と線形写像の二つの見方で整理する, status: draft, kind: required, prerequisites: [la-vectors-linear-combinations], implementation_topic: la-matrices-data-linear-maps, outcomes: [行列の軸と線形写像を説明できる, データ行列のshapeと変換結果を確認できる] }
-  - { id: la-matrix-multiplication, course: "02", unit: la-vectors-matrices-systems, order: 30, title: 行列積, summary: 行列積を線形写像の合成と添字計算で理解する, status: draft, kind: required, prerequisites: [la-matrices-data-linear-maps, prep-sums-products-indices], implementation_topic: la-matrix-multiplication, outcomes: [行列積の定義とshape規則を導出できる, 小さな行列積を手計算・実装できる] }
-  - { id: la-linear-systems-elimination, course: "02", unit: la-vectors-matrices-systems, order: 40, title: 連立一次方程式とガウス消去法, summary: 連立一次方程式を行基本変形とガウス消去法で解く, status: draft, kind: required, prerequisites: [la-matrix-multiplication], implementation_topic: la-linear-systems-elimination, outcomes: [行基本変形が解を保つ理由を説明できる, 小さな連立方程式を消去法で解ける] }
-  - { id: la-invertibility-inverse-matrices, course: "02", unit: la-vectors-matrices-systems, order: 50, title: 可逆性と逆行列, summary: 可逆な線形写像と逆行列の条件を調べる, status: draft, kind: required, prerequisites: [la-linear-systems-elimination], implementation_topic: la-invertibility-inverse-matrices, outcomes: [可逆性と逆行列の定義を説明できる, 小さな行列の逆行列を計算できる] }
-  - { id: la-lu-factorization, course: "02", unit: la-vectors-matrices-systems, order: 60, title: LU分解, summary: ガウス消去法を三角行列の積として表す, status: draft, kind: required, prerequisites: [la-linear-systems-elimination], implementation_topic: la-lu-factorization, outcomes: [LU分解と消去法の関係を導出できる, 前進・後退代入で解を計算できる] }
-  - { id: la-span-subspaces, course: "02", unit: la-vector-spaces, order: 10, title: spanと部分空間, summary: ベクトルのspanと部分空間の閉性を定義する, status: draft, kind: required, prerequisites: [la-vectors-linear-combinations], implementation_topic: la-span-subspaces, outcomes: [spanと部分空間の条件を説明できる, 生成される部分空間を小さく求められる] }
-  - { id: la-column-space-null-space, course: "02", unit: la-vector-spaces, order: 20, title: 列空間と零空間, summary: 行列の列空間と零空間を方程式の解集合として見る, status: draft, kind: required, prerequisites: [la-matrix-multiplication, la-span-subspaces], implementation_topic: la-column-space-null-space, outcomes: [列空間と零空間を定義・説明できる, 小さな行列の両空間を求められる] }
-  - { id: la-linear-independence, course: "02", unit: la-vector-spaces, order: 30, title: 線形独立と線形従属, summary: ベクトル間の重複を線形独立性で判定する, status: draft, kind: required, prerequisites: [la-span-subspaces], implementation_topic: la-linear-independence, outcomes: [線形独立性を零解の条件から説明できる, 小さなベクトル集合の独立性を判定できる] }
-  - { id: la-basis-coordinates-dimension, course: "02", unit: la-vector-spaces, order: 40, title: 基底・座標・次元, summary: 基底と座標表示でベクトル空間の自由度を表す, status: draft, kind: required, prerequisites: [la-linear-independence], implementation_topic: la-basis-coordinates-dimension, outcomes: [基底と次元の定義を説明できる, 基底に関する座標を計算できる] }
-  - { id: la-rank-rank-nullity, course: "02", unit: la-vector-spaces, order: 50, title: 階数とrank-nullity, summary: 階数と零空間の次元の関係を理解する, status: draft, kind: required, prerequisites: [la-column-space-null-space, la-basis-coordinates-dimension], implementation_topic: la-rank-rank-nullity, outcomes: [rank-nullity定理を説明できる, 行列の階数と零空間次元を計算できる] }
-  - { id: la-linear-maps-change-of-basis, course: "02", unit: la-vector-spaces, order: 60, title: 線形写像と基底変換, summary: 線形写像の行列表現が基底変換で変わる仕組みを学ぶ, status: draft, kind: required, prerequisites: [la-matrices-data-linear-maps, la-basis-coordinates-dimension], implementation_topic: la-linear-maps-change-of-basis, outcomes: [基底変換と表現行列の関係を導出できる, 小さな変換行列を基底間で変換できる] }
-  - { id: la-inner-products-norms-angles, course: "02", unit: la-orthogonality-least-squares, order: 10, title: 内積・ノルム・角度, summary: 内積からノルムと角度を定義し幾何を数式化する, status: draft, kind: required, prerequisites: [la-vectors-linear-combinations, prep-exponents-logarithms], implementation_topic: la-inner-products-norms-angles, outcomes: [内積・ノルム・角度の関係を説明できる, ベクトル間の距離と角度を計算できる] }
-  - { id: la-orthogonal-orthonormal-bases, course: "02", unit: la-orthogonality-least-squares, order: 20, title: 直交基底と正規直交基底, summary: 直交する基底と正規化された座標系を構成する, status: draft, kind: required, prerequisites: [la-basis-coordinates-dimension, la-inner-products-norms-angles], implementation_topic: la-orthogonal-orthonormal-bases, outcomes: [直交基底と正規直交基底を説明できる, 基底の直交性とノルムを計算できる] }
-  - { id: la-orthogonal-projection, course: "02", unit: la-orthogonality-least-squares, order: 30, title: 直交射影, summary: ベクトルを部分空間上の最も近い点へ写す操作を理解する, status: draft, kind: required, prerequisites: [la-span-subspaces, la-inner-products-norms-angles, la-orthogonal-orthonormal-bases], implementation_topic: orthogonal-projection, outcomes: [直交射影の定義と幾何的意味を説明できる, 小さな部分空間への射影を計算し既存教材へ接続できる] }
-  - { id: la-gram-schmidt-qr, course: "02", unit: la-orthogonality-least-squares, order: 40, title: Gram–Schmidt法とQR分解, summary: Gram–Schmidt法で直交基底を作りQR分解へ進む, status: draft, kind: required, prerequisites: [la-orthogonal-orthonormal-bases, la-orthogonal-projection], implementation_topic: la-gram-schmidt-qr, outcomes: [Gram–Schmidt法とQR分解を導出できる, 小さな行列をQR分解して検算できる] }
-  - { id: la-least-squares-geometry, course: "02", unit: la-orthogonality-least-squares, order: 50, title: 最小二乗法の幾何学, summary: 最小二乗解を直交射影と残差の直交性で説明する, status: draft, kind: required, prerequisites: [la-column-space-null-space, la-orthogonal-projection], implementation_topic: la-least-squares-geometry, outcomes: [最小二乗条件を射影から導出できる, 小さな回帰問題の残差を計算できる] }
-  - { id: la-least-squares-computation-pseudoinverse, course: "02", unit: la-orthogonality-least-squares, order: 60, title: 最小二乗法の計算と擬似逆行列, summary: 最小二乗法をQR分解と擬似逆行列で計算する, status: draft, kind: required, prerequisites: [la-gram-schmidt-qr, la-least-squares-geometry, la-rank-rank-nullity], implementation_topic: la-least-squares-computation-pseudoinverse, outcomes: [擬似逆行列による解を導出できる, QRと擬似逆行列の結果を小規模に比較できる] }
-  - { id: la-weighted-least-squares-introduction, course: "02", unit: la-orthogonality-least-squares, order: 70, title: 重み付き最小二乗法の導入, summary: 重み付き内積で残差を評価するWLSMの考え方を導入する, status: draft, kind: required, prerequisites: [la-least-squares-geometry, la-inner-products-norms-angles], implementation_topic: la-weighted-least-squares-introduction, outcomes: [重み付き残差と重み行列の意味を説明できる, 小さなWLSMの目的関数を計算できる] }
-  - { id: la-determinants-volume-invertibility, course: "02", unit: la-eigenvalues-positive-definite, order: 10, title: 行列式・体積・可逆性, summary: 行列式を体積の符号付き倍率と可逆性から理解する, status: draft, kind: required, prerequisites: [la-linear-systems-elimination, la-invertibility-inverse-matrices], implementation_topic: la-determinants-volume-invertibility, outcomes: [行列式の幾何的意味を説明できる, 小さな行列の行列式と可逆性を判定できる] }
-  - { id: la-eigenvalues-eigenvectors, course: "02", unit: la-eigenvalues-positive-definite, order: 20, title: 固有値と固有ベクトル, summary: 方向を変えず伸縮する固有構造を定義する, status: draft, kind: required, prerequisites: [la-matrix-multiplication, la-determinants-volume-invertibility], implementation_topic: la-eigenvalues-eigenvectors, outcomes: [固有値方程式を導出し幾何的意味を説明できる, 小さな行列の固有値を計算できる] }
-  - { id: la-diagonalization-matrix-powers, course: "02", unit: la-eigenvalues-positive-definite, order: 30, title: 対角化と行列の累乗, summary: 固有基底で行列を対角化し累乗を簡単に計算する, status: draft, kind: required, prerequisites: [la-eigenvalues-eigenvectors, la-basis-coordinates-dimension], implementation_topic: la-diagonalization-matrix-powers, outcomes: [対角化の条件と導出を説明できる, 対角化を用いて行列の累乗を計算できる] }
-  - { id: la-symmetric-matrices-spectral-theorem, course: "02", unit: la-eigenvalues-positive-definite, order: 40, title: 対称行列とスペクトル定理, summary: 対称行列の直交固有基底とスペクトル分解を学ぶ, status: draft, kind: required, prerequisites: [la-orthogonal-orthonormal-bases, la-eigenvalues-eigenvectors], implementation_topic: la-symmetric-matrices-spectral-theorem, outcomes: [スペクトル定理を説明できる, 対称行列を直交固有分解できる] }
-  - { id: la-quadratic-forms-positive-definite, course: "02", unit: la-eigenvalues-positive-definite, order: 50, title: 二次形式と正定値行列, summary: 二次形式の曲率と正定値性を固有値で捉える, status: draft, kind: required, prerequisites: [la-inner-products-norms-angles, la-symmetric-matrices-spectral-theorem], implementation_topic: la-quadratic-forms-positive-definite, outcomes: [二次形式と正定値性を固有値から説明できる, 小さな二次形式の符号を判定できる] }
-  - { id: la-cholesky-factorization, course: "02", unit: la-eigenvalues-positive-definite, order: 60, title: Cholesky分解, summary: 正定値行列を三角行列の積に分解する, status: draft, kind: required, prerequisites: [la-quadratic-forms-positive-definite, la-lu-factorization], implementation_topic: la-cholesky-factorization, outcomes: [Cholesky分解の成立条件を説明できる, 小さな正定値行列を分解できる] }
-  - { id: la-singular-value-decomposition, course: "02", unit: la-svd-low-rank, order: 10, title: 特異値分解, summary: 任意の行列を回転・伸縮・回転に分解する, status: draft, kind: required, prerequisites: [la-rank-rank-nullity, la-orthogonal-orthonormal-bases, la-symmetric-matrices-spectral-theorem], implementation_topic: la-singular-value-decomposition, outcomes: [SVDの定義と幾何的意味を導出できる, 小さな行列の特異値と再構成誤差を計算できる] }
-  - { id: la-pseudoinverse-rank-deficient-systems, course: "02", unit: la-svd-low-rank, order: 20, title: 擬似逆行列とrank不足の連立方程式, summary: SVDを用いてrank不足の系と最小ノルム解を扱う, status: draft, kind: required, prerequisites: [la-singular-value-decomposition, la-least-squares-computation-pseudoinverse], implementation_topic: la-pseudoinverse-rank-deficient-systems, outcomes: [擬似逆行列の定義をSVDから説明できる, rank不足の小さな系を解ける] }
-  - { id: la-low-rank-approximation, course: "02", unit: la-svd-low-rank, order: 30, title: 低ランク近似, summary: SVDの上位成分で行列を近似し情報量を調べる, status: draft, kind: required, prerequisites: [la-singular-value-decomposition], implementation_topic: la-low-rank-approximation, outcomes: [低ランク近似の最適性を説明できる, 特異値を切って近似誤差を計算できる] }
-  - { id: la-matrix-norms-condition-number, course: "02", unit: la-svd-low-rank, order: 40, title: 行列ノルムと条件数, summary: 行列ノルムと条件数で入力誤差の増幅を評価する, status: draft, kind: required, prerequisites: [la-inner-products-norms-angles, la-singular-value-decomposition], implementation_topic: la-matrix-norms-condition-number, outcomes: [行列ノルムと条件数を定義・解釈できる, 小さな系の条件数と誤差増幅を計算できる] }
-
-  - id: prob-counting-sample-spaces
-    course: "03"
-    unit: prob-foundations
-    order: 10
-    title: 数え上げ・標本空間・事象
-    summary: 数え上げ・標本空間・事象の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prep-sets-functions-mappings, prep-sums-products-indices]
-    implementation_topic: prob-counting-sample-spaces
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-axioms-event-operations
-    course: "03"
-    unit: prob-foundations
-    order: 20
-    title: 確率の公理と事象の演算
-    summary: 確率の公理と事象の演算の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-counting-sample-spaces]
-    implementation_topic: prob-axioms-event-operations
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-conditional-probability-independence
-    course: "03"
-    unit: prob-foundations
-    order: 30
-    title: 条件付き確率と独立
-    summary: 条件付き確率と独立の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-axioms-event-operations]
-    implementation_topic: prob-conditional-probability-independence
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-bayes-theorem
-    course: "03"
-    unit: prob-foundations
-    order: 40
-    title: Bayesの定理
-    summary: Bayesの定理の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-conditional-probability-independence]
-    implementation_topic: prob-bayes-theorem
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-random-variables-cdf-pmf-pdf
-    course: "03"
-    unit: prob-foundations
-    order: 50
-    title: 確率変数・CDF・PMF・PDF
-    summary: 確率変数・CDF・PMF・PDFの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-axioms-event-operations, prep-exponents-logarithms]
-    implementation_topic: prob-random-variables-cdf-pmf-pdf
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-expectation-variance-moments
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 10
-    title: 期待値・分散・モーメント
-    summary: 期待値・分散・モーメントの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-random-variables-cdf-pmf-pdf, calc-integrals-fundamental-theorem]
-    implementation_topic: prob-expectation-variance-moments
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-joint-marginal-conditional-distributions
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 20
-    title: 同時分布・周辺分布・条件付き分布
-    summary: 同時分布・周辺分布・条件付き分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-conditional-probability-independence, prob-random-variables-cdf-pmf-pdf]
-    implementation_topic: prob-joint-marginal-conditional-distributions
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-covariance-correlation
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 30
-    title: 共分散と相関
-    summary: 共分散と相関の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-expectation-variance-moments, prob-joint-marginal-conditional-distributions]
-    implementation_topic: prob-covariance-correlation
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-discrete-distributions
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 40
-    title: 主要な離散分布
-    summary: 主要な離散分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-random-variables-cdf-pmf-pdf, prob-expectation-variance-moments]
-    implementation_topic: prob-discrete-distributions
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-continuous-distributions
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 50
-    title: 主要な連続分布
-    summary: 主要な連続分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-random-variables-cdf-pmf-pdf, prob-expectation-variance-moments, calc-integrals-fundamental-theorem]
-    implementation_topic: prob-continuous-distributions
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-transformations-sums-random-variables
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 60
-    title: 確率変数の変換と和
-    summary: 確率変数の変換と和の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-joint-marginal-conditional-distributions, prob-discrete-distributions, prob-continuous-distributions]
-    implementation_topic: prob-transformations-sums-random-variables
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-laws-large-numbers-central-limit-theorem
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 70
-    title: 大数の法則と中心極限定理
-    summary: 大数の法則と中心極限定理の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-expectation-variance-moments, prob-transformations-sums-random-variables]
-    implementation_topic: prob-laws-large-numbers-central-limit-theorem
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: prob-multivariate-normal-distribution
-    course: "03"
-    unit: prob-random-variables-distributions
-    order: 80
-    title: 多変量正規分布
-    summary: 多変量正規分布の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-covariance-correlation, prob-continuous-distributions, la-quadratic-forms-positive-definite]
-    implementation_topic: prob-multivariate-normal-distribution
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-estimators-bias-variance-mse
-    course: "03"
-    unit: stat-inference
-    order: 10
-    title: 推定量・バイアス・分散・MSE
-    summary: 推定量・バイアス・分散・MSEの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-expectation-variance-moments, prob-laws-large-numbers-central-limit-theorem]
-    implementation_topic: stat-estimators-bias-variance-mse
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-likelihood-maximum-likelihood
-    course: "03"
-    unit: stat-inference
-    order: 20
-    title: 尤度と最尤推定
-    summary: 尤度と最尤推定の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [stat-estimators-bias-variance-mse, prob-discrete-distributions, prob-continuous-distributions, prep-exponents-logarithms]
-    implementation_topic: stat-likelihood-maximum-likelihood
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-bayesian-inference-map
-    course: "03"
-    unit: stat-inference
-    order: 30
-    title: Bayesian推論とMAP推定
-    summary: Bayesian推論とMAP推定の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-bayes-theorem, stat-likelihood-maximum-likelihood]
-    implementation_topic: stat-bayesian-inference-map
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-confidence-intervals
-    course: "03"
-    unit: stat-inference
-    order: 40
-    title: 信頼区間
-    summary: 信頼区間の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [stat-estimators-bias-variance-mse, prob-laws-large-numbers-central-limit-theorem, stat-likelihood-maximum-likelihood]
-    implementation_topic: stat-confidence-intervals
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-hypothesis-testing
-    course: "03"
-    unit: stat-inference
-    order: 50
-    title: 仮説検定
-    summary: 仮説検定の定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [stat-confidence-intervals]
-    implementation_topic: stat-hypothesis-testing
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-linear-regression-probabilistic-model
-    course: "03"
-    unit: stat-regression-information
-    order: 10
-    title: 線形回帰の確率モデル
-    summary: 線形回帰の確率モデルの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-covariance-correlation, prob-multivariate-normal-distribution, stat-likelihood-maximum-likelihood, la-least-squares-geometry]
-    implementation_topic: stat-linear-regression-probabilistic-model
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: stat-entropy-cross-entropy-kl-divergence
-    course: "03"
-    unit: stat-regression-information
-    order: 20
-    title: エントロピー・交差エントロピー・KLダイバージェンス
-    summary: エントロピー・交差エントロピー・KLダイバージェンスの定義と前提を理解し、手計算・数値確認を通じて統計や機械学習へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prob-discrete-distributions, prob-continuous-distributions, stat-likelihood-maximum-likelihood, prep-exponents-logarithms]
-    implementation_topic: stat-entropy-cross-entropy-kl-divergence
-    outcomes:
-      - 定義・導出を説明できる
-      - 手計算とNumPyで数値確認し統計・機械学習へ応用できる
-  - id: dm-propositions-connectives-truth-tables
-    course: "04"
-    unit: dm-logic-proof
-    order: 10
-    title: 命題・論理演算・真理値表
-    summary: 命題・論理演算・真理値表の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prep-definitions-theorems-proofs]
-    implementation_topic: dm-propositions-connectives-truth-tables
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-predicates-quantifiers-negation
-    course: "04"
-    unit: dm-logic-proof
-    order: 20
-    title: 述語・量化記号・否定
-    summary: 述語・量化記号・否定の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-propositions-connectives-truth-tables, prep-sets-functions-mappings]
-    implementation_topic: dm-predicates-quantifiers-negation
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-implication-equivalence-conditions
-    course: "04"
-    unit: dm-logic-proof
-    order: 30
-    title: 含意・同値・必要十分条件
-    summary: 含意・同値・必要十分条件の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-propositions-connectives-truth-tables, dm-predicates-quantifiers-negation]
-    implementation_topic: dm-implication-equivalence-conditions
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-proof-methods
-    course: "04"
-    unit: dm-logic-proof
-    order: 40
-    title: 直接証明・対偶・背理法・場合分け
-    summary: 直接証明・対偶・背理法・場合分けの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-implication-equivalence-conditions]
-    implementation_topic: dm-proof-methods
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-induction-well-ordering
-    course: "04"
-    unit: dm-logic-proof
-    order: 50
-    title: 数学的帰納法・強い帰納法・整列原理
-    summary: 数学的帰納法・強い帰納法・整列原理の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-proof-methods, prep-sums-products-indices]
-    implementation_topic: dm-induction-well-ordering
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-relations-equivalence-partial-orders
-    course: "04"
-    unit: dm-relations-counting
-    order: 10
-    title: 関係・同値関係・半順序
-    summary: 関係・同値関係・半順序の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prep-sets-functions-mappings, dm-predicates-quantifiers-negation]
-    implementation_topic: dm-relations-equivalence-partial-orders
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-divisibility-modular-arithmetic
-    course: "04"
-    unit: dm-relations-counting
-    order: 20
-    title: 整除性と合同算術
-    summary: 整除性と合同算術の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-proof-methods]
-    implementation_topic: dm-divisibility-modular-arithmetic
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-counting-principles-pigeonhole
-    course: "04"
-    unit: dm-relations-counting
-    order: 30
-    title: 加法原理・乗法原理・鳩の巣原理
-    summary: 加法原理・乗法原理・鳩の巣原理の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-proof-methods, prep-sums-products-indices]
-    implementation_topic: dm-counting-principles-pigeonhole
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-permutations-combinations-binomial
-    course: "04"
-    unit: dm-relations-counting
-    order: 40
-    title: 順列・組合せ・二項係数
-    summary: 順列・組合せ・二項係数の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-counting-principles-pigeonhole]
-    implementation_topic: dm-permutations-combinations-binomial
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-inclusion-exclusion-double-counting
-    course: "04"
-    unit: dm-relations-counting
-    order: 50
-    title: 包含排除原理と二重数え上げ
-    summary: 包含排除原理と二重数え上げの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-counting-principles-pigeonhole, dm-permutations-combinations-binomial]
-    implementation_topic: dm-inclusion-exclusion-double-counting
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-algorithm-specifications-correctness
-    course: "04"
-    unit: dm-algorithms-complexity
-    order: 10
-    title: アルゴリズムの仕様と正しさ
-    summary: アルゴリズムの仕様と正しさの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-proof-methods, prep-python-expressions-functions]
-    implementation_topic: dm-algorithm-specifications-correctness
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-loop-invariants-termination
-    course: "04"
-    unit: dm-algorithms-complexity
-    order: 20
-    title: ループ不変量と停止性
-    summary: ループ不変量と停止性の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-algorithm-specifications-correctness, dm-induction-well-ordering]
-    implementation_topic: dm-loop-invariants-termination
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-asymptotic-notation-growth-rates
-    course: "04"
-    unit: dm-algorithms-complexity
-    order: 30
-    title: 漸近記法と増加率
-    summary: 漸近記法と増加率の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [prep-exponents-logarithms, prep-sums-products-indices]
-    implementation_topic: dm-asymptotic-notation-growth-rates
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-recurrence-relations
-    course: "04"
-    unit: dm-algorithms-complexity
-    order: 40
-    title: 漸化式
-    summary: 漸化式の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-induction-well-ordering, dm-asymptotic-notation-growth-rates]
-    implementation_topic: dm-recurrence-relations
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-divide-conquer-master-theorem
-    course: "04"
-    unit: dm-algorithms-complexity
-    order: 50
-    title: 分割統治法とMaster theorem
-    summary: 分割統治法とMaster theoremの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-recurrence-relations]
-    implementation_topic: dm-divide-conquer-master-theorem
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-graphs-representations-degrees
-    course: "04"
-    unit: dm-graphs-probability
-    order: 10
-    title: グラフ・表現・次数
-    summary: グラフ・表現・次数の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-relations-equivalence-partial-orders, prep-numpy-arrays-shapes]
-    implementation_topic: dm-graphs-representations-degrees
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-paths-cycles-connectivity
-    course: "04"
-    unit: dm-graphs-probability
-    order: 20
-    title: 道・閉路・連結性
-    summary: 道・閉路・連結性の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-graphs-representations-degrees]
-    implementation_topic: dm-paths-cycles-connectivity
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-trees-spanning-trees
-    course: "04"
-    unit: dm-graphs-probability
-    order: 30
-    title: 木と全域木
-    summary: 木と全域木の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-paths-cycles-connectivity, dm-induction-well-ordering]
-    implementation_topic: dm-trees-spanning-trees
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-directed-graphs-dags-topological-order
-    course: "04"
-    unit: dm-graphs-probability
-    order: 40
-    title: 有向グラフ・DAG・トポロジカル順序
-    summary: 有向グラフ・DAG・トポロジカル順序の定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-graphs-representations-degrees, dm-loop-invariants-termination]
-    implementation_topic: dm-directed-graphs-dags-topological-order
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
-  - id: dm-discrete-probability-indicators-randomized-algorithms
-    course: "04"
-    unit: dm-graphs-probability
-    order: 50
-    title: 離散確率・指示変数・乱択アルゴリズム
-    summary: 離散確率・指示変数・乱択アルゴリズムの定義と証明を理解し、アルゴリズムの正しさ・計算量・構造へ接続する
-    status: draft
-    kind: required
-    prerequisites: [dm-counting-principles-pigeonhole, dm-algorithm-specifications-correctness]
-    implementation_topic: dm-discrete-probability-indicators-randomized-algorithms
-    outcomes:
-      - 定義・証明・理論的説明ができる
-      - 問題解法とアルゴリズム解析・実装読解へ応用できる
+- id: prep-symbols-types-shapes
+  course: '00'
+  unit: prep-mathematical-literacy
+  order: 10
+  title: 数式・記号・型・次元
+  summary: 数式・記号・型・次元の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites: []
+  implementation_topic: prep-symbols-types-shapes
+  outcomes:
+  - スカラー、ベクトル、行列、テンソル、型、次元、shapeの定義と成立条件を説明できる
+  - 数式・記号・型・次元を小規模に計算・実装し検算できる
+- id: prep-sets-functions-mappings
+  course: '00'
+  unit: prep-mathematical-literacy
+  order: 20
+  title: 集合・関数・写像
+  summary: 集合・関数・写像の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-symbols-types-shapes
+  implementation_topic: prep-sets-functions-mappings
+  outcomes:
+  - 集合、要素、部分集合、関数、定義域、終域、値域、合成の定義と成立条件を説明できる
+  - 集合・関数・写像を小規模に計算・実装し検算できる
+- id: prep-sums-products-indices
+  course: '00'
+  unit: prep-mathematical-literacy
+  order: 30
+  title: 総和・積・添字
+  summary: 総和・積・添字の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-symbols-types-shapes
+  implementation_topic: prep-sums-products-indices
+  outcomes:
+  - 総和記号、積記号、添字、自由添字、総和添字、二重和の定義と成立条件を説明できる
+  - 総和・積・添字を小規模に計算・実装し検算できる
+- id: prep-exponents-logarithms
+  course: '00'
+  unit: prep-mathematical-literacy
+  order: 40
+  title: 指数と対数
+  summary: 指数と対数の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-symbols-types-shapes
+  implementation_topic: prep-exponents-logarithms
+  outcomes:
+  - 指数法則、指数関数、対数、底、自然対数、逆関数の定義と成立条件を説明できる
+  - 指数と対数を小規模に計算・実装し検算できる
+- id: prep-definitions-theorems-proofs
+  course: '00'
+  unit: prep-mathematical-literacy
+  order: 50
+  title: 定義・命題・証明の読み方
+  summary: 定義・命題・証明の読み方の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-sets-functions-mappings
+  implementation_topic: prep-definitions-theorems-proofs
+  outcomes:
+  - 定義、命題、仮定、結論、必要条件、十分条件、反例、証明の定義と成立条件を説明できる
+  - 定義・命題・証明の読み方を小規模に計算・実装し検算できる
+- id: prep-python-expressions-functions
+  course: '00'
+  unit: prep-computing
+  order: 10
+  title: Pythonの式・変数・関数
+  summary: Pythonの式・変数・関数の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-symbols-types-shapes
+  implementation_topic: prep-python-expressions-functions
+  outcomes:
+  - 式、変数、代入、条件分岐、反復、関数、引数、戻り値の定義と成立条件を説明できる
+  - Pythonの式・変数・関数を小規模に計算・実装し検算できる
+- id: prep-numpy-arrays-shapes
+  course: '00'
+  unit: prep-computing
+  order: 20
+  title: NumPy配列・shape・indexing
+  summary: NumPy配列・shape・indexingの定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-python-expressions-functions
+  - prep-symbols-types-shapes
+  implementation_topic: prep-numpy-arrays-shapes
+  outcomes:
+  - NumPy配列、dtype、ndim、shape、indexing、slicing、reshape、axisの定義と成立条件を説明できる
+  - NumPy配列・shape・indexingを小規模に計算・実装し検算できる
+- id: prep-numerical-checks-reproducibility
+  course: '00'
+  unit: prep-computing
+  order: 30
+  title: 数値検算と再現性
+  summary: 数値検算と再現性の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-numpy-arrays-shapes
+  implementation_topic: prep-numerical-checks-reproducibility
+  outcomes:
+  - 浮動小数点、許容誤差、残差、乱数seed、再現性、検算の定義と成立条件を説明できる
+  - 数値検算と再現性を小規模に計算・実装し検算できる
+- id: calc-functions-limits-continuity
+  course: '01'
+  unit: calc-single-variable
+  order: 10
+  title: 関数・極限・連続
+  summary: 関数・極限・連続の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-sets-functions-mappings
+  - prep-exponents-logarithms
+  implementation_topic: calc-functions-limits-continuity
+  outcomes:
+  - 関数、極限、連続の定義と成立条件を説明できる
+  - 関数・極限・連続を小規模に計算・実装し検算できる
+- id: calc-derivatives-rates
+  course: '01'
+  unit: calc-single-variable
+  order: 20
+  title: 微分と変化率
+  summary: 微分と変化率の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-functions-limits-continuity
+  implementation_topic: calc-derivatives-rates
+  outcomes:
+  - 微分、変化率の定義と成立条件を説明できる
+  - 微分と変化率を小規模に計算・実装し検算できる
+- id: calc-differentiation-rules-chain-rule
+  course: '01'
+  unit: calc-single-variable
+  order: 30
+  title: 微分法則と一変数の連鎖律
+  summary: 微分法則と一変数の連鎖律の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-derivatives-rates
+  implementation_topic: calc-differentiation-rules-chain-rule
+  outcomes:
+  - 微分法則、一変数の連鎖律の定義と成立条件を説明できる
+  - 微分法則と一変数の連鎖律を小規模に計算・実装し検算できる
+- id: calc-one-variable-optimization
+  course: '01'
+  unit: calc-single-variable
+  order: 40
+  title: 一変数の最適化
+  summary: 一変数の最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-differentiation-rules-chain-rule
+  implementation_topic: calc-one-variable-optimization
+  outcomes:
+  - 一変数の最適化の定義と成立条件を説明できる
+  - 一変数の最適化を小規模に計算・実装し検算できる
+- id: calc-integrals-fundamental-theorem
+  course: '01'
+  unit: calc-single-variable
+  order: 50
+  title: 積分と微積分学の基本定理
+  summary: 積分と微積分学の基本定理の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-derivatives-rates
+  implementation_topic: calc-integrals-fundamental-theorem
+  outcomes:
+  - 積分、微積分学の基本定理の定義と成立条件を説明できる
+  - 積分と微積分学の基本定理を小規模に計算・実装し検算できる
+- id: calc-taylor-approximation
+  course: '01'
+  unit: calc-single-variable
+  order: 60
+  title: Taylor展開と局所近似
+  summary: Taylor展開と局所近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-differentiation-rules-chain-rule
+  implementation_topic: calc-taylor-approximation
+  outcomes:
+  - Taylor展開、局所近似の定義と成立条件を説明できる
+  - Taylor展開と局所近似を小規模に計算・実装し検算できる
+- id: calc-multivariable-functions-partial-derivatives
+  course: '01'
+  unit: calc-multivariable
+  order: 10
+  title: 多変数関数と偏微分
+  summary: 多変数関数と偏微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-differentiation-rules-chain-rule
+  - prep-symbols-types-shapes
+  implementation_topic: calc-multivariable-functions-partial-derivatives
+  outcomes:
+  - 多変数関数、偏微分の定義と成立条件を説明できる
+  - 多変数関数と偏微分を小規模に計算・実装し検算できる
+- id: calc-gradient-directional-derivative
+  course: '01'
+  unit: calc-multivariable
+  order: 20
+  title: 勾配と方向微分
+  summary: 勾配と方向微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-multivariable-functions-partial-derivatives
+  implementation_topic: calc-gradient-directional-derivative
+  outcomes:
+  - 勾配、方向微分の定義と成立条件を説明できる
+  - 勾配と方向微分を小規模に計算・実装し検算できる
+- id: calc-total-derivative-jacobian
+  course: '01'
+  unit: calc-multivariable
+  order: 30
+  title: 全微分とJacobian
+  summary: 全微分とJacobianの定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-gradient-directional-derivative
+  - prep-numpy-arrays-shapes
+  implementation_topic: calc-total-derivative-jacobian
+  outcomes:
+  - 全微分、Jacobianの定義と成立条件を説明できる
+  - 全微分とJacobianを小規模に計算・実装し検算できる
+- id: calc-hessian-second-order
+  course: '01'
+  unit: calc-multivariable
+  order: 40
+  title: Hessianと二次近似
+  summary: Hessianと二次近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-total-derivative-jacobian
+  - calc-taylor-approximation
+  implementation_topic: calc-hessian-second-order
+  outcomes:
+  - Hessian、二次近似の定義と成立条件を説明できる
+  - Hessianと二次近似を小規模に計算・実装し検算できる
+- id: calc-multivariable-chain-rule
+  course: '01'
+  unit: calc-multivariable
+  order: 50
+  title: 多変数の連鎖律
+  summary: 多変数の連鎖律の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-total-derivative-jacobian
+  - calc-differentiation-rules-chain-rule
+  implementation_topic: calc-multivariable-chain-rule
+  outcomes:
+  - 多変数の連鎖律の定義と成立条件を説明できる
+  - 多変数の連鎖律を小規模に計算・実装し検算できる
+- id: calc-unconstrained-optimization
+  course: '01'
+  unit: calc-multivariable
+  order: 60
+  title: 多変数の制約なし最適化
+  summary: 多変数の制約なし最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-gradient-directional-derivative
+  - calc-hessian-second-order
+  implementation_topic: calc-unconstrained-optimization
+  outcomes:
+  - 多変数の制約なし最適化の定義と成立条件を説明できる
+  - 多変数の制約なし最適化を小規模に計算・実装し検算できる
+- id: calc-lagrange-multipliers
+  course: '01'
+  unit: calc-multivariable
+  order: 70
+  title: Lagrange乗数法
+  summary: Lagrange乗数法の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-gradient-directional-derivative
+  - calc-unconstrained-optimization
+  implementation_topic: calc-lagrange-multipliers
+  outcomes:
+  - Lagrange乗数法の定義と成立条件を説明できる
+  - Lagrange乗数法を小規模に計算・実装し検算できる
+- id: la-vectors-linear-combinations
+  course: '02'
+  unit: la-vectors-matrices-systems
+  order: 10
+  title: ベクトルと線形結合
+  summary: ベクトルと線形結合の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-symbols-types-shapes
+  - prep-sums-products-indices
+  implementation_topic: la-vectors-linear-combinations
+  outcomes:
+  - ベクトル、線形結合の定義と成立条件を説明できる
+  - ベクトルと線形結合を小規模に計算・実装し検算できる
+- id: la-matrices-data-linear-maps
+  course: '02'
+  unit: la-vectors-matrices-systems
+  order: 20
+  title: 行列をデータと線形写像として見る
+  summary: 行列をデータと線形写像として見るの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-vectors-linear-combinations
+  implementation_topic: la-matrices-data-linear-maps
+  outcomes:
+  - 行列をデータ、線形写像、して見るの定義と成立条件を説明できる
+  - 行列をデータと線形写像として見るを小規模に計算・実装し検算できる
+- id: la-matrix-multiplication
+  course: '02'
+  unit: la-vectors-matrices-systems
+  order: 30
+  title: 行列積
+  summary: 行列積の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-matrices-data-linear-maps
+  - prep-sums-products-indices
+  implementation_topic: la-matrix-multiplication
+  outcomes:
+  - 行列積の定義と成立条件を説明できる
+  - 行列積を小規模に計算・実装し検算できる
+- id: la-linear-systems-elimination
+  course: '02'
+  unit: la-vectors-matrices-systems
+  order: 40
+  title: 連立一次方程式とガウス消去法
+  summary: 連立一次方程式とガウス消去法の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-matrix-multiplication
+  implementation_topic: la-linear-systems-elimination
+  outcomes:
+  - 連立一次方程式、ガウス消去法の定義と成立条件を説明できる
+  - 連立一次方程式とガウス消去法を小規模に計算・実装し検算できる
+- id: la-invertibility-inverse-matrices
+  course: '02'
+  unit: la-vectors-matrices-systems
+  order: 50
+  title: 可逆性と逆行列
+  summary: 可逆性と逆行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-linear-systems-elimination
+  implementation_topic: la-invertibility-inverse-matrices
+  outcomes:
+  - 可逆性、逆行列の定義と成立条件を説明できる
+  - 可逆性と逆行列を小規模に計算・実装し検算できる
+- id: la-lu-factorization
+  course: '02'
+  unit: la-vectors-matrices-systems
+  order: 60
+  title: LU分解
+  summary: LU分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-linear-systems-elimination
+  implementation_topic: la-lu-factorization
+  outcomes:
+  - LU分解の定義と成立条件を説明できる
+  - LU分解を小規模に計算・実装し検算できる
+- id: la-span-subspaces
+  course: '02'
+  unit: la-vector-spaces
+  order: 10
+  title: spanと部分空間
+  summary: spanと部分空間の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-vectors-linear-combinations
+  implementation_topic: la-span-subspaces
+  outcomes:
+  - span、部分空間の定義と成立条件を説明できる
+  - spanと部分空間を小規模に計算・実装し検算できる
+- id: la-column-space-null-space
+  course: '02'
+  unit: la-vector-spaces
+  order: 20
+  title: 列空間と零空間
+  summary: 列空間と零空間の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-span-subspaces
+  - la-linear-systems-elimination
+  implementation_topic: la-column-space-null-space
+  outcomes:
+  - 列空間、零空間の定義と成立条件を説明できる
+  - 列空間と零空間を小規模に計算・実装し検算できる
+- id: la-linear-independence
+  course: '02'
+  unit: la-vector-spaces
+  order: 30
+  title: 線形独立と線形従属
+  summary: 線形独立と線形従属の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-span-subspaces
+  implementation_topic: la-linear-independence
+  outcomes:
+  - 線形独立、線形従属の定義と成立条件を説明できる
+  - 線形独立と線形従属を小規模に計算・実装し検算できる
+- id: la-basis-coordinates-dimension
+  course: '02'
+  unit: la-vector-spaces
+  order: 40
+  title: 基底・座標・次元
+  summary: 基底・座標・次元の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-linear-independence
+  implementation_topic: la-basis-coordinates-dimension
+  outcomes:
+  - 基底、座標、次元の定義と成立条件を説明できる
+  - 基底・座標・次元を小規模に計算・実装し検算できる
+- id: la-rank-rank-nullity
+  course: '02'
+  unit: la-vector-spaces
+  order: 50
+  title: 階数とrank-nullity
+  summary: 階数とrank-nullityの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-column-space-null-space
+  - la-basis-coordinates-dimension
+  implementation_topic: la-rank-rank-nullity
+  outcomes:
+  - 階数、rank-nullityの定義と成立条件を説明できる
+  - 階数とrank-nullityを小規模に計算・実装し検算できる
+- id: la-linear-maps-change-of-basis
+  course: '02'
+  unit: la-vector-spaces
+  order: 60
+  title: 線形写像と基底変換
+  summary: 線形写像と基底変換の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-basis-coordinates-dimension
+  - la-matrices-data-linear-maps
+  implementation_topic: la-linear-maps-change-of-basis
+  outcomes:
+  - 線形写像、基底変換の定義と成立条件を説明できる
+  - 線形写像と基底変換を小規模に計算・実装し検算できる
+- id: la-inner-products-norms-angles
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 10
+  title: 内積・ノルム・角度
+  summary: 内積・ノルム・角度の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-vectors-linear-combinations
+  implementation_topic: la-inner-products-norms-angles
+  outcomes:
+  - 内積、ノルム、角度の定義と成立条件を説明できる
+  - 内積・ノルム・角度を小規模に計算・実装し検算できる
+- id: la-orthogonal-orthonormal-bases
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 20
+  title: 直交基底と正規直交基底
+  summary: 直交基底と正規直交基底の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-inner-products-norms-angles
+  - la-basis-coordinates-dimension
+  implementation_topic: la-orthogonal-orthonormal-bases
+  outcomes:
+  - 直交基底、正規直交基底の定義と成立条件を説明できる
+  - 直交基底と正規直交基底を小規模に計算・実装し検算できる
+- id: la-orthogonal-projection
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 30
+  title: 直交射影
+  summary: 直交射影の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-span-subspaces
+  - la-inner-products-norms-angles
+  - la-orthogonal-orthonormal-bases
+  implementation_topic: orthogonal-projection
+  outcomes:
+  - 直交射影の定義と成立条件を説明できる
+  - 直交射影を小規模に計算・実装し検算できる
+- id: la-gram-schmidt-qr
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 40
+  title: Gram–Schmidt法とQR分解
+  summary: Gram–Schmidt法とQR分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-orthogonal-orthonormal-bases
+  - orthogonal-projection
+  implementation_topic: la-gram-schmidt-qr
+  outcomes:
+  - Gram–Schmidt法、QR分解の定義と成立条件を説明できる
+  - Gram–Schmidt法とQR分解を小規模に計算・実装し検算できる
+- id: la-least-squares-geometry
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 50
+  title: 最小二乗法の幾何学
+  summary: 最小二乗法の幾何学の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - orthogonal-projection
+  - la-column-space-null-space
+  implementation_topic: la-least-squares-geometry
+  outcomes:
+  - 最小二乗法の幾何学の定義と成立条件を説明できる
+  - 最小二乗法の幾何学を小規模に計算・実装し検算できる
+- id: la-least-squares-computation-pseudoinverse
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 60
+  title: 最小二乗法の計算と擬似逆行列
+  summary: 最小二乗法の計算と擬似逆行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-least-squares-geometry
+  - la-gram-schmidt-qr
+  implementation_topic: la-least-squares-computation-pseudoinverse
+  outcomes:
+  - 最小二乗法の計算、擬似逆行列の定義と成立条件を説明できる
+  - 最小二乗法の計算と擬似逆行列を小規模に計算・実装し検算できる
+- id: la-weighted-least-squares-introduction
+  course: '02'
+  unit: la-orthogonality-least-squares
+  order: 70
+  title: 重み付き最小二乗法の導入
+  summary: 重み付き最小二乗法の導入の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-least-squares-geometry
+  implementation_topic: la-weighted-least-squares-introduction
+  outcomes:
+  - 重み付き最小二乗法の導入の定義と成立条件を説明できる
+  - 重み付き最小二乗法の導入を小規模に計算・実装し検算できる
+- id: la-determinants-volume-invertibility
+  course: '02'
+  unit: la-eigenvalues-positive-definite
+  order: 10
+  title: 行列式・体積・可逆性
+  summary: 行列式・体積・可逆性の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-invertibility-inverse-matrices
+  implementation_topic: la-determinants-volume-invertibility
+  outcomes:
+  - 行列式、体積、可逆性の定義と成立条件を説明できる
+  - 行列式・体積・可逆性を小規模に計算・実装し検算できる
+- id: la-eigenvalues-eigenvectors
+  course: '02'
+  unit: la-eigenvalues-positive-definite
+  order: 20
+  title: 固有値と固有ベクトル
+  summary: 固有値と固有ベクトルの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-invertibility-inverse-matrices
+  - la-determinants-volume-invertibility
+  implementation_topic: la-eigenvalues-eigenvectors
+  outcomes:
+  - 固有値、固有ベクトルの定義と成立条件を説明できる
+  - 固有値と固有ベクトルを小規模に計算・実装し検算できる
+- id: la-diagonalization-matrix-powers
+  course: '02'
+  unit: la-eigenvalues-positive-definite
+  order: 30
+  title: 対角化と行列の累乗
+  summary: 対角化と行列の累乗の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-eigenvalues-eigenvectors
+  - la-basis-coordinates-dimension
+  implementation_topic: la-diagonalization-matrix-powers
+  outcomes:
+  - 対角化、行列の累乗の定義と成立条件を説明できる
+  - 対角化と行列の累乗を小規模に計算・実装し検算できる
+- id: la-symmetric-matrices-spectral-theorem
+  course: '02'
+  unit: la-eigenvalues-positive-definite
+  order: 40
+  title: 対称行列とスペクトル定理
+  summary: 対称行列とスペクトル定理の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-eigenvalues-eigenvectors
+  - la-orthogonal-orthonormal-bases
+  implementation_topic: la-symmetric-matrices-spectral-theorem
+  outcomes:
+  - 対称行列、スペクトル定理の定義と成立条件を説明できる
+  - 対称行列とスペクトル定理を小規模に計算・実装し検算できる
+- id: la-quadratic-forms-positive-definite
+  course: '02'
+  unit: la-eigenvalues-positive-definite
+  order: 50
+  title: 二次形式と正定値行列
+  summary: 二次形式と正定値行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-symmetric-matrices-spectral-theorem
+  - calc-hessian-second-order
+  implementation_topic: la-quadratic-forms-positive-definite
+  outcomes:
+  - 二次形式、正定値行列の定義と成立条件を説明できる
+  - 二次形式と正定値行列を小規模に計算・実装し検算できる
+- id: la-cholesky-factorization
+  course: '02'
+  unit: la-eigenvalues-positive-definite
+  order: 60
+  title: Cholesky分解
+  summary: Cholesky分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-quadratic-forms-positive-definite
+  - la-lu-factorization
+  implementation_topic: la-cholesky-factorization
+  outcomes:
+  - Cholesky分解の定義と成立条件を説明できる
+  - Cholesky分解を小規模に計算・実装し検算できる
+- id: la-singular-value-decomposition
+  course: '02'
+  unit: la-svd-low-rank
+  order: 10
+  title: 特異値分解
+  summary: 特異値分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-symmetric-matrices-spectral-theorem
+  - la-rank-rank-nullity
+  implementation_topic: la-singular-value-decomposition
+  outcomes:
+  - 特異値分解の定義と成立条件を説明できる
+  - 特異値分解を小規模に計算・実装し検算できる
+- id: la-pseudoinverse-rank-deficient-systems
+  course: '02'
+  unit: la-svd-low-rank
+  order: 20
+  title: 擬似逆行列とrank不足の連立方程式
+  summary: 擬似逆行列とrank不足の連立方程式の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-singular-value-decomposition
+  - la-least-squares-computation-pseudoinverse
+  implementation_topic: la-pseudoinverse-rank-deficient-systems
+  outcomes:
+  - 擬似逆行列、rank不足の連立方程式の定義と成立条件を説明できる
+  - 擬似逆行列とrank不足の連立方程式を小規模に計算・実装し検算できる
+- id: la-low-rank-approximation
+  course: '02'
+  unit: la-svd-low-rank
+  order: 30
+  title: 低ランク近似
+  summary: 低ランク近似の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-singular-value-decomposition
+  implementation_topic: la-low-rank-approximation
+  outcomes:
+  - 低ランク近似の定義と成立条件を説明できる
+  - 低ランク近似を小規模に計算・実装し検算できる
+- id: la-matrix-norms-condition-number
+  course: '02'
+  unit: la-svd-low-rank
+  order: 40
+  title: 行列ノルムと条件数
+  summary: 行列ノルムと条件数の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-singular-value-decomposition
+  - la-inner-products-norms-angles
+  implementation_topic: la-matrix-norms-condition-number
+  outcomes:
+  - 行列ノルム、条件数の定義と成立条件を説明できる
+  - 行列ノルムと条件数を小規模に計算・実装し検算できる
+- id: prob-counting-sample-spaces
+  course: '03'
+  unit: prob-foundations
+  order: 10
+  title: 数え上げ・標本空間・事象
+  summary: 数え上げ・標本空間・事象の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-sets-functions-mappings
+  - prep-sums-products-indices
+  implementation_topic: prob-counting-sample-spaces
+  outcomes:
+  - 数え上げ、標本空間、事象の定義と成立条件を説明できる
+  - 数え上げ・標本空間・事象を小規模に計算・実装し検算できる
+- id: prob-axioms-event-operations
+  course: '03'
+  unit: prob-foundations
+  order: 20
+  title: 確率の公理と事象の演算
+  summary: 確率の公理と事象の演算の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-counting-sample-spaces
+  implementation_topic: prob-axioms-event-operations
+  outcomes:
+  - 確率の公理、事象の演算の定義と成立条件を説明できる
+  - 確率の公理と事象の演算を小規模に計算・実装し検算できる
+- id: prob-conditional-probability-independence
+  course: '03'
+  unit: prob-foundations
+  order: 30
+  title: 条件付き確率と独立
+  summary: 条件付き確率と独立の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-axioms-event-operations
+  implementation_topic: prob-conditional-probability-independence
+  outcomes:
+  - 条件付き確率、独立の定義と成立条件を説明できる
+  - 条件付き確率と独立を小規模に計算・実装し検算できる
+- id: prob-bayes-theorem
+  course: '03'
+  unit: prob-foundations
+  order: 40
+  title: Bayesの定理
+  summary: Bayesの定理の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-conditional-probability-independence
+  implementation_topic: prob-bayes-theorem
+  outcomes:
+  - Bayesの定理の定義と成立条件を説明できる
+  - Bayesの定理を小規模に計算・実装し検算できる
+- id: prob-random-variables-cdf-pmf-pdf
+  course: '03'
+  unit: prob-foundations
+  order: 50
+  title: 確率変数・CDF・PMF・PDF
+  summary: 確率変数・CDF・PMF・PDFの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-axioms-event-operations
+  - prep-exponents-logarithms
+  implementation_topic: prob-random-variables-cdf-pmf-pdf
+  outcomes:
+  - 確率変数、CDF、PMF、PDFの定義と成立条件を説明できる
+  - 確率変数・CDF・PMF・PDFを小規模に計算・実装し検算できる
+- id: prob-expectation-variance-moments
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 10
+  title: 期待値・分散・モーメント
+  summary: 期待値・分散・モーメントの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-random-variables-cdf-pmf-pdf
+  - calc-integrals-fundamental-theorem
+  implementation_topic: prob-expectation-variance-moments
+  outcomes:
+  - 期待値、分散、モーメントの定義と成立条件を説明できる
+  - 期待値・分散・モーメントを小規模に計算・実装し検算できる
+- id: prob-joint-marginal-conditional-distributions
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 20
+  title: 同時分布・周辺分布・条件付き分布
+  summary: 同時分布・周辺分布・条件付き分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-conditional-probability-independence
+  - prob-random-variables-cdf-pmf-pdf
+  implementation_topic: prob-joint-marginal-conditional-distributions
+  outcomes:
+  - 同時分布、周辺分布、条件付き分布の定義と成立条件を説明できる
+  - 同時分布・周辺分布・条件付き分布を小規模に計算・実装し検算できる
+- id: prob-covariance-correlation
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 30
+  title: 共分散と相関
+  summary: 共分散と相関の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-expectation-variance-moments
+  - prob-joint-marginal-conditional-distributions
+  implementation_topic: prob-covariance-correlation
+  outcomes:
+  - 共分散、相関の定義と成立条件を説明できる
+  - 共分散と相関を小規模に計算・実装し検算できる
+- id: prob-discrete-distributions
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 40
+  title: 主要な離散分布
+  summary: 主要な離散分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-random-variables-cdf-pmf-pdf
+  - prob-expectation-variance-moments
+  implementation_topic: prob-discrete-distributions
+  outcomes:
+  - 主要な離散分布の定義と成立条件を説明できる
+  - 主要な離散分布を小規模に計算・実装し検算できる
+- id: prob-continuous-distributions
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 50
+  title: 主要な連続分布
+  summary: 主要な連続分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-random-variables-cdf-pmf-pdf
+  - prob-expectation-variance-moments
+  - calc-integrals-fundamental-theorem
+  implementation_topic: prob-continuous-distributions
+  outcomes:
+  - 主要な連続分布の定義と成立条件を説明できる
+  - 主要な連続分布を小規模に計算・実装し検算できる
+- id: prob-transformations-sums-random-variables
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 60
+  title: 確率変数の変換と和
+  summary: 確率変数の変換と和の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-joint-marginal-conditional-distributions
+  - prob-discrete-distributions
+  - prob-continuous-distributions
+  implementation_topic: prob-transformations-sums-random-variables
+  outcomes:
+  - 確率変数の変換、和の定義と成立条件を説明できる
+  - 確率変数の変換と和を小規模に計算・実装し検算できる
+- id: prob-laws-large-numbers-central-limit-theorem
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 70
+  title: 大数の法則と中心極限定理
+  summary: 大数の法則と中心極限定理の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-expectation-variance-moments
+  - prob-transformations-sums-random-variables
+  implementation_topic: prob-laws-large-numbers-central-limit-theorem
+  outcomes:
+  - 大数の法則、中心極限定理の定義と成立条件を説明できる
+  - 大数の法則と中心極限定理を小規模に計算・実装し検算できる
+- id: prob-multivariate-normal-distribution
+  course: '03'
+  unit: prob-random-variables-distributions
+  order: 80
+  title: 多変量正規分布
+  summary: 多変量正規分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-covariance-correlation
+  - prob-continuous-distributions
+  - la-quadratic-forms-positive-definite
+  implementation_topic: prob-multivariate-normal-distribution
+  outcomes:
+  - 多変量正規分布の定義と成立条件を説明できる
+  - 多変量正規分布を小規模に計算・実装し検算できる
+- id: stat-estimators-bias-variance-mse
+  course: '03'
+  unit: stat-inference
+  order: 10
+  title: 推定量・バイアス・分散・MSE
+  summary: 推定量・バイアス・分散・MSEの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-expectation-variance-moments
+  - prob-laws-large-numbers-central-limit-theorem
+  implementation_topic: stat-estimators-bias-variance-mse
+  outcomes:
+  - 推定量、バイアス、分散、MSEの定義と成立条件を説明できる
+  - 推定量・バイアス・分散・MSEを小規模に計算・実装し検算できる
+- id: stat-likelihood-maximum-likelihood
+  course: '03'
+  unit: stat-inference
+  order: 20
+  title: 尤度と最尤推定
+  summary: 尤度と最尤推定の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-estimators-bias-variance-mse
+  - prob-discrete-distributions
+  - prob-continuous-distributions
+  - prep-exponents-logarithms
+  implementation_topic: stat-likelihood-maximum-likelihood
+  outcomes:
+  - 尤度、最尤推定の定義と成立条件を説明できる
+  - 尤度と最尤推定を小規模に計算・実装し検算できる
+- id: stat-bayesian-inference-map
+  course: '03'
+  unit: stat-inference
+  order: 30
+  title: Bayesian推論とMAP推定
+  summary: Bayesian推論とMAP推定の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-bayes-theorem
+  - stat-likelihood-maximum-likelihood
+  implementation_topic: stat-bayesian-inference-map
+  outcomes:
+  - Bayesian推論、MAP推定の定義と成立条件を説明できる
+  - Bayesian推論とMAP推定を小規模に計算・実装し検算できる
+- id: stat-confidence-intervals
+  course: '03'
+  unit: stat-inference
+  order: 40
+  title: 信頼区間
+  summary: 信頼区間の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-estimators-bias-variance-mse
+  - prob-laws-large-numbers-central-limit-theorem
+  - stat-likelihood-maximum-likelihood
+  implementation_topic: stat-confidence-intervals
+  outcomes:
+  - 信頼区間の定義と成立条件を説明できる
+  - 信頼区間を小規模に計算・実装し検算できる
+- id: stat-hypothesis-testing
+  course: '03'
+  unit: stat-inference
+  order: 50
+  title: 仮説検定
+  summary: 仮説検定の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-confidence-intervals
+  implementation_topic: stat-hypothesis-testing
+  outcomes:
+  - 仮説検定の定義と成立条件を説明できる
+  - 仮説検定を小規模に計算・実装し検算できる
+- id: stat-linear-regression-probabilistic-model
+  course: '03'
+  unit: stat-regression-information
+  order: 10
+  title: 線形回帰の確率モデル
+  summary: 線形回帰の確率モデルの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-covariance-correlation
+  - prob-multivariate-normal-distribution
+  - stat-likelihood-maximum-likelihood
+  - la-least-squares-geometry
+  implementation_topic: stat-linear-regression-probabilistic-model
+  outcomes:
+  - 線形回帰の確率モデルの定義と成立条件を説明できる
+  - 線形回帰の確率モデルを小規模に計算・実装し検算できる
+- id: stat-entropy-cross-entropy-kl-divergence
+  course: '03'
+  unit: stat-regression-information
+  order: 20
+  title: エントロピー・交差エントロピー・KLダイバージェンス
+  summary: エントロピー・交差エントロピー・KLダイバージェンスの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-discrete-distributions
+  - prob-continuous-distributions
+  - stat-likelihood-maximum-likelihood
+  - prep-exponents-logarithms
+  implementation_topic: stat-entropy-cross-entropy-kl-divergence
+  outcomes:
+  - エントロピー、交差エントロピー、KLダイバージェンスの定義と成立条件を説明できる
+  - エントロピー・交差エントロピー・KLダイバージェンスを小規模に計算・実装し検算できる
+- id: dm-propositions-connectives-truth-tables
+  course: '04'
+  unit: dm-logic-proof
+  order: 10
+  title: 命題・論理演算・真理値表
+  summary: 命題・論理演算・真理値表の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-definitions-theorems-proofs
+  implementation_topic: dm-propositions-connectives-truth-tables
+  outcomes:
+  - 命題、論理演算、真理値表の定義と成立条件を説明できる
+  - 命題・論理演算・真理値表を小規模に計算・実装し検算できる
+- id: dm-predicates-quantifiers-negation
+  course: '04'
+  unit: dm-logic-proof
+  order: 20
+  title: 述語・量化記号・否定
+  summary: 述語・量化記号・否定の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-propositions-connectives-truth-tables
+  - prep-sets-functions-mappings
+  implementation_topic: dm-predicates-quantifiers-negation
+  outcomes:
+  - 述語、量化記号、否定の定義と成立条件を説明できる
+  - 述語・量化記号・否定を小規模に計算・実装し検算できる
+- id: dm-implication-equivalence-conditions
+  course: '04'
+  unit: dm-logic-proof
+  order: 30
+  title: 含意・同値・必要十分条件
+  summary: 含意・同値・必要十分条件の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-propositions-connectives-truth-tables
+  - dm-predicates-quantifiers-negation
+  implementation_topic: dm-implication-equivalence-conditions
+  outcomes:
+  - 含意、同値、必要十分条件の定義と成立条件を説明できる
+  - 含意・同値・必要十分条件を小規模に計算・実装し検算できる
+- id: dm-proof-methods
+  course: '04'
+  unit: dm-logic-proof
+  order: 40
+  title: 直接証明・対偶・背理法・場合分け
+  summary: 直接証明・対偶・背理法・場合分けの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-implication-equivalence-conditions
+  implementation_topic: dm-proof-methods
+  outcomes:
+  - 直接証明、対偶、背理法、場合分けの定義と成立条件を説明できる
+  - 直接証明・対偶・背理法・場合分けを小規模に計算・実装し検算できる
+- id: dm-induction-well-ordering
+  course: '04'
+  unit: dm-logic-proof
+  order: 50
+  title: 数学的帰納法・強い帰納法・整列原理
+  summary: 数学的帰納法・強い帰納法・整列原理の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-proof-methods
+  - prep-sums-products-indices
+  implementation_topic: dm-induction-well-ordering
+  outcomes:
+  - 数学的帰納法、強い帰納法、整列原理の定義と成立条件を説明できる
+  - 数学的帰納法・強い帰納法・整列原理を小規模に計算・実装し検算できる
+- id: dm-relations-equivalence-partial-orders
+  course: '04'
+  unit: dm-relations-counting
+  order: 10
+  title: 関係・同値関係・半順序
+  summary: 関係・同値関係・半順序の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-sets-functions-mappings
+  - dm-predicates-quantifiers-negation
+  implementation_topic: dm-relations-equivalence-partial-orders
+  outcomes:
+  - 関係、同値関係、半順序の定義と成立条件を説明できる
+  - 関係・同値関係・半順序を小規模に計算・実装し検算できる
+- id: dm-divisibility-modular-arithmetic
+  course: '04'
+  unit: dm-relations-counting
+  order: 20
+  title: 整除性と合同算術
+  summary: 整除性と合同算術の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-proof-methods
+  implementation_topic: dm-divisibility-modular-arithmetic
+  outcomes:
+  - 整除性、合同算術の定義と成立条件を説明できる
+  - 整除性と合同算術を小規模に計算・実装し検算できる
+- id: dm-counting-principles-pigeonhole
+  course: '04'
+  unit: dm-relations-counting
+  order: 30
+  title: 加法原理・乗法原理・鳩の巣原理
+  summary: 加法原理・乗法原理・鳩の巣原理の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-proof-methods
+  - prep-sums-products-indices
+  implementation_topic: dm-counting-principles-pigeonhole
+  outcomes:
+  - 加法原理、乗法原理、鳩の巣原理の定義と成立条件を説明できる
+  - 加法原理・乗法原理・鳩の巣原理を小規模に計算・実装し検算できる
+- id: dm-permutations-combinations-binomial
+  course: '04'
+  unit: dm-relations-counting
+  order: 40
+  title: 順列・組合せ・二項係数
+  summary: 順列・組合せ・二項係数の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-counting-principles-pigeonhole
+  implementation_topic: dm-permutations-combinations-binomial
+  outcomes:
+  - 順列、組合せ、二項係数の定義と成立条件を説明できる
+  - 順列・組合せ・二項係数を小規模に計算・実装し検算できる
+- id: dm-inclusion-exclusion-double-counting
+  course: '04'
+  unit: dm-relations-counting
+  order: 50
+  title: 包含排除原理と二重数え上げ
+  summary: 包含排除原理と二重数え上げの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-counting-principles-pigeonhole
+  - dm-permutations-combinations-binomial
+  implementation_topic: dm-inclusion-exclusion-double-counting
+  outcomes:
+  - 包含排除原理、二重数え上げの定義と成立条件を説明できる
+  - 包含排除原理と二重数え上げを小規模に計算・実装し検算できる
+- id: dm-algorithm-specifications-correctness
+  course: '04'
+  unit: dm-algorithms-complexity
+  order: 10
+  title: アルゴリズムの仕様と正しさ
+  summary: アルゴリズムの仕様と正しさの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-proof-methods
+  - prep-python-expressions-functions
+  implementation_topic: dm-algorithm-specifications-correctness
+  outcomes:
+  - アルゴリズムの仕様、正しさの定義と成立条件を説明できる
+  - アルゴリズムの仕様と正しさを小規模に計算・実装し検算できる
+- id: dm-loop-invariants-termination
+  course: '04'
+  unit: dm-algorithms-complexity
+  order: 20
+  title: ループ不変量と停止性
+  summary: ループ不変量と停止性の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-algorithm-specifications-correctness
+  - dm-induction-well-ordering
+  implementation_topic: dm-loop-invariants-termination
+  outcomes:
+  - ループ不変量、停止性の定義と成立条件を説明できる
+  - ループ不変量と停止性を小規模に計算・実装し検算できる
+- id: dm-asymptotic-notation-growth-rates
+  course: '04'
+  unit: dm-algorithms-complexity
+  order: 30
+  title: 漸近記法と増加率
+  summary: 漸近記法と増加率の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-exponents-logarithms
+  - prep-sums-products-indices
+  implementation_topic: dm-asymptotic-notation-growth-rates
+  outcomes:
+  - 漸近記法、増加率の定義と成立条件を説明できる
+  - 漸近記法と増加率を小規模に計算・実装し検算できる
+- id: dm-recurrence-relations
+  course: '04'
+  unit: dm-algorithms-complexity
+  order: 40
+  title: 漸化式
+  summary: 漸化式の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-induction-well-ordering
+  - dm-asymptotic-notation-growth-rates
+  implementation_topic: dm-recurrence-relations
+  outcomes:
+  - 漸化式の定義と成立条件を説明できる
+  - 漸化式を小規模に計算・実装し検算できる
+- id: dm-divide-conquer-master-theorem
+  course: '04'
+  unit: dm-algorithms-complexity
+  order: 50
+  title: 分割統治法とMaster theorem
+  summary: 分割統治法とMaster theoremの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-recurrence-relations
+  implementation_topic: dm-divide-conquer-master-theorem
+  outcomes:
+  - 分割統治法、Master、theoremの定義と成立条件を説明できる
+  - 分割統治法とMaster theoremを小規模に計算・実装し検算できる
+- id: dm-graphs-representations-degrees
+  course: '04'
+  unit: dm-graphs-probability
+  order: 10
+  title: グラフ・表現・次数
+  summary: グラフ・表現・次数の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-relations-equivalence-partial-orders
+  - prep-numpy-arrays-shapes
+  implementation_topic: dm-graphs-representations-degrees
+  outcomes:
+  - グラフ、表現、次数の定義と成立条件を説明できる
+  - グラフ・表現・次数を小規模に計算・実装し検算できる
+- id: dm-paths-cycles-connectivity
+  course: '04'
+  unit: dm-graphs-probability
+  order: 20
+  title: 道・閉路・連結性
+  summary: 道・閉路・連結性の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-graphs-representations-degrees
+  implementation_topic: dm-paths-cycles-connectivity
+  outcomes:
+  - 道、閉路、連結性の定義と成立条件を説明できる
+  - 道・閉路・連結性を小規模に計算・実装し検算できる
+- id: dm-trees-spanning-trees
+  course: '04'
+  unit: dm-graphs-probability
+  order: 30
+  title: 木と全域木
+  summary: 木と全域木の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-paths-cycles-connectivity
+  - dm-induction-well-ordering
+  implementation_topic: dm-trees-spanning-trees
+  outcomes:
+  - 木、全域木の定義と成立条件を説明できる
+  - 木と全域木を小規模に計算・実装し検算できる
+- id: dm-directed-graphs-dags-topological-order
+  course: '04'
+  unit: dm-graphs-probability
+  order: 40
+  title: 有向グラフ・DAG・トポロジカル順序
+  summary: 有向グラフ・DAG・トポロジカル順序の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-graphs-representations-degrees
+  - dm-loop-invariants-termination
+  implementation_topic: dm-directed-graphs-dags-topological-order
+  outcomes:
+  - 有向グラフ、DAG、トポロジカル順序の定義と成立条件を説明できる
+  - 有向グラフ・DAG・トポロジカル順序を小規模に計算・実装し検算できる
+- id: dm-discrete-probability-indicators-randomized-algorithms
+  course: '04'
+  unit: dm-graphs-probability
+  order: 50
+  title: 離散確率・指示変数・乱択アルゴリズム
+  summary: 離散確率・指示変数・乱択アルゴリズムの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-counting-principles-pigeonhole
+  - dm-algorithm-specifications-correctness
+  implementation_topic: dm-discrete-probability-indicators-randomized-algorithms
+  outcomes:
+  - 離散確率、指示変数、乱択アルゴリズムの定義と成立条件を説明できる
+  - 離散確率・指示変数・乱択アルゴリズムを小規模に計算・実装し検算できる
+- id: num-floating-point-rounding
+  course: '05'
+  unit: num-foundations
+  order: 10
+  title: 浮動小数点数と丸め
+  summary: 浮動小数点数と丸めの定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-numerical-checks-reproducibility
+  - prep-python-expressions-functions
+  implementation_topic: num-floating-point-rounding
+  outcomes:
+  - 浮動小数点数、丸めの定義と成立条件を説明できる
+  - 浮動小数点数と丸めを小規模に計算・実装し検算できる
+- id: num-errors-conditioning-stability
+  course: '05'
+  unit: num-foundations
+  order: 20
+  title: 誤差・条件数・数値安定性
+  summary: 誤差・条件数・数値安定性の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-floating-point-rounding
+  - la-matrix-norms-condition-number
+  implementation_topic: num-errors-conditioning-stability
+  outcomes:
+  - 誤差、条件数、数値安定性の定義と成立条件を説明できる
+  - 誤差・条件数・数値安定性を小規模に計算・実装し検算できる
+- id: num-convergence-orders-stopping
+  course: '05'
+  unit: num-foundations
+  order: 30
+  title: 収束次数と停止条件
+  summary: 収束次数と停止条件の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-errors-conditioning-stability
+  - calc-functions-limits-continuity
+  implementation_topic: num-convergence-orders-stopping
+  outcomes:
+  - 収束次数、停止条件の定義と成立条件を説明できる
+  - 収束次数と停止条件を小規模に計算・実装し検算できる
+- id: num-root-finding
+  course: '05'
+  unit: num-foundations
+  order: 40
+  title: 非線形方程式の求根法
+  summary: 非線形方程式の求根法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-convergence-orders-stopping
+  - calc-derivatives-rates
+  implementation_topic: num-root-finding
+  outcomes:
+  - 非線形方程式の求根法の定義と成立条件を説明できる
+  - 非線形方程式の求根法を小規模に計算・実装し検算できる
+- id: num-polynomial-interpolation
+  course: '05'
+  unit: num-approximation-quadrature
+  order: 10
+  title: 多項式補間
+  summary: 多項式補間の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-errors-conditioning-stability
+  - la-linear-systems-elimination
+  implementation_topic: num-polynomial-interpolation
+  outcomes:
+  - 多項式補間の定義と成立条件を説明できる
+  - 多項式補間を小規模に計算・実装し検算できる
+- id: num-splines-piecewise-approximation
+  course: '05'
+  unit: num-approximation-quadrature
+  order: 20
+  title: splineと区分的近似
+  summary: splineと区分的近似の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-polynomial-interpolation
+  - calc-derivatives-rates
+  implementation_topic: num-splines-piecewise-approximation
+  outcomes:
+  - spline、区分的近似の定義と成立条件を説明できる
+  - splineと区分的近似を小規模に計算・実装し検算できる
+- id: num-numerical-differentiation
+  course: '05'
+  unit: num-approximation-quadrature
+  order: 30
+  title: 数値微分
+  summary: 数値微分の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-errors-conditioning-stability
+  - calc-taylor-approximation
+  implementation_topic: num-numerical-differentiation
+  outcomes:
+  - 数値微分の定義と成立条件を説明できる
+  - 数値微分を小規模に計算・実装し検算できる
+- id: num-numerical-integration-quadrature
+  course: '05'
+  unit: num-approximation-quadrature
+  order: 40
+  title: 数値積分と求積法
+  summary: 数値積分と求積法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-errors-conditioning-stability
+  - calc-integrals-fundamental-theorem
+  - num-polynomial-interpolation
+  implementation_topic: num-numerical-integration-quadrature
+  outcomes:
+  - 数値積分、求積法の定義と成立条件を説明できる
+  - 数値積分と求積法を小規模に計算・実装し検算できる
+- id: num-direct-solvers-pivoting
+  course: '05'
+  unit: num-linear-algebra
+  order: 10
+  title: 連立方程式の直接法とpivoting
+  summary: 連立方程式の直接法とpivotingの定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-lu-factorization
+  - num-errors-conditioning-stability
+  implementation_topic: num-direct-solvers-pivoting
+  outcomes:
+  - 連立方程式の直接法、pivotingの定義と成立条件を説明できる
+  - 連立方程式の直接法とpivotingを小規模に計算・実装し検算できる
+- id: num-iterative-linear-solvers
+  course: '05'
+  unit: num-linear-algebra
+  order: 20
+  title: 連立方程式の反復法
+  summary: 連立方程式の反復法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-direct-solvers-pivoting
+  - la-eigenvalues-eigenvectors
+  implementation_topic: num-iterative-linear-solvers
+  outcomes:
+  - 連立方程式の反復法の定義と成立条件を説明できる
+  - 連立方程式の反復法を小規模に計算・実装し検算できる
+- id: num-sparse-matrices-preconditioning
+  course: '05'
+  unit: num-linear-algebra
+  order: 30
+  title: 疎行列と前処理
+  summary: 疎行列と前処理の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-iterative-linear-solvers
+  - dm-graphs-representations-degrees
+  implementation_topic: num-sparse-matrices-preconditioning
+  outcomes:
+  - 疎行列、前処理の定義と成立条件を説明できる
+  - 疎行列と前処理を小規模に計算・実装し検算できる
+- id: num-least-squares-qr-svd
+  course: '05'
+  unit: num-linear-algebra
+  order: 40
+  title: 最小二乗法の数値解法
+  summary: 最小二乗法の数値解法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-least-squares-computation-pseudoinverse
+  - la-gram-schmidt-qr
+  - num-errors-conditioning-stability
+  implementation_topic: num-least-squares-qr-svd
+  outcomes:
+  - 最小二乗法の数値解法の定義と成立条件を説明できる
+  - 最小二乗法の数値解法を小規模に計算・実装し検算できる
+- id: num-eigenvalue-power-qr
+  course: '05'
+  unit: num-linear-algebra
+  order: 50
+  title: 固有値計算・べき乗法・QR法
+  summary: 固有値計算・べき乗法・QR法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-eigenvalues-eigenvectors
+  - la-gram-schmidt-qr
+  - num-convergence-orders-stopping
+  implementation_topic: num-eigenvalue-power-qr
+  outcomes:
+  - 固有値計算、べき乗法、QR法の定義と成立条件を説明できる
+  - 固有値計算・べき乗法・QR法を小規模に計算・実装し検算できる
+- id: num-svd-low-rank-computation
+  course: '05'
+  unit: num-low-rank-inverse
+  order: 10
+  title: SVDと低ランク計算
+  summary: SVDと低ランク計算の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-singular-value-decomposition
+  - la-low-rank-approximation
+  - num-eigenvalue-power-qr
+  implementation_topic: num-svd-low-rank-computation
+  outcomes:
+  - SVD、低ランク計算の定義と成立条件を説明できる
+  - SVDと低ランク計算を小規模に計算・実装し検算できる
+- id: num-regularization-ill-posed-problems
+  course: '05'
+  unit: num-low-rank-inverse
+  order: 20
+  title: 正則化と悪条件・不適切問題
+  summary: 正則化と悪条件・不適切問題の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-least-squares-qr-svd
+  - num-svd-low-rank-computation
+  - la-matrix-norms-condition-number
+  implementation_topic: num-regularization-ill-posed-problems
+  outcomes:
+  - 正則化、悪条件、不適切問題の定義と成立条件を説明できる
+  - 正則化と悪条件・不適切問題を小規模に計算・実装し検算できる
+- id: num-randomized-numerical-linear-algebra
+  course: '05'
+  unit: num-low-rank-inverse
+  order: 30
+  title: 乱択数値線形代数
+  summary: 乱択数値線形代数の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-svd-low-rank-computation
+  - prob-expectation-variance-moments
+  - dm-discrete-probability-indicators-randomized-algorithms
+  implementation_topic: num-randomized-numerical-linear-algebra
+  outcomes:
+  - 乱択数値線形代数の定義と成立条件を説明できる
+  - 乱択数値線形代数を小規模に計算・実装し検算できる
+- id: num-ode-euler-runge-kutta
+  course: '05'
+  unit: num-differential-equations-experiments
+  order: 10
+  title: 常微分方程式・Euler法・Runge–Kutta法
+  summary: 常微分方程式・Euler法・Runge–Kutta法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-derivatives-rates
+  - calc-integrals-fundamental-theorem
+  - num-convergence-orders-stopping
+  implementation_topic: num-ode-euler-runge-kutta
+  outcomes:
+  - 常微分方程式、Euler法、Runge–Kutta法の定義と成立条件を説明できる
+  - 常微分方程式・Euler法・Runge–Kutta法を小規模に計算・実装し検算できる
+- id: num-ode-stability-stiffness
+  course: '05'
+  unit: num-differential-equations-experiments
+  order: 20
+  title: ODEの安定性・硬さ・陰解法
+  summary: ODEの安定性・硬さ・陰解法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-ode-euler-runge-kutta
+  - num-errors-conditioning-stability
+  implementation_topic: num-ode-stability-stiffness
+  outcomes:
+  - ODEの安定性、硬さ、陰解法の定義と成立条件を説明できる
+  - ODEの安定性・硬さ・陰解法を小規模に計算・実装し検算できる
+- id: num-monte-carlo-methods
+  course: '05'
+  unit: num-differential-equations-experiments
+  order: 30
+  title: Monte Carlo数値計算法
+  summary: Monte Carlo数値計算法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-laws-large-numbers-central-limit-theorem
+  - num-numerical-integration-quadrature
+  - prep-numerical-checks-reproducibility
+  implementation_topic: num-monte-carlo-methods
+  outcomes:
+  - Monte、Carlo数値計算法の定義と成立条件を説明できる
+  - Monte Carlo数値計算法を小規模に計算・実装し検算できる
+- id: num-verification-benchmarking-reproducibility
+  course: '05'
+  unit: num-differential-equations-experiments
+  order: 40
+  title: 数値計算の検証・benchmark・再現性
+  summary: 数値計算の検証・benchmark・再現性の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-convergence-orders-stopping
+  - num-floating-point-rounding
+  - prep-numerical-checks-reproducibility
+  implementation_topic: num-verification-benchmarking-reproducibility
+  outcomes:
+  - 数値計算の検証、benchmark、再現性の定義と成立条件を説明できる
+  - 数値計算の検証・benchmark・再現性を小規模に計算・実装し検算できる
+- id: opt-problem-formulation-objectives-constraints
+  course: '06'
+  unit: opt-formulation-convexity
+  order: 10
+  title: 最適化問題の定式化
+  summary: 最適化問題の定式化の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-unconstrained-optimization
+  - calc-lagrange-multipliers
+  implementation_topic: opt-problem-formulation-objectives-constraints
+  outcomes:
+  - 最適化問題の定式化の定義と成立条件を説明できる
+  - 最適化問題の定式化を小規模に計算・実装し検算できる
+- id: opt-convex-sets-functions
+  course: '06'
+  unit: opt-formulation-convexity
+  order: 20
+  title: 凸集合と凸関数
+  summary: 凸集合と凸関数の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-problem-formulation-objectives-constraints
+  - la-span-subspaces
+  implementation_topic: opt-convex-sets-functions
+  outcomes:
+  - 凸集合、凸関数の定義と成立条件を説明できる
+  - 凸集合と凸関数を小規模に計算・実装し検算できる
+- id: opt-smoothness-strong-convexity
+  course: '06'
+  unit: opt-formulation-convexity
+  order: 30
+  title: 滑らかさと強凸性
+  summary: 滑らかさと強凸性の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-convex-sets-functions
+  - calc-hessian-second-order
+  implementation_topic: opt-smoothness-strong-convexity
+  outcomes:
+  - 滑らかさ、強凸性の定義と成立条件を説明できる
+  - 滑らかさと強凸性を小規模に計算・実装し検算できる
+- id: opt-optimality-conditions
+  course: '06'
+  unit: opt-formulation-convexity
+  order: 40
+  title: 最適性条件
+  summary: 最適性条件の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-smoothness-strong-convexity
+  implementation_topic: opt-optimality-conditions
+  outcomes:
+  - 最適性条件の定義と成立条件を説明できる
+  - 最適性条件を小規模に計算・実装し検算できる
+- id: opt-line-search-step-size
+  course: '06'
+  unit: opt-formulation-convexity
+  order: 50
+  title: line searchとstep size
+  summary: line searchとstep sizeの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-optimality-conditions
+  - num-convergence-orders-stopping
+  implementation_topic: opt-line-search-step-size
+  outcomes:
+  - line、search、step、sizeの定義と成立条件を説明できる
+  - line searchとstep sizeを小規模に計算・実装し検算できる
+- id: opt-gradient-descent-convergence
+  course: '06'
+  unit: opt-first-second-order
+  order: 10
+  title: 勾配降下法と収束
+  summary: 勾配降下法と収束の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-line-search-step-size
+  implementation_topic: opt-gradient-descent-convergence
+  outcomes:
+  - 勾配降下法、収束の定義と成立条件を説明できる
+  - 勾配降下法と収束を小規模に計算・実装し検算できる
+- id: opt-momentum-accelerated-gradient
+  course: '06'
+  unit: opt-first-second-order
+  order: 20
+  title: momentumと加速勾配法
+  summary: momentumと加速勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-gradient-descent-convergence
+  implementation_topic: opt-momentum-accelerated-gradient
+  outcomes:
+  - momentum、加速勾配法の定義と成立条件を説明できる
+  - momentumと加速勾配法を小規模に計算・実装し検算できる
+- id: opt-newton-quasi-newton
+  course: '06'
+  unit: opt-first-second-order
+  order: 30
+  title: Newton法と準Newton法
+  summary: Newton法と準Newton法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-gradient-descent-convergence
+  - calc-hessian-second-order
+  implementation_topic: opt-newton-quasi-newton
+  outcomes:
+  - Newton法、準Newton法の定義と成立条件を説明できる
+  - Newton法と準Newton法を小規模に計算・実装し検算できる
+- id: opt-trust-region-methods
+  course: '06'
+  unit: opt-first-second-order
+  order: 40
+  title: trust region法
+  summary: trust region法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-newton-quasi-newton
+  implementation_topic: opt-trust-region-methods
+  outcomes:
+  - trust、region法の定義と成立条件を説明できる
+  - trust region法を小規模に計算・実装し検算できる
+- id: opt-coordinate-conjugate-directions
+  course: '06'
+  unit: opt-first-second-order
+  order: 50
+  title: 座標降下法と共役方向
+  summary: 座標降下法と共役方向の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-gradient-descent-convergence
+  - num-iterative-linear-solvers
+  implementation_topic: opt-coordinate-conjugate-directions
+  outcomes:
+  - 座標降下法、共役方向の定義と成立条件を説明できる
+  - 座標降下法と共役方向を小規模に計算・実装し検算できる
+- id: opt-equality-constrained-kkt
+  course: '06'
+  unit: opt-constrained-duality
+  order: 10
+  title: 等式制約とKKT条件
+  summary: 等式制約とKKT条件の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-lagrange-multipliers
+  - opt-optimality-conditions
+  implementation_topic: opt-equality-constrained-kkt
+  outcomes:
+  - 等式制約、KKT条件の定義と成立条件を説明できる
+  - 等式制約とKKT条件を小規模に計算・実装し検算できる
+- id: opt-inequality-constraints-kkt
+  course: '06'
+  unit: opt-constrained-duality
+  order: 20
+  title: 不等式制約と相補性
+  summary: 不等式制約と相補性の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-equality-constrained-kkt
+  implementation_topic: opt-inequality-constraints-kkt
+  outcomes:
+  - 不等式制約、相補性の定義と成立条件を説明できる
+  - 不等式制約と相補性を小規模に計算・実装し検算できる
+- id: opt-projected-gradient
+  course: '06'
+  unit: opt-constrained-duality
+  order: 30
+  title: 射影勾配法
+  summary: 射影勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-convex-sets-functions
+  - orthogonal-projection
+  implementation_topic: opt-projected-gradient
+  outcomes:
+  - 射影勾配法の定義と成立条件を説明できる
+  - 射影勾配法を小規模に計算・実装し検算できる
+- id: opt-barrier-interior-point
+  course: '06'
+  unit: opt-constrained-duality
+  order: 40
+  title: barrier法と内点法
+  summary: barrier法と内点法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-inequality-constraints-kkt
+  - prep-exponents-logarithms
+  implementation_topic: opt-barrier-interior-point
+  outcomes:
+  - barrier法、内点法の定義と成立条件を説明できる
+  - barrier法と内点法を小規模に計算・実装し検算できる
+- id: opt-duality-dual-gradient
+  course: '06'
+  unit: opt-constrained-duality
+  order: 50
+  title: Lagrange双対とdual gradient
+  summary: Lagrange双対とdual gradientの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-inequality-constraints-kkt
+  implementation_topic: opt-duality-dual-gradient
+  outcomes:
+  - Lagrange双対、dual、gradientの定義と成立条件を説明できる
+  - Lagrange双対とdual gradientを小規模に計算・実装し検算できる
+- id: opt-proximal-gradient
+  course: '06'
+  unit: opt-constrained-duality
+  order: 60
+  title: 近接勾配法
+  summary: 近接勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-projected-gradient
+  - opt-convex-sets-functions
+  implementation_topic: opt-proximal-gradient
+  outcomes:
+  - 近接勾配法の定義と成立条件を説明できる
+  - 近接勾配法を小規模に計算・実装し検算できる
+- id: opt-stochastic-gradient
+  course: '06'
+  unit: opt-ml-large-scale
+  order: 10
+  title: 確率的勾配法
+  summary: 確率的勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-gradient-descent-convergence
+  - prob-expectation-variance-moments
+  implementation_topic: opt-stochastic-gradient
+  outcomes:
+  - 確率的勾配法の定義と成立条件を説明できる
+  - 確率的勾配法を小規模に計算・実装し検算できる
+- id: opt-adaptive-optimizers
+  course: '06'
+  unit: opt-ml-large-scale
+  order: 20
+  title: adaptive optimizer
+  summary: adaptive optimizerの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-stochastic-gradient
+  implementation_topic: opt-adaptive-optimizers
+  outcomes:
+  - adaptive、optimizerの定義と成立条件を説明できる
+  - adaptive optimizerを小規模に計算・実装し検算できる
+- id: opt-admm-splitting
+  course: '06'
+  unit: opt-ml-large-scale
+  order: 30
+  title: ADMMと分割法
+  summary: ADMMと分割法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-duality-dual-gradient
+  - opt-proximal-gradient
+  implementation_topic: opt-admm-splitting
+  outcomes:
+  - ADMM、分割法の定義と成立条件を説明できる
+  - ADMMと分割法を小規模に計算・実装し検算できる
+- id: opt-nonconvex-diagnostics-hyperparameters
+  course: '06'
+  unit: opt-ml-large-scale
+  order: 40
+  title: 非凸最適化の診断とhyperparameter
+  summary: 非凸最適化の診断とhyperparameterの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-adaptive-optimizers
+  - num-verification-benchmarking-reproducibility
+  implementation_topic: opt-nonconvex-diagnostics-hyperparameters
+  outcomes:
+  - 非凸最適化の診断、hyperparameterの定義と成立条件を説明できる
+  - 非凸最適化の診断とhyperparameterを小規模に計算・実装し検算できる
+- id: mat-data-matrices-centering-scaling
+  course: '07'
+  unit: mat-data-geometry
+  order: 10
+  title: データ行列・中心化・標準化
+  summary: データ行列・中心化・標準化の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-numpy-arrays-shapes
+  - stat-linear-regression-probabilistic-model
+  implementation_topic: mat-data-matrices-centering-scaling
+  outcomes:
+  - データ行列、中心化、標準化の定義と成立条件を説明できる
+  - データ行列・中心化・標準化を小規模に計算・実装し検算できる
+- id: mat-covariance-scatter-matrices
+  course: '07'
+  unit: mat-data-geometry
+  order: 20
+  title: 共分散行列とscatter matrix
+  summary: 共分散行列とscatter matrixの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-covariance-correlation
+  - la-symmetric-matrices-spectral-theorem
+  implementation_topic: mat-covariance-scatter-matrices
+  outcomes:
+  - 共分散行列、scatter、matrixの定義と成立条件を説明できる
+  - 共分散行列とscatter matrixを小規模に計算・実装し検算できる
+- id: mat-pca-geometry
+  course: '07'
+  unit: mat-data-geometry
+  order: 30
+  title: PCAの幾何学
+  summary: PCAの幾何学の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-covariance-scatter-matrices
+  - orthogonal-projection
+  implementation_topic: mat-pca-geometry
+  outcomes:
+  - PCAの幾何学の定義と成立条件を説明できる
+  - PCAの幾何学を小規模に計算・実装し検算できる
+- id: mat-pca-svd-computation
+  course: '07'
+  unit: mat-data-geometry
+  order: 40
+  title: PCAのSVD計算
+  summary: PCAのSVD計算の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-pca-geometry
+  - num-svd-low-rank-computation
+  implementation_topic: mat-pca-svd-computation
+  outcomes:
+  - PCAのSVD計算の定義と成立条件を説明できる
+  - PCAのSVD計算を小規模に計算・実装し検算できる
+- id: mat-whitening-mahalanobis
+  course: '07'
+  unit: mat-data-geometry
+  order: 50
+  title: whiteningとMahalanobis距離
+  summary: whiteningとMahalanobis距離の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-multivariate-normal-distribution
+  - la-quadratic-forms-positive-definite
+  implementation_topic: mat-whitening-mahalanobis
+  outcomes:
+  - whitening、Mahalanobis距離の定義と成立条件を説明できる
+  - whiteningとMahalanobis距離を小規模に計算・実装し検算できる
+- id: mat-ols-design-matrices
+  course: '07'
+  unit: mat-regression-estimation
+  order: 10
+  title: OLSとdesign matrix
+  summary: OLSとdesign matrixの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-least-squares-geometry
+  - stat-linear-regression-probabilistic-model
+  implementation_topic: mat-ols-design-matrices
+  outcomes:
+  - OLS、design、matrixの定義と成立条件を説明できる
+  - OLSとdesign matrixを小規模に計算・実装し検算できる
+- id: mat-wls-inverse-variance
+  course: '07'
+  unit: mat-regression-estimation
+  order: 20
+  title: WLSと逆分散重み
+  summary: WLSと逆分散重みの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-weighted-least-squares-introduction
+  - stat-linear-regression-probabilistic-model
+  implementation_topic: mat-wls-inverse-variance
+  outcomes:
+  - WLS、逆分散重みの定義と成立条件を説明できる
+  - WLSと逆分散重みを小規模に計算・実装し検算できる
+- id: mat-gls-correlated-errors
+  course: '07'
+  unit: mat-regression-estimation
+  order: 30
+  title: GLSと相関誤差
+  summary: GLSと相関誤差の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-wls-inverse-variance
+  - prob-multivariate-normal-distribution
+  implementation_topic: mat-gls-correlated-errors
+  outcomes:
+  - GLS、相関誤差の定義と成立条件を説明できる
+  - GLSと相関誤差を小規模に計算・実装し検算できる
+- id: mat-ridge-lasso-elastic-net
+  course: '07'
+  unit: mat-regression-estimation
+  order: 40
+  title: ridge・Lasso・Elastic Net
+  summary: ridge・Lasso・Elastic Netの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-regularization-ill-posed-problems
+  - opt-proximal-gradient
+  implementation_topic: mat-ridge-lasso-elastic-net
+  outcomes:
+  - ridge、Lasso、Elastic、Netの定義と成立条件を説明できる
+  - ridge・Lasso・Elastic Netを小規模に計算・実装し検算できる
+- id: mat-robust-regression-m-estimators
+  course: '07'
+  unit: mat-regression-estimation
+  order: 50
+  title: robust regressionとM推定
+  summary: robust regressionとM推定の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-estimators-bias-variance-mse
+  - opt-problem-formulation-objectives-constraints
+  implementation_topic: mat-robust-regression-m-estimators
+  outcomes:
+  - robust、regression、M推定の定義と成立条件を説明できる
+  - robust regressionとM推定を小規模に計算・実装し検算できる
+- id: mat-fourier-bases-dft
+  course: '07'
+  unit: mat-signal-latent
+  order: 10
+  title: Fourier基底とDFT
+  summary: Fourier基底とDFTの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-exponents-logarithms
+  - la-orthogonal-orthonormal-bases
+  implementation_topic: mat-fourier-bases-dft
+  outcomes:
+  - Fourier基底、DFTの定義と成立条件を説明できる
+  - Fourier基底とDFTを小規模に計算・実装し検算できる
+- id: mat-convolution-linear-systems
+  course: '07'
+  unit: mat-signal-latent
+  order: 20
+  title: 畳み込みと線形時不変系
+  summary: 畳み込みと線形時不変系の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-fourier-bases-dft
+  - la-matrices-data-linear-maps
+  implementation_topic: mat-convolution-linear-systems
+  outcomes:
+  - 畳み込み、線形時不変系の定義と成立条件を説明できる
+  - 畳み込みと線形時不変系を小規模に計算・実装し検算できる
+- id: mat-filtering-regularization
+  course: '07'
+  unit: mat-signal-latent
+  order: 30
+  title: filteringと正則化
+  summary: filteringと正則化の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-convolution-linear-systems
+  - num-regularization-ill-posed-problems
+  implementation_topic: mat-filtering-regularization
+  outcomes:
+  - filtering、正則化の定義と成立条件を説明できる
+  - filteringと正則化を小規模に計算・実装し検算できる
+- id: mat-nmf-nonnegative-factors
+  course: '07'
+  unit: mat-signal-latent
+  order: 40
+  title: 非負値行列因子分解
+  summary: 非負値行列因子分解の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-low-rank-approximation
+  - opt-projected-gradient
+  implementation_topic: mat-nmf-nonnegative-factors
+  outcomes:
+  - 非負値行列因子分解の定義と成立条件を説明できる
+  - 非負値行列因子分解を小規模に計算・実装し検算できる
+- id: mat-ica-independent-components
+  course: '07'
+  unit: mat-signal-latent
+  order: 50
+  title: 独立成分分析
+  summary: 独立成分分析の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-joint-marginal-conditional-distributions
+  - mat-whitening-mahalanobis
+  implementation_topic: mat-ica-independent-components
+  outcomes:
+  - 独立成分分析の定義と成立条件を説明できる
+  - 独立成分分析を小規模に計算・実装し検算できる
+- id: mat-cca-multiview
+  course: '07'
+  unit: mat-high-dimensional
+  order: 10
+  title: 正準相関分析
+  summary: 正準相関分析の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-covariance-correlation
+  - la-singular-value-decomposition
+  implementation_topic: mat-cca-multiview
+  outcomes:
+  - 正準相関分析の定義と成立条件を説明できる
+  - 正準相関分析を小規模に計算・実装し検算できる
+- id: mat-random-projections-jl
+  course: '07'
+  unit: mat-high-dimensional
+  order: 20
+  title: random projectionとJohnson–Lindenstrauss
+  summary: random projectionとJohnson–Lindenstraussの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-randomized-numerical-linear-algebra
+  - prob-laws-large-numbers-central-limit-theorem
+  implementation_topic: mat-random-projections-jl
+  outcomes:
+  - random、projection、Johnson–Lindenstraussの定義と成立条件を説明できる
+  - random projectionとJohnson–Lindenstraussを小規模に計算・実装し検算できる
+- id: mat-matrix-completion
+  course: '07'
+  unit: mat-high-dimensional
+  order: 30
+  title: matrix completion
+  summary: matrix completionの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-low-rank-approximation
+  - opt-proximal-gradient
+  implementation_topic: mat-matrix-completion
+  outcomes:
+  - matrix、completionの定義と成立条件を説明できる
+  - matrix completionを小規模に計算・実装し検算できる
+- id: mat-graph-spectral-methods
+  course: '07'
+  unit: mat-high-dimensional
+  order: 40
+  title: グラフspectral method
+  summary: グラフspectral methodの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-graphs-representations-degrees
+  - la-symmetric-matrices-spectral-theorem
+  implementation_topic: mat-graph-spectral-methods
+  outcomes:
+  - グラフspectral、methodの定義と成立条件を説明できる
+  - グラフspectral methodを小規模に計算・実装し検算できる
+- id: mat-tensors-multilinear-overview
+  course: '07'
+  unit: mat-high-dimensional
+  order: 50
+  title: tensorと多重線形構造
+  summary: tensorと多重線形構造の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prep-symbols-types-shapes
+  - la-singular-value-decomposition
+  implementation_topic: mat-tensors-multilinear-overview
+  outcomes:
+  - tensor、多重線形構造の定義と成立条件を説明できる
+  - tensorと多重線形構造を小規模に計算・実装し検算できる
+- id: ml-problem-formulation-data-splits
+  course: 08
+  unit: ml-foundations-supervised
+  order: 10
+  title: 機械学習問題の定式化とdata split
+  summary: 機械学習問題の定式化とdata splitの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-estimators-bias-variance-mse
+  - opt-problem-formulation-objectives-constraints
+  implementation_topic: ml-problem-formulation-data-splits
+  outcomes:
+  - 機械学習問題の定式化、data、splitの定義と成立条件を説明できる
+  - 機械学習問題の定式化とdata splitを小規模に計算・実装し検算できる
+- id: ml-linear-regression
+  course: 08
+  unit: ml-foundations-supervised
+  order: 20
+  title: 線形回帰
+  summary: 線形回帰の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-ols-design-matrices
+  - opt-gradient-descent-convergence
+  implementation_topic: ml-linear-regression
+  outcomes:
+  - 線形回帰の定義と成立条件を説明できる
+  - 線形回帰を小規模に計算・実装し検算できる
+- id: ml-logistic-regression
+  course: 08
+  unit: ml-foundations-supervised
+  order: 30
+  title: logistic回帰
+  summary: logistic回帰の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-likelihood-maximum-likelihood
+  - opt-convex-sets-functions
+  implementation_topic: ml-logistic-regression
+  outcomes:
+  - logistic回帰の定義と成立条件を説明できる
+  - logistic回帰を小規模に計算・実装し検算できる
+- id: ml-softmax-multiclass
+  course: 08
+  unit: ml-foundations-supervised
+  order: 40
+  title: softmaxと多クラス分類
+  summary: softmaxと多クラス分類の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-logistic-regression
+  - stat-entropy-cross-entropy-kl-divergence
+  implementation_topic: ml-softmax-multiclass
+  outcomes:
+  - softmax、多クラス分類の定義と成立条件を説明できる
+  - softmaxと多クラス分類を小規模に計算・実装し検算できる
+- id: ml-generative-classifiers-naive-bayes-lda
+  course: 08
+  unit: ml-foundations-supervised
+  order: 50
+  title: 生成的分類器・Naive Bayes・LDA
+  summary: 生成的分類器・Naive Bayes・LDAの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-bayes-theorem
+  - prob-multivariate-normal-distribution
+  implementation_topic: ml-generative-classifiers-naive-bayes-lda
+  outcomes:
+  - 生成的分類器、Naive、Bayes、LDAの定義と成立条件を説明できる
+  - 生成的分類器・Naive Bayes・LDAを小規模に計算・実装し検算できる
+- id: ml-knn-distance-methods
+  course: 08
+  unit: ml-models-kernels-ensembles
+  order: 10
+  title: k近傍法と距離学習
+  summary: k近傍法と距離学習の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-inner-products-norms-angles
+  - ml-problem-formulation-data-splits
+  implementation_topic: ml-knn-distance-methods
+  outcomes:
+  - k近傍法、距離学習の定義と成立条件を説明できる
+  - k近傍法と距離学習を小規模に計算・実装し検算できる
+- id: ml-decision-trees
+  course: 08
+  unit: ml-models-kernels-ensembles
+  order: 20
+  title: 決定木
+  summary: 決定木の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-entropy-cross-entropy-kl-divergence
+  - dm-algorithm-specifications-correctness
+  implementation_topic: ml-decision-trees
+  outcomes:
+  - 決定木の定義と成立条件を説明できる
+  - 決定木を小規模に計算・実装し検算できる
+- id: ml-ensembles-bagging-random-forests
+  course: 08
+  unit: ml-models-kernels-ensembles
+  order: 30
+  title: baggingとrandom forest
+  summary: baggingとrandom forestの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-decision-trees
+  - prob-expectation-variance-moments
+  implementation_topic: ml-ensembles-bagging-random-forests
+  outcomes:
+  - bagging、random、forestの定義と成立条件を説明できる
+  - baggingとrandom forestを小規模に計算・実装し検算できる
+- id: ml-boosting-gradient-boosting
+  course: 08
+  unit: ml-models-kernels-ensembles
+  order: 40
+  title: boostingとgradient boosting
+  summary: boostingとgradient boostingの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-decision-trees
+  - opt-gradient-descent-convergence
+  implementation_topic: ml-boosting-gradient-boosting
+  outcomes:
+  - boosting、gradientの定義と成立条件を説明できる
+  - boostingとgradient boostingを小規模に計算・実装し検算できる
+- id: ml-svm-margin-kernels
+  course: 08
+  unit: ml-models-kernels-ensembles
+  order: 50
+  title: SVM・margin・kernel
+  summary: SVM・margin・kernelの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-inequality-constraints-kkt
+  - la-inner-products-norms-angles
+  implementation_topic: ml-svm-margin-kernels
+  outcomes:
+  - SVM、margin、kernelの定義と成立条件を説明できる
+  - SVM・margin・kernelを小規模に計算・実装し検算できる
+- id: ml-kernel-methods-feature-maps
+  course: 08
+  unit: ml-models-kernels-ensembles
+  order: 60
+  title: kernel methodと特徴写像
+  summary: kernel methodと特徴写像の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-svm-margin-kernels
+  - la-quadratic-forms-positive-definite
+  implementation_topic: ml-kernel-methods-feature-maps
+  outcomes:
+  - kernel、method、特徴写像の定義と成立条件を説明できる
+  - kernel methodと特徴写像を小規模に計算・実装し検算できる
+- id: ml-clustering-kmeans-hierarchical
+  course: 08
+  unit: ml-unsupervised-representation
+  order: 10
+  title: k-meansと階層clustering
+  summary: k-meansと階層clusteringの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-inner-products-norms-angles
+  - opt-coordinate-conjugate-directions
+  implementation_topic: ml-clustering-kmeans-hierarchical
+  outcomes:
+  - k-means、階層clusteringの定義と成立条件を説明できる
+  - k-meansと階層clusteringを小規模に計算・実装し検算できる
+- id: ml-gmm-em
+  course: 08
+  unit: ml-unsupervised-representation
+  order: 20
+  title: Gaussian mixtureとEM
+  summary: Gaussian mixtureとEMの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-multivariate-normal-distribution
+  - stat-likelihood-maximum-likelihood
+  implementation_topic: ml-gmm-em
+  outcomes:
+  - Gaussian、mixture、EMの定義と成立条件を説明できる
+  - Gaussian mixtureとEMを小規模に計算・実装し検算できる
+- id: ml-dimensionality-reduction-pca-manifold
+  course: 08
+  unit: ml-unsupervised-representation
+  order: 30
+  title: 次元削減・PCA・manifold
+  summary: 次元削減・PCA・manifoldの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-pca-svd-computation
+  - ml-problem-formulation-data-splits
+  implementation_topic: ml-dimensionality-reduction-pca-manifold
+  outcomes:
+  - 次元削減、PCA、manifoldの定義と成立条件を説明できる
+  - 次元削減・PCA・manifoldを小規模に計算・実装し検算できる
+- id: ml-anomaly-detection
+  course: 08
+  unit: ml-unsupervised-representation
+  order: 40
+  title: 異常検知
+  summary: 異常検知の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-multivariate-normal-distribution
+  - ml-gmm-em
+  implementation_topic: ml-anomaly-detection
+  outcomes:
+  - 異常検知の定義と成立条件を説明できる
+  - 異常検知を小規模に計算・実装し検算できる
+- id: ml-feature-engineering-selection
+  course: 08
+  unit: ml-unsupervised-representation
+  order: 50
+  title: 特徴量設計と特徴選択
+  summary: 特徴量設計と特徴選択の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-data-matrices-centering-scaling
+  - mat-ridge-lasso-elastic-net
+  implementation_topic: ml-feature-engineering-selection
+  outcomes:
+  - 特徴量設計、特徴選択の定義と成立条件を説明できる
+  - 特徴量設計と特徴選択を小規模に計算・実装し検算できる
+- id: ml-bias-variance-regularization
+  course: 08
+  unit: ml-evaluation-deployment
+  order: 10
+  title: bias–varianceと正則化
+  summary: bias–varianceと正則化の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-estimators-bias-variance-mse
+  - ml-problem-formulation-data-splits
+  implementation_topic: ml-bias-variance-regularization
+  outcomes:
+  - bias–variance、正則化の定義と成立条件を説明できる
+  - bias–varianceと正則化を小規模に計算・実装し検算できる
+- id: ml-model-selection-cross-validation
+  course: 08
+  unit: ml-evaluation-deployment
+  order: 20
+  title: model selectionとcross-validation
+  summary: model selectionとcross-validationの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-bias-variance-regularization
+  - prob-laws-large-numbers-central-limit-theorem
+  implementation_topic: ml-model-selection-cross-validation
+  outcomes:
+  - model、selection、cross-validationの定義と成立条件を説明できる
+  - model selectionとcross-validationを小規模に計算・実装し検算できる
+- id: ml-metrics-calibration-imbalance
+  course: 08
+  unit: ml-evaluation-deployment
+  order: 30
+  title: 評価指標・calibration・class imbalance
+  summary: 評価指標・calibration・class imbalanceの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-hypothesis-testing
+  - ml-softmax-multiclass
+  implementation_topic: ml-metrics-calibration-imbalance
+  outcomes:
+  - 評価指標、calibration、class、imbalanceの定義と成立条件を説明できる
+  - 評価指標・calibration・class imbalanceを小規模に計算・実装し検算できる
+- id: ml-uncertainty-interpretability-monitoring
+  course: 08
+  unit: ml-evaluation-deployment
+  order: 40
+  title: 不確実性・解釈・監視
+  summary: 不確実性・解釈・監視の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-bayesian-inference-map
+  - ml-model-selection-cross-validation
+  implementation_topic: ml-uncertainty-interpretability-monitoring
+  outcomes:
+  - 不確実性、解釈、監視の定義と成立条件を説明できる
+  - 不確実性・解釈・監視を小規模に計算・実装し検算できる
+- id: dl-perceptron-mlp
+  course: 09
+  unit: dl-neural-foundations
+  order: 10
+  title: perceptronと多層network
+  summary: perceptronと多層networkの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-logistic-regression
+  - calc-multivariable-chain-rule
+  implementation_topic: dl-perceptron-mlp
+  outcomes:
+  - perceptron、多層networkの定義と成立条件を説明できる
+  - perceptronと多層networkを小規模に計算・実装し検算できる
+- id: dl-backprop-computation-graphs
+  course: 09
+  unit: dl-neural-foundations
+  order: 20
+  title: 誤差逆伝播と計算graph
+  summary: 誤差逆伝播と計算graphの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - calc-multivariable-chain-rule
+  - dm-directed-graphs-dags-topological-order
+  implementation_topic: dl-backprop-computation-graphs
+  outcomes:
+  - 誤差逆伝播、計算graphの定義と成立条件を説明できる
+  - 誤差逆伝播と計算graphを小規模に計算・実装し検算できる
+- id: dl-activation-loss-functions
+  course: 09
+  unit: dl-neural-foundations
+  order: 30
+  title: activation関数とloss
+  summary: activation関数とlossの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-entropy-cross-entropy-kl-divergence
+  - ml-softmax-multiclass
+  implementation_topic: dl-activation-loss-functions
+  outcomes:
+  - activation関数、lossの定義と成立条件を説明できる
+  - activation関数とlossを小規模に計算・実装し検算できる
+- id: dl-initialization-normalization
+  course: 09
+  unit: dl-neural-foundations
+  order: 40
+  title: 初期化とnormalization
+  summary: 初期化とnormalizationの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-expectation-variance-moments
+  - dl-backprop-computation-graphs
+  implementation_topic: dl-initialization-normalization
+  outcomes:
+  - 初期化、normalizationの定義と成立条件を説明できる
+  - 初期化とnormalizationを小規模に計算・実装し検算できる
+- id: dl-optimization-regularization
+  course: 09
+  unit: dl-neural-foundations
+  order: 50
+  title: 深層学習の最適化と正則化
+  summary: 深層学習の最適化と正則化の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-adaptive-optimizers
+  - ml-bias-variance-regularization
+  implementation_topic: dl-optimization-regularization
+  outcomes:
+  - 深層学習の最適化、正則化の定義と成立条件を説明できる
+  - 深層学習の最適化と正則化を小規模に計算・実装し検算できる
+- id: dl-cnn-convolution
+  course: 09
+  unit: dl-architectures
+  order: 10
+  title: CNNと畳み込み
+  summary: CNNと畳み込みの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-convolution-linear-systems
+  - dl-perceptron-mlp
+  implementation_topic: dl-cnn-convolution
+  outcomes:
+  - CNN、畳み込みの定義と成立条件を説明できる
+  - CNNと畳み込みを小規模に計算・実装し検算できる
+- id: dl-rnn-sequence-models
+  course: 09
+  unit: dl-architectures
+  order: 20
+  title: RNNと系列model
+  summary: RNNと系列modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-perceptron-mlp
+  - dm-recurrence-relations
+  implementation_topic: dl-rnn-sequence-models
+  outcomes:
+  - RNN、系列modelの定義と成立条件を説明できる
+  - RNNと系列modelを小規模に計算・実装し検算できる
+- id: dl-attention-mechanism
+  course: 09
+  unit: dl-architectures
+  order: 30
+  title: attention機構
+  summary: attention機構の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-matrix-multiplication
+  - ml-softmax-multiclass
+  implementation_topic: dl-attention-mechanism
+  outcomes:
+  - attention機構の定義と成立条件を説明できる
+  - attention機構を小規模に計算・実装し検算できる
+- id: dl-transformers
+  course: 09
+  unit: dl-architectures
+  order: 40
+  title: Transformer
+  summary: Transformerの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-attention-mechanism
+  - dl-initialization-normalization
+  implementation_topic: dl-transformers
+  outcomes:
+  - Transformerの定義と成立条件を説明できる
+  - Transformerを小規模に計算・実装し検算できる
+- id: dl-normalization-residuals
+  course: 09
+  unit: dl-architectures
+  order: 50
+  title: residual connectionとnormalization
+  summary: residual connectionとnormalizationの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-initialization-normalization
+  implementation_topic: dl-normalization-residuals
+  outcomes:
+  - residual、connection、normalizationの定義と成立条件を説明できる
+  - residual connectionとnormalizationを小規模に計算・実装し検算できる
+- id: dl-autoencoders-vae
+  course: 09
+  unit: dl-generative-representation
+  order: 10
+  title: autoencoderとVAE
+  summary: autoencoderとVAEの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-dimensionality-reduction-pca-manifold
+  - stat-bayesian-inference-map
+  implementation_topic: dl-autoencoders-vae
+  outcomes:
+  - autoencoder、VAEの定義と成立条件を説明できる
+  - autoencoderとVAEを小規模に計算・実装し検算できる
+- id: dl-gans-adversarial-training
+  course: 09
+  unit: dl-generative-representation
+  order: 20
+  title: GANとadversarial training
+  summary: GANとadversarial trainingの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-likelihood-maximum-likelihood
+  - opt-nonconvex-diagnostics-hyperparameters
+  implementation_topic: dl-gans-adversarial-training
+  outcomes:
+  - GAN、adversarial、trainingの定義と成立条件を説明できる
+  - GANとadversarial trainingを小規模に計算・実装し検算できる
+- id: dl-diffusion-score-models
+  course: 09
+  unit: dl-generative-representation
+  order: 30
+  title: diffusionとscore model
+  summary: diffusionとscore modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - prob-continuous-distributions
+  - num-ode-euler-runge-kutta
+  implementation_topic: dl-diffusion-score-models
+  outcomes:
+  - diffusion、score、modelの定義と成立条件を説明できる
+  - diffusionとscore modelを小規模に計算・実装し検算できる
+- id: dl-self-supervised-contrastive
+  course: 09
+  unit: dl-generative-representation
+  order: 40
+  title: 自己教師あり・contrastive学習
+  summary: 自己教師あり・contrastive学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-inner-products-norms-angles
+  - ml-feature-engineering-selection
+  implementation_topic: dl-self-supervised-contrastive
+  outcomes:
+  - 自己教師あり、contrastive学習の定義と成立条件を説明できる
+  - 自己教師あり・contrastive学習を小規模に計算・実装し検算できる
+- id: dl-embeddings-representation-learning
+  course: 09
+  unit: dl-generative-representation
+  order: 50
+  title: embeddingと表現学習
+  summary: embeddingと表現学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-low-rank-approximation
+  - dl-self-supervised-contrastive
+  implementation_topic: dl-embeddings-representation-learning
+  outcomes:
+  - embedding、表現学習の定義と成立条件を説明できる
+  - embeddingと表現学習を小規模に計算・実装し検算できる
+- id: dl-graph-neural-networks
+  course: 09
+  unit: dl-systems-evaluation
+  order: 10
+  title: graph neural network
+  summary: graph neural networkの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - mat-graph-spectral-methods
+  - dm-graphs-representations-degrees
+  implementation_topic: dl-graph-neural-networks
+  outcomes:
+  - graph、neural、networkの定義と成立条件を説明できる
+  - graph neural networkを小規模に計算・実装し検算できる
+- id: dl-multimodal-models
+  course: 09
+  unit: dl-systems-evaluation
+  order: 20
+  title: multimodal model
+  summary: multimodal modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-attention-mechanism
+  - dl-embeddings-representation-learning
+  implementation_topic: dl-multimodal-models
+  outcomes:
+  - multimodal、modelの定義と成立条件を説明できる
+  - multimodal modelを小規模に計算・実装し検算できる
+- id: dl-scaling-distributed-training
+  course: 09
+  unit: dl-systems-evaluation
+  order: 30
+  title: scalingと分散学習
+  summary: scalingと分散学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-verification-benchmarking-reproducibility
+  - opt-stochastic-gradient
+  implementation_topic: dl-scaling-distributed-training
+  outcomes:
+  - scaling、分散学習の定義と成立条件を説明できる
+  - scalingと分散学習を小規模に計算・実装し検算できる
+- id: dl-efficient-training-inference
+  course: 09
+  unit: dl-systems-evaluation
+  order: 40
+  title: 効率的学習と推論
+  summary: 効率的学習と推論の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-svd-low-rank-computation
+  - dl-scaling-distributed-training
+  implementation_topic: dl-efficient-training-inference
+  outcomes:
+  - 効率的学習、推論の定義と成立条件を説明できる
+  - 効率的学習と推論を小規模に計算・実装し検算できる
+- id: dl-evaluation-robustness-safety
+  course: 09
+  unit: dl-systems-evaluation
+  order: 50
+  title: 深層modelの評価・robustness・安全性
+  summary: 深層modelの評価・robustness・安全性の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-uncertainty-interpretability-monitoring
+  - stat-hypothesis-testing
+  implementation_topic: dl-evaluation-robustness-safety
+  outcomes:
+  - 深層modelの評価、robustness、安全性の定義と成立条件を説明できる
+  - 深層modelの評価・robustness・安全性を小規模に計算・実装し検算できる
+- id: frontier-foundation-model-paradigm
+  course: '10'
+  unit: frontier-foundation-models
+  order: 10
+  title: Foundation modelの設計原理
+  summary: Foundation modelの設計原理の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-transformers
+  - dl-scaling-distributed-training
+  implementation_topic: frontier-foundation-model-paradigm
+  outcomes:
+  - Foundation、modelの設計原理の定義と成立条件を説明できる
+  - Foundation modelの設計原理を小規模に計算・実装し検算できる
+- id: frontier-tokenization-embeddings-context
+  course: '10'
+  unit: frontier-foundation-models
+  order: 20
+  title: tokenization・embedding・context
+  summary: tokenization・embedding・contextの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-embeddings-representation-learning
+  - dl-transformers
+  implementation_topic: frontier-tokenization-embeddings-context
+  outcomes:
+  - tokenization、embedding、contextの定義と成立条件を説明できる
+  - tokenization・embedding・contextを小規模に計算・実装し検算できる
+- id: frontier-pretraining-scaling-laws
+  course: '10'
+  unit: frontier-foundation-models
+  order: 30
+  title: pretrainingとscaling law
+  summary: pretrainingとscaling lawの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - frontier-foundation-model-paradigm
+  - dl-scaling-distributed-training
+  implementation_topic: frontier-pretraining-scaling-laws
+  outcomes:
+  - pretraining、scaling、lawの定義と成立条件を説明できる
+  - pretrainingとscaling lawを小規模に計算・実装し検算できる
+- id: frontier-in-context-learning-prompting
+  course: '10'
+  unit: frontier-foundation-models
+  order: 40
+  title: in-context learningとprompt設計
+  summary: in-context learningとprompt設計の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - frontier-tokenization-embeddings-context
+  - ml-problem-formulation-data-splits
+  implementation_topic: frontier-in-context-learning-prompting
+  outcomes:
+  - in-context、learning、prompt設計の定義と成立条件を説明できる
+  - in-context learningとprompt設計を小規模に計算・実装し検算できる
+- id: frontier-parameter-efficient-finetuning
+  course: '10'
+  unit: frontier-foundation-models
+  order: 50
+  title: parameter-efficient fine-tuning
+  summary: parameter-efficient fine-tuningの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-efficient-training-inference
+  - opt-proximal-gradient
+  implementation_topic: frontier-parameter-efficient-finetuning
+  outcomes:
+  - parameter-efficient、fine-tuningの定義と成立条件を説明できる
+  - parameter-efficient fine-tuningを小規模に計算・実装し検算できる
+- id: frontier-retrieval-augmented-generation
+  course: '10'
+  unit: frontier-agents-retrieval
+  order: 10
+  title: Retrieval-Augmented Generation
+  summary: Retrieval-Augmented Generationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - frontier-foundation-model-paradigm
+  - ml-knn-distance-methods
+  implementation_topic: frontier-retrieval-augmented-generation
+  outcomes:
+  - Retrieval-Augmented、Generationの定義と成立条件を説明できる
+  - Retrieval-Augmented Generationを小規模に計算・実装し検算できる
+- id: frontier-vector-databases-search
+  course: '10'
+  unit: frontier-agents-retrieval
+  order: 20
+  title: vector searchとindex
+  summary: vector searchとindexの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - la-inner-products-norms-angles
+  - ml-knn-distance-methods
+  implementation_topic: frontier-vector-databases-search
+  outcomes:
+  - vector、search、indexの定義と成立条件を説明できる
+  - vector searchとindexを小規模に計算・実装し検算できる
+- id: frontier-tool-use-function-calling
+  course: '10'
+  unit: frontier-agents-retrieval
+  order: 30
+  title: tool useとfunction calling
+  summary: tool useとfunction callingの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dm-algorithm-specifications-correctness
+  - frontier-in-context-learning-prompting
+  implementation_topic: frontier-tool-use-function-calling
+  outcomes:
+  - tool、use、function、callingの定義と成立条件を説明できる
+  - tool useとfunction callingを小規模に計算・実装し検算できる
+- id: frontier-agents-planning-memory
+  course: '10'
+  unit: frontier-agents-retrieval
+  order: 40
+  title: agent・planning・memory
+  summary: agent・planning・memoryの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - frontier-tool-use-function-calling
+  - dm-directed-graphs-dags-topological-order
+  implementation_topic: frontier-agents-planning-memory
+  outcomes:
+  - agent、planning、memoryの定義と成立条件を説明できる
+  - agent・planning・memoryを小規模に計算・実装し検算できる
+- id: frontier-multi-agent-systems
+  course: '10'
+  unit: frontier-agents-retrieval
+  order: 50
+  title: multi-agent system
+  summary: multi-agent systemの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - frontier-agents-planning-memory
+  - dm-graphs-representations-degrees
+  implementation_topic: frontier-multi-agent-systems
+  outcomes:
+  - multi-agent、systemの定義と成立条件を説明できる
+  - multi-agent systemを小規模に計算・実装し検算できる
+- id: frontier-rlhf-preference-optimization
+  course: '10'
+  unit: frontier-alignment-evaluation
+  order: 10
+  title: RLHFとpreference optimization
+  summary: RLHFとpreference optimizationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - opt-stochastic-gradient
+  - ml-logistic-regression
+  implementation_topic: frontier-rlhf-preference-optimization
+  outcomes:
+  - RLHF、preference、optimizationの定義と成立条件を説明できる
+  - RLHFとpreference optimizationを小規模に計算・実装し検算できる
+- id: frontier-alignment-safety-policies
+  course: '10'
+  unit: frontier-alignment-evaluation
+  order: 20
+  title: alignment・安全policy・red teaming
+  summary: alignment・安全policy・red teamingの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-evaluation-robustness-safety
+  - frontier-rlhf-preference-optimization
+  implementation_topic: frontier-alignment-safety-policies
+  outcomes:
+  - alignment、安全policy、red、teamingの定義と成立条件を説明できる
+  - alignment・安全policy・red teamingを小規模に計算・実装し検算できる
+- id: frontier-foundation-model-evaluation
+  course: '10'
+  unit: frontier-alignment-evaluation
+  order: 30
+  title: Foundation model評価
+  summary: Foundation model評価の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-metrics-calibration-imbalance
+  - stat-hypothesis-testing
+  implementation_topic: frontier-foundation-model-evaluation
+  outcomes:
+  - Foundation、model評価の定義と成立条件を説明できる
+  - Foundation model評価を小規模に計算・実装し検算できる
+- id: frontier-interpretability-mechanistic
+  course: '10'
+  unit: frontier-alignment-evaluation
+  order: 40
+  title: mechanistic interpretability
+  summary: mechanistic interpretabilityの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-attention-mechanism
+  - la-linear-maps-change-of-basis
+  implementation_topic: frontier-interpretability-mechanistic
+  outcomes:
+  - mechanistic、interpretabilityの定義と成立条件を説明できる
+  - mechanistic interpretabilityを小規模に計算・実装し検算できる
+- id: frontier-uncertainty-calibration-abstention
+  course: '10'
+  unit: frontier-alignment-evaluation
+  order: 50
+  title: 不確実性・calibration・abstention
+  summary: 不確実性・calibration・abstentionの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-uncertainty-interpretability-monitoring
+  - stat-confidence-intervals
+  implementation_topic: frontier-uncertainty-calibration-abstention
+  outcomes:
+  - 不確実性、calibration、abstentionの定義と成立条件を説明できる
+  - 不確実性・calibration・abstentionを小規模に計算・実装し検算できる
+- id: frontier-quantization-sparsity-moe
+  course: '10'
+  unit: frontier-systems-science-governance
+  order: 10
+  title: quantization・sparsity・Mixture of Experts
+  summary: quantization・sparsity・Mixture of Expertsの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - dl-efficient-training-inference
+  - num-sparse-matrices-preconditioning
+  implementation_topic: frontier-quantization-sparsity-moe
+  outcomes:
+  - quantization、sparsity、Mixture、of、Expertsの定義と成立条件を説明できる
+  - quantization・sparsity・Mixture of Expertsを小規模に計算・実装し検算できる
+- id: frontier-long-context-memory
+  course: '10'
+  unit: frontier-systems-science-governance
+  order: 20
+  title: long contextとmemory
+  summary: long contextとmemoryの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - frontier-agents-planning-memory
+  - dl-attention-mechanism
+  implementation_topic: frontier-long-context-memory
+  outcomes:
+  - long、context、memoryの定義と成立条件を説明できる
+  - long contextとmemoryを小規模に計算・実装し検算できる
+- id: frontier-synthetic-data-data-curation
+  course: '10'
+  unit: frontier-systems-science-governance
+  order: 30
+  title: synthetic dataとdata curation
+  summary: synthetic dataとdata curationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - ml-problem-formulation-data-splits
+  - frontier-foundation-model-evaluation
+  implementation_topic: frontier-synthetic-data-data-curation
+  outcomes:
+  - synthetic、data、curationの定義と成立条件を説明できる
+  - synthetic dataとdata curationを小規模に計算・実装し検算できる
+- id: frontier-scientific-machine-learning
+  course: '10'
+  unit: frontier-systems-science-governance
+  order: 40
+  title: Scientific Machine Learning
+  summary: Scientific Machine Learningの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - num-ode-euler-runge-kutta
+  - dl-perceptron-mlp
+  implementation_topic: frontier-scientific-machine-learning
+  outcomes:
+  - Scientific、Machine、Learningの定義と成立条件を説明できる
+  - Scientific Machine Learningを小規模に計算・実装し検算できる
+- id: frontier-privacy-governance-research-practice
+  course: '10'
+  unit: frontier-systems-science-governance
+  order: 50
+  title: privacy・governance・研究実践
+  summary: privacy・governance・研究実践の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
+  status: draft
+  kind: required
+  prerequisites:
+  - stat-bayesian-inference-map
+  - frontier-alignment-safety-policies
+  implementation_topic: frontier-privacy-governance-research-practice
+  outcomes:
+  - privacy、governance、研究実践の定義と成立条件を説明できる
+  - privacy・governance・研究実践を小規模に計算・実装し検算できる

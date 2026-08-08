@@ -1,94 +1,141 @@
 version: 1
-
 courses:
-  - id: "00"
-    slug: preparation
-    title: 学習準備
-    layer: core
-    status: planned
-    prerequisites: []
-    mit_references: []
-  - id: "01"
-    slug: calculus
-    title: 微積分
-    layer: core
-    status: planned
-    prerequisites: ["00"]
-    mit_references:
-      - { code: 18.01SC, title: Single Variable Calculus }
-      - { code: 18.02SC, title: Multivariable Calculus }
-  - id: "02"
-    slug: linear-algebra
-    title: 線形代数
-    layer: core
-    status: active
-    prerequisites: ["00"]
-    mit_references:
-      - { code: 18.06SC, title: Linear Algebra }
-      - { code: "18.700", title: Linear Algebra }
-  - id: "03"
-    slug: probability-statistics
-    title: 確率統計
-    layer: core
-    status: active
-    prerequisites: ["00", "01", "02"]
-    mit_references:
-      - { code: "18.05", title: Introduction to Probability and Statistics }
-  - id: "04"
-    slug: discrete-mathematics
-    title: 離散数学と証明
-    layer: core
-    status: active
-    prerequisites: ["00"]
-    mit_references:
-      - { code: 6.042J, title: Mathematics for Computer Science }
-  - id: "05"
-    slug: numerical-methods
-    title: 数値計算
-    layer: applied
-    status: planned
-    prerequisites: ["01", "02"]
-    mit_references:
-      - { code: 18.335J, title: Introduction to Numerical Methods }
-      - { code: "18.330", title: Introduction to Numerical Analysis }
-  - id: "06"
-    slug: optimization
-    title: 最適化
-    layer: applied
-    status: planned
-    prerequisites: ["01", "02", "03", "05"]
-    mit_references:
-      - { code: 6.7220J, title: Nonlinear Optimization }
-  - id: "07"
-    slug: matrix-methods
-    title: データ解析の行列手法
-    layer: applied
-    status: planned
-    prerequisites: ["02", "03", "05"]
-    mit_references:
-      - { code: "18.065", title: Matrix Methods in Data Analysis, Signal Processing, and Machine Learning }
-  - id: "08"
-    slug: machine-learning
-    title: 機械学習
-    layer: applied
-    status: planned
-    prerequisites: ["00", "01", "02", "03", "05", "06"]
-    mit_references:
-      - { code: "6.3900", title: Introduction to Machine Learning }
-      - { code: "6.867", title: Machine Learning }
-  - id: "09"
-    slug: deep-learning
-    title: 深層学習
-    layer: applied
-    status: planned
-    prerequisites: ["01", "02", "03", "05", "06", "08"]
-    mit_references:
-      - { code: "6.7960", title: Deep Learning }
-      - { code: 6.S191, title: Introduction to Deep Learning }
-  - id: "10"
-    slug: frontier
-    title: Frontier
-    layer: frontier
-    status: planned
-    prerequisites: ["01", "02", "03", "05", "06", "08", "09"]
-    mit_references: []
+- id: '00'
+  slug: preparation
+  title: 学習準備
+  layer: core
+  status: active
+  prerequisites: []
+  mit_references: []
+- id: '01'
+  slug: calculus
+  title: 微積分
+  layer: core
+  status: active
+  prerequisites:
+  - '00'
+  mit_references:
+  - code: 18.01SC
+    title: Single Variable Calculus
+  - code: 18.02SC
+    title: Multivariable Calculus
+- id: '02'
+  slug: linear-algebra
+  title: 線形代数
+  layer: core
+  status: active
+  prerequisites:
+  - '00'
+  mit_references:
+  - code: 18.06SC
+    title: Linear Algebra
+  - code: '18.700'
+    title: Linear Algebra
+- id: '03'
+  slug: probability-statistics
+  title: 確率統計
+  layer: core
+  status: active
+  prerequisites:
+  - '00'
+  - '01'
+  - '02'
+  mit_references:
+  - code: '18.05'
+    title: Introduction to Probability and Statistics
+- id: '04'
+  slug: discrete-mathematics
+  title: 離散数学と証明
+  layer: core
+  status: active
+  prerequisites:
+  - '00'
+  mit_references:
+  - code: 6.042J
+    title: Mathematics for Computer Science
+- id: '05'
+  slug: numerical-methods
+  title: 数値計算
+  layer: applied
+  status: active
+  prerequisites:
+  - '01'
+  - '02'
+  mit_references:
+  - code: 18.335J
+    title: Introduction to Numerical Methods
+  - code: '18.330'
+    title: Introduction to Numerical Analysis
+- id: '06'
+  slug: optimization
+  title: 最適化
+  layer: applied
+  status: active
+  prerequisites:
+  - '01'
+  - '02'
+  - '03'
+  - '05'
+  mit_references:
+  - code: 6.7220J
+    title: Nonlinear Optimization
+- id: '07'
+  slug: matrix-methods
+  title: データ解析の行列手法
+  layer: applied
+  status: active
+  prerequisites:
+  - '02'
+  - '03'
+  - '05'
+  mit_references:
+  - code: '18.065'
+    title: Matrix Methods in Data Analysis, Signal Processing, and Machine Learning
+- id: 08
+  slug: machine-learning
+  title: 機械学習
+  layer: applied
+  status: active
+  prerequisites:
+  - '00'
+  - '01'
+  - '02'
+  - '03'
+  - '05'
+  - '06'
+  mit_references:
+  - code: '6.3900'
+    title: Introduction to Machine Learning
+  - code: '6.867'
+    title: Machine Learning
+- id: 09
+  slug: deep-learning
+  title: 深層学習
+  layer: applied
+  status: active
+  prerequisites:
+  - '01'
+  - '02'
+  - '03'
+  - '05'
+  - '06'
+  - 08
+  mit_references:
+  - code: '6.7960'
+    title: Deep Learning
+  - code: 6.S191
+    title: Introduction to Deep Learning
+- id: '10'
+  slug: frontier
+  title: Frontier
+  layer: frontier
+  status: active
+  prerequisites:
+  - '01'
+  - '02'
+  - '03'
+  - '05'
+  - '06'
+  - 08
+  - 09
+  mit_references: []

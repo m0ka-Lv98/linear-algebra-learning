@@ -1,38 +1,250 @@
 import { defineConfig } from 'vitepress'
 
-const topics = [
-  ['数式・記号・型・次元', 'prep-symbols-types-shapes'],
-  ['集合・関数・写像', 'prep-sets-functions-mappings'],
-  ['総和・積・添字', 'prep-sums-products-indices'],
-  ['指数と対数', 'prep-exponents-logarithms'],
-  ['定義・命題・証明の読み方', 'prep-definitions-theorems-proofs'],
-  ['Pythonの式・変数・関数', 'prep-python-expressions-functions'],
-  ['NumPy配列・shape・indexing', 'prep-numpy-arrays-shapes'],
-  ['数値検算と再現性', 'prep-numerical-checks-reproducibility']
-]
-const calculusSingle = [
-  ['関数・極限・連続', 'calc-functions-limits-continuity'], ['微分と変化率', 'calc-derivatives-rates'], ['微分法則と一変数の連鎖律', 'calc-differentiation-rules-chain-rule'], ['一変数の最適化', 'calc-one-variable-optimization'], ['積分と微積分学の基本定理', 'calc-integrals-fundamental-theorem'], ['Taylor展開と局所近似', 'calc-taylor-approximation']
-]
-const calculusMulti = [
-  ['多変数関数と偏微分', 'calc-multivariable-functions-partial-derivatives'], ['勾配と方向微分', 'calc-gradient-directional-derivative'], ['全微分とJacobian', 'calc-total-derivative-jacobian'], ['Hessianと二次近似', 'calc-hessian-second-order'], ['多変数の連鎖律', 'calc-multivariable-chain-rule'], ['多変数の制約なし最適化', 'calc-unconstrained-optimization'], ['Lagrange乗数法', 'calc-lagrange-multipliers']
-]
-const linearAlgebra = [["ベクトルと線形結合","la-vectors-linear-combinations"],["行列をデータと線形写像として見る","la-matrices-data-linear-maps"],["行列積","la-matrix-multiplication"],["連立一次方程式とガウス消去法","la-linear-systems-elimination"],["可逆性と逆行列","la-invertibility-inverse-matrices"],["LU分解","la-lu-factorization"],["spanと部分空間","la-span-subspaces"],["列空間と零空間","la-column-space-null-space"],["線形独立と線形従属","la-linear-independence"],["基底・座標・次元","la-basis-coordinates-dimension"],["階数とrank-nullity","la-rank-rank-nullity"],["線形写像と基底変換","la-linear-maps-change-of-basis"],["内積・ノルム・角度","la-inner-products-norms-angles"],["直交基底と正規直交基底","la-orthogonal-orthonormal-bases"],["直交射影","orthogonal-projection"],["Gram–Schmidt法とQR分解","la-gram-schmidt-qr"],["最小二乗法の幾何学","la-least-squares-geometry"],["最小二乗法の計算と擬似逆行列","la-least-squares-computation-pseudoinverse"],["重み付き最小二乗法の導入","la-weighted-least-squares-introduction"],["行列式・体積・可逆性","la-determinants-volume-invertibility"],["固有値と固有ベクトル","la-eigenvalues-eigenvectors"],["対角化と行列の累乗","la-diagonalization-matrix-powers"],["対称行列とスペクトル定理","la-symmetric-matrices-spectral-theorem"],["二次形式と正定値行列","la-quadratic-forms-positive-definite"],["Cholesky分解","la-cholesky-factorization"],["特異値分解","la-singular-value-decomposition"],["擬似逆行列とrank不足の連立方程式","la-pseudoinverse-rank-deficient-systems"],["低ランク近似","la-low-rank-approximation"],["行列ノルムと条件数","la-matrix-norms-condition-number"]]
-const probability = [["数え上げ・標本空間・事象","prob-counting-sample-spaces"],["確率の公理と事象の演算","prob-axioms-event-operations"],["条件付き確率と独立","prob-conditional-probability-independence"],["Bayesの定理","prob-bayes-theorem"],["確率変数・CDF・PMF・PDF","prob-random-variables-cdf-pmf-pdf"],["期待値・分散・モーメント","prob-expectation-variance-moments"],["同時分布・周辺分布・条件付き分布","prob-joint-marginal-conditional-distributions"],["共分散と相関","prob-covariance-correlation"],["主要な離散分布","prob-discrete-distributions"],["主要な連続分布","prob-continuous-distributions"],["確率変数の変換と和","prob-transformations-sums-random-variables"],["大数の法則と中心極限定理","prob-laws-large-numbers-central-limit-theorem"],["多変量正規分布","prob-multivariate-normal-distribution"],["推定量・バイアス・分散・MSE","stat-estimators-bias-variance-mse"],["尤度と最尤推定","stat-likelihood-maximum-likelihood"],["Bayesian推論とMAP推定","stat-bayesian-inference-map"],["信頼区間","stat-confidence-intervals"],["仮説検定","stat-hypothesis-testing"],["線形回帰の確率モデル","stat-linear-regression-probabilistic-model"],["エントロピー・交差エントロピー・KLダイバージェンス","stat-entropy-cross-entropy-kl-divergence"]]
-const discreteMath = [["命題・論理演算・真理値表","dm-propositions-connectives-truth-tables"],["述語・量化記号・否定","dm-predicates-quantifiers-negation"],["含意・同値・必要十分条件","dm-implication-equivalence-conditions"],["直接証明・対偶・背理法・場合分け","dm-proof-methods"],["数学的帰納法・強い帰納法・整列原理","dm-induction-well-ordering"],["関係・同値関係・半順序","dm-relations-equivalence-partial-orders"],["整除性と合同算術","dm-divisibility-modular-arithmetic"],["加法原理・乗法原理・鳩の巣原理","dm-counting-principles-pigeonhole"],["順列・組合せ・二項係数","dm-permutations-combinations-binomial"],["包含排除原理と二重数え上げ","dm-inclusion-exclusion-double-counting"],["アルゴリズムの仕様と正しさ","dm-algorithm-specifications-correctness"],["ループ不変量と停止性","dm-loop-invariants-termination"],["漸近記法と増加率","dm-asymptotic-notation-growth-rates"],["漸化式","dm-recurrence-relations"],["分割統治法とMaster theorem","dm-divide-conquer-master-theorem"],["グラフ・表現・次数","dm-graphs-representations-degrees"],["道・閉路・連結性","dm-paths-cycles-connectivity"],["木と全域木","dm-trees-spanning-trees"],["有向グラフ・DAG・トポロジカル順序","dm-directed-graphs-dags-topological-order"],["離散確率・指示変数・乱択アルゴリズム","dm-discrete-probability-indicators-randomized-algorithms"]]
-const items = (prefix: string) => topics.map(([text, id]) => ({ text, link: `/${prefix}/${id}` }))
+const course00 = [
+  ["数式・記号・型・次元", "prep-symbols-types-shapes"],
+  ["集合・関数・写像", "prep-sets-functions-mappings"],
+  ["総和・積・添字", "prep-sums-products-indices"],
+  ["指数と対数", "prep-exponents-logarithms"],
+  ["定義・命題・証明の読み方", "prep-definitions-theorems-proofs"],
+  ["Pythonの式・変数・関数", "prep-python-expressions-functions"],
+  ["NumPy配列・shape・indexing", "prep-numpy-arrays-shapes"],
+  ["数値検算と再現性", "prep-numerical-checks-reproducibility"]
+] as const
+const course01 = [
+  ["関数・極限・連続", "calc-functions-limits-continuity"],
+  ["微分と変化率", "calc-derivatives-rates"],
+  ["微分法則と一変数の連鎖律", "calc-differentiation-rules-chain-rule"],
+  ["一変数の最適化", "calc-one-variable-optimization"],
+  ["積分と微積分学の基本定理", "calc-integrals-fundamental-theorem"],
+  ["Taylor展開と局所近似", "calc-taylor-approximation"],
+  ["多変数関数と偏微分", "calc-multivariable-functions-partial-derivatives"],
+  ["勾配と方向微分", "calc-gradient-directional-derivative"],
+  ["全微分とJacobian", "calc-total-derivative-jacobian"],
+  ["Hessianと二次近似", "calc-hessian-second-order"],
+  ["多変数の連鎖律", "calc-multivariable-chain-rule"],
+  ["多変数の制約なし最適化", "calc-unconstrained-optimization"],
+  ["Lagrange乗数法", "calc-lagrange-multipliers"]
+] as const
+const course02 = [
+  ["ベクトルと線形結合", "la-vectors-linear-combinations"],
+  ["行列をデータと線形写像として見る", "la-matrices-data-linear-maps"],
+  ["行列積", "la-matrix-multiplication"],
+  ["連立一次方程式とガウス消去法", "la-linear-systems-elimination"],
+  ["可逆性と逆行列", "la-invertibility-inverse-matrices"],
+  ["LU分解", "la-lu-factorization"],
+  ["spanと部分空間", "la-span-subspaces"],
+  ["列空間と零空間", "la-column-space-null-space"],
+  ["線形独立と線形従属", "la-linear-independence"],
+  ["基底・座標・次元", "la-basis-coordinates-dimension"],
+  ["階数とrank-nullity", "la-rank-rank-nullity"],
+  ["線形写像と基底変換", "la-linear-maps-change-of-basis"],
+  ["内積・ノルム・角度", "la-inner-products-norms-angles"],
+  ["直交基底と正規直交基底", "la-orthogonal-orthonormal-bases"],
+  ["直交射影", "orthogonal-projection"],
+  ["Gram–Schmidt法とQR分解", "la-gram-schmidt-qr"],
+  ["最小二乗法の幾何学", "la-least-squares-geometry"],
+  ["最小二乗法の計算と擬似逆行列", "la-least-squares-computation-pseudoinverse"],
+  ["重み付き最小二乗法の導入", "la-weighted-least-squares-introduction"],
+  ["行列式・体積・可逆性", "la-determinants-volume-invertibility"],
+  ["固有値と固有ベクトル", "la-eigenvalues-eigenvectors"],
+  ["対角化と行列の累乗", "la-diagonalization-matrix-powers"],
+  ["対称行列とスペクトル定理", "la-symmetric-matrices-spectral-theorem"],
+  ["二次形式と正定値行列", "la-quadratic-forms-positive-definite"],
+  ["Cholesky分解", "la-cholesky-factorization"],
+  ["特異値分解", "la-singular-value-decomposition"],
+  ["擬似逆行列とrank不足の連立方程式", "la-pseudoinverse-rank-deficient-systems"],
+  ["低ランク近似", "la-low-rank-approximation"],
+  ["行列ノルムと条件数", "la-matrix-norms-condition-number"]
+] as const
+const course03 = [
+  ["数え上げ・標本空間・事象", "prob-counting-sample-spaces"],
+  ["確率の公理と事象の演算", "prob-axioms-event-operations"],
+  ["条件付き確率と独立", "prob-conditional-probability-independence"],
+  ["Bayesの定理", "prob-bayes-theorem"],
+  ["確率変数・CDF・PMF・PDF", "prob-random-variables-cdf-pmf-pdf"],
+  ["期待値・分散・モーメント", "prob-expectation-variance-moments"],
+  ["同時分布・周辺分布・条件付き分布", "prob-joint-marginal-conditional-distributions"],
+  ["共分散と相関", "prob-covariance-correlation"],
+  ["主要な離散分布", "prob-discrete-distributions"],
+  ["主要な連続分布", "prob-continuous-distributions"],
+  ["確率変数の変換と和", "prob-transformations-sums-random-variables"],
+  ["大数の法則と中心極限定理", "prob-laws-large-numbers-central-limit-theorem"],
+  ["多変量正規分布", "prob-multivariate-normal-distribution"],
+  ["推定量・バイアス・分散・MSE", "stat-estimators-bias-variance-mse"],
+  ["尤度と最尤推定", "stat-likelihood-maximum-likelihood"],
+  ["Bayesian推論とMAP推定", "stat-bayesian-inference-map"],
+  ["信頼区間", "stat-confidence-intervals"],
+  ["仮説検定", "stat-hypothesis-testing"],
+  ["線形回帰の確率モデル", "stat-linear-regression-probabilistic-model"],
+  ["エントロピー・交差エントロピー・KLダイバージェンス", "stat-entropy-cross-entropy-kl-divergence"]
+] as const
+const course04 = [
+  ["命題・論理演算・真理値表", "dm-propositions-connectives-truth-tables"],
+  ["述語・量化記号・否定", "dm-predicates-quantifiers-negation"],
+  ["含意・同値・必要十分条件", "dm-implication-equivalence-conditions"],
+  ["直接証明・対偶・背理法・場合分け", "dm-proof-methods"],
+  ["数学的帰納法・強い帰納法・整列原理", "dm-induction-well-ordering"],
+  ["関係・同値関係・半順序", "dm-relations-equivalence-partial-orders"],
+  ["整除性と合同算術", "dm-divisibility-modular-arithmetic"],
+  ["加法原理・乗法原理・鳩の巣原理", "dm-counting-principles-pigeonhole"],
+  ["順列・組合せ・二項係数", "dm-permutations-combinations-binomial"],
+  ["包含排除原理と二重数え上げ", "dm-inclusion-exclusion-double-counting"],
+  ["アルゴリズムの仕様と正しさ", "dm-algorithm-specifications-correctness"],
+  ["ループ不変量と停止性", "dm-loop-invariants-termination"],
+  ["漸近記法と増加率", "dm-asymptotic-notation-growth-rates"],
+  ["漸化式", "dm-recurrence-relations"],
+  ["分割統治法とMaster theorem", "dm-divide-conquer-master-theorem"],
+  ["グラフ・表現・次数", "dm-graphs-representations-degrees"],
+  ["道・閉路・連結性", "dm-paths-cycles-connectivity"],
+  ["木と全域木", "dm-trees-spanning-trees"],
+  ["有向グラフ・DAG・トポロジカル順序", "dm-directed-graphs-dags-topological-order"],
+  ["離散確率・指示変数・乱択アルゴリズム", "dm-discrete-probability-indicators-randomized-algorithms"]
+] as const
+const course05 = [
+  ["浮動小数点数と丸め", "num-floating-point-rounding"],
+  ["誤差・条件数・数値安定性", "num-errors-conditioning-stability"],
+  ["収束次数と停止条件", "num-convergence-orders-stopping"],
+  ["非線形方程式の求根法", "num-root-finding"],
+  ["多項式補間", "num-polynomial-interpolation"],
+  ["splineと区分的近似", "num-splines-piecewise-approximation"],
+  ["数値微分", "num-numerical-differentiation"],
+  ["数値積分と求積法", "num-numerical-integration-quadrature"],
+  ["連立方程式の直接法とpivoting", "num-direct-solvers-pivoting"],
+  ["連立方程式の反復法", "num-iterative-linear-solvers"],
+  ["疎行列と前処理", "num-sparse-matrices-preconditioning"],
+  ["最小二乗法の数値解法", "num-least-squares-qr-svd"],
+  ["固有値計算・べき乗法・QR法", "num-eigenvalue-power-qr"],
+  ["SVDと低ランク計算", "num-svd-low-rank-computation"],
+  ["正則化と悪条件・不適切問題", "num-regularization-ill-posed-problems"],
+  ["乱択数値線形代数", "num-randomized-numerical-linear-algebra"],
+  ["常微分方程式・Euler法・Runge–Kutta法", "num-ode-euler-runge-kutta"],
+  ["ODEの安定性・硬さ・陰解法", "num-ode-stability-stiffness"],
+  ["Monte Carlo数値計算法", "num-monte-carlo-methods"],
+  ["数値計算の検証・benchmark・再現性", "num-verification-benchmarking-reproducibility"]
+] as const
+const course06 = [
+  ["最適化問題の定式化", "opt-problem-formulation-objectives-constraints"],
+  ["凸集合と凸関数", "opt-convex-sets-functions"],
+  ["滑らかさと強凸性", "opt-smoothness-strong-convexity"],
+  ["最適性条件", "opt-optimality-conditions"],
+  ["line searchとstep size", "opt-line-search-step-size"],
+  ["勾配降下法と収束", "opt-gradient-descent-convergence"],
+  ["momentumと加速勾配法", "opt-momentum-accelerated-gradient"],
+  ["Newton法と準Newton法", "opt-newton-quasi-newton"],
+  ["trust region法", "opt-trust-region-methods"],
+  ["座標降下法と共役方向", "opt-coordinate-conjugate-directions"],
+  ["等式制約とKKT条件", "opt-equality-constrained-kkt"],
+  ["不等式制約と相補性", "opt-inequality-constraints-kkt"],
+  ["射影勾配法", "opt-projected-gradient"],
+  ["barrier法と内点法", "opt-barrier-interior-point"],
+  ["Lagrange双対とdual gradient", "opt-duality-dual-gradient"],
+  ["近接勾配法", "opt-proximal-gradient"],
+  ["確率的勾配法", "opt-stochastic-gradient"],
+  ["adaptive optimizer", "opt-adaptive-optimizers"],
+  ["ADMMと分割法", "opt-admm-splitting"],
+  ["非凸最適化の診断とhyperparameter", "opt-nonconvex-diagnostics-hyperparameters"]
+] as const
+const course07 = [
+  ["データ行列・中心化・標準化", "mat-data-matrices-centering-scaling"],
+  ["共分散行列とscatter matrix", "mat-covariance-scatter-matrices"],
+  ["PCAの幾何学", "mat-pca-geometry"],
+  ["PCAのSVD計算", "mat-pca-svd-computation"],
+  ["whiteningとMahalanobis距離", "mat-whitening-mahalanobis"],
+  ["OLSとdesign matrix", "mat-ols-design-matrices"],
+  ["WLSと逆分散重み", "mat-wls-inverse-variance"],
+  ["GLSと相関誤差", "mat-gls-correlated-errors"],
+  ["ridge・Lasso・Elastic Net", "mat-ridge-lasso-elastic-net"],
+  ["robust regressionとM推定", "mat-robust-regression-m-estimators"],
+  ["Fourier基底とDFT", "mat-fourier-bases-dft"],
+  ["畳み込みと線形時不変系", "mat-convolution-linear-systems"],
+  ["filteringと正則化", "mat-filtering-regularization"],
+  ["非負値行列因子分解", "mat-nmf-nonnegative-factors"],
+  ["独立成分分析", "mat-ica-independent-components"],
+  ["正準相関分析", "mat-cca-multiview"],
+  ["random projectionとJohnson–Lindenstrauss", "mat-random-projections-jl"],
+  ["matrix completion", "mat-matrix-completion"],
+  ["グラフspectral method", "mat-graph-spectral-methods"],
+  ["tensorと多重線形構造", "mat-tensors-multilinear-overview"]
+] as const
+const course08 = [
+  ["機械学習問題の定式化とdata split", "ml-problem-formulation-data-splits"],
+  ["線形回帰", "ml-linear-regression"],
+  ["logistic回帰", "ml-logistic-regression"],
+  ["softmaxと多クラス分類", "ml-softmax-multiclass"],
+  ["生成的分類器・Naive Bayes・LDA", "ml-generative-classifiers-naive-bayes-lda"],
+  ["k近傍法と距離学習", "ml-knn-distance-methods"],
+  ["決定木", "ml-decision-trees"],
+  ["baggingとrandom forest", "ml-ensembles-bagging-random-forests"],
+  ["boostingとgradient boosting", "ml-boosting-gradient-boosting"],
+  ["SVM・margin・kernel", "ml-svm-margin-kernels"],
+  ["kernel methodと特徴写像", "ml-kernel-methods-feature-maps"],
+  ["k-meansと階層clustering", "ml-clustering-kmeans-hierarchical"],
+  ["Gaussian mixtureとEM", "ml-gmm-em"],
+  ["次元削減・PCA・manifold", "ml-dimensionality-reduction-pca-manifold"],
+  ["異常検知", "ml-anomaly-detection"],
+  ["特徴量設計と特徴選択", "ml-feature-engineering-selection"],
+  ["bias–varianceと正則化", "ml-bias-variance-regularization"],
+  ["model selectionとcross-validation", "ml-model-selection-cross-validation"],
+  ["評価指標・calibration・class imbalance", "ml-metrics-calibration-imbalance"],
+  ["不確実性・解釈・監視", "ml-uncertainty-interpretability-monitoring"]
+] as const
+const course09 = [
+  ["perceptronと多層network", "dl-perceptron-mlp"],
+  ["誤差逆伝播と計算graph", "dl-backprop-computation-graphs"],
+  ["activation関数とloss", "dl-activation-loss-functions"],
+  ["初期化とnormalization", "dl-initialization-normalization"],
+  ["深層学習の最適化と正則化", "dl-optimization-regularization"],
+  ["CNNと畳み込み", "dl-cnn-convolution"],
+  ["RNNと系列model", "dl-rnn-sequence-models"],
+  ["attention機構", "dl-attention-mechanism"],
+  ["Transformer", "dl-transformers"],
+  ["residual connectionとnormalization", "dl-normalization-residuals"],
+  ["autoencoderとVAE", "dl-autoencoders-vae"],
+  ["GANとadversarial training", "dl-gans-adversarial-training"],
+  ["diffusionとscore model", "dl-diffusion-score-models"],
+  ["自己教師あり・contrastive学習", "dl-self-supervised-contrastive"],
+  ["embeddingと表現学習", "dl-embeddings-representation-learning"],
+  ["graph neural network", "dl-graph-neural-networks"],
+  ["multimodal model", "dl-multimodal-models"],
+  ["scalingと分散学習", "dl-scaling-distributed-training"],
+  ["効率的学習と推論", "dl-efficient-training-inference"],
+  ["深層modelの評価・robustness・安全性", "dl-evaluation-robustness-safety"]
+] as const
+const course10 = [
+  ["Foundation modelの設計原理", "frontier-foundation-model-paradigm"],
+  ["tokenization・embedding・context", "frontier-tokenization-embeddings-context"],
+  ["pretrainingとscaling law", "frontier-pretraining-scaling-laws"],
+  ["in-context learningとprompt設計", "frontier-in-context-learning-prompting"],
+  ["parameter-efficient fine-tuning", "frontier-parameter-efficient-finetuning"],
+  ["Retrieval-Augmented Generation", "frontier-retrieval-augmented-generation"],
+  ["vector searchとindex", "frontier-vector-databases-search"],
+  ["tool useとfunction calling", "frontier-tool-use-function-calling"],
+  ["agent・planning・memory", "frontier-agents-planning-memory"],
+  ["multi-agent system", "frontier-multi-agent-systems"],
+  ["RLHFとpreference optimization", "frontier-rlhf-preference-optimization"],
+  ["alignment・安全policy・red teaming", "frontier-alignment-safety-policies"],
+  ["Foundation model評価", "frontier-foundation-model-evaluation"],
+  ["mechanistic interpretability", "frontier-interpretability-mechanistic"],
+  ["不確実性・calibration・abstention", "frontier-uncertainty-calibration-abstention"],
+  ["quantization・sparsity・Mixture of Experts", "frontier-quantization-sparsity-moe"],
+  ["long contextとmemory", "frontier-long-context-memory"],
+  ["synthetic dataとdata curation", "frontier-synthetic-data-data-curation"],
+  ["Scientific Machine Learning", "frontier-scientific-machine-learning"],
+  ["privacy・governance・研究実践", "frontier-privacy-governance-research-practice"]
+] as const
 
 export default defineConfig({
-  title: '線形代数学習ポータル',
-  description: '線形代数からWLSM、数値線形代数、機械学習へ',
+  title: '数学・データ解析・AI学習ポータル',
+  description: '基礎数学から数値計算、最適化、機械学習、深層学習、Frontierへ',
   base: process.env.BASE_PATH ?? '/',
   cleanUrls: true,
   ignoreDeadLinks: [/^\/(slides|textbook|exercises)\//],
   themeConfig: {
-    nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }, { text: '用語集', link: '/glossary/' }],
+    nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }],
     sidebar: {
-      '/courses/': [{ text: 'Course 00：学習準備', items: items('courses/foundation') }, { text: 'Course 01：微積分 / 一変数', items: calculusSingle.map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: 'Course 01：微積分 / 多変数', items: calculusMulti.map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: 'Course 02：線形代数', items: [{ text: 'ベクトル・行列・連立一次方程式', items: linearAlgebra.slice(0, 6).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: 'ベクトル空間と線形写像', items: linearAlgebra.slice(6, 12).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '直交・射影・最小二乗法', items: linearAlgebra.slice(12, 19).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '固有値・対称行列・正定値行列', items: linearAlgebra.slice(19, 25).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '特異値分解と低ランク構造', items: linearAlgebra.slice(25).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 03：確率統計', items: [{ text: '確率の基礎', items: probability.slice(0, 5).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '確率変数・分布・多変量確率', items: probability.slice(5, 13).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '統計的推測', items: probability.slice(13, 18).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '回帰モデルと情報量', items: probability.slice(18).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 04：離散数学と証明', items: [{ text: '論理と証明', items: discreteMath.slice(0, 5).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: '離散構造と数え上げ', items: discreteMath.slice(5, 10).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: 'アルゴリズム・不変量・計算量', items: discreteMath.slice(10, 15).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: 'グラフと離散確率', items: discreteMath.slice(15).map(([text, id]) => ({ text, link: `/courses/foundation/${id}` })) }] }],
-      '/textbook/': [{ text: 'Course 00 教科書', items: items('textbook') }, { text: 'Course 01 教科書', items: [...calculusSingle, ...calculusMulti].map(([text, id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 02 教科書', items: linearAlgebra.map(([text, id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 03 教科書', items: probability.map(([text, id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 04 教科書', items: discreteMath.map(([text, id]) => ({ text, link: `/textbook/${id}` })) }],
-      '/exercises/': [{ text: 'Course 00 演習', items: items('exercises') }, { text: 'Course 01 演習', items: [...calculusSingle, ...calculusMulti].map(([text, id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 02 演習', items: linearAlgebra.map(([text, id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 03 演習', items: probability.map(([text, id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 04 演習', items: discreteMath.map(([text, id]) => ({ text, link: `/exercises/${id}` })) }]
+      '/courses/': [{ text: 'Course 00：学習準備', items: [{ text: "数学を読むための基礎", items: course00.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "数学のためのPythonとNumPy", items: course00.slice(5, 8).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 01：微積分', items: [{ text: "一変数微積分", items: course01.slice(0, 6).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "多変数微積分", items: course01.slice(6, 13).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 02：線形代数', items: [{ text: "ベクトル・行列・連立一次方程式", items: course02.slice(0, 6).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "ベクトル空間と線形写像", items: course02.slice(6, 12).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "直交・射影・最小二乗法", items: course02.slice(12, 19).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "固有値・対称行列・正定値行列", items: course02.slice(19, 25).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "特異値分解と低ランク構造", items: course02.slice(25, 29).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 03：確率統計', items: [{ text: "確率の基礎", items: course03.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "確率変数・分布・多変量確率", items: course03.slice(5, 13).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "統計的推測", items: course03.slice(13, 18).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "回帰モデルと情報量", items: course03.slice(18, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 04：離散数学と証明', items: [{ text: "論理と証明", items: course04.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "離散構造と数え上げ", items: course04.slice(5, 10).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "アルゴリズム・不変量・計算量", items: course04.slice(10, 15).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "グラフと離散確率", items: course04.slice(15, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 05：数値計算', items: [{ text: "数値計算の基礎", items: course05.slice(0, 4).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "近似・補間・数値積分", items: course05.slice(4, 8).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "数値線形代数", items: course05.slice(8, 13).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "低ランク計算と逆問題", items: course05.slice(13, 16).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "微分方程式と数値実験", items: course05.slice(16, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 06：最適化', items: [{ text: "最適化問題と凸性", items: course06.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "一階法・二階法", items: course06.slice(5, 10).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "制約・双対・近接法", items: course06.slice(10, 16).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "機械学習と大規模最適化", items: course06.slice(16, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 07：データ解析の行列手法', items: [{ text: "データ行列と幾何", items: course07.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "回帰・推定・重み付け", items: course07.slice(5, 10).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "信号・潜在構造・分解", items: course07.slice(10, 15).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "高次元データと構造化行列", items: course07.slice(15, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 08：機械学習', items: [{ text: "機械学習の基礎と教師あり学習", items: course08.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "非線形モデル・kernel・ensemble", items: course08.slice(5, 11).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "教師なし学習と表現", items: course08.slice(11, 16).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "評価・不確実性・運用", items: course08.slice(16, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 09：深層学習', items: [{ text: "ニューラルネットワークの基礎", items: course09.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "主要architecture", items: course09.slice(5, 10).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "生成・自己教師あり・表現学習", items: course09.slice(10, 15).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "学習system・評価・安全性", items: course09.slice(15, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }, { text: 'Course 10：Frontier', items: [{ text: "Foundation modelと適応", items: course10.slice(0, 5).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "RAG・agent・tool use", items: course10.slice(5, 10).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "alignment・評価・解釈", items: course10.slice(10, 15).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }, { text: "効率化・科学応用・governance", items: course10.slice(15, 20).map(([text,id]) => ({ text, link: `/courses/foundation/${id}` })) }] }],
+      '/textbook/': [{ text: 'Course 00 教科書', items: course00.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 01 教科書', items: course01.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 02 教科書', items: course02.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 03 教科書', items: course03.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 04 教科書', items: course04.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 05 教科書', items: course05.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 06 教科書', items: course06.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 07 教科書', items: course07.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 08 教科書', items: course08.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 09 教科書', items: course09.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }, { text: 'Course 10 教科書', items: course10.map(([text,id]) => ({ text, link: `/textbook/${id}` })) }],
+      '/exercises/': [{ text: 'Course 00 演習', items: course00.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 01 演習', items: course01.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 02 演習', items: course02.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 03 演習', items: course03.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 04 演習', items: course04.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 05 演習', items: course05.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 06 演習', items: course06.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 07 演習', items: course07.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 08 演習', items: course08.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 09 演習', items: course09.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }, { text: 'Course 10 演習', items: course10.map(([text,id]) => ({ text, link: `/exercises/${id}` })) }]
     },
     socialLinks: []
   }

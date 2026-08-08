@@ -1,3 +1,455 @@
 # 用語集
 
-用語集は今後拡張します。現在のサンプルテーマでは、内積・部分空間・直交射影を扱います。
+- **スカラー**：[数式・記号・型・次元](/textbook/prep-symbols-types-shapes)で定義する。
+- **ベクトル**：[数式・記号・型・次元](/textbook/prep-symbols-types-shapes)で定義する。
+- **行列**：[数式・記号・型・次元](/textbook/prep-symbols-types-shapes)で定義する。
+- **集合**：[集合・関数・写像](/textbook/prep-sets-functions-mappings)で定義する。
+- **要素**：[集合・関数・写像](/textbook/prep-sets-functions-mappings)で定義する。
+- **部分集合**：[集合・関数・写像](/textbook/prep-sets-functions-mappings)で定義する。
+- **総和記号**：[総和・積・添字](/textbook/prep-sums-products-indices)で定義する。
+- **積記号**：[総和・積・添字](/textbook/prep-sums-products-indices)で定義する。
+- **添字**：[総和・積・添字](/textbook/prep-sums-products-indices)で定義する。
+- **指数法則**：[指数と対数](/textbook/prep-exponents-logarithms)で定義する。
+- **指数関数**：[指数と対数](/textbook/prep-exponents-logarithms)で定義する。
+- **対数**：[指数と対数](/textbook/prep-exponents-logarithms)で定義する。
+- **定義**：[定義・命題・証明の読み方](/textbook/prep-definitions-theorems-proofs)で定義する。
+- **命題**：[定義・命題・証明の読み方](/textbook/prep-definitions-theorems-proofs)で定義する。
+- **仮定**：[定義・命題・証明の読み方](/textbook/prep-definitions-theorems-proofs)で定義する。
+- **式**：[Pythonの式・変数・関数](/textbook/prep-python-expressions-functions)で定義する。
+- **変数**：[Pythonの式・変数・関数](/textbook/prep-python-expressions-functions)で定義する。
+- **代入**：[Pythonの式・変数・関数](/textbook/prep-python-expressions-functions)で定義する。
+- **NumPy配列**：[NumPy配列・shape・indexing](/textbook/prep-numpy-arrays-shapes)で定義する。
+- **dtype**：[NumPy配列・shape・indexing](/textbook/prep-numpy-arrays-shapes)で定義する。
+- **ndim**：[NumPy配列・shape・indexing](/textbook/prep-numpy-arrays-shapes)で定義する。
+- **浮動小数点**：[数値検算と再現性](/textbook/prep-numerical-checks-reproducibility)で定義する。
+- **許容誤差**：[数値検算と再現性](/textbook/prep-numerical-checks-reproducibility)で定義する。
+- **残差**：[数値検算と再現性](/textbook/prep-numerical-checks-reproducibility)で定義する。
+- **関数**：[関数・極限・連続](/textbook/calc-functions-limits-continuity)で定義する。
+- **極限**：[関数・極限・連続](/textbook/calc-functions-limits-continuity)で定義する。
+- **連続**：[関数・極限・連続](/textbook/calc-functions-limits-continuity)で定義する。
+- **微分**：[微分と変化率](/textbook/calc-derivatives-rates)で定義する。
+- **変化率**：[微分と変化率](/textbook/calc-derivatives-rates)で定義する。
+- **微分法則**：[微分法則と一変数の連鎖律](/textbook/calc-differentiation-rules-chain-rule)で定義する。
+- **一変数の連鎖律**：[微分法則と一変数の連鎖律](/textbook/calc-differentiation-rules-chain-rule)で定義する。
+- **一変数の最適化**：[一変数の最適化](/textbook/calc-one-variable-optimization)で定義する。
+- **積分**：[積分と微積分学の基本定理](/textbook/calc-integrals-fundamental-theorem)で定義する。
+- **微積分学の基本定理**：[積分と微積分学の基本定理](/textbook/calc-integrals-fundamental-theorem)で定義する。
+- **Taylor展開**：[Taylor展開と局所近似](/textbook/calc-taylor-approximation)で定義する。
+- **局所近似**：[Taylor展開と局所近似](/textbook/calc-taylor-approximation)で定義する。
+- **多変数関数**：[多変数関数と偏微分](/textbook/calc-multivariable-functions-partial-derivatives)で定義する。
+- **偏微分**：[多変数関数と偏微分](/textbook/calc-multivariable-functions-partial-derivatives)で定義する。
+- **勾配**：[勾配と方向微分](/textbook/calc-gradient-directional-derivative)で定義する。
+- **方向微分**：[勾配と方向微分](/textbook/calc-gradient-directional-derivative)で定義する。
+- **全微分**：[全微分とJacobian](/textbook/calc-total-derivative-jacobian)で定義する。
+- **Jacobian**：[全微分とJacobian](/textbook/calc-total-derivative-jacobian)で定義する。
+- **Hessian**：[Hessianと二次近似](/textbook/calc-hessian-second-order)で定義する。
+- **二次近似**：[Hessianと二次近似](/textbook/calc-hessian-second-order)で定義する。
+- **多変数の連鎖律**：[多変数の連鎖律](/textbook/calc-multivariable-chain-rule)で定義する。
+- **多変数の制約なし最適化**：[多変数の制約なし最適化](/textbook/calc-unconstrained-optimization)で定義する。
+- **Lagrange乗数法**：[Lagrange乗数法](/textbook/calc-lagrange-multipliers)で定義する。
+- **ベクトル**：[ベクトルと線形結合](/textbook/la-vectors-linear-combinations)で定義する。
+- **線形結合**：[ベクトルと線形結合](/textbook/la-vectors-linear-combinations)で定義する。
+- **行列をデータ**：[行列をデータと線形写像として見る](/textbook/la-matrices-data-linear-maps)で定義する。
+- **線形写像**：[行列をデータと線形写像として見る](/textbook/la-matrices-data-linear-maps)で定義する。
+- **して見る**：[行列をデータと線形写像として見る](/textbook/la-matrices-data-linear-maps)で定義する。
+- **行列積**：[行列積](/textbook/la-matrix-multiplication)で定義する。
+- **連立一次方程式**：[連立一次方程式とガウス消去法](/textbook/la-linear-systems-elimination)で定義する。
+- **ガウス消去法**：[連立一次方程式とガウス消去法](/textbook/la-linear-systems-elimination)で定義する。
+- **可逆性**：[可逆性と逆行列](/textbook/la-invertibility-inverse-matrices)で定義する。
+- **逆行列**：[可逆性と逆行列](/textbook/la-invertibility-inverse-matrices)で定義する。
+- **LU分解**：[LU分解](/textbook/la-lu-factorization)で定義する。
+- **span**：[spanと部分空間](/textbook/la-span-subspaces)で定義する。
+- **部分空間**：[spanと部分空間](/textbook/la-span-subspaces)で定義する。
+- **列空間**：[列空間と零空間](/textbook/la-column-space-null-space)で定義する。
+- **零空間**：[列空間と零空間](/textbook/la-column-space-null-space)で定義する。
+- **線形独立**：[線形独立と線形従属](/textbook/la-linear-independence)で定義する。
+- **線形従属**：[線形独立と線形従属](/textbook/la-linear-independence)で定義する。
+- **基底**：[基底・座標・次元](/textbook/la-basis-coordinates-dimension)で定義する。
+- **座標**：[基底・座標・次元](/textbook/la-basis-coordinates-dimension)で定義する。
+- **次元**：[基底・座標・次元](/textbook/la-basis-coordinates-dimension)で定義する。
+- **階数**：[階数とrank-nullity](/textbook/la-rank-rank-nullity)で定義する。
+- **rank-nullity**：[階数とrank-nullity](/textbook/la-rank-rank-nullity)で定義する。
+- **線形写像**：[線形写像と基底変換](/textbook/la-linear-maps-change-of-basis)で定義する。
+- **基底変換**：[線形写像と基底変換](/textbook/la-linear-maps-change-of-basis)で定義する。
+- **内積**：[内積・ノルム・角度](/textbook/la-inner-products-norms-angles)で定義する。
+- **ノルム**：[内積・ノルム・角度](/textbook/la-inner-products-norms-angles)で定義する。
+- **角度**：[内積・ノルム・角度](/textbook/la-inner-products-norms-angles)で定義する。
+- **直交基底**：[直交基底と正規直交基底](/textbook/la-orthogonal-orthonormal-bases)で定義する。
+- **正規直交基底**：[直交基底と正規直交基底](/textbook/la-orthogonal-orthonormal-bases)で定義する。
+- **直交射影**：[直交射影](/textbook/orthogonal-projection)で定義する。
+- **Gram–Schmidt法**：[Gram–Schmidt法とQR分解](/textbook/la-gram-schmidt-qr)で定義する。
+- **QR分解**：[Gram–Schmidt法とQR分解](/textbook/la-gram-schmidt-qr)で定義する。
+- **最小二乗法の幾何学**：[最小二乗法の幾何学](/textbook/la-least-squares-geometry)で定義する。
+- **最小二乗法の計算**：[最小二乗法の計算と擬似逆行列](/textbook/la-least-squares-computation-pseudoinverse)で定義する。
+- **擬似逆行列**：[最小二乗法の計算と擬似逆行列](/textbook/la-least-squares-computation-pseudoinverse)で定義する。
+- **重み付き最小二乗法の導入**：[重み付き最小二乗法の導入](/textbook/la-weighted-least-squares-introduction)で定義する。
+- **行列式**：[行列式・体積・可逆性](/textbook/la-determinants-volume-invertibility)で定義する。
+- **体積**：[行列式・体積・可逆性](/textbook/la-determinants-volume-invertibility)で定義する。
+- **可逆性**：[行列式・体積・可逆性](/textbook/la-determinants-volume-invertibility)で定義する。
+- **固有値**：[固有値と固有ベクトル](/textbook/la-eigenvalues-eigenvectors)で定義する。
+- **固有ベクトル**：[固有値と固有ベクトル](/textbook/la-eigenvalues-eigenvectors)で定義する。
+- **対角化**：[対角化と行列の累乗](/textbook/la-diagonalization-matrix-powers)で定義する。
+- **行列の累乗**：[対角化と行列の累乗](/textbook/la-diagonalization-matrix-powers)で定義する。
+- **対称行列**：[対称行列とスペクトル定理](/textbook/la-symmetric-matrices-spectral-theorem)で定義する。
+- **スペクトル定理**：[対称行列とスペクトル定理](/textbook/la-symmetric-matrices-spectral-theorem)で定義する。
+- **二次形式**：[二次形式と正定値行列](/textbook/la-quadratic-forms-positive-definite)で定義する。
+- **正定値行列**：[二次形式と正定値行列](/textbook/la-quadratic-forms-positive-definite)で定義する。
+- **Cholesky分解**：[Cholesky分解](/textbook/la-cholesky-factorization)で定義する。
+- **特異値分解**：[特異値分解](/textbook/la-singular-value-decomposition)で定義する。
+- **擬似逆行列**：[擬似逆行列とrank不足の連立方程式](/textbook/la-pseudoinverse-rank-deficient-systems)で定義する。
+- **rank不足の連立方程式**：[擬似逆行列とrank不足の連立方程式](/textbook/la-pseudoinverse-rank-deficient-systems)で定義する。
+- **低ランク近似**：[低ランク近似](/textbook/la-low-rank-approximation)で定義する。
+- **行列ノルム**：[行列ノルムと条件数](/textbook/la-matrix-norms-condition-number)で定義する。
+- **条件数**：[行列ノルムと条件数](/textbook/la-matrix-norms-condition-number)で定義する。
+- **数え上げ**：[数え上げ・標本空間・事象](/textbook/prob-counting-sample-spaces)で定義する。
+- **標本空間**：[数え上げ・標本空間・事象](/textbook/prob-counting-sample-spaces)で定義する。
+- **事象**：[数え上げ・標本空間・事象](/textbook/prob-counting-sample-spaces)で定義する。
+- **確率の公理**：[確率の公理と事象の演算](/textbook/prob-axioms-event-operations)で定義する。
+- **事象の演算**：[確率の公理と事象の演算](/textbook/prob-axioms-event-operations)で定義する。
+- **条件付き確率**：[条件付き確率と独立](/textbook/prob-conditional-probability-independence)で定義する。
+- **独立**：[条件付き確率と独立](/textbook/prob-conditional-probability-independence)で定義する。
+- **Bayesの定理**：[Bayesの定理](/textbook/prob-bayes-theorem)で定義する。
+- **確率変数**：[確率変数・CDF・PMF・PDF](/textbook/prob-random-variables-cdf-pmf-pdf)で定義する。
+- **CDF**：[確率変数・CDF・PMF・PDF](/textbook/prob-random-variables-cdf-pmf-pdf)で定義する。
+- **PMF**：[確率変数・CDF・PMF・PDF](/textbook/prob-random-variables-cdf-pmf-pdf)で定義する。
+- **期待値**：[期待値・分散・モーメント](/textbook/prob-expectation-variance-moments)で定義する。
+- **分散**：[期待値・分散・モーメント](/textbook/prob-expectation-variance-moments)で定義する。
+- **モーメント**：[期待値・分散・モーメント](/textbook/prob-expectation-variance-moments)で定義する。
+- **同時分布**：[同時分布・周辺分布・条件付き分布](/textbook/prob-joint-marginal-conditional-distributions)で定義する。
+- **周辺分布**：[同時分布・周辺分布・条件付き分布](/textbook/prob-joint-marginal-conditional-distributions)で定義する。
+- **条件付き分布**：[同時分布・周辺分布・条件付き分布](/textbook/prob-joint-marginal-conditional-distributions)で定義する。
+- **共分散**：[共分散と相関](/textbook/prob-covariance-correlation)で定義する。
+- **相関**：[共分散と相関](/textbook/prob-covariance-correlation)で定義する。
+- **主要な離散分布**：[主要な離散分布](/textbook/prob-discrete-distributions)で定義する。
+- **主要な連続分布**：[主要な連続分布](/textbook/prob-continuous-distributions)で定義する。
+- **確率変数の変換**：[確率変数の変換と和](/textbook/prob-transformations-sums-random-variables)で定義する。
+- **和**：[確率変数の変換と和](/textbook/prob-transformations-sums-random-variables)で定義する。
+- **大数の法則**：[大数の法則と中心極限定理](/textbook/prob-laws-large-numbers-central-limit-theorem)で定義する。
+- **中心極限定理**：[大数の法則と中心極限定理](/textbook/prob-laws-large-numbers-central-limit-theorem)で定義する。
+- **多変量正規分布**：[多変量正規分布](/textbook/prob-multivariate-normal-distribution)で定義する。
+- **推定量**：[推定量・バイアス・分散・MSE](/textbook/stat-estimators-bias-variance-mse)で定義する。
+- **バイアス**：[推定量・バイアス・分散・MSE](/textbook/stat-estimators-bias-variance-mse)で定義する。
+- **分散**：[推定量・バイアス・分散・MSE](/textbook/stat-estimators-bias-variance-mse)で定義する。
+- **尤度**：[尤度と最尤推定](/textbook/stat-likelihood-maximum-likelihood)で定義する。
+- **最尤推定**：[尤度と最尤推定](/textbook/stat-likelihood-maximum-likelihood)で定義する。
+- **Bayesian推論**：[Bayesian推論とMAP推定](/textbook/stat-bayesian-inference-map)で定義する。
+- **MAP推定**：[Bayesian推論とMAP推定](/textbook/stat-bayesian-inference-map)で定義する。
+- **信頼区間**：[信頼区間](/textbook/stat-confidence-intervals)で定義する。
+- **仮説検定**：[仮説検定](/textbook/stat-hypothesis-testing)で定義する。
+- **線形回帰の確率モデル**：[線形回帰の確率モデル](/textbook/stat-linear-regression-probabilistic-model)で定義する。
+- **エントロピー**：[エントロピー・交差エントロピー・KLダイバージェンス](/textbook/stat-entropy-cross-entropy-kl-divergence)で定義する。
+- **交差エントロピー**：[エントロピー・交差エントロピー・KLダイバージェンス](/textbook/stat-entropy-cross-entropy-kl-divergence)で定義する。
+- **KLダイバージェンス**：[エントロピー・交差エントロピー・KLダイバージェンス](/textbook/stat-entropy-cross-entropy-kl-divergence)で定義する。
+- **命題**：[命題・論理演算・真理値表](/textbook/dm-propositions-connectives-truth-tables)で定義する。
+- **論理演算**：[命題・論理演算・真理値表](/textbook/dm-propositions-connectives-truth-tables)で定義する。
+- **真理値表**：[命題・論理演算・真理値表](/textbook/dm-propositions-connectives-truth-tables)で定義する。
+- **述語**：[述語・量化記号・否定](/textbook/dm-predicates-quantifiers-negation)で定義する。
+- **量化記号**：[述語・量化記号・否定](/textbook/dm-predicates-quantifiers-negation)で定義する。
+- **否定**：[述語・量化記号・否定](/textbook/dm-predicates-quantifiers-negation)で定義する。
+- **含意**：[含意・同値・必要十分条件](/textbook/dm-implication-equivalence-conditions)で定義する。
+- **同値**：[含意・同値・必要十分条件](/textbook/dm-implication-equivalence-conditions)で定義する。
+- **必要十分条件**：[含意・同値・必要十分条件](/textbook/dm-implication-equivalence-conditions)で定義する。
+- **直接証明**：[直接証明・対偶・背理法・場合分け](/textbook/dm-proof-methods)で定義する。
+- **対偶**：[直接証明・対偶・背理法・場合分け](/textbook/dm-proof-methods)で定義する。
+- **背理法**：[直接証明・対偶・背理法・場合分け](/textbook/dm-proof-methods)で定義する。
+- **数学的帰納法**：[数学的帰納法・強い帰納法・整列原理](/textbook/dm-induction-well-ordering)で定義する。
+- **強い帰納法**：[数学的帰納法・強い帰納法・整列原理](/textbook/dm-induction-well-ordering)で定義する。
+- **整列原理**：[数学的帰納法・強い帰納法・整列原理](/textbook/dm-induction-well-ordering)で定義する。
+- **関係**：[関係・同値関係・半順序](/textbook/dm-relations-equivalence-partial-orders)で定義する。
+- **同値関係**：[関係・同値関係・半順序](/textbook/dm-relations-equivalence-partial-orders)で定義する。
+- **半順序**：[関係・同値関係・半順序](/textbook/dm-relations-equivalence-partial-orders)で定義する。
+- **整除性**：[整除性と合同算術](/textbook/dm-divisibility-modular-arithmetic)で定義する。
+- **合同算術**：[整除性と合同算術](/textbook/dm-divisibility-modular-arithmetic)で定義する。
+- **加法原理**：[加法原理・乗法原理・鳩の巣原理](/textbook/dm-counting-principles-pigeonhole)で定義する。
+- **乗法原理**：[加法原理・乗法原理・鳩の巣原理](/textbook/dm-counting-principles-pigeonhole)で定義する。
+- **鳩の巣原理**：[加法原理・乗法原理・鳩の巣原理](/textbook/dm-counting-principles-pigeonhole)で定義する。
+- **順列**：[順列・組合せ・二項係数](/textbook/dm-permutations-combinations-binomial)で定義する。
+- **組合せ**：[順列・組合せ・二項係数](/textbook/dm-permutations-combinations-binomial)で定義する。
+- **二項係数**：[順列・組合せ・二項係数](/textbook/dm-permutations-combinations-binomial)で定義する。
+- **包含排除原理**：[包含排除原理と二重数え上げ](/textbook/dm-inclusion-exclusion-double-counting)で定義する。
+- **二重数え上げ**：[包含排除原理と二重数え上げ](/textbook/dm-inclusion-exclusion-double-counting)で定義する。
+- **アルゴリズムの仕様**：[アルゴリズムの仕様と正しさ](/textbook/dm-algorithm-specifications-correctness)で定義する。
+- **正しさ**：[アルゴリズムの仕様と正しさ](/textbook/dm-algorithm-specifications-correctness)で定義する。
+- **ループ不変量**：[ループ不変量と停止性](/textbook/dm-loop-invariants-termination)で定義する。
+- **停止性**：[ループ不変量と停止性](/textbook/dm-loop-invariants-termination)で定義する。
+- **漸近記法**：[漸近記法と増加率](/textbook/dm-asymptotic-notation-growth-rates)で定義する。
+- **増加率**：[漸近記法と増加率](/textbook/dm-asymptotic-notation-growth-rates)で定義する。
+- **漸化式**：[漸化式](/textbook/dm-recurrence-relations)で定義する。
+- **分割統治法**：[分割統治法とMaster theorem](/textbook/dm-divide-conquer-master-theorem)で定義する。
+- **Master**：[分割統治法とMaster theorem](/textbook/dm-divide-conquer-master-theorem)で定義する。
+- **theorem**：[分割統治法とMaster theorem](/textbook/dm-divide-conquer-master-theorem)で定義する。
+- **グラフ**：[グラフ・表現・次数](/textbook/dm-graphs-representations-degrees)で定義する。
+- **表現**：[グラフ・表現・次数](/textbook/dm-graphs-representations-degrees)で定義する。
+- **次数**：[グラフ・表現・次数](/textbook/dm-graphs-representations-degrees)で定義する。
+- **道**：[道・閉路・連結性](/textbook/dm-paths-cycles-connectivity)で定義する。
+- **閉路**：[道・閉路・連結性](/textbook/dm-paths-cycles-connectivity)で定義する。
+- **連結性**：[道・閉路・連結性](/textbook/dm-paths-cycles-connectivity)で定義する。
+- **木**：[木と全域木](/textbook/dm-trees-spanning-trees)で定義する。
+- **全域木**：[木と全域木](/textbook/dm-trees-spanning-trees)で定義する。
+- **有向グラフ**：[有向グラフ・DAG・トポロジカル順序](/textbook/dm-directed-graphs-dags-topological-order)で定義する。
+- **DAG**：[有向グラフ・DAG・トポロジカル順序](/textbook/dm-directed-graphs-dags-topological-order)で定義する。
+- **トポロジカル順序**：[有向グラフ・DAG・トポロジカル順序](/textbook/dm-directed-graphs-dags-topological-order)で定義する。
+- **離散確率**：[離散確率・指示変数・乱択アルゴリズム](/textbook/dm-discrete-probability-indicators-randomized-algorithms)で定義する。
+- **指示変数**：[離散確率・指示変数・乱択アルゴリズム](/textbook/dm-discrete-probability-indicators-randomized-algorithms)で定義する。
+- **乱択アルゴリズム**：[離散確率・指示変数・乱択アルゴリズム](/textbook/dm-discrete-probability-indicators-randomized-algorithms)で定義する。
+- **浮動小数点数**：[浮動小数点数と丸め](/textbook/num-floating-point-rounding)で定義する。
+- **丸め**：[浮動小数点数と丸め](/textbook/num-floating-point-rounding)で定義する。
+- **誤差**：[誤差・条件数・数値安定性](/textbook/num-errors-conditioning-stability)で定義する。
+- **条件数**：[誤差・条件数・数値安定性](/textbook/num-errors-conditioning-stability)で定義する。
+- **数値安定性**：[誤差・条件数・数値安定性](/textbook/num-errors-conditioning-stability)で定義する。
+- **収束次数**：[収束次数と停止条件](/textbook/num-convergence-orders-stopping)で定義する。
+- **停止条件**：[収束次数と停止条件](/textbook/num-convergence-orders-stopping)で定義する。
+- **非線形方程式の求根法**：[非線形方程式の求根法](/textbook/num-root-finding)で定義する。
+- **多項式補間**：[多項式補間](/textbook/num-polynomial-interpolation)で定義する。
+- **spline**：[splineと区分的近似](/textbook/num-splines-piecewise-approximation)で定義する。
+- **区分的近似**：[splineと区分的近似](/textbook/num-splines-piecewise-approximation)で定義する。
+- **数値微分**：[数値微分](/textbook/num-numerical-differentiation)で定義する。
+- **数値積分**：[数値積分と求積法](/textbook/num-numerical-integration-quadrature)で定義する。
+- **求積法**：[数値積分と求積法](/textbook/num-numerical-integration-quadrature)で定義する。
+- **連立方程式の直接法**：[連立方程式の直接法とpivoting](/textbook/num-direct-solvers-pivoting)で定義する。
+- **pivoting**：[連立方程式の直接法とpivoting](/textbook/num-direct-solvers-pivoting)で定義する。
+- **連立方程式の反復法**：[連立方程式の反復法](/textbook/num-iterative-linear-solvers)で定義する。
+- **疎行列**：[疎行列と前処理](/textbook/num-sparse-matrices-preconditioning)で定義する。
+- **前処理**：[疎行列と前処理](/textbook/num-sparse-matrices-preconditioning)で定義する。
+- **最小二乗法の数値解法**：[最小二乗法の数値解法](/textbook/num-least-squares-qr-svd)で定義する。
+- **固有値計算**：[固有値計算・べき乗法・QR法](/textbook/num-eigenvalue-power-qr)で定義する。
+- **べき乗法**：[固有値計算・べき乗法・QR法](/textbook/num-eigenvalue-power-qr)で定義する。
+- **QR法**：[固有値計算・べき乗法・QR法](/textbook/num-eigenvalue-power-qr)で定義する。
+- **SVD**：[SVDと低ランク計算](/textbook/num-svd-low-rank-computation)で定義する。
+- **低ランク計算**：[SVDと低ランク計算](/textbook/num-svd-low-rank-computation)で定義する。
+- **正則化**：[正則化と悪条件・不適切問題](/textbook/num-regularization-ill-posed-problems)で定義する。
+- **悪条件**：[正則化と悪条件・不適切問題](/textbook/num-regularization-ill-posed-problems)で定義する。
+- **不適切問題**：[正則化と悪条件・不適切問題](/textbook/num-regularization-ill-posed-problems)で定義する。
+- **乱択数値線形代数**：[乱択数値線形代数](/textbook/num-randomized-numerical-linear-algebra)で定義する。
+- **常微分方程式**：[常微分方程式・Euler法・Runge–Kutta法](/textbook/num-ode-euler-runge-kutta)で定義する。
+- **Euler法**：[常微分方程式・Euler法・Runge–Kutta法](/textbook/num-ode-euler-runge-kutta)で定義する。
+- **Runge–Kutta法**：[常微分方程式・Euler法・Runge–Kutta法](/textbook/num-ode-euler-runge-kutta)で定義する。
+- **ODEの安定性**：[ODEの安定性・硬さ・陰解法](/textbook/num-ode-stability-stiffness)で定義する。
+- **硬さ**：[ODEの安定性・硬さ・陰解法](/textbook/num-ode-stability-stiffness)で定義する。
+- **陰解法**：[ODEの安定性・硬さ・陰解法](/textbook/num-ode-stability-stiffness)で定義する。
+- **Monte**：[Monte Carlo数値計算法](/textbook/num-monte-carlo-methods)で定義する。
+- **Carlo数値計算法**：[Monte Carlo数値計算法](/textbook/num-monte-carlo-methods)で定義する。
+- **数値計算の検証**：[数値計算の検証・benchmark・再現性](/textbook/num-verification-benchmarking-reproducibility)で定義する。
+- **benchmark**：[数値計算の検証・benchmark・再現性](/textbook/num-verification-benchmarking-reproducibility)で定義する。
+- **再現性**：[数値計算の検証・benchmark・再現性](/textbook/num-verification-benchmarking-reproducibility)で定義する。
+- **最適化問題の定式化**：[最適化問題の定式化](/textbook/opt-problem-formulation-objectives-constraints)で定義する。
+- **凸集合**：[凸集合と凸関数](/textbook/opt-convex-sets-functions)で定義する。
+- **凸関数**：[凸集合と凸関数](/textbook/opt-convex-sets-functions)で定義する。
+- **滑らかさ**：[滑らかさと強凸性](/textbook/opt-smoothness-strong-convexity)で定義する。
+- **強凸性**：[滑らかさと強凸性](/textbook/opt-smoothness-strong-convexity)で定義する。
+- **最適性条件**：[最適性条件](/textbook/opt-optimality-conditions)で定義する。
+- **line**：[line searchとstep size](/textbook/opt-line-search-step-size)で定義する。
+- **search**：[line searchとstep size](/textbook/opt-line-search-step-size)で定義する。
+- **step**：[line searchとstep size](/textbook/opt-line-search-step-size)で定義する。
+- **勾配降下法**：[勾配降下法と収束](/textbook/opt-gradient-descent-convergence)で定義する。
+- **収束**：[勾配降下法と収束](/textbook/opt-gradient-descent-convergence)で定義する。
+- **momentum**：[momentumと加速勾配法](/textbook/opt-momentum-accelerated-gradient)で定義する。
+- **加速勾配法**：[momentumと加速勾配法](/textbook/opt-momentum-accelerated-gradient)で定義する。
+- **Newton法**：[Newton法と準Newton法](/textbook/opt-newton-quasi-newton)で定義する。
+- **準Newton法**：[Newton法と準Newton法](/textbook/opt-newton-quasi-newton)で定義する。
+- **trust**：[trust region法](/textbook/opt-trust-region-methods)で定義する。
+- **region法**：[trust region法](/textbook/opt-trust-region-methods)で定義する。
+- **座標降下法**：[座標降下法と共役方向](/textbook/opt-coordinate-conjugate-directions)で定義する。
+- **共役方向**：[座標降下法と共役方向](/textbook/opt-coordinate-conjugate-directions)で定義する。
+- **等式制約**：[等式制約とKKT条件](/textbook/opt-equality-constrained-kkt)で定義する。
+- **KKT条件**：[等式制約とKKT条件](/textbook/opt-equality-constrained-kkt)で定義する。
+- **不等式制約**：[不等式制約と相補性](/textbook/opt-inequality-constraints-kkt)で定義する。
+- **相補性**：[不等式制約と相補性](/textbook/opt-inequality-constraints-kkt)で定義する。
+- **射影勾配法**：[射影勾配法](/textbook/opt-projected-gradient)で定義する。
+- **barrier法**：[barrier法と内点法](/textbook/opt-barrier-interior-point)で定義する。
+- **内点法**：[barrier法と内点法](/textbook/opt-barrier-interior-point)で定義する。
+- **Lagrange双対**：[Lagrange双対とdual gradient](/textbook/opt-duality-dual-gradient)で定義する。
+- **dual**：[Lagrange双対とdual gradient](/textbook/opt-duality-dual-gradient)で定義する。
+- **gradient**：[Lagrange双対とdual gradient](/textbook/opt-duality-dual-gradient)で定義する。
+- **近接勾配法**：[近接勾配法](/textbook/opt-proximal-gradient)で定義する。
+- **確率的勾配法**：[確率的勾配法](/textbook/opt-stochastic-gradient)で定義する。
+- **adaptive**：[adaptive optimizer](/textbook/opt-adaptive-optimizers)で定義する。
+- **optimizer**：[adaptive optimizer](/textbook/opt-adaptive-optimizers)で定義する。
+- **ADMM**：[ADMMと分割法](/textbook/opt-admm-splitting)で定義する。
+- **分割法**：[ADMMと分割法](/textbook/opt-admm-splitting)で定義する。
+- **非凸最適化の診断**：[非凸最適化の診断とhyperparameter](/textbook/opt-nonconvex-diagnostics-hyperparameters)で定義する。
+- **hyperparameter**：[非凸最適化の診断とhyperparameter](/textbook/opt-nonconvex-diagnostics-hyperparameters)で定義する。
+- **データ行列**：[データ行列・中心化・標準化](/textbook/mat-data-matrices-centering-scaling)で定義する。
+- **中心化**：[データ行列・中心化・標準化](/textbook/mat-data-matrices-centering-scaling)で定義する。
+- **標準化**：[データ行列・中心化・標準化](/textbook/mat-data-matrices-centering-scaling)で定義する。
+- **共分散行列**：[共分散行列とscatter matrix](/textbook/mat-covariance-scatter-matrices)で定義する。
+- **scatter**：[共分散行列とscatter matrix](/textbook/mat-covariance-scatter-matrices)で定義する。
+- **matrix**：[共分散行列とscatter matrix](/textbook/mat-covariance-scatter-matrices)で定義する。
+- **PCAの幾何学**：[PCAの幾何学](/textbook/mat-pca-geometry)で定義する。
+- **PCAのSVD計算**：[PCAのSVD計算](/textbook/mat-pca-svd-computation)で定義する。
+- **whitening**：[whiteningとMahalanobis距離](/textbook/mat-whitening-mahalanobis)で定義する。
+- **Mahalanobis距離**：[whiteningとMahalanobis距離](/textbook/mat-whitening-mahalanobis)で定義する。
+- **OLS**：[OLSとdesign matrix](/textbook/mat-ols-design-matrices)で定義する。
+- **design**：[OLSとdesign matrix](/textbook/mat-ols-design-matrices)で定義する。
+- **matrix**：[OLSとdesign matrix](/textbook/mat-ols-design-matrices)で定義する。
+- **WLS**：[WLSと逆分散重み](/textbook/mat-wls-inverse-variance)で定義する。
+- **逆分散重み**：[WLSと逆分散重み](/textbook/mat-wls-inverse-variance)で定義する。
+- **GLS**：[GLSと相関誤差](/textbook/mat-gls-correlated-errors)で定義する。
+- **相関誤差**：[GLSと相関誤差](/textbook/mat-gls-correlated-errors)で定義する。
+- **ridge**：[ridge・Lasso・Elastic Net](/textbook/mat-ridge-lasso-elastic-net)で定義する。
+- **Lasso**：[ridge・Lasso・Elastic Net](/textbook/mat-ridge-lasso-elastic-net)で定義する。
+- **Elastic**：[ridge・Lasso・Elastic Net](/textbook/mat-ridge-lasso-elastic-net)で定義する。
+- **robust**：[robust regressionとM推定](/textbook/mat-robust-regression-m-estimators)で定義する。
+- **regression**：[robust regressionとM推定](/textbook/mat-robust-regression-m-estimators)で定義する。
+- **M推定**：[robust regressionとM推定](/textbook/mat-robust-regression-m-estimators)で定義する。
+- **Fourier基底**：[Fourier基底とDFT](/textbook/mat-fourier-bases-dft)で定義する。
+- **DFT**：[Fourier基底とDFT](/textbook/mat-fourier-bases-dft)で定義する。
+- **畳み込み**：[畳み込みと線形時不変系](/textbook/mat-convolution-linear-systems)で定義する。
+- **線形時不変系**：[畳み込みと線形時不変系](/textbook/mat-convolution-linear-systems)で定義する。
+- **filtering**：[filteringと正則化](/textbook/mat-filtering-regularization)で定義する。
+- **正則化**：[filteringと正則化](/textbook/mat-filtering-regularization)で定義する。
+- **非負値行列因子分解**：[非負値行列因子分解](/textbook/mat-nmf-nonnegative-factors)で定義する。
+- **独立成分分析**：[独立成分分析](/textbook/mat-ica-independent-components)で定義する。
+- **正準相関分析**：[正準相関分析](/textbook/mat-cca-multiview)で定義する。
+- **random**：[random projectionとJohnson–Lindenstrauss](/textbook/mat-random-projections-jl)で定義する。
+- **projection**：[random projectionとJohnson–Lindenstrauss](/textbook/mat-random-projections-jl)で定義する。
+- **Johnson–Lindenstrauss**：[random projectionとJohnson–Lindenstrauss](/textbook/mat-random-projections-jl)で定義する。
+- **matrix**：[matrix completion](/textbook/mat-matrix-completion)で定義する。
+- **completion**：[matrix completion](/textbook/mat-matrix-completion)で定義する。
+- **グラフspectral**：[グラフspectral method](/textbook/mat-graph-spectral-methods)で定義する。
+- **method**：[グラフspectral method](/textbook/mat-graph-spectral-methods)で定義する。
+- **tensor**：[tensorと多重線形構造](/textbook/mat-tensors-multilinear-overview)で定義する。
+- **多重線形構造**：[tensorと多重線形構造](/textbook/mat-tensors-multilinear-overview)で定義する。
+- **機械学習問題の定式化**：[機械学習問題の定式化とdata split](/textbook/ml-problem-formulation-data-splits)で定義する。
+- **data**：[機械学習問題の定式化とdata split](/textbook/ml-problem-formulation-data-splits)で定義する。
+- **split**：[機械学習問題の定式化とdata split](/textbook/ml-problem-formulation-data-splits)で定義する。
+- **線形回帰**：[線形回帰](/textbook/ml-linear-regression)で定義する。
+- **logistic回帰**：[logistic回帰](/textbook/ml-logistic-regression)で定義する。
+- **softmax**：[softmaxと多クラス分類](/textbook/ml-softmax-multiclass)で定義する。
+- **多クラス分類**：[softmaxと多クラス分類](/textbook/ml-softmax-multiclass)で定義する。
+- **生成的分類器**：[生成的分類器・Naive Bayes・LDA](/textbook/ml-generative-classifiers-naive-bayes-lda)で定義する。
+- **Naive**：[生成的分類器・Naive Bayes・LDA](/textbook/ml-generative-classifiers-naive-bayes-lda)で定義する。
+- **Bayes**：[生成的分類器・Naive Bayes・LDA](/textbook/ml-generative-classifiers-naive-bayes-lda)で定義する。
+- **k近傍法**：[k近傍法と距離学習](/textbook/ml-knn-distance-methods)で定義する。
+- **距離学習**：[k近傍法と距離学習](/textbook/ml-knn-distance-methods)で定義する。
+- **決定木**：[決定木](/textbook/ml-decision-trees)で定義する。
+- **bagging**：[baggingとrandom forest](/textbook/ml-ensembles-bagging-random-forests)で定義する。
+- **random**：[baggingとrandom forest](/textbook/ml-ensembles-bagging-random-forests)で定義する。
+- **forest**：[baggingとrandom forest](/textbook/ml-ensembles-bagging-random-forests)で定義する。
+- **boosting**：[boostingとgradient boosting](/textbook/ml-boosting-gradient-boosting)で定義する。
+- **gradient**：[boostingとgradient boosting](/textbook/ml-boosting-gradient-boosting)で定義する。
+- **SVM**：[SVM・margin・kernel](/textbook/ml-svm-margin-kernels)で定義する。
+- **margin**：[SVM・margin・kernel](/textbook/ml-svm-margin-kernels)で定義する。
+- **kernel**：[SVM・margin・kernel](/textbook/ml-svm-margin-kernels)で定義する。
+- **kernel**：[kernel methodと特徴写像](/textbook/ml-kernel-methods-feature-maps)で定義する。
+- **method**：[kernel methodと特徴写像](/textbook/ml-kernel-methods-feature-maps)で定義する。
+- **特徴写像**：[kernel methodと特徴写像](/textbook/ml-kernel-methods-feature-maps)で定義する。
+- **k-means**：[k-meansと階層clustering](/textbook/ml-clustering-kmeans-hierarchical)で定義する。
+- **階層clustering**：[k-meansと階層clustering](/textbook/ml-clustering-kmeans-hierarchical)で定義する。
+- **Gaussian**：[Gaussian mixtureとEM](/textbook/ml-gmm-em)で定義する。
+- **mixture**：[Gaussian mixtureとEM](/textbook/ml-gmm-em)で定義する。
+- **EM**：[Gaussian mixtureとEM](/textbook/ml-gmm-em)で定義する。
+- **次元削減**：[次元削減・PCA・manifold](/textbook/ml-dimensionality-reduction-pca-manifold)で定義する。
+- **PCA**：[次元削減・PCA・manifold](/textbook/ml-dimensionality-reduction-pca-manifold)で定義する。
+- **manifold**：[次元削減・PCA・manifold](/textbook/ml-dimensionality-reduction-pca-manifold)で定義する。
+- **異常検知**：[異常検知](/textbook/ml-anomaly-detection)で定義する。
+- **特徴量設計**：[特徴量設計と特徴選択](/textbook/ml-feature-engineering-selection)で定義する。
+- **特徴選択**：[特徴量設計と特徴選択](/textbook/ml-feature-engineering-selection)で定義する。
+- **bias–variance**：[bias–varianceと正則化](/textbook/ml-bias-variance-regularization)で定義する。
+- **正則化**：[bias–varianceと正則化](/textbook/ml-bias-variance-regularization)で定義する。
+- **model**：[model selectionとcross-validation](/textbook/ml-model-selection-cross-validation)で定義する。
+- **selection**：[model selectionとcross-validation](/textbook/ml-model-selection-cross-validation)で定義する。
+- **cross-validation**：[model selectionとcross-validation](/textbook/ml-model-selection-cross-validation)で定義する。
+- **評価指標**：[評価指標・calibration・class imbalance](/textbook/ml-metrics-calibration-imbalance)で定義する。
+- **calibration**：[評価指標・calibration・class imbalance](/textbook/ml-metrics-calibration-imbalance)で定義する。
+- **class**：[評価指標・calibration・class imbalance](/textbook/ml-metrics-calibration-imbalance)で定義する。
+- **不確実性**：[不確実性・解釈・監視](/textbook/ml-uncertainty-interpretability-monitoring)で定義する。
+- **解釈**：[不確実性・解釈・監視](/textbook/ml-uncertainty-interpretability-monitoring)で定義する。
+- **監視**：[不確実性・解釈・監視](/textbook/ml-uncertainty-interpretability-monitoring)で定義する。
+- **perceptron**：[perceptronと多層network](/textbook/dl-perceptron-mlp)で定義する。
+- **多層network**：[perceptronと多層network](/textbook/dl-perceptron-mlp)で定義する。
+- **誤差逆伝播**：[誤差逆伝播と計算graph](/textbook/dl-backprop-computation-graphs)で定義する。
+- **計算graph**：[誤差逆伝播と計算graph](/textbook/dl-backprop-computation-graphs)で定義する。
+- **activation関数**：[activation関数とloss](/textbook/dl-activation-loss-functions)で定義する。
+- **loss**：[activation関数とloss](/textbook/dl-activation-loss-functions)で定義する。
+- **初期化**：[初期化とnormalization](/textbook/dl-initialization-normalization)で定義する。
+- **normalization**：[初期化とnormalization](/textbook/dl-initialization-normalization)で定義する。
+- **深層学習の最適化**：[深層学習の最適化と正則化](/textbook/dl-optimization-regularization)で定義する。
+- **正則化**：[深層学習の最適化と正則化](/textbook/dl-optimization-regularization)で定義する。
+- **CNN**：[CNNと畳み込み](/textbook/dl-cnn-convolution)で定義する。
+- **畳み込み**：[CNNと畳み込み](/textbook/dl-cnn-convolution)で定義する。
+- **RNN**：[RNNと系列model](/textbook/dl-rnn-sequence-models)で定義する。
+- **系列model**：[RNNと系列model](/textbook/dl-rnn-sequence-models)で定義する。
+- **attention機構**：[attention機構](/textbook/dl-attention-mechanism)で定義する。
+- **Transformer**：[Transformer](/textbook/dl-transformers)で定義する。
+- **residual**：[residual connectionとnormalization](/textbook/dl-normalization-residuals)で定義する。
+- **connection**：[residual connectionとnormalization](/textbook/dl-normalization-residuals)で定義する。
+- **normalization**：[residual connectionとnormalization](/textbook/dl-normalization-residuals)で定義する。
+- **autoencoder**：[autoencoderとVAE](/textbook/dl-autoencoders-vae)で定義する。
+- **VAE**：[autoencoderとVAE](/textbook/dl-autoencoders-vae)で定義する。
+- **GAN**：[GANとadversarial training](/textbook/dl-gans-adversarial-training)で定義する。
+- **adversarial**：[GANとadversarial training](/textbook/dl-gans-adversarial-training)で定義する。
+- **training**：[GANとadversarial training](/textbook/dl-gans-adversarial-training)で定義する。
+- **diffusion**：[diffusionとscore model](/textbook/dl-diffusion-score-models)で定義する。
+- **score**：[diffusionとscore model](/textbook/dl-diffusion-score-models)で定義する。
+- **model**：[diffusionとscore model](/textbook/dl-diffusion-score-models)で定義する。
+- **自己教師あり**：[自己教師あり・contrastive学習](/textbook/dl-self-supervised-contrastive)で定義する。
+- **contrastive学習**：[自己教師あり・contrastive学習](/textbook/dl-self-supervised-contrastive)で定義する。
+- **embedding**：[embeddingと表現学習](/textbook/dl-embeddings-representation-learning)で定義する。
+- **表現学習**：[embeddingと表現学習](/textbook/dl-embeddings-representation-learning)で定義する。
+- **graph**：[graph neural network](/textbook/dl-graph-neural-networks)で定義する。
+- **neural**：[graph neural network](/textbook/dl-graph-neural-networks)で定義する。
+- **network**：[graph neural network](/textbook/dl-graph-neural-networks)で定義する。
+- **multimodal**：[multimodal model](/textbook/dl-multimodal-models)で定義する。
+- **model**：[multimodal model](/textbook/dl-multimodal-models)で定義する。
+- **scaling**：[scalingと分散学習](/textbook/dl-scaling-distributed-training)で定義する。
+- **分散学習**：[scalingと分散学習](/textbook/dl-scaling-distributed-training)で定義する。
+- **効率的学習**：[効率的学習と推論](/textbook/dl-efficient-training-inference)で定義する。
+- **推論**：[効率的学習と推論](/textbook/dl-efficient-training-inference)で定義する。
+- **深層modelの評価**：[深層modelの評価・robustness・安全性](/textbook/dl-evaluation-robustness-safety)で定義する。
+- **robustness**：[深層modelの評価・robustness・安全性](/textbook/dl-evaluation-robustness-safety)で定義する。
+- **安全性**：[深層modelの評価・robustness・安全性](/textbook/dl-evaluation-robustness-safety)で定義する。
+- **Foundation**：[Foundation modelの設計原理](/textbook/frontier-foundation-model-paradigm)で定義する。
+- **modelの設計原理**：[Foundation modelの設計原理](/textbook/frontier-foundation-model-paradigm)で定義する。
+- **tokenization**：[tokenization・embedding・context](/textbook/frontier-tokenization-embeddings-context)で定義する。
+- **embedding**：[tokenization・embedding・context](/textbook/frontier-tokenization-embeddings-context)で定義する。
+- **context**：[tokenization・embedding・context](/textbook/frontier-tokenization-embeddings-context)で定義する。
+- **pretraining**：[pretrainingとscaling law](/textbook/frontier-pretraining-scaling-laws)で定義する。
+- **scaling**：[pretrainingとscaling law](/textbook/frontier-pretraining-scaling-laws)で定義する。
+- **law**：[pretrainingとscaling law](/textbook/frontier-pretraining-scaling-laws)で定義する。
+- **in-context**：[in-context learningとprompt設計](/textbook/frontier-in-context-learning-prompting)で定義する。
+- **learning**：[in-context learningとprompt設計](/textbook/frontier-in-context-learning-prompting)で定義する。
+- **prompt設計**：[in-context learningとprompt設計](/textbook/frontier-in-context-learning-prompting)で定義する。
+- **parameter-efficient**：[parameter-efficient fine-tuning](/textbook/frontier-parameter-efficient-finetuning)で定義する。
+- **fine-tuning**：[parameter-efficient fine-tuning](/textbook/frontier-parameter-efficient-finetuning)で定義する。
+- **Retrieval-Augmented**：[Retrieval-Augmented Generation](/textbook/frontier-retrieval-augmented-generation)で定義する。
+- **Generation**：[Retrieval-Augmented Generation](/textbook/frontier-retrieval-augmented-generation)で定義する。
+- **vector**：[vector searchとindex](/textbook/frontier-vector-databases-search)で定義する。
+- **search**：[vector searchとindex](/textbook/frontier-vector-databases-search)で定義する。
+- **index**：[vector searchとindex](/textbook/frontier-vector-databases-search)で定義する。
+- **tool**：[tool useとfunction calling](/textbook/frontier-tool-use-function-calling)で定義する。
+- **use**：[tool useとfunction calling](/textbook/frontier-tool-use-function-calling)で定義する。
+- **function**：[tool useとfunction calling](/textbook/frontier-tool-use-function-calling)で定義する。
+- **agent**：[agent・planning・memory](/textbook/frontier-agents-planning-memory)で定義する。
+- **planning**：[agent・planning・memory](/textbook/frontier-agents-planning-memory)で定義する。
+- **memory**：[agent・planning・memory](/textbook/frontier-agents-planning-memory)で定義する。
+- **multi-agent**：[multi-agent system](/textbook/frontier-multi-agent-systems)で定義する。
+- **system**：[multi-agent system](/textbook/frontier-multi-agent-systems)で定義する。
+- **RLHF**：[RLHFとpreference optimization](/textbook/frontier-rlhf-preference-optimization)で定義する。
+- **preference**：[RLHFとpreference optimization](/textbook/frontier-rlhf-preference-optimization)で定義する。
+- **optimization**：[RLHFとpreference optimization](/textbook/frontier-rlhf-preference-optimization)で定義する。
+- **alignment**：[alignment・安全policy・red teaming](/textbook/frontier-alignment-safety-policies)で定義する。
+- **安全policy**：[alignment・安全policy・red teaming](/textbook/frontier-alignment-safety-policies)で定義する。
+- **red**：[alignment・安全policy・red teaming](/textbook/frontier-alignment-safety-policies)で定義する。
+- **Foundation**：[Foundation model評価](/textbook/frontier-foundation-model-evaluation)で定義する。
+- **model評価**：[Foundation model評価](/textbook/frontier-foundation-model-evaluation)で定義する。
+- **mechanistic**：[mechanistic interpretability](/textbook/frontier-interpretability-mechanistic)で定義する。
+- **interpretability**：[mechanistic interpretability](/textbook/frontier-interpretability-mechanistic)で定義する。
+- **不確実性**：[不確実性・calibration・abstention](/textbook/frontier-uncertainty-calibration-abstention)で定義する。
+- **calibration**：[不確実性・calibration・abstention](/textbook/frontier-uncertainty-calibration-abstention)で定義する。
+- **abstention**：[不確実性・calibration・abstention](/textbook/frontier-uncertainty-calibration-abstention)で定義する。
+- **quantization**：[quantization・sparsity・Mixture of Experts](/textbook/frontier-quantization-sparsity-moe)で定義する。
+- **sparsity**：[quantization・sparsity・Mixture of Experts](/textbook/frontier-quantization-sparsity-moe)で定義する。
+- **Mixture**：[quantization・sparsity・Mixture of Experts](/textbook/frontier-quantization-sparsity-moe)で定義する。
+- **long**：[long contextとmemory](/textbook/frontier-long-context-memory)で定義する。
+- **context**：[long contextとmemory](/textbook/frontier-long-context-memory)で定義する。
+- **memory**：[long contextとmemory](/textbook/frontier-long-context-memory)で定義する。
+- **synthetic**：[synthetic dataとdata curation](/textbook/frontier-synthetic-data-data-curation)で定義する。
+- **data**：[synthetic dataとdata curation](/textbook/frontier-synthetic-data-data-curation)で定義する。
+- **curation**：[synthetic dataとdata curation](/textbook/frontier-synthetic-data-data-curation)で定義する。
+- **Scientific**：[Scientific Machine Learning](/textbook/frontier-scientific-machine-learning)で定義する。
+- **Machine**：[Scientific Machine Learning](/textbook/frontier-scientific-machine-learning)で定義する。
+- **Learning**：[Scientific Machine Learning](/textbook/frontier-scientific-machine-learning)で定義する。
+- **privacy**：[privacy・governance・研究実践](/textbook/frontier-privacy-governance-research-practice)で定義する。
+- **governance**：[privacy・governance・研究実践](/textbook/frontier-privacy-governance-research-practice)で定義する。
+- **研究実践**：[privacy・governance・研究実践](/textbook/frontier-privacy-governance-research-practice)で定義する。

@@ -1,0 +1,4271 @@
+{
+  "name": "linear-algebra-learning complete generated source",
+  "generated_at": "2026-08-04T14:11:00+09:00",
+  "base_commit": "2de389d658f9c6ab2ab46e19c66b873a9a8f7e88",
+  "topic_count": 210,
+  "artifact_count": 840,
+  "course_count": 11,
+  "recommended_import": "overlay-for-current-repo",
+  "policy": {
+    "courses_00_04": "preserve existing published files by default",
+    "courses_05_10": "create or replace from overlay",
+    "shared_registry": "replace after review"
+  },
+  "files": [
+    {
+      "path": "apps/portal/.vitepress/config.mts",
+      "size": 24075,
+      "sha256": "7021fde08e067fca383918b6daedf018bc30cd96c951ffb767611d8958d7f826"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-derivatives-rates.md",
+      "size": 1469,
+      "sha256": "4cd2ab2461db4b653ae194ea4c1b0b896478f20c55a31bcabf3d6d1adfa9dcec"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-differentiation-rules-chain-rule.md",
+      "size": 1550,
+      "sha256": "4431a96c074396cab2c0a168a9526c45048df88828767c47936d012b69c2fb9f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-functions-limits-continuity.md",
+      "size": 1564,
+      "sha256": "36b8ea0e95b26f0eb74ce2367cbb0f53be542a1170608e88a7f84e123bde043e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-gradient-directional-derivative.md",
+      "size": 1541,
+      "sha256": "dc9feb97dcbe413ed6630c15f74ecfbd4c58a9c0a3df6b3c281f49b3d44742ef"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-hessian-second-order.md",
+      "size": 1542,
+      "sha256": "b578c752c6470a2b8bb9409eb2c513e6411d62d9a4648e512b556fc90cd21ce7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-integrals-fundamental-theorem.md",
+      "size": 1553,
+      "sha256": "2e9b9efc01b3755c607a159286e546bebfd19187b75ee6cd20b75e7912c18790"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-lagrange-multipliers.md",
+      "size": 1557,
+      "sha256": "b0c19665fd5a59bbfa37aa1c6b4cbedbb6692983e401db5e2bb8660b60e9ade6"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-multivariable-chain-rule.md",
+      "size": 1581,
+      "sha256": "fd9f489488a3c577558d416c320eb5be26cb4ad95d76ebb5284590466e542390"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-multivariable-functions-partial-derivatives.md",
+      "size": 1671,
+      "sha256": "ec387b8ed5d3f4ce0f4df2828aaad7deeaa4235882fbb082366cdcc81368a5ca"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-one-variable-optimization.md",
+      "size": 1539,
+      "sha256": "42fdd5c62191f653e2b8f58628c49540146690010546d920bc906f08d2899bb2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-taylor-approximation.md",
+      "size": 1556,
+      "sha256": "f2035dd5bf41bc30fcaf50816a4d7a351b6f27d28a69a4addff39fcaac513dca"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-total-derivative-jacobian.md",
+      "size": 1560,
+      "sha256": "f2e1349496d0d9ae882d63cbf9451f188936620f5610fd363dd118f14cad3caa"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-unconstrained-optimization.md",
+      "size": 1609,
+      "sha256": "349686b59ff7e38179b0322b225695e9564b886366ee9619e4ff5c58f35babea"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-activation-loss-functions.md",
+      "size": 1662,
+      "sha256": "778a7f480ab42188fb7f2acae70ecba7efbf58849e0bddc585efec0761aea35b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-attention-mechanism.md",
+      "size": 1449,
+      "sha256": "f486a25d9a92924abb70fd1c314b5e98d53da9447cba171804f37d5c64696af8"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-autoencoders-vae.md",
+      "size": 1564,
+      "sha256": "c288ad2ca442b5fd35ed719c25f7669e673a4caa93208f6da19bd93587b09c73"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-backprop-computation-graphs.md",
+      "size": 1653,
+      "sha256": "499cfcb0a6ad2a89f13e5105945899f960593bb9fc7d5c80acc39c0f89bda541"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-cnn-convolution.md",
+      "size": 1516,
+      "sha256": "ba28a6d36a20c7fca9729b27bdebf01100c034cd67ec33cb9f12e3cbd77214a5"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-diffusion-score-models.md",
+      "size": 1624,
+      "sha256": "b3ea9b40d923e5aeddeeac330defe65e5069c18ef189f3602564ddc37db2dbdd"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-efficient-training-inference.md",
+      "size": 1623,
+      "sha256": "14af3488c7477495fd4461eeeb26666a1997f06c0be173d08fb96883157245c0"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-embeddings-representation-learning.md",
+      "size": 1639,
+      "sha256": "1ef4a9c9dbf208c0acc7853e4bc8f390f24d570150dd9846072cc621ba5b484e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-evaluation-robustness-safety.md",
+      "size": 1721,
+      "sha256": "310e87867a2929c31fa600c8cc657bb3ed3dbd1edaeeef2d8e489fc499e2b078"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-gans-adversarial-training.md",
+      "size": 1624,
+      "sha256": "b3e46a66187b2473eca71f9d030830dd423f93d5a3dbc4bae3aa86806cba9aff"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-graph-neural-networks.md",
+      "size": 1563,
+      "sha256": "60c78300e21ebb5fad90dc89a37ff6dbf2f76150ab4b4e923768d10fd9eec142"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-initialization-normalization.md",
+      "size": 1648,
+      "sha256": "0a9ac5bdf94fbae81dc5a212d4f0a63cad989c4a3ff44441de08ebf8567ab7fe"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-multimodal-models.md",
+      "size": 1515,
+      "sha256": "5cb0b7464436ae8d0439185947605c0bb44574e19788ff2d61c0b5843e89ec33"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-normalization-residuals.md",
+      "size": 1509,
+      "sha256": "b8ccb09cc977d3d75b5019bdf8c899afcdaa8c20bbdf88a6c85df1cdd96778fe"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-optimization-regularization.md",
+      "size": 1646,
+      "sha256": "8514560ae8a02cd01dcebadaceaf7073be43ee4957cd4f031362b42a13565e3b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-perceptron-mlp.md",
+      "size": 1583,
+      "sha256": "f8a41b1e845fb5323a37000c1244c15d58c3d4930685a0edea1d11e2cacb4b65"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-rnn-sequence-models.md",
+      "size": 1460,
+      "sha256": "bab990705d9110eb24a7d17fb5b8b5a3d39c013dc757bb5cb33afd85ab4d1ec7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-scaling-distributed-training.md",
+      "size": 1601,
+      "sha256": "b20f5f9166a118795d9dc20d03a53695b49d5c40fb33d8abfa2b6a102cdaaa6c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-self-supervised-contrastive.md",
+      "size": 1693,
+      "sha256": "c41bc06606e666ebb449e986669abb184da0c97488e432ca9573e801b0f7c470"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-transformers.md",
+      "size": 1452,
+      "sha256": "4e9b8c285e9254f66685423d7e1d603a01b8079b2b5027e3d9c46b2f5e274952"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-algorithm-specifications-correctness.md",
+      "size": 1779,
+      "sha256": "7bf338263f9474a308aea915dafd7367d2c0057fd82fa534b3b32b5866d2954b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-asymptotic-notation-growth-rates.md",
+      "size": 1607,
+      "sha256": "ae14e98893f625fd85bfcd56c5e0229fd825d8f6f350036ff16711cacb92a31b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-counting-principles-pigeonhole.md",
+      "size": 1751,
+      "sha256": "de6b4ecbc833e0460617f45dff5c690c090e345e1247b46e4f60dc2d97583c30"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-directed-graphs-dags-topological-order.md",
+      "size": 1816,
+      "sha256": "d7b18a51fa55a4cff3ac7d0bcd1d9e025655b4f274e2fdfbf32cefdf0786a66c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-discrete-probability-indicators-randomized-algorithms.md",
+      "size": 1922,
+      "sha256": "7742b514b353ae536e247378315ba05b584e15e80c5b1ca2cea347e497ffc46a"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-divide-conquer-master-theorem.md",
+      "size": 1560,
+      "sha256": "1851afde992a98cf33b88c9fd8fd7de2504f4db2b975df0bd2d944d2d705b519"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-divisibility-modular-arithmetic.md",
+      "size": 1597,
+      "sha256": "1de7904ebf6b108d4350af48969a399506c4046e879cd52bed0f1af3ea1ddc92"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-graphs-representations-degrees.md",
+      "size": 1661,
+      "sha256": "994002ba94264b97ecd1bfda050bdeb7980f787037c01c9ef6503c19c42952fd"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-implication-equivalence-conditions.md",
+      "size": 1735,
+      "sha256": "7d21c6a7e7b35472e60296b389ddb0c9fa5c9f68ed186c405cdb75f1ddbc012c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-inclusion-exclusion-double-counting.md",
+      "size": 1793,
+      "sha256": "d5d7c4dce8069442dfa7a71c0cf99a81b62c5193da408efcb4af64b76aa75c99"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-induction-well-ordering.md",
+      "size": 1756,
+      "sha256": "d149c39a4a1a566728402df26ce3464494814044af7b3e9be5c615f5c4a76f67"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-loop-invariants-termination.md",
+      "size": 1735,
+      "sha256": "eaf6ee21fe7bcad2eb52b5e981fc58ae845a8c574e802a24a4626b68dd5a9ab6"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-paths-cycles-connectivity.md",
+      "size": 1520,
+      "sha256": "f17bc77057e2b6364604c2cf01e5fd5e76a1b40832889768fdd9b62e47037a60"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-permutations-combinations-binomial.md",
+      "size": 1670,
+      "sha256": "ee91da3c1a0b9de4b552b3f20481d3375b8b35b5046153b7a45522a35978b4c0"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-predicates-quantifiers-negation.md",
+      "size": 1705,
+      "sha256": "866209febdb4b00965fd64b071276046a85e720580aa6d029bcc4e89bcee92b1"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-proof-methods.md",
+      "size": 1660,
+      "sha256": "f0d5b114a29110c6fd79ad677c9e210727f4bfc57dc6ad3749603298d75b517d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-propositions-connectives-truth-tables.md",
+      "size": 1695,
+      "sha256": "29de657c66e08851f480e1ce4d59c5dd059355ce2557561e14e0d1b9062fb8be"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-recurrence-relations.md",
+      "size": 1576,
+      "sha256": "238da3f6fbbda5a14719abf1d104bc3245ef9faf5e66c7f229f9611588350c3c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-relations-equivalence-partial-orders.md",
+      "size": 1721,
+      "sha256": "2cee45dedf99d20104ec8b735bf6fe3cc7feb7912731b836440159da7a9e4559"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-trees-spanning-trees.md",
+      "size": 1599,
+      "sha256": "983575414d15f6fa7de88dd5a4561c8581bba240ecd37235abbad869b5286836"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-agents-planning-memory.md",
+      "size": 1633,
+      "sha256": "18e358847476f71bf9be7f2ac35db5da78f0f754d446790fc2022da0c61ac2bb"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-alignment-safety-policies.md",
+      "size": 1727,
+      "sha256": "6204f7072d0241640327584c428fa27364289eb30615f63f7105cefbeba57edc"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-foundation-model-evaluation.md",
+      "size": 1633,
+      "sha256": "d8c7442c25abfbfa9596f577bcb1b3e46e297bcf8f18791ede9e94a351fc523e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-foundation-model-paradigm.md",
+      "size": 1651,
+      "sha256": "f3c33f63e6091199904dab2f2910024037bfcba38f96ac6be2e4d71f230876b2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-in-context-learning-prompting.md",
+      "size": 1728,
+      "sha256": "161c0dbad174a59febe47de3109aae311d3293f8710b68a986de198d3074d7e7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-interpretability-mechanistic.md",
+      "size": 1652,
+      "sha256": "b54b21a174e0c9a60afa291b17753316207994dc09d3533d1006656ed6c3e194"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-long-context-memory.md",
+      "size": 1604,
+      "sha256": "260e0dd84ad24975544c63b4d2d8e3e327aadd7ae665081170ef7dbbd66f034f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-multi-agent-systems.md",
+      "size": 1575,
+      "sha256": "17836620d9a1a81a4a06f9979e31924d910a65f3a4e9c1d8afeec5cd8eb4dff1"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-parameter-efficient-finetuning.md",
+      "size": 1669,
+      "sha256": "8285a533eb8a282bffc823ebbfff60bd4f2af8063c9fe73723e8bd83b653c4b5"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-pretraining-scaling-laws.md",
+      "size": 1653,
+      "sha256": "1e0780db3d41bbe23f2ef9fd60971c7b9fb578f50c524132e285c0eb7c16ac87"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-privacy-governance-research-practice.md",
+      "size": 1659,
+      "sha256": "9c34a2e0c83ca0a548584b01cf6d0f584d113add8c3b494fa12345c86c96f288"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-quantization-sparsity-moe.md",
+      "size": 1745,
+      "sha256": "81665c7992453877d7a432a1bb28ced967549997868835961a8db7f4a493fd16"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-retrieval-augmented-generation.md",
+      "size": 1665,
+      "sha256": "5d1ce6e7ec97ca9ebd6274da1c157f2ef7086a2cc3cc6956a5020b2b7d1b7bc9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-rlhf-preference-optimization.md",
+      "size": 1623,
+      "sha256": "3d9c53d515057faf208dc476edbf71fbbd168b7ebfc96a52bd0a6791427e2a8e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-scientific-machine-learning.md",
+      "size": 1687,
+      "sha256": "febfa254ee942f2fcd3f5f9aa25d4ae7676606050323cd8d81bb01503d5871fd"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-synthetic-data-data-curation.md",
+      "size": 1675,
+      "sha256": "4d8a37ee18569f164741500961129f7148af0b7466632e51ba57f1f046a31b3b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-tokenization-embeddings-context.md",
+      "size": 1661,
+      "sha256": "3cfdc9c036aed2d8a5a7cfe48c2973823f763bea18a77c6adf7ce1811efb7eb4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-tool-use-function-calling.md",
+      "size": 1662,
+      "sha256": "d926d6193272ce1e4bbf5d13d0e7cecc04486df429f9d7dca86820e2236c3ff5"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-uncertainty-calibration-abstention.md",
+      "size": 1739,
+      "sha256": "63b73fceab1c521e6bf6d16d6a006bc7cc59509d7412613e4aa48cbba82e623f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-vector-databases-search.md",
+      "size": 1598,
+      "sha256": "455a76a6fea90a5f1b65cef12ee30c3d4380a336726304325b0d8308b10216b5"
+    },
+    {
+      "path": "apps/portal/courses/foundation/index.md",
+      "size": 19509,
+      "sha256": "4fe9ee558ccb0da5ece1fb1eddf6a9ce846e0f3defedba35af11918566c2f757"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-basis-coordinates-dimension.md",
+      "size": 1498,
+      "sha256": "91a0a827d790084a407fc261081bc3b98d2fa8d617b27a8ce828bbd4dd689c0f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-cholesky-factorization.md",
+      "size": 1535,
+      "sha256": "18006b351922cd36fa1f1c5a01c5c78d94d14de348f538bc5f32097f9c3b20f4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-column-space-null-space.md",
+      "size": 1551,
+      "sha256": "70d5dfe9dec1db5c9727f911b97a5df006c654351dd985a2ef737d674fef16ae"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-determinants-volume-invertibility.md",
+      "size": 1601,
+      "sha256": "5537982123b43abf64396fa33ca6b468b05e8f3bdf5239fa6f6c9d45339b26f8"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-diagonalization-matrix-powers.md",
+      "size": 1658,
+      "sha256": "13ce218537514db582ad3d440fe2b84509bb243ebffc11897202428feacb04bb"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-eigenvalues-eigenvectors.md",
+      "size": 1661,
+      "sha256": "21a5acfb75f947d064267877ade1d828bc9f4b0d346132da2ac50c2c66ee67a0"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-gram-schmidt-qr.md",
+      "size": 1552,
+      "sha256": "319f2e4cb41ec704ec86b392e6d64cb67ae04d1becac7c238e7202920803193f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-inner-products-norms-angles.md",
+      "size": 1552,
+      "sha256": "dd465db29c8f55c22053f1cf38893bae926d3df0737559248020968d3c117cef"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-invertibility-inverse-matrices.md",
+      "size": 1534,
+      "sha256": "b4655b37fbc359433de4b5cd18ffa7f021e6d83895dda7f063f2aca64085ec85"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-least-squares-computation-pseudoinverse.md",
+      "size": 1736,
+      "sha256": "eb77df457db2ecc230dae7bda18e1e4df4a46dfca0c7d76effc2a0e82b9022f3"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-least-squares-geometry.md",
+      "size": 1596,
+      "sha256": "9681b04287fa6a0db5aef33caa94ae5899357d988c225cb843213f0dc5da7f56"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-linear-independence.md",
+      "size": 1487,
+      "sha256": "3b571f5d4160b7b93b37ec39ffde1e78efa2295cc681e9eb5a130117ec3bdd69"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-linear-maps-change-of-basis.md",
+      "size": 1629,
+      "sha256": "d2f1464dce8d30db64f04d18009c464b076986463dd7b8e23dfd36c675a9341e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-linear-systems-elimination.md",
+      "size": 1578,
+      "sha256": "856dae5a683c3508f810ead2d5a59fbae4d4395edf5ea5910a6a06f1c82531a9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-low-rank-approximation.md",
+      "size": 1507,
+      "sha256": "44a8db80d6ab207e1f1cbcdc680c8b57551acfeb2f649454578cf8d62887854a"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-lu-factorization.md",
+      "size": 1419,
+      "sha256": "8b9f2b052309dbe3cb8aff2c0f1f4633d22070993a7d350cb2c0f62dfbcc9eb7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-matrices-data-linear-maps.md",
+      "size": 1632,
+      "sha256": "b788d257348b3cac0318238182061ff51b610bfa66dd8057a1c62732541ef762"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-matrix-multiplication.md",
+      "size": 1575,
+      "sha256": "b38ed8d86bedee04f2e37230ad07baf858aba6d1a1e8e22da30b53102398a52f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-matrix-norms-condition-number.md",
+      "size": 1619,
+      "sha256": "cfbc904c6f0d7bf51713417d39699322028ab6a06970682153bfc9bd1a9315c5"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-orthogonal-orthonormal-bases.md",
+      "size": 1635,
+      "sha256": "dec9ae3a2a46a632b2519fb329ca1bf3bce26f4441b0da49233f0ae76b9a9216"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 1745,
+      "sha256": "d97b21ebf95438d23689d4964c83e4284eb0bbc42a9dfe0452206b28985b7a60"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-quadratic-forms-positive-definite.md",
+      "size": 1677,
+      "sha256": "9f1e9f5accde632bc6837398c7fe833c1594633ef6ee53a6d877a9964a8fb048"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-rank-rank-nullity.md",
+      "size": 1553,
+      "sha256": "078febaca923836477a3a5e615b054e9e2df83662b2b07715f9361717383c3d2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-singular-value-decomposition.md",
+      "size": 1586,
+      "sha256": "008f84bb4a4bfee61131494d8f0dd1e0cfb631a5628030b1ae365b6f0850f668"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-span-subspaces.md",
+      "size": 1426,
+      "sha256": "955dcf8afbf1f80aa3b2b0be6755ed50d1d0ca8633a390416e92bff0be4c3e24"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-symmetric-matrices-spectral-theorem.md",
+      "size": 1725,
+      "sha256": "c18e074bd109556497ff0fb269e08b793c424a65743ed59229d953ce621aad12"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-vectors-linear-combinations.md",
+      "size": 1633,
+      "sha256": "ae111fd0be3c6c617a31cb8dbf54ebf3e3133ae8ccd63c252bed2eb0b1d1744b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/la-weighted-least-squares-introduction.md",
+      "size": 1645,
+      "sha256": "fef8c1fdd5968b565876ba872d60a7292700485a601f7d87bc14d2b10ba51f86"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-cca-multiview.md",
+      "size": 1563,
+      "sha256": "fbc9972934b4a96211fdff77829ce471f9e50a5f7d7e4bff1f38ada8074d48ac"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-convolution-linear-systems.md",
+      "size": 1669,
+      "sha256": "2ade10820fc38b8811ee3af1c00c7369b789fc6cbaff04eae89f6a233b3da23f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-covariance-scatter-matrices.md",
+      "size": 1684,
+      "sha256": "1298c350e1df9996cfbf749d8cd97f185dd599efdf53ffe2eabeb92b2e7b0a5e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-data-matrices-centering-scaling.md",
+      "size": 1774,
+      "sha256": "addacfe02c697b5bfc3288f8d8d1951ad22cd8ecdb8b5f900bc236b3e3ff6b86"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-filtering-regularization.md",
+      "size": 1654,
+      "sha256": "9524ed388c86af04bbbd5ab03bc6d07737822090ebe99e4a955b220c813669a3"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-fourier-bases-dft.md",
+      "size": 1595,
+      "sha256": "03f9955bdda9c1a2819122dd116651e9a28191981a08d93a6f802dd08fcc570f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-gls-correlated-errors.md",
+      "size": 1576,
+      "sha256": "fb157e16ec43231ba62671d4d8038927d3bb3b67f102ebeab7449a565373988f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-graph-spectral-methods.md",
+      "size": 1648,
+      "sha256": "49064d9ef7a3c32c39b358ec7665fdfa61c6163bb58b2f91fb1b84734d0d1450"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-ica-independent-components.md",
+      "size": 1625,
+      "sha256": "273d8b5a27b8655f139da276fb05b5ba3433a6785005a7a7a10e536256689b9d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-matrix-completion.md",
+      "size": 1564,
+      "sha256": "45e69cf558c4cfe85d2d359af7f21709dffb5ab36474714f14a80b198d67c95c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-nmf-nonnegative-factors.md",
+      "size": 1602,
+      "sha256": "b2974ad776f4512128a7bf2432bf44dfc30a50f8ba0f8ed61eaa4414a5341dea"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-ols-design-matrices.md",
+      "size": 1600,
+      "sha256": "ba305ec4e1e421a9a17e723d37cca748ae8c9203ab7e68f9b27d680b192b2699"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-pca-geometry.md",
+      "size": 1523,
+      "sha256": "180c810da759c501fc9fc94156e45eef578d4c8a49957ef3ec8a54fd5498958d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-pca-svd-computation.md",
+      "size": 1515,
+      "sha256": "4aa925cecf97e9dab61fac4500b1a0856f17dd05a12b1e5e8fa7bed3125f4394"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-random-projections-jl.md",
+      "size": 1726,
+      "sha256": "92277065cb1a4ecfc1ed950ebd34301a2d447c41e41c1491dbafd21318279778"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-ridge-lasso-elastic-net.md",
+      "size": 1645,
+      "sha256": "0ae7b05e89e2c5ae3f358454772098bb1375798d1e96d7eddb1eacb5b8c3adcb"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-robust-regression-m-estimators.md",
+      "size": 1689,
+      "sha256": "d7274bcce6a743b0774399f07f29c3af3b157376c2561da6239abb8e52a42e00"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-tensors-multilinear-overview.md",
+      "size": 1674,
+      "sha256": "ba87b2a8226c223f9b7bfe6b1cc933a112a8ec65f0dbf0269d1571c11ccee8f0"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-whitening-mahalanobis.md",
+      "size": 1627,
+      "sha256": "23f042c57972d81231a3622d85ecc59fa28b88976faf8aa72bbe7e8151b16c10"
+    },
+    {
+      "path": "apps/portal/courses/foundation/mat-wls-inverse-variance.md",
+      "size": 1617,
+      "sha256": "c15ef7160b22f7ebf09323ffc2b1a24411cb7017f620f0f9b029c232c7fd31d2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-anomaly-detection.md",
+      "size": 1509,
+      "sha256": "2772403b5995423258c0eac7beded31c719acb8da20bc4a3bd57d08e37fd79b3"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-bias-variance-regularization.md",
+      "size": 1681,
+      "sha256": "86e634331e32c75957009d9d24d6b271a45197d7975449c0394451c3e35c3a3f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-boosting-gradient-boosting.md",
+      "size": 1572,
+      "sha256": "f9290bef1b1c4744561cd19d659fee4be0fecd96bc380f1b780850555a4c3792"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-clustering-kmeans-hierarchical.md",
+      "size": 1609,
+      "sha256": "48288d3a990d960445d48f827ff3585deca092cf8a6779577c363ab4533dd391"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-decision-trees.md",
+      "size": 1575,
+      "sha256": "300c6ad64a8e1446c104dcebad0cd6dd59b0af01ee40ba4caf79156bbf025863"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-dimensionality-reduction-pca-manifold.md",
+      "size": 1612,
+      "sha256": "3bb69554c14efd137feeccf7fcd6511263ca5ceec9d9c6fb68632189b1b12b99"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-ensembles-bagging-random-forests.md",
+      "size": 1583,
+      "sha256": "6f5513628a212ec403078c890ddca3ecb5d9accb31b6739ae739ca4ac67e4205"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-feature-engineering-selection.md",
+      "size": 1634,
+      "sha256": "f1662a548e02cd82eb41874da98b7e6b7f016bce83a5336ccbe9f8ee6d384d2e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-generative-classifiers-naive-bayes-lda.md",
+      "size": 1689,
+      "sha256": "683629c7d61143e4bafe280db182bbc2d7623ed6933562f4418c4a9e8f02e380"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-gmm-em.md",
+      "size": 1547,
+      "sha256": "3319d70de6dc201684adb3c644c0131131b938d52c3a2f9cb0b48e129ea13689"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-kernel-methods-feature-maps.md",
+      "size": 1624,
+      "sha256": "bcf87ab2f61ce0af625c600f3187ccb0f38d0ce5f0b12e0b4686669d9307329f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-knn-distance-methods.md",
+      "size": 1614,
+      "sha256": "8feb1c740853f2f298f6a97615eea741ccd8791bb9b7c2aa0915184adb2c9d3c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-linear-regression.md",
+      "size": 1516,
+      "sha256": "619efd8d47a01654e7fe5abc63d68cb9b48ac69d4fab4aeaa138ab70e5bf4594"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-logistic-regression.md",
+      "size": 1503,
+      "sha256": "a403380cc722aa4c653e69bc3acee24661b9f0dd60987a41b2a65f1ec61f90b4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-metrics-calibration-imbalance.md",
+      "size": 1718,
+      "sha256": "94523d5d2d7a748b2ff85622343e25e1d1d1f18306f66ea3cfde357b212f8058"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-model-selection-cross-validation.md",
+      "size": 1725,
+      "sha256": "e7bcc9c355db1c4e4bd906b9b3e072d17f890ad4658566ba18a4551af4f0b863"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-problem-formulation-data-splits.md",
+      "size": 1742,
+      "sha256": "821cd381ac5d6fb7692dacfe0d3dc9df1e58b8f239a651fdeae68814ec38a640"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-softmax-multiclass.md",
+      "size": 1653,
+      "sha256": "3975ebc4e389b8fea5a5b961d388a11f6af61739c83ffbd9e19440d085ee7992"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-svm-margin-kernels.md",
+      "size": 1578,
+      "sha256": "5ad4c69a03415c12e8721230ff176c88a467a5842233c50464890d8e00a1f4d7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-uncertainty-interpretability-monitoring.md",
+      "size": 1690,
+      "sha256": "6ecc864c4ff6ad3ec3f6a944c756aa7fe14d81e9e3aa36a6e13e515a3dfff93b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-convergence-orders-stopping.md",
+      "size": 1632,
+      "sha256": "2dcd8dcd2e07ff952aaa20e3ffbefc0cf74d529a8de65081e579720c2f97eb41"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-direct-solvers-pivoting.md",
+      "size": 1643,
+      "sha256": "4a9e29eb5c6c6c6ae5c511b7bc04058f2b39623335bd842961dd51d59014a53b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-eigenvalue-power-qr.md",
+      "size": 1714,
+      "sha256": "71da3178235fc9d10bfe37f9d0f33d77e5af05bae490e5e1f9f53ad9a34c24e9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-errors-conditioning-stability.md",
+      "size": 1668,
+      "sha256": "5fc035bb0a2d6b9a1405ba431a7a2efdaad2d9fcd3152a23903871803e613af2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-floating-point-rounding.md",
+      "size": 1683,
+      "sha256": "bcc0d99f3abdc081d34f7fe15e9eb548e8c3600589182360c49016f03e6838be"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-iterative-linear-solvers.md",
+      "size": 1623,
+      "sha256": "4244385a036cfc2e81c0a35518bb5ef7230a9378c972e5dda3a13d976ebd123b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-least-squares-qr-svd.md",
+      "size": 1726,
+      "sha256": "4168c18bc093c7c844d519f104aae6fd1b46f947ce180792886e9dd0f5d76ff4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-monte-carlo-methods.md",
+      "size": 1758,
+      "sha256": "298c5ec61d49984298d6f7e67e49d9397613ae178349052237337fd8c5a6a112"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-numerical-differentiation.md",
+      "size": 1560,
+      "sha256": "8c5f18a8bde69a7dd1b0f81415a440b663781a85d521e9b4efaeb7fbaa997849"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-numerical-integration-quadrature.md",
+      "size": 1716,
+      "sha256": "bbaebadbbf03f6829d457ef037dee1d6861317e54d285bece5c0543ad6078994"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-ode-euler-runge-kutta.md",
+      "size": 1809,
+      "sha256": "19d4ac65be08fc3f09951c4762487f81d749b3d561d18d17cd3b673d4f280093"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-ode-stability-stiffness.md",
+      "size": 1698,
+      "sha256": "6a27f8fb09a61d7e26bd43d635b6427c68d8e4966ede7e0ca320832b5e420e8c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-polynomial-interpolation.md",
+      "size": 1577,
+      "sha256": "862fcd0220dcec1eb0e28fe607845d0256cf60ecce567654e768b01b86418961"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-randomized-numerical-linear-algebra.md",
+      "size": 1817,
+      "sha256": "3b767f1a0e2c0e45c3f7461a97c912c3713453a83f2ee9351098be427eb37392"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-regularization-ill-posed-problems.md",
+      "size": 1786,
+      "sha256": "b50a177609b2c5054243a846ede4d4d5d8aa0f65795213db3f7e2c0608ff9bdd"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-root-finding.md",
+      "size": 1561,
+      "sha256": "785a017fe70a2f4e3a755f46a8db7db43d80e04aac3218ba16be8c79977f2ffd"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-sparse-matrices-preconditioning.md",
+      "size": 1595,
+      "sha256": "0737cec3166e7c5d655d9dd4b10bd7ecaf70a82f0f12525ec3eaf3cefd03840d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-splines-piecewise-approximation.md",
+      "size": 1565,
+      "sha256": "94ac2054e0b6ac3f00d7028243afb7f3df13ae32a412cd4f3effd654137b9a3b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-svd-low-rank-computation.md",
+      "size": 1691,
+      "sha256": "17cc2402c6401c838536911f46566df68572b5e0f53f0efc7e11cbff1a072881"
+    },
+    {
+      "path": "apps/portal/courses/foundation/num-verification-benchmarking-reproducibility.md",
+      "size": 1855,
+      "sha256": "7840a84fbc5c2136ee9981ca933c64590700e0c432fc2aef39433861bca90179"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-adaptive-optimizers.md",
+      "size": 1422,
+      "sha256": "17b7a8e62e0cf4777b95b80c9b4c69d78cc7b63053b55cdf3974046659214b83"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-admm-splitting.md",
+      "size": 1518,
+      "sha256": "beb1058ceb8fadcf6e18b392798ff76b03e96d80d23568ce21f7f0859faeef58"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-barrier-interior-point.md",
+      "size": 1541,
+      "sha256": "9c67336e0b48ae757ea105afeacd49fed0ac4c47552849ca1b9c25e0f1227770"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-convex-sets-functions.md",
+      "size": 1578,
+      "sha256": "953f762c371dbf34801ae0f5584809887ee917027f0ec92c96d6ac38daa61ab0"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-coordinate-conjugate-directions.md",
+      "size": 1615,
+      "sha256": "9c9088ac231955bc2c9d9a8e82555e90c9d1e9fd22c946e3b8db991c0d486c45"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-duality-dual-gradient.md",
+      "size": 1507,
+      "sha256": "82898efd3a8e786b43f52c98d0f302589ad6ba6197bacc3775f6f779b4af368b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-equality-constrained-kkt.md",
+      "size": 1572,
+      "sha256": "9f5f34d2a02f0a4c271149ea7f4311472b70e8ea3af60a4bbfda9e43b19624e7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-gradient-descent-convergence.md",
+      "size": 1502,
+      "sha256": "58ec05591359e1bdea1f03281294da09bbd244bb21cf1db21d36d20dd0b3b199"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-inequality-constraints-kkt.md",
+      "size": 1503,
+      "sha256": "4b2f666c5b5de8f491da63b03820910dc5ed9236e0a7e4bdc65a85aeb6a4da66"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-line-search-step-size.md",
+      "size": 1553,
+      "sha256": "c062569bbf3efd67bb8bea3f7c25b354f422e28ace4e63b96f424400947bd248"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-momentum-accelerated-gradient.md",
+      "size": 1519,
+      "sha256": "1a6eda875f08ea5e114aab1fa0dfac69e073a4b2b12de98fceb053d652148460"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-newton-quasi-newton.md",
+      "size": 1548,
+      "sha256": "fbf167c71a7004506c878cb500309de83e4724e1eddabccf1aa742c1c69c76c9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-nonconvex-diagnostics-hyperparameters.md",
+      "size": 1737,
+      "sha256": "a26c57f6676f3f8b8e84b3939ffb9afb056c9803d09c0422d149afcd86c2d811"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-optimality-conditions.md",
+      "size": 1442,
+      "sha256": "5471fb9b13bb9eaaf6a3ad81fd72bce7906539e3585cc657305f4b6ee7753909"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-problem-formulation-objectives-constraints.md",
+      "size": 1676,
+      "sha256": "ebafcc18769e10cb9fed130fa882b4b144a562612e706cd3167db4a7f0019463"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-projected-gradient.md",
+      "size": 1489,
+      "sha256": "f4302db94ecfa94daa50ad3bfe89d713c64a045ae9de3d725ad0663e444b4792"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-proximal-gradient.md",
+      "size": 1481,
+      "sha256": "cddbf65ee6fd6b711ee751df5fe2b6aaaa55653d00b41f547fb82bd27ab62718"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-smoothness-strong-convexity.md",
+      "size": 1553,
+      "sha256": "f3ebaad0784d769b5f55a20e80c71d58e7455d1e0c3b29eb8b5f40bc651f0305"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-stochastic-gradient.md",
+      "size": 1531,
+      "sha256": "11a956b92d6bff61b596bf22af794f6064cf4d3edd5bc510f5781a35aa0c83a1"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-trust-region-methods.md",
+      "size": 1441,
+      "sha256": "9ee78e80a35f11926c177c78468b72cfd918150bff74afbee0797349190ec57d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/orthogonal-projection.md",
+      "size": 1593,
+      "sha256": "606ba4114750fb9adda908b7a90a1e657fe5b33a9cfa801eafb658864157400f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-definitions-theorems-proofs.md",
+      "size": 1665,
+      "sha256": "1d317390b0226f553cde5ea12739b7add2d1c2ce7ad4d793a40ffc535554b1be"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-exponents-logarithms.md",
+      "size": 1572,
+      "sha256": "1288fb468ea746526251f0fd59fd62beda2b242d7537eb15dfc7f254ec8f4d93"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-numerical-checks-reproducibility.md",
+      "size": 1639,
+      "sha256": "fcdb31c83d71e6fb6dacb291374b013a3516e61cf10123af6165d8a4d3928b73"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-numpy-arrays-shapes.md",
+      "size": 1721,
+      "sha256": "bf54e12bc04fdb6a9a0624d2f507bdc6c3da9af13aab255154f72a90f0d27fc6"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-python-expressions-functions.md",
+      "size": 1662,
+      "sha256": "f2968eb5a751e42d26b3c59aab8247a9352a433cfb82e308f6b497a50c0e77c4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-sets-functions-mappings.md",
+      "size": 1613,
+      "sha256": "92be9132f612c0d55ab5300743ab5aaf1a5fedc9a6a9947a0644ce1d39098888"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-sums-products-indices.md",
+      "size": 1582,
+      "sha256": "cec2cb61c238bffe6308989baa33dc131c5509e70c12b95bd10a76d70ddbbd6a"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-symbols-types-shapes.md",
+      "size": 1452,
+      "sha256": "9ce404b744b1f29a2827ed42436781827c87a6b2070f603ef97ca1356914476f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-axioms-event-operations.md",
+      "size": 1574,
+      "sha256": "ca9fd2083812f6ba7f76d511fef4952095335aed05ee899b0e242784d2599efb"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-bayes-theorem.md",
+      "size": 1454,
+      "sha256": "06f34451e40f4e92d0cc48e4d3702c634040f511b4347dab52705b4b399d07f7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-conditional-probability-independence.md",
+      "size": 1543,
+      "sha256": "47c5bb1ff6a84129221ef6ee2c9cd4daaa05bb5dd7ff9a5b326dc80fd272c731"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-continuous-distributions.md",
+      "size": 1720,
+      "sha256": "ea30858434358c86135123767fb3252dcb9714b7530b316cf5127bb7de6f3512"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-counting-sample-spaces.md",
+      "size": 1638,
+      "sha256": "89ec1be4f7b8e65484173dff238d2ebc4607a6f5ff38bd630430e2c29680e267"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-covariance-correlation.md",
+      "size": 1656,
+      "sha256": "c3a96c9d348454e75640c378d21d4110058d8f067bf98ba9b2da7056b3553be2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-discrete-distributions.md",
+      "size": 1595,
+      "sha256": "63206180c9624456a94875da9a2140382832f05dd13873cc9acbb920e40a7753"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-expectation-variance-moments.md",
+      "size": 1750,
+      "sha256": "47d55fd2c1afc027db2c3384c037749d4d5f4dbedac4e14689a57b95527b18d9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-joint-marginal-conditional-distributions.md",
+      "size": 1802,
+      "sha256": "15994bad6789afa821fcf3816d943119e9f2a5cda8d9ff12ff12a04679f001b9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-laws-large-numbers-central-limit-theorem.md",
+      "size": 1762,
+      "sha256": "9368f4bf4677711c77b598f04c9b838d556f1a6b96b196ea9da486e889bca3c5"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-multivariate-normal-distribution.md",
+      "size": 1739,
+      "sha256": "e50e5513e3242fe26bc43a508be0f11499a5c7989a13f6799bb0089e2229aa6f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-random-variables-cdf-pmf-pdf.md",
+      "size": 1609,
+      "sha256": "2080829ce677da28844ba0d0443fa499f9343df78b11157a856a5af47def571a"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prob-transformations-sums-random-variables.md",
+      "size": 1792,
+      "sha256": "fa0e430bd0fcc7dde3db3ab33a9a9bb31754f47ac51826307960155444519fe4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-bayesian-inference-map.md",
+      "size": 1548,
+      "sha256": "3def3e145c98d3d33b7c408244479e9e5b0f0aaa06ee1c1a48f22f948cd62e1c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-confidence-intervals.md",
+      "size": 1616,
+      "sha256": "33f6b927e39747e95b6f4f97425c2c9018543ea6d3fa2debb9341dd026b02dad"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-entropy-cross-entropy-kl-divergence.md",
+      "size": 2055,
+      "sha256": "ea07abe0e27b0181db8c69d12e3947dc6956352bfe5afd8fd2b6ef5c1adcfea6"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-estimators-bias-variance-mse.md",
+      "size": 1715,
+      "sha256": "d5c905d2196c123b8e3f52a57d37c0a395d88421d891fc975b17702b21d5c99e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-hypothesis-testing.md",
+      "size": 1406,
+      "sha256": "e4fe0aeb2d2e16bcc2fb47f25eedb8a5e1ac327d32a59107e6bceeab64139f5f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-likelihood-maximum-likelihood.md",
+      "size": 1754,
+      "sha256": "59345d0e18ddeb40c3459dacfc56b7d461bf2556b525045ea88bf57091632c16"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-linear-regression-probabilistic-model.md",
+      "size": 1859,
+      "sha256": "aee32d24c15f1b6aa237c2aadbda54ff1392b0d2056c6095405af3eabeb5247d"
+    },
+    {
+      "path": "apps/portal/courses/index.md",
+      "size": 19648,
+      "sha256": "8aa39ac8ccdae7671216e63cd684a89e2c9aec0358980d3bc2ef3618c6fb7a4f"
+    },
+    {
+      "path": "apps/portal/exercises/calc-derivatives-rates.md",
+      "size": 7528,
+      "sha256": "aa9d4abc83077f8ec98640b3e8feb326f12417c1120cb335fabb5fcb998e7bc7"
+    },
+    {
+      "path": "apps/portal/exercises/calc-differentiation-rules-chain-rule.md",
+      "size": 7813,
+      "sha256": "52608e18609ef4d537801b71922501bb1d9f08b6c326f4976c7f3a7a69c08eb0"
+    },
+    {
+      "path": "apps/portal/exercises/calc-functions-limits-continuity.md",
+      "size": 7590,
+      "sha256": "e373e34a95fd3094982ad4380a8e1090496f7f225290670322b93fb9041a78db"
+    },
+    {
+      "path": "apps/portal/exercises/calc-gradient-directional-derivative.md",
+      "size": 7618,
+      "sha256": "06645478aac2fc0a422f7ec97ebc238b02563de61fd1adf9f6ab066ed88db101"
+    },
+    {
+      "path": "apps/portal/exercises/calc-hessian-second-order.md",
+      "size": 7729,
+      "sha256": "58d98dcf14390dd1e7234372c62d59ec4aa22743c77b14a8ed13068d8b551b27"
+    },
+    {
+      "path": "apps/portal/exercises/calc-integrals-fundamental-theorem.md",
+      "size": 7798,
+      "sha256": "434492e57ebd3e4e38e7040afb28cfac971ce37b400b337735a13bccffec57b1"
+    },
+    {
+      "path": "apps/portal/exercises/calc-lagrange-multipliers.md",
+      "size": 7595,
+      "sha256": "a4b68198bbb2a799e0fa74f0dfde5c39ef16909cd3303c1127fbcea34d7393ce"
+    },
+    {
+      "path": "apps/portal/exercises/calc-multivariable-chain-rule.md",
+      "size": 7689,
+      "sha256": "21191c89e899e7c129ab4757ad0af149323cd1a47587084c1574f4d3b68cb10b"
+    },
+    {
+      "path": "apps/portal/exercises/calc-multivariable-functions-partial-derivatives.md",
+      "size": 7690,
+      "sha256": "98953b8d2031d9a4c0c41fa7170ab60556b9f5d643c6e986f848cc63f3742eec"
+    },
+    {
+      "path": "apps/portal/exercises/calc-one-variable-optimization.md",
+      "size": 7617,
+      "sha256": "6511c792e1c6d58e13f96f7a8102c30a97dfbb7edee5c9c1775d6c4862f3b8b5"
+    },
+    {
+      "path": "apps/portal/exercises/calc-taylor-approximation.md",
+      "size": 7686,
+      "sha256": "8018139bda1be3245c913b1ab7e4d157680bfe435d660880d7a52930af3a2635"
+    },
+    {
+      "path": "apps/portal/exercises/calc-total-derivative-jacobian.md",
+      "size": 7622,
+      "sha256": "ab4272b92110afd6eb368fccffa599857c0c1395c931d7e0286e17c50d88b64a"
+    },
+    {
+      "path": "apps/portal/exercises/calc-unconstrained-optimization.md",
+      "size": 7878,
+      "sha256": "95672c031bb0c77dab2cc708e2aa82cca84a26f8061f6faf7ba7167deae65b62"
+    },
+    {
+      "path": "apps/portal/exercises/dl-activation-loss-functions.md",
+      "size": 7615,
+      "sha256": "aa2f06ed70247d6f9b1b4f3b2916921515f80b0c00ffa72855e8a3f36e2015aa"
+    },
+    {
+      "path": "apps/portal/exercises/dl-attention-mechanism.md",
+      "size": 7628,
+      "sha256": "38c1e8b94126621538533b5d96e2f3724a33dfa8a9150c66dd7061b3d80165ae"
+    },
+    {
+      "path": "apps/portal/exercises/dl-autoencoders-vae.md",
+      "size": 7595,
+      "sha256": "73b0bb3a98d3a5a99d88a90fce64b8a13ab092687ac9bc30d49f2cdec64434a3"
+    },
+    {
+      "path": "apps/portal/exercises/dl-backprop-computation-graphs.md",
+      "size": 7795,
+      "sha256": "4fd1b3c3f6ec36f4345e157594296197e8b04cf7e0133368bf0ed31935182d02"
+    },
+    {
+      "path": "apps/portal/exercises/dl-cnn-convolution.md",
+      "size": 7531,
+      "sha256": "726dea4e8fe9f98aff1836572eecd73e97322793207c3fba4fec1c9885802958"
+    },
+    {
+      "path": "apps/portal/exercises/dl-diffusion-score-models.md",
+      "size": 7655,
+      "sha256": "819be4834f64e1ed33575f99309727b78181e9eb70e2a86a671ad7c4fca80d9e"
+    },
+    {
+      "path": "apps/portal/exercises/dl-efficient-training-inference.md",
+      "size": 7651,
+      "sha256": "2959e0e94cc166515685e0c6025a14fa50d066f1acc241d84eeacd21c0f90b02"
+    },
+    {
+      "path": "apps/portal/exercises/dl-embeddings-representation-learning.md",
+      "size": 7647,
+      "sha256": "ea47948994793037c68c6d48e7ee39946cad86dd7f1f776245c903c79ba7702d"
+    },
+    {
+      "path": "apps/portal/exercises/dl-evaluation-robustness-safety.md",
+      "size": 7988,
+      "sha256": "cc1256fad5231ec2f6f31ccad40d1e6372c683fba1c9210a1a5da3ddd57361ed"
+    },
+    {
+      "path": "apps/portal/exercises/dl-gans-adversarial-training.md",
+      "size": 7677,
+      "sha256": "c0088d2623a9e6f8cd7ce4a8124e2b81db1f9ff275f2d93df6003f02133f9d32"
+    },
+    {
+      "path": "apps/portal/exercises/dl-graph-neural-networks.md",
+      "size": 7607,
+      "sha256": "605f7a9480b12bdbd390214dc2b9c5772d1c99bbb7f50b5ccbcda732081695bc"
+    },
+    {
+      "path": "apps/portal/exercises/dl-initialization-normalization.md",
+      "size": 7687,
+      "sha256": "ffc0fbe0f08f4d66f03b428315659bd6e627fed511fe1235d8595db70c2fc840"
+    },
+    {
+      "path": "apps/portal/exercises/dl-multimodal-models.md",
+      "size": 7607,
+      "sha256": "f88483164301aa41fde9a3b158388781c9dac6b6c750d61463ceab65d5bb653f"
+    },
+    {
+      "path": "apps/portal/exercises/dl-normalization-residuals.md",
+      "size": 7760,
+      "sha256": "9676381f6a80bc12d04bcde9ef0f04d951b3b752c2615f9e84f8e2c2cbc17963"
+    },
+    {
+      "path": "apps/portal/exercises/dl-optimization-regularization.md",
+      "size": 7886,
+      "sha256": "89e4f2e124080fb74650677b82cbab07a56eeb0fe16e1beee46a0e61fd4a8a70"
+    },
+    {
+      "path": "apps/portal/exercises/dl-perceptron-mlp.md",
+      "size": 7659,
+      "sha256": "eb0559bee3c657da5c4730c4354f53a5fac7adfc90e6bf758c8577dd5346c92e"
+    },
+    {
+      "path": "apps/portal/exercises/dl-rnn-sequence-models.md",
+      "size": 7546,
+      "sha256": "65c0b7c6c35091935fa03f05f9c6ab962503fb07217aced4ac2556978f582929"
+    },
+    {
+      "path": "apps/portal/exercises/dl-scaling-distributed-training.md",
+      "size": 7610,
+      "sha256": "fdef14380e33c89feea80266f66b26eb9672fccb14b190e9af9c350857416854"
+    },
+    {
+      "path": "apps/portal/exercises/dl-self-supervised-contrastive.md",
+      "size": 7898,
+      "sha256": "fe294798c22969c98e6a5729c1eff097bc0e889d3fe28fd948bdcd2b136ffa88"
+    },
+    {
+      "path": "apps/portal/exercises/dl-transformers.md",
+      "size": 7493,
+      "sha256": "1e35ca90661ae2545cedbe1fb4cdbed325c7a5b9d39e37af5df85e9dfe093ce5"
+    },
+    {
+      "path": "apps/portal/exercises/dm-algorithm-specifications-correctness.md",
+      "size": 7869,
+      "sha256": "ccaace811b6a94c762b31791e97607c152268a303ef06f6f94872cc9415d026e"
+    },
+    {
+      "path": "apps/portal/exercises/dm-asymptotic-notation-growth-rates.md",
+      "size": 7622,
+      "sha256": "d1831993a00406b3947658f4990f5118426279c65462c296798c4f936af6ebc9"
+    },
+    {
+      "path": "apps/portal/exercises/dm-counting-principles-pigeonhole.md",
+      "size": 7921,
+      "sha256": "9a987eae1f8ffe672a470429bafde9cd14da214c257b5d6b6251a28323d0c860"
+    },
+    {
+      "path": "apps/portal/exercises/dm-directed-graphs-dags-topological-order.md",
+      "size": 7993,
+      "sha256": "e673c9ab6dbba40875c4df656055eb2e456206817a79fbcc6326cdc37ae9db69"
+    },
+    {
+      "path": "apps/portal/exercises/dm-discrete-probability-indicators-randomized-algorithms.md",
+      "size": 8056,
+      "sha256": "6cc13a4b796650798c2acb3a6496e27687275ef8ded1baf591522f954686d30a"
+    },
+    {
+      "path": "apps/portal/exercises/dm-divide-conquer-master-theorem.md",
+      "size": 7731,
+      "sha256": "454619af0c7554aafd67075b80f9832a2817066f6b6febfcebae0422567fa193"
+    },
+    {
+      "path": "apps/portal/exercises/dm-divisibility-modular-arithmetic.md",
+      "size": 7652,
+      "sha256": "096dd7c9bc19386276ed56d659763afdc967ffbd28c9d3c68c0d0a4a3593d12d"
+    },
+    {
+      "path": "apps/portal/exercises/dm-graphs-representations-degrees.md",
+      "size": 7657,
+      "sha256": "b85c114d0ae486ab2e64311dc95a33c4f739b47de0da0585de0306b26dd5c082"
+    },
+    {
+      "path": "apps/portal/exercises/dm-implication-equivalence-conditions.md",
+      "size": 7766,
+      "sha256": "53e7f61944b35f788bcc4322e23468bc965ca7d2c9679bfb5e38f7afbccbd85f"
+    },
+    {
+      "path": "apps/portal/exercises/dm-inclusion-exclusion-double-counting.md",
+      "size": 7871,
+      "sha256": "7b58f47b1ede75e7a5a70bcbc10057ed92acb3ffc7d39ecbc1041f044d2526ce"
+    },
+    {
+      "path": "apps/portal/exercises/dm-induction-well-ordering.md",
+      "size": 8011,
+      "sha256": "e65576589309e75f9b7a3c8c6e7ee31bc695746675725e2c684ae9734cd6e7b6"
+    },
+    {
+      "path": "apps/portal/exercises/dm-loop-invariants-termination.md",
+      "size": 7727,
+      "sha256": "f3564f08333f25eb0e2f3c88dd859573d0afb9436c8a44b09fe1555f4f5e98d8"
+    },
+    {
+      "path": "apps/portal/exercises/dm-paths-cycles-connectivity.md",
+      "size": 7603,
+      "sha256": "a090c1d4ebec4f393e715d6d3168d140daf867207169becc68c03acc3f20a5ad"
+    },
+    {
+      "path": "apps/portal/exercises/dm-permutations-combinations-binomial.md",
+      "size": 7755,
+      "sha256": "c3f6a3bcee7b283cb7aa5899cd33afb79d77f658e7165f185912610017956c33"
+    },
+    {
+      "path": "apps/portal/exercises/dm-predicates-quantifiers-negation.md",
+      "size": 7734,
+      "sha256": "2d2de25ceac280ecc2cd98d7cb61661df54456582362925c55b1e7c30529b214"
+    },
+    {
+      "path": "apps/portal/exercises/dm-proof-methods.md",
+      "size": 7952,
+      "sha256": "0687285d543a9000634a8a2d8571d6e488f743c7bb983d088d0da510451d5d69"
+    },
+    {
+      "path": "apps/portal/exercises/dm-propositions-connectives-truth-tables.md",
+      "size": 7795,
+      "sha256": "391a77fe49e25c601e895caa85444c9f2e19de1b1f92b06687b7b29cca8e294e"
+    },
+    {
+      "path": "apps/portal/exercises/dm-recurrence-relations.md",
+      "size": 7407,
+      "sha256": "e3ff6927657bf0423d5b585453b6e9c2337be46902d2f09532e67e4d963d4f53"
+    },
+    {
+      "path": "apps/portal/exercises/dm-relations-equivalence-partial-orders.md",
+      "size": 7739,
+      "sha256": "1c1e7e39301a1bb6fa5aed19c6084ef9a19a1966ed7bef7bce3829a72efa1fe7"
+    },
+    {
+      "path": "apps/portal/exercises/dm-trees-spanning-trees.md",
+      "size": 7463,
+      "sha256": "600c0d26318af7771f6505d16e6fe1156f3bd08b00dfa9f891915dc01ca5e872"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-agents-planning-memory.md",
+      "size": 7622,
+      "sha256": "e8fb96ff5116aa75ef7c9106d08757a36625d6a57bf85b0a68d8b1b813cfd09c"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-alignment-safety-policies.md",
+      "size": 7844,
+      "sha256": "81b59bce1904c36e3753e38ab26d8de91cd96eb70f0e27c432c731e4bbb37f0b"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-foundation-model-evaluation.md",
+      "size": 7635,
+      "sha256": "84cac1825da4259047fb9891e8193e6de3ee3c081263cfd67c10488e78724a23"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-foundation-model-paradigm.md",
+      "size": 7777,
+      "sha256": "d2b08855297c51e53e493442cb187bacf1164be17dc22cc9f3a0bcde90300d4c"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-in-context-learning-prompting.md",
+      "size": 7754,
+      "sha256": "269072b954344aa70912099ff32f27798520b4060bcb12c9a2323bd6a01f48b0"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-interpretability-mechanistic.md",
+      "size": 7712,
+      "sha256": "fb490084b2d0d01fedf90e6efa531c9acbb49c85736c3765e88a79d8b99f3bcf"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-long-context-memory.md",
+      "size": 7572,
+      "sha256": "25d885fda99a51933a543251e4703736975c3e8c2b61b5237092e1de98990435"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-multi-agent-systems.md",
+      "size": 7568,
+      "sha256": "1ef0dc3c417375b546a5c9307477ef823c35f7c1e1bbb8fe052870bc6c29f050"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-parameter-efficient-finetuning.md",
+      "size": 7794,
+      "sha256": "cdb262c15cc0b2a81a8a1635b6776198682bab57e6998e929a09594547b58ff9"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-pretraining-scaling-laws.md",
+      "size": 7665,
+      "sha256": "2f9ff4d3755b8b01997ee487a493dba3bcc9f484e84640ed8a8991cfe26390ba"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-privacy-governance-research-practice.md",
+      "size": 7824,
+      "sha256": "a383b7fbd297cbb607e1195c4b43cb3e7ff472c7bcb58e2b4b7c21fd325691be"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-quantization-sparsity-moe.md",
+      "size": 7950,
+      "sha256": "4964e7e5fb4bdfa51cf8c870fed5259f7e3dcc5685d573a5bf79d49a84aef5c2"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-retrieval-augmented-generation.md",
+      "size": 7769,
+      "sha256": "2d57828969e4032cebd0abc1147e0004f1a582f87892b005ea87a09d1d3c29cb"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-rlhf-preference-optimization.md",
+      "size": 7767,
+      "sha256": "ad6ff9f8fe2fbb4958c92c5d541ae85973bb5e778bd674abfd8626ec61392393"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-scientific-machine-learning.md",
+      "size": 7696,
+      "sha256": "588cd141314c62320d20bc9156ca744f5c132c1204e0b2386943b3e6e0db37c4"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-synthetic-data-data-curation.md",
+      "size": 7717,
+      "sha256": "87a035436e26e7f2db854db476a6eccce900c2298eef7fa6eb66cb952e9c9b36"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-tokenization-embeddings-context.md",
+      "size": 7783,
+      "sha256": "d47f7cb2b3b605c456ea1f2899c2ed3c34f805720ee911b3b1bd12d0121096d9"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-tool-use-function-calling.md",
+      "size": 7637,
+      "sha256": "a70f5f43feb3475cd6bc088e3e51c3c9e856438bd191d5b8defb79532b910fc4"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-uncertainty-calibration-abstention.md",
+      "size": 7912,
+      "sha256": "2e0c7d0c80e677c38e184482ca90b3c91b0f5d8bb6074d1482afcfb648e5b5bd"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-vector-databases-search.md",
+      "size": 7652,
+      "sha256": "6fe6859caa317b361c5dc9ce1c874ade8b080f471f41c563c635f2273d9df7d0"
+    },
+    {
+      "path": "apps/portal/exercises/la-basis-coordinates-dimension.md",
+      "size": 7627,
+      "sha256": "cd8e8eb8fd88667fa7276b350b1a14e1e4bc91b13c2022dd3ae4829f2ae761a9"
+    },
+    {
+      "path": "apps/portal/exercises/la-cholesky-factorization.md",
+      "size": 7520,
+      "sha256": "b3d32f1262e49b864a9b2c70263c72f14f0ce267e7cb08d143848d8c0112d19f"
+    },
+    {
+      "path": "apps/portal/exercises/la-column-space-null-space.md",
+      "size": 7625,
+      "sha256": "a8b22f3b4076ab054a929ca710907b36efd5388541fe17bafcd013f4c07fee30"
+    },
+    {
+      "path": "apps/portal/exercises/la-determinants-volume-invertibility.md",
+      "size": 7724,
+      "sha256": "f9d6b0ebd09c358f869cc6618c21eccc83854107f12eccce8321beeae94b443f"
+    },
+    {
+      "path": "apps/portal/exercises/la-diagonalization-matrix-powers.md",
+      "size": 7700,
+      "sha256": "1af26932df9c62ac88f53eb5855050485a0c6b946ee272b55666d9d88a5477a6"
+    },
+    {
+      "path": "apps/portal/exercises/la-eigenvalues-eigenvectors.md",
+      "size": 7718,
+      "sha256": "c999f673fb415d292cc6d01b0e3c214ecea452964fbdcdb49a401c50a84b8ec4"
+    },
+    {
+      "path": "apps/portal/exercises/la-gram-schmidt-qr.md",
+      "size": 7680,
+      "sha256": "eba6b4b2681f05ef0368fc6aefbf64faeb9fceb15eb8e829b58670d67e7ce231"
+    },
+    {
+      "path": "apps/portal/exercises/la-inner-products-norms-angles.md",
+      "size": 7701,
+      "sha256": "eeb471e1bace4a78b37a332ba82da00bd352d1af7598661021ebb51ca6b63cf0"
+    },
+    {
+      "path": "apps/portal/exercises/la-invertibility-inverse-matrices.md",
+      "size": 7587,
+      "sha256": "6f16f68da6a009f04b6578fa86fd19eef9f81ecce55691d0b2d6e59d4179ee2d"
+    },
+    {
+      "path": "apps/portal/exercises/la-least-squares-computation-pseudoinverse.md",
+      "size": 7931,
+      "sha256": "3c778f6165e8417f8e57fcc7c6a35547fd94137b75fe09ce21220441ccfd2334"
+    },
+    {
+      "path": "apps/portal/exercises/la-least-squares-geometry.md",
+      "size": 7767,
+      "sha256": "a441cabbfbe0ec00fd91c95ea8329cf16115774d6880c97d661f50c4115fccec"
+    },
+    {
+      "path": "apps/portal/exercises/la-linear-independence.md",
+      "size": 7682,
+      "sha256": "f8b01dfb240bfaed10e7f3be09324edff13a74a520236bc6eea14a52b6fde6f6"
+    },
+    {
+      "path": "apps/portal/exercises/la-linear-maps-change-of-basis.md",
+      "size": 7739,
+      "sha256": "f567168a9f7edb597b936cc5c3b65ccb801c5456d1e2e08334a84d1d7a53c956"
+    },
+    {
+      "path": "apps/portal/exercises/la-linear-systems-elimination.md",
+      "size": 7905,
+      "sha256": "0ec6f8c88aafade1bc8fa75c12f132f8eb35ee2978de39f8164ba593b1f3bf81"
+    },
+    {
+      "path": "apps/portal/exercises/la-low-rank-approximation.md",
+      "size": 7620,
+      "sha256": "945637111df7d023235f4e40d39dcbc4fd003ad670bbfbc04f191abe6be5c0ae"
+    },
+    {
+      "path": "apps/portal/exercises/la-lu-factorization.md",
+      "size": 7394,
+      "sha256": "8b592b885e705c46875865649f919c023f77d722bfb05e5b1b9af2803e13faa9"
+    },
+    {
+      "path": "apps/portal/exercises/la-matrices-data-linear-maps.md",
+      "size": 7964,
+      "sha256": "49e4def569ba6939b38fb204186d2c5e49d3f801b39b8a4a31ae5463306ca53e"
+    },
+    {
+      "path": "apps/portal/exercises/la-matrix-multiplication.md",
+      "size": 7419,
+      "sha256": "6e77dd787ac374a31717c04788514fa17d0e475b01133b508ed57a1d2f8cef3c"
+    },
+    {
+      "path": "apps/portal/exercises/la-matrix-norms-condition-number.md",
+      "size": 7726,
+      "sha256": "8d4fac695b4e9c6ddaac3da13fa3a4619ef26fc2713ca09c16f3141bfb946eb8"
+    },
+    {
+      "path": "apps/portal/exercises/la-orthogonal-orthonormal-bases.md",
+      "size": 7775,
+      "sha256": "43a73c2e4743ac2d2e54f5a7704b49666120cab8b5f2d447944f8bc93d0a112a"
+    },
+    {
+      "path": "apps/portal/exercises/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 8004,
+      "sha256": "70f06910ba090e0a9bd5679583e5b695b4d7c0ebf9be8a4264fa352392192c2c"
+    },
+    {
+      "path": "apps/portal/exercises/la-quadratic-forms-positive-definite.md",
+      "size": 7748,
+      "sha256": "69f81331b8a6f908750eb41ba1944fc0d37c9600fd38d492fc4fb9c51bea9c60"
+    },
+    {
+      "path": "apps/portal/exercises/la-rank-rank-nullity.md",
+      "size": 7603,
+      "sha256": "217fb8037d6a818af14b1b1deaa677e886c0418fb4643e18c59794384be4f19f"
+    },
+    {
+      "path": "apps/portal/exercises/la-singular-value-decomposition.md",
+      "size": 7559,
+      "sha256": "9b7a7c10965290191472d73be110452cb6d3ddd29213a315727b8de6cee236be"
+    },
+    {
+      "path": "apps/portal/exercises/la-span-subspaces.md",
+      "size": 7555,
+      "sha256": "cccf57cfa2114c8f2ef7c66d9365812f3de8bb238bab56e6346927a15e1359fc"
+    },
+    {
+      "path": "apps/portal/exercises/la-symmetric-matrices-spectral-theorem.md",
+      "size": 7843,
+      "sha256": "628da797b9a73cb718cb4ada7b10620b05fa1d181ffbbae17778a10460cde255"
+    },
+    {
+      "path": "apps/portal/exercises/la-vectors-linear-combinations.md",
+      "size": 7690,
+      "sha256": "0d2fa85cdd6248b544ee9a73b2c7f2aae7c603ee2b4ea6f13e8b9daddb7e4a21"
+    },
+    {
+      "path": "apps/portal/exercises/la-weighted-least-squares-introduction.md",
+      "size": 7991,
+      "sha256": "ca1c1fe0fc0c2a6663635a68a9060ee8ff328d9e1d04659c79103bbd3b00d2f7"
+    },
+    {
+      "path": "apps/portal/exercises/mat-cca-multiview.md",
+      "size": 7649,
+      "sha256": "4ece094763e739b2ba6b9aa4164646b19fa209851c8b8d6e580477ab1bb0f772"
+    },
+    {
+      "path": "apps/portal/exercises/mat-convolution-linear-systems.md",
+      "size": 7775,
+      "sha256": "53a37cdbd957842a0460412e082dcf5479a247bd2bad32c089260409c649c776"
+    },
+    {
+      "path": "apps/portal/exercises/mat-covariance-scatter-matrices.md",
+      "size": 7784,
+      "sha256": "8c969ef7510f11099c3e9909e34ba3c75a90af4fa1ed3b5d58688926e28c3d0f"
+    },
+    {
+      "path": "apps/portal/exercises/mat-data-matrices-centering-scaling.md",
+      "size": 7885,
+      "sha256": "99270c37989913bcb7db79df948c8c6ed0a33f4f3a684d172aed0a10b3f26314"
+    },
+    {
+      "path": "apps/portal/exercises/mat-filtering-regularization.md",
+      "size": 7598,
+      "sha256": "3079bb0cd40f720ef94e5236ff5a9adc2af5e03562827962a5666ece54f30e9c"
+    },
+    {
+      "path": "apps/portal/exercises/mat-fourier-bases-dft.md",
+      "size": 7571,
+      "sha256": "6897c9244898ad4e41d9f42db8651a351af134ad95fc4866db8236fb46af3ef0"
+    },
+    {
+      "path": "apps/portal/exercises/mat-gls-correlated-errors.md",
+      "size": 7649,
+      "sha256": "e3dd205907cdc298d1101c51a6ab3d233abb1526a5443c6666117a957e008451"
+    },
+    {
+      "path": "apps/portal/exercises/mat-graph-spectral-methods.md",
+      "size": 7651,
+      "sha256": "b6107a219f40237bbaeb9b2aeaa9a18d6dd6f4da580b0abebc975f3ac3e0c858"
+    },
+    {
+      "path": "apps/portal/exercises/mat-ica-independent-components.md",
+      "size": 7603,
+      "sha256": "afb664b0ebc065c43c5e9d40ae5303373fded03546b58567402a2777a9f62610"
+    },
+    {
+      "path": "apps/portal/exercises/mat-matrix-completion.md",
+      "size": 7593,
+      "sha256": "4d45ade2c70ba4eb735b51087d6a8625ee70a7f4c3e8f1e13598598e6fea44c1"
+    },
+    {
+      "path": "apps/portal/exercises/mat-nmf-nonnegative-factors.md",
+      "size": 7802,
+      "sha256": "9800cac12e4093151349abb8801e9ad8d2c0d047b711bb46db0d144c986779ae"
+    },
+    {
+      "path": "apps/portal/exercises/mat-ols-design-matrices.md",
+      "size": 7610,
+      "sha256": "51a53b5573a0026336673771a8c622368a7a1f9f6ed8c39593c73b8a3cab679a"
+    },
+    {
+      "path": "apps/portal/exercises/mat-pca-geometry.md",
+      "size": 7571,
+      "sha256": "98e1ed5ffaca94f84b510de64d7aa147d62aa2f14c6701210df4726a3a6927f2"
+    },
+    {
+      "path": "apps/portal/exercises/mat-pca-svd-computation.md",
+      "size": 7571,
+      "sha256": "bb3128a096692371ac1adedb89e13255e90e1275a95379c815bf10a20fdaeb90"
+    },
+    {
+      "path": "apps/portal/exercises/mat-random-projections-jl.md",
+      "size": 7889,
+      "sha256": "d102d4165bab581bb1ce583090abb6478c191865f07b94ba60619873fa02fdaf"
+    },
+    {
+      "path": "apps/portal/exercises/mat-ridge-lasso-elastic-net.md",
+      "size": 7725,
+      "sha256": "8c40a88b5de83b32bd7b352aeb105a5bd3184a7b0d6009331caa153d8147cb07"
+    },
+    {
+      "path": "apps/portal/exercises/mat-robust-regression-m-estimators.md",
+      "size": 7689,
+      "sha256": "d538f968c5b12d793f763c7c8d8f5a699348998b49368058b983ca621ff50838"
+    },
+    {
+      "path": "apps/portal/exercises/mat-tensors-multilinear-overview.md",
+      "size": 7733,
+      "sha256": "89d09de735bb20d0356767d0a3e064997484b4c54084c759485beeea2390a8b1"
+    },
+    {
+      "path": "apps/portal/exercises/mat-whitening-mahalanobis.md",
+      "size": 7777,
+      "sha256": "0c3632af701164b345e544261dbc47a1c981e433e2031e491bcee68677dc6830"
+    },
+    {
+      "path": "apps/portal/exercises/mat-wls-inverse-variance.md",
+      "size": 7670,
+      "sha256": "05c92c14a036c94af0279b727123e66c10216a388f8b579c404f27a6d43dcb71"
+    },
+    {
+      "path": "apps/portal/exercises/ml-anomaly-detection.md",
+      "size": 7469,
+      "sha256": "56b8726bb975e69b0a254c91043074daebe67f2f1e6c6adf793b92035f149e75"
+    },
+    {
+      "path": "apps/portal/exercises/ml-bias-variance-regularization.md",
+      "size": 7716,
+      "sha256": "13b57d1c988b7403ccf1dcddf5e4b1dde5e3c3a7b1d476fd1066e5b5a3d9e574"
+    },
+    {
+      "path": "apps/portal/exercises/ml-boosting-gradient-boosting.md",
+      "size": 7689,
+      "sha256": "5dd6f6eff54f9f9c15b8a14cbcab6b6183f5af5464b8bc727d3835a35cb52686"
+    },
+    {
+      "path": "apps/portal/exercises/ml-clustering-kmeans-hierarchical.md",
+      "size": 7704,
+      "sha256": "2cdac69c2b09e7e0ed29e1da78e53017e455a7c02deb5e4e37af5025257c448b"
+    },
+    {
+      "path": "apps/portal/exercises/ml-decision-trees.md",
+      "size": 7423,
+      "sha256": "90905381670a2f3e013740339e369a9a3879aadbd7d19565ebf991fa2d9d1d68"
+    },
+    {
+      "path": "apps/portal/exercises/ml-dimensionality-reduction-pca-manifold.md",
+      "size": 7723,
+      "sha256": "b2a375969a05ea5552af579d809bc5916aeedc58d279ef8014f0821ebca2bef4"
+    },
+    {
+      "path": "apps/portal/exercises/ml-ensembles-bagging-random-forests.md",
+      "size": 7627,
+      "sha256": "0ab3cba35a86dae0d4947d260ce7dc985bf76eed03246d45fcce4a135ebbe084"
+    },
+    {
+      "path": "apps/portal/exercises/ml-feature-engineering-selection.md",
+      "size": 7779,
+      "sha256": "a8c7149e26147f3203a253846ef246490373c745077b65cf35b8b61fdef338c9"
+    },
+    {
+      "path": "apps/portal/exercises/ml-generative-classifiers-naive-bayes-lda.md",
+      "size": 7848,
+      "sha256": "709fa7328b548dfbc256e415e192613f66b720064dc93d5328836a0887a032fd"
+    },
+    {
+      "path": "apps/portal/exercises/ml-gmm-em.md",
+      "size": 7616,
+      "sha256": "025c00811c0f8fb277fb1ab0c3d2ece857bd2df4a56e6f344e033e6b1d05fcae"
+    },
+    {
+      "path": "apps/portal/exercises/ml-kernel-methods-feature-maps.md",
+      "size": 7714,
+      "sha256": "3faea81b3dc2502ab62caa947fe8d2225f299075a9b1d64d187e7d3915732bbb"
+    },
+    {
+      "path": "apps/portal/exercises/ml-knn-distance-methods.md",
+      "size": 7666,
+      "sha256": "bd2c91d365701fb9c1dd2c3f5d6b5661a2ad3c278636fab9b7357c40ce332ad6"
+    },
+    {
+      "path": "apps/portal/exercises/ml-linear-regression.md",
+      "size": 7486,
+      "sha256": "d377484edd7ca195f5f3925f8dee9c0f1ff7720f45bef06d9f7674266acf90a4"
+    },
+    {
+      "path": "apps/portal/exercises/ml-logistic-regression.md",
+      "size": 7537,
+      "sha256": "8c79ef7818da0289e71d8ab48d27832ad9da9c641be655250ac71bf105af9662"
+    },
+    {
+      "path": "apps/portal/exercises/ml-metrics-calibration-imbalance.md",
+      "size": 7903,
+      "sha256": "257de47ebbe67b8f90fff44d633eddf0c4ce8bbfe4d47ad74e837e2910f13ad7"
+    },
+    {
+      "path": "apps/portal/exercises/ml-model-selection-cross-validation.md",
+      "size": 7764,
+      "sha256": "f66eebc59c3361410ed3b59cb388913da0104d4ae3a9a9edfd915b2f092e9c05"
+    },
+    {
+      "path": "apps/portal/exercises/ml-problem-formulation-data-splits.md",
+      "size": 7992,
+      "sha256": "0afe3561075e91766bf7b26f1b688562fa298c5772d88732a309e40156827d00"
+    },
+    {
+      "path": "apps/portal/exercises/ml-softmax-multiclass.md",
+      "size": 7693,
+      "sha256": "7800626bf193840458bcb40c973df1eeedae93d0616decd45772c3a00cc80ac8"
+    },
+    {
+      "path": "apps/portal/exercises/ml-svm-margin-kernels.md",
+      "size": 7621,
+      "sha256": "b2e810f006fa8d26c98568d054d08d536d47432037568a2f9146b03c7fe9b3c0"
+    },
+    {
+      "path": "apps/portal/exercises/ml-uncertainty-interpretability-monitoring.md",
+      "size": 7770,
+      "sha256": "2a21677ac3195a787ba5998ddacaa4496030cd0159f15882d0fcf444325ea245"
+    },
+    {
+      "path": "apps/portal/exercises/num-convergence-orders-stopping.md",
+      "size": 7663,
+      "sha256": "cd0b86d18dc92b1643b0f43fa345e7c522d47cfb4bb6e216b978743c1f1df6cb"
+    },
+    {
+      "path": "apps/portal/exercises/num-direct-solvers-pivoting.md",
+      "size": 7859,
+      "sha256": "9c30497b5320891fbaea558eec59e18638aac6c12073dba68d53d224503f1845"
+    },
+    {
+      "path": "apps/portal/exercises/num-eigenvalue-power-qr.md",
+      "size": 7862,
+      "sha256": "cb5c28b7f828878b446e72399536d126939ac223049a48043a8236afeae8b4ae"
+    },
+    {
+      "path": "apps/portal/exercises/num-errors-conditioning-stability.md",
+      "size": 7849,
+      "sha256": "76850e1b35e5b39fab82631282111f7c7c81e222e77dc238af401855a37fa6b0"
+    },
+    {
+      "path": "apps/portal/exercises/num-floating-point-rounding.md",
+      "size": 7696,
+      "sha256": "b94a61b01373eee02d499d989808fbd6a6e43a5a90a46c89885b7fa7562371bf"
+    },
+    {
+      "path": "apps/portal/exercises/num-iterative-linear-solvers.md",
+      "size": 7770,
+      "sha256": "95b32279e5e28e8eda2e032ca1b60cbdb5bafd21bb1a272824e437c103bd2b38"
+    },
+    {
+      "path": "apps/portal/exercises/num-least-squares-qr-svd.md",
+      "size": 7864,
+      "sha256": "448a55f9a35d83d6b4b96481b635ecdf049b54e02231117d4944722c0b727efb"
+    },
+    {
+      "path": "apps/portal/exercises/num-monte-carlo-methods.md",
+      "size": 7657,
+      "sha256": "d59b5d5b5406cfb2364eaddc2aff8a56eb86cf0b9c9ee112cb7ca5eda6141896"
+    },
+    {
+      "path": "apps/portal/exercises/num-numerical-differentiation.md",
+      "size": 7489,
+      "sha256": "bdb76836d3b24ff0073df8547653499e131ca20ecf36f457eb308d2fc4ee2cba"
+    },
+    {
+      "path": "apps/portal/exercises/num-numerical-integration-quadrature.md",
+      "size": 7658,
+      "sha256": "4d22052d4ebaeef69df5fc2eac29330eb2a95a9977c233ef844df8ffcd1284d4"
+    },
+    {
+      "path": "apps/portal/exercises/num-ode-euler-runge-kutta.md",
+      "size": 7943,
+      "sha256": "009de3a1f12e12f26ebdc1793dd947662cd1b9114d5db79134c9137ef4232844"
+    },
+    {
+      "path": "apps/portal/exercises/num-ode-stability-stiffness.md",
+      "size": 7780,
+      "sha256": "0a08aca978050a7c014242981ab06e4c5d4d303f2678095be620d519cb9c2bd6"
+    },
+    {
+      "path": "apps/portal/exercises/num-polynomial-interpolation.md",
+      "size": 7526,
+      "sha256": "65359db850b5191bb1dd235feca76c6748a4169c01f783b0dc3bb7d712d9bd09"
+    },
+    {
+      "path": "apps/portal/exercises/num-randomized-numerical-linear-algebra.md",
+      "size": 7707,
+      "sha256": "65309f4544b3c7538e9ca3aafecf0c5a9955eb95683c21c1d6c4ac13ace28764"
+    },
+    {
+      "path": "apps/portal/exercises/num-regularization-ill-posed-problems.md",
+      "size": 7871,
+      "sha256": "9a71e60b679f966268847ad295c783a1cb0d0594a8dfdb8bcf37e18a71651f94"
+    },
+    {
+      "path": "apps/portal/exercises/num-root-finding.md",
+      "size": 7798,
+      "sha256": "ba135f821ebeffec8180116d760e1bd2a0b81a37ddf102af452298101f23d448"
+    },
+    {
+      "path": "apps/portal/exercises/num-sparse-matrices-preconditioning.md",
+      "size": 7614,
+      "sha256": "128bdadb513690ab7f0ec8d476efcafdd2b0d716b0bea8b0a9c1b108e0258e79"
+    },
+    {
+      "path": "apps/portal/exercises/num-splines-piecewise-approximation.md",
+      "size": 7642,
+      "sha256": "73075c2dc8d6f3d983fd6da10f16efbe0b1a1bf967779b2f59010840fa0a4a3a"
+    },
+    {
+      "path": "apps/portal/exercises/num-svd-low-rank-computation.md",
+      "size": 7651,
+      "sha256": "d21fad8963024982887e7856c98e2155d2b5be3214dc2e4d285bbf73bc7c29e7"
+    },
+    {
+      "path": "apps/portal/exercises/num-verification-benchmarking-reproducibility.md",
+      "size": 7927,
+      "sha256": "3b918a397e97a08bfb80079657e1a7e420bea3e199062ee372b6eb75f8d9e549"
+    },
+    {
+      "path": "apps/portal/exercises/opt-adaptive-optimizers.md",
+      "size": 7594,
+      "sha256": "1585c639c98b79cca13f700dab705f54cd3d0ca99669677da85411d1ff7a5d40"
+    },
+    {
+      "path": "apps/portal/exercises/opt-admm-splitting.md",
+      "size": 7554,
+      "sha256": "4eaa96ae2055b94f18785349f8e19320b2b33db65728d65656fc2cbd02d8dfdf"
+    },
+    {
+      "path": "apps/portal/exercises/opt-barrier-interior-point.md",
+      "size": 7603,
+      "sha256": "de5506f01dd4ac8e5f8f4415b7c64b1517ab18cd06cd2037c52969d30f331118"
+    },
+    {
+      "path": "apps/portal/exercises/opt-convex-sets-functions.md",
+      "size": 7627,
+      "sha256": "5007654fd2d28176c9efff496de55fdcdeb7103fdf00b7deff1705055d505e02"
+    },
+    {
+      "path": "apps/portal/exercises/opt-coordinate-conjugate-directions.md",
+      "size": 7741,
+      "sha256": "71d6c8854256f3cc0fec7c46d6fa7274d4dee82296cb1cc75aeb315be68e2438"
+    },
+    {
+      "path": "apps/portal/exercises/opt-duality-dual-gradient.md",
+      "size": 7747,
+      "sha256": "838d624690a37ca24c7b763fe0f2e7ae32cca181f5fc1049de9e9d9cbc6c89b5"
+    },
+    {
+      "path": "apps/portal/exercises/opt-equality-constrained-kkt.md",
+      "size": 7679,
+      "sha256": "3f46800f0caa134ebc14b4e5f7581fa950ee52aa0acc8b99c995637cd809b05e"
+    },
+    {
+      "path": "apps/portal/exercises/opt-gradient-descent-convergence.md",
+      "size": 7656,
+      "sha256": "a4e5f3562e3cdf165b530991a78855b24e05964d940330770b7fbd8a24cbf9af"
+    },
+    {
+      "path": "apps/portal/exercises/opt-inequality-constraints-kkt.md",
+      "size": 7687,
+      "sha256": "0fe872384a9bc5a11c7f1d8efc803ff6d31b3602ae12b4638431ea9bda87b844"
+    },
+    {
+      "path": "apps/portal/exercises/opt-line-search-step-size.md",
+      "size": 7644,
+      "sha256": "3df994157d38d88c079a0a6f00dca6d914298e182bc0b58e3116d2f4a01afd02"
+    },
+    {
+      "path": "apps/portal/exercises/opt-momentum-accelerated-gradient.md",
+      "size": 7679,
+      "sha256": "1ee5630f4b4e4feb7179aebba6f91b596d07f72f0322a35b74fe2e7838f22fc7"
+    },
+    {
+      "path": "apps/portal/exercises/opt-newton-quasi-newton.md",
+      "size": 7666,
+      "sha256": "471463a25e84f843fc2ece75ba81a7e73c795a81b7d7c98120469ae49ad27e19"
+    },
+    {
+      "path": "apps/portal/exercises/opt-nonconvex-diagnostics-hyperparameters.md",
+      "size": 7951,
+      "sha256": "d60389355b640c24ed38727022a49edd441953e89e00244796870ead6e7af170"
+    },
+    {
+      "path": "apps/portal/exercises/opt-optimality-conditions.md",
+      "size": 7534,
+      "sha256": "963b2f24c5e960aa677dc7bae0f7a242d0b5bd1028b83f4f1622362dc3c95824"
+    },
+    {
+      "path": "apps/portal/exercises/opt-problem-formulation-objectives-constraints.md",
+      "size": 7774,
+      "sha256": "e4274ee29b9b1b80f87aa1e172878659401625b21af5c6f32bfaa1725e048e2b"
+    },
+    {
+      "path": "apps/portal/exercises/opt-projected-gradient.md",
+      "size": 7564,
+      "sha256": "d68d09dc8c79c95022382cdc61150b928a41bf62d571626e4ecdd59a2b1c61ca"
+    },
+    {
+      "path": "apps/portal/exercises/opt-proximal-gradient.md",
+      "size": 7574,
+      "sha256": "74bddc8585b0bb73bbe9790c1da12cf03cd6bc5f8c4d46f37b514084ce71e5cf"
+    },
+    {
+      "path": "apps/portal/exercises/opt-smoothness-strong-convexity.md",
+      "size": 7723,
+      "sha256": "f06b142c75e15f9248dfbcb94c5b44f9705afd2335a18b486123ea6236459c1a"
+    },
+    {
+      "path": "apps/portal/exercises/opt-stochastic-gradient.md",
+      "size": 7612,
+      "sha256": "e32f60a853af7bc0a2521c60977791eae21c5a1d6d946ad0ab4cb752a7a3dd84"
+    },
+    {
+      "path": "apps/portal/exercises/opt-trust-region-methods.md",
+      "size": 7497,
+      "sha256": "df1e555bba97856a80030a9a4a13b6d013a0648f37e443e5768ac581ca067717"
+    },
+    {
+      "path": "apps/portal/exercises/orthogonal-projection.md",
+      "size": 7480,
+      "sha256": "b752ae7280df5014de6de57d4bec10157410ce05ec5bf86ba815bf4889113f56"
+    },
+    {
+      "path": "apps/portal/exercises/prep-definitions-theorems-proofs.md",
+      "size": 7758,
+      "sha256": "22d1aeaf1dba047b4fdac01930c766f20801395489cde4544087752a937419c3"
+    },
+    {
+      "path": "apps/portal/exercises/prep-exponents-logarithms.md",
+      "size": 7495,
+      "sha256": "b52668a41adaf1bb2a38c64ab348d6582df977b1ab87f5114d8cdba3337e18b0"
+    },
+    {
+      "path": "apps/portal/exercises/prep-numerical-checks-reproducibility.md",
+      "size": 7640,
+      "sha256": "09a62862cfc6569c80795982448fee0f4324646c30b795df6be0612741cd9dbe"
+    },
+    {
+      "path": "apps/portal/exercises/prep-numpy-arrays-shapes.md",
+      "size": 7685,
+      "sha256": "4045912edd72bc297b62ad43c36a9db60bc3e63903b001283b68b44e4901a3ae"
+    },
+    {
+      "path": "apps/portal/exercises/prep-python-expressions-functions.md",
+      "size": 7672,
+      "sha256": "3552bf41e1612074655b882f6c930ca2a96a77db79abfa466cd06248d2ee0f28"
+    },
+    {
+      "path": "apps/portal/exercises/prep-sets-functions-mappings.md",
+      "size": 7593,
+      "sha256": "3a733ba92258cf97551e024a7996b5140c170bb03a14faf4bcb324deb58b7c4a"
+    },
+    {
+      "path": "apps/portal/exercises/prep-sums-products-indices.md",
+      "size": 7591,
+      "sha256": "892c1adc8a3cb35bc5b4a048ea5f8a4bacb13ed9d2e080b82eb94806cd603f69"
+    },
+    {
+      "path": "apps/portal/exercises/prep-symbols-types-shapes.md",
+      "size": 7663,
+      "sha256": "0043225e2d18dbddb0629fcc492534537ff0de406feafbd1ab5a9d1e3684b870"
+    },
+    {
+      "path": "apps/portal/exercises/prob-axioms-event-operations.md",
+      "size": 7799,
+      "sha256": "d09276b36acbe4bfcba6b79ad7c967c737d054659ebf61c6cb0bd087c9ba97ba"
+    },
+    {
+      "path": "apps/portal/exercises/prob-bayes-theorem.md",
+      "size": 7544,
+      "sha256": "03dbc989444ef312b1847e4a6699977c9a63346a36c8b12a50f76216ccbaa9dd"
+    },
+    {
+      "path": "apps/portal/exercises/prob-conditional-probability-independence.md",
+      "size": 7719,
+      "sha256": "82cd0bbbb0ecf377e65dbd1eb193da9b3fc51ec91a8b4302956f8037bf023806"
+    },
+    {
+      "path": "apps/portal/exercises/prob-continuous-distributions.md",
+      "size": 7637,
+      "sha256": "b4feccad04ead5c687ca1a47300de76c4474166382e9a45464c4533d4552dc3c"
+    },
+    {
+      "path": "apps/portal/exercises/prob-counting-sample-spaces.md",
+      "size": 7787,
+      "sha256": "c8e2d75b6daa7535450eed2606c8054e338f43f0c31ec5b1e149bda8974a81fe"
+    },
+    {
+      "path": "apps/portal/exercises/prob-covariance-correlation.md",
+      "size": 7592,
+      "sha256": "335167af5826ac9c3192e838dbceb919d518b990a02db9b7ba2983a6ad63b42d"
+    },
+    {
+      "path": "apps/portal/exercises/prob-discrete-distributions.md",
+      "size": 7638,
+      "sha256": "e894af3fc57e18c79575580ea8932aea40de6861545cf8286b859f7f31f691cd"
+    },
+    {
+      "path": "apps/portal/exercises/prob-expectation-variance-moments.md",
+      "size": 7793,
+      "sha256": "f9023b6fc052ad1e8089b82a5c88fd4e06f344ba490bca5fc483eb1475b0d4d3"
+    },
+    {
+      "path": "apps/portal/exercises/prob-joint-marginal-conditional-distributions.md",
+      "size": 7955,
+      "sha256": "35426a3e14c1d3673ec8fc38eb78e4b0d3f478ac56a7b18699a2a29f1c9669db"
+    },
+    {
+      "path": "apps/portal/exercises/prob-laws-large-numbers-central-limit-theorem.md",
+      "size": 7859,
+      "sha256": "9cb4a9836564ae17750f7dbe507ddbf2fc327a02bd88ced37cb4721a4a9c6e6a"
+    },
+    {
+      "path": "apps/portal/exercises/prob-multivariate-normal-distribution.md",
+      "size": 7674,
+      "sha256": "44094ef699f0deca5f11fa9d8bf9dba90414908ecad99706c5fcffab8d067762"
+    },
+    {
+      "path": "apps/portal/exercises/prob-random-variables-cdf-pmf-pdf.md",
+      "size": 7690,
+      "sha256": "68cf5821f56273feef5c62216f81b563b8509983aa477b05cbb6914767e9fc7d"
+    },
+    {
+      "path": "apps/portal/exercises/prob-transformations-sums-random-variables.md",
+      "size": 7711,
+      "sha256": "8521e18cf46c68cfe920f790061960a03890b0a1a1668c967144daedffd638f8"
+    },
+    {
+      "path": "apps/portal/exercises/stat-bayesian-inference-map.md",
+      "size": 7688,
+      "sha256": "82d10892fcdf379ddc9088f789f152c5753dbf4f7dcf30b1c3d57bdc26ee4c11"
+    },
+    {
+      "path": "apps/portal/exercises/stat-confidence-intervals.md",
+      "size": 7502,
+      "sha256": "04fa1627302c615b44e5029dd3b619438ec77b27d5a6d8e29102b48b9119f328"
+    },
+    {
+      "path": "apps/portal/exercises/stat-entropy-cross-entropy-kl-divergence.md",
+      "size": 8358,
+      "sha256": "b44c7fd38bc1ed7c06089beb7e3d94511613886a71e3823a2b36d9cc5d847ea2"
+    },
+    {
+      "path": "apps/portal/exercises/stat-estimators-bias-variance-mse.md",
+      "size": 7859,
+      "sha256": "546a40907dc7bd94178f981c7b92174d11a4728f6a5f5e139fc66e74f5390c68"
+    },
+    {
+      "path": "apps/portal/exercises/stat-hypothesis-testing.md",
+      "size": 7495,
+      "sha256": "e3a87d7a716e6ca0df48062f162fdc2512157f04ba50f9faa7cf8bebe6820b63"
+    },
+    {
+      "path": "apps/portal/exercises/stat-likelihood-maximum-likelihood.md",
+      "size": 7603,
+      "sha256": "bb574f85e3dea1bf0b9c82c74d97861fc0e3823313ddf1ef16e7bbb7f554167a"
+    },
+    {
+      "path": "apps/portal/exercises/stat-linear-regression-probabilistic-model.md",
+      "size": 7846,
+      "sha256": "4d18955880ec326cdb074ec02041be681899c78ce2cab6a3af3c92b808677f5c"
+    },
+    {
+      "path": "apps/portal/glossary/index.md",
+      "size": 51039,
+      "sha256": "65a85c0bb1fb86c9f6c6b31aab64799da15bb9425e49fc097b701f967c90c111"
+    },
+    {
+      "path": "apps/portal/index.md",
+      "size": 1927,
+      "sha256": "7deef94a4c5c465eb1f5f266cfebe1d610da4dcef319c4069e7aca49dff42160"
+    },
+    {
+      "path": "apps/portal/textbook/calc-derivatives-rates.md",
+      "size": 5105,
+      "sha256": "2e293d722ddaab8fa8a952a3849ed6b9f7d32941afcbe405f78523ad42fdb615"
+    },
+    {
+      "path": "apps/portal/textbook/calc-differentiation-rules-chain-rule.md",
+      "size": 5306,
+      "sha256": "d46c5b6855ffe2f6abc3ac137e03cc5543b70937b25b70f7c1a1bce398cc8223"
+    },
+    {
+      "path": "apps/portal/textbook/calc-functions-limits-continuity.md",
+      "size": 5260,
+      "sha256": "f40d3cbf2b4518a2417acec460a23206be1989f1c8c7799d7ae3712d6699bb8c"
+    },
+    {
+      "path": "apps/portal/textbook/calc-gradient-directional-derivative.md",
+      "size": 5186,
+      "sha256": "4d71a3674a5b583049a65256b3baf8ebb76b0ac215d35f4a665c6c37775c38a9"
+    },
+    {
+      "path": "apps/portal/textbook/calc-hessian-second-order.md",
+      "size": 5315,
+      "sha256": "cf28514a83a08731c7727be61fcabee0927d8c00fb644b8089b7e86bc55a56dd"
+    },
+    {
+      "path": "apps/portal/textbook/calc-integrals-fundamental-theorem.md",
+      "size": 5297,
+      "sha256": "82096e85c15c99b3003a90b0dc69b8cb1fbdaac38e15684b90ad4ee752d7ca5c"
+    },
+    {
+      "path": "apps/portal/textbook/calc-lagrange-multipliers.md",
+      "size": 5077,
+      "sha256": "d5e8f9fd53678fdef22b94b77f629f7e57a89760fcca459c875465a3b56cb707"
+    },
+    {
+      "path": "apps/portal/textbook/calc-multivariable-chain-rule.md",
+      "size": 5145,
+      "sha256": "1f09ac51b6ea637e92d799371bca67ec2ab942428d0c9d5ac07b60a6687a9fc5"
+    },
+    {
+      "path": "apps/portal/textbook/calc-multivariable-functions-partial-derivatives.md",
+      "size": 5267,
+      "sha256": "a28a2e1755994a9e8bbe41367bc57a4d990561f731d0647c0ec42dbf5c3bf79f"
+    },
+    {
+      "path": "apps/portal/textbook/calc-one-variable-optimization.md",
+      "size": 5050,
+      "sha256": "21ef8e2e13132f7d9a2cc088235f4edd663e454c830e993f43b16f098accd2d1"
+    },
+    {
+      "path": "apps/portal/textbook/calc-taylor-approximation.md",
+      "size": 5233,
+      "sha256": "628f340343f9c15c801a8de62672df603eba9d8cdbf690b6d5a75d5fbfc2d072"
+    },
+    {
+      "path": "apps/portal/textbook/calc-total-derivative-jacobian.md",
+      "size": 5218,
+      "sha256": "080296c4876ba13af5ee4142fd7c764009f107806366da33b8943748a7164553"
+    },
+    {
+      "path": "apps/portal/textbook/calc-unconstrained-optimization.md",
+      "size": 5237,
+      "sha256": "1e3e97bdaf5536f66f109dcaaf4563342ae4023104b58145f4cf4a1a3b4a13a7"
+    },
+    {
+      "path": "apps/portal/textbook/dl-activation-loss-functions.md",
+      "size": 5243,
+      "sha256": "eed9ee99f985b8c03c104dbf9900fd762dccc01e406b8d2b0ec9742534da1cac"
+    },
+    {
+      "path": "apps/portal/textbook/dl-attention-mechanism.md",
+      "size": 5107,
+      "sha256": "f0d745e31c51b08ba1f9b4706460288b9f66a13e2ea211ce1e11e0eca3a3801f"
+    },
+    {
+      "path": "apps/portal/textbook/dl-autoencoders-vae.md",
+      "size": 5205,
+      "sha256": "cb700d40794d90f68696300f8085c4ac94d50ce0a1dcaa18dd2cad0cb3633d42"
+    },
+    {
+      "path": "apps/portal/textbook/dl-backprop-computation-graphs.md",
+      "size": 5367,
+      "sha256": "89cc40b09172b79a8088fe86950d58d400c50f7d19c34805b2bacca4404deed5"
+    },
+    {
+      "path": "apps/portal/textbook/dl-cnn-convolution.md",
+      "size": 5149,
+      "sha256": "75bf7a61ce53d79c51b95e3168fe7a34d997838ce03a02bd7606a801148bf6bd"
+    },
+    {
+      "path": "apps/portal/textbook/dl-diffusion-score-models.md",
+      "size": 5356,
+      "sha256": "68aa7062fffbe407d98c73b1a9a234d435808cfa4ceee35bc45c97331d7f0dee"
+    },
+    {
+      "path": "apps/portal/textbook/dl-efficient-training-inference.md",
+      "size": 5220,
+      "sha256": "58aff95b4266fd4ca893dad1681740299b4e2d3b9ded2410826e008dd3d75121"
+    },
+    {
+      "path": "apps/portal/textbook/dl-embeddings-representation-learning.md",
+      "size": 5232,
+      "sha256": "5ee989200ccebde1c049e94888d972c1dc3134dac42e768cef465cc55a63e658"
+    },
+    {
+      "path": "apps/portal/textbook/dl-evaluation-robustness-safety.md",
+      "size": 5569,
+      "sha256": "48c15734a3f83f476c847b9a3b55ad7e30fa9a43bc288032d59d3ebc6cb98aae"
+    },
+    {
+      "path": "apps/portal/textbook/dl-gans-adversarial-training.md",
+      "size": 5371,
+      "sha256": "d1e84f0f08f8f02e497c8669885337f19fc2f29b596923e2e5befd309ab01c13"
+    },
+    {
+      "path": "apps/portal/textbook/dl-graph-neural-networks.md",
+      "size": 5312,
+      "sha256": "380dcb817ee287890d82a5a6a00cd3e5e806a1099a26ca9cb379f8f143b92b58"
+    },
+    {
+      "path": "apps/portal/textbook/dl-initialization-normalization.md",
+      "size": 5277,
+      "sha256": "54053efd71f18d8bdb16a40e0af265fac487a5612690756436558a2570dd1d5a"
+    },
+    {
+      "path": "apps/portal/textbook/dl-multimodal-models.md",
+      "size": 5208,
+      "sha256": "2d6dfdc824ef4bcf65f19f569a20b370a905b7d3a064b2fbf0fce8948661d759"
+    },
+    {
+      "path": "apps/portal/textbook/dl-normalization-residuals.md",
+      "size": 5383,
+      "sha256": "58c472b48616acc983eb3cfa84183e4df625ffa7107f4dc1af4d33e7d773e259"
+    },
+    {
+      "path": "apps/portal/textbook/dl-optimization-regularization.md",
+      "size": 5397,
+      "sha256": "7b90f749b0e7ac3b58a765df26cd5b64ddb00d10c2190466e638022defa538b0"
+    },
+    {
+      "path": "apps/portal/textbook/dl-perceptron-mlp.md",
+      "size": 5214,
+      "sha256": "8c180af2ca3840352bc2320731cd926825f2106fab4ed063d3d0b59101ba495c"
+    },
+    {
+      "path": "apps/portal/textbook/dl-rnn-sequence-models.md",
+      "size": 5144,
+      "sha256": "3bd74cbe56ffe30491eff841e5b483d4c64152c4a5dfa209f5f189a6a8bdb662"
+    },
+    {
+      "path": "apps/portal/textbook/dl-scaling-distributed-training.md",
+      "size": 5212,
+      "sha256": "0310f7bd6f06a87f963a8afe3175879e0be6cbf0b8c69f493f93ad63288a496c"
+    },
+    {
+      "path": "apps/portal/textbook/dl-self-supervised-contrastive.md",
+      "size": 5419,
+      "sha256": "3505ef8bae2f3aa66c651c2dca11f313a1ff1baf7486a6412d329e1f8d045d0c"
+    },
+    {
+      "path": "apps/portal/textbook/dl-transformers.md",
+      "size": 5003,
+      "sha256": "7fc0c0f25177c9f6c63187323cff31f640bc40bbe4ea5ba59f2964e94090ad3e"
+    },
+    {
+      "path": "apps/portal/textbook/dm-algorithm-specifications-correctness.md",
+      "size": 5398,
+      "sha256": "610e209af83e944cba489f9d5cd1908b589b7162dd5f4c31cf70350ea4c80956"
+    },
+    {
+      "path": "apps/portal/textbook/dm-asymptotic-notation-growth-rates.md",
+      "size": 5184,
+      "sha256": "6408896959e4fb9ab6c684e5999e97cc8aa765aed39ed1d8f44ed48c3633cf10"
+    },
+    {
+      "path": "apps/portal/textbook/dm-counting-principles-pigeonhole.md",
+      "size": 5549,
+      "sha256": "ef4ad0d355736758cdfc792e227b6e246f2a8e02f80908b730b0137df55ae8e2"
+    },
+    {
+      "path": "apps/portal/textbook/dm-directed-graphs-dags-topological-order.md",
+      "size": 5612,
+      "sha256": "f57c084b04de219d0036c312182dd0b2e1b2fa916032a8dd744a845328d6e5c7"
+    },
+    {
+      "path": "apps/portal/textbook/dm-discrete-probability-indicators-randomized-algorithms.md",
+      "size": 5681,
+      "sha256": "835ec9f36b447f5c9e3395566c4c900dba25c2d7ac600fc45c9b1574a99e675a"
+    },
+    {
+      "path": "apps/portal/textbook/dm-divide-conquer-master-theorem.md",
+      "size": 5331,
+      "sha256": "b06889e155017fae1a68be7b22f4f5aef0c2c73eb6fc9d93ef7a94e6181c9cb2"
+    },
+    {
+      "path": "apps/portal/textbook/dm-divisibility-modular-arithmetic.md",
+      "size": 5226,
+      "sha256": "fca9c5d0e595229c117174732f3c4ebc99d1459a6d61c628bf4286c20d2e8cf3"
+    },
+    {
+      "path": "apps/portal/textbook/dm-graphs-representations-degrees.md",
+      "size": 5336,
+      "sha256": "2fd9c72d065bfff18224ddeb7d041e558bc0892d8a2a130586d077b22f4aa9c8"
+    },
+    {
+      "path": "apps/portal/textbook/dm-implication-equivalence-conditions.md",
+      "size": 5439,
+      "sha256": "4d37881e551b8e080db21f93f7c91e1a787a65da4bb4d00c2bc2f858c543397b"
+    },
+    {
+      "path": "apps/portal/textbook/dm-inclusion-exclusion-double-counting.md",
+      "size": 5409,
+      "sha256": "f9743990801bd049717c9f6e6ae5407372718cddd6b0ac0b3501aaa36c6ff1b3"
+    },
+    {
+      "path": "apps/portal/textbook/dm-induction-well-ordering.md",
+      "size": 5603,
+      "sha256": "f9c87ee6df0cce8dfa9a6895feaa3c7e514e584f7fc58880e7b11c59d9fac2b4"
+    },
+    {
+      "path": "apps/portal/textbook/dm-loop-invariants-termination.md",
+      "size": 5313,
+      "sha256": "49bf355c4c69f591114e4ce69003fb5d1887154268d37e5071f22007e00a9e1e"
+    },
+    {
+      "path": "apps/portal/textbook/dm-paths-cycles-connectivity.md",
+      "size": 5267,
+      "sha256": "5711b01ad933bb907f9a69aad5b43d08344ecad2e5b63f5198436e028e0563d4"
+    },
+    {
+      "path": "apps/portal/textbook/dm-permutations-combinations-binomial.md",
+      "size": 5404,
+      "sha256": "8eb575310ac1aa301568fe3b1601c3e49dcb8b7369a65d9d867edcf1effe3483"
+    },
+    {
+      "path": "apps/portal/textbook/dm-predicates-quantifiers-negation.md",
+      "size": 5401,
+      "sha256": "371af5a791296c76f695728bbefbf5718da00d48ac3016b8988c8c4764287dcc"
+    },
+    {
+      "path": "apps/portal/textbook/dm-proof-methods.md",
+      "size": 5631,
+      "sha256": "f19f93e92281e61c19e4e6904ccd37ab63126b63c32682bdb1ad86641eabec56"
+    },
+    {
+      "path": "apps/portal/textbook/dm-propositions-connectives-truth-tables.md",
+      "size": 5423,
+      "sha256": "7f059e429dd61a73614261dc75867e74aaf7a31315914b6175987af66d48d45c"
+    },
+    {
+      "path": "apps/portal/textbook/dm-recurrence-relations.md",
+      "size": 4966,
+      "sha256": "a8ba7f68aa5646450bbc9f71860d20251813cfc43e43805685faee7a942bdba3"
+    },
+    {
+      "path": "apps/portal/textbook/dm-relations-equivalence-partial-orders.md",
+      "size": 5394,
+      "sha256": "fcecbbed6a1fb1623710d2692e98214205d516015b0a071c5992ba4f729fb696"
+    },
+    {
+      "path": "apps/portal/textbook/dm-trees-spanning-trees.md",
+      "size": 5109,
+      "sha256": "d02cc3c804c3a12f3d43ea2a33fd98eda0ecc799245dee867e2d929ded206756"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-agents-planning-memory.md",
+      "size": 5315,
+      "sha256": "323cc777ec833afff92b4a6e5aaba1b9d344fd7e96fce0335eaac10985af0542"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-alignment-safety-policies.md",
+      "size": 5578,
+      "sha256": "f5b2fa74285d33586ab94c5b569c871b495fe5343ef0e2a6fca25f00a6d9c08f"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-foundation-model-evaluation.md",
+      "size": 5219,
+      "sha256": "90186be06a83c103aa3f4a542db7a2b3f4ae5be2764a3664fba041d8d3c35491"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-foundation-model-paradigm.md",
+      "size": 5302,
+      "sha256": "e1229de903514a8b6efa97b68a3926f46d5db7ce216f3c6bf0987c036cec301c"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-in-context-learning-prompting.md",
+      "size": 5422,
+      "sha256": "36ab63defd0edc422766911f28d013717fb15a47aac497e04508c26545ddad62"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-interpretability-mechanistic.md",
+      "size": 5257,
+      "sha256": "3761a488817881b5592962a53287b1b05961bb3f0af3c97860cdbc4a09bfd05b"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-long-context-memory.md",
+      "size": 5249,
+      "sha256": "a6bae07bb0a5c25e760c60879a63804b99a00487fdd404817961f7bece844089"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-multi-agent-systems.md",
+      "size": 5163,
+      "sha256": "2133d6d03c518c76b3c7cbba1c193bee7fd7e538f231f8c0f4944f6005b148b4"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-parameter-efficient-finetuning.md",
+      "size": 5316,
+      "sha256": "484de2521ff05841f8fbfea1072f961eb0772ae41f9a8e5bb2901c2c302c3d1f"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-pretraining-scaling-laws.md",
+      "size": 5326,
+      "sha256": "11a419772504ff8dfecaaaba91fe3f897a3d67380cacc410f7fcefbd1d11c372"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-privacy-governance-research-practice.md",
+      "size": 5476,
+      "sha256": "9a51b8d5d3fbb5e5436a7cf625632bdc68ff8e91ec7e78273800fddb1711087e"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-quantization-sparsity-moe.md",
+      "size": 5728,
+      "sha256": "6893fd8b992b22b3a28d60d1f3af0e607a046f72ca490c02f48d4d36c62a7e85"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-retrieval-augmented-generation.md",
+      "size": 5312,
+      "sha256": "a0c6b1302e8abe93890344db1359bc68045039b9cf570bd610463b5056cde151"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-rlhf-preference-optimization.md",
+      "size": 5412,
+      "sha256": "ceb526e3f05d40f5fc0ce6aa10ae5ae3b8292e76293fdd6735f1d27a7b739418"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-scientific-machine-learning.md",
+      "size": 5383,
+      "sha256": "10c5458d0d4f46b566deb9f35d0c1a3ef3ca02923052eed6393206e5f02912ab"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-synthetic-data-data-curation.md",
+      "size": 5377,
+      "sha256": "f9395ecc8fcdfbfa57323daa66816aa28301daa8531851eb96efcdc9c8cc0769"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-tokenization-embeddings-context.md",
+      "size": 5395,
+      "sha256": "19007b44b1268f277264cbf57bb070d214d788524b586eb487dbf56df0cc5e85"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-tool-use-function-calling.md",
+      "size": 5430,
+      "sha256": "1c1bc4ccdb8b39760f1e36d9ce621f96664766c2667adbd8be0ff91022668031"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-uncertainty-calibration-abstention.md",
+      "size": 5517,
+      "sha256": "01278571bdd5061bdb643d125b24467533ca2aff60335863fe762db57e1da89c"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-vector-databases-search.md",
+      "size": 5337,
+      "sha256": "c4a010af29a088561c193d3bf6922c0341c3347a3914f4ac5d47d7b700c56d2a"
+    },
+    {
+      "path": "apps/portal/textbook/la-basis-coordinates-dimension.md",
+      "size": 5282,
+      "sha256": "5a8db2e7546424588fb14d2d96de71b1e253bfbf41e1f0a2e4652a496883ede9"
+    },
+    {
+      "path": "apps/portal/textbook/la-cholesky-factorization.md",
+      "size": 5007,
+      "sha256": "4fded9963cb5177f9adbfd417c703192beedc7febb9318fa5aefb5144827d60c"
+    },
+    {
+      "path": "apps/portal/textbook/la-column-space-null-space.md",
+      "size": 5227,
+      "sha256": "63df23280e7fc7116aa68e18409474116890ae149adc73342458af28cb2d2306"
+    },
+    {
+      "path": "apps/portal/textbook/la-determinants-volume-invertibility.md",
+      "size": 5352,
+      "sha256": "5efb0bb7bf3801289769512e98beda736ae3de0f5d8b5926398c89cd13b0ddb4"
+    },
+    {
+      "path": "apps/portal/textbook/la-diagonalization-matrix-powers.md",
+      "size": 5271,
+      "sha256": "4dc1ff5fa52d485c7f9e0dcdd42d4bc266c3e5c2c863fbba03fe84824405e85d"
+    },
+    {
+      "path": "apps/portal/textbook/la-eigenvalues-eigenvectors.md",
+      "size": 5274,
+      "sha256": "7ce481e234fc6fdb0cd207c431c29dd9ad79470d2cf7c82778a9cac086b5c7bd"
+    },
+    {
+      "path": "apps/portal/textbook/la-gram-schmidt-qr.md",
+      "size": 5230,
+      "sha256": "ee6fce4276736d3ce43eb5202a375495bc004b179e13e2706088df38a1809f3f"
+    },
+    {
+      "path": "apps/portal/textbook/la-inner-products-norms-angles.md",
+      "size": 5344,
+      "sha256": "84355d70835673e62b066a23481f50421c0a5eaf2a43caaebe72b400bf834579"
+    },
+    {
+      "path": "apps/portal/textbook/la-invertibility-inverse-matrices.md",
+      "size": 5167,
+      "sha256": "9957fde7b233a493cdec77908d8add71dcd8a9eca0bb3f881cf9e14abc43f7e5"
+    },
+    {
+      "path": "apps/portal/textbook/la-least-squares-computation-pseudoinverse.md",
+      "size": 5428,
+      "sha256": "c9d72310120e23c55e799ba1635b43dfa9e8bb506c71c1e1e92612d2591bb748"
+    },
+    {
+      "path": "apps/portal/textbook/la-least-squares-geometry.md",
+      "size": 5158,
+      "sha256": "82cfa2138539f6da91865ee88d72bda231e22afed05a6f4976c87f185a78cfbe"
+    },
+    {
+      "path": "apps/portal/textbook/la-linear-independence.md",
+      "size": 5212,
+      "sha256": "07fa6ffb887bf788fc7aa6fb7c0dd556d3275519a836a536065f1d748aadde3c"
+    },
+    {
+      "path": "apps/portal/textbook/la-linear-maps-change-of-basis.md",
+      "size": 5325,
+      "sha256": "d48b818118630d28384619f32bafffde9e3ada297422ba720343b70e2d6d3b51"
+    },
+    {
+      "path": "apps/portal/textbook/la-linear-systems-elimination.md",
+      "size": 5356,
+      "sha256": "9940722ea30f513afe2fb9c0d8a29d006c850167b9852b13002178901c3830fc"
+    },
+    {
+      "path": "apps/portal/textbook/la-low-rank-approximation.md",
+      "size": 5053,
+      "sha256": "b3ffb4f5e07fe353c19a42e36313388d902515245f5cd9beb008b0470ba8b4c7"
+    },
+    {
+      "path": "apps/portal/textbook/la-lu-factorization.md",
+      "size": 4924,
+      "sha256": "adab0cb9a682921fcbddeaae9555fa8cc5af8bf53be8ce754b15a94dd6bdc5ba"
+    },
+    {
+      "path": "apps/portal/textbook/la-matrices-data-linear-maps.md",
+      "size": 5523,
+      "sha256": "c5e365ba9de77f40dab9dbb1d8d105ea60a3b235be81c6d348ccdb81d090b4eb"
+    },
+    {
+      "path": "apps/portal/textbook/la-matrix-multiplication.md",
+      "size": 4972,
+      "sha256": "a9500638e4a4fee73e7ea7b0d3dffb4f0d39f2982be525ab6e417be9fd6923fe"
+    },
+    {
+      "path": "apps/portal/textbook/la-matrix-norms-condition-number.md",
+      "size": 5279,
+      "sha256": "51214050e9dd5b7d5453eab0beb352dfcd16182e19bc458213b5d9f814aea2a1"
+    },
+    {
+      "path": "apps/portal/textbook/la-orthogonal-orthonormal-bases.md",
+      "size": 5316,
+      "sha256": "1f2c946bbc24602b93cb5923d3d7c66473efe19b67d43ebab8557a9c6dc828e6"
+    },
+    {
+      "path": "apps/portal/textbook/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 5496,
+      "sha256": "868ca9126335a033d69c22bb529b276d93965cc103aefcae1e960b29eb76a9b2"
+    },
+    {
+      "path": "apps/portal/textbook/la-quadratic-forms-positive-definite.md",
+      "size": 5308,
+      "sha256": "794e574b6246bd06b6aeeb89ce422fd0abed1d7b4c6acf844dd76a4af8b6b725"
+    },
+    {
+      "path": "apps/portal/textbook/la-rank-rank-nullity.md",
+      "size": 5192,
+      "sha256": "9150c37c06dd00b803181fdb90ce28a47946ae8522ca00568d3b5a94efcf4e0f"
+    },
+    {
+      "path": "apps/portal/textbook/la-singular-value-decomposition.md",
+      "size": 5058,
+      "sha256": "40e945d376c49d35fe83ee8389895e8e84054fc30b4285d21de0e2361f8ffba0"
+    },
+    {
+      "path": "apps/portal/textbook/la-span-subspaces.md",
+      "size": 5133,
+      "sha256": "c90c52da30e2ff07ae80c9398b6e9c16539fab03410195989f84638a2b2b7d41"
+    },
+    {
+      "path": "apps/portal/textbook/la-symmetric-matrices-spectral-theorem.md",
+      "size": 5384,
+      "sha256": "7589c85e4fb2bd084920b29e016580d1811b5b195653de7c2d45ddd8f605706a"
+    },
+    {
+      "path": "apps/portal/textbook/la-vectors-linear-combinations.md",
+      "size": 5255,
+      "sha256": "9c5c191be2e89aa6d907f86b6f85aa97edbca23a7729cbd3d5602ec5654164f8"
+    },
+    {
+      "path": "apps/portal/textbook/la-weighted-least-squares-introduction.md",
+      "size": 5310,
+      "sha256": "6209dc9a6ffb634390c1d86ac06b9a6cddd673669a6bd4980013111c2b63785f"
+    },
+    {
+      "path": "apps/portal/textbook/mat-cca-multiview.md",
+      "size": 5103,
+      "sha256": "abacc7e704b9ce28f92f08f9a7dad610acf9640bbcafd9a60b6025e019df5a47"
+    },
+    {
+      "path": "apps/portal/textbook/mat-convolution-linear-systems.md",
+      "size": 5332,
+      "sha256": "3bd1e99db5f496274310fc2806957a22d06b04f7ee9a2f0509a09064ed362d4e"
+    },
+    {
+      "path": "apps/portal/textbook/mat-covariance-scatter-matrices.md",
+      "size": 5430,
+      "sha256": "0baba4af568775e6d0af97ed139af540be93761fc5d7fe2536c01540a82606b8"
+    },
+    {
+      "path": "apps/portal/textbook/mat-data-matrices-centering-scaling.md",
+      "size": 5513,
+      "sha256": "91d2e83880e0ec7b44f2626f3f428fe36490fa1b247f77c9b132457db3c563fc"
+    },
+    {
+      "path": "apps/portal/textbook/mat-filtering-regularization.md",
+      "size": 5211,
+      "sha256": "813604b758cf0edff71fa098e5bcd4d336e9762800ec4600bfb9257ea567c796"
+    },
+    {
+      "path": "apps/portal/textbook/mat-fourier-bases-dft.md",
+      "size": 5164,
+      "sha256": "72aab8d1ff606d35910627873f742f6273e0b7c948a6042f318ba8d7f5fdb22c"
+    },
+    {
+      "path": "apps/portal/textbook/mat-gls-correlated-errors.md",
+      "size": 5250,
+      "sha256": "239a5591e3547933f5701b6a49e853cd7a95a9066efe3e81448bc3baf7c23be9"
+    },
+    {
+      "path": "apps/portal/textbook/mat-graph-spectral-methods.md",
+      "size": 5237,
+      "sha256": "9420279a053f1ae61df12f99762c1695f4f3130dcbb2b2d04e53522fc6a90db3"
+    },
+    {
+      "path": "apps/portal/textbook/mat-ica-independent-components.md",
+      "size": 5101,
+      "sha256": "e271f6eba30e98bc4046594163963f671eb5feba8ceaf56065dce51cef242722"
+    },
+    {
+      "path": "apps/portal/textbook/mat-matrix-completion.md",
+      "size": 5188,
+      "sha256": "0bab29d0eb0218588b9c8925209e6764a453aad1618fb53cc3d183bf403e6732"
+    },
+    {
+      "path": "apps/portal/textbook/mat-nmf-nonnegative-factors.md",
+      "size": 5193,
+      "sha256": "70f703107465bbf6221185717e54b3aed339f7bd8af0109139725724c3fe1a4d"
+    },
+    {
+      "path": "apps/portal/textbook/mat-ols-design-matrices.md",
+      "size": 5323,
+      "sha256": "daad81988582efffff1c5ee2e03b56b8f502a0767320efe0f130a2cc3d31c6af"
+    },
+    {
+      "path": "apps/portal/textbook/mat-pca-geometry.md",
+      "size": 5057,
+      "sha256": "3db17170669809c72099569a9d0de6026a2ef6dd0916a3a0a8eefcc166fd736e"
+    },
+    {
+      "path": "apps/portal/textbook/mat-pca-svd-computation.md",
+      "size": 5052,
+      "sha256": "3e42dd3aa4fd387614b41e5403e32c25998f3a5cd3f9b154d396f689fe03dd34"
+    },
+    {
+      "path": "apps/portal/textbook/mat-random-projections-jl.md",
+      "size": 5540,
+      "sha256": "d5e8b4ef90e74d82a2d841c41da9c4a229f506e16a50b5ddb07bec8569968d26"
+    },
+    {
+      "path": "apps/portal/textbook/mat-ridge-lasso-elastic-net.md",
+      "size": 5496,
+      "sha256": "3547b04862c3516f7926ca84c65ad0bdccfb2b313c98180c2b6472d1b03c35f4"
+    },
+    {
+      "path": "apps/portal/textbook/mat-robust-regression-m-estimators.md",
+      "size": 5378,
+      "sha256": "6839eb21be8f5808e688171f135a683ae8e3409ced1f7f24af45ba7e13047df6"
+    },
+    {
+      "path": "apps/portal/textbook/mat-tensors-multilinear-overview.md",
+      "size": 5298,
+      "sha256": "bb5e12b98d1ede4b84cd084472c554e57e3fd80881df4537283377a9e4722a1c"
+    },
+    {
+      "path": "apps/portal/textbook/mat-whitening-mahalanobis.md",
+      "size": 5337,
+      "sha256": "1f772579daa276e6ca389ccddc4af88f7be03a8ec45ed8d88237f6b819c12f4a"
+    },
+    {
+      "path": "apps/portal/textbook/mat-wls-inverse-variance.md",
+      "size": 5283,
+      "sha256": "7670c28a1c9301cb88bd19f151d864e32e710910600bf6c3e13f6bbe4203fcfb"
+    },
+    {
+      "path": "apps/portal/textbook/ml-anomaly-detection.md",
+      "size": 4974,
+      "sha256": "68f715d63412b7f5a564f47c1e482b7e8db0377525b1b943b2cf800362015cd6"
+    },
+    {
+      "path": "apps/portal/textbook/ml-bias-variance-regularization.md",
+      "size": 5309,
+      "sha256": "ca8b521ad666517dde6bda3c8f8e10cab9a62380f536722c8277260f543bfde2"
+    },
+    {
+      "path": "apps/portal/textbook/ml-boosting-gradient-boosting.md",
+      "size": 5227,
+      "sha256": "0fccf4ada7088fa47c71b0682afd41f09f1fdb2ed64c1f198d3d067ac7c34daa"
+    },
+    {
+      "path": "apps/portal/textbook/ml-clustering-kmeans-hierarchical.md",
+      "size": 5284,
+      "sha256": "bb7264b5a813ab1d8149e02992c13502c4441f95396b290a52bb4ac658989f10"
+    },
+    {
+      "path": "apps/portal/textbook/ml-decision-trees.md",
+      "size": 5020,
+      "sha256": "deb36f6de0382a743aeac53d550a4e6a985cee64222bcaf4de1cd1b1c87c55c5"
+    },
+    {
+      "path": "apps/portal/textbook/ml-dimensionality-reduction-pca-manifold.md",
+      "size": 5390,
+      "sha256": "7326c01590f785c5c8bec951663450cad4b91fdcbb05e5f122954b055a6d9118"
+    },
+    {
+      "path": "apps/portal/textbook/ml-ensembles-bagging-random-forests.md",
+      "size": 5308,
+      "sha256": "146681db775770ca9e0bbe13a58efb25476a3dc8a6adce3d18b4a12b39e12d15"
+    },
+    {
+      "path": "apps/portal/textbook/ml-feature-engineering-selection.md",
+      "size": 5344,
+      "sha256": "3b2d1c7229185b4b2db2c6188f03c69ef8536812005d83aaa39dc1d7da884768"
+    },
+    {
+      "path": "apps/portal/textbook/ml-generative-classifiers-naive-bayes-lda.md",
+      "size": 5539,
+      "sha256": "d56a0e8e31fbda4cb9b30b01b1540ddd205b9d029ec3d35662297025496fb10a"
+    },
+    {
+      "path": "apps/portal/textbook/ml-gmm-em.md",
+      "size": 5293,
+      "sha256": "a4432a4041b0bb2fb0a37ef9656f9b472f1414aaf1fbaaca34de2d018d9b303e"
+    },
+    {
+      "path": "apps/portal/textbook/ml-kernel-methods-feature-maps.md",
+      "size": 5394,
+      "sha256": "515a86b3d9c019075a0e0d4fda82cca0161dd27c8e67d828a48083933d9f895f"
+    },
+    {
+      "path": "apps/portal/textbook/ml-knn-distance-methods.md",
+      "size": 5260,
+      "sha256": "6556b6646a1d31ced32e255bad4ad72fabde4ffb5de3af166b27ae3496690ee6"
+    },
+    {
+      "path": "apps/portal/textbook/ml-linear-regression.md",
+      "size": 4992,
+      "sha256": "020282b87b9ca503c116c25aa251359f8c84e7865d83cc84bd2bd6dd4e7a5002"
+    },
+    {
+      "path": "apps/portal/textbook/ml-logistic-regression.md",
+      "size": 5028,
+      "sha256": "428aa0917f0d526c45e71675939f9f08869a718c2c23e585c11bb8fa9c4c873a"
+    },
+    {
+      "path": "apps/portal/textbook/ml-metrics-calibration-imbalance.md",
+      "size": 5593,
+      "sha256": "29c20411e96dd38f909e26248357cdc8ab8641fe9c83f318b19a76b2249b537c"
+    },
+    {
+      "path": "apps/portal/textbook/ml-model-selection-cross-validation.md",
+      "size": 5441,
+      "sha256": "c29feed3fffcabad6768d22c25410dfd3e34ebdd8457fe15a0b272f81f6059c4"
+    },
+    {
+      "path": "apps/portal/textbook/ml-problem-formulation-data-splits.md",
+      "size": 5589,
+      "sha256": "8adb813439227b5aee21174b9521bd2f73f516c29255abfb580cf74b99516bad"
+    },
+    {
+      "path": "apps/portal/textbook/ml-softmax-multiclass.md",
+      "size": 5296,
+      "sha256": "680525ddcfbaff055be25c2b62f7bd23cbb03ed25bc100fb062c7dea92d47ff2"
+    },
+    {
+      "path": "apps/portal/textbook/ml-svm-margin-kernels.md",
+      "size": 5321,
+      "sha256": "3a67baeda913dad13e36d404b668ada61e594aea77f77056297740e41ae8daf1"
+    },
+    {
+      "path": "apps/portal/textbook/ml-uncertainty-interpretability-monitoring.md",
+      "size": 5431,
+      "sha256": "389b252b0324287198574c7a3de7f58adc328933f6515cc36e3d37e7eddf40bd"
+    },
+    {
+      "path": "apps/portal/textbook/num-convergence-orders-stopping.md",
+      "size": 5237,
+      "sha256": "502c8fbf5f7b8d4797914d014a06ae3cc0d2b14ebb03209cb8ae3048018e0bf8"
+    },
+    {
+      "path": "apps/portal/textbook/num-direct-solvers-pivoting.md",
+      "size": 5358,
+      "sha256": "912c22aede2e5ff78e18e8d5760e3cc8128482b24ea91904add4e7df42396b99"
+    },
+    {
+      "path": "apps/portal/textbook/num-eigenvalue-power-qr.md",
+      "size": 5514,
+      "sha256": "c1378f4865e951b8579f6235abd18f51beb25c131005183ce4a37666c1ee5716"
+    },
+    {
+      "path": "apps/portal/textbook/num-errors-conditioning-stability.md",
+      "size": 5504,
+      "sha256": "81e88609f8db00d250105118675e60ede6ca3c0147dc274bbd66d8f6a9c8ef87"
+    },
+    {
+      "path": "apps/portal/textbook/num-floating-point-rounding.md",
+      "size": 5258,
+      "sha256": "c7d67d019b0abe37f53b113059010f1a130c50ba2dc2c3674e2dd79515c126d9"
+    },
+    {
+      "path": "apps/portal/textbook/num-iterative-linear-solvers.md",
+      "size": 5196,
+      "sha256": "8c655652506c37152a1e3366f16488834d3772891448eccc7fc83a59cde83973"
+    },
+    {
+      "path": "apps/portal/textbook/num-least-squares-qr-svd.md",
+      "size": 5310,
+      "sha256": "d051cb615e96899a140c0afaeb73994d976dc7be8c35d3ea33db276a500c3482"
+    },
+    {
+      "path": "apps/portal/textbook/num-monte-carlo-methods.md",
+      "size": 5271,
+      "sha256": "aaaab29771899c3199a1f4a5da30b801fe06694ab9796b5fc5dd91b893651528"
+    },
+    {
+      "path": "apps/portal/textbook/num-numerical-differentiation.md",
+      "size": 5015,
+      "sha256": "15277edd1b7bb530a9e3ec4944aa6f1b52aba751bb3cd69e53e1893c96950dcb"
+    },
+    {
+      "path": "apps/portal/textbook/num-numerical-integration-quadrature.md",
+      "size": 5274,
+      "sha256": "d7e23f23b531e46e8d23b22f66615ef7438485862a23c391701ee25cbb83f9f8"
+    },
+    {
+      "path": "apps/portal/textbook/num-ode-euler-runge-kutta.md",
+      "size": 5570,
+      "sha256": "d4753a8db9e36ea874237aa17fe5d9c4abdec8df67a8ee3ae87082938da7bfbb"
+    },
+    {
+      "path": "apps/portal/textbook/num-ode-stability-stiffness.md",
+      "size": 5444,
+      "sha256": "6c23f1ceb960161487e1e83da65cdd27210ed3eb0463e08fdab0bc25ef59e3ac"
+    },
+    {
+      "path": "apps/portal/textbook/num-polynomial-interpolation.md",
+      "size": 5046,
+      "sha256": "daf8abfcda921c54c90632443b702e1a93cf029bc6e9e625311873e00056725d"
+    },
+    {
+      "path": "apps/portal/textbook/num-randomized-numerical-linear-algebra.md",
+      "size": 5203,
+      "sha256": "f68307255f913dea242278b233ce4041f2aa1d7de9d1162654ec11b82161121c"
+    },
+    {
+      "path": "apps/portal/textbook/num-regularization-ill-posed-problems.md",
+      "size": 5541,
+      "sha256": "7affc5af8e6d48d9849a2f6da17529fe7ac1c09897cd4ced6db44ffd2d2199d3"
+    },
+    {
+      "path": "apps/portal/textbook/num-root-finding.md",
+      "size": 5180,
+      "sha256": "fcf3ef09ed04961fb7f6b01a98eb1257eb86acdbed962b41b9f5c43f7afd55cd"
+    },
+    {
+      "path": "apps/portal/textbook/num-sparse-matrices-preconditioning.md",
+      "size": 5209,
+      "sha256": "adc8cd84ae543272774abe18a695858b828a82b6eb70894c778f30cbf9ab32ad"
+    },
+    {
+      "path": "apps/portal/textbook/num-splines-piecewise-approximation.md",
+      "size": 5207,
+      "sha256": "1090e21a4a43b9ea5027b30f26c00bb72fb5f6a9d1caca1487b94f7bbdfb39bc"
+    },
+    {
+      "path": "apps/portal/textbook/num-svd-low-rank-computation.md",
+      "size": 5260,
+      "sha256": "0387336c1876c389435400d23af7f30ef3e62752a7b093b6530e85d403cd48be"
+    },
+    {
+      "path": "apps/portal/textbook/num-verification-benchmarking-reproducibility.md",
+      "size": 5546,
+      "sha256": "97254940045eea041307f0b83213f725a185ab9be9498a49712a5fb6cec12039"
+    },
+    {
+      "path": "apps/portal/textbook/opt-adaptive-optimizers.md",
+      "size": 5165,
+      "sha256": "273434b82d496200891db21b127f9e804348c4064358bb69da9814d53c784ab7"
+    },
+    {
+      "path": "apps/portal/textbook/opt-admm-splitting.md",
+      "size": 5165,
+      "sha256": "f62a1194c880d0fd017858e441080ff18f166a6277025210e557fc07eb3870cd"
+    },
+    {
+      "path": "apps/portal/textbook/opt-barrier-interior-point.md",
+      "size": 5181,
+      "sha256": "3624e8eec002fce8f55589939e0092432496fe9cb20750ccf5011acd045a46d9"
+    },
+    {
+      "path": "apps/portal/textbook/opt-convex-sets-functions.md",
+      "size": 5214,
+      "sha256": "6b7e865856fb58fe23cedb61533d66a5d15484eefc3d56d84e281c349925a6a3"
+    },
+    {
+      "path": "apps/portal/textbook/opt-coordinate-conjugate-directions.md",
+      "size": 5291,
+      "sha256": "023120fcf8f4916e3008075b85e22bd5be01991d4b09cb575e574277b63b9efc"
+    },
+    {
+      "path": "apps/portal/textbook/opt-duality-dual-gradient.md",
+      "size": 5376,
+      "sha256": "f52c46d84eb4ebf11150b103b1d841a3929299f96175ca495f369c9f95e51a6a"
+    },
+    {
+      "path": "apps/portal/textbook/opt-equality-constrained-kkt.md",
+      "size": 5237,
+      "sha256": "dc818504a04518ffa35ec54634a4f1a9451df052925444e57170bac6c2ffd591"
+    },
+    {
+      "path": "apps/portal/textbook/opt-gradient-descent-convergence.md",
+      "size": 5199,
+      "sha256": "67af3af886faa7ebb77e68ddf1068fed2e7be483cbc28099a2a20a30c884bda2"
+    },
+    {
+      "path": "apps/portal/textbook/opt-inequality-constraints-kkt.md",
+      "size": 5219,
+      "sha256": "f68ebf13870a34fee57060de376fa7bcddd31f003191733378c00b57ca8de193"
+    },
+    {
+      "path": "apps/portal/textbook/opt-line-search-step-size.md",
+      "size": 5418,
+      "sha256": "f5eb635d3ad13a988146ebf1177a91912b63c3176ce9c7cc350583d1a7a9082c"
+    },
+    {
+      "path": "apps/portal/textbook/opt-momentum-accelerated-gradient.md",
+      "size": 5222,
+      "sha256": "45e899b867a577db35daf2ac246ea0a5d6a24f662bb0e36a6f0c87296b287174"
+    },
+    {
+      "path": "apps/portal/textbook/opt-newton-quasi-newton.md",
+      "size": 5241,
+      "sha256": "b8580cd441cb6415a4d3248af91891a801899ee61c1d8bea3511c527d6812e1e"
+    },
+    {
+      "path": "apps/portal/textbook/opt-nonconvex-diagnostics-hyperparameters.md",
+      "size": 5460,
+      "sha256": "fed3326bf73a72d00a179cec37f96b725e42954cf7367cd9a3dc2d55cf50891b"
+    },
+    {
+      "path": "apps/portal/textbook/opt-optimality-conditions.md",
+      "size": 4997,
+      "sha256": "31027c8c64e5f5af3cf674fd751d5e09a3d448cd57241453fdd1ecddb87469d4"
+    },
+    {
+      "path": "apps/portal/textbook/opt-problem-formulation-objectives-constraints.md",
+      "size": 5182,
+      "sha256": "58faa0ec9d1e272bd66a03c885821264e29b64a5aca30ad2bbfd91e2857308ab"
+    },
+    {
+      "path": "apps/portal/textbook/opt-projected-gradient.md",
+      "size": 5039,
+      "sha256": "ae48e8c3f31ab00a654cbafd9a2ba0c0ab374d87c47252d6174b31c300cae868"
+    },
+    {
+      "path": "apps/portal/textbook/opt-proximal-gradient.md",
+      "size": 5052,
+      "sha256": "d6ebc75b772b8f28c86b216e96782fba274b1f84731c6dc27ef63f7d9875a508"
+    },
+    {
+      "path": "apps/portal/textbook/opt-smoothness-strong-convexity.md",
+      "size": 5292,
+      "sha256": "ed6554526930f69992b26255059aa59bcc5a03d3f42b1630b59dd0d08a62c8b1"
+    },
+    {
+      "path": "apps/portal/textbook/opt-stochastic-gradient.md",
+      "size": 5093,
+      "sha256": "47c0571b2f23bd9d363f79cd0f81bbdf795869ba122fa40bc7f2159ab4e44971"
+    },
+    {
+      "path": "apps/portal/textbook/opt-trust-region-methods.md",
+      "size": 5089,
+      "sha256": "0a2fa252262d3465b89e954f713e23abcb6cbd394c1fa178d5afd06b1635d6d0"
+    },
+    {
+      "path": "apps/portal/textbook/orthogonal-projection.md",
+      "size": 5025,
+      "sha256": "348a144080107d719cf5826b879694d97c41825288a548e37a2db24351ced0a6"
+    },
+    {
+      "path": "apps/portal/textbook/prep-definitions-theorems-proofs.md",
+      "size": 5946,
+      "sha256": "33fd9f28c753c0202c4854c2ca2c7173de9079acc20ac10351b6472e8f7c44b1"
+    },
+    {
+      "path": "apps/portal/textbook/prep-exponents-logarithms.md",
+      "size": 5566,
+      "sha256": "d50612851dba13a50e5e38244ce50fb1d63e58528c2f48649b7e2d4beb235588"
+    },
+    {
+      "path": "apps/portal/textbook/prep-numerical-checks-reproducibility.md",
+      "size": 5623,
+      "sha256": "93ca162e72e9000e7a50d5ab65429ab07ad709e45fb30d067adac0d039387e2f"
+    },
+    {
+      "path": "apps/portal/textbook/prep-numpy-arrays-shapes.md",
+      "size": 5589,
+      "sha256": "af4c078e296d905fc4a54e0308a448a150d998f1d02d687c839b6a2c45933af9"
+    },
+    {
+      "path": "apps/portal/textbook/prep-python-expressions-functions.md",
+      "size": 5550,
+      "sha256": "7eebd06c59f80a5df95240ed78ac1636a4bb00281797b742415c56b5c0ecbf2a"
+    },
+    {
+      "path": "apps/portal/textbook/prep-sets-functions-mappings.md",
+      "size": 5838,
+      "sha256": "98360a7d2956305a9a30d0ef433bfb76f1d59841223de40ccf709b9aba4b403c"
+    },
+    {
+      "path": "apps/portal/textbook/prep-sums-products-indices.md",
+      "size": 5656,
+      "sha256": "34f49cf8e7c3461a8897932b41bfc1660530bdd2fe9972035241bbe8aad8c185"
+    },
+    {
+      "path": "apps/portal/textbook/prep-symbols-types-shapes.md",
+      "size": 5746,
+      "sha256": "02c74fe40ebd151774fc3c84159a4e336a9f01efac0ba87da85d4ff9b87d823a"
+    },
+    {
+      "path": "apps/portal/textbook/prob-axioms-event-operations.md",
+      "size": 5319,
+      "sha256": "5e38ee49a8c1a956a159af3b879dc8d5f305da6c113d0e4c47b00740e574883f"
+    },
+    {
+      "path": "apps/portal/textbook/prob-bayes-theorem.md",
+      "size": 5017,
+      "sha256": "e53a826525f83a3ac097498b9b192720444c15b08de029688b623e7031841406"
+    },
+    {
+      "path": "apps/portal/textbook/prob-conditional-probability-independence.md",
+      "size": 5257,
+      "sha256": "9984395f67a003300803613e4022e88ecaf5de3b95a9ac5a6d8494f7f11125f0"
+    },
+    {
+      "path": "apps/portal/textbook/prob-continuous-distributions.md",
+      "size": 5142,
+      "sha256": "1d128f97610cda3b4d9efa0f7f723bdccf53d30bf402b8f7e40a4289c2ec3d3d"
+    },
+    {
+      "path": "apps/portal/textbook/prob-counting-sample-spaces.md",
+      "size": 5409,
+      "sha256": "3cbb943a524149c043305b7a7e4c73fd66cfe8d6367edd95ccd74200a6caa589"
+    },
+    {
+      "path": "apps/portal/textbook/prob-covariance-correlation.md",
+      "size": 5229,
+      "sha256": "0cc886c4cc2ec9b8375b1c174edec3fccfe29f29fd2cb71eb21e49068d378c1e"
+    },
+    {
+      "path": "apps/portal/textbook/prob-discrete-distributions.md",
+      "size": 5104,
+      "sha256": "c92bf7868a6754bdade550758f2a206b407ad8245013414e2e20162b044cc05e"
+    },
+    {
+      "path": "apps/portal/textbook/prob-expectation-variance-moments.md",
+      "size": 5457,
+      "sha256": "edc0821aa3f1c608edd4ec028835a4081af434446cd5114b8203b912d306d0be"
+    },
+    {
+      "path": "apps/portal/textbook/prob-joint-marginal-conditional-distributions.md",
+      "size": 5565,
+      "sha256": "7f7b6a38be58196bf679207d6b2a15c1945b7a6b6925fce15c2cce77aa4e8213"
+    },
+    {
+      "path": "apps/portal/textbook/prob-laws-large-numbers-central-limit-theorem.md",
+      "size": 5397,
+      "sha256": "0a13f90a6321ff5e05968fd2848497208d831f8ad4f96589381997dc49bc310b"
+    },
+    {
+      "path": "apps/portal/textbook/prob-multivariate-normal-distribution.md",
+      "size": 5146,
+      "sha256": "303f1cfc6662696c347e199bdca7e279b8c6eb02ab0556d0aacb5b6adbfe738a"
+    },
+    {
+      "path": "apps/portal/textbook/prob-random-variables-cdf-pmf-pdf.md",
+      "size": 5426,
+      "sha256": "0ae13a880f102db7ef7acbab0a60b659f579ea8ce17b6570a24db4f2f48b9542"
+    },
+    {
+      "path": "apps/portal/textbook/prob-transformations-sums-random-variables.md",
+      "size": 5309,
+      "sha256": "26fc0d5aeb3736aeccc581fe02b5d8e948277a24bc0ea54dd4132d3b91806102"
+    },
+    {
+      "path": "apps/portal/textbook/stat-bayesian-inference-map.md",
+      "size": 5239,
+      "sha256": "b2efe458a645d95a77bf9b9e3d5af7e562f71d9c6ecc5e0a897045ef998eb990"
+    },
+    {
+      "path": "apps/portal/textbook/stat-confidence-intervals.md",
+      "size": 5064,
+      "sha256": "870a869c79c151eb95163ae9c68d94f2fce67b345a60e430675ece2177948630"
+    },
+    {
+      "path": "apps/portal/textbook/stat-entropy-cross-entropy-kl-divergence.md",
+      "size": 5901,
+      "sha256": "5ff7095e44d483f05e6f461375262ec4d18ebff7e0f1a8d43469bcf6aa58f576"
+    },
+    {
+      "path": "apps/portal/textbook/stat-estimators-bias-variance-mse.md",
+      "size": 5592,
+      "sha256": "6485ed980e32bc60897db43e14a232de3111150871bae74bf50b6525eaa74826"
+    },
+    {
+      "path": "apps/portal/textbook/stat-hypothesis-testing.md",
+      "size": 4967,
+      "sha256": "88aecd19c573ea0e81d13cae495445ddd02ab532beb8678dcc9281f3a0c8420b"
+    },
+    {
+      "path": "apps/portal/textbook/stat-likelihood-maximum-likelihood.md",
+      "size": 5249,
+      "sha256": "9c5e92bb73e945757157cff42251c201e6071466d72c52033995415a367500a0"
+    },
+    {
+      "path": "apps/portal/textbook/stat-linear-regression-probabilistic-model.md",
+      "size": 5276,
+      "sha256": "2a5d940e2fefcc04833efd54c59e5126457d6661d4a058d4bb80d50c31c15650"
+    },
+    {
+      "path": "apps/slides/build.mjs",
+      "size": 7950,
+      "sha256": "6ce5375a7ad3d50368f36ebbb455b949702d52f709cf194d9d09023efeb77ce5"
+    },
+    {
+      "path": "apps/slides/decks/calc-derivatives-rates.md",
+      "size": 1618,
+      "sha256": "0aadbd3db0af615e1491d132d269d3e020478af59e9b1a749fb0c745b980fdbc"
+    },
+    {
+      "path": "apps/slides/decks/calc-differentiation-rules-chain-rule.md",
+      "size": 1758,
+      "sha256": "b3df7a703b38e73387778a59224a3fbd919951f1d3d9d10ea6024d7acc925385"
+    },
+    {
+      "path": "apps/slides/decks/calc-functions-limits-continuity.md",
+      "size": 1683,
+      "sha256": "f85db574520811e2e4dc5fdbdf350c180a3215abc32409cab2c71de6baf45688"
+    },
+    {
+      "path": "apps/slides/decks/calc-gradient-directional-derivative.md",
+      "size": 1714,
+      "sha256": "3688968deabbcf3e818afb70569c0314e16ce12020e25c2624462218b08f84b6"
+    },
+    {
+      "path": "apps/slides/decks/calc-hessian-second-order.md",
+      "size": 1814,
+      "sha256": "879e5460830e701a91cada03b9a7d11562dfc96822d49bd535375644f26cc121"
+    },
+    {
+      "path": "apps/slides/decks/calc-integrals-fundamental-theorem.md",
+      "size": 1746,
+      "sha256": "218d9364248bbb05205bd71fba0c62768c4be6e8716a647bea7c62dbf51a760a"
+    },
+    {
+      "path": "apps/slides/decks/calc-lagrange-multipliers.md",
+      "size": 1682,
+      "sha256": "048d1a98ee47a40d74d711501d5aa308c66f56d31552955be345aa4593c53167"
+    },
+    {
+      "path": "apps/slides/decks/calc-multivariable-chain-rule.md",
+      "size": 1736,
+      "sha256": "ed643b41c4bc22d460b2d56309a627b1563761403bc4e538ef804278310f884c"
+    },
+    {
+      "path": "apps/slides/decks/calc-multivariable-functions-partial-derivatives.md",
+      "size": 1757,
+      "sha256": "edf4a5e33e9edb6041dbd4c4fd167c20fa7102fd79ea63a587a12864d145c7dd"
+    },
+    {
+      "path": "apps/slides/decks/calc-one-variable-optimization.md",
+      "size": 1633,
+      "sha256": "b0356ad5e8ec458a30f55f7b45783b94f75d3bae3bae2b22f32387e036f1f3ae"
+    },
+    {
+      "path": "apps/slides/decks/calc-taylor-approximation.md",
+      "size": 1706,
+      "sha256": "54524ba1d226df2bfc141df18961924cc7ed46b610aad3a0defe7c5d5b35b253"
+    },
+    {
+      "path": "apps/slides/decks/calc-total-derivative-jacobian.md",
+      "size": 1731,
+      "sha256": "25c3d43c5b012813e54ffb0137e07ad90dad7310998fa6bee9526e6e020cf5bd"
+    },
+    {
+      "path": "apps/slides/decks/calc-unconstrained-optimization.md",
+      "size": 1789,
+      "sha256": "e6e715e8fc066c451e519fb5da03d1c324013474f1ef7ebf3ffec01641bcbb5e"
+    },
+    {
+      "path": "apps/slides/decks/dl-activation-loss-functions.md",
+      "size": 1695,
+      "sha256": "cf3066cf96d1e30024830750bed0781e384bca5d2a1b26a467e7894f5aaaa7c6"
+    },
+    {
+      "path": "apps/slides/decks/dl-attention-mechanism.md",
+      "size": 1715,
+      "sha256": "b83c7c56f04eb98b2f7a1e7161a7d9d0accf8ea754b4fe77fd0f7a5e5ccb1b18"
+    },
+    {
+      "path": "apps/slides/decks/dl-autoencoders-vae.md",
+      "size": 1725,
+      "sha256": "61cc6f0ca91b153f3a23c5eb37cd349a410b13b2f25c771fd6f342635095bfde"
+    },
+    {
+      "path": "apps/slides/decks/dl-backprop-computation-graphs.md",
+      "size": 1839,
+      "sha256": "412326529f92b5a9b0b6d06e76a485cb8817efe28540d0714bc7108461dacb50"
+    },
+    {
+      "path": "apps/slides/decks/dl-cnn-convolution.md",
+      "size": 1640,
+      "sha256": "8333da7c3c6614ff00314383cae4aa502d746f97ec22f7ab65f81968c948ba82"
+    },
+    {
+      "path": "apps/slides/decks/dl-diffusion-score-models.md",
+      "size": 1748,
+      "sha256": "afc771bcf7c3d4428dd0dad03bc6a9982482e34bf46b095ccba0b0d6f343b17d"
+    },
+    {
+      "path": "apps/slides/decks/dl-efficient-training-inference.md",
+      "size": 1725,
+      "sha256": "ba8e57d3b5faf1c91dd63c6fc3a0c7c34eab7900396db922f351262434b176e4"
+    },
+    {
+      "path": "apps/slides/decks/dl-embeddings-representation-learning.md",
+      "size": 1729,
+      "sha256": "affdfd776f15d8f34a5d8b9c5e76d5baf392c7e954ada4db661fbecd91b2d73d"
+    },
+    {
+      "path": "apps/slides/decks/dl-evaluation-robustness-safety.md",
+      "size": 1919,
+      "sha256": "34824267dcd9a7587f5cab0d490cd4a0483a535516bcf7bd8c2027744a30f74d"
+    },
+    {
+      "path": "apps/slides/decks/dl-gans-adversarial-training.md",
+      "size": 1782,
+      "sha256": "6ef058e9c752b82147b723f9523951b512dfd43a3e5416018a4fc99b53ef1f25"
+    },
+    {
+      "path": "apps/slides/decks/dl-graph-neural-networks.md",
+      "size": 1736,
+      "sha256": "05b2fc0692a3b077c8627cf32423373416e62516119e159104a76ca5e155d760"
+    },
+    {
+      "path": "apps/slides/decks/dl-initialization-normalization.md",
+      "size": 1763,
+      "sha256": "bda4446a44375d2a4897e1fca03644caf57bf0c819ad6822b7b886d6524ce3f5"
+    },
+    {
+      "path": "apps/slides/decks/dl-multimodal-models.md",
+      "size": 1739,
+      "sha256": "4314d66bd27c7bc7765140bf3f3771ea0b8211918141eb35596bf1a04a6199aa"
+    },
+    {
+      "path": "apps/slides/decks/dl-normalization-residuals.md",
+      "size": 1750,
+      "sha256": "695f9bd10b5e82f7fc4b337b64dd4965af74cd7688df85110f55d911f5ec1b6f"
+    },
+    {
+      "path": "apps/slides/decks/dl-optimization-regularization.md",
+      "size": 1849,
+      "sha256": "e4a4b882e640b8b1f9ab4b7c85ef4b811d60dfc6da412b4e5703ee594656cab8"
+    },
+    {
+      "path": "apps/slides/decks/dl-perceptron-mlp.md",
+      "size": 1700,
+      "sha256": "42cccc35948fd2a2c3bc9f0d51d6b5e0d09dc4cefa87a45e0976ce22fa5f38d5"
+    },
+    {
+      "path": "apps/slides/decks/dl-rnn-sequence-models.md",
+      "size": 1660,
+      "sha256": "5db51fbfacaab3406b878e7d697e48119a8b526166dcc60b8a5e2ace07412299"
+    },
+    {
+      "path": "apps/slides/decks/dl-scaling-distributed-training.md",
+      "size": 1717,
+      "sha256": "e0ebf59ea574be024f7c8fa73dba2d5ec724706184510b06ea3dea6bcb4f0219"
+    },
+    {
+      "path": "apps/slides/decks/dl-self-supervised-contrastive.md",
+      "size": 1859,
+      "sha256": "e6ca8e5c8a4c65f2cac500f14bfc019ab2fa14794ac4b3831fe0af107f4f850b"
+    },
+    {
+      "path": "apps/slides/decks/dl-transformers.md",
+      "size": 1625,
+      "sha256": "770af333d925c6eceef778a6611bd8bdcd78f5101b30ac3d8404a385e2c338e1"
+    },
+    {
+      "path": "apps/slides/decks/dm-algorithm-specifications-correctness.md",
+      "size": 1818,
+      "sha256": "b64dcd888efee4193350c9b4d5e4694b105c7d8e6f610715a849467f2351e6c1"
+    },
+    {
+      "path": "apps/slides/decks/dm-asymptotic-notation-growth-rates.md",
+      "size": 1704,
+      "sha256": "6d0da43212fcb73f96a88377c3c96a95844becd4eda8645e761d8fdd5e42238b"
+    },
+    {
+      "path": "apps/slides/decks/dm-counting-principles-pigeonhole.md",
+      "size": 1860,
+      "sha256": "c7f192bd5f69c7c6eb917390df8052bac0905845e9ff46288c837615f91ce216"
+    },
+    {
+      "path": "apps/slides/decks/dm-directed-graphs-dags-topological-order.md",
+      "size": 1952,
+      "sha256": "264df08ec1b82ef59e45ee9c504297a7a382b2f656ab0fd9a309010c225311ab"
+    },
+    {
+      "path": "apps/slides/decks/dm-discrete-probability-indicators-randomized-algorithms.md",
+      "size": 1994,
+      "sha256": "9c8a460c0b9ad5732b9b12f0b9d58acc04e67299e00780e4fe6c7a01274ddca1"
+    },
+    {
+      "path": "apps/slides/decks/dm-divide-conquer-master-theorem.md",
+      "size": 1733,
+      "sha256": "67d4233437a57f9a569877202339ef26dcdeda420b3f60d31a76d8e67572fc39"
+    },
+    {
+      "path": "apps/slides/decks/dm-divisibility-modular-arithmetic.md",
+      "size": 1699,
+      "sha256": "7bc9d1a1e0f1095b449b5256429354144f92f321a5e0836047c1983d299ecb94"
+    },
+    {
+      "path": "apps/slides/decks/dm-graphs-representations-degrees.md",
+      "size": 1746,
+      "sha256": "b08f750b70f2c4ebedad96861172af1d7094dc9d524072db7febafd959791da1"
+    },
+    {
+      "path": "apps/slides/decks/dm-implication-equivalence-conditions.md",
+      "size": 1825,
+      "sha256": "28591f135ae1f97aab73e58da314a90ca8521b82d966ea3560b2dcabd5d7c09b"
+    },
+    {
+      "path": "apps/slides/decks/dm-inclusion-exclusion-double-counting.md",
+      "size": 1849,
+      "sha256": "23a2701d46c46d395812127227c785716fdad633dff43ab6a6b282d926063408"
+    },
+    {
+      "path": "apps/slides/decks/dm-induction-well-ordering.md",
+      "size": 1883,
+      "sha256": "f14d8f9eca03c776480b9b08030c39e30a651ef90ea53eaaf0d5598283627522"
+    },
+    {
+      "path": "apps/slides/decks/dm-loop-invariants-termination.md",
+      "size": 1764,
+      "sha256": "8646627232350352a435fdae3ed8be233b927edd637215d4c5f1aa3f355ef50e"
+    },
+    {
+      "path": "apps/slides/decks/dm-paths-cycles-connectivity.md",
+      "size": 1691,
+      "sha256": "ec0f7122749113465b5eee7b785deade721d574d52db398753457cf14d5eb274"
+    },
+    {
+      "path": "apps/slides/decks/dm-permutations-combinations-binomial.md",
+      "size": 1783,
+      "sha256": "d811529a15f1dcf070e9f36b39e552e75c3fc68c2afc6b132fd2e94d1d6382f7"
+    },
+    {
+      "path": "apps/slides/decks/dm-predicates-quantifiers-negation.md",
+      "size": 1808,
+      "sha256": "5a5a852ef764877c119c0db03b854f1508e13840870b7d131f4ef2cf371c515a"
+    },
+    {
+      "path": "apps/slides/decks/dm-proof-methods.md",
+      "size": 1861,
+      "sha256": "868a81f9cc405dc1b87045a9c8c3f2bbf8fa029187d3d9da66cf7da75b89aca7"
+    },
+    {
+      "path": "apps/slides/decks/dm-propositions-connectives-truth-tables.md",
+      "size": 1801,
+      "sha256": "cd4e63bd4befa6195c54e04c923ec1472acce9f79d2d07b208f721a788425a34"
+    },
+    {
+      "path": "apps/slides/decks/dm-recurrence-relations.md",
+      "size": 1586,
+      "sha256": "130f0eb17d7006d8c91872720d6d046161bac4d1fece2086fa98c59a246c5e78"
+    },
+    {
+      "path": "apps/slides/decks/dm-relations-equivalence-partial-orders.md",
+      "size": 1794,
+      "sha256": "b884879ce0842cfd131e2f71e4f80c172753a62ba8808eead3ec5cc207fd75cd"
+    },
+    {
+      "path": "apps/slides/decks/dm-trees-spanning-trees.md",
+      "size": 1617,
+      "sha256": "07aae65f4ddb77face9f5ab894767b9e60bbeb672278555fa078f7fcd3d9b1f9"
+    },
+    {
+      "path": "apps/slides/decks/frontier-agents-planning-memory.md",
+      "size": 1718,
+      "sha256": "05421f2fc6d18f710334121a6f60ae57413c1475d6f809e4a6154ba7f6bbb61c"
+    },
+    {
+      "path": "apps/slides/decks/frontier-alignment-safety-policies.md",
+      "size": 1842,
+      "sha256": "d0951d341232631daa05c694b6d6ac8a3295798330c0578099e4a969d525949b"
+    },
+    {
+      "path": "apps/slides/decks/frontier-foundation-model-evaluation.md",
+      "size": 1717,
+      "sha256": "a389461f69310e6918653205ffa9280773f5f4b07aa2e02d954923c69d9106e5"
+    },
+    {
+      "path": "apps/slides/decks/frontier-foundation-model-paradigm.md",
+      "size": 1776,
+      "sha256": "09ab6f1dcb4da96cdb6e1f2b25115f099989ad39263e46ad81028bf3bba745b5"
+    },
+    {
+      "path": "apps/slides/decks/frontier-in-context-learning-prompting.md",
+      "size": 1791,
+      "sha256": "f08089a09339b5fda75a98b77874b87fbcb39b8f3f22d72459c865bd5bc5a4b7"
+    },
+    {
+      "path": "apps/slides/decks/frontier-interpretability-mechanistic.md",
+      "size": 1743,
+      "sha256": "02e7e4a700c4bac7cac35db31c1e1e1cdb9c8690b23753872a25f5360b97095a"
+    },
+    {
+      "path": "apps/slides/decks/frontier-long-context-memory.md",
+      "size": 1676,
+      "sha256": "2fa6a0abba811ee1d296684c66180784e8c30bf3d6b6f3d16252a9ff7cf1c3d6"
+    },
+    {
+      "path": "apps/slides/decks/frontier-multi-agent-systems.md",
+      "size": 1682,
+      "sha256": "e08bf4e2151600fd8789698ddfe490108339eb19b7b28cd3f62dd3623b10a551"
+    },
+    {
+      "path": "apps/slides/decks/frontier-parameter-efficient-finetuning.md",
+      "size": 1795,
+      "sha256": "56793e40642a9177e6a5548c1b75daa3fef0e2fc726c6a9048ea93a88edafe3f"
+    },
+    {
+      "path": "apps/slides/decks/frontier-pretraining-scaling-laws.md",
+      "size": 1741,
+      "sha256": "3f2977ad0d843503bc30b4136aeed7d9a044898ffd2a3bf837650f07f2b33b61"
+    },
+    {
+      "path": "apps/slides/decks/frontier-privacy-governance-research-practice.md",
+      "size": 1850,
+      "sha256": "b1ffa47a9d55a4be35a12ab55ac796a794759fc75ed347bb5f4a905ccc7343dd"
+    },
+    {
+      "path": "apps/slides/decks/frontier-quantization-sparsity-moe.md",
+      "size": 1913,
+      "sha256": "371e366128e318465f5afd98b9a3b24b43cd2d7c7da0b459454aa3964f687c41"
+    },
+    {
+      "path": "apps/slides/decks/frontier-retrieval-augmented-generation.md",
+      "size": 1783,
+      "sha256": "5ca1412a7b74fbc342d1899be8a615a7724e57acac38e098185c77305c8c7833"
+    },
+    {
+      "path": "apps/slides/decks/frontier-rlhf-preference-optimization.md",
+      "size": 1812,
+      "sha256": "c17d461aec5a3a4b88a165bd63ee2eb8b349cf40c8bb740c8f0bfd25ba5325eb"
+    },
+    {
+      "path": "apps/slides/decks/frontier-scientific-machine-learning.md",
+      "size": 1747,
+      "sha256": "cc9ed22575e9823c9bf302b8479520acedce03319f9ccce13d059d9eeaa5d20d"
+    },
+    {
+      "path": "apps/slides/decks/frontier-synthetic-data-data-curation.md",
+      "size": 1774,
+      "sha256": "35f6d4919aedf93f6fa78288d3cda1a80fd6e60d52f961a42551fb217d735b14"
+    },
+    {
+      "path": "apps/slides/decks/frontier-tokenization-embeddings-context.md",
+      "size": 1788,
+      "sha256": "861924563e240564118699b30163296d066e078571da455def8fe124c860aa0d"
+    },
+    {
+      "path": "apps/slides/decks/frontier-tool-use-function-calling.md",
+      "size": 1747,
+      "sha256": "897020bb03bf99868c2057b8b88413968afa490f7e1ab5e427dd5e25d4d41f65"
+    },
+    {
+      "path": "apps/slides/decks/frontier-uncertainty-calibration-abstention.md",
+      "size": 1901,
+      "sha256": "bea9128f26e7cf9c42087d3c120c4e23309aa21c6fe9d002342ec03318b43413"
+    },
+    {
+      "path": "apps/slides/decks/frontier-vector-databases-search.md",
+      "size": 1756,
+      "sha256": "bd6cc832eb288648be0616b81ef2f77f3c6adec22a2691505f084977d89e31f2"
+    },
+    {
+      "path": "apps/slides/decks/la-basis-coordinates-dimension.md",
+      "size": 1688,
+      "sha256": "d8fb7c7c0f0b5d2e56942618078f033864d2e983dca95b7090134e1d4c1492fe"
+    },
+    {
+      "path": "apps/slides/decks/la-cholesky-factorization.md",
+      "size": 1631,
+      "sha256": "cbba0851b82ccd51791950f70a15dfbb44d194d7531c7f221e9396f85f4a1c9a"
+    },
+    {
+      "path": "apps/slides/decks/la-column-space-null-space.md",
+      "size": 1711,
+      "sha256": "5cacfc347d40ff46f7dbfddd075de457eca97dfecd022784dcce8363eb80083c"
+    },
+    {
+      "path": "apps/slides/decks/la-determinants-volume-invertibility.md",
+      "size": 1757,
+      "sha256": "2f04378d59ae591775f43dc8d0bbf71536790669eb05887972ae78cb4788ad75"
+    },
+    {
+      "path": "apps/slides/decks/la-diagonalization-matrix-powers.md",
+      "size": 1755,
+      "sha256": "52f9aa2d76b364bcc1f39c9aa90e275fe9c64105647d582ddd09f67135fef56a"
+    },
+    {
+      "path": "apps/slides/decks/la-eigenvalues-eigenvectors.md",
+      "size": 1756,
+      "sha256": "9eead3ccbf30dad3654cdf5121177c8b90c4733a5615049983e73f5c70edd903"
+    },
+    {
+      "path": "apps/slides/decks/la-gram-schmidt-qr.md",
+      "size": 1700,
+      "sha256": "399ebe5df48e122549610e4ec06a6ad03808a2a98871469e800cef0d413fc060"
+    },
+    {
+      "path": "apps/slides/decks/la-inner-products-norms-angles.md",
+      "size": 1746,
+      "sha256": "af2d3704325e90613e544db39e113e960f25c5f9177ed8ae00145df775438c1f"
+    },
+    {
+      "path": "apps/slides/decks/la-invertibility-inverse-matrices.md",
+      "size": 1661,
+      "sha256": "1eff0678e71a0d2c5cdf51ab91b3611e79f0cda2afc4ffacb77e3263a2aac26f"
+    },
+    {
+      "path": "apps/slides/decks/la-least-squares-computation-pseudoinverse.md",
+      "size": 1847,
+      "sha256": "6acb69700600fd1664a0436a8deb2255698c2ac1958caddb50a3b1901f8ee989"
+    },
+    {
+      "path": "apps/slides/decks/la-least-squares-geometry.md",
+      "size": 1727,
+      "sha256": "b1a32162d98f8cec8d307579af2aedec9b3a4ef60e1157033fdc37c25fe95575"
+    },
+    {
+      "path": "apps/slides/decks/la-linear-independence.md",
+      "size": 1682,
+      "sha256": "da6d31f26a2f892b2106b540226935220b880c3e285431c080dd68dc2b51296a"
+    },
+    {
+      "path": "apps/slides/decks/la-linear-maps-change-of-basis.md",
+      "size": 1790,
+      "sha256": "ca7ea35857d8738f3dca38e0d6f9a9522fcfb4ae13bb41d39962e58e7086dbf6"
+    },
+    {
+      "path": "apps/slides/decks/la-linear-systems-elimination.md",
+      "size": 1790,
+      "sha256": "3425b08c88151b10dbe59c4f456704c20a6c61079dce51b39b1031992fc9e51c"
+    },
+    {
+      "path": "apps/slides/decks/la-low-rank-approximation.md",
+      "size": 1661,
+      "sha256": "0eca171a57ebfe337ba7ee976fb362345d1e0ae89d671403451e8c67b332eb8a"
+    },
+    {
+      "path": "apps/slides/decks/la-lu-factorization.md",
+      "size": 1537,
+      "sha256": "e507a46b408859337902dd3ea24b04192cbdafa2647c8be672e11c095682d20f"
+    },
+    {
+      "path": "apps/slides/decks/la-matrices-data-linear-maps.md",
+      "size": 1839,
+      "sha256": "4520c068c1cc3804e4ead63dcec23e528e79f63e1ca1039a1dc2c3f671e36b87"
+    },
+    {
+      "path": "apps/slides/decks/la-matrix-multiplication.md",
+      "size": 1583,
+      "sha256": "fffb446089fb35738707458612d6f4c912526e3089486f315535efd4820126db"
+    },
+    {
+      "path": "apps/slides/decks/la-matrix-norms-condition-number.md",
+      "size": 1779,
+      "sha256": "254cf28f8b18d8c976fd908c2146c289f3e02543c71787ccd1cf497c4665e5b1"
+    },
+    {
+      "path": "apps/slides/decks/la-orthogonal-orthonormal-bases.md",
+      "size": 1781,
+      "sha256": "cce8094ef1142e3995f48eec375e79008308f5d98e5882bc065f2f57723fed18"
+    },
+    {
+      "path": "apps/slides/decks/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 1924,
+      "sha256": "f63730d6c9c02d4c631c449c7c80bf52b796371ab7702ed05ed30e2ba0ec868c"
+    },
+    {
+      "path": "apps/slides/decks/la-quadratic-forms-positive-definite.md",
+      "size": 1786,
+      "sha256": "dce3056bf8fdcb770c8ab088066669111225007d5600f40bf194abe809526ddf"
+    },
+    {
+      "path": "apps/slides/decks/la-rank-rank-nullity.md",
+      "size": 1696,
+      "sha256": "38d72c1873039cc2bbc9be50f3ec70d9a6c27cb0f9f8c2f02cb31da03b99d5d3"
+    },
+    {
+      "path": "apps/slides/decks/la-singular-value-decomposition.md",
+      "size": 1668,
+      "sha256": "1c488c4329493964295609eebc3f3125943ab7006f2621b7cbcb974ff9b12c2f"
+    },
+    {
+      "path": "apps/slides/decks/la-span-subspaces.md",
+      "size": 1635,
+      "sha256": "e00e4f983ff2fdb67d2ae26161784083b1ad483763a63ca8bcec2c1e5edbb0a5"
+    },
+    {
+      "path": "apps/slides/decks/la-symmetric-matrices-spectral-theorem.md",
+      "size": 1830,
+      "sha256": "32f065f9367f1390a12a57d975b64137131b52721ef5f602adbed155ec7483c2"
+    },
+    {
+      "path": "apps/slides/decks/la-vectors-linear-combinations.md",
+      "size": 1734,
+      "sha256": "9208d827d7c050e8796087f636e904055c55b6e5279d9ccb2afe6009f69511e0"
+    },
+    {
+      "path": "apps/slides/decks/la-weighted-least-squares-introduction.md",
+      "size": 1841,
+      "sha256": "364aedd55c68eab06dbec0384923778e324e9fbc907aaa7483b4efbf215de659"
+    },
+    {
+      "path": "apps/slides/decks/mat-cca-multiview.md",
+      "size": 1729,
+      "sha256": "2f601fd2b1a5c65d2f8245026a1df8109e1b5efe5f70bacfd2fa0de83171ca55"
+    },
+    {
+      "path": "apps/slides/decks/mat-convolution-linear-systems.md",
+      "size": 1787,
+      "sha256": "851a37b82210012bfe530ae69b3b5868f0ecd3fbaebd91c0d78f364d4a03ba35"
+    },
+    {
+      "path": "apps/slides/decks/mat-covariance-scatter-matrices.md",
+      "size": 1836,
+      "sha256": "93d526692c86fd256099cc4f234e4d3990f287b59436e64a398b016f6d408921"
+    },
+    {
+      "path": "apps/slides/decks/mat-data-matrices-centering-scaling.md",
+      "size": 1892,
+      "sha256": "ce384f49dcfa3c8ffee3e6ca1fdbe6ede36e1789beefac496edbeca499e02ce5"
+    },
+    {
+      "path": "apps/slides/decks/mat-filtering-regularization.md",
+      "size": 1725,
+      "sha256": "d1748a55f3148ea36c3de3977ad0f407eb61d19dcc3f0606052eddd188d146d8"
+    },
+    {
+      "path": "apps/slides/decks/mat-fourier-bases-dft.md",
+      "size": 1692,
+      "sha256": "741f37d131bb856783714deee599297cfb9beca950595ff3de469c19bbf8327c"
+    },
+    {
+      "path": "apps/slides/decks/mat-gls-correlated-errors.md",
+      "size": 1797,
+      "sha256": "4e1eb9130dd8fd63c66bf5353d25a0a92db7172a4678225743048d88d9f2b7df"
+    },
+    {
+      "path": "apps/slides/decks/mat-graph-spectral-methods.md",
+      "size": 1748,
+      "sha256": "f158551442c5a9f21f14ccc30d43986230f7024fca5c5bdaae4013a70534d6d4"
+    },
+    {
+      "path": "apps/slides/decks/mat-ica-independent-components.md",
+      "size": 1708,
+      "sha256": "f8c64d154a083279c4f6e8bff2bbe75a36970411301dbe654568850e7816ab33"
+    },
+    {
+      "path": "apps/slides/decks/mat-matrix-completion.md",
+      "size": 1727,
+      "sha256": "f913fe2ea46b6350557e3d8cfe1178dcf742816f35c9e80f23db23d62d9a715d"
+    },
+    {
+      "path": "apps/slides/decks/mat-nmf-nonnegative-factors.md",
+      "size": 1782,
+      "sha256": "66ca9759eb25f0789789d26e1605dde45e7e7517f5f06aa6c0489bce6f7930d7"
+    },
+    {
+      "path": "apps/slides/decks/mat-ols-design-matrices.md",
+      "size": 1772,
+      "sha256": "dcc9bf8df196b70a0000640237d6837a3972295e2a9238bdfa04671068be7eec"
+    },
+    {
+      "path": "apps/slides/decks/mat-pca-geometry.md",
+      "size": 1677,
+      "sha256": "4a646df930318c53d0b95d0b42a2e7eacf716facbc4281576248433eab5764a7"
+    },
+    {
+      "path": "apps/slides/decks/mat-pca-svd-computation.md",
+      "size": 1676,
+      "sha256": "4a8249c7044e5ffa42b659068fd3a03e60460be4ca3a198669fd5bfc6fe3c06e"
+    },
+    {
+      "path": "apps/slides/decks/mat-random-projections-jl.md",
+      "size": 1909,
+      "sha256": "e5f55612fb23259f36ef6d1fc34988d5a5ca0e52ee0e7fa6881a54c2d1fa1c5e"
+    },
+    {
+      "path": "apps/slides/decks/mat-ridge-lasso-elastic-net.md",
+      "size": 1830,
+      "sha256": "498191e9ecc78f8d70c664c74b6a3473022994e4974809e0ba565bbb1a80aca9"
+    },
+    {
+      "path": "apps/slides/decks/mat-robust-regression-m-estimators.md",
+      "size": 1809,
+      "sha256": "9dbbdeeb8b8cf5e7d40cd254187d7ce7a81b9e39f858cb61758b434661733f1c"
+    },
+    {
+      "path": "apps/slides/decks/mat-tensors-multilinear-overview.md",
+      "size": 1808,
+      "sha256": "1b76954bd6383d23a999a0534da8f289edb8f2ba8ae73bf59c7a187d73a6bdea"
+    },
+    {
+      "path": "apps/slides/decks/mat-whitening-mahalanobis.md",
+      "size": 1843,
+      "sha256": "c4eaa791313350eb4e669a4025d246b2493e214611e2428317d8d3bba18aa337"
+    },
+    {
+      "path": "apps/slides/decks/mat-wls-inverse-variance.md",
+      "size": 1812,
+      "sha256": "604d0501a214fe6cbd18e01fbb06c09ebf402d437cbadf824b484e0ff72ceb16"
+    },
+    {
+      "path": "apps/slides/decks/ml-anomaly-detection.md",
+      "size": 1588,
+      "sha256": "ce0edd7e3585da39aec6cd9c79154120dc28ab3c1ed467d65825edd499c074d7"
+    },
+    {
+      "path": "apps/slides/decks/ml-bias-variance-regularization.md",
+      "size": 1774,
+      "sha256": "0fe52cacc9d151061556cbeaba63d7506ed8e2c1ac35486a7122e0d4098f3ebb"
+    },
+    {
+      "path": "apps/slides/decks/ml-boosting-gradient-boosting.md",
+      "size": 1726,
+      "sha256": "ff47b69c908155e8e997eb614952b49fff58d2fd64d72e2b0db2f88a1565a120"
+    },
+    {
+      "path": "apps/slides/decks/ml-clustering-kmeans-hierarchical.md",
+      "size": 1778,
+      "sha256": "12834429d2d868a192c003117deffb99d102b4122da31231f17a365c1be7d239"
+    },
+    {
+      "path": "apps/slides/decks/ml-decision-trees.md",
+      "size": 1605,
+      "sha256": "0e8d6cb979198a5288bfd53c8c0c53c8dd59dfc3ab53e5585a5390cc4b2c891a"
+    },
+    {
+      "path": "apps/slides/decks/ml-dimensionality-reduction-pca-manifold.md",
+      "size": 1789,
+      "sha256": "4cb42d8d7faae0bf407c8bea215195c20aa7a0321d65bcfc1e4c20e3b1801861"
+    },
+    {
+      "path": "apps/slides/decks/ml-ensembles-bagging-random-forests.md",
+      "size": 1730,
+      "sha256": "19edf0f31bda70741d73f5e7f6474d306cd74f220758a02a5e141e0f9c367d1d"
+    },
+    {
+      "path": "apps/slides/decks/ml-feature-engineering-selection.md",
+      "size": 1809,
+      "sha256": "3187d071eb12a7cf56abc45c4c72ebf183e9f83907bd91c43da98a4cc04d1963"
+    },
+    {
+      "path": "apps/slides/decks/ml-generative-classifiers-naive-bayes-lda.md",
+      "size": 1841,
+      "sha256": "0ee5de4bbd7524269ac13de4227edd066089872d57ad0b2b12ed7ed75365445e"
+    },
+    {
+      "path": "apps/slides/decks/ml-gmm-em.md",
+      "size": 1721,
+      "sha256": "0f28695549e4c2a7a8577dadcfcb73b6890e5a9ba17cadf2db4d18fc8a0e66c1"
+    },
+    {
+      "path": "apps/slides/decks/ml-kernel-methods-feature-maps.md",
+      "size": 1792,
+      "sha256": "1e797283ce71eb9ea29c3801163ee9e88410a46bb7214ad93dcf6e67beda883c"
+    },
+    {
+      "path": "apps/slides/decks/ml-knn-distance-methods.md",
+      "size": 1734,
+      "sha256": "6ec0ef803b6d2f740d8965e23062a4a2bcfe7c3be9336173bd91d08b86c6709b"
+    },
+    {
+      "path": "apps/slides/decks/ml-linear-regression.md",
+      "size": 1614,
+      "sha256": "e893c5c6d066d0b31d02dcfe48f86b789255746c891a52e28dea7bc910444df9"
+    },
+    {
+      "path": "apps/slides/decks/ml-logistic-regression.md",
+      "size": 1649,
+      "sha256": "1bbc8263d682ccd30f84aee9a5634745c20e60de39e577ecd3790b1a7312053e"
+    },
+    {
+      "path": "apps/slides/decks/ml-metrics-calibration-imbalance.md",
+      "size": 1846,
+      "sha256": "9c3b1e57845aad6cb819a462e4e7a6630e9e0cbb2a7accf16c7489dc9891326b"
+    },
+    {
+      "path": "apps/slides/decks/ml-model-selection-cross-validation.md",
+      "size": 1827,
+      "sha256": "7cc18e1b2190f903f9385dcf2291190544ab8c1df556dbc0da8ba60767031e3a"
+    },
+    {
+      "path": "apps/slides/decks/ml-problem-formulation-data-splits.md",
+      "size": 1938,
+      "sha256": "1e1961e3b35b2ea90ab6ae35c4f45c02fc78d82d605fc3c06b6fb88b141490ba"
+    },
+    {
+      "path": "apps/slides/decks/ml-softmax-multiclass.md",
+      "size": 1736,
+      "sha256": "3a5cabb8b574462c3f3e0fa4038fd9dfaad1242c35f1e20e6e6d021c747c7859"
+    },
+    {
+      "path": "apps/slides/decks/ml-svm-margin-kernels.md",
+      "size": 1740,
+      "sha256": "229c7f83140ff00c17fb41815e2bdfbacc8c52325e4c0b0adb2c82e9adabe6ae"
+    },
+    {
+      "path": "apps/slides/decks/ml-uncertainty-interpretability-monitoring.md",
+      "size": 1831,
+      "sha256": "5e3a27c800a0523ba223b46020c5010ed93cbc309109721cdb2dcb60ebe696fb"
+    },
+    {
+      "path": "apps/slides/decks/num-convergence-orders-stopping.md",
+      "size": 1722,
+      "sha256": "7da6c57faca19d16ea09b773f4bd669d00bc3778675bd5e8be8a2f6d2b50c2db"
+    },
+    {
+      "path": "apps/slides/decks/num-direct-solvers-pivoting.md",
+      "size": 1798,
+      "sha256": "09dc2db8843881f15acc7cdb3a46cd80ac6171c478de51bcb92c8dbd195fde9c"
+    },
+    {
+      "path": "apps/slides/decks/num-eigenvalue-power-qr.md",
+      "size": 1851,
+      "sha256": "bb5bb6d655eafa5cfedf45ed1309b1464e9d0f88f22f30cbc0b8a96e267ae6ba"
+    },
+    {
+      "path": "apps/slides/decks/num-errors-conditioning-stability.md",
+      "size": 1874,
+      "sha256": "17a35228cac247f60bd30847fdb07c4628949176d1a720c602451d8f77b8afd5"
+    },
+    {
+      "path": "apps/slides/decks/num-floating-point-rounding.md",
+      "size": 1750,
+      "sha256": "d94d0e3758c9087a789de2d6aee5edb85f202ecd271f50762c8b6cab5210b075"
+    },
+    {
+      "path": "apps/slides/decks/num-iterative-linear-solvers.md",
+      "size": 1740,
+      "sha256": "7d834b99e4e8cc75341c9c8c9b38271899287fc99fa428c84e90ef3e2d54e033"
+    },
+    {
+      "path": "apps/slides/decks/num-least-squares-qr-svd.md",
+      "size": 1838,
+      "sha256": "06f459faf756437ca193975d6594d0a19aa9950a1f46dc5680061d059afd92e2"
+    },
+    {
+      "path": "apps/slides/decks/num-monte-carlo-methods.md",
+      "size": 1778,
+      "sha256": "1b91d63d33b3d7539b462f85108882931c01fd3da5d5c0fccf54f53298d3f805"
+    },
+    {
+      "path": "apps/slides/decks/num-numerical-differentiation.md",
+      "size": 1629,
+      "sha256": "fcd0544d4850c86d410bdeb99359f5a07b123a72b8b8cf7b6fc650710afa690e"
+    },
+    {
+      "path": "apps/slides/decks/num-numerical-integration-quadrature.md",
+      "size": 1778,
+      "sha256": "53bf59aa888d1e042f2db788dc8a262022e2541307a8044635eb3c0995171f38"
+    },
+    {
+      "path": "apps/slides/decks/num-ode-euler-runge-kutta.md",
+      "size": 1884,
+      "sha256": "0b2df718db3bee72acdc61f0549db91333bf8bc77d91620733ad41468a7fc729"
+    },
+    {
+      "path": "apps/slides/decks/num-ode-stability-stiffness.md",
+      "size": 1777,
+      "sha256": "383ff9eb07125bf3e6db7ef6045f8eda3df4e3ce6d2c28d277612fd63229a951"
+    },
+    {
+      "path": "apps/slides/decks/num-polynomial-interpolation.md",
+      "size": 1636,
+      "sha256": "beec766abbf6656859b95aefa607e4b6cd7e62b714645e20a9905642e262010c"
+    },
+    {
+      "path": "apps/slides/decks/num-randomized-numerical-linear-algebra.md",
+      "size": 1786,
+      "sha256": "b9fc8ef7f8d346aef0053fbafdb50f874af2007fff48d86780c8fd9bab2d3b76"
+    },
+    {
+      "path": "apps/slides/decks/num-regularization-ill-posed-problems.md",
+      "size": 1900,
+      "sha256": "bb366cb331f6377e791a19e289a343b034e1dc84b21effca332b86db3ee529cb"
+    },
+    {
+      "path": "apps/slides/decks/num-root-finding.md",
+      "size": 1722,
+      "sha256": "29bac19b66358154ff9ab647d88b98615d4fd409523ad501af1b8939810bd302"
+    },
+    {
+      "path": "apps/slides/decks/num-sparse-matrices-preconditioning.md",
+      "size": 1724,
+      "sha256": "b4bd8c0aa55f2d011b6d2cc68c352cc4c83522c47bb4eb0b57a9c056f02fbf6a"
+    },
+    {
+      "path": "apps/slides/decks/num-splines-piecewise-approximation.md",
+      "size": 1720,
+      "sha256": "c1d1707b2df20642519fb81efd546867efd90a22e268757e9f088cc257055457"
+    },
+    {
+      "path": "apps/slides/decks/num-svd-low-rank-computation.md",
+      "size": 1756,
+      "sha256": "e0a8c1cfb25cd6a246d5c51dad0da40362dd5634e018e2828f369bb5f4106317"
+    },
+    {
+      "path": "apps/slides/decks/num-verification-benchmarking-reproducibility.md",
+      "size": 1903,
+      "sha256": "421269e5938716521a7ab3064cf678ed3bce1998bb98b158e66009fd46f3758f"
+    },
+    {
+      "path": "apps/slides/decks/opt-adaptive-optimizers.md",
+      "size": 1674,
+      "sha256": "f6b62ad3b6370390ba0d69a7ef73a568d0c38af94607b65f9bf9442e6401d9c1"
+    },
+    {
+      "path": "apps/slides/decks/opt-admm-splitting.md",
+      "size": 1674,
+      "sha256": "aef878588b2cf73746e9b964c4b3745e5a642aef648b321b466cc6adafffd112"
+    },
+    {
+      "path": "apps/slides/decks/opt-barrier-interior-point.md",
+      "size": 1686,
+      "sha256": "fb23d9a87bc238b04e1138f5e6143e995ac4dfca572b2161b83a9efa5e07aac5"
+    },
+    {
+      "path": "apps/slides/decks/opt-convex-sets-functions.md",
+      "size": 1726,
+      "sha256": "badb28562c59bd4dacf83f0825e23e00dfdcd9e9df7c289adac4ec6d1a1a2e0c"
+    },
+    {
+      "path": "apps/slides/decks/opt-coordinate-conjugate-directions.md",
+      "size": 1769,
+      "sha256": "b5708b35cbbb636fa5d0ee302e9275c8a5886e568cfcd5e820357195d55d59b3"
+    },
+    {
+      "path": "apps/slides/decks/opt-duality-dual-gradient.md",
+      "size": 1756,
+      "sha256": "f805dececc6ee9c2e251cbf3158fd2cd1c5ddc8a3a95567288fdfc5f4507c065"
+    },
+    {
+      "path": "apps/slides/decks/opt-equality-constrained-kkt.md",
+      "size": 1741,
+      "sha256": "1d6e702f3582f0d8ac4d12b7920acf935c1e28a14744f7dcd05b8bf14bf3d840"
+    },
+    {
+      "path": "apps/slides/decks/opt-gradient-descent-convergence.md",
+      "size": 1692,
+      "sha256": "fc5b627f1972172174b925c48c9f51d3a1d1b2bac5146c391471de576196922f"
+    },
+    {
+      "path": "apps/slides/decks/opt-inequality-constraints-kkt.md",
+      "size": 1700,
+      "sha256": "6a97a0e80a0e833f7205053ce88135c118c422a922e55e123d38f88c43b8aa70"
+    },
+    {
+      "path": "apps/slides/decks/opt-line-search-step-size.md",
+      "size": 1753,
+      "sha256": "31f176f0312fbcbe02ac8fdba0fb8f7529c4ae02ef6ef53bf400dd41db721f9e"
+    },
+    {
+      "path": "apps/slides/decks/opt-momentum-accelerated-gradient.md",
+      "size": 1714,
+      "sha256": "9f9f465e1a2550e708b789d0510c9f4e0e94d8b76aa81e813e04bea1ba109ce7"
+    },
+    {
+      "path": "apps/slides/decks/opt-newton-quasi-newton.md",
+      "size": 1733,
+      "sha256": "89f1e28202250d101ba835a90047f18db7023f681e0baaead6cd02b8047cbe3b"
+    },
+    {
+      "path": "apps/slides/decks/opt-nonconvex-diagnostics-hyperparameters.md",
+      "size": 1896,
+      "sha256": "97e96573e0fa1c6713850fddc409e0eb99684d9f3e63228eeccda967d0786e13"
+    },
+    {
+      "path": "apps/slides/decks/opt-optimality-conditions.md",
+      "size": 1605,
+      "sha256": "0585d551e8d8538c612949ef8841186281a24e7e95d10085d3a886ecb383b0e5"
+    },
+    {
+      "path": "apps/slides/decks/opt-problem-formulation-objectives-constraints.md",
+      "size": 1761,
+      "sha256": "65c30055e3accb231c0730628f504d80b42250f67aa155744c339b54fed0e057"
+    },
+    {
+      "path": "apps/slides/decks/opt-projected-gradient.md",
+      "size": 1649,
+      "sha256": "ff0b0526541d8c67dbffd05110fd8e477c32aa9b6f26488beda45026a2ac3f0d"
+    },
+    {
+      "path": "apps/slides/decks/opt-proximal-gradient.md",
+      "size": 1659,
+      "sha256": "de52c46276193d2162f7e7453d3c10318cc8ff6eced1bf0a2c14a6323eaaf16b"
+    },
+    {
+      "path": "apps/slides/decks/opt-smoothness-strong-convexity.md",
+      "size": 1788,
+      "sha256": "0429107d0a88f3660d2f937f91fc5690d343cd40ae9627c5032590601284f3e2"
+    },
+    {
+      "path": "apps/slides/decks/opt-stochastic-gradient.md",
+      "size": 1684,
+      "sha256": "51ae6ac57a3b82c526e81565510a115a41b4dc5362531202d5a99ec568ae3969"
+    },
+    {
+      "path": "apps/slides/decks/opt-trust-region-methods.md",
+      "size": 1605,
+      "sha256": "7d61209452825ae27a71e0cbd13a595a72e558a310e850db557b09cc32cfe1c8"
+    },
+    {
+      "path": "apps/slides/decks/orthogonal-projection.md",
+      "size": 1634,
+      "sha256": "89173937246c0ca9d3707fc759f081a0a0b001607cd898ef15669bec6d6492a2"
+    },
+    {
+      "path": "apps/slides/decks/prep-definitions-theorems-proofs.md",
+      "size": 1865,
+      "sha256": "cf8b532fe155e05b6b10ae62cc775e7db0f2a0430f666bd43371e4d162afdd92"
+    },
+    {
+      "path": "apps/slides/decks/prep-exponents-logarithms.md",
+      "size": 1706,
+      "sha256": "f0e9149cef264d891cb1a12250269523e7a419b46e3c4e1b24e0bdeaa7f18f4e"
+    },
+    {
+      "path": "apps/slides/decks/prep-numerical-checks-reproducibility.md",
+      "size": 1789,
+      "sha256": "8231db04653f3346e8c6f6a57fc61312cea9a5c08a76d341ac0a4b33cd7d2be7"
+    },
+    {
+      "path": "apps/slides/decks/prep-numpy-arrays-shapes.md",
+      "size": 1862,
+      "sha256": "6dc9fc20ab05fcf8316a3847192c76d0962b169ba575083290941c174c87fa64"
+    },
+    {
+      "path": "apps/slides/decks/prep-python-expressions-functions.md",
+      "size": 1851,
+      "sha256": "6f7f6acb13ec5bcdee2e6eb3b8ffcbbadd10a9da4190659a20e81430b88b9640"
+    },
+    {
+      "path": "apps/slides/decks/prep-sets-functions-mappings.md",
+      "size": 1783,
+      "sha256": "f6913734d2b96b7fd49732c7430c67063176227a58eb3e00926dd51b1f9bad60"
+    },
+    {
+      "path": "apps/slides/decks/prep-sums-products-indices.md",
+      "size": 1773,
+      "sha256": "a102e1d2cbeeda7bcfda559542c00115eb25af92898219b19540ef3c2fcdf342"
+    },
+    {
+      "path": "apps/slides/decks/prep-symbols-types-shapes.md",
+      "size": 1760,
+      "sha256": "db8d957546f10b984e82ecb12cf6ea4ccc1a3519760f65c7f8532784350209b4"
+    },
+    {
+      "path": "apps/slides/decks/prob-axioms-event-operations.md",
+      "size": 1764,
+      "sha256": "af46db14351eea4fbfe58c4b673c38f3a0477144f99d19f2787529af0584bb64"
+    },
+    {
+      "path": "apps/slides/decks/prob-bayes-theorem.md",
+      "size": 1632,
+      "sha256": "db4780ea2cb7fb7d70a4e8f6f75a134935eecf86ce7a4920ac579b0a57d0de21"
+    },
+    {
+      "path": "apps/slides/decks/prob-conditional-probability-independence.md",
+      "size": 1743,
+      "sha256": "2505317ad840b97be5fd081dfe34f3b0c8c1d804316a9efcc14d0d17cb57c827"
+    },
+    {
+      "path": "apps/slides/decks/prob-continuous-distributions.md",
+      "size": 1722,
+      "sha256": "86d9f28676d48f9c8dcb3746a1c140feca7e3a69dfadbee9dcb3bafbad6929b7"
+    },
+    {
+      "path": "apps/slides/decks/prob-counting-sample-spaces.md",
+      "size": 1777,
+      "sha256": "5ffb78b52dfca4f158d7dcdd751e98d7098c8c636e59beccec8f5f4ee1a1072a"
+    },
+    {
+      "path": "apps/slides/decks/prob-covariance-correlation.md",
+      "size": 1735,
+      "sha256": "5f9324105fb43e983bdb94c01042543543e5dfc9f5dc67cce8204e269c3464cb"
+    },
+    {
+      "path": "apps/slides/decks/prob-discrete-distributions.md",
+      "size": 1685,
+      "sha256": "fb385a50f448ecac65b9b54c3a1a5b7fe30aeb016096b57f1c66c301c377b873"
+    },
+    {
+      "path": "apps/slides/decks/prob-expectation-variance-moments.md",
+      "size": 1823,
+      "sha256": "394df5f04a222bddffc29391a99a51e31ce5def7a74bed2250a7230c437fcf55"
+    },
+    {
+      "path": "apps/slides/decks/prob-joint-marginal-conditional-distributions.md",
+      "size": 1911,
+      "sha256": "28aef7d7154fc08a5d6510954e18014ab6eddc8622328e94d90aaf9566fa8ddb"
+    },
+    {
+      "path": "apps/slides/decks/prob-laws-large-numbers-central-limit-theorem.md",
+      "size": 1867,
+      "sha256": "0244d2061b9c4068b1e73508d154421385487fd7d000a0b45fd377a784126aa0"
+    },
+    {
+      "path": "apps/slides/decks/prob-multivariate-normal-distribution.md",
+      "size": 1759,
+      "sha256": "cf6f3f209cda01fd8513a806cdabe9c6a7852ccb260c077b68dca4f3c41f0218"
+    },
+    {
+      "path": "apps/slides/decks/prob-random-variables-cdf-pmf-pdf.md",
+      "size": 1739,
+      "sha256": "a97b93f5cd8302e4164b74f33f554bba3f158e1dadefef9d1c67330a1ff750a8"
+    },
+    {
+      "path": "apps/slides/decks/prob-transformations-sums-random-variables.md",
+      "size": 1810,
+      "sha256": "4710f50390530cc8f598003a35ecfbcfaa646cc076663e0bd60cf5293d0b1a08"
+    },
+    {
+      "path": "apps/slides/decks/stat-bayesian-inference-map.md",
+      "size": 1736,
+      "sha256": "bda9bdc87387bc1b9cdbe6afae7bbdd44ccd15538a343725b371921ed36d0ea6"
+    },
+    {
+      "path": "apps/slides/decks/stat-confidence-intervals.md",
+      "size": 1694,
+      "sha256": "2af1926f7bdb9075731b9bbb5f11d40327103932fcaf9c66e5dd6dd64a771060"
+    },
+    {
+      "path": "apps/slides/decks/stat-entropy-cross-entropy-kl-divergence.md",
+      "size": 2156,
+      "sha256": "9ea2d9e812cbafef6b64bcf381a153344858440d6c72f3ecb626c1146b240928"
+    },
+    {
+      "path": "apps/slides/decks/stat-estimators-bias-variance-mse.md",
+      "size": 1870,
+      "sha256": "a950834fb8901b3a4fc40cd169f9466f79e646d62e705816d009cae74e17145a"
+    },
+    {
+      "path": "apps/slides/decks/stat-hypothesis-testing.md",
+      "size": 1594,
+      "sha256": "96faeeb3d363ddeb53b2beded1aad66ed041c7219f9f97434433b9e56f137b65"
+    },
+    {
+      "path": "apps/slides/decks/stat-likelihood-maximum-likelihood.md",
+      "size": 1772,
+      "sha256": "aeb513aece868d45e5691c127b4c09c976fd6bced900d8d542623b0267899099"
+    },
+    {
+      "path": "apps/slides/decks/stat-linear-regression-probabilistic-model.md",
+      "size": 1870,
+      "sha256": "04e96bfaa36559f2f6b9304cd8a7f06d0f7f8ef52fc80934b18e47b384d859b9"
+    },
+    {
+      "path": "apps/slides/package.json",
+      "size": 297,
+      "sha256": "ed4a35cc61cba1e642d223c8893cb85941b80e2127f94ce69d0f427a063c004f"
+    },
+    {
+      "path": "content/courses.yml",
+      "size": 2526,
+      "sha256": "9c9ddc3af8108dc3ac2b4fc3f308144e823a418178bf83aa104080899a5ee5e0"
+    },
+    {
+      "path": "content/curriculum.yml",
+      "size": 131722,
+      "sha256": "0ddc22471d3a713a00fbb332577e31fcb5e687996d0bfe440c0486750fb78ace"
+    },
+    {
+      "path": "content/topics.yml",
+      "size": 136114,
+      "sha256": "1726c75de5400d7debd37a3dbae97e2e2a46fe02570c7c680dd29cd19d1c98c4"
+    },
+    {
+      "path": "tools/build.mjs",
+      "size": 587,
+      "sha256": "39291d8a3337948676e7ce96def782ef169a8add2dc2c83644f82400e58bb066"
+    }
+  ]
+}

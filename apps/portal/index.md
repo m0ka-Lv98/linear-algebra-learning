@@ -1,37 +1,21 @@
-# 線形代数学習ポータル
+# 数学・データ解析・AI学習ポータル
 
-大学初年級の線形代数から、確率統計、重み付き最小二乗法（WLSM）、数値線形代数、機械学習までを段階的に学ぶための教材基盤です。
+Course 00の学習準備から、微積分、線形代数、確率統計、離散数学、数値計算、最適化、データ解析、機械学習、深層学習、Frontierまでを一貫した表記で学ぶ。
 
-## 学び方
+## 学習を開始する
 
-<div class="entry-grid">
-  <a href="./courses/foundation/prep-symbols-types-shapes">最初から学ぶ</a>
-  <a href="./courses/foundation/calc-functions-limits-continuity">微積分を学ぶ</a>
-  <a href="./courses/foundation/la-vectors-linear-combinations">線形代数を学ぶ</a>
-  <a href="./courses/foundation/prob-counting-sample-spaces">確率統計を学ぶ</a>
-  <a href="./courses/foundation/dm-propositions-connectives-truth-tables">離散数学と証明を学ぶ</a>
-  <a href="./textbook/prep-symbols-types-shapes">教科書で詳しく理解する</a>
-  <a href="./exercises/prep-symbols-types-shapes">演習問題で確認する</a>
-</div>
+- **Course 00：学習準備** — [数式・記号・型・次元から開始](/courses/foundation/prep-symbols-types-shapes)
+- **Course 01：微積分** — [関数・極限・連続から開始](/courses/foundation/calc-functions-limits-continuity)
+- **Course 02：線形代数** — [ベクトルと線形結合から開始](/courses/foundation/la-vectors-linear-combinations)
+- **Course 03：確率統計** — [数え上げ・標本空間・事象から開始](/courses/foundation/prob-counting-sample-spaces)
+- **Course 04：離散数学と証明** — [命題・論理演算・真理値表から開始](/courses/foundation/dm-propositions-connectives-truth-tables)
+- **Course 05：数値計算** — [浮動小数点数と丸めから開始](/courses/foundation/num-floating-point-rounding)
+- **Course 06：最適化** — [最適化問題の定式化から開始](/courses/foundation/opt-problem-formulation-objectives-constraints)
+- **Course 07：データ解析の行列手法** — [データ行列・中心化・標準化から開始](/courses/foundation/mat-data-matrices-centering-scaling)
+- **Course 08：機械学習** — [機械学習問題の定式化とdata splitから開始](/courses/foundation/ml-problem-formulation-data-splits)
+- **Course 09：深層学習** — [perceptronと多層networkから開始](/courses/foundation/dl-perceptron-mlp)
+- **Course 10：Frontier** — [Foundation modelの設計原理から開始](/courses/foundation/frontier-foundation-model-paradigm)
 
-## コース
+## 教材構成
 
-- [線形代数の基礎](/courses/foundation/)
-- [最小二乗法とWLSM](/courses/wlsm/)
-- [機械学習の線形代数](/courses/machine-learning/)
-- [発展・最先端](/courses/advanced/)
-
-## 現在の教材
-
-[数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)から学習を始められます。
-
-[直交射影](/courses/foundation/orthogonal-projection)を含むCourse 02「線形代数」の全29 Topicを公開しています。
-
-[数え上げ・標本空間・事象](/courses/foundation/prob-counting-sample-spaces)からCourse 03「確率統計」を始められます。
-
-[命題・論理演算・真理値表](/courses/foundation/dm-propositions-connectives-truth-tables)からCourse 04「離散数学と証明」を始められます。
-
-<style>
-.entry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-.entry-grid a { padding: 1.2rem; border: 1px solid var(--vp-c-divider); border-radius: 10px; text-decoration: none; font-weight: 600; }
-</style>
+各Topicにはテーマホーム、概要スライド、詳細教科書、10問の演習と完全解答がある。
