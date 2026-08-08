@@ -28,7 +28,7 @@ k-means、階層clusteringを定義する。定義は必要な条件を列挙す
 ## 代表式
 
 $$
-\min_{\{\boldsymbol{\mu}_k\}}\sum_i\min_k\|\mathbf{x}_i-\boldsymbol{\mu}_k\|_2^2
+\min_{\boldsymbol{\mu}_1,\ldots,\boldsymbol{\mu}_K}\sum_i\min_k\|\mathbf{x}_i-\boldsymbol{\mu}_k\|_2^2
 $$
 
 この式に現れる記号は、本文中で対象、次元、添字範囲、成立条件を定義する。式を暗記するのではなく、左辺が表す量、右辺が行う操作、出力の型を順に確認する。

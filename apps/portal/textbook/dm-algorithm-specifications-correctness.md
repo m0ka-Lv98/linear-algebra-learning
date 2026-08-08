@@ -17,7 +17,7 @@
 入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofを定義し、次の式を読み解く。
 
 $$
-\{\text{input},\text{output},\text{precondition},\text{postcondition}\}
+\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace
 $$
 
 新しい略語は初出で正式名称を示す。DAGはdirected acyclic graph（有向非巡回グラフ）、BFSはbreadth-first search（幅優先探索）、DFSはdepth-first search（深さ優先探索）とする。

@@ -28,7 +28,7 @@ k近傍法、距離学習を定義する。定義は必要な条件を列挙す�
 ## 代表式
 
 $$
-\hat{y}=\operatorname{mode}\{y_i:i\in\mathcal{N}_k(\mathbf{x})\}
+\hat{y}=\operatorname{mode}\lbracey_i:i\in\mathcal{N}_k(\mathbf{x})\rbrace
 $$
 
 この式に現れる記号は、本文中で対象、次元、添字範囲、成立条件を定義する。式を暗記するのではなく、左辺が表す量、右辺が行う操作、出力の型を順に確認する。

@@ -40,7 +40,7 @@
 
 ### 09-916-03：手計算・導出
 
-3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$\mathbf{h}_v^{(l+1)}=\phi(\mathbf{W}\operatorname{AGG}\{\mathbf{h}_u^{(l)}:u\in\mathcal{N}(v)\})$$
+3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$\mathbf{h}_v^{(l+1)}=\phi(\mathbf{W}\operatorname{AGG}\lbrace\mathbf{h}_u^{(l)}:u\in\mathcal{N}(v)\rbrace)$$
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 

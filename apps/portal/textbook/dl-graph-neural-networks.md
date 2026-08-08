@@ -29,7 +29,7 @@ graph、neural、networkを定義する。定義は必要な条件を列挙す�
 ## 代表式
 
 $$
-\mathbf{h}_v^{(l+1)}=\phi(\mathbf{W}\operatorname{AGG}\{\mathbf{h}_u^{(l)}:u\in\mathcal{N}(v)\})
+\mathbf{h}_v^{(l+1)}=\phi(\mathbf{W}\operatorname{AGG}\lbrace\mathbf{h}_u^{(l)}:u\in\mathcal{N}(v)\rbrace)
 $$
 
 この式に現れる記号は、本文中で対象、次元、添字範囲、成立条件を定義する。式を暗記するのではなく、左辺が表す量、右辺が行う操作、出力の型を順に確認する。

@@ -40,7 +40,7 @@
 
 ### 08-806-03：手計算・導出
 
-3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$\hat{y}=\operatorname{mode}\{y_i:i\in\mathcal{N}_k(\mathbf{x})\}$$
+3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$\hat{y}=\operatorname{mode}\lbracey_i:i\in\mathcal{N}_k(\mathbf{x})\rbrace$$
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
