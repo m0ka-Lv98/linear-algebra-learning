@@ -698,7 +698,7 @@ topics:
   kind: required
   prerequisites:
   - la-orthogonal-orthonormal-bases
-  - orthogonal-projection
+  - la-orthogonal-projection
   implementation_topic: la-gram-schmidt-qr
   outcomes:
   - Gram–Schmidt法、QR分解の定義と成立条件を説明できる
@@ -712,7 +712,7 @@ topics:
   status: draft
   kind: required
   prerequisites:
-  - orthogonal-projection
+  - la-orthogonal-projection
   - la-column-space-null-space
   implementation_topic: la-least-squares-geometry
   outcomes:
@@ -1989,7 +1989,7 @@ topics:
   kind: required
   prerequisites:
   - opt-convex-sets-functions
-  - orthogonal-projection
+  - la-orthogonal-projection
   implementation_topic: opt-projected-gradient
   outcomes:
   - 射影勾配法の定義と成立条件を説明できる
@@ -2137,7 +2137,7 @@ topics:
   kind: required
   prerequisites:
   - mat-covariance-scatter-matrices
-  - orthogonal-projection
+  - la-orthogonal-projection
   implementation_topic: mat-pca-geometry
   outcomes:
   - PCAの幾何学の定義と成立条件を説明できる

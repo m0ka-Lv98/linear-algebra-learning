@@ -91,7 +91,7 @@ courses:
   mit_references:
   - code: '18.065'
     title: Matrix Methods in Data Analysis, Signal Processing, and Machine Learning
-- id: 08
+- id: '08'
   slug: machine-learning
   title: 機械学習
   layer: applied
@@ -108,7 +108,7 @@ courses:
     title: Introduction to Machine Learning
   - code: '6.867'
     title: Machine Learning
-- id: 09
+- id: '09'
   slug: deep-learning
   title: 深層学習
   layer: applied
