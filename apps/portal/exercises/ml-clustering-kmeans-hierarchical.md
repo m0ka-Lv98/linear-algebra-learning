@@ -40,7 +40,7 @@
 
 ### 08-812-03：手計算・導出
 
-3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$\min_{\{\boldsymbol{\mu}_k\}}\sum_i\min_k\|\mathbf{x}_i-\boldsymbol{\mu}_k\|_2^2$$
+3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$\min_{\boldsymbol{\mu}_1,\ldots,\boldsymbol{\mu}_K}\sum_i\min_k\|\mathbf{x}_i-\boldsymbol{\mu}_k\|_2^2$$
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
