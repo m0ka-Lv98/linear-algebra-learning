@@ -66,7 +66,11 @@ await rm(backup, { recursive: true, force: true })
 
 for (const id of selected) {
   await rm(path.join(slides, id), { recursive: true, force: true })
-  await exec('pnpm', ['exec', 'slidev', 'build', `apps/slides/decks/${id}.md`, '--out', path.join(slides, id), '--base', `${process.env.BASE_PATH ?? '/'}slides/${id}/`, '--download', 'false'], { cwd: root, maxBuffer: 50 * 1024 * 1024 })
+  await exec(
+    'pnpm',
+    ['exec', 'slidev', 'build', `decks/${id}.md`, '--out', path.join(slides, id), '--base', `${process.env.BASE_PATH ?? '/'}slides/${id}/`, '--download', 'false'],
+    { cwd: path.join(root, 'apps/slides'), maxBuffer: 50 * 1024 * 1024 },
+  )
 }
 await mkdir(slides, { recursive: true })
 await writeFile(path.join(slides, '.build-manifest.json'), JSON.stringify({ version: 1, topics: all }, null, 2) + '\n')
