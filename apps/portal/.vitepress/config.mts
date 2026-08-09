@@ -238,7 +238,25 @@ export default defineConfig({
   description: '基礎数学から数値計算、最適化、機械学習、深層学習、Frontierへ',
   base: process.env.BASE_PATH ?? '/',
   cleanUrls: true,
-  markdown: { math: true },
+  markdown: {
+    math: true,
+    config(md) {
+      const defaultLinkOpen =
+        md.renderer.rules.link_open ??
+        ((tokens, idx, options, _env, self) => self.renderToken(tokens, idx, options))
+
+      md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+        const href = tokens[idx].attrGet('href')
+        // /slides/** is a separate Slidev SPA, not a VitePress route.
+        // Adding target makes VitePress's client router leave the link alone,
+        // while target="_self" keeps navigation in the same tab.
+        if (href?.startsWith('/slides/')) {
+          tokens[idx].attrSet('target', '_self')
+        }
+        return defaultLinkOpen(tokens, idx, options, env, self)
+      }
+    }
+  },
   ignoreDeadLinks: [/^\/(slides|textbook|exercises)\//],
   themeConfig: {
     nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }],
