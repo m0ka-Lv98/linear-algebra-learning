@@ -23,7 +23,7 @@ on:
         default: false
         type: boolean
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 2 }
+        with: { fetch-depth: 0 }
       - uses: pnpm/action-setup@v4
         with: { version: 11.9.0 }
       - uses: actions/setup-node@v4
@@ -54,6 +54,8 @@ jobs:
           COURSES_01_10: ${{ inputs.courses_01_10 }}
           FULL: ${{ inputs.full }}
           CACHE_MATCHED: ${{ steps.slides-cache.outputs.cache-matched-key }}
+          DIFF_BASE: ${{ github.event.before }}
+          SLIDE_BUILD_CONCURRENCY: 4
         run: |
           set -euo pipefail
 
@@ -82,6 +84,23 @@ jobs:
           fi
       - name: Verify slide completeness
         run: node tools/verify-slide-build.mjs
+      - name: Verify Course 01-10 slide quality
+        run: node tools/verify-course01-10-slidev-fixes.mjs
+      - name: Persist generated Course 01-10 deck sources
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- 'apps/slides/decks/*.md'; then
+            echo "generated slide sources already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- 'apps/slides/decks/*.md'
+          git commit -m "content: regenerate Course 01-10 slide decks [skip ci]"
+          if ! git push origin HEAD:main; then
+            echo "::warning::Generated deck sources could not be pushed; deployed artifact is still generated from current sources."
+          fi
       - uses: actions/cache/save@v4
         if: success() && steps.slides-cache.outputs.cache-primary-key != steps.slides-cache.outputs.cache-matched-key
         with:

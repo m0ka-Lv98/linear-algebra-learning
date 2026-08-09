@@ -5,6 +5,8 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    env:
+      SLIDE_BUILD_CONCURRENCY: 4
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -17,6 +19,23 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test
-      - run: pnpm build
-      - run: test -f dist/index.html && test -f dist/slides/orthogonal-projection/index.html
-
+      - name: Generate and verify Course 01-10 slide sources
+        run: |
+          node tools/generate-course01-10-slide-decks.mjs
+          node tools/apply-course01-10-slidev-fixes.mjs
+          node tools/verify-course01-10-slidev-fixes.mjs
+          node tools/verify-course01-10-pages-workflow.mjs
+      - name: Build Portal
+        env:
+          BASE_PATH: /linear-algebra-learning/
+        run: pnpm build:portal
+      - name: Build representative Slidev decks
+        env:
+          BASE_PATH: /linear-algebra-learning/
+        run: pnpm --filter @linear-algebra/slides build -- --topics prep-symbols-types-shapes,calc-derivatives-rates,num-root-finding
+      - name: Verify smoke outputs
+        run: |
+          test -f apps/portal/.vitepress/dist/index.html
+          test -f dist/slides/prep-symbols-types-shapes/index.html
+          test -f dist/slides/calc-derivatives-rates/index.html
+          test -f dist/slides/num-root-finding/index.html

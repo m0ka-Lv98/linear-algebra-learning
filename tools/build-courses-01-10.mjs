@@ -3,6 +3,8 @@ import { execFile } from 'node:child_process'
 import path from 'node:path'
 import { promisify } from 'node:util'
 import { parse } from 'yaml'
+import { generateCourse0110SlideDecks } from './generate-course01-10-slide-decks.mjs'
+import { buildSlideDecks } from './slidev-build-pool.mjs'
 
 const exec = promisify(execFile)
 const root = process.cwd()
@@ -39,6 +41,8 @@ if (missingCourse00.length) {
   )
 }
 
+const generated = await generateCourse0110SlideDecks({ root, ids: targetIds })
+console.log(`materialized Course 01-10 slide sources: ${generated.total} (${generated.changed.length} changed)`)
 console.log(`build scope: Course 01-10 only (${targetIds.length} decks)`)
 console.log(`preserving Course 00 baseline (${course00Ids.length} decks); Course 00 will not be rebuilt`)
 
@@ -49,43 +53,28 @@ for (const id of course00Ids) {
 }
 
 try {
-  // Rebuild the Portal, then restore only the preserved Course 00 Slidev output.
   await rm(output, { recursive: true, force: true })
-  await exec('pnpm', ['build:portal'], {
-    cwd: root,
-    env: process.env,
-    maxBuffer: 50 * 1024 * 1024,
-  })
-  await mkdir(output, { recursive: true })
-  await cp(portalOutput, output, { recursive: true })
   await mkdir(slides, { recursive: true })
   for (const id of course00Ids) {
     await cp(path.join(backup, id), path.join(slides, id), { recursive: true })
   }
 
-  // Rebuild every Course 01-10 deck from source. No baseline for these 202
-  // decks is required because each one is regenerated in this run.
-  for (const [index, id] of targetIds.entries()) {
-    console.log(`building slides [${index + 1}/${targetIds.length}]: ${id}`)
-    await exec(
-      'pnpm',
-      [
-        'exec', 'slidev', 'build', `decks/${id}.md`,
-        '--out', path.join(slides, id),
-        '--base', `${process.env.BASE_PATH ?? '/'}slides/${id}/`,
-        '--download', 'false',
-      ],
-      {
-        cwd: path.join(root, 'apps/slides'),
-        env: process.env,
-        maxBuffer: 50 * 1024 * 1024,
-      },
-    )
-  }
+  // Portal and the 202 Slidev builds are independent. Run them concurrently,
+  // while Slidev uses a bounded pool instead of spawning 202 builds serially.
+  const portalBuild = exec('pnpm', ['build:portal'], {
+    cwd: root,
+    env: process.env,
+    maxBuffer: 50 * 1024 * 1024,
+  })
+  const targetBuild = buildSlideDecks({ root, ids: targetIds, outputDir: slides })
+  await Promise.all([portalBuild, targetBuild])
+
+  await mkdir(output, { recursive: true })
+  await cp(portalOutput, output, { recursive: true })
 
   await writeFile(
     path.join(slides, '.build-manifest.json'),
-    `${JSON.stringify({ version: 1, topics: allIds }, null, 2)}\n`,
+    `${JSON.stringify({ version: 2, topics: allIds }, null, 2)}\n`,
   )
 
   const missingAfterBuild = []
@@ -96,7 +85,7 @@ try {
     throw new Error(`Combined output is incomplete: ${missingAfterBuild.join(', ')}`)
   }
 
-  console.log('PASS: rebuilt Course 01-10 (202 decks) and preserved Course 00 (8 cached decks).')
+  console.log('PASS: rebuilt Course 01-10 (202 decks) in parallel and preserved Course 00 (8 cached decks).')
 } finally {
   await rm(backup, { recursive: true, force: true })
 }

@@ -1,13 +1,14 @@
 ---
 theme: default
 routerMode: hash
+generatedBy: course01-10-slide-decks-v2
 layout: cover
-title: グラフ・表現・次数
+title: "グラフ・表現・次数"
 ---
 
 # グラフ・表現・次数
 
-Course 04｜離散数学と証明
+Course 04｜離散数学
 
 ---
 layout: center
@@ -15,80 +16,114 @@ layout: center
 
 ## 今回の問い
 
-グラフ・表現・次数を定義し、証明・アルゴリズム・計算量へ接続する。
+「グラフ・表現・次数」は何を表し、どの条件で使え、結果をどう検算するのか？
 
 ---
 
-## なぜ必要か
+## 到達目標
 
-正しさ、停止性、構造、計算資源を明示するために必要である。
-
----
-
-## 前提の確認
-
-命題 P,Q、集合 A,B、入力サイズ n、グラフ G=(V,E)を定義する。
+- グラフ、表現、次数の定義と成立条件を説明できる
+- グラフ・表現・次数を小規模に計算・実装し検算できる
 
 ---
 
-## 直感
+## まず全体像をつかむ
 
-graph G=(V,E)、vertex、edge、undirected、directed、simple graph、degree、adjacency list、adjacency matrix、sparse graphを例、反例、表、グラフ、擬似コードとして観察する。
+この章ではグラフ・表現・次数を、定義、証明、反例、アルゴリズムの仕様という順で学ぶ。graph $G=(V,E)$、vertex、edge、undirected、directed、simple graph、degree、adjacency list、adjacency matrix、sparse graphを、数学的な主張から計算機科学の設計へ接続する。
+
+---
+
+## 中心となる式・記号
+
+- graph $G=(V,E)$
 
 ---
 
 ## 記号と定義
 
-graph G=(V,E)、vertex、edge、undirected、directed、simple graph、degree、adjacency list、adjacency matrix、sparse graph
-
----
-
-## 基本式
+graph $G=(V,E)$、vertex、edge、undirected、directed、simple graph、degree、adjacency list、adjacency matrix、sparse graphを定義し、次の式を読み解く。
 
 $$
 \sum_{v\in V}\deg(v)=2|E|
 $$
 
+新しい略語は初出で正式名称を示す。DAGはdirected acyclic graph（有向非巡回グラフ）、BFSはbreadth-first search（幅優先探索）、DFSはdepth-first search（深さ優先探索）とする。
+
+---
+
+## 直感的な説明
+
+証明は、仮定から許される推論だけを積み重ねる。アルゴリズムは入力・出力・前提条件・事後条件を持つ手続きで、不変量は反復中に保たれる主張である。グラフでは表現を変えても頂点と辺の構造を追跡する。
+
+---
+
+## 正式な定義と証明・導出
+
+直接証明、対偶、背理法、場合分け、帰納法を使い分ける。含意の逆・裏・対偶を混同せず、必要条件と十分条件の向きを確認する。帰納法では基底、帰納法の仮定、帰納段階を分ける。量化記号の否定、De Morgan、包含排除、degree sum、木の辺数は式変形の理由を一行ずつ書く。
+
 ---
 
 ## 小さな例
 
-有限集合、整数、短い配列、隣接リストから確認する。
+整数、有限集合、短い配列、隣接リストを使う。まず小さい入力を列挙し、次に一般の n で主張する。反例、数え漏れ、二重計数、off-by-oneをチェックする。
 
 ---
 
-## 証明または導出
+## アルゴリズムと計算量
 
-仮定、推論、結論を分け、反例と境界条件を確認する。
-
----
-
-## アルゴリズムへの接続
-
-仕様、不変量、停止性、探索、再帰、グラフ表現を対応づける。
+正しさと停止性を分け、loop invariantの初期化・維持・終了を示す。Big Oは単なる「おおよその時間」ではなく、十分大きい n に対する上界である。Big Omegaは下界、Big Thetaは上下界の一致である。Master theoremは再帰木と適用条件を確認して使う。
 
 ---
 
-## 計算量・構造の解釈
+## Python・NumPyとの対応
 
-Big O、Omega、Theta、次数、辺数、再帰木を区別する。
+標準PythonとNumPyだけで、真理値表、Euclidean algorithm、累積和、漸化式、隣接行列、BFS/DFS、topological sortを小規模に読解できる。実測時間ではなく比較回数や反復回数を数え、testとproofを区別する。
 
 ---
 
-## よくある誤り
+## 機械学習・計算機科学への接続
 
-逆と対偶、順列と組合せ、pathとcycle、木とDAGを混同しない。
+論理は仕様と検証、合同算術はhash、数え上げは組合せ特徴、漸近記法は計算量、グラフは依存関係と計算グラフ、離散確率は乱択アルゴリズムと機械学習の保証へつながる。
+
+---
+
+## よくある誤解
+
+- 具体例を証明と扱う。
+- 逆と対偶、必要条件と十分条件を取り違える。
+- Big Oを実測時間や正確な等式と読む。
+- walk、trail、path、cycleを同一視する。
+- 木、DAG、全域木を同一視する。
+- 期待値の線形性に独立性が必要だと誤解する。
+
+---
+
+## まとめ
+
+グラフ・表現・次数は、定義・仮定・証明・停止性・計算量・反例を順に確認すると安全に扱える。
+
+---
+
+## 前提との接続
+
+このTopicは次の内容を土台にする。式や用語が曖昧なら、先に対応するTopicへ戻る。
+
+- `dm-relations-equivalence-partial-orders`
+- `prep-numpy-arrays-shapes`
 
 ---
 
 ## 理解確認
 
-定義、仮定、証明、実装読解を一文ずつ説明できるか。
+1. グラフ、表現、次数の定義と成立条件を説明できる
+2. グラフ・表現・次数を小規模に計算・実装し検算できる
+3. 代表式・計算手順・成立条件を小さな例で検算できるか。
 
 ---
 
-## 次へ
+## 演習へ
 
-[教科書](/textbook/dm-graphs-representations-degrees)
+[教科書](../../textbook/dm-graphs-representations-degrees)
 
-[演習](/exercises/dm-graphs-representations-degrees)
+[10問の演習](../../exercises/dm-graphs-representations-degrees)
+

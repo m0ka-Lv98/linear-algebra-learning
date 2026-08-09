@@ -6,6 +6,8 @@ info: 線形代数の基礎
 class: text-center
 drawings:
   persist: false
+layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 直交射影
@@ -59,3 +61,19 @@ drawings:
 .diagram { margin: 3rem auto; max-width: 700px; font-size: 1.7rem; text-align: center; }
 .point { color: #2563eb; }.drop { color: #0f766e; font-size: 3rem; }.line { color: #64748b; }
 </style>
+
+---
+
+## 到達目標
+
+- 直交射影の定義と成立条件を説明できる
+- 直交射影を小規模に計算・実装し検算できる
+
+---
+
+## 理解確認
+
+1. 直交射影の定義と成立条件を説明できる
+2. 直交射影を小規模に計算・実装し検算できる
+3. 代表式・計算手順・成立条件を小さな例で検算できるか。
+
