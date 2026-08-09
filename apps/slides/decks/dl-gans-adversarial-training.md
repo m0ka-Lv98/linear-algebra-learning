@@ -1,7 +1,7 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-slide-decks-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "GANとadversarial training"
 ---
@@ -16,40 +16,37 @@ layout: center
 
 ## 今回の問い
 
-GANとadversarial trainingは何を表し、どの条件で使え、どの量を計算するのか。結果をどのように検算し、どの典型的な誤りを避けるべきか？
+GANとadversarial trainingで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
 ## 到達目標
 
-- GAN、adversarial、trainingの定義と成立条件を説明できる
-- GANとadversarial trainingを小規模に計算・実装し検算できる
+- GANとadversarial trainingの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
-## まず全体像をつかむ
+## 直感
 
-この章では「GANとadversarial training」を、定義、式の型、計算手順、成立条件、数値的な確認へ分解する。GANとadversarial trainingの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する。単に公式を再現するのではなく、入力、出力、仮定、失敗条件を説明できる状態を目標とする。
+生成modelはデータ分布そのものを近似し、新しい標本を作る。adversarial学習ではgeneratorとdiscriminatorが競う。
 
----
-
-## 主要概念
-
-- **GAN**：このTopicで定義し、例と反例を用いて境界を確認する。
-- **adversarial**：このTopicで定義し、例と反例を用いて境界を確認する。
-- **training**：このTopicで定義し、例と反例を用いて境界を確認する。
+**前提:** stat-likelihood-maximum-likelihood, opt-nonconvex-diagnostics-hyperparameters
 
 ---
 
-## 直感的な説明
+## 図解
 
-GANとadversarial trainingを理解する第一歩は、計算の見た目よりも「何を入力し、何を保存し、何を変換するか」を捉えることである。小さな例では、各項や各成分を明示して操作を追う。一般式へ進むときは、添字範囲、定義域、終域、制約条件を省略しない。
+<img src="./assets/course-09/dl-gans-adversarial-training.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 正式な定義
+## 図を見るポイント
 
-GAN、adversarial、trainingを定義する。定義は必要な条件を列挙する文であり、計算例や経験則ではない。複数の定義が同値になる場合は、どの仮定の下で同値かを示す。反例がある場合は、どの条件を外したときに結論が壊れるかを明記する。
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
 
 ---
 
@@ -59,88 +56,72 @@ $$
 \min_G\max_D\;\mathbb{E}_{x\sim p_{data}}\log D(x)+\mathbb{E}_{z}\log(1-D(G(z)))
 $$
 
-この式に現れる記号は、本文中で対象、次元、添字範囲、成立条件を定義する。式を暗記するのではなく、左辺が表す量、右辺が行う操作、出力の型を順に確認する。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+
+---
+
+## 式をどう読むか
+
+- **対象:** GAN、adversarial、training
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
 ## 小さな例
 
-最小限の次元または少数の標本を使って計算する。最初に入力を列挙し、次に定義へ代入し、最後に出力の型・符号・大きさを確認する。結果が直感と異なる場合は、定義域、正規化、基準、単位を再確認する。
+実データ分布と生成分布が反復で近づく様子を見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
 
 ---
 
-## 導出と計算手順
+## 動き／思考実験で確認
 
-1. 対象と記号を定義する。
-2. 適用する定義または目的関数を書く。
-3. 各変形の根拠を一行ずつ示す。
-4. 出力の型、次元、制約を確認する。
-5. 小さな例、極端な例、境界条件で検算する。
+<img src="./assets/course-09/dl-gans-adversarial-training.gif" style="max-height: 310px; display:block; margin:0 auto;" />
 
-この順序を守ると、記号操作が正しくても対象がずれているという種類の誤りを減らせる。
+- 各frameで、何が固定され何が更新されるかを追う。
 
 ---
 
-## 幾何・確率・計算上の解釈
+## 成立条件
 
-Courseに応じて、量を幾何的な方向・距離・部分空間、確率的な平均・ばらつき・不確実性、計算的な反復・誤差・資源として解釈する。複数の解釈がある場合は、同じ式のどの部分に対応するかを明示する。
-
----
-
-## 数値・実装上の確認
-
-小さな入力を用意し、定義から得られる結果と実装結果を照合する。必要な場合は入力shape、出力shape、dtype、許容誤差、反復回数を記録する。外部ライブラリ固有の便利関数を先に使わず、計算の意味を追跡する。
-
----
-
-## 成立条件と失敗条件
-
-公式やアルゴリズムは無条件には使えない。定義域、rank、可逆性、正定値性、独立性、滑らかさ、有限精度、標本設計など、このTopicに関係する条件を先に確認する。条件を満たさない場合は、代替手法、正則化、近似、診断を検討する。
-
----
-
-## 後続分野への接続
-
-GANとadversarial trainingは、後続の数値計算・データ解析・機械学習で前提となる。 この接続では、現在のTopicで定義した量が、後続Topicの入力、目的関数、制約、評価指標のどれとして使われるかを確認する。
+- mode collapseなど分布全体を覆えない失敗がある。
+- loss値だけで生成品質を判断しない。
+- GANとadversarial trainingの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-- GANとadversarial trainingの定義と計算手順を同一視する。
-- 成立条件を確認せず公式を適用する。
-- 数学上の次元と配列のshapeを混同する。
-- 小さな数値例で一致したことを一般的な証明とみなす。
-- 実装がエラーを出さないことを数学的妥当性の証拠とみなす。
+- GANとadversarial trainingの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## まとめ
+## 数値・実装で検算
 
-GANとadversarial trainingでは、GAN、adversarial、trainingを区別し、入力・出力・条件・検算を一組として扱う。定義を言葉で説明し、代表式を展開し、小さな例で結果を確認できれば、次のTopicへ進める。
-
----
-
-## 前提との接続
-
-このTopicは次の内容を土台にする。式や用語が曖昧なら、先に対応するTopicへ戻る。
-
-- `stat-likelihood-maximum-likelihood`
-- `opt-nonconvex-diagnostics-hyperparameters`
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 理解確認
+## 後続分野への接続
 
-1. GAN、adversarial、trainingの定義と成立条件を説明できる
-2. GANとadversarial trainingを小規模に計算・実装し検算できる
-3. 代表式・計算手順・成立条件を小さな例で検算できるか。
+GANとadversarial trainingは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
 
-## 演習へ
+## まとめと演習
+
+- GANとadversarial trainingを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
 
 [教科書](../../textbook/dl-gans-adversarial-training)
 
 [10問の演習](../../exercises/dl-gans-adversarial-training)
-

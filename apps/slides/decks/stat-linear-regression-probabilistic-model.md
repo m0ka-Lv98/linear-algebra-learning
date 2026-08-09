@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-slide-decks-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "線形回帰の確率モデル"
 ---
 
 # 線形回帰の確率モデル
 
-Course 03｜確率・統計
+Course 03｜確率統計
 
 ---
 layout: center
@@ -16,104 +16,111 @@ layout: center
 
 ## 今回の問い
 
-「線形回帰の確率モデル」は何を表し、どの条件で使え、結果をどう検算するのか？
+線形回帰の確率モデルで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
 ## 到達目標
 
-- 線形回帰の確率モデルの定義と成立条件を説明できる
-- 線形回帰の確率モデルを小規模に計算・実装し検算できる
+- 線形回帰の確率モデルの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
-## まず全体像をつかむ
+## 直感
 
-この章では線形回帰の確率モデルを、観測値 x,y と確率変数 X,Y を区別しながら学ぶ。design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続を、定義から小さな計算、統計・機械学習のモデルへ接続する。
+回帰は入力から平均的な出力を説明・予測する関係をモデル化する。
+
+**前提:** prob-covariance-correlation, prob-multivariate-normal-distribution, stat-likelihood-maximum-likelihood, la-least-squares-geometry
 
 ---
 
-## 記号・定義
+## 図解
 
-確率は P、期待値は E、分散は Var、共分散は Covで表す。design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続を次の式で要約する。
+<img src="./assets/course-03/stat-linear-regression-probabilistic-model.png" style="max-height: 330px; display:block; margin:0 auto;" />
+
+---
+
+## 図を見るポイント
+
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}
 $$
 
-PMFは確率質量関数、PDFは確率密度関数、CDFは累積分布関数である。PDFの値は確率そのものではなく、区間積分が確率になる。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 直感的な説明
+## 式をどう読むか
 
-有限個の結果を表に並べる場合と、連続量を密度曲線で表す場合を分けて考える。標本 X₁,…,Xₙ は確率変数としての標本で、観測値 x₁,…,xₙ は実現値である。条件付け、周辺化、標準化は同じモデルを別の角度から読む操作である。
-
----
-
-## 正式な定義と導出
-
-supportと正規化条件を確認し、定義を総和または積分へ展開する。独立性を使うとjointな量を積へ分解できるが、排反、無相関、独立、因果は別の概念である。尤度はデータを固定した母数の関数であり、母数の確率分布ではない。信頼区間は反復標本抽出の被覆率で解釈し、p-valueは帰無仮説が正しい確率ではない。
+- **対象:** 線形回帰の確率モデル
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 小さな手計算
+## 小さな例
 
-確率が0以上1以下、PMFの和またはPDFの積分が1であることを確認する。$2\times 2$の分割表や少数の標本で式を一行ずつ展開し、丸めは最後に行う。
+散布点、回帰線、残差を同時に描く。
 
----
-
-## 数値的な確認
-
-標準PythonとNumPyで `rng = np.random.default_rng(42)` を使った小規模実験を行える。seedは一条件を固定するが、科学的再現性を単独で保証しない。平均、分散、対数尤度、残差、entropyは手計算と np.allclose で照合する。
+最小の非自明な設定で、手計算と実装を照合する。
 
 ---
 
-## 統計・機械学習への接続
+## 動き／思考実験で確認
 
-確率モデルは推定量、MLE、MAP、信頼区間、検定、線形回帰、classification lossへつながる。線形回帰では設計行列 $X\in \mathbb{R}^{n\times d}$、応答 $y\in \mathbb{R}^{n}$、係数 β∈$\mathbb{R}^{d}$のshapeを保つ。WLS、GLS、WLSMの詳細はCourse 07へ回す。
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 予測と因果を混同しない。
+- 外挿では不確実性が増える。
+- 線形回帰の確率モデルの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-- PDFの高さを一点の確率と読む。
-- 排反を独立、無相関を独立と呼ぶ。
-- 尤度を母数の確率と読む。
-- 信頼区間を母数が95%の確率で含まれると読む。
-- p-valueを帰無仮説の確率と読む。
-- KLダイバージェンスを対称な距離と断定する。
+- 線形回帰の確率モデルの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## まとめ
+## 数値・実装で検算
 
-線形回帰の確率モデルは、定義、support、shape、前提、数値検算を順に確認すると安全に扱える。
-
----
-
-## 前提との接続
-
-このTopicは次の内容を土台にする。式や用語が曖昧なら、先に対応するTopicへ戻る。
-
-- `prob-covariance-correlation`
-- `prob-multivariate-normal-distribution`
-- `stat-likelihood-maximum-likelihood`
-- `la-least-squares-geometry`
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 理解確認
+## 後続分野への接続
 
-1. 線形回帰の確率モデルの定義と成立条件を説明できる
-2. 線形回帰の確率モデルを小規模に計算・実装し検算できる
-3. 代表式・計算手順・成立条件を小さな例で検算できるか。
+線形回帰の確率モデルは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
 
-## 演習へ
+## まとめと演習
+
+- 線形回帰の確率モデルを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
 
 [教科書](../../textbook/stat-linear-regression-probabilistic-model)
 
 [10問の演習](../../exercises/stat-linear-regression-probabilistic-model)
-
