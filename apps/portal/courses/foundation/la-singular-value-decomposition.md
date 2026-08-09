@@ -2,29 +2,27 @@
 
 ## Course・Unit内での位置付け
 
-Course 02「線形代数」第226 Topic。線形代数の定義・計算・幾何を接続する。
+Course 02「線形代数」第226 Topic。svd・low・rank。
 
 ## 今回解く問い
 
-特異値分解を、ベクトル・行列のshape、定義、幾何的意味、数値計算からどう理解するか。
-
-## 概要
-
-式の各記号を定義し、小さな例とアルゴリズムで構造を確認する。
+SVDは任意の行列を「入力側の直交回転 → 軸ごとの伸縮 → 出力側の直交回転」に分ける。固有分解より適用範囲が広く、長方形・rank不足でも使える。
 
 ## 学習目標
 
-- 定義、前提、shape、結論を説明できる。
-- 小さな手計算と数値検算ができる。
-- データ解析・最小二乗法・固有構造・SVDへの接続を説明できる。
+- 定義と代表式を、未定義の記号なしで説明できる。
+- 2〜5次元の例を手計算し、図と対応づけられる。
+- 成立条件・反例・数値的不安定性を区別できる。
+- 後続の最小二乗・固有構造・SVD・WLSMへの接続を説明できる。
 
 ## 前提Topic
 
-[la-rank-rank-nullity](/courses/foundation/la-rank-rank-nullity)
+- [la-symmetric-matrices-spectral-theorem](/courses/foundation/la-symmetric-matrices-spectral-theorem)
+- [la-rank-rank-nullity](/courses/foundation/la-rank-rank-nullity)
 
 ## 想定学習時間
 
-スライド20分 / 教科書65分 / 演習55分
+スライド25分 / 教科書75分 / 演習60分
 
 ## 学習順序
 
@@ -38,6 +36,5 @@ Course 02の29 Topic中、26/29。
 
 ## 前後Topic
 
-- [前のTopic](/courses/foundation/la-rank-rank-nullity)
-- 次のTopic：Course 02の次項目
-
+- [前のTopic](/courses/foundation/la-cholesky-factorization)
+- [次のTopic](/courses/foundation/la-pseudoinverse-rank-deficient-systems)

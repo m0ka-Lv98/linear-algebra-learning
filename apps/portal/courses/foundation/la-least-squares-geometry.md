@@ -2,29 +2,27 @@
 
 ## Course・Unit内での位置付け
 
-Course 02「線形代数」第217 Topic。線形代数の定義・計算・幾何を接続する。
+Course 02「線形代数」第217 Topic。orthogonality・least・squares。
 
 ## 今回解く問い
 
-最小二乗法の幾何学を、ベクトル・行列のshape、定義、幾何的意味、数値計算からどう理解するか。
-
-## 概要
-
-式の各記号を定義し、小さな例とアルゴリズムで構造を確認する。
+方程式 $Ax=b$ が解けないとき、最小二乗法は「bに最も近い列空間上の点」を選ぶ。解そのものより、$A\hat x$ がbの直交射影になることが本質。
 
 ## 学習目標
 
-- 定義、前提、shape、結論を説明できる。
-- 小さな手計算と数値検算ができる。
-- データ解析・最小二乗法・固有構造・SVDへの接続を説明できる。
+- 定義と代表式を、未定義の記号なしで説明できる。
+- 2〜5次元の例を手計算し、図と対応づけられる。
+- 成立条件・反例・数値的不安定性を区別できる。
+- 後続の最小二乗・固有構造・SVD・WLSMへの接続を説明できる。
 
 ## 前提Topic
 
-[直交射影](/courses/foundation/orthogonal-projection)
+- [orthogonal-projection](/courses/foundation/orthogonal-projection)
+- [la-column-space-null-space](/courses/foundation/la-column-space-null-space)
 
 ## 想定学習時間
 
-スライド20分 / 教科書65分 / 演習55分
+スライド25分 / 教科書75分 / 演習60分
 
 ## 学習順序
 
@@ -38,5 +36,5 @@ Course 02の29 Topic中、17/29。
 
 ## 前後Topic
 
-- [前のTopic](/courses/foundation/orthogonal-projection)
-- 次のTopic：Course 02の次項目
+- [前のTopic](/courses/foundation/la-gram-schmidt-qr)
+- [次のTopic](/courses/foundation/la-least-squares-computation-pseudoinverse)

@@ -2,29 +2,27 @@
 
 ## Course・Unit内での位置付け
 
-Course 02「線形代数」第229 Topic。線形代数の定義・計算・幾何を接続する。
+Course 02「線形代数」第229 Topic。svd・low・rank。
 
 ## 今回解く問い
 
-行列ノルムと条件数を、ベクトル・行列のshape、定義、幾何的意味、数値計算からどう理解するか。
-
-## 概要
-
-式の各記号を定義し、小さな例とアルゴリズムで構造を確認する。
+行列ノルムは「行列がベクトルをどれだけ大きくできるか」を測り、条件数は「逆問題で入力誤差がどれだけ解へ増幅されうるか」を測る。
 
 ## 学習目標
 
-- 定義、前提、shape、結論を説明できる。
-- 小さな手計算と数値検算ができる。
-- データ解析・最小二乗法・固有構造・SVDへの接続を説明できる。
+- 定義と代表式を、未定義の記号なしで説明できる。
+- 2〜5次元の例を手計算し、図と対応づけられる。
+- 成立条件・反例・数値的不安定性を区別できる。
+- 後続の最小二乗・固有構造・SVD・WLSMへの接続を説明できる。
 
 ## 前提Topic
 
-[la-singular-value-decomposition](/courses/foundation/la-singular-value-decomposition)
+- [la-singular-value-decomposition](/courses/foundation/la-singular-value-decomposition)
+- [la-inner-products-norms-angles](/courses/foundation/la-inner-products-norms-angles)
 
 ## 想定学習時間
 
-スライド20分 / 教科書65分 / 演習55分
+スライド25分 / 教科書75分 / 演習60分
 
 ## 学習順序
 
@@ -38,7 +36,5 @@ Course 02の29 Topic中、29/29。
 
 ## 前後Topic
 
-- [前のTopic](/courses/foundation/la-singular-value-decomposition)
-- [次のTopic：数え上げ・標本空間・事象](/courses/foundation/prob-counting-sample-spaces)
-- 次の学習先：Course 05：数値計算（未詳細化）
-- 次の学習先：Course 07：データ解析の行列手法（未詳細化）
+- [前のTopic](/courses/foundation/la-low-rank-approximation)
+- [次のTopic](/courses/foundation/prob-axioms-event-operations)

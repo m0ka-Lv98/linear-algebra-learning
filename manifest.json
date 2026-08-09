@@ -1,416 +1,930 @@
 {
-  "course": "Course 01 Calculus",
-  "revision": "fullmarks-detailed-2026-08-09",
-  "topics": 13,
-  "markdown_topic_files": 52,
-  "exercise_count": 130,
-  "visual_assets_portal": 14,
-  "visual_assets_slidev": 14,
+  "package": "course-02-linear-algebra-fullmarks-2026-08-10",
+  "topics": 29,
+  "markdown_topic_files": 116,
+  "exercises": 290,
+  "portal_png": 29,
+  "portal_gif": 3,
   "files": [
     {
+      "path": "AGENTS.md",
+      "size": 2117,
+      "sha256": "508b62d531c414e18b05003ec258e19244c26f03abac51218dcbc89057914fde"
+    },
+    {
+      "path": "APPLY.sh",
+      "size": 670,
+      "sha256": "47c87f4e4498f12af724968e1eaf7515bb03e4c40c0eb276bf78dae1d914ff15"
+    },
+    {
       "path": "README.md",
-      "bytes": 1940,
-      "sha256": "d0eaa6c119dcd0a196418cca3a575014d267eea14ec041fcfe82d4dd6fd13892"
+      "size": 1002,
+      "sha256": "feb606af7279190f7de02c165d2e488cdf74aeb2b4277bc64ebb779ad68e213b"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-derivatives-rates.md",
-      "bytes": 1242,
-      "sha256": "611e9c5110cafa65c36f63df1bdff2a38e2402875ba46aefa3aeb1a24fd0118f"
+      "path": "apps/portal/courses/foundation/la-basis-coordinates-dimension.md",
+      "size": 1225,
+      "sha256": "109fb931607b85f525e91ed5dc8c43447791ba8d25d979e8e0e659e32ab0e807"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-differentiation-rules-chain-rule.md",
-      "bytes": 1323,
-      "sha256": "c55e9352ed0d80efb5d6befece280bc0064b558a399abdd14ba44c01ca55ac58"
+      "path": "apps/portal/courses/foundation/la-cholesky-factorization.md",
+      "size": 1289,
+      "sha256": "775d430cef3054d0154d1e01862f0fd2fae7e6ecea3512aa77dfdf840492327d"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-functions-limits-continuity.md",
-      "bytes": 1321,
-      "sha256": "ffc1e0b50b31096026dbc5dd781042fa90e561e6f1701838fd80d516f64bba23"
+      "path": "apps/portal/courses/foundation/la-column-space-null-space.md",
+      "size": 1243,
+      "sha256": "dd1d63120a7b598beda8118f4554c0278155511b838371e14c741fb8c42bcf8b"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-gradient-directional-derivative.md",
-      "bytes": 1327,
-      "sha256": "72c3149a6ac251f9ca8f1e0d209ded2bc369fabff3a4bfe1179be53b4d66a230"
+      "path": "apps/portal/courses/foundation/la-determinants-volume-invertibility.md",
+      "size": 1264,
+      "sha256": "825399793418aa34f7ce7ef5a43c0d6c174c0fae974b18d72b0331cd8d657eb3"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-hessian-second-order.md",
-      "bytes": 1267,
-      "sha256": "c68ed6378832b4650a4c6aef16cec6546398da0d802176de99639b6747910854"
+      "path": "apps/portal/courses/foundation/la-diagonalization-matrix-powers.md",
+      "size": 1333,
+      "sha256": "aa3f8f71a79c22339914ed1cb49ad844c09b945dcfaf4d3b47f62c9554021e68"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-integrals-fundamental-theorem.md",
-      "bytes": 1291,
-      "sha256": "655ad503f11647ea517ee833407b487eb338f9b6f363ea111213d54a7384c591"
+      "path": "apps/portal/courses/foundation/la-eigenvalues-eigenvectors.md",
+      "size": 1315,
+      "sha256": "f80753b97001a23675178372e2dfc384c4e9cc04c985893a2cc762b869db6601"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-lagrange-multipliers.md",
-      "bytes": 1244,
-      "sha256": "c2db34200c5cce92590348e02e078b335f7b8ec0a179fdc253ba02d21931c7aa"
+      "path": "apps/portal/courses/foundation/la-gram-schmidt-qr.md",
+      "size": 1263,
+      "sha256": "2d3dd06233f389e326db9d170543aa0cf4296a365d79bf0dc22347c34ddfda23"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-multivariable-chain-rule.md",
-      "bytes": 1318,
-      "sha256": "5fe656cd908d336eb3bd24d366d7b1a41d94bb2de88539ece8dfd1a4594f197d"
+      "path": "apps/portal/courses/foundation/la-inner-products-norms-angles.md",
+      "size": 1222,
+      "sha256": "d2dee5f88d91a6e895fab4864cd4f9f7fea756959a9b1fb80910ef034b74c6a9"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-multivariable-functions-partial-derivatives.md",
-      "bytes": 1396,
-      "sha256": "bf7662257b48490f1909dcac6eb31e4af4ec56de399171bf753f1fc505676171"
+      "path": "apps/portal/courses/foundation/la-invertibility-inverse-matrices.md",
+      "size": 1219,
+      "sha256": "916d819e3560d70d44ab6dd655bd038389942fe631579af1613d00d637315aee"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-one-variable-optimization.md",
-      "bytes": 1268,
-      "sha256": "bee7930607bf4fb3c2a9725efed5cbc3dd61b47ead5937737b9713338a04653e"
+      "path": "apps/portal/courses/foundation/la-least-squares-computation-pseudoinverse.md",
+      "size": 1343,
+      "sha256": "fa0588b6ffbb0d8d49c40e5142e2d12acdedeedaaa23a298ea575588b2dd07f0"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-taylor-approximation.md",
-      "bytes": 1275,
-      "sha256": "87fc2e561e5885b98140ccf0922c888c467c69ff4d0f5e3069b7653fe5656fed"
+      "path": "apps/portal/courses/foundation/la-least-squares-geometry.md",
+      "size": 1284,
+      "sha256": "05fe1d2733bfb8473a1b9ca73635258370b7e6025e88ba2eb74b0c029247ae9b"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-total-derivative-jacobian.md",
-      "bytes": 1365,
-      "sha256": "bb8b6ead5c3e016df8fb2eeff2d2fd3193bcc75bd60505dc2b4ef4248b82d73d"
+      "path": "apps/portal/courses/foundation/la-linear-independence.md",
+      "size": 1126,
+      "sha256": "dba76481538c82f9e6fed395bee116623cd51a4b7c2cb0e75d225a313d8dcff4"
     },
     {
-      "path": "apps/portal/courses/foundation/calc-unconstrained-optimization.md",
-      "bytes": 1294,
-      "sha256": "f8b8161886409756f9b2e6fd01c53e5ad56b96afc6e4df786decd081d2fd6555"
+      "path": "apps/portal/courses/foundation/la-linear-maps-change-of-basis.md",
+      "size": 1299,
+      "sha256": "9074c8d16a33cff427860b063d99da7c0a0df58856384cc694c66e8b49cf04f6"
     },
     {
-      "path": "apps/portal/exercises/calc-derivatives-rates.md",
-      "bytes": 5421,
-      "sha256": "04a929f134347cd893ab7d2dfcbbdb10b44aabe1790192489fe84c47a5974141"
+      "path": "apps/portal/courses/foundation/la-linear-systems-elimination.md",
+      "size": 1256,
+      "sha256": "3c28f3339d8cbfb347fae199e2b5c79bae7ed0a06ad9b2846a4252441642726a"
     },
     {
-      "path": "apps/portal/exercises/calc-differentiation-rules-chain-rule.md",
-      "bytes": 4626,
-      "sha256": "867f92e4108805ccf7af9a7314b44f314b6ae45b909af9bad96337f91a3ff4ba"
+      "path": "apps/portal/courses/foundation/la-low-rank-approximation.md",
+      "size": 1193,
+      "sha256": "17e87d73035fb89bda8e5b647f26b2dac32fb1455707cb14c2883ec3df87fb12"
     },
     {
-      "path": "apps/portal/exercises/calc-functions-limits-continuity.md",
-      "bytes": 5847,
-      "sha256": "133bb9b1d3ddef38cf46795534aa9b5e22d58e8bbc8dabb2386b92e868ebb961"
+      "path": "apps/portal/courses/foundation/la-lu-factorization.md",
+      "size": 1139,
+      "sha256": "3be4fc73d6963672c4827876d03b413c32d959b08633c98c0f40086e3ee269e3"
     },
     {
-      "path": "apps/portal/exercises/calc-gradient-directional-derivative.md",
-      "bytes": 4964,
-      "sha256": "5f668d27c0dd4a8f42fe01e6327dd877a71af6be2e3059b26901123da67cdbbb"
+      "path": "apps/portal/courses/foundation/la-matrices-data-linear-maps.md",
+      "size": 1322,
+      "sha256": "00f78865989748b1d11261ee13551c62a3fc635c9e9faddaa6b7feb7928ddd0f"
     },
     {
-      "path": "apps/portal/exercises/calc-hessian-second-order.md",
-      "bytes": 5144,
-      "sha256": "7dce8a5e284b5ea9a959668ed8ae304f41979984f0cec31b1f835711f22069fa"
+      "path": "apps/portal/courses/foundation/la-matrix-multiplication.md",
+      "size": 1286,
+      "sha256": "494b35d62f9e4928d457bcd3c955f69c035ffa6cef5c887f31f998f431651d86"
     },
     {
-      "path": "apps/portal/exercises/calc-integrals-fundamental-theorem.md",
-      "bytes": 5100,
-      "sha256": "4f3d5705f21b3d29f990a68c53c4638b0adc7a4aec3b066740dd7b3ffe391a23"
+      "path": "apps/portal/courses/foundation/la-matrix-norms-condition-number.md",
+      "size": 1309,
+      "sha256": "657357f2180f7c800aedf47656f57a90903dddd221de258d21ded0c6eb60ad73"
     },
     {
-      "path": "apps/portal/exercises/calc-lagrange-multipliers.md",
-      "bytes": 5693,
-      "sha256": "b87fd51925004cb1a44ac0412effb4b008a22b6a32f1cae82fad17ab25c14d9e"
+      "path": "apps/portal/courses/foundation/la-orthogonal-orthonormal-bases.md",
+      "size": 1294,
+      "sha256": "9c260f567f8ba62506dc11fa48e065b702d72b1a441b904aaeeec2c88d2ec5c1"
     },
     {
-      "path": "apps/portal/exercises/calc-multivariable-chain-rule.md",
-      "bytes": 5285,
-      "sha256": "e31689e37236a8d4405cf9a619f70ae2bb32485695442d88134dfceb69529c37"
+      "path": "apps/portal/courses/foundation/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 1353,
+      "sha256": "d702bb4452c6b6042ae6770b09455da5bfef7a340f83b149edbd77ea6652eaa8"
     },
     {
-      "path": "apps/portal/exercises/calc-multivariable-functions-partial-derivatives.md",
-      "bytes": 4899,
-      "sha256": "0c9dd4229e561d91837d7ba4d4b4d3242561f36b9576b96509cd7d81549b0055"
+      "path": "apps/portal/courses/foundation/la-quadratic-forms-positive-definite.md",
+      "size": 1348,
+      "sha256": "0bb985046a949b09d3c7343226134ddc67b952a56a145903a03a13b5c3865dad"
     },
     {
-      "path": "apps/portal/exercises/calc-one-variable-optimization.md",
-      "bytes": 5429,
-      "sha256": "bdf0c9e4fda2e73f2d2773c88f57279e74f994d64d544afef500ac516ea166d3"
+      "path": "apps/portal/courses/foundation/la-rank-rank-nullity.md",
+      "size": 1232,
+      "sha256": "5fa469b427e0646be263c86208a2d293ed48cb0b0fba3365f63e04aff718154f"
     },
     {
-      "path": "apps/portal/exercises/calc-taylor-approximation.md",
-      "bytes": 5229,
-      "sha256": "00681a7b296ce89ed0f4b6425ade33ae5ae612a5bc1eb943e5d12966c583fda3"
+      "path": "apps/portal/courses/foundation/la-singular-value-decomposition.md",
+      "size": 1313,
+      "sha256": "5b664aa1f5e81a1b4bc58ae20437bd0b5d4f4826b5436a15a88c410785053af4"
     },
     {
-      "path": "apps/portal/exercises/calc-total-derivative-jacobian.md",
-      "bytes": 5034,
-      "sha256": "3f25d5c95b1d163fefbe21abba3567662e7e12eca6dff365404f2a19f2d66f34"
+      "path": "apps/portal/courses/foundation/la-span-subspaces.md",
+      "size": 1161,
+      "sha256": "025ae876f7c1af7cbfcb73d633d78d7562c71e0dda2831d9fe6e996f47add3f6"
     },
     {
-      "path": "apps/portal/exercises/calc-unconstrained-optimization.md",
-      "bytes": 5214,
-      "sha256": "e7be7c8aa2c769e95283f2c044a49d74235c61817bf00e103a11f5021dfa1986"
+      "path": "apps/portal/courses/foundation/la-symmetric-matrices-spectral-theorem.md",
+      "size": 1329,
+      "sha256": "d72ba01ebc1fc3ea08aafbe35438f901aa028151b49f193a3fd6b7ceb84b0b58"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/chain_rule_flow.png",
-      "bytes": 18632,
-      "sha256": "6872242757e50094b9e4c89fc9eb60ed591eaec905ca79b927178e7293367735"
+      "path": "apps/portal/courses/foundation/la-vectors-linear-combinations.md",
+      "size": 1375,
+      "sha256": "8852d333aeddec8e0021c298cad9842d6cdc16c89906a43f9c7ccc6eeee32d10"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/derivative_secant_tangent.png",
-      "bytes": 50749,
-      "sha256": "38f180b5ac0e44d747520dadb502d0443c50e6e70424479b83a7e919456f5c18"
+      "path": "apps/portal/courses/foundation/la-weighted-least-squares-introduction.md",
+      "size": 1265,
+      "sha256": "e6d4b2194d8714e4a73a62920b69a167af59fbec9769f981f2cc29f98f560361"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/directional_derivative.gif",
-      "bytes": 74738,
-      "sha256": "adc0fea922c0362ef684d42edda7b21f79b8f3309d2c04dd07dcb0670410858e"
+      "path": "apps/portal/courses/foundation/orthogonal-projection.md",
+      "size": 1288,
+      "sha256": "2fa239ff317a4094e1ce17c0a59da8e8075e5e87da72259f1f09658257063270"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/gradient_direction.png",
-      "bytes": 104017,
-      "sha256": "68f051659c16672acb2b4f97f504394eac7f522d60539e68fc1a4025913e6fa2"
+      "path": "apps/portal/exercises/la-basis-coordinates-dimension.md",
+      "size": 9318,
+      "sha256": "40a8572875264a894afd22beb0f83395d846873e3a8a03d6ed432017b12a9faf"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/hessian_contours.png",
-      "bytes": 106534,
-      "sha256": "39765674db5d3ab381cd51e90f276fa078605e98a3e762097890002f8dcb5ed2"
+      "path": "apps/portal/exercises/la-cholesky-factorization.md",
+      "size": 8681,
+      "sha256": "48b5eeeefcd6f82a0bb912b309212e58a7691d332b540daec929da7b67983857"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/hessian_heatmap.png",
-      "bytes": 12509,
-      "sha256": "cb88cad04bf72c346ed93842c3cfc26f8972c5797d2aa8c7fa80fe2f85955611"
+      "path": "apps/portal/exercises/la-column-space-null-space.md",
+      "size": 9621,
+      "sha256": "d09c024bcf71059d10ea83c402f08840287efbc6cdbff15d7a97851c63dad8d2"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/integral_accumulation.gif",
-      "bytes": 44465,
-      "sha256": "8013e4963352f76dc1252c1827bd91a17fcbc02109445263638092d49760b32d"
+      "path": "apps/portal/exercises/la-determinants-volume-invertibility.md",
+      "size": 9331,
+      "sha256": "cb52f66b21a6046de4a9251b156f4be631a23d747a77243ac9b6950520e370fb"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/integral_riemann.png",
-      "bytes": 34233,
-      "sha256": "5c420d872aeb81b5db514a00f30a97033d084df198c6e0f6f9da01d2cf847fd3"
+      "path": "apps/portal/exercises/la-diagonalization-matrix-powers.md",
+      "size": 9188,
+      "sha256": "cf4903cc067f136cb097b5c171de7d452fea3d6dff752159be1ccb79da041323"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/jacobian_grid.png",
-      "bytes": 62621,
-      "sha256": "7c000f463ae21f8925e6dc367b7c0f21787885bc7829b3ee216ea6fb6eb710da"
+      "path": "apps/portal/exercises/la-eigenvalues-eigenvectors.md",
+      "size": 9145,
+      "sha256": "1a1b24e5a3030c10bd30421f3a374d7bac6a948eaa7eee8e1e530c0272cbde67"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/jacobian_grid_deform.gif",
-      "bytes": 158375,
-      "sha256": "3eda2bb022e4c872949b9f8e656d7329b97d8eb7ab2ecdb6bf139efc024029c6"
+      "path": "apps/portal/exercises/la-gram-schmidt-qr.md",
+      "size": 9220,
+      "sha256": "9552d8347f8ea517460a186021acf8374fd759b1eb4c2ad0e3b597b0e5a026d0"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/lagrange_levels.gif",
-      "bytes": 39877,
-      "sha256": "90cd174dc020dde6a82e8697407a844328006f8427755def4889ceed1187ef7e"
+      "path": "apps/portal/exercises/la-inner-products-norms-angles.md",
+      "size": 9173,
+      "sha256": "dd699f140cb5f2098090b373007d4d4924f956287a77be6232dd93bb7b912104"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/lagrange_touch.png",
-      "bytes": 56754,
-      "sha256": "8faa81c7ab0df19c3784c3a1d5333ac66d9718347492e8802882fe8e5f744e8c"
+      "path": "apps/portal/exercises/la-invertibility-inverse-matrices.md",
+      "size": 9470,
+      "sha256": "68b099c380a81c1dd5b6aeb79efdd8e53a680f73d85b1fa72d3774734944669f"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/limits_approach.gif",
-      "bytes": 22072,
-      "sha256": "da76cc37a60b815439159b8c5c5db6cc6cb35421b87525a77429ca8d88fb99f1"
+      "path": "apps/portal/exercises/la-least-squares-computation-pseudoinverse.md",
+      "size": 9506,
+      "sha256": "39186af681128c66a2e79d3029f529aca84f63d9bccce395447a8a38c8dd2863"
     },
     {
-      "path": "apps/portal/public/visuals/course-01/limits_continuity.png",
-      "bytes": 33454,
-      "sha256": "7f44449b3e8c56304909eb456291d1d85df14f4df80737a2baa78691de1b3b2d"
+      "path": "apps/portal/exercises/la-least-squares-geometry.md",
+      "size": 9132,
+      "sha256": "7e6d7d08d48da7dadcbcc097df334ef4792a54d297e5ef381afba8b6ce19269b"
     },
     {
-      "path": "apps/portal/textbook/calc-derivatives-rates.md",
-      "bytes": 6375,
-      "sha256": "c4934a5ddc9d3ecce234449bf857c5d483694a0f3313f97f5117eda9dcad443b"
+      "path": "apps/portal/exercises/la-linear-independence.md",
+      "size": 9131,
+      "sha256": "4ba07607d0c6d9f19281829e3101658ff2201ea37ca9398a4b7027dafe1139fc"
     },
     {
-      "path": "apps/portal/textbook/calc-differentiation-rules-chain-rule.md",
-      "bytes": 6014,
-      "sha256": "8e0ec674da85b7c12a86d36b84f71b518fab5a495fd637b70706f394657503ee"
+      "path": "apps/portal/exercises/la-linear-maps-change-of-basis.md",
+      "size": 9539,
+      "sha256": "03776a9345d4909a07347ef8d4816d570b7c2e9a38f87c151dd1e2b149b96230"
     },
     {
-      "path": "apps/portal/textbook/calc-functions-limits-continuity.md",
-      "bytes": 8128,
-      "sha256": "47fd5480f7f83e97e189af46405537637a1c137e1c126ee0ffe6686d529f2c6c"
+      "path": "apps/portal/exercises/la-linear-systems-elimination.md",
+      "size": 9616,
+      "sha256": "69e1c557798043652c2653309bfca5871f64052cc2b89fa1af06dc4c8d116305"
     },
     {
-      "path": "apps/portal/textbook/calc-gradient-directional-derivative.md",
-      "bytes": 6089,
-      "sha256": "767eb94ca2f48ff43c64e83052136b2be5a4b52910be4d279d213baeb824dba2"
+      "path": "apps/portal/exercises/la-low-rank-approximation.md",
+      "size": 9173,
+      "sha256": "9271c48ea9617751d2b411d9d3c32aa8b5f818e810105ea56fad3add1a272079"
     },
     {
-      "path": "apps/portal/textbook/calc-hessian-second-order.md",
-      "bytes": 6263,
-      "sha256": "2d2013869dcfacfe5ea9c53b64596ac469b29c4b8aaacf3cb444a5e172219cac"
+      "path": "apps/portal/exercises/la-lu-factorization.md",
+      "size": 9149,
+      "sha256": "0302fcd6cd87d953d330344dfe158dd9b3eb9e31d70af6b957d27014decf100f"
     },
     {
-      "path": "apps/portal/textbook/calc-integrals-fundamental-theorem.md",
-      "bytes": 6303,
-      "sha256": "1c734c4f86ad541ec0bc730f297dc435213adc276b12a36a28c83e2aec3853f4"
+      "path": "apps/portal/exercises/la-matrices-data-linear-maps.md",
+      "size": 10130,
+      "sha256": "68e2e06d66c78649d39ec84ea6d3d84c7de22fa40744351400f8f3248009d843"
     },
     {
-      "path": "apps/portal/textbook/calc-lagrange-multipliers.md",
-      "bytes": 6595,
-      "sha256": "eb40821f10fd885ad2bb82d77dd5b6fdf020a924a8b512ff73cabed085d03d78"
+      "path": "apps/portal/exercises/la-matrix-multiplication.md",
+      "size": 9546,
+      "sha256": "0e66c7e245b4df9abb212725d5c9564e2239f78f1050f29cdbf7f9a3bc56307d"
     },
     {
-      "path": "apps/portal/textbook/calc-multivariable-chain-rule.md",
-      "bytes": 6023,
-      "sha256": "073368ff4ffd3b6a76a4c20073e08d1c6dd48a3c536015f7514146f5d0d555b3"
+      "path": "apps/portal/exercises/la-matrix-norms-condition-number.md",
+      "size": 9443,
+      "sha256": "39cbecdbe4df93fa50444ea753e600706c9ce9627fe7eb361ebafba1bb6adb53"
     },
     {
-      "path": "apps/portal/textbook/calc-multivariable-functions-partial-derivatives.md",
-      "bytes": 5835,
-      "sha256": "24132d7790dfcab0337e0f4d05de0e91fcb0f74c749d29682297dc8f024233ca"
+      "path": "apps/portal/exercises/la-orthogonal-orthonormal-bases.md",
+      "size": 8940,
+      "sha256": "61bc792a21124f514a93a26be6fcef0fa18494cc111ce0a6c1105c0d5f660a39"
     },
     {
-      "path": "apps/portal/textbook/calc-one-variable-optimization.md",
-      "bytes": 6361,
-      "sha256": "674e5738716976c50d122283789c08a57c5545380243d3acc966ff09d0ba158f"
+      "path": "apps/portal/exercises/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 9392,
+      "sha256": "cabe9e68dbb88628f4f03f59487de2fbc199b68538e6ef138a575f9492686906"
     },
     {
-      "path": "apps/portal/textbook/calc-taylor-approximation.md",
-      "bytes": 6006,
-      "sha256": "76de5db53b09b345083ae689b741176ceee89a84bad12081cf034cf5226ee953"
+      "path": "apps/portal/exercises/la-quadratic-forms-positive-definite.md",
+      "size": 9198,
+      "sha256": "52220dc4345a5f78d507da3edbb8f6c6a8c9460fc15bf7daeabe2c4eba05eebc"
     },
     {
-      "path": "apps/portal/textbook/calc-total-derivative-jacobian.md",
-      "bytes": 6346,
-      "sha256": "25bc86c70db43540ced0b3243ed8804a9c446700af16ffc6a4991597580bc26d"
+      "path": "apps/portal/exercises/la-rank-rank-nullity.md",
+      "size": 9249,
+      "sha256": "37ec223b08d6eef0a911ce82009fb8913ec35f018e2b62b0bbfc06138d35a18f"
     },
     {
-      "path": "apps/portal/textbook/calc-unconstrained-optimization.md",
-      "bytes": 6092,
-      "sha256": "81e03a2ebad65aa597bd920fe80873b366b5f119d64015df8a6cc1461a44a78d"
+      "path": "apps/portal/exercises/la-singular-value-decomposition.md",
+      "size": 8955,
+      "sha256": "20e24038f74c7a549a2e3d0252fc6d702a5f8a25594fa2fab7e6449dcb945cc3"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/chain_rule_flow.png",
-      "bytes": 18632,
-      "sha256": "6872242757e50094b9e4c89fc9eb60ed591eaec905ca79b927178e7293367735"
+      "path": "apps/portal/exercises/la-span-subspaces.md",
+      "size": 9274,
+      "sha256": "7b915c1c264a2df07fa81a1dce1596991faea88b4c9662efc9eb1bc71498719d"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/derivative_secant_tangent.png",
-      "bytes": 50749,
-      "sha256": "38f180b5ac0e44d747520dadb502d0443c50e6e70424479b83a7e919456f5c18"
+      "path": "apps/portal/exercises/la-symmetric-matrices-spectral-theorem.md",
+      "size": 9138,
+      "sha256": "9dcb271e6bb08f0a8dd3ec041b61ed0072fe981ec943cc4b987fab41819644eb"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/directional_derivative.gif",
-      "bytes": 74738,
-      "sha256": "adc0fea922c0362ef684d42edda7b21f79b8f3309d2c04dd07dcb0670410858e"
+      "path": "apps/portal/exercises/la-vectors-linear-combinations.md",
+      "size": 10280,
+      "sha256": "25b5c70e72d495fa74273280b91c0a0c6e5af130359c8779b210c349c91bfd52"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/gradient_direction.png",
-      "bytes": 104017,
-      "sha256": "68f051659c16672acb2b4f97f504394eac7f522d60539e68fc1a4025913e6fa2"
+      "path": "apps/portal/exercises/la-weighted-least-squares-introduction.md",
+      "size": 9600,
+      "sha256": "56049a895dea8aaf4e07f66df8c0f980d8ebb23cb3872651d7139c7c2c22898c"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/hessian_contours.png",
-      "bytes": 106534,
-      "sha256": "39765674db5d3ab381cd51e90f276fa078605e98a3e762097890002f8dcb5ed2"
+      "path": "apps/portal/exercises/orthogonal-projection.md",
+      "size": 8980,
+      "sha256": "cfcdf67ae20c2f6e412e28dbc1d1f3b44a735ec2e127fbd379bb85aeebc32065"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/hessian_heatmap.png",
-      "bytes": 12509,
-      "sha256": "cb88cad04bf72c346ed93842c3cfc26f8972c5797d2aa8c7fa80fe2f85955611"
+      "path": "apps/portal/public/visuals/course-02/la-basis-coordinates-dimension.png",
+      "size": 15037,
+      "sha256": "6bdbee703fb1068647ee2c9565dffb70254ac6e01738b70af8c043febab66f98"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/integral_accumulation.gif",
-      "bytes": 44465,
-      "sha256": "8013e4963352f76dc1252c1827bd91a17fcbc02109445263638092d49760b32d"
+      "path": "apps/portal/public/visuals/course-02/la-cholesky-factorization.png",
+      "size": 17022,
+      "sha256": "9d7510a5d771b50defa1883a9124cae6a45a0611ab23e9ffb2cb120248953e50"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/integral_riemann.png",
-      "bytes": 34233,
-      "sha256": "5c420d872aeb81b5db514a00f30a97033d084df198c6e0f6f9da01d2cf847fd3"
+      "path": "apps/portal/public/visuals/course-02/la-column-space-null-space.png",
+      "size": 17442,
+      "sha256": "6d8a109a1d64923e8fb35e2b0dab5b5277ac18b01952e4cc3e66b2bf5a578a9e"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/jacobian_grid.png",
-      "bytes": 62621,
-      "sha256": "7c000f463ae21f8925e6dc367b7c0f21787885bc7829b3ee216ea6fb6eb710da"
+      "path": "apps/portal/public/visuals/course-02/la-determinants-volume-invertibility.png",
+      "size": 11941,
+      "sha256": "e0cb16e9ab33958fc4bd4835b55fd3cab1f10e96ef84ed60d025310cbdaa4ffd"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/jacobian_grid_deform.gif",
-      "bytes": 158375,
-      "sha256": "3eda2bb022e4c872949b9f8e656d7329b97d8eb7ab2ecdb6bf139efc024029c6"
+      "path": "apps/portal/public/visuals/course-02/la-diagonalization-matrix-powers.png",
+      "size": 42033,
+      "sha256": "2bb65adfa64194650ccde915817ce5103d7b0231289e37bc4d8abd86aaa4d34a"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/lagrange_levels.gif",
-      "bytes": 39877,
-      "sha256": "90cd174dc020dde6a82e8697407a844328006f8427755def4889ceed1187ef7e"
+      "path": "apps/portal/public/visuals/course-02/la-eigenvalues-eigenvectors.png",
+      "size": 40229,
+      "sha256": "74f22d031fc774f12fcd504f19ee8c2ea3c252ae1a91535a971532e99cfb6290"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/lagrange_touch.png",
-      "bytes": 56754,
-      "sha256": "8faa81c7ab0df19c3784c3a1d5333ac66d9718347492e8802882fe8e5f744e8c"
+      "path": "apps/portal/public/visuals/course-02/la-gram-schmidt-qr.png",
+      "size": 13474,
+      "sha256": "44df3d9b6de5f1bcd26b86fbbf3d09237eda6d1fa1913036c09351dc08efd6d4"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/limits_approach.gif",
-      "bytes": 22072,
-      "sha256": "da76cc37a60b815439159b8c5c5db6cc6cb35421b87525a77429ca8d88fb99f1"
+      "path": "apps/portal/public/visuals/course-02/la-inner-products-norms-angles.png",
+      "size": 14823,
+      "sha256": "5e3d45d4dc6ae940ff412a8dffc3e305e5d860f61e34ea5509fae9cee7f70aa8"
     },
     {
-      "path": "apps/slides/decks/assets/course-01/limits_continuity.png",
-      "bytes": 33454,
-      "sha256": "7f44449b3e8c56304909eb456291d1d85df14f4df80737a2baa78691de1b3b2d"
+      "path": "apps/portal/public/visuals/course-02/la-invertibility-inverse-matrices.png",
+      "size": 10385,
+      "sha256": "7b4e44de6b7ebc5ca5d0b0810c11e218c3ed6b53981b03667e74b34849fa1cff"
     },
     {
-      "path": "apps/slides/decks/calc-derivatives-rates.md",
-      "bytes": 3258,
-      "sha256": "a71d5fd7bf34c4df2bee72767c83604e2c958d0ffab8227e1b1c93df1a5e06c7"
+      "path": "apps/portal/public/visuals/course-02/la-least-squares-computation-pseudoinverse.png",
+      "size": 27371,
+      "sha256": "335863270b8082f2cfa8a5edbff135cb905fe805de3ca35bf44d5db757bc3fcf"
     },
     {
-      "path": "apps/slides/decks/calc-differentiation-rules-chain-rule.md",
-      "bytes": 2949,
-      "sha256": "25d97e5b9fcfa2a412de9dc094baa205d0ed2be449919587c10afcc628a3ba67"
+      "path": "apps/portal/public/visuals/course-02/la-least-squares-geometry.png",
+      "size": 24689,
+      "sha256": "f15218802948cc73e4fcbae512cfd54fe236fd66c11b77809f02214f69f81495"
     },
     {
-      "path": "apps/slides/decks/calc-functions-limits-continuity.md",
-      "bytes": 4297,
-      "sha256": "ae7ec140a561b4ba0f0bb4436db0359bcb05b3b385970e7ab773d46f77a8962f"
+      "path": "apps/portal/public/visuals/course-02/la-linear-independence.png",
+      "size": 17224,
+      "sha256": "1f9ff70142683b8c80bf9102d4fd3c0f41ce282454b51e72f5958d9640513a6a"
     },
     {
-      "path": "apps/slides/decks/calc-gradient-directional-derivative.md",
-      "bytes": 3115,
-      "sha256": "7e7aa9c73fb2cf30ce03a2627abb1a1c4cc3fe03b1c66f579895e169029c61e7"
+      "path": "apps/portal/public/visuals/course-02/la-linear-maps-change-of-basis.png",
+      "size": 17191,
+      "sha256": "21fe694cee7bf5a38c592d192060b48b3505767e6d61b20989e0283aebe6b0d8"
     },
     {
-      "path": "apps/slides/decks/calc-hessian-second-order.md",
-      "bytes": 3192,
-      "sha256": "382b11b3122202b5e0b4b689f15b852d9fc19cc3e87351d5959ed47624c42e22"
+      "path": "apps/portal/public/visuals/course-02/la-linear-systems-elimination.gif",
+      "size": 21063,
+      "sha256": "dee5b8b256a023022ed633d7deb8a9ef43ebd15b78ba0ecfc0ddd7453ac6ecbb"
     },
     {
-      "path": "apps/slides/decks/calc-integrals-fundamental-theorem.md",
-      "bytes": 3337,
-      "sha256": "9d4cc6bc01de91e34e9c6833f0dc0777f01aaf15c2310ee36549312eafdd50c6"
+      "path": "apps/portal/public/visuals/course-02/la-linear-systems-elimination.png",
+      "size": 20141,
+      "sha256": "46520099f022f820db89fae063be62791d768983220259a4ec236a7b854f5441"
     },
     {
-      "path": "apps/slides/decks/calc-lagrange-multipliers.md",
-      "bytes": 3418,
-      "sha256": "ae3ae0136c66fc439c36809042d7f6b0eb9812822108ae33673cbb28e7ab1a1c"
+      "path": "apps/portal/public/visuals/course-02/la-low-rank-approximation.png",
+      "size": 23704,
+      "sha256": "91036067c7579b7d7a196193d182e401812da4aa79c616cbc01ff825a0b74662"
     },
     {
-      "path": "apps/slides/decks/calc-multivariable-chain-rule.md",
-      "bytes": 3210,
-      "sha256": "b11107b9f9cb36d0acfe64921fe9840bd8464940b322d9b82393c995617fbec1"
+      "path": "apps/portal/public/visuals/course-02/la-lu-factorization.png",
+      "size": 15249,
+      "sha256": "b78a5e3d6f369dc189995c4e50f82fa20489b5d26d718ebf4e5928fd9dd61374"
     },
     {
-      "path": "apps/slides/decks/calc-multivariable-functions-partial-derivatives.md",
-      "bytes": 3127,
-      "sha256": "5f4409edb2b8b9f6d157f676c0aff4f6c82d92b766a2bb1d94a0dd377468aff2"
+      "path": "apps/portal/public/visuals/course-02/la-matrices-data-linear-maps.png",
+      "size": 50507,
+      "sha256": "9b36e6d2c1c459c61e4e6eed56b9854dcc1b697447ddcc79e5cf31418859c82b"
     },
     {
-      "path": "apps/slides/decks/calc-one-variable-optimization.md",
-      "bytes": 3283,
-      "sha256": "b73d176c692d3d8f0b09c70a07151fbf0d814897aa4680d9580dbf47d33d45c7"
+      "path": "apps/portal/public/visuals/course-02/la-matrix-multiplication.png",
+      "size": 15662,
+      "sha256": "069c7fb71873431a54fa8f9c3398ea67b480099e8ea8c515d75497dea37c2b10"
     },
     {
-      "path": "apps/slides/decks/calc-taylor-approximation.md",
-      "bytes": 3017,
-      "sha256": "00d3136d4922e73cdfdd74e37a3edb784ec6d8ceffa270596ea9a445eb52fbca"
+      "path": "apps/portal/public/visuals/course-02/la-matrix-norms-condition-number.png",
+      "size": 27743,
+      "sha256": "ff8f5d8f0074849648f026af7e75b2e82abff9d5877776b2ee49c46b86dcf8d0"
     },
     {
-      "path": "apps/slides/decks/calc-total-derivative-jacobian.md",
-      "bytes": 3424,
-      "sha256": "c4feb708ce5fd8e3441fb97969f7cba49816b381d7affa6b440f68f53343065a"
+      "path": "apps/portal/public/visuals/course-02/la-orthogonal-orthonormal-bases.png",
+      "size": 11272,
+      "sha256": "cb017628f040ae9aee98766e19199d38e06e02379dfd45c12dba201f15534838"
     },
     {
-      "path": "apps/slides/decks/calc-unconstrained-optimization.md",
-      "bytes": 3043,
-      "sha256": "729189d53d4be978ddccc4f026fbede64b03c9ca8390dae09307cd6ea9d312c7"
+      "path": "apps/portal/public/visuals/course-02/la-pseudoinverse-rank-deficient-systems.png",
+      "size": 31473,
+      "sha256": "4d3970d915653308e8b279d4c947aa34fa76ac3cc70140b744a6236396198100"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-quadratic-forms-positive-definite.png",
+      "size": 45318,
+      "sha256": "0bb8d38890e528341381c0d88fd909d54ca3806d215344a7bd4f8194567826ef"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-rank-rank-nullity.png",
+      "size": 11596,
+      "sha256": "f4f9b5b7f9816ddc8025c15b91562f4b91dec278dab729651919c8435485f74e"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-singular-value-decomposition.png",
+      "size": 34205,
+      "sha256": "2070631d31ebd27f5ef07326c9949b4f1c699970b789554e837340bf71d29834"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-span-subspaces.png",
+      "size": 18292,
+      "sha256": "177d047e9b0ea077be04e4af86313c70f8b535ce319f97adef60bd9f3e88a0fc"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-symmetric-matrices-spectral-theorem.png",
+      "size": 42541,
+      "sha256": "3c04c23c740d4f67447f5fdc4da560cbd3978f927e977da94b488f8fe159012c"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-vectors-linear-combinations.png",
+      "size": 15813,
+      "sha256": "bb4d60c30661f0ccd16ce0ee98d9c7c2d31e3e44ba73b5b2f8b902d487b8f2ba"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-weighted-least-squares-introduction.gif",
+      "size": 62714,
+      "sha256": "5763666803fb3116443b6b94b7fe66c506fefb48bc66095a6f0e58b43e1ff4b1"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-weighted-least-squares-introduction.png",
+      "size": 27808,
+      "sha256": "fdfae50c1da4b256182429eda4aa1d155d9b51eedb0f79fec00855cbaf3945a5"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/orthogonal-projection.gif",
+      "size": 34772,
+      "sha256": "bc709b4c1d64eb2befaa75a183ba4132b4343bba55a5f97cec05b8956a6efa87"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/orthogonal-projection.png",
+      "size": 17303,
+      "sha256": "8007d5afe95ae02914e0e154a303fa8f09b0e41dbfb4450dac5088171ef94739"
+    },
+    {
+      "path": "apps/portal/textbook/la-basis-coordinates-dimension.md",
+      "size": 5337,
+      "sha256": "51feabab87d346872d0b836a5420a01ab9020221da1cc5174d0411c185f156d9"
+    },
+    {
+      "path": "apps/portal/textbook/la-cholesky-factorization.md",
+      "size": 5028,
+      "sha256": "15aa32de9257055ed722454c449b8ed42212604bf4032373642d77e4a638e6dc"
+    },
+    {
+      "path": "apps/portal/textbook/la-column-space-null-space.md",
+      "size": 5440,
+      "sha256": "88aaac3b672c93ecadec4995d39dc1a644143c4561e11bb138ddd4339c0703dc"
+    },
+    {
+      "path": "apps/portal/textbook/la-determinants-volume-invertibility.md",
+      "size": 5325,
+      "sha256": "bbba983e9e6c87a18bf524c93e50b664c3f8941ce43c6e59fce62966bb03f525"
+    },
+    {
+      "path": "apps/portal/textbook/la-diagonalization-matrix-powers.md",
+      "size": 5192,
+      "sha256": "61586473378f2485eeef135863ba9b238e2962ae7e9c307ea96795017906719f"
+    },
+    {
+      "path": "apps/portal/textbook/la-eigenvalues-eigenvectors.md",
+      "size": 5205,
+      "sha256": "9d5b0ca0608397347a944736645f96861354d3e76e7a84c4e64f9cf45f8db0d7"
+    },
+    {
+      "path": "apps/portal/textbook/la-gram-schmidt-qr.md",
+      "size": 5192,
+      "sha256": "a45e3ed0323406193e5ee5e963e9fcb5c2cc4483f81414d575a5c63db5adfade"
+    },
+    {
+      "path": "apps/portal/textbook/la-inner-products-norms-angles.md",
+      "size": 4935,
+      "sha256": "4667c17bdc38e2af692b88c88914862a093f37b89d230c2fc2c80a63694dadca"
+    },
+    {
+      "path": "apps/portal/textbook/la-invertibility-inverse-matrices.md",
+      "size": 5484,
+      "sha256": "6964315c3525b0125acac80a57d6236303cad3ef0c31401ecdecdda334335e13"
+    },
+    {
+      "path": "apps/portal/textbook/la-least-squares-computation-pseudoinverse.md",
+      "size": 5323,
+      "sha256": "0e1ed5e9d87fbe7a33a0f79bffe7ca000932ae310cc66c3d8d62814c61fc4f4d"
+    },
+    {
+      "path": "apps/portal/textbook/la-least-squares-geometry.md",
+      "size": 5153,
+      "sha256": "4f3a2e1c5de1b5b1ceaaf464e720a57e467aa95cd1eee14875c182efc410a07f"
+    },
+    {
+      "path": "apps/portal/textbook/la-linear-independence.md",
+      "size": 5055,
+      "sha256": "af93e66a7eda5eb0e2e5b36e73028a4a02e99857b82cc7bc76bbae607a2796c4"
+    },
+    {
+      "path": "apps/portal/textbook/la-linear-maps-change-of-basis.md",
+      "size": 5536,
+      "sha256": "462ea1809cfd14fc9c0c9af92172f507dbaa9e883b9eb2689b3023d4ea348e6e"
+    },
+    {
+      "path": "apps/portal/textbook/la-linear-systems-elimination.md",
+      "size": 5500,
+      "sha256": "9412604dfded30f43271d7eaf430561aa3b1aa5cca9b46409c312bfd4c66acf2"
+    },
+    {
+      "path": "apps/portal/textbook/la-low-rank-approximation.md",
+      "size": 5226,
+      "sha256": "ab92a35e3544cef1f1a3d79980a398f4572a2898a501761be9bed01a437a4d45"
+    },
+    {
+      "path": "apps/portal/textbook/la-lu-factorization.md",
+      "size": 5168,
+      "sha256": "ebc26811849abe03ce66281ffe07ccaf1b8e33b5496ea032a185ba35f723fb25"
+    },
+    {
+      "path": "apps/portal/textbook/la-matrices-data-linear-maps.md",
+      "size": 5840,
+      "sha256": "049d2011ce21c79b1291818fd43cbfc8a705c306fc9790d774d15c0e6d36fb85"
+    },
+    {
+      "path": "apps/portal/textbook/la-matrix-multiplication.md",
+      "size": 5648,
+      "sha256": "6e35b35c6772af52ca5a17427fbbba678e02dd2a79646547465ca857bd378060"
+    },
+    {
+      "path": "apps/portal/textbook/la-matrix-norms-condition-number.md",
+      "size": 5635,
+      "sha256": "ed54d8b1cd61bdfeead881d3a49425901839b332d964a74829a93a26dbe5a340"
+    },
+    {
+      "path": "apps/portal/textbook/la-orthogonal-orthonormal-bases.md",
+      "size": 4943,
+      "sha256": "7e3579683dc0d14a4fdc3240028883a3ccd7197a4abd94b4e690259722ae7b55"
+    },
+    {
+      "path": "apps/portal/textbook/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 5233,
+      "sha256": "bb7faae5b9f373eab2ecfe541a103c99f4e364349a66307abdeb3fef002586c8"
+    },
+    {
+      "path": "apps/portal/textbook/la-quadratic-forms-positive-definite.md",
+      "size": 5309,
+      "sha256": "20c24a6cb7fd8db1704b1977efddb9818b6804be13ed01d0f04812a063928804"
+    },
+    {
+      "path": "apps/portal/textbook/la-rank-rank-nullity.md",
+      "size": 5063,
+      "sha256": "70dc0256dc95fcf9914aaed03ad629b9ededfe7b12fdcd2cfb8e6d7888d2ef59"
+    },
+    {
+      "path": "apps/portal/textbook/la-singular-value-decomposition.md",
+      "size": 5315,
+      "sha256": "0867607d8adaa7442898450da8786267a6743ca820615a16cb22312a41fabeca"
+    },
+    {
+      "path": "apps/portal/textbook/la-span-subspaces.md",
+      "size": 5254,
+      "sha256": "fca6361dc4070f0428094ac775b54d51b1555537093e4cd6781bca26362c3036"
+    },
+    {
+      "path": "apps/portal/textbook/la-symmetric-matrices-spectral-theorem.md",
+      "size": 5167,
+      "sha256": "ef0460ee3fbddb3fe2f817a3374d1250a94a7c1019fffa4209f01ce57201d0af"
+    },
+    {
+      "path": "apps/portal/textbook/la-vectors-linear-combinations.md",
+      "size": 5778,
+      "sha256": "15211583188218188818a7b5db857785e6b92ee54bf8c4b079ffd0ac2f106c38"
+    },
+    {
+      "path": "apps/portal/textbook/la-weighted-least-squares-introduction.md",
+      "size": 5532,
+      "sha256": "51573e526930961cca2acb5760f07734f85ae2b90dbd99e42d1bd2d5e7adf490"
+    },
+    {
+      "path": "apps/portal/textbook/orthogonal-projection.md",
+      "size": 5030,
+      "sha256": "dfde38532f72a002b11c29dbbec86e4d8d04d5d607ae13dbf882f6be6e63edf3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-basis-coordinates-dimension.png",
+      "size": 15037,
+      "sha256": "6bdbee703fb1068647ee2c9565dffb70254ac6e01738b70af8c043febab66f98"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-cholesky-factorization.png",
+      "size": 17022,
+      "sha256": "9d7510a5d771b50defa1883a9124cae6a45a0611ab23e9ffb2cb120248953e50"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-column-space-null-space.png",
+      "size": 17442,
+      "sha256": "6d8a109a1d64923e8fb35e2b0dab5b5277ac18b01952e4cc3e66b2bf5a578a9e"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-determinants-volume-invertibility.png",
+      "size": 11941,
+      "sha256": "e0cb16e9ab33958fc4bd4835b55fd3cab1f10e96ef84ed60d025310cbdaa4ffd"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-diagonalization-matrix-powers.png",
+      "size": 42033,
+      "sha256": "2bb65adfa64194650ccde915817ce5103d7b0231289e37bc4d8abd86aaa4d34a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-eigenvalues-eigenvectors.png",
+      "size": 40229,
+      "sha256": "74f22d031fc774f12fcd504f19ee8c2ea3c252ae1a91535a971532e99cfb6290"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-gram-schmidt-qr.png",
+      "size": 13474,
+      "sha256": "44df3d9b6de5f1bcd26b86fbbf3d09237eda6d1fa1913036c09351dc08efd6d4"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-inner-products-norms-angles.png",
+      "size": 14823,
+      "sha256": "5e3d45d4dc6ae940ff412a8dffc3e305e5d860f61e34ea5509fae9cee7f70aa8"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-invertibility-inverse-matrices.png",
+      "size": 10385,
+      "sha256": "7b4e44de6b7ebc5ca5d0b0810c11e218c3ed6b53981b03667e74b34849fa1cff"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-least-squares-computation-pseudoinverse.png",
+      "size": 27371,
+      "sha256": "335863270b8082f2cfa8a5edbff135cb905fe805de3ca35bf44d5db757bc3fcf"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-least-squares-geometry.png",
+      "size": 24689,
+      "sha256": "f15218802948cc73e4fcbae512cfd54fe236fd66c11b77809f02214f69f81495"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-linear-independence.png",
+      "size": 17224,
+      "sha256": "1f9ff70142683b8c80bf9102d4fd3c0f41ce282454b51e72f5958d9640513a6a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-linear-maps-change-of-basis.png",
+      "size": 17191,
+      "sha256": "21fe694cee7bf5a38c592d192060b48b3505767e6d61b20989e0283aebe6b0d8"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-linear-systems-elimination.gif",
+      "size": 21063,
+      "sha256": "dee5b8b256a023022ed633d7deb8a9ef43ebd15b78ba0ecfc0ddd7453ac6ecbb"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-linear-systems-elimination.png",
+      "size": 20141,
+      "sha256": "46520099f022f820db89fae063be62791d768983220259a4ec236a7b854f5441"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-low-rank-approximation.png",
+      "size": 23704,
+      "sha256": "91036067c7579b7d7a196193d182e401812da4aa79c616cbc01ff825a0b74662"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-lu-factorization.png",
+      "size": 15249,
+      "sha256": "b78a5e3d6f369dc189995c4e50f82fa20489b5d26d718ebf4e5928fd9dd61374"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-matrices-data-linear-maps.png",
+      "size": 50507,
+      "sha256": "9b36e6d2c1c459c61e4e6eed56b9854dcc1b697447ddcc79e5cf31418859c82b"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-matrix-multiplication.png",
+      "size": 15662,
+      "sha256": "069c7fb71873431a54fa8f9c3398ea67b480099e8ea8c515d75497dea37c2b10"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-matrix-norms-condition-number.png",
+      "size": 27743,
+      "sha256": "ff8f5d8f0074849648f026af7e75b2e82abff9d5877776b2ee49c46b86dcf8d0"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-orthogonal-orthonormal-bases.png",
+      "size": 11272,
+      "sha256": "cb017628f040ae9aee98766e19199d38e06e02379dfd45c12dba201f15534838"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-pseudoinverse-rank-deficient-systems.png",
+      "size": 31473,
+      "sha256": "4d3970d915653308e8b279d4c947aa34fa76ac3cc70140b744a6236396198100"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-quadratic-forms-positive-definite.png",
+      "size": 45318,
+      "sha256": "0bb8d38890e528341381c0d88fd909d54ca3806d215344a7bd4f8194567826ef"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-rank-rank-nullity.png",
+      "size": 11596,
+      "sha256": "f4f9b5b7f9816ddc8025c15b91562f4b91dec278dab729651919c8435485f74e"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-singular-value-decomposition.png",
+      "size": 34205,
+      "sha256": "2070631d31ebd27f5ef07326c9949b4f1c699970b789554e837340bf71d29834"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-span-subspaces.png",
+      "size": 18292,
+      "sha256": "177d047e9b0ea077be04e4af86313c70f8b535ce319f97adef60bd9f3e88a0fc"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-symmetric-matrices-spectral-theorem.png",
+      "size": 42541,
+      "sha256": "3c04c23c740d4f67447f5fdc4da560cbd3978f927e977da94b488f8fe159012c"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-vectors-linear-combinations.png",
+      "size": 15813,
+      "sha256": "bb4d60c30661f0ccd16ce0ee98d9c7c2d31e3e44ba73b5b2f8b902d487b8f2ba"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-weighted-least-squares-introduction.gif",
+      "size": 62714,
+      "sha256": "5763666803fb3116443b6b94b7fe66c506fefb48bc66095a6f0e58b43e1ff4b1"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-weighted-least-squares-introduction.png",
+      "size": 27808,
+      "sha256": "fdfae50c1da4b256182429eda4aa1d155d9b51eedb0f79fec00855cbaf3945a5"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/orthogonal-projection.gif",
+      "size": 34772,
+      "sha256": "bc709b4c1d64eb2befaa75a183ba4132b4343bba55a5f97cec05b8956a6efa87"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/orthogonal-projection.png",
+      "size": 17303,
+      "sha256": "8007d5afe95ae02914e0e154a303fa8f09b0e41dbfb4450dac5088171ef94739"
+    },
+    {
+      "path": "apps/slides/decks/la-basis-coordinates-dimension.md",
+      "size": 3583,
+      "sha256": "5432a580c2c95965e56a32ffe25cd6de5f782b7afa34ec1ee96daf5d05451949"
+    },
+    {
+      "path": "apps/slides/decks/la-cholesky-factorization.md",
+      "size": 3268,
+      "sha256": "0dec9df9e21b3774873826abd4523e56d53f0b72dd06e1ed16e2a19c96cd31d4"
+    },
+    {
+      "path": "apps/slides/decks/la-column-space-null-space.md",
+      "size": 3784,
+      "sha256": "2f99238ec534149222b9549bcd4acdf4253215090997f226118f8aa290609136"
+    },
+    {
+      "path": "apps/slides/decks/la-determinants-volume-invertibility.md",
+      "size": 3486,
+      "sha256": "d32878a8d491ee43f97456c258ff900d376f887de00d2a78223c3a7b40bd03d8"
+    },
+    {
+      "path": "apps/slides/decks/la-diagonalization-matrix-powers.md",
+      "size": 3527,
+      "sha256": "1997905dbfb1031497d5528a65a9db019fe12ed6d892d63101181af88d955dbd"
+    },
+    {
+      "path": "apps/slides/decks/la-eigenvalues-eigenvectors.md",
+      "size": 3414,
+      "sha256": "733aded7d3518db9bc806e97bc1f0bac9470ef591382b753d5cfec471d03be80"
+    },
+    {
+      "path": "apps/slides/decks/la-gram-schmidt-qr.md",
+      "size": 3527,
+      "sha256": "4caf6603dfc19ce77302c6575efd6ba8747b1a90f45d002be2ea4c7333a69791"
+    },
+    {
+      "path": "apps/slides/decks/la-inner-products-norms-angles.md",
+      "size": 3295,
+      "sha256": "bb0605a8d1d49470dd22fb7f9c58202cde1e247e169ec5e1ee952571536db14b"
+    },
+    {
+      "path": "apps/slides/decks/la-invertibility-inverse-matrices.md",
+      "size": 3620,
+      "sha256": "e16673da41847ae28300d6a951bd43d4c44b383037837a9c767e1a06e064dae4"
+    },
+    {
+      "path": "apps/slides/decks/la-least-squares-computation-pseudoinverse.md",
+      "size": 3689,
+      "sha256": "c39d9a665df48855f532f000f17c95798e51ffafec4137819f28e72b0d9fcedb"
+    },
+    {
+      "path": "apps/slides/decks/la-least-squares-geometry.md",
+      "size": 3523,
+      "sha256": "fd38ba8956cc7c8be93ba0740771eb507ef1691904475bd42a666ca962f272e4"
+    },
+    {
+      "path": "apps/slides/decks/la-linear-independence.md",
+      "size": 3343,
+      "sha256": "84c9f8195b74c825a97f5048a9d8d9a7d49ab33ee4a03b22b69066fc37af5ad8"
+    },
+    {
+      "path": "apps/slides/decks/la-linear-maps-change-of-basis.md",
+      "size": 3720,
+      "sha256": "170e6f33c99ab18e6bf218f85e0164bae0e647807ef83a569432876ab0085ac3"
+    },
+    {
+      "path": "apps/slides/decks/la-linear-systems-elimination.md",
+      "size": 3639,
+      "sha256": "3141ecd507d83a32d8afe9d39857f97ba87918eb48f017222385ae15c4a23a27"
+    },
+    {
+      "path": "apps/slides/decks/la-low-rank-approximation.md",
+      "size": 3434,
+      "sha256": "667d9a6f8e0dc19f6f4129af890d065250d38fedb2da6957841b5bdd9593ea24"
+    },
+    {
+      "path": "apps/slides/decks/la-lu-factorization.md",
+      "size": 3488,
+      "sha256": "05ffffe81c78bcee05a865b77653b359d3fc108a881489023706cc9404d3ba88"
+    },
+    {
+      "path": "apps/slides/decks/la-matrices-data-linear-maps.md",
+      "size": 3952,
+      "sha256": "88ef6a55ebe9f2bb3e810946e5490476b568b44a87bad6c0133c0878ed75a173"
+    },
+    {
+      "path": "apps/slides/decks/la-matrix-multiplication.md",
+      "size": 3745,
+      "sha256": "6ca033d6fe59781909b2b9925d8bc77513836653ca8cbaf4b72fd088d09f172e"
+    },
+    {
+      "path": "apps/slides/decks/la-matrix-norms-condition-number.md",
+      "size": 3681,
+      "sha256": "91834073425685cc45c2cc6abe0c9ec40773424c788375ae36403bdbd3a0445c"
+    },
+    {
+      "path": "apps/slides/decks/la-orthogonal-orthonormal-bases.md",
+      "size": 3269,
+      "sha256": "2580c95b2cf6821d7a1302262bd71fdbc16e9cebf669d91a88e37df2d4e3108b"
+    },
+    {
+      "path": "apps/slides/decks/la-pseudoinverse-rank-deficient-systems.md",
+      "size": 3545,
+      "sha256": "8c8a87db9d068da4a12a5157e0b05d0eeed600fa45a70ccb85aee7cb5b5cc0cc"
+    },
+    {
+      "path": "apps/slides/decks/la-quadratic-forms-positive-definite.md",
+      "size": 3442,
+      "sha256": "1be31cbe39fcd1bde35cae45b6940bab25999cbb2d0302ca9970621a9be36a3e"
+    },
+    {
+      "path": "apps/slides/decks/la-rank-rank-nullity.md",
+      "size": 3313,
+      "sha256": "9ad8ee6e4aba3a357cc81a5aa4269d586a49555117f5489c0e0ffec58ca32b0d"
+    },
+    {
+      "path": "apps/slides/decks/la-singular-value-decomposition.md",
+      "size": 3483,
+      "sha256": "08e54a97eac18812fd20bfa0ce46d62e6bb128d6674a610f18fd240fb13e3974"
+    },
+    {
+      "path": "apps/slides/decks/la-span-subspaces.md",
+      "size": 3416,
+      "sha256": "9b3b546f860345d356e5523d7ec67ffeecb6f20e0851cd05b6fb1b008c3bec0a"
+    },
+    {
+      "path": "apps/slides/decks/la-symmetric-matrices-spectral-theorem.md",
+      "size": 3423,
+      "sha256": "4fe852e4218c320953d09a7b1492ba62158d75c4187ac40c0a2fd67d6f311ec0"
+    },
+    {
+      "path": "apps/slides/decks/la-vectors-linear-combinations.md",
+      "size": 4057,
+      "sha256": "26ac858de88136463194a111f015584f900c83d07eeda0a4d3b0346f9189a00a"
+    },
+    {
+      "path": "apps/slides/decks/la-weighted-least-squares-introduction.md",
+      "size": 3734,
+      "sha256": "ebbfdfe6b2cce270fba54b0c4697d82ff6a52f9aaf59d4509d70ea2e9614eb51"
+    },
+    {
+      "path": "apps/slides/decks/orthogonal-projection.md",
+      "size": 3347,
+      "sha256": "9a10c01d50f6118e06a8a17558e4e835a79fc410d78e16ab7147b0bf0bec0afd"
+    },
+    {
+      "path": "docs/content-guidelines.md",
+      "size": 3623,
+      "sha256": "305f01b705a63d8e6d11bfa9ca55f741f7146cbd971240f46a1086d769360047"
     }
   ]
 }

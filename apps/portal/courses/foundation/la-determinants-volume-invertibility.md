@@ -2,29 +2,26 @@
 
 ## Course・Unit内での位置付け
 
-Course 02「線形代数」第220 Topic。線形代数の定義・計算・幾何を接続する。
+Course 02「線形代数」第220 Topic。eigenvalues・positive・definite。
 
 ## 今回解く問い
 
-行列式・体積・可逆性を、ベクトル・行列のshape、定義、幾何的意味、数値計算からどう理解するか。
-
-## 概要
-
-式の各記号を定義し、小さな例とアルゴリズムで構造を確認する。
+行列式は、線形写像が向き付き体積を何倍にするかを表す一つのスカラー。0なら少なくとも1方向を潰して体積が0になり、可逆でない。
 
 ## 学習目標
 
-- 定義、前提、shape、結論を説明できる。
-- 小さな手計算と数値検算ができる。
-- データ解析・最小二乗法・固有構造・SVDへの接続を説明できる。
+- 定義と代表式を、未定義の記号なしで説明できる。
+- 2〜5次元の例を手計算し、図と対応づけられる。
+- 成立条件・反例・数値的不安定性を区別できる。
+- 後続の最小二乗・固有構造・SVD・WLSMへの接続を説明できる。
 
 ## 前提Topic
 
-[la-invertibility-inverse-matrices](/courses/foundation/la-invertibility-inverse-matrices)
+- [la-invertibility-inverse-matrices](/courses/foundation/la-invertibility-inverse-matrices)
 
 ## 想定学習時間
 
-スライド20分 / 教科書65分 / 演習55分
+スライド25分 / 教科書75分 / 演習60分
 
 ## 学習順序
 
@@ -38,6 +35,5 @@ Course 02の29 Topic中、20/29。
 
 ## 前後Topic
 
-- [前のTopic](/courses/foundation/la-invertibility-inverse-matrices)
-- 次のTopic：Course 02の次項目
-
+- [前のTopic](/courses/foundation/la-weighted-least-squares-introduction)
+- [次のTopic](/courses/foundation/la-eigenvalues-eigenvectors)

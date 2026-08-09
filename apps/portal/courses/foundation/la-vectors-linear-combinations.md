@@ -2,29 +2,27 @@
 
 ## Course・Unit内での位置付け
 
-Course 02「線形代数」第201 Topic。線形代数の定義・計算・幾何を接続する。
+Course 02「線形代数」第201 Topic。vectors・matrices・systems。
 
 ## 今回解く問い
 
-ベクトルと線形結合を、ベクトル・行列のshape、定義、幾何的意味、数値計算からどう理解するか。
-
-## 概要
-
-式の各記号を定義し、小さな例とアルゴリズムで構造を確認する。
+ベクトルは「向きと大きさを持つ矢印」だけでなく、複数の量を順序付きでまとめた対象である。線形結合は、既知のベクトルをスカラー倍して足し、新しいベクトルを作る最も基本的な操作である。
 
 ## 学習目標
 
-- 定義、前提、shape、結論を説明できる。
-- 小さな手計算と数値検算ができる。
-- データ解析・最小二乗法・固有構造・SVDへの接続を説明できる。
+- 定義と代表式を、未定義の記号なしで説明できる。
+- 2〜5次元の例を手計算し、図と対応づけられる。
+- 成立条件・反例・数値的不安定性を区別できる。
+- 後続の最小二乗・固有構造・SVD・WLSMへの接続を説明できる。
 
 ## 前提Topic
 
-[数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)
+- [prep-symbols-types-shapes](/courses/foundation/prep-symbols-types-shapes)
+- [prep-sums-products-indices](/courses/foundation/prep-sums-products-indices)
 
 ## 想定学習時間
 
-スライド20分 / 教科書65分 / 演習55分
+スライド25分 / 教科書75分 / 演習60分
 
 ## 学習順序
 
@@ -38,5 +36,5 @@ Course 02の29 Topic中、1/29。
 
 ## 前後Topic
 
-- [前のTopic](/courses/foundation/prep-symbols-types-shapes)
-- 次のTopic：Course 02の次項目
+- [前のTopic](/courses/foundation/calc-lagrange-multipliers)
+- [次のTopic](/courses/foundation/la-matrices-data-linear-maps)

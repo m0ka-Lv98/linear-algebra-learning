@@ -2,29 +2,26 @@
 
 ## Course・Unit内での位置付け
 
-Course 02「線形代数」第202 Topic。線形代数の定義・計算・幾何を接続する。
+Course 02「線形代数」第202 Topic。vectors・matrices・systems。
 
 ## 今回解く問い
 
-行列をデータと線形写像として見るを、ベクトル・行列のshape、定義、幾何的意味、数値計算からどう理解するか。
-
-## 概要
-
-式の各記号を定義し、小さな例とアルゴリズムで構造を確認する。
+行列には二つの読み方がある。数表として行・列に意味を持たせる読み方と、入力ベクトルを別のベクトルへ移す線形写像としての読み方である。後者では「各列は標準基底がどこへ移るか」を表す。
 
 ## 学習目標
 
-- 定義、前提、shape、結論を説明できる。
-- 小さな手計算と数値検算ができる。
-- データ解析・最小二乗法・固有構造・SVDへの接続を説明できる。
+- 定義と代表式を、未定義の記号なしで説明できる。
+- 2〜5次元の例を手計算し、図と対応づけられる。
+- 成立条件・反例・数値的不安定性を区別できる。
+- 後続の最小二乗・固有構造・SVD・WLSMへの接続を説明できる。
 
 ## 前提Topic
 
-[la-vectors-linear-combinations](/courses/foundation/la-vectors-linear-combinations)
+- [la-vectors-linear-combinations](/courses/foundation/la-vectors-linear-combinations)
 
 ## 想定学習時間
 
-スライド20分 / 教科書65分 / 演習55分
+スライド25分 / 教科書75分 / 演習60分
 
 ## 学習順序
 
@@ -39,5 +36,4 @@ Course 02の29 Topic中、2/29。
 ## 前後Topic
 
 - [前のTopic](/courses/foundation/la-vectors-linear-combinations)
-- 次のTopic：Course 02の次項目
-
+- [次のTopic](/courses/foundation/la-matrix-multiplication)
