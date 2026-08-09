@@ -240,6 +240,17 @@ export default defineConfig({
   description: '基礎数学から数値計算、最適化、機械学習、深層学習、Frontierへ',
   base,
   cleanUrls: true,
+  head: [
+    [
+      'style',
+      {},
+      `
+      .VPLocalNavOutlineDropdown {
+        display: none !important;
+      }
+      `,
+    ],
+  ],
   markdown: {
     math: true,
     config(md) {
