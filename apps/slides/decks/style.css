@@ -1,4 +1,4 @@
 /* Hide Slidev's slide-overview button in the navigation controls. */
-#slidev-controls button.slidev-icon-btn[title="Show slide overview"] {
+button.slidev-icon-btn[title="Show slide overview"] {
   display: none !important;
 }
