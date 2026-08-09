@@ -2,3 +2,7 @@
 button.slidev-icon-btn[title="Show slide overview"] {
   display: none !important;
 }
+
+.autocomplete-list {
+  display: none !important;
+}
