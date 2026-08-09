@@ -263,6 +263,7 @@ export default defineConfig({
   },
   ignoreDeadLinks: [/^\/(slides|textbook|exercises)\//],
   themeConfig: {
+    aside: false,
     outline: false,
     nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }],
     sidebar: {
