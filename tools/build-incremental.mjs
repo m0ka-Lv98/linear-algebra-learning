@@ -37,6 +37,7 @@ const selected = autoPortalOnly ? [] : await loadTopicSelection(root, { course, 
 const all = await allImplementationTopics(root)
 const output = path.join(root, 'dist')
 const slides = path.join(output, 'slides')
+const portalOutput = path.join(root, 'apps/portal/.vitepress/dist')
 if (json) {
   console.log(JSON.stringify({ course: course ?? null, topic: topic ?? null, topics: selected, allTopics: all }, null, 2))
   process.exit(0)
@@ -61,6 +62,7 @@ if (await exists(slides)) await cp(slides, backup, { recursive: true })
 await rm(output, { recursive: true, force: true })
 await exec('pnpm', ['build:portal'], { cwd: root, maxBuffer: 50 * 1024 * 1024 })
 await mkdir(output, { recursive: true })
+await cp(portalOutput, output, { recursive: true })
 if (await exists(backup)) await cp(backup, slides, { recursive: true })
 await rm(backup, { recursive: true, force: true })
 

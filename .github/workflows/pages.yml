@@ -50,8 +50,8 @@ jobs:
           CACHE_MATCHED: ${{ steps.slides-cache.outputs.cache-matched-key }}
         run: |
           if [ "$FULL" = "true" ] || [ -z "$CACHE_MATCHED" ]; then
-            echo "build mode: Course 00 only (cache miss or full requested)"
-            BASE_PATH=/linear-algebra-learning/ pnpm build:incremental -- --course 00
+            echo "build mode: full (cache miss or full requested)"
+            BASE_PATH=/linear-algebra-learning/ pnpm build
           elif [ -n "$COURSE" ]; then
             echo "build mode: incremental course=$COURSE"
             BASE_PATH=/linear-algebra-learning/ pnpm build:incremental -- --course "$COURSE"
