@@ -65,7 +65,7 @@ jobs:
       - name: Verify slide completeness
         run: node tools/verify-slide-build.mjs
       - uses: actions/cache/save@v4
-        if: always() && steps.slides-cache.outputs.cache-primary-key != steps.slides-cache.outputs.cache-matched-key
+        if: success() && steps.slides-cache.outputs.cache-primary-key != steps.slides-cache.outputs.cache-matched-key
         with:
           path: dist/slides
           key: slidev-${{ hashFiles('pnpm-lock.yaml', 'apps/slides/package.json') }}-${{ github.sha }}
