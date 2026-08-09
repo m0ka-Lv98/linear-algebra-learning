@@ -157,9 +157,13 @@ export function renderDeck(topic, textbook) {
   slides.push(`---\n\n## 演習へ\n\n[教科書](../../textbook/${topic.id})\n\n[10問の演習](../../exercises/${topic.id})\n`)
 
   const rendered = `${slides.join('\n')}\n`
-  return String(topic.course).padStart(2, '0') === '01'
-    ? rendered.replaceAll('/visuals/course-01/', './assets/course-01/')
-    : rendered
+  if (String(topic.course).padStart(2, '0') !== '01') return rendered
+  return rendered
+    .replaceAll('/visuals/course-01/', './assets/course-01/')
+    .replace(
+      /!\[([^\]]+)\]\(\.\/assets\/course-01\/limits_approach\.gif\)/,
+      '<img src="./assets/course-01/limits_approach.gif" alt="$1" style="max-height: 310px; width: auto; margin: 0.4rem auto 0.6rem;" />',
+    )
 }
 
 export function upgradeCuratedDeck(topic, source) {

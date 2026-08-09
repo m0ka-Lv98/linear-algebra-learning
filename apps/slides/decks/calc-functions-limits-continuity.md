@@ -73,7 +73,7 @@ layout: center
 
 ## アニメーションで極限を見る
 
-![x が a に近づくとき f(x) が L に近づく様子](./assets/course-01/limits_approach.gif)
+<img src="./assets/course-01/limits_approach.gif" alt="x が a に近づくとき f(x) が L に近づく様子" style="max-height: 310px; width: auto; margin: 0.4rem auto 0.6rem;" />
 
 ---
 
