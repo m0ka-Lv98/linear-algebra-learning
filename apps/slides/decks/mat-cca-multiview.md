@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 正準相関分析
 ---

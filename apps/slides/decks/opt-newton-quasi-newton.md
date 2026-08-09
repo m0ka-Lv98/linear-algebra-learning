@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: Newton法と準Newton法
 ---

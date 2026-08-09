@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 特徴量設計と特徴選択
 ---

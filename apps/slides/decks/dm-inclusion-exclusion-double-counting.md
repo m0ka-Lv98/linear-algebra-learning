@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 包含排除原理と二重数え上げ
 ---

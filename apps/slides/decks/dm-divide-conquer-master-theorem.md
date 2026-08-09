@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 分割統治法とMaster theorem
 ---

@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 深層modelの評価・robustness・安全性
 ---

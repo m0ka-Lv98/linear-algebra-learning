@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 title: 直交射影
 info: 線形代数の基礎
 class: text-center

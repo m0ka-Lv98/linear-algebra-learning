@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: エントロピー・交差エントロピー・KLダイバージェンス
 ---

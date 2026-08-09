@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 同時分布・周辺分布・条件付き分布
 ---

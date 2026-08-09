@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 生成的分類器・Naive Bayes・LDA
 ---

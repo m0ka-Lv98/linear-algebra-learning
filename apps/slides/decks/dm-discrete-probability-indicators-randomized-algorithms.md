@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 離散確率・指示変数・乱択アルゴリズム
 ---

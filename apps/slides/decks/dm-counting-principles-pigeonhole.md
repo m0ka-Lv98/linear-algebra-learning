@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 加法原理・乗法原理・鳩の巣原理
 ---

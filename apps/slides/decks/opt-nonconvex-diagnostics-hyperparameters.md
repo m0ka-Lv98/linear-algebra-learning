@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 非凸最適化の診断とhyperparameter
 ---

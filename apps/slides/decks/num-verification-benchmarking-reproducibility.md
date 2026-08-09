@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 数値計算の検証・benchmark・再現性
 ---

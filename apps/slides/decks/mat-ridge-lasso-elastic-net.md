@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: ridge・Lasso・Elastic Net
 ---

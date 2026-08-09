@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 確率変数・CDF・PMF・PDF
 ---

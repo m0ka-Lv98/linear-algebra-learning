@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: ODEの安定性・硬さ・陰解法
 ---

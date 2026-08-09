@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 常微分方程式・Euler法・Runge–Kutta法
 ---

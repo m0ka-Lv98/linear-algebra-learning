@@ -3,6 +3,7 @@ button.slidev-icon-btn[title="Show slide overview"] {
   display: none !important;
 }
 
+/* Hide the right-side Slidev overview/autocomplete panel. */
 .autocomplete-list {
   display: none !important;
 }

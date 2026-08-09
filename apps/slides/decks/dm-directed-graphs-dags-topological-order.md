@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 有向グラフ・DAG・トポロジカル順序
 ---

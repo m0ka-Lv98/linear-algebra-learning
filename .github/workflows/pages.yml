@@ -12,6 +12,11 @@ on:
         description: 'Topic implementation ID'
         required: false
         type: string
+      courses_01_10:
+        description: 'Rebuild Course 01-10 only; preserve cached Course 00'
+        required: false
+        default: false
+        type: boolean
       full:
         description: 'Force full build'
         required: false
@@ -46,10 +51,23 @@ jobs:
         env:
           COURSE: ${{ inputs.course }}
           TOPIC: ${{ inputs.topic }}
+          COURSES_01_10: ${{ inputs.courses_01_10 }}
           FULL: ${{ inputs.full }}
           CACHE_MATCHED: ${{ steps.slides-cache.outputs.cache-matched-key }}
         run: |
-          if [ "$FULL" = "true" ] || [ -z "$CACHE_MATCHED" ]; then
+          set -euo pipefail
+
+          if [ "$COURSES_01_10" = "true" ]; then
+            if [ "$FULL" = "true" ] || [ -n "$COURSE" ] || [ -n "$TOPIC" ]; then
+              echo "ERROR: courses_01_10 cannot be combined with course, topic, or full."
+              exit 2
+            fi
+            echo "build mode: Course 01-10 only; preserve Course 00 baseline"
+            if [ -z "$CACHE_MATCHED" ]; then
+              echo "WARNING: no Slidev cache matched; dedicated builder will fail rather than rebuild Course 00."
+            fi
+            BASE_PATH=/linear-algebra-learning/ node tools/build-courses-01-10.mjs
+          elif [ "$FULL" = "true" ] || [ -z "$CACHE_MATCHED" ]; then
             echo "build mode: full (cache miss or full requested)"
             BASE_PATH=/linear-algebra-learning/ pnpm build
           elif [ -n "$COURSE" ]; then

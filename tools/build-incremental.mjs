@@ -29,7 +29,12 @@ if (auto) {
   const { stdout } = await exec('git', ['diff', '--name-only', 'HEAD^', 'HEAD'], { cwd: root })
   const changed = stdout.trim().split('\n').filter(Boolean)
   const deckChanges = changed.filter((file) => file.startsWith('apps/slides/decks/') && file.endsWith('.md'))
-  const unsafe = changed.some((file) => file.startsWith('apps/slides/') && !file.startsWith('apps/slides/decks/')) || changed.some((file) => ['package.json', 'pnpm-lock.yaml'].includes(file) || file.startsWith('packages/visualizations/'))
+  // Files such as apps/slides/decks/style.css affect every deck. Treat them as a
+  // global Slidev invalidation rather than (incorrectly) as a portal-only change.
+  const sharedDeckChanges = changed.filter((file) => file.startsWith('apps/slides/decks/') && !file.endsWith('.md'))
+  const unsafe = sharedDeckChanges.length > 0 ||
+    changed.some((file) => file.startsWith('apps/slides/') && !file.startsWith('apps/slides/decks/')) ||
+    changed.some((file) => ['package.json', 'pnpm-lock.yaml'].includes(file) || file.startsWith('packages/visualizations/'))
   autoTopics = unsafe ? undefined : deckChanges.map((file) => path.basename(file, '.md'))
   autoPortalOnly = !unsafe && deckChanges.length === 0
 }
@@ -44,13 +49,13 @@ if (json) {
 }
 
 console.log(`incremental mode: ${autoPortalOnly ? 'portal-only' : 'selected'} (${selected.length} Topic(s))`)
-if (!portalOnly) for (const id of selected) console.log(`building slides: ${id}`)
+if (!autoPortalOnly) for (const id of selected) console.log(`building slides: ${id}`)
 
 const baseline = await Promise.all(all.map(async (id) => {
   try { await readFile(path.join(slides, id, 'index.html')); return true } catch { return false }
 }))
 const baselineComplete = baseline.every(Boolean)
-if (!baselineComplete && !portalOnly) {
+if (!baselineComplete && !autoPortalOnly) {
   console.log('incremental baseline unavailable -> full slide build')
   await exec('pnpm', ['build'], { cwd: root, env: { ...process.env, FULL_BUILD: '1' }, maxBuffer: 50 * 1024 * 1024 })
   process.exit(0)

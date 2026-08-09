@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 直接証明・対偶・背理法・場合分け
 ---

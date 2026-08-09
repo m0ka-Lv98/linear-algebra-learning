@@ -1,5 +1,6 @@
 ---
 theme: default
+routerMode: hash
 layout: cover
 title: 数学的帰納法・強い帰納法・整列原理
 ---
