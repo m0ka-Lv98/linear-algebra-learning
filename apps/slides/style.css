@@ -1,4 +1,0 @@
-/* Hide Slidev's top-right Slide Overview button. */
-a[title="Slides Overview"] {
-  display: none !important;
-}
