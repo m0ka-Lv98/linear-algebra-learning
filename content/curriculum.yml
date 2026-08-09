@@ -121,35 +121,35 @@ units:
   order: 40
   title: 高次元データと構造化行列
 - id: ml-foundations-supervised
-  course: 08
+  course: '08'
   order: 10
   title: 機械学習の基礎と教師あり学習
 - id: ml-models-kernels-ensembles
-  course: 08
+  course: '08'
   order: 20
   title: 非線形モデル・kernel・ensemble
 - id: ml-unsupervised-representation
-  course: 08
+  course: '08'
   order: 30
   title: 教師なし学習と表現
 - id: ml-evaluation-deployment
-  course: 08
+  course: '08'
   order: 40
   title: 評価・不確実性・運用
 - id: dl-neural-foundations
-  course: 09
+  course: '09'
   order: 10
   title: ニューラルネットワークの基礎
 - id: dl-architectures
-  course: 09
+  course: '09'
   order: 20
   title: 主要architecture
 - id: dl-generative-representation
-  course: 09
+  course: '09'
   order: 30
   title: 生成・自己教師あり・表現学習
 - id: dl-systems-evaluation
-  course: 09
+  course: '09'
   order: 40
   title: 学習system・評価・安全性
 - id: frontier-foundation-models
@@ -2398,7 +2398,7 @@ topics:
   - tensor、多重線形構造の定義と成立条件を説明できる
   - tensorと多重線形構造を小規模に計算・実装し検算できる
 - id: ml-problem-formulation-data-splits
-  course: 08
+  course: '08'
   unit: ml-foundations-supervised
   order: 10
   title: 機械学習問題の定式化とdata split
@@ -2413,7 +2413,7 @@ topics:
   - 機械学習問題の定式化、data、splitの定義と成立条件を説明できる
   - 機械学習問題の定式化とdata splitを小規模に計算・実装し検算できる
 - id: ml-linear-regression
-  course: 08
+  course: '08'
   unit: ml-foundations-supervised
   order: 20
   title: 線形回帰
@@ -2428,7 +2428,7 @@ topics:
   - 線形回帰の定義と成立条件を説明できる
   - 線形回帰を小規模に計算・実装し検算できる
 - id: ml-logistic-regression
-  course: 08
+  course: '08'
   unit: ml-foundations-supervised
   order: 30
   title: logistic回帰
@@ -2443,7 +2443,7 @@ topics:
   - logistic回帰の定義と成立条件を説明できる
   - logistic回帰を小規模に計算・実装し検算できる
 - id: ml-softmax-multiclass
-  course: 08
+  course: '08'
   unit: ml-foundations-supervised
   order: 40
   title: softmaxと多クラス分類
@@ -2458,7 +2458,7 @@ topics:
   - softmax、多クラス分類の定義と成立条件を説明できる
   - softmaxと多クラス分類を小規模に計算・実装し検算できる
 - id: ml-generative-classifiers-naive-bayes-lda
-  course: 08
+  course: '08'
   unit: ml-foundations-supervised
   order: 50
   title: 生成的分類器・Naive Bayes・LDA
@@ -2473,7 +2473,7 @@ topics:
   - 生成的分類器、Naive、Bayes、LDAの定義と成立条件を説明できる
   - 生成的分類器・Naive Bayes・LDAを小規模に計算・実装し検算できる
 - id: ml-knn-distance-methods
-  course: 08
+  course: '08'
   unit: ml-models-kernels-ensembles
   order: 10
   title: k近傍法と距離学習
@@ -2488,7 +2488,7 @@ topics:
   - k近傍法、距離学習の定義と成立条件を説明できる
   - k近傍法と距離学習を小規模に計算・実装し検算できる
 - id: ml-decision-trees
-  course: 08
+  course: '08'
   unit: ml-models-kernels-ensembles
   order: 20
   title: 決定木
@@ -2503,7 +2503,7 @@ topics:
   - 決定木の定義と成立条件を説明できる
   - 決定木を小規模に計算・実装し検算できる
 - id: ml-ensembles-bagging-random-forests
-  course: 08
+  course: '08'
   unit: ml-models-kernels-ensembles
   order: 30
   title: baggingとrandom forest
@@ -2518,7 +2518,7 @@ topics:
   - bagging、random、forestの定義と成立条件を説明できる
   - baggingとrandom forestを小規模に計算・実装し検算できる
 - id: ml-boosting-gradient-boosting
-  course: 08
+  course: '08'
   unit: ml-models-kernels-ensembles
   order: 40
   title: boostingとgradient boosting
@@ -2533,7 +2533,7 @@ topics:
   - boosting、gradientの定義と成立条件を説明できる
   - boostingとgradient boostingを小規模に計算・実装し検算できる
 - id: ml-svm-margin-kernels
-  course: 08
+  course: '08'
   unit: ml-models-kernels-ensembles
   order: 50
   title: SVM・margin・kernel
@@ -2548,7 +2548,7 @@ topics:
   - SVM、margin、kernelの定義と成立条件を説明できる
   - SVM・margin・kernelを小規模に計算・実装し検算できる
 - id: ml-kernel-methods-feature-maps
-  course: 08
+  course: '08'
   unit: ml-models-kernels-ensembles
   order: 60
   title: kernel methodと特徴写像
@@ -2563,7 +2563,7 @@ topics:
   - kernel、method、特徴写像の定義と成立条件を説明できる
   - kernel methodと特徴写像を小規模に計算・実装し検算できる
 - id: ml-clustering-kmeans-hierarchical
-  course: 08
+  course: '08'
   unit: ml-unsupervised-representation
   order: 10
   title: k-meansと階層clustering
@@ -2578,7 +2578,7 @@ topics:
   - k-means、階層clusteringの定義と成立条件を説明できる
   - k-meansと階層clusteringを小規模に計算・実装し検算できる
 - id: ml-gmm-em
-  course: 08
+  course: '08'
   unit: ml-unsupervised-representation
   order: 20
   title: Gaussian mixtureとEM
@@ -2593,7 +2593,7 @@ topics:
   - Gaussian、mixture、EMの定義と成立条件を説明できる
   - Gaussian mixtureとEMを小規模に計算・実装し検算できる
 - id: ml-dimensionality-reduction-pca-manifold
-  course: 08
+  course: '08'
   unit: ml-unsupervised-representation
   order: 30
   title: 次元削減・PCA・manifold
@@ -2608,7 +2608,7 @@ topics:
   - 次元削減、PCA、manifoldの定義と成立条件を説明できる
   - 次元削減・PCA・manifoldを小規模に計算・実装し検算できる
 - id: ml-anomaly-detection
-  course: 08
+  course: '08'
   unit: ml-unsupervised-representation
   order: 40
   title: 異常検知
@@ -2623,7 +2623,7 @@ topics:
   - 異常検知の定義と成立条件を説明できる
   - 異常検知を小規模に計算・実装し検算できる
 - id: ml-feature-engineering-selection
-  course: 08
+  course: '08'
   unit: ml-unsupervised-representation
   order: 50
   title: 特徴量設計と特徴選択
@@ -2638,7 +2638,7 @@ topics:
   - 特徴量設計、特徴選択の定義と成立条件を説明できる
   - 特徴量設計と特徴選択を小規模に計算・実装し検算できる
 - id: ml-bias-variance-regularization
-  course: 08
+  course: '08'
   unit: ml-evaluation-deployment
   order: 10
   title: bias–varianceと正則化
@@ -2653,7 +2653,7 @@ topics:
   - bias–variance、正則化の定義と成立条件を説明できる
   - bias–varianceと正則化を小規模に計算・実装し検算できる
 - id: ml-model-selection-cross-validation
-  course: 08
+  course: '08'
   unit: ml-evaluation-deployment
   order: 20
   title: model selectionとcross-validation
@@ -2668,7 +2668,7 @@ topics:
   - model、selection、cross-validationの定義と成立条件を説明できる
   - model selectionとcross-validationを小規模に計算・実装し検算できる
 - id: ml-metrics-calibration-imbalance
-  course: 08
+  course: '08'
   unit: ml-evaluation-deployment
   order: 30
   title: 評価指標・calibration・class imbalance
@@ -2683,7 +2683,7 @@ topics:
   - 評価指標、calibration、class、imbalanceの定義と成立条件を説明できる
   - 評価指標・calibration・class imbalanceを小規模に計算・実装し検算できる
 - id: ml-uncertainty-interpretability-monitoring
-  course: 08
+  course: '08'
   unit: ml-evaluation-deployment
   order: 40
   title: 不確実性・解釈・監視
@@ -2698,7 +2698,7 @@ topics:
   - 不確実性、解釈、監視の定義と成立条件を説明できる
   - 不確実性・解釈・監視を小規模に計算・実装し検算できる
 - id: dl-perceptron-mlp
-  course: 09
+  course: '09'
   unit: dl-neural-foundations
   order: 10
   title: perceptronと多層network
@@ -2713,7 +2713,7 @@ topics:
   - perceptron、多層networkの定義と成立条件を説明できる
   - perceptronと多層networkを小規模に計算・実装し検算できる
 - id: dl-backprop-computation-graphs
-  course: 09
+  course: '09'
   unit: dl-neural-foundations
   order: 20
   title: 誤差逆伝播と計算graph
@@ -2728,7 +2728,7 @@ topics:
   - 誤差逆伝播、計算graphの定義と成立条件を説明できる
   - 誤差逆伝播と計算graphを小規模に計算・実装し検算できる
 - id: dl-activation-loss-functions
-  course: 09
+  course: '09'
   unit: dl-neural-foundations
   order: 30
   title: activation関数とloss
@@ -2743,7 +2743,7 @@ topics:
   - activation関数、lossの定義と成立条件を説明できる
   - activation関数とlossを小規模に計算・実装し検算できる
 - id: dl-initialization-normalization
-  course: 09
+  course: '09'
   unit: dl-neural-foundations
   order: 40
   title: 初期化とnormalization
@@ -2758,7 +2758,7 @@ topics:
   - 初期化、normalizationの定義と成立条件を説明できる
   - 初期化とnormalizationを小規模に計算・実装し検算できる
 - id: dl-optimization-regularization
-  course: 09
+  course: '09'
   unit: dl-neural-foundations
   order: 50
   title: 深層学習の最適化と正則化
@@ -2773,7 +2773,7 @@ topics:
   - 深層学習の最適化、正則化の定義と成立条件を説明できる
   - 深層学習の最適化と正則化を小規模に計算・実装し検算できる
 - id: dl-cnn-convolution
-  course: 09
+  course: '09'
   unit: dl-architectures
   order: 10
   title: CNNと畳み込み
@@ -2788,7 +2788,7 @@ topics:
   - CNN、畳み込みの定義と成立条件を説明できる
   - CNNと畳み込みを小規模に計算・実装し検算できる
 - id: dl-rnn-sequence-models
-  course: 09
+  course: '09'
   unit: dl-architectures
   order: 20
   title: RNNと系列model
@@ -2803,7 +2803,7 @@ topics:
   - RNN、系列modelの定義と成立条件を説明できる
   - RNNと系列modelを小規模に計算・実装し検算できる
 - id: dl-attention-mechanism
-  course: 09
+  course: '09'
   unit: dl-architectures
   order: 30
   title: attention機構
@@ -2818,7 +2818,7 @@ topics:
   - attention機構の定義と成立条件を説明できる
   - attention機構を小規模に計算・実装し検算できる
 - id: dl-transformers
-  course: 09
+  course: '09'
   unit: dl-architectures
   order: 40
   title: Transformer
@@ -2833,7 +2833,7 @@ topics:
   - Transformerの定義と成立条件を説明できる
   - Transformerを小規模に計算・実装し検算できる
 - id: dl-normalization-residuals
-  course: 09
+  course: '09'
   unit: dl-architectures
   order: 50
   title: residual connectionとnormalization
@@ -2847,7 +2847,7 @@ topics:
   - residual、connection、normalizationの定義と成立条件を説明できる
   - residual connectionとnormalizationを小規模に計算・実装し検算できる
 - id: dl-autoencoders-vae
-  course: 09
+  course: '09'
   unit: dl-generative-representation
   order: 10
   title: autoencoderとVAE
@@ -2862,7 +2862,7 @@ topics:
   - autoencoder、VAEの定義と成立条件を説明できる
   - autoencoderとVAEを小規模に計算・実装し検算できる
 - id: dl-gans-adversarial-training
-  course: 09
+  course: '09'
   unit: dl-generative-representation
   order: 20
   title: GANとadversarial training
@@ -2877,7 +2877,7 @@ topics:
   - GAN、adversarial、trainingの定義と成立条件を説明できる
   - GANとadversarial trainingを小規模に計算・実装し検算できる
 - id: dl-diffusion-score-models
-  course: 09
+  course: '09'
   unit: dl-generative-representation
   order: 30
   title: diffusionとscore model
@@ -2892,7 +2892,7 @@ topics:
   - diffusion、score、modelの定義と成立条件を説明できる
   - diffusionとscore modelを小規模に計算・実装し検算できる
 - id: dl-self-supervised-contrastive
-  course: 09
+  course: '09'
   unit: dl-generative-representation
   order: 40
   title: 自己教師あり・contrastive学習
@@ -2907,7 +2907,7 @@ topics:
   - 自己教師あり、contrastive学習の定義と成立条件を説明できる
   - 自己教師あり・contrastive学習を小規模に計算・実装し検算できる
 - id: dl-embeddings-representation-learning
-  course: 09
+  course: '09'
   unit: dl-generative-representation
   order: 50
   title: embeddingと表現学習
@@ -2922,7 +2922,7 @@ topics:
   - embedding、表現学習の定義と成立条件を説明できる
   - embeddingと表現学習を小規模に計算・実装し検算できる
 - id: dl-graph-neural-networks
-  course: 09
+  course: '09'
   unit: dl-systems-evaluation
   order: 10
   title: graph neural network
@@ -2937,7 +2937,7 @@ topics:
   - graph、neural、networkの定義と成立条件を説明できる
   - graph neural networkを小規模に計算・実装し検算できる
 - id: dl-multimodal-models
-  course: 09
+  course: '09'
   unit: dl-systems-evaluation
   order: 20
   title: multimodal model
@@ -2952,7 +2952,7 @@ topics:
   - multimodal、modelの定義と成立条件を説明できる
   - multimodal modelを小規模に計算・実装し検算できる
 - id: dl-scaling-distributed-training
-  course: 09
+  course: '09'
   unit: dl-systems-evaluation
   order: 30
   title: scalingと分散学習
@@ -2967,7 +2967,7 @@ topics:
   - scaling、分散学習の定義と成立条件を説明できる
   - scalingと分散学習を小規模に計算・実装し検算できる
 - id: dl-efficient-training-inference
-  course: 09
+  course: '09'
   unit: dl-systems-evaluation
   order: 40
   title: 効率的学習と推論
@@ -2982,7 +2982,7 @@ topics:
   - 効率的学習、推論の定義と成立条件を説明できる
   - 効率的学習と推論を小規模に計算・実装し検算できる
 - id: dl-evaluation-robustness-safety
-  course: 09
+  course: '09'
   unit: dl-systems-evaluation
   order: 50
   title: 深層modelの評価・robustness・安全性

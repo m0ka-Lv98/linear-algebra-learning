@@ -72,8 +72,8 @@ async function runTests() {
   }
   const real = await runCurriculumCheck(root)
   assert.equal(real.courses.length, 11)
-  assert.equal(real.units.length, 17)
-  assert.equal(real.topics.length, 90)
+  assert.equal(real.units.length, 42)
+  assert.equal(real.topics.length, 210)
   assert.equal(real.topics.filter((topic) => topic.course === '00').length, 8)
   assert.equal(real.topics.filter((topic) => topic.course === '01').length, 13)
   assert.equal(real.topics.filter((topic) => topic.course === '02').length, 29)

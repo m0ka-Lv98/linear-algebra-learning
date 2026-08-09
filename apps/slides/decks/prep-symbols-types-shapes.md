@@ -1,112 +1,123 @@
 ---
 theme: default
-title: "数式・記号・型・次元"
-info: "スカラー、ベクトル、行列、テンソルと、数式・配列の型や次元を区別する"
-class: text-center
-drawings:
-  persist: false
+layout: cover
+title: 数式・記号・型・次元
 ---
 
 # 数式・記号・型・次元
 
-独自補助教材。MITの線形代数教材へ進む前に、量の型とshapeを確認します。
+Course 00｜学習準備
+
+---
+layout: center
+---
+
+## 今回の問い
+
+数式を読む前に、スカラー・ベクトル・行列・テンソルの型と次元を追跡する習慣を身につける。
 
 ---
 
-# なぜ型とshapeを最初に確認するのか
+## 到達目標
 
-演算の可否と結果の形を、計算前に予測できるからです。
-
----
-
-# スカラー
-
-1個の実数を (a in \mathbb{R}) と書きます。通常の小文字で表します。
+- スカラー、ベクトル、行列、テンソルを区別し、それぞれの型とshapeを説明できる
+- 式の各項について次元整合性を確認し、成立しない演算を発見できる
+- 数学上の次元とNumPy配列のndim/shapeを区別できる
 
 ---
 
-# ベクトル
+## なぜ型と次元から始めるのか
 
-\[
-\mathbf{x} =
-\begin{bmatrix}2\\-1\\3\end{bmatrix}
-\in \mathbb{R}^{3}
-\]
+数式の意味を理解する前に「何を入力し、何を出力する式か」を確認すると、多くの誤読を早い段階で防げる。
 
-本教材では数式上のベクトルを列ベクトルとして扱います。
+例えば $\mathbf{A}\mathbf{x}$ を見たとき、行列 $\mathbf{A}$ の列数とベクトル $\mathbf{x}$ の要素数が一致しなければ、値を計算する以前に式は定義できない。型と次元は単なる記法上の約束ではなく、数式を静的に検査するための手掛かりである。
 
 ---
 
-# 行列
+## スカラー・ベクトル・行列
 
-\[
-\mathbf{A} =
-\begin{bmatrix}1&2&0\\0&-1&3\end{bmatrix}
-\in \mathbb{R}^{2\times3}
-\]
+スカラーは一つの数であり、この教材では通常の小文字 $a,x,\alpha$ で表す。
 
-太字大文字。2行、3列です。
+ベクトルは複数の成分を順序付きで並べた対象で、太字小文字 $\mathbf{x}$ を用いる。$\mathbf{x}\in\mathbb{R}^n$ は実数成分を $n$ 個持つベクトルである。
 
 ---
 
-# 3階以上の配列
+## テンソルと「次元」という語の曖昧さ
 
-\[
-\mathcal{X}\in\mathbb{R}^{32\times128\times768}
-\]
+テンソルという語は分野によって厳密な意味が異なるが、このCourse 00では多次元配列を読む準備として、3軸以上を持つ配列状の量を便宜的にテンソルと呼ぶ。
 
-32はバッチ、128はトークンまたは系列位置、768は特徴量です。数学上の厳密なtensor理論は後続Topicで扱います。
+重要なのは「次元」という語を区別することである。$\mathbb{R}^5$ のベクトル空間の次元は5だが、NumPyでshapeが `(5,)` の配列の `ndim` は1である。
 
 ---
 
-# shape・axis・要素数・次元
+## 成分と添字
 
-`shape`は各axisの長さ、`ndim`はaxis数、要素数はshapeの積です。数学上の次元（基底の数）と配列のshapeは同じ意味ではありません。
+ベクトル $\mathbf{x}\in\mathbb{R}^n$ の第 $i$ 成分を $x_i$ と書く。
 
----
-
-# 行列積のshape
-
-\[
-\mathbf{A}\in\mathbb{R}^{m\times n},\quad
-\mathbf{x}\in\mathbb{R}^{n}
-\quad\Longrightarrow\quad
-\mathbf{A}\mathbf{x}\in\mathbb{R}^{m}
-\]
-
-内側の次元が一致し、外側の次元が残ります。
+行列 $\mathbf{A}\in\mathbb{R}^{m\times n}$ の第 $i$ 行第 $j$ 列を $a_{ij}$ と書く。添字の範囲を暗黙にしない習慣をつける。
 
 ---
 
-# データ行列
+## 加算・スカラー倍・要素ごとの演算
 
-\[
-\mathbf{X}\in\mathbb{R}^{N\times D}
-\]
+ベクトル同士の加算 $\mathbf{x}+\mathbf{y}$ は同じ空間に属するとき、すなわち両方が $\mathbb{R}^n$ に属するときに定義できる。
 
-この教材では行を観測、列を特徴量とします。ただし軸の意味は教材や論文ごとに確認します。
+行列加算もshapeが一致する必要がある。スカラー $c$ とベクトルの積 $c\mathbf{x}$ は各成分を $c$ 倍する。
 
 ---
 
-# バッチ・系列・特徴量
+## 転置とshape
 
-\[
-\mathcal{X}\in\mathbb{R}^{32\times128\times768}
-\]
+$\mathbf{A}\in\mathbb{R}^{m\times n}$ の転置 $\mathbf{A}^{\mathsf T}$ は $\mathbb{R}^{n\times m}$ に属する。
 
-32：バッチ、128：系列長、768：特徴量。変換を最後のaxisへ適用すると、出力の特徴量だけが変わります。
+転置は値を単に並べ替える操作ではなく、行と列の役割を入れ替える。ベクトルを列ベクトルとして扱う数式では $\mathbf{x}^{\mathsf T}\mathbf{y}$ が内積になる。
 
 ---
 
-# 理解確認
+## 内積の型を予測する
 
-1. \(\mathbf{A}\in\mathbb{R}^{4\times3}\)、\(\mathbf{x}\in\mathbb{R}^{3}\) の積は4要素。
-2. 100件・20特徴量のデータ行列は \(100\times20\)。
-3. `shape == (3,)` は行・列を明示しない1次元配列です。
+$\mathbf{x},\mathbf{y}\in\mathbb{R}^n$ に対し $\mathbf{x}^{\mathsf T}\mathbf{y}$ は一つの数、つまりスカラーになる。
+
+成分表示では $\sum_{i=1}^n x_i y_i$ である。計算前に「$1\times n$ と $n\times1$ を掛けるので $1\times1$」とshapeを追うと理解しやすい。
 
 ---
 
-# 教科書と演習へのリンク
+## 行列ベクトル積
 
-<p><a href="../../textbook/prep-symbols-types-shapes">教科書：数式・記号・型・次元</a></p>
-<p><a href="../../exercises/prep-symbols-types-shapes">演習：数式・記号・型・次元</a></p>
+$\mathbf{A}\in\mathbb{R}^{m\times n}$ と $\mathbf{x}\in\mathbb{R}^n$ なら、$\mathbf{A}\mathbf{x}\in\mathbb{R}^m$ である。
+
+内側の $n$ が一致し、外側の $m$ が出力に残る。第 $i$ 成分は $y_i=\sum_{j=1}^n a_{ij}x_j$ で、行列の第 $i$ 行と入力ベクトルの内積である。
+
+---
+
+## 基本式
+
+$\mathbf{x}\in\mathbb{R}^n$
+
+$\mathbf{A}\in\mathbb{R}^{m\times n}$
+
+$\mathbf{A}\mathbf{x}\in\mathbb{R}^{m}$
+
+---
+
+## よくある誤解
+
+- 数学の「次元」とNumPyの`ndim`は同じ意味である
+- 要素数が同じならshapeが違っても同じ対象である
+- NumPyで実行できる演算は必ず数学的にも意図通りである
+
+---
+
+## 理解確認
+
+1. スカラー、ベクトル、行列、テンソルを区別し、それぞれの型とshapeを説明できる
+2. 代表式の記号と条件を説明できるか。
+3. 誤解を反例で否定できるか。
+
+---
+
+## 演習へ
+
+[教科書](../../textbook/prep-symbols-types-shapes)
+
+[10問の演習](../../exercises/prep-symbols-types-shapes)

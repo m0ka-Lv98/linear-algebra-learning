@@ -238,6 +238,7 @@ export default defineConfig({
   description: '基礎数学から数値計算、最適化、機械学習、深層学習、Frontierへ',
   base: process.env.BASE_PATH ?? '/',
   cleanUrls: true,
+  markdown: { math: true },
   ignoreDeadLinks: [/^\/(slides|textbook|exercises)\//],
   themeConfig: {
     nav: [{ text: 'ホーム', link: '/' }, { text: 'コース', link: '/courses/' }],

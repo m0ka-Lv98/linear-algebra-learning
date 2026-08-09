@@ -1,52 +1,46 @@
 # 集合・関数・写像
 
-集合、関数、定義域、終域、値域、合成、逆関数の基本を学ぶ。
+## Course・Unit内での位置付け
 
-## このTopicの位置付け
+Course 00「学習準備」の第2 Topic。後続Courseの数式・コードを安全に読むための基礎を整える。
 
-`origin: original` に相当する独自教材です。前Topic「数式・記号・型・次元」で確認した記号と型を使い、MITその他の教材の翻訳・転載をせず、線形代数と機械学習へ進むための数学的な土台を補います。
+## 今回解く問い
+
+集合、関数、像・逆像、合成、単射・全射・全単射を整理し、数学モデルを写像として読む。
 
 ## 概要
 
-集合は対象の集まり、関数は入力を出力へ対応させる規則です。定義域・終域・値域を区別すると、合成できる関数や逆関数が存在する条件を正しく判定できます。
+このTopicは、用語を暗記するだけでなく、定義→小さな例→誤りの診断→後続Courseへの接続という順で学ぶ。数式とPython/NumPyを対応付ける場合も、数学上の対象とコード上の表現を区別する。
 
 ## 学習目標
 
-1. 集合、要素、部分集合を説明できる
-2. 和集合、共通部分、差集合、Cartesian積を扱える
-3. 定義域、終域、値域、像、逆像を区別できる
-4. 関数の合成、単射、全射、全単射を判定できる
-5. 逆関数の存在条件を説明できる
-6. 数学上の関数とPython関数の違いを説明できる
-7. 機械学習モデルを関数として表現できる
+- 集合の要素・部分集合・基本演算を区別できる
+- 関数の定義域・終域・値域を区別できる
+- 像と逆像、関数合成、逆関数を正しく扱える
+- 単射・全射・全単射と逆関数の存在条件を説明できる
 
-## 前提知識
-
-[数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)。
-
-## 想定学習時間
-
-スライド15分 / 教科書50分 / 演習45分
-
-## 学習順序
-
-1. スライドで集合と関数の全体像をつかむ
-2. 教科書で定義域・終域・値域と合成を確認する
-3. 演習で集合演算と関数の判定を行う
-
-## 教材へのリンク
-
-- [概要スライドを見る](/slides/prep-sets-functions-mappings/)
-- [教科書を読む](/textbook/prep-sets-functions-mappings)
-- [演習問題を解く](/exercises/prep-sets-functions-mappings)
-
-## 前のTopic
+## 前提Topic
 
 [数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)
 
-## 次の推奨Topic
+## 想定学習時間
 
-- 総和・積・添字（未実装）
-- 指数と対数（未実装）
+スライド20分 / 教科書70分 / 演習60分
 
-[次のTopic：総和・積・添字](/courses/foundation/prep-sums-products-indices)
+## 学習順序
+
+1. スライドで概念と全体像を確認する。
+2. 教科書で定義・例・注意点を読む。
+3. 演習を自力で解き、ヒントは必要な段階だけ開く。
+4. 完全解答と自分の説明を比較し、誤解を修正する。
+
+## 教材
+
+- [スライド](/slides/prep-sets-functions-mappings/)
+- [教科書](/textbook/prep-sets-functions-mappings)
+- [演習](/exercises/prep-sets-functions-mappings)
+
+## 前後Topic
+
+- 前：[数式・記号・型・次元](/courses/foundation/prep-symbols-types-shapes)
+- 次：[総和・積・添字](/courses/foundation/prep-sums-products-indices)
