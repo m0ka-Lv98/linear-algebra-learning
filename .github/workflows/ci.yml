@@ -22,6 +22,7 @@ jobs:
       - name: Generate and verify Course 01-10 slide sources
         run: |
           node tools/generate-course01-10-slide-decks.mjs
+          node tools/normalize-course01-10-slide-decks.mjs
           node tools/apply-course01-10-slidev-fixes.mjs
           node tools/verify-course01-10-slidev-fixes.mjs
           node tools/verify-course01-10-pages-workflow.mjs

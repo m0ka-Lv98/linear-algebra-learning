@@ -117,7 +117,7 @@ confidence thresholdを動かしcoverageとerrorのtrade-offを見る。
 
 ---
 
-## まとめと演習
+## 理解確認
 
 - 不確実性・calibration・abstentionを図→式→小例の順で説明できるか
 - 条件を1つ外した反例を作れるか

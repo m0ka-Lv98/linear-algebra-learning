@@ -117,7 +117,7 @@ tool useとfunction callingは、後続の数値計算・データ解析・機�
 
 ---
 
-## まとめと演習
+## 理解確認
 
 - tool useとfunction callingを図→式→小例の順で説明できるか
 - 条件を1つ外した反例を作れるか

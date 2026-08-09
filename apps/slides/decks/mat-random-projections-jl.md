@@ -116,7 +116,7 @@ random projectionとJohnson–Lindenstraussは、後続の数値計算・デー�
 
 ---
 
-## まとめと演習
+## 理解確認
 
 - random projectionとJohnson–Lindenstraussを図→式→小例の順で説明できるか
 - 条件を1つ外した反例を作れるか

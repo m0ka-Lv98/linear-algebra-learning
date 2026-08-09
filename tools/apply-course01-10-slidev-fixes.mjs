@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { parse } from 'yaml'
+import { normalizeCourse0110SlideDecks } from './normalize-course01-10-slide-decks.mjs'
 
 const root = process.cwd()
 const curriculumPath = path.join(root, 'content/curriculum.yml')
@@ -16,6 +17,9 @@ const targetIds = [...new Set(targetTopics.map((item) => item.implementation_top
 if (targetIds.length !== 202) {
   throw new Error(`Expected 202 Course 01-10 implementation topics, found ${targetIds.length}. Refusing to apply a partial migration.`)
 }
+
+await normalizeCourse0110SlideDecks({ root, ids: targetIds })
+
 
 let changedDecks = 0
 let normalizedMathFiles = 0

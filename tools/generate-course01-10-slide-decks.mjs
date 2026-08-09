@@ -4,6 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
 import { parse } from 'yaml'
+import { loadCourse0210RefinedProfiles, renderCourse0210RefinedDeck } from './course02-10-refine/materialize-decks.mjs'
 
 const exec = promisify(execFile)
 
@@ -54,6 +55,8 @@ export async function generateCourse0110SlideDecks({
     throw new Error(`Expected 202 Course 01-10 implementation topics, found ${targetIds.length}`)
   }
 
+  const refinedCourse0210Profiles = await loadCourse0210RefinedProfiles(root)
+
   const changed = []
   const unchanged = []
   const preservedCurated = []
@@ -61,6 +64,22 @@ export async function generateCourse0110SlideDecks({
 
   for (const id of targetIds) {
     const topic = byImplementationId.get(id)
+    const refinedProfile = refinedCourse0210Profiles.get(id)
+    if (refinedProfile) {
+      const deckPath = path.join(root, 'apps/slides/decks', `${id}.md`)
+      let current = ''
+      try { current = await readFile(deckPath, 'utf8') } catch {}
+      const generated = renderCourse0210RefinedDeck(refinedProfile)
+
+      preservedCurated.push(id)
+      if (current === generated) {
+        unchanged.push(id)
+        continue
+      }
+      changed.push(id)
+      if (!check) await writeFile(deckPath, generated)
+      continue
+    }
     const textbookPath = path.join(root, 'apps/portal/textbook', `${id}.md`)
     const deckPath = path.join(root, 'apps/slides/decks', `${id}.md`)
     const textbook = await readFile(textbookPath, 'utf8')
@@ -73,11 +92,15 @@ export async function generateCourse0110SlideDecks({
     // trusting the current worktree copy. This makes the migration safely rerunnable
     // before commit and prevents bespoke decks from being replaced by a generic deck.
     const headSource = await readHeadDeck(root, id)
-    const baselineRaw = headSource ?? current
+    const currentIsCourse0210Refined = /generatedBy:\s*course02-10-refined-v1/.test(current)
+    const baselineRaw = currentIsCourse0210Refined ? current : (headSource ?? current)
     const baseline = decodeSerializedDeckIfNeeded(baselineRaw)
 
     let generated
-    if (baseline && isCuratedDeck(baseline)) {
+    if (/generatedBy:\s*course02-10-refined-v1/.test(baseline)) {
+      generated = normalizeCourseVisualAssetPaths(topic, baseline)
+      preservedCurated.push(id)
+    } else if (baseline && isCuratedDeck(baseline)) {
       generated = upgradeCuratedDeck(topic, baseline)
       preservedCurated.push(id)
     } else {
@@ -158,7 +181,7 @@ export function renderDeck(topic, textbook) {
 
   const rendered = `${slides.join('\n')}\n`
   if (String(topic.course).padStart(2, '0') !== '01') return rendered
-  return rendered
+  return normalizeCourseVisualAssetPaths(topic, rendered)
     .replaceAll('/visuals/course-01/', './assets/course-01/')
     .replace(
       /!\[([^\]]+)\]\(\.\/assets\/course-01\/limits_approach\.gif\)/,
@@ -166,11 +189,15 @@ export function renderDeck(topic, textbook) {
     )
 }
 
+function normalizeCourseVisualAssetPaths(topic, source) {
+  const course = String(topic.course).padStart(2, '0')
+  if (!/^(?:0[1-9]|10)$/.test(course)) return source
+  return source.replaceAll(`/visuals/course-${course}/`, `./assets/course-${course}/`)
+}
+
 export function upgradeCuratedDeck(topic, source) {
   let out = ensureFrontmatterMetadata(source, 'course01-10-curated-upgrade-v2')
-  if (String(topic.course).padStart(2, '0') === '01') {
-    out = out.replaceAll('/visuals/course-01/', './assets/course-01/')
-  }
+  out = normalizeCourseVisualAssetPaths(topic, out)
   const title = String(topic.title ?? topic.id)
   const outcomes = Array.isArray(topic.outcomes) ? topic.outcomes : []
 
@@ -237,6 +264,7 @@ function isCuratedDeck(source) {
   if (/generatedBy:\s*course01-10-slide-decks-v1/.test(source)) return false
   if (/generatedBy:\s*course01-10-slide-decks-v2/.test(source)) return false
   if (/generatedBy:\s*course01-10-curated-upgrade-v2/.test(source)) return true
+  if (/generatedBy:\s*course02-10-refined-v1/.test(source)) return true
 
   // A deck with multiple bespoke headings/visual markup should be preserved even
   // when it is concise. Character count is deliberately not used as a quality proxy.

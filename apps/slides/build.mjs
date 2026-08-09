@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { parse } from 'yaml'
 import { generateCourse0110SlideDecks } from '../../tools/generate-course01-10-slide-decks.mjs'
 import { buildSlideDecks } from '../../tools/slidev-build-pool.mjs'
+import { normalizeCourse0110SlideDecks } from '../../tools/normalize-course01-10-slide-decks.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const topicData = parse(await readFile(path.join(root, 'content/topics.yml'), 'utf8'))
@@ -28,6 +29,7 @@ const generatedIds = decks.filter((id) => !course00Ids.has(id))
 if (generatedIds.length) {
   const generated = await generateCourse0110SlideDecks({ root, ids: generatedIds })
   console.log(`materialized Course 01-10 slide sources: ${generated.total} (${generated.changed.length} changed)`)
+  await normalizeCourse0110SlideDecks({ root, ids: generatedIds })
 }
 
 const slides = path.join(root, 'dist/slides')

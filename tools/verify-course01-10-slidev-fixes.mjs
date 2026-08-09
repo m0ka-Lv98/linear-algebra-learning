@@ -34,7 +34,7 @@ for (const id of targetIds) {
     if (!/^layout\s*:\s*cover\s*$/m.test(frontmatter)) errors.push(`${id}: first slide is not cover layout`)
     const marker = frontmatter.match(/^generatedBy\s*:\s*(\S+)\s*$/m)?.[1]
     if (marker === 'course01-10-slide-decks-v2') generated += 1
-    else if (marker === 'course01-10-curated-upgrade-v2') curated += 1
+    else if (marker === 'course01-10-curated-upgrade-v2' || marker === 'course02-10-refined-v1') curated += 1
     else errors.push(`${id}: v2 generatedBy marker missing`)
   }
 
@@ -46,6 +46,10 @@ for (const id of targetIds) {
   }
   if (!hasTextbookAndExerciseLinks(source, id)) {
     errors.push(`${id}: textbook/exercise links missing`)
+  }
+
+  if (/\/visuals\/course-(?:0[1-9]|10)\//.test(source)) {
+    errors.push(`${id}: portal /visuals/course-XX path leaked into Slidev source`)
   }
 
   // Do not use a raw character threshold as a quality proxy: Japanese text is

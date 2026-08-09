@@ -116,7 +116,7 @@ reliability diagramと理想対角線を描く。
 
 ---
 
-## まとめと演習
+## 理解確認
 
 - 評価指標・calibration・class imbalanceを図→式→小例の順で説明できるか
 - 条件を1つ外した反例を作れるか

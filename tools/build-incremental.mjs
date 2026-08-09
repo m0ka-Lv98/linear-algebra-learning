@@ -6,6 +6,7 @@ import { promisify } from 'node:util'
 import { loadTopicSelection, allImplementationTopics } from './incremental-selector.mjs'
 import { generateCourse0110SlideDecks } from './generate-course01-10-slide-decks.mjs'
 import { buildSlideDecks } from './slidev-build-pool.mjs'
+import { normalizeCourse0110SlideDecks } from './normalize-course01-10-slide-decks.mjs'
 
 const root = path.resolve(fileURLToPath(new URL('..', import.meta.url)))
 const exec = promisify(execFile)
@@ -94,6 +95,7 @@ const generatedSelected = selected.filter((id) => !course00.has(id))
 if (generatedSelected.length) {
   const generated = await generateCourse0110SlideDecks({ root, ids: generatedSelected })
   console.log(`materialized generated slide sources: ${generated.total} (${generated.changed.length} changed)`)
+  await normalizeCourse0110SlideDecks({ root, ids: generatedSelected })
 }
 
 const baseline = await Promise.all(all.map(async (id) => {

@@ -5,6 +5,7 @@ import { promisify } from 'node:util'
 import { parse } from 'yaml'
 import { generateCourse0110SlideDecks } from './generate-course01-10-slide-decks.mjs'
 import { buildSlideDecks } from './slidev-build-pool.mjs'
+import { normalizeCourse0110SlideDecks } from './normalize-course01-10-slide-decks.mjs'
 
 const exec = promisify(execFile)
 const root = process.cwd()
@@ -43,6 +44,7 @@ if (missingCourse00.length) {
 
 const generated = await generateCourse0110SlideDecks({ root, ids: targetIds })
 console.log(`materialized Course 01-10 slide sources: ${generated.total} (${generated.changed.length} changed)`)
+await normalizeCourse0110SlideDecks({ root, ids: targetIds })
 console.log(`build scope: Course 01-10 only (${targetIds.length} decks)`)
 console.log(`preserving Course 00 baseline (${course00Ids.length} decks); Course 00 will not be rebuilt`)
 
