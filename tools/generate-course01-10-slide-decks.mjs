@@ -156,11 +156,17 @@ export function renderDeck(topic, textbook) {
   slides.push(`---\n\n## 理解確認\n\n${renderChecks(outcomes, title)}\n`)
   slides.push(`---\n\n## 演習へ\n\n[教科書](../../textbook/${topic.id})\n\n[10問の演習](../../exercises/${topic.id})\n`)
 
-  return `${slides.join('\n')}\n`
+  const rendered = `${slides.join('\n')}\n`
+  return String(topic.course).padStart(2, '0') === '01'
+    ? rendered.replaceAll('/visuals/course-01/', './assets/course-01/')
+    : rendered
 }
 
 export function upgradeCuratedDeck(topic, source) {
   let out = ensureFrontmatterMetadata(source, 'course01-10-curated-upgrade-v2')
+  if (String(topic.course).padStart(2, '0') === '01') {
+    out = out.replaceAll('/visuals/course-01/', './assets/course-01/')
+  }
   const title = String(topic.title ?? topic.id)
   const outcomes = Array.isArray(topic.outcomes) ? topic.outcomes : []
 
