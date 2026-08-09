@@ -429,7 +429,7 @@ f"""---
 f"""---
 # 6. 動きで確認
 
-{f'![]({img2})' if img2 else '（このTopicでは静止図を中心に理解する）'}
+{f'<img src="{img2}" alt="animation" style="max-height: 310px; width: auto; margin: 0.4rem auto 0.6rem;" />' if img2 else '（このTopicでは静止図を中心に理解する）'}
 
 - 極限・接線・累積・反復は、動かして見ると理解しやすい。""",
 f"""---
@@ -478,8 +478,10 @@ def textbook_md(t):
     parts.append('### 図を見るポイント\n')
     parts.append('- 図の横軸・縦軸が何を表しているかを確認する。\n- 変化している量と固定している量を区別する。\n- 式の各記号が図のどこに対応するかを探す。\n')
     if len(imgs)>1:
-        parts.append(f"![図解2](/visuals/course-01/{imgs[1]})\n")
-        parts.append('このアニメーションでは、概念の「極限・累積・方向・反復」の動きが視覚化されている。\n')
+        parts.append('## アニメーションで確認\n')
+        parts.append(f"![アニメーション](/visuals/course-01/{imgs[1]})\n")
+        parts.append('### アニメーションを見るポイント\n')
+        parts.append('- 静止図から何が変化しているかを確認する。\n- 動いている量を、中心式の記号と対応づける。\n')
     parts.append('## 数学的な定義・中心式\n')
     parts.append(t['formula']+'\n')
     parts.append('この式は単なる計算規則ではなく、**何をどう近似しているか** を表している。\n')
