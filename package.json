@@ -13,6 +13,7 @@
     "test": "node tools/check-content.mjs --test && node tools/check-curriculum.mjs --test",
     "curriculum:check": "node tools/check-curriculum.mjs",
     "build": "node tools/build.mjs",
+    "build:incremental": "node tools/build-incremental.mjs",
     "new:topic": "node tools/new-topic.mjs",
     "build:portal": "pnpm --filter @linear-algebra/portal build",
     "build:slides": "pnpm --filter @linear-algebra/slides build"
