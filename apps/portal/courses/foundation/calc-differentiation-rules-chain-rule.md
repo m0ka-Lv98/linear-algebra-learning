@@ -1,43 +1,37 @@
 # 微分法則と一変数の連鎖律
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 03/13
 
-Course 01「微積分」第3 Topic。Unit：一変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+複雑な式を、構造を保ったまま正確に微分するにはどうすればよいか。
 
-定数・べき・定数倍・和差・積・商・指数・対数の微分と、合成関数の連鎖律を扱う。d x^r/dx=rx^(r−1)、(fg)'、商の法則、d f(g(x))/dx=f'(g(x))g'(x)、e^xとlog xを定義する。
+## 到達目標
 
-## 概要
+- 和・積・商の微分法則を使える
+- 合成関数を外側と内側に分けて連鎖律を適用できる
+- 指数・対数・三角関数を含む式を微分できる
+- どの規則を使ったかを式の構造から説明できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-differentiation-rules-chain-rule)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-differentiation-rules-chain-rule/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-differentiation-rules-chain-rule)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-derivatives-rates](/courses/foundation/calc-derivatives-rates)
+- `calc-derivatives-rates`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
-
-Course 01の3/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-differentiation-rules-chain-rule/)
-- [詳細教科書](/textbook/calc-differentiation-rules-chain-rule)
-- [演習](/exercises/calc-differentiation-rules-chain-rule)
-
-## 前後Topic
+## ナビゲーション
 
 - [前のTopic](/courses/foundation/calc-derivatives-rates)
-- 次のTopic：Course 01の次項目
-
+- [次のTopic](/courses/foundation/calc-one-variable-optimization)

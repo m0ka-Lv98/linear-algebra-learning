@@ -1,43 +1,37 @@
 # 一変数の最適化
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 04/13
 
-Course 01「微積分」第4 Topic。Unit：一変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+「傾きが0」を使って、最大・最小をどこまで確実に判定できるか。
 
-局所最小・最大、大域最小、臨界点、停留点、端点を調べる。f'(x*)=0は必要条件に過ぎず、f''(x*)>0の二階判定、符号判定、凸関数の予告を扱う。例は(x−3)^2+1。
+## 到達目標
 
-## 概要
+- 臨界点を求められる
+- 一階・二階微分判定を使い分けられる
+- 閉区間で絶対最大・絶対最小を判定できる
+- 文章題を目的関数と制約へ変換できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-one-variable-optimization)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-one-variable-optimization/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-one-variable-optimization)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-differentiation-rules-chain-rule](/courses/foundation/calc-differentiation-rules-chain-rule)
+- `calc-differentiation-rules-chain-rule`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
-
-Course 01の4/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-one-variable-optimization/)
-- [詳細教科書](/textbook/calc-one-variable-optimization)
-- [演習](/exercises/calc-one-variable-optimization)
-
-## 前後Topic
+## ナビゲーション
 
 - [前のTopic](/courses/foundation/calc-differentiation-rules-chain-rule)
-- 次のTopic：Course 01の次項目
-
+- [次のTopic](/courses/foundation/calc-integrals-fundamental-theorem)

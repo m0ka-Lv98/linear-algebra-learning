@@ -1,43 +1,38 @@
 # 多変数関数と偏微分
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 07/13
 
-Course 01「微積分」第7 Topic。Unit：多変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+入力が複数あるとき、「1つだけ動かした変化率」をどう定義するのか。
 
-f:R^n→Rとベクトル値関数、等高線・曲面、他変数固定の偏微分、混合偏微分、全微分可能性の予告を扱う。f(x1,x2)=x1²+3x1x2+x2²を計算する。
+## 到達目標
 
-## 概要
+- 多変数関数の入力・出力の次元を明示できる
+- 偏微分を「他の変数を固定した微分」と説明できる
+- 一階・二階偏導関数を計算できる
+- 等高線・曲面と偏微分を対応づけられる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-multivariable-functions-partial-derivatives)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-multivariable-functions-partial-derivatives/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-multivariable-functions-partial-derivatives)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-differentiation-rules-chain-rule](/courses/foundation/calc-differentiation-rules-chain-rule)
+- `calc-differentiation-rules-chain-rule`
+- `prep-symbols-types-shapes`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
+## ナビゲーション
 
-Course 01の7/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-multivariable-functions-partial-derivatives/)
-- [詳細教科書](/textbook/calc-multivariable-functions-partial-derivatives)
-- [演習](/exercises/calc-multivariable-functions-partial-derivatives)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/calc-differentiation-rules-chain-rule)
-- 次のTopic：Course 01の次項目
-
+- [前のTopic](/courses/foundation/calc-taylor-approximation)
+- [次のTopic](/courses/foundation/calc-gradient-directional-derivative)

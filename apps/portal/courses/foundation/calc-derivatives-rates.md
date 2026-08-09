@@ -1,43 +1,37 @@
 # 微分と変化率
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 02/13
 
-Course 01「微積分」第2 Topic。Unit：一変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+平均の変化率から、ある瞬間の変化率をどう取り出すのか。
 
-平均変化率から瞬間変化率、接線、導関数へ進む。差分商、微分可能なら連続、連続でも微分不可能な例、forward differenceとcentral differenceの予告を扱う。f(x)=x²を定義から微分して2xを得る。
+## 到達目標
 
-## 概要
+- 差商から導関数の定義を書ける
+- 導関数を接線の傾き・瞬間変化率として説明できる
+- 基本関数の微分を計算できる
+- 微分可能性と連続性の関係を説明できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-derivatives-rates)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-derivatives-rates/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-derivatives-rates)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-functions-limits-continuity](/courses/foundation/calc-functions-limits-continuity)
+- `calc-functions-limits-continuity`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
-
-Course 01の2/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-derivatives-rates/)
-- [詳細教科書](/textbook/calc-derivatives-rates)
-- [演習](/exercises/calc-derivatives-rates)
-
-## 前後Topic
+## ナビゲーション
 
 - [前のTopic](/courses/foundation/calc-functions-limits-continuity)
-- 次のTopic：Course 01の次項目
-
+- [次のTopic](/courses/foundation/calc-differentiation-rules-chain-rule)

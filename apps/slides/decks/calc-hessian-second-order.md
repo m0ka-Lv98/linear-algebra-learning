@@ -1,146 +1,140 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-slide-decks-v2
 layout: cover
 title: "Hessianと二次近似"
 ---
 
 # Hessianと二次近似
 
-Course 01｜微積分
+Course 01｜微積分｜Topic 10/13
 
 ---
 layout: center
 ---
 
-## 今回の問い
+## 今日の中心問い
 
-「Hessianと二次近似」は何を表し、どの条件で使え、結果をどう検算するのか？
+多変数関数の「曲がり方」を行列でどう表し、停留点をどう分類するか。
 
 ---
 
 ## 到達目標
 
-- Hessian、二次近似の定義と成立条件を説明できる
-- Hessianと二次近似を小規模に計算・実装し検算できる
+- Hessianを計算できる
+- 二次形式 $\mathbf h^TH\mathbf h$ の意味を説明できる
+- Hessianの正定値性で停留点を分類できる
+- 多変数Taylor二次近似を書ける
 
 ---
 
-## まず全体像をつかむ
+## 試験での基本姿勢
 
-Hessianと二次近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
-
----
-
-## このTopicで考える問い
-
-曲率まで使うと、局所形状をどうより正確に捉えられるか。
+1. 何を求める問題か確認
+2. 定義・成立条件を確認
+3. 計算
+4. 判定
+5. 検算して結論
 
 ---
 
-## 学習目標
+## 記号
 
-- Hessian行列の意味を説明する
-- 二次近似と極値判定を結びつける
-- 正定値・不定値と形状の関係を知る
-
----
-
-## まず直感
-
-- Hessianは二階偏微分を集めた行列。
-- 二次近似は曲率を含むので一次近似より豊か。
-- 正定値・不定値が局所形状を区別する。
-
-数学の定義に入る前に、**どの量を固定し、どの量を動かしているか** を言葉で確認すると理解しやすくなる。
+| 記号 | 意味 |
+|---|---|
+| $H_f(\mathbf x)$ | 二階偏導関数を並べたHessian行列 |
+| $\mathbf h$ | 基準点からの小さな変位ベクトル |
+| $\lambda_i$ | Hessianの固有値 |
+| $\mathbf h^TH\mathbf h$ | 方向 $\mathbf h$ に沿う二次の曲率寄与 |
 
 ---
 
-## 図解
+## 中心概念 1
 
-![図解1](./assets/course-01/hessian_contours.png)
+1. Hessian
+$f:\mathbb R^n\to\mathbb R$ に対して
+$$H_f(\mathbf x)=\left[\frac{\partial^2f}{\partial x_i\partial x_j}\right]_{n\times n}.$$
+十分滑らかなら混合偏微分が等しく、Hessianは対称行列になる。
 
----
 
-## 図を見るポイント
-
-- 図の横軸・縦軸が何を表しているかを確認する。
-- 変化している量と固定している量を区別する。
-- 式の各記号が図のどこに対応するかを探す。
-
-![図解2](./assets/course-01/hessian_heatmap.png)
-
-このアニメーションでは、概念の「極限・累積・方向・反復」の動きが視覚化されている。
 
 ---
 
-## 数学的な定義・中心式
+## 中心概念 2
 
-$f(\mathbf x+\Delta)\approx f(\mathbf x)+\nabla f(\mathbf x)^\top\Delta+\tfrac12\Delta^\top H_f(\mathbf x)\Delta$
+### 2. 二次Taylor近似
+基準点 $\mathbf x$ から小さく $\mathbf h$ 動くと
+$$f(\mathbf x+\mathbf h)\approx f(\mathbf x)+\nabla f(\mathbf x)^T\mathbf h+\frac12\mathbf h^TH_f(\mathbf x)\mathbf h.$$
+勾配が傾き、Hessianが曲率を担う。
 
-この式は単なる計算規則ではなく、**何をどう近似しているか** を表している。
 
----
-
-## 小さな例
-
-$f(x,y)=x^2-y^2$ の Hessian は $\begin{bmatrix}2&0\\0&-2\end{bmatrix}$ で鞍点。
-
-例を読むときは、1. 入力は何か 2. 出力は何か 3. どの量の変化を見ているか、を順に確認する。
 
 ---
 
-## よくある誤解
+## 図で確認
 
-- Hessianがあるだけで極小と決めつけない。
-- 二階偏微分の対称性には条件がある。
-
----
-
-## 機械学習・数値計算との接続
-
-Newton法、二次計画、曲率補正つき最適化に直結。
-
-Course 01の内容は、後の線形代数・最適化・機械学習で何度も再登場する。
+![Hessianと二次近似の図解](./assets/course-01/hessian_contours.png)
 
 ---
 
-## 最後に確認したいこと
+## 標準手順
 
-- 中心式を日本語で説明できるか。
-- 図のどの部分が式の各項に対応するか。
-- どの場面でこの概念が必要になるか。
-
----
-
-## 次へ
-
-- [スライド](/slides/calc-hessian-second-order/)
-- [演習](/exercises/calc-hessian-second-order)
+- 一階偏導関数から停留点を求める
+- 二階偏導関数を計算してHessianを作る
+- 評価点を代入する
+- 固有値または2変数なら行列式判定を使う
+- ゼロ固有値や $D=0$ なら二階判定だけで断定しない
 
 ---
 
-## 前提との接続
+## 典型例
 
-このTopicは次の内容を土台にする。式や用語が曖昧なら、先に対応するTopicへ戻る。
-
-- `calc-total-derivative-jacobian`
-- `calc-taylor-approximation`
+**例1：局所最小。** $f=x^2+2y^2$ では $H=\mathrm{diag}(2,4)$。固有値は2,4で正なので原点は厳密な局所最小。
 
 ---
 
-## 理解確認
+## よくある誤り
 
-1. Hessian、二次近似の定義と成立条件を説明できる
-2. Hessianと二次近似を小規模に計算・実装し検算できる
-3. 代表式・計算手順・成立条件を小さな例で検算できるか。
+- HessianをJacobianと同じ一階微分だと思う
+- 固有値に0があるのに最小と断定する
+- 鞍点を「極値なし」だけで終え、方向による符号変化を説明しない
+- 二次形式の $1/2$ を落とす
+
+---
+
+## 満点答案のポイント
+
+- 停留点→Hessian→符号判定という順序を守る
+- 2変数では $D$ と $f_{xx}$ の条件をセットで覚える
+- $D=0$ は判定不能であって極値なしではない
+
+---
+
+## 機械学習との接続
+
+HessianはNewton法や曲率解析で使われる。大規模MLでは完全なHessianは高価なため、Hessian-vector productや近似曲率が使われる。
+
+---
+
+## 30秒確認 1
+
+中心式または中心定義を、記号の意味まで含めて口頭で説明できるか。
+
+---
+
+## 30秒確認 2
+
+「この条件がないと結論できない」という成立条件を1つ挙げられるか。
+
+---
+
+## 30秒確認 3
+
+典型的な誤答を1つ挙げ、どこが誤りか説明できるか。
 
 ---
 
 ## 演習へ
 
-[教科書](../../textbook/calc-hessian-second-order)
-
-[10問の演習](../../exercises/calc-hessian-second-order)
-
+- [教科書](../../textbook/calc-hessian-second-order)
+- [10問の演習](../../exercises/calc-hessian-second-order)

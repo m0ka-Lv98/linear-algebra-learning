@@ -1,0 +1,416 @@
+{
+  "course": "Course 01 Calculus",
+  "revision": "fullmarks-detailed-2026-08-09",
+  "topics": 13,
+  "markdown_topic_files": 52,
+  "exercise_count": 130,
+  "visual_assets_portal": 14,
+  "visual_assets_slidev": 14,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1940,
+      "sha256": "d0eaa6c119dcd0a196418cca3a575014d267eea14ec041fcfe82d4dd6fd13892"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-derivatives-rates.md",
+      "bytes": 1242,
+      "sha256": "611e9c5110cafa65c36f63df1bdff2a38e2402875ba46aefa3aeb1a24fd0118f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-differentiation-rules-chain-rule.md",
+      "bytes": 1323,
+      "sha256": "c55e9352ed0d80efb5d6befece280bc0064b558a399abdd14ba44c01ca55ac58"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-functions-limits-continuity.md",
+      "bytes": 1321,
+      "sha256": "ffc1e0b50b31096026dbc5dd781042fa90e561e6f1701838fd80d516f64bba23"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-gradient-directional-derivative.md",
+      "bytes": 1327,
+      "sha256": "72c3149a6ac251f9ca8f1e0d209ded2bc369fabff3a4bfe1179be53b4d66a230"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-hessian-second-order.md",
+      "bytes": 1267,
+      "sha256": "c68ed6378832b4650a4c6aef16cec6546398da0d802176de99639b6747910854"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-integrals-fundamental-theorem.md",
+      "bytes": 1291,
+      "sha256": "655ad503f11647ea517ee833407b487eb338f9b6f363ea111213d54a7384c591"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-lagrange-multipliers.md",
+      "bytes": 1244,
+      "sha256": "c2db34200c5cce92590348e02e078b335f7b8ec0a179fdc253ba02d21931c7aa"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-multivariable-chain-rule.md",
+      "bytes": 1318,
+      "sha256": "5fe656cd908d336eb3bd24d366d7b1a41d94bb2de88539ece8dfd1a4594f197d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-multivariable-functions-partial-derivatives.md",
+      "bytes": 1396,
+      "sha256": "bf7662257b48490f1909dcac6eb31e4af4ec56de399171bf753f1fc505676171"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-one-variable-optimization.md",
+      "bytes": 1268,
+      "sha256": "bee7930607bf4fb3c2a9725efed5cbc3dd61b47ead5937737b9713338a04653e"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-taylor-approximation.md",
+      "bytes": 1275,
+      "sha256": "87fc2e561e5885b98140ccf0922c888c467c69ff4d0f5e3069b7653fe5656fed"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-total-derivative-jacobian.md",
+      "bytes": 1365,
+      "sha256": "bb8b6ead5c3e016df8fb2eeff2d2fd3193bcc75bd60505dc2b4ef4248b82d73d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-unconstrained-optimization.md",
+      "bytes": 1294,
+      "sha256": "f8b8161886409756f9b2e6fd01c53e5ad56b96afc6e4df786decd081d2fd6555"
+    },
+    {
+      "path": "apps/portal/exercises/calc-derivatives-rates.md",
+      "bytes": 5421,
+      "sha256": "04a929f134347cd893ab7d2dfcbbdb10b44aabe1790192489fe84c47a5974141"
+    },
+    {
+      "path": "apps/portal/exercises/calc-differentiation-rules-chain-rule.md",
+      "bytes": 4626,
+      "sha256": "867f92e4108805ccf7af9a7314b44f314b6ae45b909af9bad96337f91a3ff4ba"
+    },
+    {
+      "path": "apps/portal/exercises/calc-functions-limits-continuity.md",
+      "bytes": 5847,
+      "sha256": "133bb9b1d3ddef38cf46795534aa9b5e22d58e8bbc8dabb2386b92e868ebb961"
+    },
+    {
+      "path": "apps/portal/exercises/calc-gradient-directional-derivative.md",
+      "bytes": 4964,
+      "sha256": "5f668d27c0dd4a8f42fe01e6327dd877a71af6be2e3059b26901123da67cdbbb"
+    },
+    {
+      "path": "apps/portal/exercises/calc-hessian-second-order.md",
+      "bytes": 5144,
+      "sha256": "7dce8a5e284b5ea9a959668ed8ae304f41979984f0cec31b1f835711f22069fa"
+    },
+    {
+      "path": "apps/portal/exercises/calc-integrals-fundamental-theorem.md",
+      "bytes": 5100,
+      "sha256": "4f3d5705f21b3d29f990a68c53c4638b0adc7a4aec3b066740dd7b3ffe391a23"
+    },
+    {
+      "path": "apps/portal/exercises/calc-lagrange-multipliers.md",
+      "bytes": 5693,
+      "sha256": "b87fd51925004cb1a44ac0412effb4b008a22b6a32f1cae82fad17ab25c14d9e"
+    },
+    {
+      "path": "apps/portal/exercises/calc-multivariable-chain-rule.md",
+      "bytes": 5285,
+      "sha256": "e31689e37236a8d4405cf9a619f70ae2bb32485695442d88134dfceb69529c37"
+    },
+    {
+      "path": "apps/portal/exercises/calc-multivariable-functions-partial-derivatives.md",
+      "bytes": 4899,
+      "sha256": "0c9dd4229e561d91837d7ba4d4b4d3242561f36b9576b96509cd7d81549b0055"
+    },
+    {
+      "path": "apps/portal/exercises/calc-one-variable-optimization.md",
+      "bytes": 5429,
+      "sha256": "bdf0c9e4fda2e73f2d2773c88f57279e74f994d64d544afef500ac516ea166d3"
+    },
+    {
+      "path": "apps/portal/exercises/calc-taylor-approximation.md",
+      "bytes": 5229,
+      "sha256": "00681a7b296ce89ed0f4b6425ade33ae5ae612a5bc1eb943e5d12966c583fda3"
+    },
+    {
+      "path": "apps/portal/exercises/calc-total-derivative-jacobian.md",
+      "bytes": 5034,
+      "sha256": "3f25d5c95b1d163fefbe21abba3567662e7e12eca6dff365404f2a19f2d66f34"
+    },
+    {
+      "path": "apps/portal/exercises/calc-unconstrained-optimization.md",
+      "bytes": 5214,
+      "sha256": "e7be7c8aa2c769e95283f2c044a49d74235c61817bf00e103a11f5021dfa1986"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/chain_rule_flow.png",
+      "bytes": 18632,
+      "sha256": "6872242757e50094b9e4c89fc9eb60ed591eaec905ca79b927178e7293367735"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/derivative_secant_tangent.png",
+      "bytes": 50749,
+      "sha256": "38f180b5ac0e44d747520dadb502d0443c50e6e70424479b83a7e919456f5c18"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/directional_derivative.gif",
+      "bytes": 74738,
+      "sha256": "adc0fea922c0362ef684d42edda7b21f79b8f3309d2c04dd07dcb0670410858e"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/gradient_direction.png",
+      "bytes": 104017,
+      "sha256": "68f051659c16672acb2b4f97f504394eac7f522d60539e68fc1a4025913e6fa2"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/hessian_contours.png",
+      "bytes": 106534,
+      "sha256": "39765674db5d3ab381cd51e90f276fa078605e98a3e762097890002f8dcb5ed2"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/hessian_heatmap.png",
+      "bytes": 12509,
+      "sha256": "cb88cad04bf72c346ed93842c3cfc26f8972c5797d2aa8c7fa80fe2f85955611"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/integral_accumulation.gif",
+      "bytes": 44465,
+      "sha256": "8013e4963352f76dc1252c1827bd91a17fcbc02109445263638092d49760b32d"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/integral_riemann.png",
+      "bytes": 34233,
+      "sha256": "5c420d872aeb81b5db514a00f30a97033d084df198c6e0f6f9da01d2cf847fd3"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/jacobian_grid.png",
+      "bytes": 62621,
+      "sha256": "7c000f463ae21f8925e6dc367b7c0f21787885bc7829b3ee216ea6fb6eb710da"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/jacobian_grid_deform.gif",
+      "bytes": 158375,
+      "sha256": "3eda2bb022e4c872949b9f8e656d7329b97d8eb7ab2ecdb6bf139efc024029c6"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/lagrange_levels.gif",
+      "bytes": 39877,
+      "sha256": "90cd174dc020dde6a82e8697407a844328006f8427755def4889ceed1187ef7e"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/lagrange_touch.png",
+      "bytes": 56754,
+      "sha256": "8faa81c7ab0df19c3784c3a1d5333ac66d9718347492e8802882fe8e5f744e8c"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/limits_approach.gif",
+      "bytes": 22072,
+      "sha256": "da76cc37a60b815439159b8c5c5db6cc6cb35421b87525a77429ca8d88fb99f1"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/limits_continuity.png",
+      "bytes": 33454,
+      "sha256": "7f44449b3e8c56304909eb456291d1d85df14f4df80737a2baa78691de1b3b2d"
+    },
+    {
+      "path": "apps/portal/textbook/calc-derivatives-rates.md",
+      "bytes": 6375,
+      "sha256": "c4934a5ddc9d3ecce234449bf857c5d483694a0f3313f97f5117eda9dcad443b"
+    },
+    {
+      "path": "apps/portal/textbook/calc-differentiation-rules-chain-rule.md",
+      "bytes": 6014,
+      "sha256": "8e0ec674da85b7c12a86d36b84f71b518fab5a495fd637b70706f394657503ee"
+    },
+    {
+      "path": "apps/portal/textbook/calc-functions-limits-continuity.md",
+      "bytes": 8128,
+      "sha256": "47fd5480f7f83e97e189af46405537637a1c137e1c126ee0ffe6686d529f2c6c"
+    },
+    {
+      "path": "apps/portal/textbook/calc-gradient-directional-derivative.md",
+      "bytes": 6089,
+      "sha256": "767eb94ca2f48ff43c64e83052136b2be5a4b52910be4d279d213baeb824dba2"
+    },
+    {
+      "path": "apps/portal/textbook/calc-hessian-second-order.md",
+      "bytes": 6263,
+      "sha256": "2d2013869dcfacfe5ea9c53b64596ac469b29c4b8aaacf3cb444a5e172219cac"
+    },
+    {
+      "path": "apps/portal/textbook/calc-integrals-fundamental-theorem.md",
+      "bytes": 6303,
+      "sha256": "1c734c4f86ad541ec0bc730f297dc435213adc276b12a36a28c83e2aec3853f4"
+    },
+    {
+      "path": "apps/portal/textbook/calc-lagrange-multipliers.md",
+      "bytes": 6595,
+      "sha256": "eb40821f10fd885ad2bb82d77dd5b6fdf020a924a8b512ff73cabed085d03d78"
+    },
+    {
+      "path": "apps/portal/textbook/calc-multivariable-chain-rule.md",
+      "bytes": 6023,
+      "sha256": "073368ff4ffd3b6a76a4c20073e08d1c6dd48a3c536015f7514146f5d0d555b3"
+    },
+    {
+      "path": "apps/portal/textbook/calc-multivariable-functions-partial-derivatives.md",
+      "bytes": 5835,
+      "sha256": "24132d7790dfcab0337e0f4d05de0e91fcb0f74c749d29682297dc8f024233ca"
+    },
+    {
+      "path": "apps/portal/textbook/calc-one-variable-optimization.md",
+      "bytes": 6361,
+      "sha256": "674e5738716976c50d122283789c08a57c5545380243d3acc966ff09d0ba158f"
+    },
+    {
+      "path": "apps/portal/textbook/calc-taylor-approximation.md",
+      "bytes": 6006,
+      "sha256": "76de5db53b09b345083ae689b741176ceee89a84bad12081cf034cf5226ee953"
+    },
+    {
+      "path": "apps/portal/textbook/calc-total-derivative-jacobian.md",
+      "bytes": 6346,
+      "sha256": "25bc86c70db43540ced0b3243ed8804a9c446700af16ffc6a4991597580bc26d"
+    },
+    {
+      "path": "apps/portal/textbook/calc-unconstrained-optimization.md",
+      "bytes": 6092,
+      "sha256": "81e03a2ebad65aa597bd920fe80873b366b5f119d64015df8a6cc1461a44a78d"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/chain_rule_flow.png",
+      "bytes": 18632,
+      "sha256": "6872242757e50094b9e4c89fc9eb60ed591eaec905ca79b927178e7293367735"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/derivative_secant_tangent.png",
+      "bytes": 50749,
+      "sha256": "38f180b5ac0e44d747520dadb502d0443c50e6e70424479b83a7e919456f5c18"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/directional_derivative.gif",
+      "bytes": 74738,
+      "sha256": "adc0fea922c0362ef684d42edda7b21f79b8f3309d2c04dd07dcb0670410858e"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/gradient_direction.png",
+      "bytes": 104017,
+      "sha256": "68f051659c16672acb2b4f97f504394eac7f522d60539e68fc1a4025913e6fa2"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/hessian_contours.png",
+      "bytes": 106534,
+      "sha256": "39765674db5d3ab381cd51e90f276fa078605e98a3e762097890002f8dcb5ed2"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/hessian_heatmap.png",
+      "bytes": 12509,
+      "sha256": "cb88cad04bf72c346ed93842c3cfc26f8972c5797d2aa8c7fa80fe2f85955611"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/integral_accumulation.gif",
+      "bytes": 44465,
+      "sha256": "8013e4963352f76dc1252c1827bd91a17fcbc02109445263638092d49760b32d"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/integral_riemann.png",
+      "bytes": 34233,
+      "sha256": "5c420d872aeb81b5db514a00f30a97033d084df198c6e0f6f9da01d2cf847fd3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/jacobian_grid.png",
+      "bytes": 62621,
+      "sha256": "7c000f463ae21f8925e6dc367b7c0f21787885bc7829b3ee216ea6fb6eb710da"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/jacobian_grid_deform.gif",
+      "bytes": 158375,
+      "sha256": "3eda2bb022e4c872949b9f8e656d7329b97d8eb7ab2ecdb6bf139efc024029c6"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/lagrange_levels.gif",
+      "bytes": 39877,
+      "sha256": "90cd174dc020dde6a82e8697407a844328006f8427755def4889ceed1187ef7e"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/lagrange_touch.png",
+      "bytes": 56754,
+      "sha256": "8faa81c7ab0df19c3784c3a1d5333ac66d9718347492e8802882fe8e5f744e8c"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/limits_approach.gif",
+      "bytes": 22072,
+      "sha256": "da76cc37a60b815439159b8c5c5db6cc6cb35421b87525a77429ca8d88fb99f1"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/limits_continuity.png",
+      "bytes": 33454,
+      "sha256": "7f44449b3e8c56304909eb456291d1d85df14f4df80737a2baa78691de1b3b2d"
+    },
+    {
+      "path": "apps/slides/decks/calc-derivatives-rates.md",
+      "bytes": 3258,
+      "sha256": "a71d5fd7bf34c4df2bee72767c83604e2c958d0ffab8227e1b1c93df1a5e06c7"
+    },
+    {
+      "path": "apps/slides/decks/calc-differentiation-rules-chain-rule.md",
+      "bytes": 2949,
+      "sha256": "25d97e5b9fcfa2a412de9dc094baa205d0ed2be449919587c10afcc628a3ba67"
+    },
+    {
+      "path": "apps/slides/decks/calc-functions-limits-continuity.md",
+      "bytes": 4297,
+      "sha256": "ae7ec140a561b4ba0f0bb4436db0359bcb05b3b385970e7ab773d46f77a8962f"
+    },
+    {
+      "path": "apps/slides/decks/calc-gradient-directional-derivative.md",
+      "bytes": 3115,
+      "sha256": "7e7aa9c73fb2cf30ce03a2627abb1a1c4cc3fe03b1c66f579895e169029c61e7"
+    },
+    {
+      "path": "apps/slides/decks/calc-hessian-second-order.md",
+      "bytes": 3192,
+      "sha256": "382b11b3122202b5e0b4b689f15b852d9fc19cc3e87351d5959ed47624c42e22"
+    },
+    {
+      "path": "apps/slides/decks/calc-integrals-fundamental-theorem.md",
+      "bytes": 3337,
+      "sha256": "9d4cc6bc01de91e34e9c6833f0dc0777f01aaf15c2310ee36549312eafdd50c6"
+    },
+    {
+      "path": "apps/slides/decks/calc-lagrange-multipliers.md",
+      "bytes": 3418,
+      "sha256": "ae3ae0136c66fc439c36809042d7f6b0eb9812822108ae33673cbb28e7ab1a1c"
+    },
+    {
+      "path": "apps/slides/decks/calc-multivariable-chain-rule.md",
+      "bytes": 3210,
+      "sha256": "b11107b9f9cb36d0acfe64921fe9840bd8464940b322d9b82393c995617fbec1"
+    },
+    {
+      "path": "apps/slides/decks/calc-multivariable-functions-partial-derivatives.md",
+      "bytes": 3127,
+      "sha256": "5f4409edb2b8b9f6d157f676c0aff4f6c82d92b766a2bb1d94a0dd377468aff2"
+    },
+    {
+      "path": "apps/slides/decks/calc-one-variable-optimization.md",
+      "bytes": 3283,
+      "sha256": "b73d176c692d3d8f0b09c70a07151fbf0d814897aa4680d9580dbf47d33d45c7"
+    },
+    {
+      "path": "apps/slides/decks/calc-taylor-approximation.md",
+      "bytes": 3017,
+      "sha256": "00d3136d4922e73cdfdd74e37a3edb784ec6d8ceffa270596ea9a445eb52fbca"
+    },
+    {
+      "path": "apps/slides/decks/calc-total-derivative-jacobian.md",
+      "bytes": 3424,
+      "sha256": "c4feb708ce5fd8e3441fb97969f7cba49816b381d7affa6b440f68f53343065a"
+    },
+    {
+      "path": "apps/slides/decks/calc-unconstrained-optimization.md",
+      "bytes": 3043,
+      "sha256": "729189d53d4be978ddccc4f026fbede64b03c9ca8390dae09307cd6ea9d312c7"
+    }
+  ]
+}

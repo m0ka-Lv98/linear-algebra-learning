@@ -1,43 +1,38 @@
 # 関数・極限・連続
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 01/13
 
-Course 01「微積分」第1 Topic。Unit：一変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+「点そのものの値」と「その点へ近づいたときの値」を、どう区別して考えるのか。
 
-一変数関数 f: R→R の定義域・終域・値域、グラフ、左極限・右極限、連続性を扱う。lim x→a f(x)=L、lim x→a−、lim x→a+、lim x→a f(x)=f(a)を区別し、穴・左右不一致・値だけ異なる例を診断する。ε-δ定義は紹介に留める。
+## 到達目標
 
-## 概要
+- 関数の定義域・値域を明示できる
+- 左右極限を使って極限の存在を判定できる
+- 連続性の3条件を使って不連続を分類できる
+- 代入・因数分解・有理化などを使って基本的な極限を計算できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-functions-limits-continuity)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-functions-limits-continuity/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-functions-limits-continuity)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[prep-sets-functions-mappings](/courses/foundation/prep-sets-functions-mappings)
+- `prep-sets-functions-mappings`
+- `prep-exponents-logarithms`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
+## ナビゲーション
 
-Course 01の1/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-functions-limits-continuity/)
-- [詳細教科書](/textbook/calc-functions-limits-continuity)
-- [演習](/exercises/calc-functions-limits-continuity)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/prep-sets-functions-mappings)
-- 次のTopic：Course 01の次項目
-
+- Course 01の先頭Topic
+- [次のTopic](/courses/foundation/calc-derivatives-rates)

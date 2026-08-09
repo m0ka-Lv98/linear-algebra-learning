@@ -1,43 +1,37 @@
 # 勾配と方向微分
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 08/13
 
-Course 01「微積分」第8 Topic。Unit：多変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+任意の方向へ少し動いたとき、関数はどれだけ変化するのか。
 
-勾配、方向ベクトル、単位ベクトル、方向微分、最急上昇・降下、等高線との直交を扱う。∇f=[∂f/∂xi]、Du f=∇f^T u、||u||2=1とshapeを明示する。
+## 到達目標
 
-## 概要
+- 勾配ベクトルを計算できる
+- 単位方向ベクトルに沿う方向微分を計算できる
+- 勾配が最急上昇方向であることを説明できる
+- 勾配と等高線が直交する理由を説明できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-gradient-directional-derivative)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-gradient-directional-derivative/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-gradient-directional-derivative)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-multivariable-functions-partial-derivatives](/courses/foundation/calc-multivariable-functions-partial-derivatives)
+- `calc-multivariable-functions-partial-derivatives`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
-
-Course 01の8/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-gradient-directional-derivative/)
-- [詳細教科書](/textbook/calc-gradient-directional-derivative)
-- [演習](/exercises/calc-gradient-directional-derivative)
-
-## 前後Topic
+## ナビゲーション
 
 - [前のTopic](/courses/foundation/calc-multivariable-functions-partial-derivatives)
-- 次のTopic：Course 01の次項目
-
+- [次のTopic](/courses/foundation/calc-total-derivative-jacobian)

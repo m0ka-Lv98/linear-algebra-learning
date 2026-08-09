@@ -1,43 +1,37 @@
 # Taylor展開と局所近似
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 06/13
 
-Course 01「微積分」第6 Topic。Unit：一変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+関数を、ある点の近くで「多項式として見る」と何がわかるのか。
 
-接線・線形近似、展開点a、次数r、剰余、近似範囲を扱う。f(x)≈f(a)+f'(a)(x−a)、Σ f^(k)(a)/k!(x−a)^k、e^x≈1+x+x²/2を例にする。
+## 到達目標
 
-## 概要
+- Taylor多項式の係数を導関数から求められる
+- 一次・二次近似の意味を説明できる
+- Maclaurin展開の代表例を使える
+- 余剰項を近似誤差として解釈できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-taylor-approximation)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-taylor-approximation/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-taylor-approximation)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-differentiation-rules-chain-rule](/courses/foundation/calc-differentiation-rules-chain-rule)
+- `calc-differentiation-rules-chain-rule`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
+## ナビゲーション
 
-Course 01の6/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-taylor-approximation/)
-- [詳細教科書](/textbook/calc-taylor-approximation)
-- [演習](/exercises/calc-taylor-approximation)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/calc-differentiation-rules-chain-rule)
-- 次のTopic：Course 01の次項目
-
+- [前のTopic](/courses/foundation/calc-integrals-fundamental-theorem)
+- [次のTopic](/courses/foundation/calc-multivariable-functions-partial-derivatives)

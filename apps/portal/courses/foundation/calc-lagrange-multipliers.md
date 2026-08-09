@@ -1,42 +1,37 @@
 # Lagrange乗数法
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 13/13
 
-Course 01「微積分」第13 Topic。Unit：多変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+制約曲線・制約曲面の上だけで最大・最小を探すにはどうするか。
 
-等式制約g(x)=0の実行可能点、等高線、勾配の平行、Lagrangian、乗数、候補点と制約代入を扱う。L=f+λg、∇xL=0、g=0は必要条件で十分とは限らず、不等式とKKTは後続へ回す。
+## 到達目標
 
-## 概要
+- 等式制約付き最適化をLagrange方程式へ変換できる
+- $\nabla f=\lambda\nabla g$ の幾何学的意味を説明できる
+- 候補点を制約式と合わせて解ける
+- 正則性や候補比較など、方法の適用条件を説明できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-lagrange-multipliers)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-lagrange-multipliers/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-lagrange-multipliers)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-unconstrained-optimization](/courses/foundation/calc-unconstrained-optimization)
+- `calc-unconstrained-optimization`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
-
-Course 01の13/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-lagrange-multipliers/)
-- [詳細教科書](/textbook/calc-lagrange-multipliers)
-- [演習](/exercises/calc-lagrange-multipliers)
-
-## 前後Topic
+## ナビゲーション
 
 - [前のTopic](/courses/foundation/calc-unconstrained-optimization)
-- [次のTopic：ベクトルと線形結合](/courses/foundation/la-vectors-linear-combinations)
+- Course 01完了

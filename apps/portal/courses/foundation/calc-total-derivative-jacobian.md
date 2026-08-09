@@ -1,43 +1,38 @@
 # 全微分とJacobian
 
-## CourseとUnit内での位置付け
+Course 01｜微積分｜Topic 09/13
 
-Course 01「微積分」第9 Topic。Unit：多変数微積分。
+## このTopicの中心問い
 
-## このTopicで解く問い
+多変数関数を、ある点の近くで最もよい線形写像として近似するにはどうするか。
 
-R^n→R^mの写像の全微分、局所線形近似、Jacobianの行列の行・列、入力n・出力m、m×nのshapeを扱う。f(x+Δx)≈f(x)+Jf(x)Δxと数値確認を示す。
+## 到達目標
 
-## 概要
+- 全微分を一次近似として説明できる
+- Jacobianのshapeを入力次元・出力次元から決められる
+- ベクトル値関数のJacobianを計算できる
+- 線形近似を使って小さな入力変化から出力変化を近似できる
 
-数式の定義、幾何学的な意味、数値計算を同じ対象として読み比べる。
+## 推奨学習順
 
-## 学習目標
-
-- 定義域・終域・次元・shapeを明示して式を読める。
-- 定義から小さな計算を導出し、典型的な誤りを診断できる。
-- 機械学習での損失、勾配、近似または制約へ接続できる。
+1. [教科書](/textbook/calc-total-derivative-jacobian)で直感→定義→計算手順→例題を読む。
+2. [スライド](/slides/calc-total-derivative-jacobian/)で全体像を短時間で再構成する。
+3. [演習](/exercises/calc-total-derivative-jacobian)を解答を閉じて解く。
+4. 誤答した問題は教科書の「テストでよく起きる誤り」まで戻る。
 
 ## 前提Topic
 
-[calc-gradient-directional-derivative](/courses/foundation/calc-gradient-directional-derivative)
+- `calc-gradient-directional-derivative`
+- `prep-numpy-arrays-shapes`
 
-## 想定学習時間
+## 合格ライン
 
-スライド20分 / 教科書60分 / 演習50分
+- 定義を日本語と式の両方で説明できる。
+- 典型問題を途中式つきで解ける。
+- 成立条件と例外を説明できる。
+- 10問中8問以上を自力で完答できる。
 
-## 学習順序
-
-Course 01の9/13。
-
-## 教材
-
-- [概要スライド](/slides/calc-total-derivative-jacobian/)
-- [詳細教科書](/textbook/calc-total-derivative-jacobian)
-- [演習](/exercises/calc-total-derivative-jacobian)
-
-## 前後Topic
+## ナビゲーション
 
 - [前のTopic](/courses/foundation/calc-gradient-directional-derivative)
-- 次のTopic：Course 01の次項目
-
+- [次のTopic](/courses/foundation/calc-hessian-second-order)
