@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "Hessianと二次近似"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 10/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 多変数関数の「曲がり方」を行列でどう表し、停留点をどう分類するか。
 
@@ -138,3 +139,7 @@ HessianはNewton法や曲率解析で使われる。大規模MLでは完全なHe
 
 - [教科書](../../textbook/calc-hessian-second-order)
 - [10問の演習](../../exercises/calc-hessian-second-order)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

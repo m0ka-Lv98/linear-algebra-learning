@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "微分と変化率"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 02/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 平均の変化率から、ある瞬間の変化率をどう取り出すのか。
 
@@ -141,3 +142,7 @@ $$\frac{(x+h)^2-x^2}{h}=\frac{2xh+h^2}{h}=2x+h.$$
 
 - [教科書](../../textbook/calc-derivatives-rates)
 - [10問の演習](../../exercises/calc-derivatives-rates)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "微分法則と一変数の連鎖律"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 03/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 複雑な式を、構造を保ったまま正確に微分するにはどうすればよいか。
 
@@ -135,3 +136,7 @@ $$(uv)'=u^{\prime}v+uv^{\prime}.$$
 
 - [教科書](../../textbook/calc-differentiation-rules-chain-rule)
 - [10問の演習](../../exercises/calc-differentiation-rules-chain-rule)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

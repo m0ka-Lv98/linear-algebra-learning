@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "勾配と方向微分"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 08/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 任意の方向へ少し動いたとき、関数はどれだけ変化するのか。
 
@@ -138,3 +139,7 @@ gradient descent は $\mathbf{x}_{k+1}=\mathbf{x}_k-\eta\nabla f(\mathbf{x}_k)$ 
 
 - [教科書](../../textbook/calc-gradient-directional-derivative)
 - [10問の演習](../../exercises/calc-gradient-directional-derivative)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

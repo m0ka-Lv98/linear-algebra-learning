@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "一変数の最適化"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 04/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 「傾きが0」を使って、最大・最小をどこまで確実に判定できるか。
 
@@ -132,3 +133,7 @@ layout: center
 
 - [教科書](../../textbook/calc-one-variable-optimization)
 - [10問の演習](../../exercises/calc-one-variable-optimization)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

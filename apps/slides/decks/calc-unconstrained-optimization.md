@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "多変数の制約なし最適化"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 12/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 多変数の損失関数を、勾配と曲率を使ってどう最小化するか。
 
@@ -139,3 +140,7 @@ $$\nabla f(\mathbf x^*)=\mathbf0.$$
 
 - [教科書](../../textbook/calc-unconstrained-optimization)
 - [10問の演習](../../exercises/calc-unconstrained-optimization)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

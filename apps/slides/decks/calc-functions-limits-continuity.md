@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "関数・極限・連続"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 01/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 「点そのものの値」と「その点へ近づいたときの値」を、どう区別して考えるのか。
 
@@ -147,3 +148,7 @@ e a$ で有効であることを一言添えると答案が強い
 
 - [教科書](../../textbook/calc-functions-limits-continuity)
 - [10問の演習](../../exercises/calc-functions-limits-continuity)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

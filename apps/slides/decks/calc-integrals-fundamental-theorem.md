@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "積分と微積分学の基本定理"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 05/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 小さな量の足し合わせと、微分の逆操作がなぜ同じものになるのか。
 
@@ -138,3 +139,7 @@ $f(x)>0$ の部分は正、$f(x)<0$ の部分は負として加算される。�
 
 - [教科書](../../textbook/calc-integrals-fundamental-theorem)
 - [10問の演習](../../exercises/calc-integrals-fundamental-theorem)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

@@ -2,6 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
+generatedBy: course01-10-curated-upgrade-v2
 title: "全微分とJacobian"
 ---
 
@@ -13,7 +14,7 @@ Course 01｜微積分｜Topic 09/13
 layout: center
 ---
 
-## 今日の中心問い
+## 今回の問い
 
 多変数関数を、ある点の近くで最もよい線形写像として近似するにはどうするか。
 
@@ -143,3 +144,7 @@ $(1,2)$ では $J=\begin{bmatrix}2&1\\2&1\end{bmatrix}$。
 
 - [教科書](../../textbook/calc-total-derivative-jacobian)
 - [10問の演習](../../exercises/calc-total-derivative-jacobian)
+## 理解確認
+
+- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
+- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。
