@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
 
+const base = process.env.BASE_PATH ?? '/'
+
 const course00 = [
   ["数式・記号・型・次元", "prep-symbols-types-shapes"],
   ["集合・関数・写像", "prep-sets-functions-mappings"],
@@ -236,7 +238,7 @@ const course10 = [
 export default defineConfig({
   title: '数学・データ解析・AI学習ポータル',
   description: '基礎数学から数値計算、最適化、機械学習、深層学習、Frontierへ',
-  base: process.env.BASE_PATH ?? '/',
+  base,
   cleanUrls: true,
   markdown: {
     math: true,
@@ -248,9 +250,11 @@ export default defineConfig({
       md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
         const href = tokens[idx].attrGet('href')
         // /slides/** is a separate Slidev SPA, not a VitePress route.
-        // Adding target makes VitePress's client router leave the link alone,
-        // while target="_self" keeps navigation in the same tab.
+        // Adding the base and target makes VitePress's client router leave the
+        // separate Slidev SPA link alone while keeping navigation in the same tab.
         if (href?.startsWith('/slides/')) {
+          const basePrefix = base === '/' ? '' : base.replace(/\/$/, '')
+          tokens[idx].attrSet('href', `${basePrefix}${href}`)
           tokens[idx].attrSet('target', '_self')
         }
         return defaultLinkOpen(tokens, idx, options, env, self)
