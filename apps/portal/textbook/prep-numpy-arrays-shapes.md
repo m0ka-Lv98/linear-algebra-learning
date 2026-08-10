@@ -2,72 +2,69 @@
 
 Course 00｜学習準備
 
-## このTopicの中心問題
+## このTopicの目的
 
-shapeとaxisを予測してからNumPy演算を実行できるか。
+配列の値だけでなくshape・axis・dtypeを追い、indexingや行列積の結果shapeを実行前に予測するにはどうするか。
 
-## まず直感
+## 図の意味
 
-配列は値だけでなくshape・dtype・axisの意味を持つ。数学上同じ3成分でも(3,), (3,1), (1,3)は別shapeでbroadcasting/行列積が変わる。
+<img src="/visuals/course-00/prep-numpy-arrays-shapes.png" alt="NumPy配列・shape・indexingの図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-## 図で固定する
+同じ値1,2,3でも `(3,)`、`(3,1)`、`(1,3)` の3形状を並べる。1次元vector、3×1列行列、1×3行行列は見た目の値が同じでも `@` やbroadcastingの結果が違う。
 
-<img src="/visuals/course-00/prep-numpy-arrays-shapes.png" alt="NumPy配列・shape・indexingの図解" style="max-height: 460px; display:block; margin:0 auto;" />
+## 定義から順に理解する
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+`ndim` は配列のaxis数、`shape` は各axisの長さ、`size` は全要素数。shape `(2,3,4)` ならndim=3, size=24。
 
-## 記号・型・意味
+`A[:,1]` はaxisを1本落として `(m,)` になるが、`A[:,1:2]` は `(m,1)` を保つ。1D arrayの `.T` はshapeを変えない。
 
-| 記号 | 意味 |
-|---|---|
-| $A.shape$ | 各axisの長さ |
-| $A.ndim$ | axis数 |
-| $A.size$ | 総要素数 |
+`A*B` はelementwise、`A@B` はmatrix multiplication。broadcastingは末尾axisから長さが一致するか1である場合に拡張する。
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+## indexingでaxisが消えるかを予測する
 
-## 中心となる式
+$A$ がshape `(2,3)` なら `A[0, :]` は整数indexで第0 axisを1点へ固定するためshape `(3,)`。`A[0:1, :]` はsliceなので長さ1のaxisを保持し `(1,3)`。値が同じに見えても後続のbroadcastingと`@`が変わる。
 
-$$
-(m,n)@(n,p)\to(m,p)
-$$
+1D array `x.shape==(3,)` に対して `x.T` を取っても `(3,)` のまま。数学上の行ベクトル/列ベクトルを明示したいなら `x.reshape(1,3)` または `x.reshape(3,1)` とする。
 
-## なぜこの式になるのか
+## broadcastingの規則を末尾axisから読む
 
-1. 行列積では左の最後axisと右の対応axisがcontractされる。
-2. 2Dならinner dimension nが一致する。
-3. 残るm,pが出力shape。
+2つのshapeを右から比較し、各axisで
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+- 長さが等しい、または
+- 片方が1
 
-## 例題：小さい設定で最後まで追う
+ならbroadcast可能。たとえば `(5,3)` と `(3,)` は `(5,3)` とみなして各rowへ同じ3-vectorを足せる。一方 `(5,3)` と `(5,)` は末尾3と5が一致せずbroadcastできない。
 
-A.shape=(2,3), B.shape=(3,4)ならA@Bは(2,4)。A[:,1]は(2,), A[:,1:2]は(2,1)。
+## matrix multiplicationのshape
 
-### 答案で書く順序
+`A.shape=(m,n)`, `B.shape=(n,p)` なら `A @ B` は `(m,p)`。一方 `A * B` はelementwise productなのでbroadcasting規則を使う。数式の $\mathbf A\mathbf B$ をPythonへ写すとき `*` と `@` を混同しない。
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+## viewとcopy
 
-## 何を間違えやすいか
+sliceやreshapeは元memoryを共有するviewを返す場合がある。
 
-- axis=0を単に「縦」と暗記しない。
+```python
+A = np.arange(6).reshape(2,3)
+b = A[:, 0]
+b[0] = 99
+```
 
-## 自分で確認する問い
+では `A` も変わる可能性がある。独立な配列が必要なら `.copy()` を明示する。数学の「新しいベクトルを定義した」という感覚とmemory aliasingは別問題である。
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
+## axisを「縦・横」だけで覚えない
 
-## 後続Courseへの接続
+`np.sum(A, axis=0)` は第0 axisを潰す操作。shape `(2,3)` なら結果 `(3,)`。高次元で「縦」という言葉は曖昧になるので、**どのaxisをreduceし、そのaxisが結果から消えるか**で理解する。`keepdims=True` なら長さ1として残せる。
 
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+## 具体例
 
-## 参考
+A.shape=(2,3), B.shape=(3,4)なら `A@B` は(2,4)。A[:,1]は(2,), A[:,1:2]は(2,1)。
 
-- NumPy semantics
+## 条件を外すと
+
+reshapeは要素数を保つだけでaxisの意味を理解しない。sample axisとfeature axisを誤って入れ替えてもエラーにならないことがある。
+
+## 後続Courseでどう使うか
+
+Course02の行列shape、Course08/09のbatch×feature×channelを読む基礎。
 
 [演習へ](/exercises/prep-numpy-arrays-shapes)　|　[スライドへ](/slides/prep-numpy-arrays-shapes/)

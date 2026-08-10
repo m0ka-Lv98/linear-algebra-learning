@@ -2,72 +2,75 @@
 
 Course 00｜学習準備
 
-## このTopicの中心問題
+## このTopicの目的
 
-式を計算する前に、scalar・vector・matrix・tensorの型とshapeをどう確認するか。
+数式を計算する前に、「その記号は何型で、どのshapeを持ち、演算後のshapeは何になるか」をどう判断するか。
 
-## まず直感
+## 図の意味
 
-値が同じでも型・shapeが違えば許される演算が違う。数式の「何を表すか」と実装の「どう格納するか」を分離して読む。
+<img src="/visuals/course-00/prep-symbols-types-shapes.png" alt="数式・記号・型・次元の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-## 図で固定する
+図は左からscalar、vector、matrix、tensorを並べている。scalarは軸を持たない1個の値、vectorは1本のindex、matrixは行・列の2本のindexを持つ。tensorはさらにbatch・height・width・channelのような複数軸を持つ。ここで数学の「ベクトル空間の次元」とNumPyの `ndim` は別物で、shape `(2,3,4)` の配列は `ndim=3` だが24個の実数を持つため、全要素を並べれば $\mathbb R^{24}$ の点として扱える。
 
-<img src="/visuals/course-00/prep-symbols-types-shapes.png" alt="数式・記号・型・次元の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+## 定義から順に理解する
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+### 1. 型を決める
+スカラー $a\in\mathbb R$、ベクトル $\mathbf x\in\mathbb R^n$、行列 $\mathbf A\in\mathbb R^{m\times n}$ を区別する。ベクトルは太字小文字、行列は太字大文字で表す。
 
-## 記号・型・意味
+### 2. shapeを演算の前に確認する
+$\mathbf A\mathbf x$ が定義できるのは $\mathbf A\in\mathbb R^{m\times n}$ と $\mathbf x\in\mathbb R^n$ の内側の次元nが一致するとき。結果は $\mathbb R^m$。行列積 $\mathbf A\mathbf B$ なら $(m,n)(n,p)\to(m,p)$。
 
-| 記号 | 意味 |
-|---|---|
-| $x$ | scalarまたは文脈で定義した量 |
-| $x∈R^n$ | n成分vector |
-| $A∈R^{m×n}$ | m行n列matrix |
+### 3. 数学上の型とコード上の配列を区別する
+数学の列ベクトル $\mathbf x\in\mathbb R^3$ をNumPyで `shape==(3,)` と表すことも `(3,1)` と表すこともあるが、broadcastingや `@` の挙動は異なる。数値が同じでもshapeが同じとは限らない。
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+## scalar・vector・matrixを成分で読む
 
-## 中心となる式
+スカラーは1個の値なので添字を持たない。ベクトル $\mathbf x\in\mathbb R^n$ は
 
 $$
-A\mathbf{x}\in\mathbb R^m\quad(A\in\mathbb R^{m\times n},\;\mathbf{x}\in\mathbb R^n)
+\mathbf x=\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}
 $$
 
-## なぜこの式になるのか
+のように $n$ 個の成分を持つ。行列 $\mathbf A\in\mathbb R^{m\times n}$ は $m$ 行 $n$ 列で、成分 $A_{ij}$ の第1添字 $i$ が行、第2添字 $j$ が列を表す。
 
-1. 行列Aの各rowとxの内積が出力1成分になる。
-2. Aにはm rowsがあるので出力はm成分。
-3. inner dimension n が一致しなければ行列積は定義できない。
+行列–ベクトル積は
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+$$
+(\mathbf A\mathbf x)_i=\sum_{j=1}^n A_{ij}x_j
+$$
 
-## 例題：小さい設定で最後まで追う
+なので、出力成分 $i$ を1つ固定すると、行 $i$ と $\mathbf x$ の対応成分を掛けて足している。ここから結果が $m$ 成分になる理由も分かる。
 
-Aが2×3、xが3成分ならAxは2成分。xが2成分ならAxは未定義。
+## 「次元」という言葉の3つの意味を混ぜない
 
-### 答案で書く順序
+1. **ベクトル空間の次元**：$\mathbb R^n$ の基底の本数は $n$。
+2. **行列のサイズ**：$m\times n$ は行数と列数。
+3. **NumPyの `ndim`**：配列が何本のaxisを持つか。
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+たとえばshape `(2,3,4)` のNumPy配列は `ndim=3` だが24個の実数を持つ。これをflattenすれば $\mathbb R^{24}$ の1点として扱える。`ndim=3` と「数学的次元24」は同じ意味ではない。
 
-## 何を間違えやすいか
+## shapeだけでエラーを予測する練習
 
-- 数学のvector次元nとNumPy ndimを混同しない。
+$\mathbf A\in\mathbb R^{4\times3}$、$\mathbf B\in\mathbb R^{3\times2}$、$\mathbf x\in\mathbb R^3$ とする。
 
-## 自分で確認する問い
+- $\mathbf A\mathbf x$：$(4,3)(3)\to(4)$ なので定義可能。
+- $\mathbf A\mathbf B$：$(4,3)(3,2)\to(4,2)$。
+- $\mathbf B\mathbf A$：$(3,2)(4,3)$ は内側の2と4が合わず未定義。
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
+行列積は交換法則を満たさない以前に、**片方の順序だけ定義できることさえある**。
 
-## 後続Courseへの接続
+## 具体例
 
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+**例1**：$\mathbf A\in\mathbb R^{2\times3}$、$\mathbf x\in\mathbb R^3$ なら $\mathbf A\mathbf x\in\mathbb R^2$。
 
-## 参考
+**例2**：$\mathbf A\in\mathbb R^{2\times3}$ と $\mathbf B\in\mathbb R^{4\times2}$ の $\mathbf A\mathbf B$ は内側3と4が一致しないため未定義。値を計算する前にshapeだけで判定できる。
 
-- Course 00 internal notation policy
+## 条件を外すと
+
+「要素数が同じなら同じ型」と考えるのは誤り。`(6,)`, `(2,3)`, `(1,6)` は6値を持つが、index構造と演算の意味が違う。
+
+## 後続Courseでどう使うか
+
+この習慣は線形代数の行列積、確率のrandom vector、機械学習のbatch×feature、深層学習のtensorで常に使う。
 
 [演習へ](/exercises/prep-symbols-types-shapes)　|　[スライドへ](/slides/prep-symbols-types-shapes/)

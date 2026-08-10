@@ -11,62 +11,46 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-「コードが動いた」から「計算が正しい」へ進むため、何を記録・検算するか。
-
----
-
-## 直感
-
-再現性はseedだけではない。入力、version、dtype、tolerance、algorithm、environmentを記録し、小さい既知例・極端例・invariantで検算する。
+浮動小数点の結果をexact equalityで判定せず、独立な検算と再現可能な実験条件をどう残すか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-numerical-checks-reproducibility.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-|x-\hat x|\le \varepsilon_{abs}+\varepsilon_{rel}|x|
-$$
+横軸が参照値の大きさ、縦軸が許容誤差。$\text{atol}+\text{rtol}|x|$ は0付近ではabsolute tolerance、値が大きい領域ではrelative toleranceが支配する。1本の固定閾値よりscaleの違う値を比較しやすい。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. exact equalityが不適切な浮動小数点比較を避ける。
-2. scaleが小さい領域はabsolute tolerance、大きい領域はrelative toleranceで扱う。
-3. expected invariantやreference solutionと併用する。
+floating pointでは0.1を2進数でexactに表せないため、`0.1+0.2==0.3` が偽になることがある。比較は $|x-y|\le\text{atol}+\text{rtol}|y|$ のようにscaleを考える。
 
----
+検算は同じ式をもう一度計算するだけでなく、独立な性質を使う。線形方程式ならresidual $\|A\hat x-b\|$、SVDなら再構成誤差と直交性、確率なら総和1。
 
-## 小さい例
-
-0.1+0.2を0.3と==比較するよりnp.isclose相当の許容誤差比較を使う。
+randomnessを使う場合はseed、library version、dtype、input、parameterを記録する。
 
 ---
 
-## 条件を外すと
+## 具体例
 
-- seed固定だけでhardware/library差まで完全再現できると思わない。
-
----
-
-## 理解確認
-
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+計算値1.0000001と参照1.0をatol=1e-8, rtol=1e-6で比較すると誤差1e-7 <=1.01e-6なので一致扱い。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-numerical-checks-reproducibility)
+「seedを固定したから完全再現」とは限らない。GPU kernelや並列reduction、library version差でbitwise結果が変わることがある。
 
-[10問の演習](../../exercises/prep-numerical-checks-reproducibility)
+---
+
+## 次へ
+
+全Courseの数値例・ML experimentの基本作法。
+
+---
+
+[教科書](../../textbook/prep-numerical-checks-reproducibility)　|　[演習](../../exercises/prep-numerical-checks-reproducibility)

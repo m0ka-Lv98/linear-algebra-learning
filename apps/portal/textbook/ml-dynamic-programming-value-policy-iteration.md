@@ -2,26 +2,21 @@
 
 Course 08｜機械学習
 
-## このTopicの中心問題
+## このTopicで解く問題
 
 modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。
 
-## まず直感
+## なぜこの概念が必要か
 
 最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
 
-## 図で固定する
+## 図の各要素は何を表しているか
 
-<img src="/visuals/course-08/ml-dynamic-programming-value-policy-iteration.png" alt="value iterationとpolicy iterationの図解" style="max-height: 460px; display:block; margin:0 auto;" />
+<img src="/visuals/course-08/ml-dynamic-programming-value-policy-iteration.png" alt="value iterationとpolicy iterationの図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-### 動きで確認する
+横軸にstateを並べ、反復kごとのvalueを複数曲線で表示する。terminalや高reward stateの値が最初に決まり、Bellman backupを繰り返すほど遠いstateへdiscountされながら情報が伝播する。GIFはこのbackward propagationを反復ごとに示す。
 
-<img src="/visuals/course-08/ml-dynamic-programming-value-policy-iteration.gif" alt="ml-dynamic-programming-value-policy-iteration animation" style="max-height: 420px; display:block; margin:0 auto;" />
-
-
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
-
-## 記号・型・意味
+## 記号・型・定義域
 
 | 記号 | 意味 |
 |---|---|
@@ -29,7 +24,10 @@ modelが既知のMDPで、最適policyをBellman operatorの反復からどう�
 | $V_k$ | k回目のvalue estimate |
 | $Q*$ | 最適action value |
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+
+- $V_k(s)$：k回目のvalue推定。
+- $T^*$：optimal Bellman operator。
+- $V^*$：$T^*V^*=V^*$ を満たすoptimal value。
 
 ## 中心となる式
 
@@ -37,40 +35,69 @@ $$
 V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]
 $$
 
-## なぜこの式になるのか
+## 中心式を前提から導く
 
 1. Bellman optimality equationを固定点方程式 V*=T*V* と読む。
 2. T*はγ-contractionなので Banach fixed-point theoremにより反復収束。
 3. V*から各状態でargmax actionを選んでgreedy optimal policyを得る。
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+## なぜその変形をしてよいのか
 
-## 例題：小さい設定で最後まで追う
+optimality operator $T^*$ を $(T^*V)(s)=\max_a\sum_{s'}P(s'|s,a)[r+\gamma V(s')]$ と定義する。任意V,Wについてmaxの差を上から評価すると $\|T^*V-T^*W\|_\infty\le\gamma\|V-W\|_\infty$。$0\le\gamma<1$ ならcontraction。
 
-小さなgrid worldでterminalから価値が後方へ伝播する様子を反復で確認する。
+Banach fixed-point theoremにより一意な固定点 $V^*$ があり、value iteration $V_{k+1}=T^*V_k$ は任意初期値から収束する。policy iterationは固定policyの線形方程式を解くevaluationと、greedy actionへ変えるimprovementを交互に行う。
 
-### 答案で書く順序
+## Bellman optimality operatorがcontractionになることを示す
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+$$
+(TV)(s)=\max_a\sum_{s'}P(s'|s,a)[r(s,a,s')+\gamma V(s')]
+$$
 
-## 何を間違えやすいか
+とする。任意の $V,W$ について、maxの差は同じactionで比較した差より大きくならないので
+
+$$
+|(TV)(s)-(TW)(s)|
+\le \gamma\max_a\sum_{s'}P(s'|s,a)|V(s')-W(s')|.
+$$
+
+確率の和が1だから右辺は $\gamma\|V-W\|_\infty$ 以下。全stateのmaxを取って
+
+$$
+\|TV-TW\|_\infty\le\gamma\|V-W\|_\infty.
+$$
+
+したがって $\gamma<1$ なら固定点は一意で、反復誤差は少なくとも幾何級数的に縮む。
+
+## policy iterationとの違い
+
+value iterationは「optimality backupを何度も近似的に適用」。policy iterationは「現在policyを正確/十分に評価 → そのvalueに対してgreedy改善」を交互に行う。有限MDPではpolicy improvementによりpolicyが悪化せず、有限個のdeterministic policyしかないため最終的にoptimal policyへ到達する。
+
+## 例題1：具体的な数値・構造で解く
+
+**問題**：state Sで a1はreward2でterminal、a2はreward0でTへ進み、Tからreward6でterminal、$\gamma=0.5$。Sでのoptimal actionをBellman backupで求めよ。
+
+**解答**：$Q(S,a1)=2$。$Q(S,a2)=0+0.5V(T)$ で $V(T)=6$ だから3。3>2なのでa2がoptimal。
+
+## 例題2：別の条件で確認する
+
+state Sでaction a1は即reward1でterminal、a2はreward0でstate Tへ、Tはreward4でterminal、$\gamma=0.5$。a1価値1、a2価値0+0.5*4=2なのでoptimal actionはa2。
+
+## 結果の検算
+
+各iterationでBellman optimality operatorを同じ旧valueへ適用したか確認する。候補actionごとの $r+\gamma\sum_{s'}P(s'|s,a)V_k(s')$ を別々に計算し、その最大値が $V_{k+1}(s)$。$0\le\gamma<1$ なら2つのvalue vectorのsup norm差が反復で縮むことも収束診断に使える。
+
+## 条件を外すと何が壊れるか
+
+$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。finite-horizonやproper stochastic shortest pathなど別条件が必要。
+
+## よくある誤り
 
 - policy evaluationとpolicy improvementを混同しない。
 - γ=1のcontinuing taskで同じcontraction議論を無条件に使わない。
 
-## 自分で確認する問い
+## 次のTopic・応用への接続
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
-
-## 後続Courseへの接続
-
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+value iterationはfixed-point numerical methodとしてCourse05の収束理論と同型。次のTDではoperatorの期待値を1本のsampleで近似する。
 
 ## 参考
 

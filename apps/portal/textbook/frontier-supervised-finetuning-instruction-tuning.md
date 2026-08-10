@@ -2,21 +2,21 @@
 
 Course 10｜Frontier
 
-## このTopicの中心問題
+## このTopicで解く問題
 
 pretrained LMを「指示に従うmodel」へ変える最初の段階は何を最適化しているか。
 
-## まず直感
+## なぜこの概念が必要か
 
 SFTはinstruction-response pairに対するconditional language modeling。base modelの次token予測能力を、望ましい会話・指示応答分布へ寄せる。
 
-## 図で固定する
+## 図の各要素は何を表しているか
 
-<img src="/visuals/course-10/frontier-supervised-finetuning-instruction-tuning.png" alt="SFT・instruction tuningの図解" style="max-height: 460px; display:block; margin:0 auto;" />
+<img src="/visuals/course-10/frontier-supervised-finetuning-instruction-tuning.png" alt="SFT・instruction tuningの図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+左のinstructionと任意のcontextがmodelへ入り、右側のresponse token列を生成する。lossを掛ける部分はresponse tokenに対応し、prompt tokenをmaskする設定では「入力を再現する」のでなく「この入力に対する望ましい応答」のconditional likelihoodを上げる。
 
-## 記号・型・意味
+## 記号・型・定義域
 
 | 記号 | 意味 |
 |---|---|
@@ -24,7 +24,10 @@ SFTはinstruction-response pairに対するconditional language modeling。base 
 | $y$ | target response |
 | $θ$ | model parameters |
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+
+- $x$：instruction/context。
+- $y_{<t}$：response prefix。
+- $\pi_\theta(y_t|x,y_{<t})$：正解tokenの条件付き確率。
 
 ## 中心となる式
 
@@ -32,40 +35,59 @@ $$
 \mathcal L_{SFT}=-\sum_t\log\pi_\theta(y_t\mid x,y_{<t})
 $$
 
-## なぜこの式になるのか
+## 中心式を前提から導く
 
 1. response conditional probabilityをautoregressive factorizationする。
 2. 負のlog likelihoodを取るとtoken cross entropyの和。
 3. prompt tokenをloss maskする設計ではresponse tokenだけを直接教師信号にする。
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+## なぜその変形をしてよいのか
 
-## 例題：小さい設定で最後まで追う
+pretrained LMは一般textのnext-token distributionを学んでいる。SFTではdataset $D={(x_i,y_i)}$ のinstruction xに対するresponse yのconditional likelihoodを最大化し、desired behavior distributionへparameterを移す。
 
-「次を要約せよ」というinstructionと良質なsummaryのpairを多数学習する。
+responseはautoregressiveに factorizeされるので lossは $-\sum_t\log\pi_\theta(y_t|x,y_{<t})$。chat templateやsystem/user/assistant境界、loss maskは「どのtokenを教師信号として最適化するか」を決めるため、単なる前処理ではない。
 
-### 答案で書く順序
+## SFT objectiveをtoken単位まで書く
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+instruction/contextを $x$、assistant responseを $y_{1:T}$ とすると
 
-## 何を間違えやすいか
+$$
+\mathcal L_{SFT}(\theta)
+=-\sum_{t=1}^T m_t\log\pi_\theta(y_t|x,y_{<t}).
+$$
+
+$m_t\in\{0,1\}$ はloss maskで、assistant responseだけ学習させるならprompt tokenでは0、target response tokenでは1とする。chat templateは単なる表示形式ではなく、どのtoken列を条件とtargetへ分割するかを決める。
+
+2 tokenの正解確率が0.7, 0.6で両方mask=1ならlossは $-\log0.7-\log0.6\approx0.868$。mean reductionなら有効token数で割るため、sequence lengthやpacking方法によってgradient scaleが変わり得る。
+
+SFTはpreference optimizationの前に「望ましい応答領域へpolicyを移す」役割を持つ。PEFT/LoRAはこの同じobjectiveを少数のtrainable parameterで最適化する**手段**であり、SFTより概念的に先ではない。
+
+## 例題1：具体的な数値・構造で解く
+
+**問題**：response 3 tokenの正解確率が0.8,0.5,0.25のときSFTのsequence NLLを求めよ。
+
+**解答**：$-\log(0.8\times0.5\times0.25)=-\log0.1\approx2.3026$。token lossの和でも同じ。
+
+## 例題2：別の条件で確認する
+
+response2 tokenの正解確率が0.7,0.6ならlossは $-\log0.7-\log0.6\approx0.868$。sequenceが長い場合、sum/mean reductionの違いでgradient scaleが変わる。
+
+## 結果の検算
+
+SFT lossをresponse tokenごとに展開し、prompt部分をloss maskする設定ならtarget responseだけが和に入っているか確認する。確率は各token位置で語彙全体に対して和1であり、sequence lossは対象tokenのnegative log-probabilityの和または平均になる。
+
+## 条件を外すと何が壊れるか
+
+SFT dataの品質・coverage外のbehaviorは保証されない。また同じinstructionを大量重複するとdistributionが偏る。pretraining能力を壊すcatastrophic forgettingにも注意。
+
+## よくある誤り
 
 - SFT dataのstyle biasをmodel capabilityと混同しない。
 - train/eval contaminationを避ける。
 
-## 自分で確認する問い
+## 次のTopic・応用への接続
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
-
-## 後続Courseへの接続
-
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+PEFTはSFTなどのobjectiveを、全parameterではなくLoRA等の小さなparameter subsetで実現する手段。SFTの後にpreference/RLHFで「どちらの応答がより望ましいか」という相対feedbackを追加する。
 
 ## 参考
 

@@ -2,104 +2,160 @@
 
 Course 08｜機械学習
 
+[教科書](/textbook/ml-dynamic-programming-value-policy-iteration)
+
 ## 問題1
 
-中心式 `$V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]` に現れる記号をすべて定義し、左辺と右辺の型または意味を説明せよ。
+state Sで a1はreward2でterminal、a2はreward0でTへ進み、Tからreward6でterminal、$\gamma=0.5$。Sでのoptimal actionをBellman backupで求めよ。
 
 <details><summary>完全解答</summary>
 
-教科書の記号表を写すだけでなく、入力・出力・定義域を文章で結び付ける。
+$Q(S,a1)=2$。$Q(S,a2)=0+0.5V(T)$ で $V(T)=6$ だから3。3>2なのでa2がoptimal。
 
 </details>
 
 ## 問題2
 
-modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。 について、式を使わず直感だけで120字程度に説明せよ。
+「value iterationとpolicy iteration」の導出を、最初の段階「1. Bellman optimality equationを固定点方程式 V*=T*V* と読む。」から始めて中心式まで再構成せよ。途中で「optimality operator $T^*$ を $(T^*V)(s)=\max_a\sum_{s'}P(s'|s,a)[r+\gamma V(s')]$ と定義する。」がなぜ正当化できるかも説明すること。
 
 <details><summary>完全解答</summary>
 
-最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
+1. Bellman optimality equationを固定点方程式 V*=T*V* と読む。
+2. T*はγ-contractionなので Banach fixed-point theoremにより反復収束。
+3. V*から各状態でargmax actionを選んでgreedy optimal policyを得る。
+
+optimality operator $T^*$ を $(T^*V)(s)=\max_a\sum_{s'}P(s'|s,a)[r+\gamma V(s')]$ と定義する。任意V,Wについてmaxの差を上から評価すると $\|T^*V-T^*W\|_\infty\le\gamma\|V-W\|_\infty$。$0\le\gamma<1$ ならcontraction。
+
+Banach fixed-point theoremにより一意な固定点 $V^*$ があり、value iteration $V_{k+1}=T^*V_k$ は任意初期値から収束する。policy iterationは固定policyの線形方程式を解くevaluationと、greedy actionへ変えるimprovementを交互に行う。
 
 </details>
 
 ## 問題3
 
-次の例を途中計算込みで再現せよ：小さなgrid worldでterminalから価値が後方へ伝播する様子を反復で確認する。
+図 `/visuals/course-08/ml-dynamic-programming-value-policy-iteration.png` では「横軸にstateを並べ、反復kごとのvalueを複数曲線で表示する。」と説明されている。図に実際に描かれた対象を少なくとも3つ挙げ、それぞれが数式中のどの量・演算・条件を表すか対応づけよ。
 
 <details><summary>完全解答</summary>
 
-各段階で適用条件を確認し、最後に検算する。
+<img src="/visuals/course-08/ml-dynamic-programming-value-policy-iteration.png" alt="value iterationとpolicy iterationの図解" style="max-height: 480px; display:block; margin:0 auto;" />
+
+横軸にstateを並べ、反復kごとのvalueを複数曲線で表示する。terminalや高reward stateの値が最初に決まり、Bellman backupを繰り返すほど遠いstateへdiscountされながら情報が伝播する。GIFはこのbackward propagationを反復ごとに示す。
 
 </details>
 
 ## 問題4
 
-「value iterationとpolicy iteration」について、教科書の導出第1段階から中心式までを、途中で使う定義・仮定・式変形を明示しながら再構成せよ。
+「value iterationとpolicy iteration」の第二例「state Sでaction a1は即reward1でterminal、a2はreward0でstate Tへ、Tはreward4でterminal、$\gamma=0.5$。」を途中式つきで再現し、例題1と比べて変更された条件が結論へどう効いたか説明せよ。
 
 <details><summary>完全解答</summary>
 
-Bellman optimality equationを固定点方程式 V*=T*V* と読む。 → T*はγ-contractionなので Banach fixed-point theoremにより反復収束。 → V*から各状態でargmax actionを選んでgreedy optimal policyを得る。
+state Sでaction a1は即reward1でterminal、a2はreward0でstate Tへ、Tはreward4でterminal、$\gamma=0.5$。a1価値1、a2価値0+0.5*4=2なのでoptimal actionはa2。
 
 </details>
 
 ## 問題5
 
-次の注意点のうち1つについて、最小反例または失敗例を作れ：policy evaluationとpolicy improvementを混同しない。
+value iterationとpolicy iterationで Bellman optimality operator、k回目のvalue estimate、最適action value は互いに何が違う量か。各量の数学的な種類（scalar/vector/matrix/set/function/distribution等）と、必要な値域・shape・制約を記号表に沿って整理せよ。 最後に、`ml-dynamic-programming-value-policy-iteration` の中心式の中でこれらの量がどこに現れるかを1箇所示せ。
 
 <details><summary>完全解答</summary>
 
-定義または成立条件のどこが壊れるかを明示する。
+| 記号 | 意味 |
+|---|---|
+| $T*$ | Bellman optimality operator |
+| $V_k$ | k回目のvalue estimate |
+| $Q*$ | 最適action value |
+
+
+- $V_k(s)$：k回目のvalue推定。
+- $T^*$：optimal Bellman operator。
+- $V^*$：$T^*V^*=V^*$ を満たすoptimal value。
 
 </details>
 
 ## 問題6
 
-「value iterationとpolicy iteration」の中心式 `V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]` で、入力または主要パラメータを1つだけ変化させたとき、出力・結論がどう変わるかを式から追跡せよ。単純比例しない場合は理由を述べよ。
+警告「$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。」が必要な理由を、中心式のどの段階が壊れるかまで示して説明せよ。可能なら最小の数値例・反例を1つ添えよ。
 
 <details><summary>完全解答</summary>
 
-式の依存関係を追い、線形・非線形・確率正規化などを区別する。
+$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。finite-horizonやproper stochastic shortest pathなど別条件が必要。
 
 </details>
 
 ## 問題7
 
-「value iterationとpolicy iteration」を数値実装する前提で、中心式 `V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]` の各量について確認すべきshape・定義域・符号・確率範囲・toleranceのうち該当するものを具体的に列挙せよ。
+よくある誤り「policy evaluationとpolicy improvementを混同しない。」を犯した答案を想定し、どの一行が誤りかを特定して正しい計算・論証へ修正せよ。
 
 <details><summary>完全解答</summary>
 
-実装前に数学的条件をチェックリスト化する。
+- policy evaluationとpolicy improvementを混同しない。
+- γ=1のcontinuing taskで同じcontraction議論を無条件に使わない。
+
+$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。finite-horizonやproper stochastic shortest pathなど別条件が必要。
 
 </details>
 
 ## 問題8
 
-「value iterationとpolicy iteration」の中心式 `V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]` を適用できない境界ケースを1つ構成し、どの仮定が失われるため結論が壊れるか説明せよ。
+「value iterationとpolicy iteration」の例題1を再計算し、その結果に対して次の検算を実行せよ：各iterationでBellman optimality operatorを同じ旧valueへ適用したか確認する。 単に「一致した」と書かず、検算用の式・数値・条件を明示すること。
 
 <details><summary>完全解答</summary>
 
-policy evaluationとpolicy improvementを混同しない。 / γ=1のcontinuing taskで同じcontraction議論を無条件に使わない。
+$Q(S,a1)=2$。$Q(S,a2)=0+0.5V(T)$ で $V(T)=6$ だから3。3>2なのでa2がoptimal。
+
+検算：
+各iterationでBellman optimality operatorを同じ旧valueへ適用したか確認する。候補actionごとの $r+\gamma\sum_{s'}P(s'|s,a)V_k(s')$ を別々に計算し、その最大値が $V_{k+1}(s)$。$0\le\gamma<1$ なら2つのvalue vectorのsup norm差が反復で縮むことも収束診断に使える。
 
 </details>
 
 ## 問題9
 
-「value iterationとpolicy iteration」とその直前の前提Topicの関係を、前提が供給する量 → このTopicでの変換 → 得られる結論、の3段階で説明せよ。
+後続への接続「value iterationはfixed-point numerical methodとしてCourse05の収束理論と同型。」を具体化せよ。このTopicで得る量を1つ選び、それが次のTopicでどの入力になり、どの演算を受け、何を出力するかを式またはalgorithm名とともに説明せよ。
 
 <details><summary>完全解答</summary>
 
-前提が何を供給し、このTopicが何を追加するかを書く。
+value iterationはfixed-point numerical methodとしてCourse05の収束理論と同型。次のTDではoperatorの期待値を1本のsampleで近似する。
 
 </details>
 
 ## 問題10
 
-「value iterationとpolicy iteration」について、定義 → 中心式 `V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]` → 成立条件 → 小さい計算例 → 検算、の順に試験答案として200〜300字でまとめよ。
+中心問題「modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。」に対し、試験答案として一続きに答えよ。必ず (1) 主要記号の定義、(2) 中心式 `$$ V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)] $$`, (3) 導出の根拠、(4) 例題1の具体値、(5) 「$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。」という失敗条件、の5点を含めること。
 
 <details><summary>完全解答</summary>
 
-採点者が式の根拠と適用条件を追える答案にする。
+主要記号：
+| 記号 | 意味 |
+|---|---|
+| $T*$ | Bellman optimality operator |
+| $V_k$ | k回目のvalue estimate |
+| $Q*$ | 最適action value |
+
+
+- $V_k(s)$：k回目のvalue推定。
+- $T^*$：optimal Bellman operator。
+- $V^*$：$T^*V^*=V^*$ を満たすoptimal value。
+
+中心式：
+$$
+V_{k+1}(s)=\max_a\sum_{s\prime}P(s\prime|s,a)[r(s,a,s\prime)+\gamma V_k(s\prime)]
+$$
+
+導出：
+1. Bellman optimality equationを固定点方程式 V*=T*V* と読む。
+2. T*はγ-contractionなので Banach fixed-point theoremにより反復収束。
+3. V*から各状態でargmax actionを選んでgreedy optimal policyを得る。
+
+根拠：
+optimality operator $T^*$ を $(T^*V)(s)=\max_a\sum_{s'}P(s'|s,a)[r+\gamma V(s')]$ と定義する。任意V,Wについてmaxの差を上から評価すると $\|T^*V-T^*W\|_\infty\le\gamma\|V-W\|_\infty$。$0\le\gamma<1$ ならcontraction。
+
+Banach fixed-point theoremにより一意な固定点 $V^*$ があり、value iteration $V_{k+1}=T^*V_k$ は任意初期値から収束する。policy iterationは固定policyの線形方程式を解くevaluationと、greedy actionへ変えるimprovementを交互に行う。
+
+具体例：
+**問題**：state Sで a1はreward2でterminal、a2はreward0でTへ進み、Tからreward6でterminal、$\gamma=0.5$。Sでのoptimal actionをBellman backupで求めよ。
+
+**解答**：$Q(S,a1)=2$。$Q(S,a2)=0+0.5V(T)$ で $V(T)=6$ だから3。3>2なのでa2がoptimal。
+
+失敗条件：
+$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。finite-horizonやproper stochastic shortest pathなど別条件が必要。
 
 </details>
-
-[教科書へ](/textbook/ml-dynamic-programming-value-policy-iteration)

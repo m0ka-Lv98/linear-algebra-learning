@@ -11,21 +11,36 @@ Course 08｜機械学習
 
 ---
 
-## 今回の問い
+## 何を解決するか
 
 training lossを下げることと、未知データで良い予測をすることはなぜ同じではないのか。
-
----
-
-## 直感
 
 学習で直接最小化できるのは有限標本の経験リスク。目的は母集団分布に対する期待リスクなので、両者のgapを理解するのがgeneralization。
 
 ---
 
-## 図解
+## 図の意味
 
 <img src="./assets/course-08/ml-empirical-risk-generalization.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+横軸がmodel complexity、縦軸がrisk。training riskは複雑化とともに下がる一方、validation riskは途中で最小になって再び上がるU字型。training dataへの適合と未知分布での予測性能が同じ量ではないことを示す。
+
+---
+
+## 記号
+
+| 記号 | 意味 |
+|---|---|
+| $R(f)$ | 期待リスク |
+| $R̂_n(f)$ | 経験リスク |
+| $ℓ$ | loss |
+| $D$ | 未知のdata distribution |
+
+
+- $D$：未知のdata-generating distribution。
+- $f$：予測model。
+- $\ell$：loss。
+- $R(f)$：expected risk、$\hat R_n(f)$：empirical risk。
 
 ---
 
@@ -45,29 +60,38 @@ $$
 
 ---
 
-## 小さい例
+## 省略しない一段
 
-高次数多項式はtraining errorを0にできてもtest errorが増える場合がある。
+本当に最小化したいexpected riskは未知分布 $D$ 上の期待値なので観測できない。iid sample $S={(x_i,y_i)}$ から empirical risk $\hat R_S$ を作り、law of large numbersにより固定fについてRへ近づく。
 
----
-
-## 条件を外すと
-
-- test setをhyperparameter tuningに使わない。
-- training lossが低いだけで汎化を保証しない。
+しかし学習algorithmは同じSを見てf自体を選ぶので、「固定fの収束」だけではgeneralizationを保証しない。hypothesis classの複雑さやregularization、独立validation/testが必要になる。test setを何度も見てmodel選択するとtestにも適応してしまう。
 
 ---
 
-## 理解確認
+## 手計算
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+**問題**：squared lossでtraining sampleの誤差が [1,0,2,1] のときempirical riskを求める。また独立testで [2,3] ならtest riskも求めよ。
+
+**解答**：training empirical riskは $(1+0+2+1)/4=1$。test riskは $(2+3)/2=2.5$。training上の1だけで未知分布riskが1と断定できない。
 
 ---
 
-## 教科書と演習
+## 条件を変える
 
-[教科書](../../textbook/ml-empirical-risk-generalization)
+2点 $(0,0),(1,1)$ だけなら高次数多項式でtraining error 0の関数を無数に作れる。未知点x=0.5での予測は大きく異なり、training error 0だけではmodelを決められない。
 
-[10問の演習](../../exercises/ml-empirical-risk-generalization)
+---
+
+## どこで壊れるか
+
+validation setでhyperparameterを選んだ後、その同じvalidation scoreを「完全に未使用データでの性能」と報告しない。最終評価には独立testまたはnested CVが必要。
+
+---
+
+## 次へ
+
+bias–variance、regularization、cross-validation、learning theoryへつながる。後のRLでもtraining returnとdeployment performanceの分布差を同様に考える。
+
+---
+
+[教科書](../../textbook/ml-empirical-risk-generalization)　|　[10問の演習](../../exercises/ml-empirical-risk-generalization)

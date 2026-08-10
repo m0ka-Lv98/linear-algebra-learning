@@ -1,219 +1,107 @@
 # attention機構：演習
 
-Course 09｜Topic 08/20。10問すべて、このTopic固有の問いとして作成しています。
+Course 09｜深層学習
 
-[教科書](/textbook/dl-attention-mechanism)
+教科書の定義・導出・図・数値例を、自分で再構成できるかを確認する10問。
 
-## 問1. 定義と記号
+## 問題1：shapeを追う
 
-「attention機構」の代表式
-
-$$
-\operatorname{Attention}(\mathbf{Q},\mathbf{K},\mathbf{V})=\operatorname{softmax}(\mathbf{Q}\mathbf{K}^{\mathsf T}/\sqrt{d_k})\mathbf{V}
-$$
-
-について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
-
-<details><summary>ヒント</summary>
-
-式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
-
-</details>
+$\mathbf Q\in\mathbb R^{n_q\times d_k}$、$\mathbf K\in\mathbb R^{n_k\times d_k}$、$\mathbf V\in\mathbb R^{n_k\times d_v}$。$\operatorname{softmax}(\mathbf Q\mathbf K^T/\sqrt{d_k})\mathbf V$の各中間shapeを答えよ。
 
 <details><summary>完全解答</summary>
 
-代表式は結果だけを書くための記号ではない。本文で定義した量を使い、attention機構が何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
-
-**score matrix shape**
-
-$QK^T$ はn_q×n_k。entry q_i^Tk_jがquery iとkey jのcompatibility。
-
-答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+$QK^T$は$(n_q,d_k)(d_k,n_k)=(n_q,n_k)$。row-wise softmax後も$(n_q,n_k)$。それを$V(n_k,d_v)$へ掛けるとoutputは$(n_q,d_v)$。各queryが$n_k$個のvalueをweightして$d_v$次元outputを作る。
 
 </details>
 
-## 問2. 導出1：score matrix shape
+## 問題2：dot-product variance
 
-「attention機構」で **score matrix shape** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「score matrix shape」を、直前の定義から始めて書き直す。
-
-</details>
+$q_r,k_r$が独立、平均0、分散1で$r=1,\ldots,d_k$とする。$s=\sum_r q_rk_r$の分散が概ね$d_k$になることを示せ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$QK^T$ はn_q×n_k。entry q_i^Tk_jがquery iとkey jのcompatibility。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「なぜ1/√d_k」へ進むときも、この段階で得た量だけを使う。
+独立かつ平均0なら各積$q_rk_r$の平均0、分散$E[q_r^2]E[k_r^2]=1$。異なる$r$のcross covarianceを0とみなせるので$\operatorname{Var}(s)=\sum_r1=d_k$。従って$s/\sqrt{d_k}$の分散は約1。
 
 </details>
 
-## 問3. 導出2：なぜ1/√d_k
+## 問題3：scaleがないと何が起こるか
 
-「attention機構」で **なぜ1/√d_k** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「なぜ1/√d_k」を、直前の定義から始めて書き直す。
-
-</details>
+$d_k$が64から1024へ増えるのに$1/\sqrt{d_k}$を使わない場合、score standard deviationは何倍になるか。softmaxへの影響も述べよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-independent unit-variance componentsならdot product variance≈d_k。√d_kで割りlogit scaleをO(1)にしsoftmax saturationを抑える。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「weighted sum」へ進むときも、この段階で得た量だけを使う。
+standard deviationは$\sqrt{d_k}$なので8から32へ、4倍。logit差が大きくなりsoftmaxがone-hotに近くsaturateしやすく、非最大要素のgradientが小さくなる。scale後ならvarianceをO(1)へ保つ。
 
 </details>
 
-## 問4. 導出3：weighted sum
+## 問題4：2-key softmax
 
-「attention機構」で **weighted sum** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「weighted sum」を、直前の定義から始めて書き直す。
-
-</details>
+1 queryに対するscaled scoresが$[0,\log3]$。attention weightsを求めよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-Aの各rowはsoftmaxでsum1。$AV$ は各queryごとにvaluesのconvex weighted combination、shape n_q×d_v。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+softmaxは$[e^0,e^{\log3}]/(1+3)=[1/4,3/4]$。valueが$\mathbf v_1,\mathbf v_2$ならoutputは$0.25\mathbf v_1+0.75\mathbf v_2$。
 
 </details>
 
-## 問5. 数値例を途中から再現
+## 問題5：maskの意味
 
-次の「attention機構」の設定を、自分で途中量まで展開して最終結論を確認せよ。
-
-> 1 query, 2 keys score(2,0)ならweights≈(0.881,0.119)、outputはvalue1寄り。
-
-本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+causal attentionでfuture keyのscoreへ$-\infty$を加えると、softmax後weightが0になる理由を説明せよ。
 
 <details><summary>完全解答</summary>
 
-設定に対する計算・判断は次の通り。
-
-1 query, 2 keys score(2,0)ならweights≈(0.881,0.119)、outputはvalue1寄り。
-
-ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+softmax numeratorは$e^{score}$。masked scoreを$-\infty$とすれば$e^{-\infty}=0$なのでweight0。finite large-negative valueを実装上使う場合も同じ近似。これによりposition$t$はfuture tokenを参照しない。
 
 </details>
 
-## 問6. 条件を変えたときの差
+## 問題6：row-wise softmax
 
-次の第二例について、第一例から変更した条件を特定し、その変更によって「attention機構」のどの部分が変わるか説明せよ。
-
-> causal maskはfuture scoreへ-∞を加えsoftmax weight0にする。padding maskとは目的が違う。
+$QK^T$へcolumn-wise softmaxを誤って適用するとattentionの意味がどう変わるか。
 
 <details><summary>完全解答</summary>
 
-causal maskはfuture scoreへ-∞を加えsoftmax weight0にする。padding maskとは目的が違う。
-
-比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+正しいrow-wise softmaxでは各query rowでkey weightsがsum1になり、そのqueryのvalue mixtureを作る。column-wiseだと各keyに対してquery方向にnormalizeし、各queryのweightsがsum1にならないため「1 queryがkeysをどうmixするか」というattention定義から外れる。
 
 </details>
 
-## 問7. 成立条件と反例
+## 問題7：Q,K,Vを区別する
 
-「attention機構」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
-
-> attention weightが高いことをそのままcausal importance/faithful explanationとみなせない。
-
-<details><summary>ヒント</summary>
-
-「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
-
-</details>
+同じinput embeddingからlinear projectionsでQ,K,Vを作る理由を、scoreとcontentの役割を分けて説明せよ。
 
 <details><summary>完全解答</summary>
 
-本文で確認する条件は以下である。
-
-- softmax前のscaleが重要。
-- padding/causal maskの意味を区別する。
-- attention機構の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-失敗例は次の通り。
-
-attention weightが高いことをそのままcausal importance/faithful explanationとみなせない。
-
-したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+QとKはcompatibility scoreを決めるrepresentation、Vは実際にmixされてoutputへ運ばれるcontent representation。別projectionを持つことで「何を基準に参照先を選ぶか」と「選んだ先から何を運ぶか」を異なるsubspaceで学習できる。
 
 </details>
 
-## 問8. 実装・数値診断
+## 問題8：attention matrixの図
 
-「attention機構」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
-
-> stable fused attention、mask broadcasting、head/batch dimensions。quadratic sequence memoryをmonitor。
+heatmapのあるrowでweightsが$(0.05,0.05,0.8,0.1)$だった。このqueryのoutputをvalue vectorsで式として書き、最も影響が大きいkeyを答えよ。
 
 <details><summary>完全解答</summary>
 
-stable fused attention、mask broadcasting、head/batch dimensions。quadratic sequence memoryをmonitor。
-
-実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+$\mathbf o=0.05\mathbf v_1+0.05\mathbf v_2+0.8\mathbf v_3+0.1\mathbf v_4$。第3key/valueのweight0.8が最大。ただしvalue vector magnitude自体もoutput componentへの実影響には関係する。
 
 </details>
 
-## 問9. 次Topicへの導線
+## 問題9：numerical stability
 
-「attention機構」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
-
-> self-attentionをmulti-head、position information、FFN、residual/normalizationと組み合わせTransformerを作る。
+softmax logitsが$(1001,1000,999)$のとき、naiveな$e^{z_i}$計算を避ける方法と、softmaxが変わらない理由を述べよ。
 
 <details><summary>完全解答</summary>
 
-self-attentionをmulti-head、position information、FFN、residual/normalizationと組み合わせTransformerを作る。
-
-本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+最大値1001を全logitから引いて$(0,-1,-2)$でsoftmaxする。softmax$(z-c)$は numerator/denominator双方に$e^{-c}$が掛かりcancelするため同じprobability。overflowを防げる。
 
 </details>
 
-## 問10. 総合証明・説明
+## 問題10：総合：identity-like attention
 
-「attention機構」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+$QK^T/\sqrt{d_k}$の対角要素が非常に大きく、非対角が非常に小さい場合、attention outputは何に近づくか。self-attentionとして解釈せよ。
 
 <details><summary>完全解答</summary>
 
-答案では次の流れを一続きにする。
-
-**代表式**
-
-$$
-\operatorname{Attention}(\mathbf{Q},\mathbf{K},\mathbf{V})=\operatorname{softmax}(\mathbf{Q}\mathbf{K}^{\mathsf T}/\sqrt{d_k})\mathbf{V}
-$$
-
-**導出**
-
-1. **score matrix shape** — $QK^T$ はn_q×n_k。entry q_i^Tk_jがquery iとkey jのcompatibility。
-
-2. **なぜ1/√d_k** — independent unit-variance componentsならdot product variance≈d_k。√d_kで割りlogit scaleをO(1)にしsoftmax saturationを抑える。
-
-3. **weighted sum** — Aの各rowはsoftmaxでsum1。$AV$ は各queryごとにvaluesのconvex weighted combination、shape n_q×d_v。
-
-**数値・具体例**
-
-1 query, 2 keys score(2,0)ならweights≈(0.881,0.119)、outputはvalue1寄り。
-
-**条件を壊すと**
-
-attention weightが高いことをそのままcausal importance/faithful explanationとみなせない。
-
-**実装**
-
-stable fused attention、mask broadcasting、head/batch dimensions。quadratic sequence memoryをmonitor。
-
-各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+row-wise softmaxは各rowで対角weightが1、他が0に近づく。従ってoutput row$i$は$\mathbf v_i$に近く、各tokenがほぼ自分自身のvalueだけを参照するidentity-like attentionになる。
 
 </details>
+
+[教科書へ](/textbook/dl-attention-mechanism)

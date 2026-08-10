@@ -2,21 +2,21 @@
 
 Course 10｜Frontier
 
-## このTopicの中心問題
+## このTopicで解く問題
 
 人間のpairwise preferenceをrewardへ変換し、policyをreferenceから離しすぎず改善する標準RLHF pipelineはどうつながるか。
 
-## まず直感
+## なぜこの概念が必要か
 
 まずchosen/rejected比較からreward modelを学び、そのrewardを最大化するようpolicyをRLで更新する。ただしreward modelの穴を突くoveroptimizationを抑えるためreference policyとのKL penaltyを使う。
 
-## 図で固定する
+## 図の各要素は何を表しているか
 
-<img src="/visuals/course-10/frontier-rlhf-reward-model-ppo-kl.png" alt="RLHF：reward model・PPO・KL制御の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+<img src="/visuals/course-10/frontier-rlhf-reward-model-ppo-kl.png" alt="RLHF：reward model・PPO・KL制御の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+左上の同一promptからchosen/rejected response pairがreward model学習へ入り、$r_\phi(x,y)$ を作る。別経路でSFT policyがresponseをrolloutし、そのrewardを受けてPPO updateされる。reference policyは更新せず、current policyとのKLを計算して「rewardを上げるがSFTから離れすぎない」制約として働く。2つのtraining loopを区別して読む。
 
-## 記号・型・意味
+## 記号・型・定義域
 
 | 記号 | 意味 |
 |---|---|
@@ -25,7 +25,10 @@ Course 10｜Frontier
 | $π_ref$ | reference policy |
 | $β$ | KL penalty係数 |
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+
+- $r_\phi(x,y)$：reward model score。
+- $\pi_\theta$：更新するpolicy、$\pi_{ref}$：固定reference policy。
+- $\beta>0$：KL penalty係数。
 
 ## 中心となる式
 
@@ -33,40 +36,75 @@ $$
 J(\theta)=E_{y\sim\pi_\theta}[r_\phi(x,y)]-\beta D_{KL}(\pi_\theta(\cdot|x)\|\pi_{ref}(\cdot|x))
 $$
 
-## なぜこの式になるのか
+## 中心式を前提から導く
 
 1. pairwise preferenceをBradley–Terry型 $P(y_w\succ y_l)=σ(r_w-r_l)$ で学習する。
 2. learned rewardをRL objectiveにする。
 3. KL penaltyでreferenceからのdistribution shiftを制限し、PPO等で近似更新する。
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+## なぜその変形をしてよいのか
 
-## 例題：小さい設定で最後まで追う
+reward modelはpairwise preference $y_w\succ y_l$ を $P(y_w\succ y_l|x)=\sigma(r_\phi(x,y_w)-r_\phi(x,y_l))$ とmodel化し、binary log lossで学ぶ。絶対rewardの原点は識別できず、differenceが重要。
 
-同一promptに複数応答を生成し、人間rankからreward modelを作り、policy rollout→reward→PPO updateを反復する。
+policy stageでは $E_{y\sim\pi_\theta}[r_\phi(x,y)]-\beta D_{KL}(\pi_\theta||\pi_{ref})$ を最大化する。KL項はreward modelの誤差を突いて極端なdistributionへ移るreward hacking/overoptimizationを抑える。PPOはimportance ratioを使い、1 batchでの更新幅をclipする近似的trust-region法。
 
-### 答案で書く順序
+## reward modelのpairwise likelihood
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+同一prompt $x$ に対し、人間がchosen $y_w$ をrejected $y_l$ より好むとする。reward model $r_\phi(x,y)$ で
 
-## 何を間違えやすいか
+$$
+P(y_w\succ y_l|x)
+=\sigma(r_\phi(x,y_w)-r_\phi(x,y_l))
+$$
+
+と置けばnegative log-likelihoodは
+
+$$
+\mathcal L_{RM}
+=-\log\sigma(r_w-r_l).
+$$
+
+reward全体へ同じ定数を足してもdifferenceは変わらないため、pairwise dataだけではrewardの絶対原点は識別されない。
+
+## policy objectiveとKL control
+
+reward modelができた後、policyは概念的に
+
+$$
+J(\theta)=E_{y\sim\pi_\theta(\cdot|x)}[r_\phi(x,y)]
+-\beta D_{KL}(\pi_\theta(\cdot|x)\|\pi_{ref}(\cdot|x))
+$$
+
+を大きくしたい。第1項だけならreward modelの穴を突く極端なresponseへ移る可能性がある。第2項はSFT/reference policyから離れることへ価格を付ける。
+
+PPOでは旧policyに対するprobability ratio $\rho_t=\pi_\theta(a_t|s_t)/\pi_{old}(a_t|s_t)$ とadvantage $A_t$ を使い、$\rho_t$ が1から大きく外れるupdateをclipする。**PPO clipは1回のupdate幅、KL penaltyはreference policyからの累積distance**を主に制御するため、同一のものではない。
+
+## 例題1：具体的な数値・構造で解く
+
+**問題**：policy Aの期待reward改善が0.7、referenceからのKLが0.2、$\beta=1.5$ とする。KL正則化objectiveの改善量を求めよ。
+
+**解答**：$0.7-1.5\times0.2=0.4$。rewardだけなら0.7だが、distribution shift cost 0.3を引く。
+
+## 例題2：別の条件で確認する
+
+reward差 $r_w-r_l=1.2$ ならpreference probabilityは $\sigma(1.2)\approx0.769$。policy updateでrewardが0.5増えてもKL penaltyが0.4、$\beta=2$ ならnet objective変化は0.5-0.8=-0.3となり、その移動は抑えられる。
+
+## 結果の検算
+
+reward modelのpairwise lossとpolicy updateのobjectiveを混ぜない。policy側ではlearned rewardから $\beta\,\mathrm{KL}(\pi_\theta\|\pi_{\mathrm{ref}})$ を引く符号になっているか確認し、$\beta$ を大きくするとreferenceからの乖離が抑えられる方向へ働くかを見る。
+
+## 条件を外すと何が壊れるか
+
+reward model scoreを「人間価値の真値」とみなさない。training preference分布外では誤差が大きくなり得る。またPPO clipとKL penaltyは同じ役割ではなく、前者はupdate ratio、後者はreferenceからのdistribution shiftを制御する。
+
+## よくある誤り
 
 - reward model scoreをground truth utilityとみなさない。
 - KL係数とreward scaleのconventionを明示する。
 
-## 自分で確認する問い
+## 次のTopic・応用への接続
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
-
-## 後続Courseへの接続
-
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+DPOはKL-regularized optimal policyとBradley–Terry preference modelを組み合わせ、明示的reward model+online RLを使わずpairwise classification objectiveへ変形する。次のRLVRではrewardを人間選好でなくverifierから得る。
 
 ## 参考
 

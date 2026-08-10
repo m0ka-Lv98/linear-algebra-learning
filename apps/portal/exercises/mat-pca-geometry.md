@@ -1,219 +1,107 @@
 # PCAの幾何学：演習
 
-Course 07｜Topic 03/20。10問すべて、このTopic固有の問いとして作成しています。
+Course 07｜データ解析の行列手法
 
-[教科書](/textbook/mat-pca-geometry)
+教科書の定義・導出・図・数値例を、自分で再構成できるかを確認する10問。
 
-## 問1. 定義と記号
+## 問題1：中心化の理由
 
-「PCAの幾何学」の代表式
-
-$$
-\max_{\|\mathbf{v}\|_2=1}\mathbf{v}^{\mathsf T}\mathbf{S}\mathbf{v}
-$$
-
-について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
-
-<details><summary>ヒント</summary>
-
-式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
-
-</details>
+data matrix $\mathbf X\in\mathbb R^{n\times p}$ の各列平均を引いて$\mathbf X_c$を作る理由を、PCAが何のvarianceを測るかという観点から説明せよ。
 
 <details><summary>完全解答</summary>
 
-代表式は結果だけを書くための記号ではない。本文で定義した量を使い、PCAの幾何学が何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
-
-**project variance**
-
-$Var(z)=(n-1)^{-1}\|X_cv\|²=v^TSv$。
-
-答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+PCAは平均からの偏差のvarianceを最大化する方向を探す。中心化しないと$\|\mathbf X\mathbf v\|^2$にmean offsetの大きさが混ざり、原点から遠い方向を選ぶ可能性がある。$\mathbf X_c$なら各feature meanが0で、$\mathbf S=(n-1)^{-1}\mathbf X_c^{\mathsf T}\mathbf X_c$がsample covarianceになる。
 
 </details>
 
-## 問2. 導出1：project variance
+## 問題2：projected varianceを導く
 
-「PCAの幾何学」で **project variance** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「project variance」を、直前の定義から始めて書き直す。
-
-</details>
+unit vector $\mathbf v\in\mathbb R^p$ に投影したscore $\mathbf z=\mathbf X_c\mathbf v$ のsample varianceが $\mathbf v^{\mathsf T}\mathbf S\mathbf v$ になることを示せ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$Var(z)=(n-1)^{-1}\|X_cv\|²=v^TSv$。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「unit constraint」へ進むときも、この段階で得た量だけを使う。
+中心化済みなので$\mathbf z$の平均は0。sample varianceは$(n-1)^{-1}\mathbf z^{\mathsf T}\mathbf z=(n-1)^{-1}\mathbf v^{\mathsf T}\mathbf X_c^{\mathsf T}\mathbf X_c\mathbf v=\mathbf v^{\mathsf T}\mathbf S\mathbf v$。
 
 </details>
 
-## 問3. 導出2：unit constraint
+## 問題3：unit norm constraint
 
-「PCAの幾何学」で **unit constraint** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「unit constraint」を、直前の定義から始めて書き直す。
-
-</details>
+$\max_{\mathbf v}\mathbf v^{\mathsf T}\mathbf S\mathbf v$ に$\|\mathbf v\|=1$が必要な理由を示せ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-scaleを自由にするとvを大きくしてvarianceを無限増加できるので $v^Tv=1$。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「Lagrange condition」へ進むときも、この段階で得た量だけを使う。
+constraintがなければ、varianceが正の方向$\mathbf v$について$c\mathbf v$を使うとobjectiveは$c^2\mathbf v^{\mathsf T}\mathbf S\mathbf v$となり$c\to\infty$で無限大。方向だけ比較するためscaleを固定する$\|\mathbf v\|=1$が必要。
 
 </details>
 
-## 問4. 導出3：Lagrange condition
+## 問題4：eigenvalue problem
 
-「PCAの幾何学」で **Lagrange condition** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「Lagrange condition」を、直前の定義から始めて書き直す。
-
-</details>
+Lagrange multiplierを使って $\max_{\|\mathbf v\|=1}\mathbf v^{\mathsf T}\mathbf S\mathbf v$ から $\mathbf S\mathbf v=\lambda\mathbf v$ を導け。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$L=v^TSv-\lambda(v^Tv-1)$。gradient=0で $Sv=\lambda v$。最大Rayleigh quotientは最大eigenvalue。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+$L(\mathbf v,\lambda)=\mathbf v^{\mathsf T}\mathbf S\mathbf v-\lambda(\mathbf v^{\mathsf T}\mathbf v-1)$。$\mathbf S$ symmetricなので$\nabla_v L=2\mathbf S\mathbf v-2\lambda\mathbf v=0$、従って$\mathbf S\mathbf v=\lambda\mathbf v$。objective at unit eigenvectorは$\lambda$なので最大eigenvalueのeigenvectorが第1PC。
 
 </details>
 
-## 問5. 数値例を途中から再現
+## 問題5：2D数値例
 
-次の「PCAの幾何学」の設定を、自分で途中量まで展開して最終結論を確認せよ。
-
-> ellipse cloudの長軸がPC1、短軸PC2。eigenvalueは各axisのvariance。
-
-本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+$\mathbf S=\begin{bmatrix}4&0\\0&1\end{bmatrix}$ の第1・第2principal componentとexplained variance ratioを求めよ。
 
 <details><summary>完全解答</summary>
 
-設定に対する計算・判断は次の通り。
-
-ellipse cloudの長軸がPC1、短軸PC2。eigenvalueは各axisのvariance。
-
-ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+eigenvaluesは4,1、eigenvectorsは$\mathbf e_1,\mathbf e_2$。第1PCはx1方向、第2PCはx2方向。総variance=5なのでexplained variance ratioは第1$4/5=0.8$、第2$1/5=0.2$。
 
 </details>
 
-## 問6. 条件を変えたときの差
+## 問題6：reconstruction errorとの同値
 
-次の第二例について、第一例から変更した条件を特定し、その変更によって「PCAの幾何学」のどの部分が変わるか説明せよ。
-
-> centerしないPCAではoriginからmean方向がdominantになることがあり、通常のvariance interpretationが変わる。
+unit vector $\mathbf v$ へのrank-1 projection $\hat{\mathbf X}=\mathbf X_c\mathbf v\mathbf v^{\mathsf T}$ について、$\|\mathbf X_c-\hat{\mathbf X}\|_F^2=\|\mathbf X_c\|_F^2-\|\mathbf X_c\mathbf v\|_2^2$ を説明し、variance最大化との関係を述べよ。
 
 <details><summary>完全解答</summary>
 
-centerしないPCAではoriginからmean方向がdominantになることがあり、通常のvariance interpretationが変わる。
-
-比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+$\mathbf v\mathbf v^{\mathsf T}$はorthogonal projectorなので、各row vectorはprojected componentとorthogonal residualへPythagoras分解される。全rowで足すとFrobenius normの式になる。$\|\mathbf X_c\|_F^2$は$\mathbf v$に依存しないため、reconstruction error最小化は$\|\mathbf X_c\mathbf v\|^2$、すなわちprojected variance最大化と同値。
 
 </details>
 
-## 問7. 成立条件と反例
+## 問題7：scale依存性
 
-「PCAの幾何学」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
-
-> PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。
-
-<details><summary>ヒント</summary>
-
-「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
-
-</details>
+身長(cm)と体重(kg)の2featureにPCAを直接適用する場合とstandardize後に適用する場合で結果が変わり得る理由を説明せよ。
 
 <details><summary>完全解答</summary>
 
-本文で確認する条件は以下である。
-
-- PCA前の中心化を忘れない。
-- 分散最大方向が必ず意味的に重要とは限らない。
-- PCAの幾何学の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-失敗例は次の通り。
-
-PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。
-
-したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+covariance PCAは数値scaleに依存する。unitが大きくvarianceも大きいfeatureがprincipal directionを支配し得る。standardizeしてvariance 1にすると実質correlation matrix PCAとなり、relative correlation structureを強く反映する。どちらが正しいかは目的とunitに依存する。
 
 </details>
 
-## 問8. 実装・数値診断
+## 問題8：SVDとの対応
 
-「PCAの幾何学」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
-
-> covarianceを形成せずcentered XのSVDを使うと安定/効率的。explained variance ratioだけでrを自動決定しない。
+$\mathbf X_c=\mathbf U\mathbf\Sigma\mathbf V^{\mathsf T}$ とするとPCA directionが$\mathbf V$になる理由を示せ。
 
 <details><summary>完全解答</summary>
 
-covarianceを形成せずcentered XのSVDを使うと安定/効率的。explained variance ratioだけでrを自動決定しない。
-
-実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+$\mathbf S=(n-1)^{-1}\mathbf X_c^{\mathsf T}\mathbf X_c=(n-1)^{-1}\mathbf V\mathbf\Sigma^{\mathsf T}\mathbf\Sigma\mathbf V^{\mathsf T}$。従ってcovariance eigenvectorsはright singular vectors$\mathbf V$、eigenvaluesは$\sigma_i^2/(n-1)$。
 
 </details>
 
-## 問9. 次Topicへの導線
+## 問題9：図の読み取り
 
-「PCAの幾何学」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
-
-> PCA eigenvectorsとXのright singular vectorsが一致する関係を次Topicで導く。
+scatterが細長い斜め楕円を作り、第1PCの矢印が長軸に沿う。なぜminor axisではなくmajor axisが第1PCになるか。
 
 <details><summary>完全解答</summary>
 
-PCA eigenvectorsとXのright singular vectorsが一致する関係を次Topicで導く。
-
-本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+第1PCはunit directionへのprojected varianceを最大化する。楕円のmajor axis方向へprojectionするとpointのspreadが最も大きく、minor axisは最小。covariance eigenvalueでもmajor axisに大きいeigenvalueが対応する。
 
 </details>
 
-## 問10. 総合証明・説明
+## 問題10：PCAの限界
 
-「PCAの幾何学」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+two moonsのような曲がった1次元manifoldにPCAを1成分使うと情報を失う理由を説明せよ。
 
 <details><summary>完全解答</summary>
 
-答案では次の流れを一続きにする。
-
-**代表式**
-
-$$
-\max_{\|\mathbf{v}\|_2=1}\mathbf{v}^{\mathsf T}\mathbf{S}\mathbf{v}
-$$
-
-**導出**
-
-1. **project variance** — $Var(z)=(n-1)^{-1}\|X_cv\|²=v^TSv$。
-
-2. **unit constraint** — scaleを自由にするとvを大きくしてvarianceを無限増加できるので $v^Tv=1$。
-
-3. **Lagrange condition** — $L=v^TSv-\lambda(v^Tv-1)$。gradient=0で $Sv=\lambda v$。最大Rayleigh quotientは最大eigenvalue。
-
-**数値・具体例**
-
-ellipse cloudの長軸がPC1、短軸PC2。eigenvalueは各axisのvariance。
-
-**条件を壊すと**
-
-PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。
-
-**実装**
-
-covarianceを形成せずcentered XのSVDを使うと安定/効率的。explained variance ratioだけでrを自動決定しない。
-
-各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+PCAはglobal linear subspaceへのprojectionなので、曲がったmanifoldを1本の直線で近似する。局所的には1次元でもglobalには曲率があり、異なる部分が同じprojection coordinateへ重なる可能性がある。PCAの低次元性はlinear low-rank structureを仮定している。
 
 </details>
+
+[教科書へ](/textbook/mat-pca-geometry)

@@ -1,25 +1,36 @@
 ---
 theme: default
 routerMode: hash
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "PCAの幾何学"
 ---
 
 # PCAの幾何学
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 03/20
 
+---
+layout: center
 ---
 
 ## 今回の問い
 
-「分散最大化」と「再構成誤差最小化」が、なぜ同じ主成分を与えるのか。
+PCAの幾何学の代表式は、どの定義・仮定から、なぜその形になるのか。
+
+---
+
+## なぜ今これを学ぶのか
+
+前Topic `mat-covariance-scatter-matrices` で得た概念を使い、ここでは PCAの幾何学 へ進む。
 
 ---
 
 ## 直感
 
-中心化dataを単位ベクトルuへ射影したときのエネルギーを最大化する方向が第一主成分。Pythagorasにより全エネルギー=射影エネルギー+直交残差エネルギーなので、一方の最大化は他方の最小化と同値。
+PCAはデータの分散が大きい直交方向を順に選び、低次元へ射影する。
+
+
 
 ---
 
@@ -27,48 +38,75 @@ Course 07｜データ解析
 
 <img src="./assets/course-07/mat-pca-geometry.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
+細長い点群と主成分軸、射影点を描く。 点群の最も長い方向が第一主成分である。各点をその軸へ直交射影した座標の分散が最大になる方向を探す問題が固有値/SVDへつながる。
+
 ---
 
-## 中心式
+## 記号と代表式
+
+- $v\in\mathbb R^p,\|v\|=1$：projection direction
+- $z=X_cv$：scores
+- $S$：covariance
 
 $$
-\max_{\|u\|=1}\|Xu\|^2\iff\min_{\|u\|=1}\|X-Xuu^T\|_F^2
+\max_{\|\mathbf{v}\|_2=1}\mathbf{v}^{\mathsf T}\mathbf{S}\mathbf{v}
 $$
 
 ---
 
-## 導出
+## 導出 1
 
-1. 各row x_iを span(u) とその直交補へ分解する。
-2. $||x_i||²=(x_i^Tu)²+||x_i-(x_i^Tu)u||²$。
-3. iについて足すと左辺総energyはuに依存しない。
-4. したがってscore energy最大化とresidual energy最小化が同値。Rayleigh quotientからuはX^TXの最大固有値固有ベクトル。
+$Var(z)=(n-1)^{-1}\|X_cv\|²=v^TSv$。
 
 ---
 
-## 小さい例
+## 導出 2
 
-細長い楕円状点群では長軸方向uが第一PC。そこへ射影すると分散を最も保ち、直交再構成残差が最小。
-
----
-
-## 条件を外すと
-
-- centerしないPCAでは「分散」解釈が変わる。
-- feature scalingにより主成分が大きく変わり得る。
+scaleを自由にするとvを大きくしてvarianceを無限増加できるので $v^Tv=1$。
 
 ---
 
-## 理解確認
+## 例題
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+ellipse cloudの長軸がPC1、短軸PC2。eigenvalueは各axisのvariance。
 
+---
+
+## 条件を変えるとどうなるか
+
+PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。
+
+---
+
+## よくある誤解
+
+PCAの幾何学では、式へ数値を代入するだけでは不十分である。PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+
+---
+
+## 実装・計算上の注意
+
+covarianceを形成せずcentered XのSVDを使うと安定/効率的。explained variance ratioだけでrを自動決定しない。
+
+---
+
+## 一段先へ
+
+PCA eigenvectorsとXのright singular vectorsが一致する関係を次Topicで導く。
+
+---
+
+## 自分で説明できるか
+
+- 「project variance」を式を見ずに説明できるか
+- 「Lagrange condition」までの論理を一段ずつ再現できるか
+- PCAの幾何学の条件を1つ外した反例を説明できるか
+
+---
+layout: center
 ---
 
 ## 教科書と演習
 
-[教科書](../../textbook/mat-pca-geometry)
-
-[10問の演習](../../exercises/mat-pca-geometry)
+- [教科書](../../textbook/mat-pca-geometry)
+- [10問の演習](../../exercises/mat-pca-geometry)

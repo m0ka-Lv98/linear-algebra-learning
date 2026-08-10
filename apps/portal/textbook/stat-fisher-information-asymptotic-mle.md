@@ -2,21 +2,21 @@
 
 Course 03｜確率統計
 
-## このTopicの中心問題
+## このTopicで解く問題
 
 尤度の「尖り具合」が、推定量の精度とどう結びつくか。
 
-## まず直感
+## なぜこの概念が必要か
 
 真のパラメータ付近でlog-likelihoodが急に曲がるほど、少しパラメータをずらしたときデータ分布が大きく変わる。これを平均曲率として測るのがFisher情報量。
 
-## 図で固定する
+## 図の各要素は何を表しているか
 
-<img src="/visuals/course-03/stat-fisher-information-asymptotic-mle.png" alt="Fisher情報量とMLEの漸近分布の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+<img src="/visuals/course-03/stat-fisher-information-asymptotic-mle.png" alt="Fisher情報量とMLEの漸近分布の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+横軸がパラメータ $\theta$、縦軸がlog-likelihood。幅広い曲線と尖った曲線を同じ最大点付近で比較し、尖った方ほど二階微分の絶対値が大きい。Fisher情報量はこの局所曲率を平均的に測るため、尖った尤度ほどMLEの漸近分散 $1/[nI(\theta_0)]$ が小さくなる。
 
-## 記号・型・意味
+## 記号・型・定義域
 
 | 記号 | 意味 |
 |---|---|
@@ -24,7 +24,12 @@ Course 03｜確率統計
 | $I(θ)$ | Fisher情報量 |
 | $θ̂_MLE$ | 最尤推定量 |
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+
+- $\theta_0$：真のparameter。
+- $\hat\theta$：MLE。
+- $n$：iid標本数。
+- $I(\theta_0)$：1標本あたりFisher情報量。
+- $\xrightarrow{d}$：分布収束。
 
 ## 中心となる式
 
@@ -32,40 +37,92 @@ $$
 \sqrt n(\hat\theta-\theta_0)\xrightarrow{d}N(0,I(\theta_0)^{-1})
 $$
 
-## なぜこの式になるのか
+## 中心式を前提から導く
 
 1. score $s(θ)=\partialℓ/\partialθ$ を真値周りでTaylor展開する。
 2. MLEではscore=0なので、$0\approx s(θ_0)+(θ̂-θ_0)ℓ\prime\prime(θ_0)$。
 3. scoreのCLTとHessianの大数則から漸近正規性を得る。
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+## なぜその変形をしてよいのか
 
-## 例題：小さい設定で最後まで追う
+1標本のlog-likelihoodを $\ell_1(\theta)=\log p_\theta(X)$、scoreを $s_1(\theta)=\partial\ell_1/\partial\theta$ とする。正則条件の下で $E[s_1(\theta_0)]=0$、$I(\theta_0)=E[s_1^2]=-E[\ell_1\prime\prime]$。n標本ではscoreが和なのでCLTにより $s_n(\theta_0)/\sqrt n\Rightarrow N(0,I)$。
 
-Bernoulli(p) 1標本の情報量は1/[p(1-p)]。n標本ではn倍になり、MLEの分散はおおよそp(1-p)/n。
+MLEは $s_n(\hat\theta)=0$ を満たす。真値周りでTaylor展開して $0=s_n(\theta_0)+(\hat\theta-\theta_0)s_n\prime(\tilde\theta)$。両辺を $\sqrt n$ スケールで整理し、$-s_n\prime/n\to I$ を使うと $\sqrt n(\hat\theta-\theta_0)\Rightarrow N(0,I^{-1})$。
 
-### 答案で書く順序
+## scoreとFisher情報を定義からつなぐ
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+1標本のlog-likelihoodを $\ell(\theta;X)=\log p_\theta(X)$ とし、scoreを
 
-## 何を間違えやすいか
+$$
+s_\theta(X)=\frac{\partial}{\partial\theta}\ell(\theta;X)
+$$
+
+と定義する。正則条件の下では
+
+$$
+E_\theta[s_\theta(X)]=0
+$$
+
+であり、1標本のFisher情報量は
+
+$$
+I(\theta)=E_\theta[s_\theta(X)^2]
+=-E_\theta\left[\frac{\partial^2}{\partial\theta^2}\ell(\theta;X)\right]
+$$
+
+と等価に書ける。前者はscoreの揺らぎ、後者は平均的なlog-likelihood曲率で、同じ「parameterを少し動かしたとき分布がどれだけ変わるか」を測っている。
+
+## MLE漸近正規性を1行ずつ追う
+
+$n$ 標本のscoreを $S_n(\theta)=\sum_{i=1}^n s_\theta(X_i)$ とする。MLE $\hat\theta$ の内点解では $S_n(\hat\theta)=0$。真値 $\theta_0$ 周りでTaylor展開すると
+
+$$
+0=S_n(\theta_0)
++(\hat\theta-\theta_0)S_n'(\tilde\theta)
+$$
+
+となるので
+
+$$
+\sqrt n(\hat\theta-\theta_0)
+=-\frac{S_n(\theta_0)/\sqrt n}{S_n'(\tilde\theta)/n}.
+$$
+
+分子はCLTにより $N(0,I(\theta_0))$ へ、分母は大数の法則により $-I(\theta_0)$ へ収束する。Slutskyの定理を使えば
+
+$$
+\sqrt n(\hat\theta-\theta_0)
+\xrightarrow{d}N\!\left(0,I(\theta_0)^{-1}\right).
+$$
+
+ここで $\xrightarrow{d}$ は分布収束、$N(0,v)$ は平均0・分散$v$の正規分布を表す。境界parameter、識別不能model、Fisher情報が0/無限大になる場合にはこの通常形が壊れる。
+
+## 例題1：具体的な数値・構造で解く
+
+**問題**：Bernoulli(p)で $p=0.25$, $n=100$ のとき、MLE $\hat p$ のFisher情報に基づく漸近標準誤差を求めよ。
+
+**解答**：1標本情報量 $I(p)=1/[p(1-p)]=1/0.1875$。n標本の漸近分散は $1/[nI]=p(1-p)/n=0.001875$。標準誤差は $\sqrt{0.001875}\approx0.0433$。
+
+## 例題2：別の条件で確認する
+
+Bernoulli(p)では $s=(X-p)/[p(1-p)]$。分散を取ると $I(p)=1/[p(1-p)]$。n標本MLE $\hat p=\bar X$ の分散 $p(1-p)/n$ は $1/[nI(p)]$ と一致する。
+
+## 結果の検算
+
+Bernoulli例では $I(p)=1/[p(1-p)]$ から $1/[nI(p)]=p(1-p)/n$ を計算し、標本平均の既知の分散と一致することを確認する。$p\to0$ や1の境界では通常の正則近似が怪しくなるため、漸近式を無条件に外挿しない。
+
+## 条件を外すと何が壊れるか
+
+境界点、識別不能、mixture modelの特異点など正則条件が壊れると通常の $\sqrt n$ 正規近似が成立しないことがある。「MLEなら必ず正規」とは言えない。
+
+## よくある誤り
 
 - 有限標本で漸近近似が正確とは限らない。
 - 境界パラメータや識別不能modelでは通常の正則条件が壊れる。
 
-## 自分で確認する問い
+## 次のTopic・応用への接続
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
-
-## 後続Courseへの接続
-
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+Cramér–Rao下界、Wald/LR/score検定、natural gradientへつながる。深層学習でもFisher行列はparameter spaceの局所geometryとして現れる。
 
 ## 参考
 

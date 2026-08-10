@@ -11,27 +11,34 @@ Course 08｜機械学習
 
 ---
 
-## 今回の問い
+## 何を解決するか
 
 modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。
-
----
-
-## 直感
 
 最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
 
 ---
 
-## 図解
+## 図の意味
 
 <img src="./assets/course-08/ml-dynamic-programming-value-policy-iteration.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
+横軸にstateを並べ、反復kごとのvalueを複数曲線で表示する。terminalや高reward stateの値が最初に決まり、Bellman backupを繰り返すほど遠いstateへdiscountされながら情報が伝播する。GIFはこのbackward propagationを反復ごとに示す。
+
 ---
 
-## 動きで確認
+## 記号
 
-<img src="./assets/course-08/ml-dynamic-programming-value-policy-iteration.gif" style="max-height: 330px; display:block; margin:0 auto;" />
+| 記号 | 意味 |
+|---|---|
+| $T*$ | Bellman optimality operator |
+| $V_k$ | k回目のvalue estimate |
+| $Q*$ | 最適action value |
+
+
+- $V_k(s)$：k回目のvalue推定。
+- $T^*$：optimal Bellman operator。
+- $V^*$：$T^*V^*=V^*$ を満たすoptimal value。
 
 ---
 
@@ -51,29 +58,38 @@ $$
 
 ---
 
-## 小さい例
+## 省略しない一段
 
-小さなgrid worldでterminalから価値が後方へ伝播する様子を反復で確認する。
+optimality operator $T^*$ を $(T^*V)(s)=\max_a\sum_{s'}P(s'|s,a)[r+\gamma V(s')]$ と定義する。任意V,Wについてmaxの差を上から評価すると $\|T^*V-T^*W\|_\infty\le\gamma\|V-W\|_\infty$。$0\le\gamma<1$ ならcontraction。
 
----
-
-## 条件を外すと
-
-- policy evaluationとpolicy improvementを混同しない。
-- γ=1のcontinuing taskで同じcontraction議論を無条件に使わない。
+Banach fixed-point theoremにより一意な固定点 $V^*$ があり、value iteration $V_{k+1}=T^*V_k$ は任意初期値から収束する。policy iterationは固定policyの線形方程式を解くevaluationと、greedy actionへ変えるimprovementを交互に行う。
 
 ---
 
-## 理解確認
+## 手計算
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+**問題**：state Sで a1はreward2でterminal、a2はreward0でTへ進み、Tからreward6でterminal、$\gamma=0.5$。Sでのoptimal actionをBellman backupで求めよ。
+
+**解答**：$Q(S,a1)=2$。$Q(S,a2)=0+0.5V(T)$ で $V(T)=6$ だから3。3>2なのでa2がoptimal。
 
 ---
 
-## 教科書と演習
+## 条件を変える
 
-[教科書](../../textbook/ml-dynamic-programming-value-policy-iteration)
+state Sでaction a1は即reward1でterminal、a2はreward0でstate Tへ、Tはreward4でterminal、$\gamma=0.5$。a1価値1、a2価値0+0.5*4=2なのでoptimal actionはa2。
 
-[10問の演習](../../exercises/ml-dynamic-programming-value-policy-iteration)
+---
+
+## どこで壊れるか
+
+$\gamma=1$ の一般continuing MDPではcontraction証明が使えない。finite-horizonやproper stochastic shortest pathなど別条件が必要。
+
+---
+
+## 次へ
+
+value iterationはfixed-point numerical methodとしてCourse05の収束理論と同型。次のTDではoperatorの期待値を1本のsampleで近似する。
+
+---
+
+[教科書](../../textbook/ml-dynamic-programming-value-policy-iteration)　|　[10問の演習](../../exercises/ml-dynamic-programming-value-policy-iteration)

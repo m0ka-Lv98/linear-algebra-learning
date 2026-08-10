@@ -11,21 +11,34 @@ Course 09｜深層学習
 
 ---
 
-## 今回の問い
+## 何を解決するか
 
 表形式のQやpolicyをニューラルnetworkへ置き換えると、何が可能になり、何が不安定になるか。
-
----
-
-## 直感
 
 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
 
 ---
 
-## 図解
+## 図の意味
 
 <img src="./assets/course-09/dl-deep-reinforcement-learning.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+横軸がenvironment step、縦軸がepisode return。raw returnは大きく揺れ、移動平均が徐々に上がる。supervised learningのようにiid fixed dataset上のlossが単調に下がるとは限らず、policyが変わると収集data分布も変わることを示す。
+
+---
+
+## 記号
+
+| 記号 | 意味 |
+|---|---|
+| $Q_θ(s,a)$ | networkで近似したQ |
+| $θ^-$ | target network parameter |
+| $D$ | replay buffer |
+
+
+- $Q_\theta(s,a)$：online network。
+- $Q_{\theta^-}$：target network。
+- $D$：replay bufferのtransition分布。
 
 ---
 
@@ -45,29 +58,38 @@ $$
 
 ---
 
-## 小さい例
+## 省略しない一段
 
-画像stateのAtariではCNNがQ(s,a)を出し、ε-greedyで行動を選ぶ。
+DQNではtabular Q-learningのTD targetをnetworkへ拡張し、squared TD errorをmini-batchで最小化する。しかし同じnetworkでtargetとpredictionを同時に更新するとtarget自体が急に動く。そこで遅く更新するtarget network $\theta^-$ を使う。
 
----
-
-## 条件を外すと
-
-- supervised learningと違いtarget分布自体がpolicyとともに変わる。
-- offline dataへ通常のQ-learningを無条件適用するとOOD action overestimationが起こり得る。
+連続したtransitionは強く相関するのでreplay bufferからrandom mini-batchを取り、近似的に相関を弱める。これらはBellman式を変えるのではなく、function approximationでのoptimization stabilityを改善する工夫。
 
 ---
 
-## 理解確認
+## 手計算
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+**問題**：DQN sampleで $r=0.5$, $\gamma=0.9$, target networkの次state maxQ=5, current $Q=3$。TD target、error、squared lossを求めよ。
+
+**解答**：target=$0.5+0.9\times5=5.0$。TD error=5.0-3=2.0、squared loss=4.0（1/2係数を使う実装なら2.0）。
 
 ---
 
-## 教科書と演習
+## 条件を変える
 
-[教科書](../../textbook/dl-deep-reinforcement-learning)
+sample $(s,a,r,s')$ で $r=1$, $\gamma=0.99$, target networkのmaxQ=3ならtarget=3.97。online Qが2.5ならTD error=1.47、squared lossは約2.161。
 
-[10問の演習](../../exercises/dl-deep-reinforcement-learning)
+---
+
+## どこで壊れるか
+
+replayとtarget networkを入れれば必ず収束するわけではない。off-policy + bootstrapping + nonlinear function approximationの不安定性は残り、reward scaleやexplorationにも敏感。
+
+---
+
+## 次へ
+
+actor–critic、PPO、model-based RLへ進む。Course10のRLHFではstateがprompt+prefix、actionがtoken、policyがLMという巨大なRL問題として理解できる。
+
+---
+
+[教科書](../../textbook/dl-deep-reinforcement-learning)　|　[10問の演習](../../exercises/dl-deep-reinforcement-learning)

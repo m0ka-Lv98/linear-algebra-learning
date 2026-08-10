@@ -2,21 +2,21 @@
 
 Course 04｜離散数学
 
-## このTopicの中心問題
+## このTopicで解く問題
 
 左側の全頂点を重複なく右側へ割り当てられる条件は何か。
 
-## まず直感
+## なぜこの概念が必要か
 
 matchingは端点を共有しない辺集合。Hallの条件は、左側のどんな部分集合を取っても候補となる右頂点が人数以上あることを要求する。
 
-## 図で固定する
+## 図の各要素は何を表しているか
 
-<img src="/visuals/course-04/dm-bipartite-matching-hall.png" alt="二部matchingとHallの定理の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+<img src="/visuals/course-04/dm-bipartite-matching-hall.png" alt="二部matchingとHallの定理の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+左集合Lと右集合Rを左右に分け、候補関係を細線、選ばれたmatchingを太線で示す。matchingでは同じ頂点へ太線が2本入らない。Hall条件は左の任意部分集合Sから到達できる右側近傍 $N(S)$ の個数がS以上であることを要求する。
 
-## 記号・型・意味
+## 記号・型・定義域
 
 | 記号 | 意味 |
 |---|---|
@@ -24,7 +24,10 @@ matchingは端点を共有しない辺集合。Hallの条件は、左側のど�
 | $N(S)$ | S⊆Lの隣接頂点集合 |
 | $M$ | matching |
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+
+- $G=(L\cup R,E)$：二部グラフ。
+- $N(S)$：左部分集合Sの右側近傍集合。
+- matching：端点を共有しない辺集合。
 
 ## 中心となる式
 
@@ -32,40 +35,60 @@ $$
 \exists\text{ matching saturating }L\iff \forall S\subseteq L:\ |N(S)|\ge|S|
 $$
 
-## なぜこの式になるのか
+## 中心式を前提から導く
 
 1. 条件が必要なのは鳩の巣原理から直ちに分かる。
 2. 十分性は最大matchingを仮定し、未matching頂点から交互道を探索する。
 3. 増加路が無いとHall違反集合を構成でき、矛盾。
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+## なぜその変形をしてよいのか
 
-## 例題：小さい設定で最後まで追う
+必要性は鳩の巣原理。Sの全頂点を異なる右頂点へ割り当てるなら、その候補集合 $N(S)$ に少なくとも|S|個必要。
 
-3人に3種類の仕事を割り当てるとき、任意のk人が少なくともk種類の候補仕事を持つなら完全割当が存在する。
+十分性の直感はaugmenting path。最大matchingが左を飽和しないと仮定し、未matching左頂点から「非matching辺→matching辺」を交互にたどる。右側の未matching頂点へ到達すればmatchingを反転して1本増やせるので最大性に矛盾。到達できなければ探索集合からHall違反を構成できる。
 
-### 答案で書く順序
+## matchingとHall条件
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+二部graph $G=(L\cup R,E)$ でmatchingは端点を共有しないedge集合。$L$ の全頂点をmatchingしたいなら、任意の部分集合 $S\subseteq L$ が使える右側の隣接集合 $N(S)$ は少なくとも $|S|$ 個必要である。もし $|N(S)|<|S|$ なら、$S$ の全員を異なる相手へ割り当てることは鳩の巣原理で不可能。
 
-## 何を間違えやすいか
+Hallの定理は驚くべきことに、この必要条件
+
+$$
+|N(S)|\ge |S|\qquad(\forall S\subseteq L)
+$$
+
+がperfect matching（左側を全て覆うmatching）の十分条件でもあると述べる。
+
+## augmenting pathの役割
+
+現在matching $M$ で未matching頂点から始まり、非matching edge・matching edgeを交互に通って別の未matching頂点へ終わるpathをaugmenting pathという。このpath上でmatching/nonmatchingを反転するとmatching sizeが1増える。Bergeの補題により、augmenting pathが存在しないmatchingはmaximumである。図では太線matchingを1本ずつ「入れ替えて増やす」操作として読む。
+
+## 例題1：具体的な数値・構造で解く
+
+**問題**：L={A,B,C}, R={1,2,3}、近傍が A:{1}, B:{1,2}, C:{2,3} のときHall条件を確認し、Lを飽和するmatchingを1つ示せ。
+
+**解答**：各単集合は近傍1以上。{A,B}の近傍{1,2}で2、{B,C}は{1,2,3}で3、{A,C}も{1,2,3}で3、全体も3。Hall成立。matching A-1, B-2, C-3。
+
+## 例題2：別の条件で確認する
+
+L={A,B,C}, R={1,2,3}、候補 A:{1,2}, B:{2,3}, C:{1,3}。単集合・2要素集合・全体のすべてで近傍数が集合サイズ以上なのでHall条件を満たし、例えばA-1,B-2,C-3がperfect matching。
+
+## 結果の検算
+
+matching候補について各頂点が高々1本の選択edgeにしか接続していないか確認する。Hall条件を使う場合は代表的な部分集合だけでなく、反例候補となる $S\subseteq L$ で $|N(S)|<|S|$ がないか調べる。augmenting pathを反転した後はmatching sizeがちょうど1増えることを確認する。
+
+## 条件を外すと何が壊れるか
+
+各頂点が少なくとも1候補を持つだけでは不十分。A,B,Cが全員{1,2}しか候補を持たなければ各自のdegreeは2でも、S={A,B,C}で|N(S)|=2<3なので完全割当不能。
+
+## よくある誤り
 
 - matchingとperfect matchingを区別する。
 - 局所的に候補が多いだけでHall条件全体を満たすとは限らない。
 
-## 自分で確認する問い
+## 次のTopic・応用への接続
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
-
-## 後続Courseへの接続
-
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+assignment問題、network flow、marriage theorem、resource allocationへつながる。maximum matchingアルゴリズムの正しさもaugmenting pathで理解できる。
 
 ## 参考
 

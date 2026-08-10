@@ -11,62 +11,49 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-Σ記号を展開したとき、indexの開始・終了・自由添字をどう追うか。
-
----
-
-## 直感
-
-総和記号は有限個の項を規則的に並べる圧縮記法。indexがdummyか自由かを区別すると行列式を読みやすい。
+$\sum$ や添字を、どのindexを走査し、どのindexが結果に残るかまで含めて正確に読むにはどうするか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-sums-products-indices.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-\sum_{i=1}^n a_i=a_1+\cdots+a_n
-$$
+横軸iに並ぶ棒が各項 $a_i$。$\sum_{i=1}^n a_i$ は棒の高さをi=1からnまで全部足す。iは総和の中だけで値を変えるdummy indexなので、結果には残らない。一方 $b_j=\sum_i A_{ji}x_i$ ではiは消えるがjは左辺に残るfree index。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. iへ1からnまで順に代入する。
-2. 各項a_iを加える。
-3. 総和後にはdummy index iは残らない。
+### 有限和
+$\sum_{i=1}^n a_i=a_1+a_2+\cdots+a_n$。index iは1,2,...,nを順に取る。$\sum_i$ と範囲を省略する場合は、直前に範囲を定義しなければならない。
 
----
+### 二重和
+$\sum_{i=1}^m\sum_{j=1}^n a_{ij}$ はm×n個の項を足す。有限和なら順序を交換しても同じだが、無限和では絶対収束など追加条件が必要。
 
-## 小さい例
-
-Σ_{i=1}^3 i²=1+4+9=14。
-
----
-
-## 条件を外すと
-
-- 上限nを項数と機械的に同一視せず開始indexも見る。
+### 行列積との関係
+$(\mathbf A\mathbf x)_j=\sum_{i=1}^n A_{ji}x_i$。行jを固定し、列index iについて掛けて足すことで出力成分jを得る。
 
 ---
 
-## 理解確認
+## 具体例
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+$\sum_{i=1}^4(2i-1)=1+3+5+7=16$。また $\sum_{i=1}^3 i^2=1+4+9=14$。index名をkへ変えても値は同じ。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-sums-products-indices)
+$\sum_i a_i b_j$ でjを勝手に足してはいけない。iだけがdummy indexで、jは結果に残る。
 
-[10問の演習](../../exercises/prep-sums-products-indices)
+---
+
+## 次へ
+
+内積、行列積、期待値、lossのsample平均、backpropのparameter sumで必須。
+
+---
+
+[教科書](../../textbook/prep-sums-products-indices)　|　[演習](../../exercises/prep-sums-products-indices)

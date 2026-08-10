@@ -1,219 +1,107 @@
 # logistic回帰：演習
 
-Course 08｜Topic 03/20。10問すべて、このTopic固有の問いとして作成しています。
+Course 08｜機械学習
 
-[教科書](/textbook/ml-logistic-regression)
+教科書の定義・導出・図・数値例を、自分で再構成できるかを確認する10問。
 
-## 問1. 定義と記号
+## 問題1：log-oddsからsigmoid
 
-「logistic回帰」の代表式
-
-$$
-p(y=1\mid\mathbf{x})=\sigma(\mathbf{x}^{\mathsf T}\mathbf{w}+b)
-$$
-
-について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
-
-<details><summary>ヒント</summary>
-
-式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
-
-</details>
+$\log\frac{p}{1-p}=z$ を$p$について解き、$p=\sigma(z)$を導け。
 
 <details><summary>完全解答</summary>
 
-代表式は結果だけを書くための記号ではない。本文で定義した量を使い、logistic回帰が何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
-
-**log-oddsからprobability**
-
-$p/(1-p)=e^z$ をpについて解くと $p=e^z/(1+e^z)=\sigma(z)$。
-
-答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+指数を取ると$p/(1-p)=e^z$。$p=e^z(1-p)$より$p(1+e^z)=e^z$、従って$p=e^z/(1+e^z)=1/(1+e^{-z})=\sigma(z)$。
 
 </details>
 
-## 問2. 導出1：log-oddsからprobability
+## 問題2：Bernoulli likelihoodからBCE
 
-「logistic回帰」で **log-oddsからprobability** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「log-oddsからprobability」を、直前の定義から始めて書き直す。
-
-</details>
+label $y\in\{0,1\}$、predicted probability$p$のBernoulli likelihood $p^y(1-p)^{1-y}$ からnegative log-likelihoodを求めよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$p/(1-p)=e^z$ をpについて解くと $p=e^z/(1+e^z)=\sigma(z)$。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「negative log likelihood」へ進むときも、この段階で得た量だけを使う。
+$-\log[p^y(1-p)^{1-y}]=-y\log p-(1-y)\log(1-p)$。これがbinary cross-entropy。独立sampleなら全sampleで和または平均を取る。
 
 </details>
 
-## 問3. 導出2：negative log likelihood
+## 問題3：数値prediction
 
-「logistic回帰」で **negative log likelihood** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「negative log likelihood」を、直前の定義から始めて書き直す。
-
-</details>
+$\mathbf x=(2,-1)$、$\mathbf w=(0.8,0.5)$、$b=-0.2$ のときlogitと$p(y=1|x)$を求めよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-Bernoulli likelihood $p^y(1-p)^{1-y}$ の-negative logはbinary cross entropy。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「decision boundary」へ進むときも、この段階で得た量だけを使う。
+$z=2(0.8)+(-1)(0.5)-0.2=0.9$。$p=\sigma(0.9)=1/(1+e^{-0.9})\approx0.711$。threshold 0.5ならclass1。
 
 </details>
 
-## 問4. 導出3：decision boundary
+## 問題4：decision boundary
 
-「logistic回帰」で **decision boundary** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「decision boundary」を、直前の定義から始めて書き直す。
-
-</details>
+なぜthreshold 0.5のdecision boundaryが$\mathbf x^T\mathbf w+b=0$になるか。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-p=0.5 iff z=0なのでboundaryは $x^Tw+b=0$。thresholdを変えるとboundary levelが変わる。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+sigmoidはstrictly increasingで$\sigma(0)=0.5$。従って$p=0.5\iff z=0$。$z=\mathbf x^T\mathbf w+b$なのでboundaryはhyperplane$\mathbf x^T\mathbf w+b=0$。thresholdを0.5以外にすればboundaryのinterceptは変わる。
 
 </details>
 
-## 問5. 数値例を途中から再現
+## 問題5：logit gradient
 
-次の「logistic回帰」の設定を、自分で途中量まで展開して最終結論を確認せよ。
-
-> z=ln3ならodds3:1、p=3/4。linear score差はprobability差として非線形に圧縮。
-
-本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+1 sampleのBCEで$p=\sigma(z)$とする。$\partial L/\partial z=p-y$ を導け。
 
 <details><summary>完全解答</summary>
 
-設定に対する計算・判断は次の通り。
-
-z=ln3ならodds3:1、p=3/4。linear score差はprobability差として非線形に圧縮。
-
-ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+$L=-y\log p-(1-y)\log(1-p)$。$dL/dp=-y/p+(1-y)/(1-p)$、$dp/dz=p(1-p)$。積を取ると $dL/dz=-y(1-p)+(1-y)p=p-y$。
 
 </details>
 
-## 問6. 条件を変えたときの差
+## 問題6：weight gradient
 
-次の第二例について、第一例から変更した条件を特定し、その変更によって「logistic回帰」のどの部分が変わるか説明せよ。
-
-> class imbalanceでthreshold0.5がbestとは限らない。precision/recall costで選ぶ。
+$z=\mathbf x^T\mathbf w+b$ と前問を使い、1 sampleの$\nabla_w L$を求めよ。
 
 <details><summary>完全解答</summary>
 
-class imbalanceでthreshold0.5がbestとは限らない。precision/recall costで選ぶ。
-
-比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+chain ruleで$\nabla_wL=(\partial L/\partial z)(\partial z/\partial w)=(p-y)\mathbf x$。batchでは各sampleの$(p_i-y_i)x_i$を和または平均する。
 
 </details>
 
-## 問7. 成立条件と反例
+## 問題7：完全分離
 
-「logistic回帰」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
-
-> sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。
-
-<details><summary>ヒント</summary>
-
-「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
-
-</details>
+linearly separable dataでregularizationなしlogistic MLEの有限解が存在しない場合がある理由を説明せよ。
 
 <details><summary>完全解答</summary>
 
-本文で確認する条件は以下である。
-
-- 確率出力とhard labelを区別する。
-- 閾値は目的に応じて調整する。
-- logistic回帰の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-失敗例は次の通り。
-
-sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。
-
-したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+分離hyperplaneの向きを保って$\|w\|$を大きくすると、positive sampleのlogitは$+\infty$、negativeは$-\infty$へ進み、likelihoodは1へ近づき続ける。有限parameterでmaximumに到達せずnormが発散し得る。L2 regularization等が有限解を与える。
 
 </details>
 
-## 問8. 実装・数値診断
+## 問題8：calibrationとclassification
 
-「logistic回帰」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
-
-> stable `logaddexp`/BCEWithLogitsを使いsigmoid後logを直接取らない。
+accuracyが高いlogistic classifierでもprobability calibrationが悪いことがある。accuracyとcalibrationが何を測るか区別せよ。
 
 <details><summary>完全解答</summary>
 
-stable `logaddexp`/BCEWithLogitsを使いsigmoid後logを直接取らない。
-
-実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+accuracyはthreshold後のclass labelが合った割合。calibrationは予測probability0.8のsample群で実際に約80% positiveか等、probabilityの頻度解釈を測る。同じranking/boundaryでもprobability scaleが過信・過小信頼ならcalibrationは悪い。
 
 </details>
 
-## 問9. 次Topicへの導線
+## 問題9：numerical stability
 
-「logistic回帰」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
-
-> binaryをK classesへ一般化するとsoftmax。
+BCEを`sigmoid(z)`の後に`log(p)`で直接計算すると$|z|$が大きいとき問題になる理由と対策を述べよ。
 
 <details><summary>完全解答</summary>
 
-binaryをK classesへ一般化するとsoftmax。
-
-本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+large positive/negative logitではfloating pointで$p$が1や0へroundし、$\log(0)$やcancellationが起こる。実装はlogitsから直接`softplus`/log-sum-exp形式でBCEを計算する（例 $\max(z,0)-yz+\log(1+e^{-|z|})$）。
 
 </details>
 
-## 問10. 総合証明・説明
+## 問題10：総合2-point fit
 
-「logistic回帰」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+1次元で$x=-1$は$y=0$、$x=1$は$y=1$。$b=0$として$w>0$を大きくするとlossがどう変化するか説明せよ。
 
 <details><summary>完全解答</summary>
 
-答案では次の流れを一続きにする。
-
-**代表式**
-
-$$
-p(y=1\mid\mathbf{x})=\sigma(\mathbf{x}^{\mathsf T}\mathbf{w}+b)
-$$
-
-**導出**
-
-1. **log-oddsからprobability** — $p/(1-p)=e^z$ をpについて解くと $p=e^z/(1+e^z)=\sigma(z)$。
-
-2. **negative log likelihood** — Bernoulli likelihood $p^y(1-p)^{1-y}$ の-negative logはbinary cross entropy。
-
-3. **decision boundary** — p=0.5 iff z=0なのでboundaryは $x^Tw+b=0$。thresholdを変えるとboundary levelが変わる。
-
-**数値・具体例**
-
-z=ln3ならodds3:1、p=3/4。linear score差はprobability差として非線形に圧縮。
-
-**条件を壊すと**
-
-sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。
-
-**実装**
-
-stable `logaddexp`/BCEWithLogitsを使いsigmoid後logを直接取らない。
-
-各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+logitsは$-w$と$+w$。両sampleのcorrect-class probabilityは$\sigma(w)$なのでtotal NLLは$-2\log\sigma(w)$。$w$を大きくすると$\sigma(w)\to1$でloss$\to0$、有限$w$で0にはならない。これは完全分離でMLE normが発散する最小例。
 
 </details>
+
+[教科書へ](/textbook/ml-logistic-regression)

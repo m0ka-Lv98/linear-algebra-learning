@@ -168,6 +168,14 @@ units:
     course: "10"
     order: 40
     title: 効率化・科学応用・governance
+  - id: ml-reinforcement-learning
+    course: "08"
+    order: 50
+    title: 強化学習
+  - id: dl-reinforcement-learning
+    course: "09"
+    order: 35
+    title: Deep Reinforcement Learning
 topics:
   - id: prep-symbols-types-shapes
     course: "00"
@@ -404,7 +412,7 @@ topics:
   - id: calc-one-variable-optimization
     course: "01"
     unit: calc-single-variable
-    order: 50
+    order: 60
     title: 一変数の最適化
     summary: 一変数の最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -418,7 +426,7 @@ topics:
   - id: calc-mean-value-theorem
     course: "01"
     unit: calc-single-variable
-    order: 60
+    order: 50
     title: 平均値の定理
     summary: 区間の両端を結ぶ割線と平行な接線が途中に存在する、という局所微分と大域変化を結ぶ定理。単調性、誤差評価、収束証明の基礎になる。
     status: draft
@@ -494,7 +502,7 @@ topics:
   - id: calc-multivariable-functions-partial-derivatives
     course: "01"
     unit: calc-multivariable
-    order: 110
+    order: 10
     title: 多変数関数と偏微分
     summary: 多変数関数と偏微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -509,7 +517,7 @@ topics:
   - id: calc-multiple-integrals
     course: "01"
     unit: calc-multivariable
-    order: 120
+    order: 90
     title: 重積分
     summary: 領域を小さな長方形や直方体へ分割し、各セルでの関数値×セル面積（体積）を足す。極限を取ると重積分になる。
     status: draft
@@ -525,7 +533,7 @@ topics:
   - id: calc-change-of-variables-jacobian
     course: "01"
     unit: calc-multivariable
-    order: 130
+    order: 100
     title: 変数変換とJacobian determinant
     summary: Jacobian matrixは局所的な線形変換。小さな長方形は平行四辺形へ移り、その面積倍率が determinant の絶対値になる。
     status: draft
@@ -541,7 +549,7 @@ topics:
   - id: calc-parametric-polar-curves
     course: "01"
     unit: calc-multivariable
-    order: 140
+    order: 80
     title: 媒介変数表示と極座標
     summary: 曲線を時間tに沿って動く点 (x(t),y(t)) として表せば、縦線を含む曲線も自然に表現できる。極座標は距離rと角度θで点を表す。
     status: draft
@@ -557,7 +565,7 @@ topics:
   - id: calc-vector-fields-line-integrals
     course: "01"
     unit: calc-multivariable
-    order: 150
+    order: 110
     title: ベクトル場と線積分
     summary: 力場Fの中を曲線Cに沿って動くと、微小変位drに平行な力成分だけが仕事をする。内積 F·dr を経路全体で積分する。
     status: draft
@@ -573,7 +581,7 @@ topics:
   - id: calc-gradient-directional-derivative
     course: "01"
     unit: calc-multivariable
-    order: 160
+    order: 20
     title: 勾配と方向微分
     summary: 勾配と方向微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -587,7 +595,7 @@ topics:
   - id: calc-total-derivative-jacobian
     course: "01"
     unit: calc-multivariable
-    order: 170
+    order: 30
     title: 全微分とJacobian
     summary: 全微分とJacobianの定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -602,7 +610,7 @@ topics:
   - id: calc-hessian-second-order
     course: "01"
     unit: calc-multivariable
-    order: 180
+    order: 40
     title: Hessianと二次近似
     summary: Hessianと二次近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -617,7 +625,7 @@ topics:
   - id: calc-multivariable-chain-rule
     course: "01"
     unit: calc-multivariable
-    order: 190
+    order: 50
     title: 多変数の連鎖律
     summary: 多変数の連鎖律の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -632,7 +640,7 @@ topics:
   - id: calc-unconstrained-optimization
     course: "01"
     unit: calc-multivariable
-    order: 200
+    order: 60
     title: 多変数の制約なし最適化
     summary: 多変数の制約なし最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -647,7 +655,7 @@ topics:
   - id: calc-lagrange-multipliers
     course: "01"
     unit: calc-multivariable
-    order: 210
+    order: 70
     title: Lagrange乗数法
     summary: Lagrange乗数法の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
     status: draft
@@ -2826,8 +2834,8 @@ topics:
     implementation_topic: ml-empirical-risk-generalization
   - id: ml-mdp-bellman-equations
     course: "08"
-    unit: ml-foundations-supervised
-    order: 30
+    unit: ml-reinforcement-learning
+    order: 10
     title: MDPとBellman方程式
     summary: MDPは現在状態が与えられれば未来の遷移分布が過去全体に依存しないMarkov性を仮定する。価値関数は将来報酬の割引和の期待値。
     status: draft
@@ -2842,8 +2850,8 @@ topics:
     implementation_topic: ml-mdp-bellman-equations
   - id: ml-dynamic-programming-value-policy-iteration
     course: "08"
-    unit: ml-foundations-supervised
-    order: 40
+    unit: ml-reinforcement-learning
+    order: 20
     title: value iterationとpolicy iteration
     summary: 最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
     status: draft
@@ -2858,8 +2866,8 @@ topics:
     implementation_topic: ml-dynamic-programming-value-policy-iteration
   - id: ml-monte-carlo-td-q-learning
     course: "08"
-    unit: ml-foundations-supervised
-    order: 50
+    unit: ml-reinforcement-learning
+    order: 30
     title: Monte Carlo・TD・Q-learning
     summary: Monte Carloはepisode完了後の実returnをtargetにする。TDは1step先の現在推定値をbootstrapping targetにする。Q-learningはoff-policy TD control。
     status: draft
@@ -2874,8 +2882,8 @@ topics:
     implementation_topic: ml-monte-carlo-td-q-learning
   - id: ml-policy-gradient-reinforce
     course: "08"
-    unit: ml-foundations-supervised
-    order: 60
+    unit: ml-reinforcement-learning
+    order: 40
     title: policy gradientとREINFORCE
     summary: trajectory確率のlog微分を使うと、環境遷移を微分せずに期待returnのgradientをpolicyのlog-probabilityで表せる。
     status: draft
@@ -3327,8 +3335,8 @@ topics:
       - Transformerを小規模に計算・実装し検算できる
   - id: dl-deep-reinforcement-learning
     course: "09"
-    unit: dl-architectures
-    order: 110
+    unit: dl-reinforcement-learning
+    order: 10
     title: Deep Reinforcement Learning
     summary: 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
     status: draft
@@ -3569,14 +3577,13 @@ topics:
   - id: frontier-parameter-efficient-finetuning
     course: "10"
     unit: frontier-foundation-models
-    order: 50
+    order: 60
     title: parameter-efficient fine-tuning
     summary: parameter-efficient fine-tuningの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
     status: draft
     kind: required
     prerequisites:
-      - dl-efficient-training-inference
-      - opt-proximal-gradient
+      - frontier-supervised-finetuning-instruction-tuning
     implementation_topic: frontier-parameter-efficient-finetuning
     outcomes:
       - parameter-efficient、fine-tuningの定義と成立条件を説明できる
@@ -3584,14 +3591,13 @@ topics:
   - id: frontier-supervised-finetuning-instruction-tuning
     course: "10"
     unit: frontier-foundation-models
-    order: 60
+    order: 50
     title: SFT・instruction tuning
     summary: SFTはinstruction-response pairに対するconditional language modeling。base modelの次token予測能力を、望ましい会話・指示応答分布へ寄せる。
     status: draft
     kind: required
     prerequisites:
       - dl-transformers
-      - frontier-parameter-efficient-finetuning
     outcomes:
       - pretrained LMを「指示に従うmodel」へ変える最初の段階は何を最適化しているか。
       - 中心式の記号と成立条件を説明できる
@@ -3607,6 +3613,7 @@ topics:
     kind: required
     prerequisites:
       - frontier-supervised-finetuning-instruction-tuning
+      - ml-logistic-regression
       - ml-policy-gradient-reinforce
       - dl-deep-reinforcement-learning
     outcomes:
@@ -3617,7 +3624,7 @@ topics:
   - id: frontier-reasoning-rl-rlvr
     course: "10"
     unit: frontier-foundation-models
-    order: 80
+    order: 90
     title: 推論RLとverifiable reward
     summary: verifiable taskでは最終答案の正誤、unit test、formal checkerなどをrewardとして使える。人間preferenceより低コストで大量sampleを評価できる一方、reward仕様の範囲外の品質は保証しない。
     status: draft
@@ -3739,14 +3746,14 @@ topics:
       - multi-agent systemを小規模に計算・実装し検算できる
   - id: frontier-rlhf-preference-optimization
     course: "10"
-    unit: frontier-alignment-evaluation
-    order: 160
+    unit: frontier-foundation-models
+    order: 80
     title: RLHFとpreference optimization
     summary: RLHFとpreference optimizationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
     status: draft
     kind: required
     prerequisites:
-      - opt-stochastic-gradient
+      - frontier-rlhf-reward-model-ppo-kl
       - ml-logistic-regression
     implementation_topic: frontier-rlhf-preference-optimization
     outcomes:

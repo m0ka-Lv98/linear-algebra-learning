@@ -1,25 +1,36 @@
 ---
 theme: default
 routerMode: hash
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "WLSと逆分散重み"
 ---
 
 # WLSと逆分散重み
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 07/20
 
+---
+layout: center
 ---
 
 ## 今回の問い
 
-観測ごとのノイズ分散が違うとき、なぜ重み1/σ_i²が自然に現れるのか。
+WLSと逆分散重みの代表式は、どの定義・仮定から、なぜその形になるのか。
+
+---
+
+## なぜ今これを学ぶのか
+
+前Topic `mat-ols-design-matrices` で得た概念を使い、ここでは WLSと逆分散重み へ進む。
 
 ---
 
 ## 直感
 
-独立Gaussian noiseで分散がσ_i²なら、残差r_iのnegative log-likelihoodへの寄与は r_i²/(2σ_i²)。不確かな観測ほど同じ残差でも証拠が弱いため小さく重み付けされる。
+観測ごとの信頼度が異なるとき、残差を同じ重みで扱わず、分散の小さい観測を強く反映する。
+
+
 
 ---
 
@@ -27,48 +38,75 @@ Course 07｜データ解析
 
 <img src="./assets/course-07/mat-wls-inverse-variance.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
+同じ散布点にOLSと逆分散WLSを当て、誤差バーの小さい点へ線が寄る様子を見る。 各点から回帰線への残差に異なる重みが掛かる。分散の小さい観測ほど信頼度が高いとき1/σ_i²で重くするのはGaussian likelihoodから導かれる。
+
 ---
 
-## 中心式
+## 記号と代表式
+
+- $W=diag(w_1,\ldots,w_n)\succ0$
+- $w_i=1/\sigma_i²$：独立heteroscedastic noiseのinverse variance
+- $r=y-Xβ$
 
 $$
-\hat\beta=(X^TWX)^{-1}X^TWy
+\hat{\boldsymbol{\beta}}=(\mathbf{X}^{\mathsf T}\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^{\mathsf T}\mathbf{W}\mathbf{y}
 $$
 
 ---
 
-## 導出
+## 導出 1
 
-1. Gaussian log-likelihoodを展開すると $(y-Xβ)^TΣ^{-1}(y-Xβ)$ の最小化になる。
-2. 独立heteroskedasticならΣ=diag(σ_i²), W=diag(1/σ_i²)。
-3. $W^{1/2}$ を掛ければ whitened problem $||W^{1/2}y-W^{1/2}Xβ||²$。
-4. 通常OLSと同じnormal equationをwhitened dataへ適用する。
+$\varepsilon_i\sim N(0,\sigma_i²)$ ならnegative log likelihoodは定数を除き $\frac12\sum_i r_i²/\sigma_i²$。したがって $w_i=1/\sigma_i²$。
 
 ---
 
-## 小さい例
+## 導出 2
 
-分散4の観測は分散1の観測の1/4 weight。標準偏差の逆数1/σではなく分散の逆数1/σ²。
-
----
-
-## 条件を外すと
-
-- 未知分散を推定したweightには追加不確実性がある。
-- 相関noiseでは対角weightだけではGLSにならない。
+$J=(y-Xβ)^TW(y-Xβ)$。W symmetricとしてgradient $-2X^TW(y-Xβ)$。
 
 ---
 
-## 理解確認
+## 例題
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+2観測が同じresidual1でもσ=1のpoint contribution1、σ=2なら1/4。精密な観測を4倍強く信頼。
 
+---
+
+## 条件を変えるとどうなるか
+
+weightを「重要度」として任意設定したWLSと、noise inverse varianceとしてのstatistical WLSは意味が違う。variance推定が誤ればefficiency/SE解釈も崩れる。
+
+---
+
+## よくある誤解
+
+WLSと逆分散重みでは、式へ数値を代入するだけでは不十分である。weightを「重要度」として任意設定したWLSと、noise inverse varianceとしてのstatistical WLSは意味が違う。variance推定が誤ればefficiency/SE解釈も崩れる。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+
+---
+
+## 実装・計算上の注意
+
+normal equationを明示形成せずweighted QR。極端なweight ratioはconditioning悪化。Wをsampleごとに推定した場合、その不確実性も考慮。
+
+---
+
+## 一段先へ
+
+noiseが観測間でcorrelatedならdiagonal Wでは足りず、full covariance Σ^{-1}を使うGLSへ。
+
+---
+
+## 自分で説明できるか
+
+- 「なぜinverse varianceか」を式を見ずに説明できるか
+- 「weighted normal equation」までの論理を一段ずつ再現できるか
+- WLSと逆分散重みの条件を1つ外した反例を説明できるか
+
+---
+layout: center
 ---
 
 ## 教科書と演習
 
-[教科書](../../textbook/mat-wls-inverse-variance)
-
-[10問の演習](../../exercises/mat-wls-inverse-variance)
+- [教科書](../../textbook/mat-wls-inverse-variance)
+- [10問の演習](../../exercises/mat-wls-inverse-variance)

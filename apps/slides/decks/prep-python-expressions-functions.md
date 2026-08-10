@@ -11,62 +11,46 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-数学的関数とPython関数の対応・相違をどう意識するか。
-
----
-
-## 直感
-
-Python関数は入力を受けて計算しreturnする手続き。数学関数と対応させるときは副作用、dtype、例外、有限精度など実装特有の要素を分ける。
+数学上の式をPythonへ写すとき、値・型・副作用・例外を区別し、検算可能な小さな関数として実装するにはどうするか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-python-expressions-functions.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-y=f(x)
-$$
+input xがPython関数 `def f(x): ...` に入りreturn valueへ出る。数学関数と違い、実装にはdtype、有限精度、例外、mutable stateなど追加要素があるため、同じ数式でも実装上の振る舞いが変わり得る。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. input contractを決める。
-2. 式/algorithmでoutputを計算する。
-3. return valueと副作用を分離する。
+式 `y = 2*x + 1` では右辺を先に評価し、その結果を名前yへbindする。Python変数は数学の未知数ではなくobjectへの名前。
 
----
+関数は入力parameterとreturnを明示する。純粋関数に近づけると同じ入力に同じ出力が得られ、数学との対応とtestが容易になる。
 
-## 小さい例
-
-def square(x): return x*x は実数のx²に対応するが、整数overflow等は実装環境依存。
+整数 `/` はfloating division、`//` はfloor division。`**` が累乗で `^` はbitwise XOR。
 
 ---
 
-## 条件を外すと
+## 具体例
 
-- 変数代入=数学的等号と思わない。
-
----
-
-## 理解確認
-
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+`def square_plus_one(x): return x**2 + 1` にx=3なら10。`3^2` は1であり9ではないため、演算子の意味を確認する。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-python-expressions-functions)
+global listを書き換える関数は、同じ入力でも呼び出し回数で結果やstateが変わる。数学関数と同一視しない。
 
-[10問の演習](../../exercises/prep-python-expressions-functions)
+---
+
+## 次へ
+
+NumPy、数値実験、ML training codeの再現性へ続く。
+
+---
+
+[教科書](../../textbook/prep-python-expressions-functions)　|　[演習](../../exercises/prep-python-expressions-functions)

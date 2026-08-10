@@ -2,21 +2,21 @@
 
 Course 08｜機械学習
 
-## このTopicの中心問題
+## このTopicで解く問題
 
 training lossを下げることと、未知データで良い予測をすることはなぜ同じではないのか。
 
-## まず直感
+## なぜこの概念が必要か
 
 学習で直接最小化できるのは有限標本の経験リスク。目的は母集団分布に対する期待リスクなので、両者のgapを理解するのがgeneralization。
 
-## 図で固定する
+## 図の各要素は何を表しているか
 
-<img src="/visuals/course-08/ml-empirical-risk-generalization.png" alt="経験リスク・期待リスク・汎化の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+<img src="/visuals/course-08/ml-empirical-risk-generalization.png" alt="経験リスク・期待リスク・汎化の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+横軸がmodel complexity、縦軸がrisk。training riskは複雑化とともに下がる一方、validation riskは途中で最小になって再び上がるU字型。training dataへの適合と未知分布での予測性能が同じ量ではないことを示す。
 
-## 記号・型・意味
+## 記号・型・定義域
 
 | 記号 | 意味 |
 |---|---|
@@ -25,7 +25,11 @@ training lossを下げることと、未知データで良い予測をするこ�
 | $ℓ$ | loss |
 | $D$ | 未知のdata distribution |
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+
+- $D$：未知のdata-generating distribution。
+- $f$：予測model。
+- $\ell$：loss。
+- $R(f)$：expected risk、$\hat R_n(f)$：empirical risk。
 
 ## 中心となる式
 
@@ -33,40 +37,76 @@ $$
 R(f)=E_{(X,Y)\sim D}[\ell(f(X),Y)],\quad \hat R_n(f)=\frac1n\sum_{i=1}^n\ell(f(x_i),y_i)
 $$
 
-## なぜこの式になるのか
+## 中心式を前提から導く
 
 1. 目標量Rは未知分布Dの期待値なので直接計算できない。
 2. iid標本で期待値を標本平均R̂へ置き換える。
 3. 同じデータでmodel選択まで行うと適応によるoptimismが生じるためvalidation/test分離が必要。
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+## なぜその変形をしてよいのか
 
-## 例題：小さい設定で最後まで追う
+本当に最小化したいexpected riskは未知分布 $D$ 上の期待値なので観測できない。iid sample $S={(x_i,y_i)}$ から empirical risk $\hat R_S$ を作り、law of large numbersにより固定fについてRへ近づく。
 
-高次数多項式はtraining errorを0にできてもtest errorが増える場合がある。
+しかし学習algorithmは同じSを見てf自体を選ぶので、「固定fの収束」だけではgeneralizationを保証しない。hypothesis classの複雑さやregularization、独立validation/testが必要になる。test setを何度も見てmodel選択するとtestにも適応してしまう。
 
-### 答案で書く順序
+## population riskとempirical riskを分ける
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+未知のデータ分布を $P(X,Y)$、lossを $\ell(f_\theta(X),Y)$ とすると、本当に小さくしたいのはpopulation risk
 
-## 何を間違えやすいか
+$$
+R(\theta)=E_{(X,Y)\sim P}[\ell(f_\theta(X),Y)]
+$$
+
+だが、$P$ 自体は分からない。そこでtraining sample $(x_i,y_i)_{i=1}^n$ で
+
+$$
+\hat R_n(\theta)=\frac1n\sum_{i=1}^n\ell(f_\theta(x_i),y_i)
+$$
+
+を最小化する。training errorを下げることは $\hat R_n$ を下げることであり、$R$ を直接下げているわけではない。
+
+## generalization gapを見る理由
+
+$$
+R(\hat\theta)-\hat R_n(\hat\theta)
+$$
+
+がgeneralization gap。model classが柔軟すぎるとsample固有のnoiseまで合わせてempirical riskだけを小さくできる。validation setをoptimizationに使い続けると、そのvalidation setにも適応してしまうため、最終評価用test setを分離する。
+
+単純な有限hypothesis class $\mathcal H$ ではHoeffding inequalityとunion boundから、概略 $\sqrt{\log|\mathcal H|/n}$ のスケールで一様generalization errorが減る。model complexityとsample sizeのtrade-offが数式にも現れる。
+
+## 例題1：具体的な数値・構造で解く
+
+**問題**：squared lossでtraining sampleの誤差が [1,0,2,1] のときempirical riskを求める。また独立testで [2,3] ならtest riskも求めよ。
+
+**解答**：training empirical riskは $(1+0+2+1)/4=1$。test riskは $(2+3)/2=2.5$。training上の1だけで未知分布riskが1と断定できない。
+
+## 例題2：別の条件で確認する
+
+2点 $(0,0),(1,1)$ だけなら高次数多項式でtraining error 0の関数を無数に作れる。未知点x=0.5での予測は大きく異なり、training error 0だけではmodelを決められない。
+
+## 結果の検算
+
+training riskとvalidation riskを同じ標本で計算しない。まずtraining集合だけで
+
+$$
+\hat R_{\mathrm{train}}=\frac1n\sum_i\ell(f(x_i),y_i)
+$$
+
+を求め、独立なvalidation集合で同じlossの平均を別に計算する。model complexityを上げてtraining riskだけ下がりvalidation riskが上がるなら、generalization改善ではなくoverfittingの可能性が高い。
+
+## 条件を外すと何が壊れるか
+
+validation setでhyperparameterを選んだ後、その同じvalidation scoreを「完全に未使用データでの性能」と報告しない。最終評価には独立testまたはnested CVが必要。
+
+## よくある誤り
 
 - test setをhyperparameter tuningに使わない。
 - training lossが低いだけで汎化を保証しない。
 
-## 自分で確認する問い
+## 次のTopic・応用への接続
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
-
-## 後続Courseへの接続
-
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+bias–variance、regularization、cross-validation、learning theoryへつながる。後のRLでもtraining returnとdeployment performanceの分布差を同様に考える。
 
 ## 参考
 

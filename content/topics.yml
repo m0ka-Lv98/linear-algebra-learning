@@ -276,7 +276,7 @@
 - id: calc-one-variable-optimization
   title: 一変数の最適化
   course: foundation
-  order: 105
+  order: 106
   summary: 一変数の最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -293,7 +293,7 @@
 - id: calc-mean-value-theorem
   title: 平均値の定理
   course: foundation
-  order: 106
+  order: 105
   summary: 区間の両端を結ぶ割線と平行な接線が途中に存在する、という局所微分と大域変化を結ぶ定理。単調性、誤差評価、収束証明の基礎になる。
   status: draft
   prerequisites:
@@ -399,7 +399,7 @@
 - id: calc-multiple-integrals
   title: 重積分
   course: foundation
-  order: 112
+  order: 119
   summary: 領域を小さな長方形や直方体へ分割し、各セルでの関数値×セル面積（体積）を足す。極限を取ると重積分になる。
   status: draft
   prerequisites:
@@ -417,7 +417,7 @@
 - id: calc-change-of-variables-jacobian
   title: 変数変換とJacobian determinant
   course: foundation
-  order: 113
+  order: 120
   summary: Jacobian matrixは局所的な線形変換。小さな長方形は平行四辺形へ移り、その面積倍率が determinant の絶対値になる。
   status: draft
   prerequisites:
@@ -435,7 +435,7 @@
 - id: calc-parametric-polar-curves
   title: 媒介変数表示と極座標
   course: foundation
-  order: 114
+  order: 118
   summary: 曲線を時間tに沿って動く点 (x(t),y(t)) として表せば、縦線を含む曲線も自然に表現できる。極座標は距離rと角度θで点を表す。
   status: draft
   prerequisites:
@@ -453,7 +453,7 @@
 - id: calc-vector-fields-line-integrals
   title: ベクトル場と線積分
   course: foundation
-  order: 115
+  order: 121
   summary: 力場Fの中を曲線Cに沿って動くと、微小変位drに平行な力成分だけが仕事をする。内積 F·dr を経路全体で積分する。
   status: draft
   prerequisites:
@@ -471,7 +471,7 @@
 - id: calc-gradient-directional-derivative
   title: 勾配と方向微分
   course: foundation
-  order: 116
+  order: 112
   summary: 勾配と方向微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -488,7 +488,7 @@
 - id: calc-total-derivative-jacobian
   title: 全微分とJacobian
   course: foundation
-  order: 117
+  order: 113
   summary: 全微分とJacobianの定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -506,7 +506,7 @@
 - id: calc-hessian-second-order
   title: Hessianと二次近似
   course: foundation
-  order: 118
+  order: 114
   summary: Hessianと二次近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -524,7 +524,7 @@
 - id: calc-multivariable-chain-rule
   title: 多変数の連鎖律
   course: foundation
-  order: 119
+  order: 115
   summary: 多変数の連鎖律の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -542,7 +542,7 @@
 - id: calc-unconstrained-optimization
   title: 多変数の制約なし最適化
   course: foundation
-  order: 120
+  order: 116
   summary: 多変数の制約なし最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -560,7 +560,7 @@
 - id: calc-lagrange-multipliers
   title: Lagrange乗数法
   course: foundation
-  order: 121
+  order: 117
   summary: Lagrange乗数法の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -822,7 +822,7 @@
 - id: orthogonal-projection
   title: 直交射影
   course: foundation
-  order: 2001
+  order: 2015
   summary: 直交射影の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -841,7 +841,7 @@
 - id: la-gram-schmidt-qr
   title: Gram–Schmidt法とQR分解
   course: foundation
-  order: 215
+  order: 216
   summary: Gram–Schmidt法とQR分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -859,7 +859,7 @@
 - id: la-least-squares-geometry
   title: 最小二乗法の幾何学
   course: foundation
-  order: 216
+  order: 217
   summary: 最小二乗法の幾何学の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -877,7 +877,7 @@
 - id: la-least-squares-computation-pseudoinverse
   title: 最小二乗法の計算と擬似逆行列
   course: foundation
-  order: 217
+  order: 218
   summary: 最小二乗法の計算と擬似逆行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -895,7 +895,7 @@
 - id: la-weighted-least-squares-introduction
   title: 重み付き最小二乗法の導入
   course: foundation
-  order: 218
+  order: 219
   summary: 重み付き最小二乗法の導入の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -912,7 +912,7 @@
 - id: la-determinants-volume-invertibility
   title: 行列式・体積・可逆性
   course: foundation
-  order: 219
+  order: 220
   summary: 行列式・体積・可逆性の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -929,7 +929,7 @@
 - id: la-eigenvalues-eigenvectors
   title: 固有値と固有ベクトル
   course: foundation
-  order: 220
+  order: 221
   summary: 固有値と固有ベクトルの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -947,7 +947,7 @@
 - id: la-diagonalization-matrix-powers
   title: 対角化と行列の累乗
   course: foundation
-  order: 221
+  order: 222
   summary: 対角化と行列の累乗の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -965,7 +965,7 @@
 - id: la-symmetric-matrices-spectral-theorem
   title: 対称行列とスペクトル定理
   course: foundation
-  order: 222
+  order: 223
   summary: 対称行列とスペクトル定理の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -983,7 +983,7 @@
 - id: la-quadratic-forms-positive-definite
   title: 二次形式と正定値行列
   course: foundation
-  order: 223
+  order: 224
   summary: 二次形式と正定値行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -1001,7 +1001,7 @@
 - id: la-cholesky-factorization
   title: Cholesky分解
   course: foundation
-  order: 224
+  order: 225
   summary: Cholesky分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -1019,7 +1019,7 @@
 - id: la-singular-value-decomposition
   title: 特異値分解
   course: foundation
-  order: 225
+  order: 226
   summary: 特異値分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -1037,7 +1037,7 @@
 - id: la-pseudoinverse-rank-deficient-systems
   title: 擬似逆行列とrank不足の連立方程式
   course: foundation
-  order: 226
+  order: 227
   summary: 擬似逆行列とrank不足の連立方程式の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -1055,7 +1055,7 @@
 - id: la-low-rank-approximation
   title: 低ランク近似
   course: foundation
-  order: 227
+  order: 228
   summary: 低ランク近似の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -1072,7 +1072,7 @@
 - id: la-matrix-norms-condition-number
   title: 行列ノルムと条件数
   course: foundation
-  order: 228
+  order: 229
   summary: 行列ノルムと条件数の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3161,7 +3161,7 @@
 - id: ml-mdp-bellman-equations
   title: MDPとBellman方程式
   course: foundation
-  order: 803
+  order: 822
   summary: MDPは現在状態が与えられれば未来の遷移分布が過去全体に依存しないMarkov性を仮定する。価値関数は将来報酬の割引和の期待値。
   status: draft
   prerequisites:
@@ -3179,7 +3179,7 @@
 - id: ml-dynamic-programming-value-policy-iteration
   title: value iterationとpolicy iteration
   course: foundation
-  order: 804
+  order: 823
   summary: 最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
   status: draft
   prerequisites:
@@ -3197,7 +3197,7 @@
 - id: ml-monte-carlo-td-q-learning
   title: Monte Carlo・TD・Q-learning
   course: foundation
-  order: 805
+  order: 824
   summary: Monte Carloはepisode完了後の実returnをtargetにする。TDは1step先の現在推定値をbootstrapping targetにする。Q-learningはoff-policy TD control。
   status: draft
   prerequisites:
@@ -3215,7 +3215,7 @@
 - id: ml-policy-gradient-reinforce
   title: policy gradientとREINFORCE
   course: foundation
-  order: 806
+  order: 825
   summary: trajectory確率のlog微分を使うと、環境遷移を微分せずに期待returnのgradientをpolicyのlog-probabilityで表せる。
   status: draft
   prerequisites:
@@ -3234,7 +3234,7 @@
 - id: ml-linear-regression
   title: 線形回帰
   course: foundation
-  order: 807
+  order: 803
   summary: 線形回帰の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3252,7 +3252,7 @@
 - id: ml-logistic-regression
   title: logistic回帰
   course: foundation
-  order: 808
+  order: 804
   summary: logistic回帰の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3270,7 +3270,7 @@
 - id: ml-softmax-multiclass
   title: softmaxと多クラス分類
   course: foundation
-  order: 809
+  order: 805
   summary: softmaxと多クラス分類の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3288,7 +3288,7 @@
 - id: ml-generative-classifiers-naive-bayes-lda
   title: 生成的分類器・Naive Bayes・LDA
   course: foundation
-  order: 810
+  order: 806
   summary: 生成的分類器・Naive Bayes・LDAの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3306,7 +3306,7 @@
 - id: ml-knn-distance-methods
   title: k近傍法と距離学習
   course: foundation
-  order: 811
+  order: 807
   summary: k近傍法と距離学習の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3324,7 +3324,7 @@
 - id: ml-decision-trees
   title: 決定木
   course: foundation
-  order: 812
+  order: 808
   summary: 決定木の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3342,7 +3342,7 @@
 - id: ml-ensembles-bagging-random-forests
   title: baggingとrandom forest
   course: foundation
-  order: 813
+  order: 809
   summary: baggingとrandom forestの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3360,7 +3360,7 @@
 - id: ml-boosting-gradient-boosting
   title: boostingとgradient boosting
   course: foundation
-  order: 814
+  order: 810
   summary: boostingとgradient boostingの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3378,7 +3378,7 @@
 - id: ml-svm-margin-kernels
   title: SVM・margin・kernel
   course: foundation
-  order: 815
+  order: 811
   summary: SVM・margin・kernelの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3396,7 +3396,7 @@
 - id: ml-kernel-methods-feature-maps
   title: kernel methodと特徴写像
   course: foundation
-  order: 816
+  order: 812
   summary: kernel methodと特徴写像の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3414,7 +3414,7 @@
 - id: ml-clustering-kmeans-hierarchical
   title: k-meansと階層clustering
   course: foundation
-  order: 817
+  order: 813
   summary: k-meansと階層clusteringの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3432,7 +3432,7 @@
 - id: ml-gmm-em
   title: Gaussian mixtureとEM
   course: foundation
-  order: 818
+  order: 814
   summary: Gaussian mixtureとEMの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3450,7 +3450,7 @@
 - id: ml-dimensionality-reduction-pca-manifold
   title: 次元削減・PCA・manifold
   course: foundation
-  order: 819
+  order: 815
   summary: 次元削減・PCA・manifoldの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3468,7 +3468,7 @@
 - id: ml-anomaly-detection
   title: 異常検知
   course: foundation
-  order: 820
+  order: 816
   summary: 異常検知の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3486,7 +3486,7 @@
 - id: ml-feature-engineering-selection
   title: 特徴量設計と特徴選択
   course: foundation
-  order: 821
+  order: 817
   summary: 特徴量設計と特徴選択の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3504,7 +3504,7 @@
 - id: ml-bias-variance-regularization
   title: bias–varianceと正則化
   course: foundation
-  order: 822
+  order: 818
   summary: bias–varianceと正則化の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3522,7 +3522,7 @@
 - id: ml-model-selection-cross-validation
   title: model selectionとcross-validation
   course: foundation
-  order: 823
+  order: 819
   summary: model selectionとcross-validationの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3540,7 +3540,7 @@
 - id: ml-metrics-calibration-imbalance
   title: 評価指標・calibration・class imbalance
   course: foundation
-  order: 824
+  order: 820
   summary: 評価指標・calibration・class imbalanceの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3558,7 +3558,7 @@
 - id: ml-uncertainty-interpretability-monitoring
   title: 不確実性・解釈・監視
   course: foundation
-  order: 825
+  order: 821
   summary: 不確実性・解釈・監視の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3756,7 +3756,7 @@
 - id: dl-deep-reinforcement-learning
   title: Deep Reinforcement Learning
   course: foundation
-  order: 911
+  order: 917
   summary: 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
   status: draft
   prerequisites:
@@ -3775,7 +3775,7 @@
 - id: dl-normalization-residuals
   title: residual connectionとnormalization
   course: foundation
-  order: 912
+  order: 911
   summary: residual connectionとnormalizationの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3792,7 +3792,7 @@
 - id: dl-autoencoders-vae
   title: autoencoderとVAE
   course: foundation
-  order: 913
+  order: 912
   summary: autoencoderとVAEの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3810,7 +3810,7 @@
 - id: dl-gans-adversarial-training
   title: GANとadversarial training
   course: foundation
-  order: 914
+  order: 913
   summary: GANとadversarial trainingの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3828,7 +3828,7 @@
 - id: dl-diffusion-score-models
   title: diffusionとscore model
   course: foundation
-  order: 915
+  order: 914
   summary: diffusionとscore modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3846,7 +3846,7 @@
 - id: dl-self-supervised-contrastive
   title: 自己教師あり・contrastive学習
   course: foundation
-  order: 916
+  order: 915
   summary: 自己教師あり・contrastive学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -3864,7 +3864,7 @@
 - id: dl-embeddings-representation-learning
   title: embeddingと表現学習
   course: foundation
-  order: 917
+  order: 916
   summary: embeddingと表現学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
@@ -4044,12 +4044,11 @@
 - id: frontier-parameter-efficient-finetuning
   title: parameter-efficient fine-tuning
   course: foundation
-  order: 1005
+  order: 1006
   summary: parameter-efficient fine-tuningの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-    - dl-efficient-training-inference
-    - opt-proximal-gradient
+    - frontier-supervised-finetuning-instruction-tuning
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -4062,12 +4061,11 @@
 - id: frontier-supervised-finetuning-instruction-tuning
   title: SFT・instruction tuning
   course: foundation
-  order: 1006
+  order: 1005
   summary: SFTはinstruction-response pairに対するconditional language modeling。base modelの次token予測能力を、望ましい会話・指示応答分布へ寄せる。
   status: draft
   prerequisites:
     - dl-transformers
-    - frontier-parameter-efficient-finetuning
   estimated_minutes:
     slides: 25
     textbook: 75
@@ -4085,6 +4083,7 @@
   status: draft
   prerequisites:
     - frontier-supervised-finetuning-instruction-tuning
+    - ml-logistic-regression
     - ml-policy-gradient-reinforce
     - dl-deep-reinforcement-learning
   estimated_minutes:
@@ -4099,7 +4098,7 @@
 - id: frontier-reasoning-rl-rlvr
   title: 推論RLとverifiable reward
   course: foundation
-  order: 1008
+  order: 1009
   summary: verifiable taskでは最終答案の正誤、unit test、formal checkerなどをrewardとして使える。人間preferenceより低コストで大量sampleを評価できる一方、reward仕様の範囲外の品質は保証しない。
   status: draft
   prerequisites:
@@ -4117,7 +4116,7 @@
 - id: frontier-retrieval-augmented-generation
   title: Retrieval-Augmented Generation
   course: foundation
-  order: 1009
+  order: 1010
   summary: Retrieval-Augmented Generationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
@@ -4135,7 +4134,7 @@
 - id: frontier-vector-databases-search
   title: vector searchとindex
   course: foundation
-  order: 1010
+  order: 1011
   summary: vector searchとindexの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
@@ -4153,7 +4152,7 @@
 - id: frontier-rag-reranking-evaluation
   title: RAG：chunking・reranking・評価
   course: foundation
-  order: 1011
+  order: 1012
   summary: 最終回答だけを見ると原因が分からない。まず必要根拠をtop-kへ取れたか、rerankerが上位へ持ち上げたか、generatorが根拠を正しく使ったかを分離評価する。
   status: draft
   prerequisites:
@@ -4171,7 +4170,7 @@
 - id: frontier-tool-use-function-calling
   title: tool useとfunction calling
   course: foundation
-  order: 1012
+  order: 1013
   summary: tool useとfunction callingの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
@@ -4189,7 +4188,7 @@
 - id: frontier-agents-planning-memory
   title: agent・planning・memory
   course: foundation
-  order: 1013
+  order: 1014
   summary: agent・planning・memoryの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
@@ -4207,7 +4206,7 @@
 - id: frontier-tool-security-prompt-injection
   title: tool useのsecurity boundaryとprompt injection
   course: foundation
-  order: 1014
+  order: 1015
   summary: tool-using agentではmodel outputが外部作用へつながる。untrusted contentはdataとして扱い、権限・引数schema・確認・sandbox等の境界で実行能力を制限する必要がある。
   status: draft
   prerequisites:
@@ -4225,7 +4224,7 @@
 - id: frontier-multi-agent-systems
   title: multi-agent system
   course: foundation
-  order: 1015
+  order: 1016
   summary: multi-agent systemの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
@@ -4243,11 +4242,11 @@
 - id: frontier-rlhf-preference-optimization
   title: RLHFとpreference optimization
   course: foundation
-  order: 1016
+  order: 1008
   summary: RLHFとpreference optimizationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-    - opt-stochastic-gradient
+    - frontier-rlhf-reward-model-ppo-kl
     - ml-logistic-regression
   estimated_minutes:
     slides: 20

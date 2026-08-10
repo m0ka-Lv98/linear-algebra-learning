@@ -1,219 +1,107 @@
-# RLHFとpreference optimization：演習
+# DPO：preference optimization：演習
 
-Course 10｜Topic 11/20。10問すべて、このTopic固有の問いとして作成しています。
+Course 10｜Frontier
 
-[教科書](/textbook/frontier-rlhf-preference-optimization)
+教科書の定義・導出・図・数値例を、自分で再構成できるかを確認する10問。
 
-## 問1. 定義と記号
+## 問題1：KL正則化objectiveを書く
 
-「RLHFとpreference optimization」の代表式
-
-$$
-\mathcal{L}_{DPO}=-\log\sigma(\beta[\log\pi_\theta(y_w\mid x)-\log\pi_\theta(y_l\mid x)-\Delta_{ref}])
-$$
-
-について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
-
-<details><summary>ヒント</summary>
-
-式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
-
-</details>
+prompt$x$を固定し、reward$r_y$、reference probability$\pi_y^{ref}$を使って、DPO導出の出発点となるKL正則化policy objectiveと確率正規化制約を書け。
 
 <details><summary>完全解答</summary>
 
-代表式は結果だけを書くための記号ではない。本文で定義した量を使い、RLHFとpreference optimizationが何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
-
-**relative preference**
-
-absolute scoreより $P(y_w\succ y_l|x)$ をmodel化。Bradley–Terry型でreward differenceをsigmoidへ。
-
-答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+$\max_{\pi}\sum_y\pi_y r_y-\beta\sum_y\pi_y\log(\pi_y/\pi_y^{ref})$ subject to $\sum_y\pi_y=1$。$\beta>0$。第1項はexpected reward、第2項はreferenceから離れるKL cost。
 
 </details>
 
-## 問2. 導出1：relative preference
+## 問題2：Lagrangian stationarity
 
-「RLHFとpreference optimization」で **relative preference** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「relative preference」を、直前の定義から始めて書き直す。
-
-</details>
+前問にmultiplier$\eta$を入れ、$\pi_y$で微分して $r_y-\beta(\log(\pi_y/\pi_y^{ref})+1)+\eta=0$ を導け。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-absolute scoreより $P(y_w\succ y_l|x)$ をmodel化。Bradley–Terry型でreward differenceをsigmoidへ。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「policy-reward relation」へ進むときも、この段階で得た量だけを使う。
+$\mathcal F=\sum_y\pi_yr_y-\beta\sum_y\pi_y\log(\pi_y/\pi_y^{ref})+\eta(\sum_y\pi_y-1)$。$d[\pi\log(\pi/c)]/d\pi=\log(\pi/c)+1$なので、各$\pi_y$の偏微分を0に置くと指定式になる。
 
 </details>
 
-## 問3. 導出2：policy-reward relation
+## 問題3：policy–reward relation
 
-「RLHFとpreference optimization」で **policy-reward relation** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「policy-reward relation」を、直前の定義から始めて書き直す。
-
-</details>
+stationarity式を整理し、$r(x,y)=\beta\log[\pi^*(y|x)/\pi_{ref}(y|x)]+C(x)$ を導け。$C(x)$がresponseに依存しない理由も述べよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-KL-regularized optimal policyではrewardが $\beta\log[\pi^*(y|x)/\pi_{ref}(y|x)]$ とconstantで表せる。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「DPO objective」へ進むときも、この段階で得た量だけを使う。
+$\beta\log(\pi_y/\pi_y^{ref})=r_y+\eta-\beta$。従って$r_y=\beta\log(\pi_y/\pi_y^{ref})+(\beta-\eta)$。正規化constraintのmultiplier$\eta$はprompt$x$ごとに共通でresponse index$y$には依存しないので$C(x)=\beta-\eta$。
 
 </details>
 
-## 問4. 導出3：DPO objective
+## 問題4：optimal policyのclosed form
 
-「RLHFとpreference optimization」で **DPO objective** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「DPO objective」を、直前の定義から始めて書き直す。
-
-</details>
+前問の関係を指数化し、$\pi^*(y|x)\propto\pi_{ref}(y|x)e^{r(x,y)/\beta}$ を示し、正規化定数$Z(x)$を書け。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-reward differenceへlog policy ratioを代入し、preferred pair probabilityのnegative logを直接minimizeする。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+log-ratio$=r/\beta-C(x)/\beta$なので$\pi^*=\pi_{ref}e^{r/\beta}e^{-C/\beta}$。最後のfactorは全$y$共通でnormalizer。$Z(x)=\sum_y\pi_{ref}(y|x)e^{r(x,y)/\beta}$ とすれば $\pi^*=\pi_{ref}e^{r/\beta}/Z(x)$。
 
 </details>
 
-## 問5. 数値例を途中から再現
+## 問題5：Bradley–Terryとconstant cancel
 
-次の「RLHFとpreference optimization」の設定を、自分で途中量まで展開して最終結論を確認せよ。
-
-> same promptにhelpful correct responseとless preferred response pairを作り、preferred log-ratioをreference relativeに増やす。
-
-本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+$P(y_w\succ y_l|x)=\sigma(r_w-r_l)$へpolicy–reward relationを代入し、$C(x)$が消えることを式で示せ。
 
 <details><summary>完全解答</summary>
 
-設定に対する計算・判断は次の通り。
-
-same promptにhelpful correct responseとless preferred response pairを作り、preferred log-ratioをreference relativeに増やす。
-
-ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+$r_w-r_l=\beta[\log(\pi^*_w/\pi^{ref}_w)-\log(\pi^*_l/\pi^{ref}_l)]+C(x)-C(x)$。従ってconstantはcancelし、preference logitはpolicy/reference log-ratioのchosen−rejected差だけで表される。
 
 </details>
 
-## 問6. 条件を変えたときの差
+## 問題6：DPO数値例
 
-次の第二例について、第一例から変更した条件を特定し、その変更によって「RLHFとpreference optimization」のどの部分が変わるか説明せよ。
-
-> βが大きい/小さいconventionでreferenceからのdeviation tradeoffが変わるためpaper/implementation定義を確認。
+$\log\pi_\theta(y_w)=-1.0$, $\log\pi_\theta(y_l)=-2.0$, reference側が$-1.2,-1.8$, $\beta=0.5$。DPO logit, preference probability, lossを求めよ。
 
 <details><summary>完全解答</summary>
 
-βが大きい/小さいconventionでreferenceからのdeviation tradeoffが変わるためpaper/implementation定義を確認。
-
-比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+policy差は1.0、reference差$\Delta_{ref}=0.6$、差は0.4。logitは$0.5\times0.4=0.2$。$\sigma(0.2)\approx0.550$、loss$=-\log0.550\approx0.598$。
 
 </details>
 
-## 問7. 成立条件と反例
+## 問題7：referenceの役割
 
-「RLHFとpreference optimization」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
-
-> preference data自体がbiased/inconsistentならoptimizerはそのbiasを学ぶ。preference=ground-truth safetyではない。
-
-<details><summary>ヒント</summary>
-
-「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
-
-</details>
+policyでchosen−rejected log-probability差が1.0でも、reference差も1.0ならDPO logitはどうなるか。何を意味するか。
 
 <details><summary>完全解答</summary>
 
-本文で確認する条件は以下である。
-
-- preference dataのbiasがpolicyへ入る。
-- reward hackingやoveroptimizationを監視する。
-- RLHFとpreference optimizationの定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-失敗例は次の通り。
-
-preference data自体がbiased/inconsistentならoptimizerはそのbiasを学ぶ。preference=ground-truth safetyではない。
-
-したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+log-ratio差は$1.0-1.0=0$なのでlogit0、preference probability0.5。current policyがchosenを好んでいてもreferenceと**同程度**なら、referenceに対する相対改善はないとDPOは見る。
 
 </details>
 
-## 問8. 実装・数値診断
+## 問題8：betaの効果
 
-「RLHFとpreference optimization」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
-
-> pair construction、reference model version、length bias、chosen/rejected leakage、reward/eval separation。
+同じlog-ratio差$\Delta=0.4$に対し$\beta=0.1$と$\beta=2$のpreference probabilityを比較せよ。
 
 <details><summary>完全解答</summary>
 
-pair construction、reference model version、length bias、chosen/rejected leakage、reward/eval separation。
-
-実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+$\beta=0.1$ならlogit0.04で$\sigma\approx0.510$。$\beta=2$ならlogit0.8で$\sigma\approx0.690$。DPO loss内では$\beta$がlogit scaleを変える。ただしKL objectiveでのregularization strengthとのparameter conventionは実装/論文の式を確認する。
 
 </details>
 
-## 問9. 次Topicへの導線
+## 問題9：supportとmaskのfailure
 
-「RLHFとpreference optimization」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
-
-> preference optimizationはalignmentの一手段。policy constraints、red teaming、system safetyを広く次Topicで扱う。
+chosen responseのあるtokenがreferenceでprobability 0になる場合、DPO log-ratioに何が起こるか。language-model実装ではどんなmask不整合が類似問題を作るか。
 
 <details><summary>完全解答</summary>
 
-preference optimizationはalignmentの一手段。policy constraints、red teaming、system safetyを広く次Topicで扱う。
-
-本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+$\log\pi_{ref}=\log0=-\infty$でlog-ratioが有限に定義できない。通常softmax LMはunmasked tokenへpositive probabilityを持つが、token mask、truncation、EOS処理、prompt/response maskingがpolicyとreferenceで異なると比較するlog-probabilityが同じeventを表さず、lossが壊れる。
 
 </details>
 
-## 問10. 総合証明・説明
+## 問題10：DPOとRLHFを比較
 
-「RLHFとpreference optimization」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+標準RLHFとDPOを、必要なlearned object、online rollout、referenceの役割、残るdata biasの4点で比較せよ。
 
 <details><summary>完全解答</summary>
 
-答案では次の流れを一続きにする。
-
-**代表式**
-
-$$
-\mathcal{L}_{DPO}=-\log\sigma(\beta[\log\pi_\theta(y_w\mid x)-\log\pi_\theta(y_l\mid x)-\Delta_{ref}])
-$$
-
-**導出**
-
-1. **relative preference** — absolute scoreより $P(y_w\succ y_l|x)$ をmodel化。Bradley–Terry型でreward differenceをsigmoidへ。
-
-2. **policy-reward relation** — KL-regularized optimal policyではrewardが $\beta\log[\pi^*(y|x)/\pi_{ref}(y|x)]$ とconstantで表せる。
-
-3. **DPO objective** — reward differenceへlog policy ratioを代入し、preferred pair probabilityのnegative logを直接minimizeする。
-
-**数値・具体例**
-
-same promptにhelpful correct responseとless preferred response pairを作り、preferred log-ratioをreference relativeに増やす。
-
-**条件を壊すと**
-
-preference data自体がbiased/inconsistentならoptimizerはそのbiasを学ぶ。preference=ground-truth safetyではない。
-
-**実装**
-
-pair construction、reference model version、length bias、chosen/rejected leakage、reward/eval separation。
-
-各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+標準RLHFはpreferenceからreward modelを学び、そのrewardでonline/iterative policy optimizationを行う。DPOは特定KL-regularized modelの関係を使いpair dataからpolicyを直接fitし、policy update中の明示的reward modelを省ける。どちらもreference/regularizationでbehavior driftを制御する考えを持つ。DPOでもpreference labelsのverbosity/style/annotator biasやcoverage不足はそのまま学習signalに入るため消えない。
 
 </details>
+
+[教科書へ](/textbook/frontier-rlhf-preference-optimization)

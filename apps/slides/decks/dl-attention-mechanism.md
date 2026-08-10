@@ -1,25 +1,36 @@
 ---
 theme: default
 routerMode: hash
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "attention機構"
 ---
 
 # attention機構
 
-Course 09｜深層学習
+Course 09｜深層学習｜Topic 08/20
 
+---
+layout: center
 ---
 
 ## 今回の問い
 
-scaled dot-product attentionの1/√d_kはなぜ必要で、Q/K/Vは何を計算しているか。
+attention機構の代表式は、どの定義・仮定から、なぜその形になるのか。
+
+---
+
+## なぜ今これを学ぶのか
+
+前Topic `dl-rnn-sequence-models` で得た概念を使い、ここでは attention機構 へ進む。
 
 ---
 
 ## 直感
 
-queryとkeyの内積で「どのvalueをどれだけ参照するか」のscoreを作る。dimensionが増えると未scale内積の分散が大きくなりsoftmaxが飽和しやすいため1/√d_kでscaleする。
+attentionはqueryとkeyの類似度から重みを作り、valueの加重平均で必要な情報を取り出す。
+
+
 
 ---
 
@@ -27,48 +38,76 @@ queryとkeyの内積で「どのvalueをどれだけ参照するか」のscore�
 
 <img src="./assets/course-09/dl-attention-mechanism.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
+attention matrixのheatmapで各tokenがどこを見るか可視化する。 行がquery、列がkey、セルがsoftmax後のattention weightである。各行の重み付き和でvalueを混ぜるため、queryごとに参照先が変わる。
+
 ---
 
-## 中心式
+## 記号と代表式
+
+- $Q\in\mathbb R^{n_q\times d_k}$：queries
+- $K\in\mathbb R^{n_k\times d_k}$：keys
+- $V\in\mathbb R^{n_k\times d_v}$：values
+- $A=softmax(QK^T/\sqrt{d_k})$：attention weights
 
 $$
-\mathrm{Attn}(Q,K,V)=\mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\operatorname{Attention}(\mathbf{Q},\mathbf{K},\mathbf{V})=\operatorname{softmax}(\mathbf{Q}\mathbf{K}^{\mathsf T}/\sqrt{d_k})\mathbf{V}
 $$
 
 ---
 
-## 導出
+## 導出 1
 
-1. 各q_iとk_jの内積でscore matrix S=QK^Tを作る。
-2. 成分が独立・分散1程度ならdot productの分散はd_k程度なので√d_kで割りvarianceをO(1)にする。
-3. 各query rowでsoftmaxし、keyごとの非負weight和1を作る。
-4. そのweightでVのrowを加重平均する。
+$QK^T$ はn_q×n_k。entry q_i^Tk_jがquery iとkey jのcompatibility。
 
 ---
 
-## 小さい例
+## 導出 2
 
-1 query・2 keyでscaled scoreが[0, ln3]ならsoftmax weightは[1/4,3/4]。outputは0.25v1+0.75v2。
-
----
-
-## 条件を外すと
-
-- softmaxのaxisを取り違えない。
-- QK^TをVそのものと混同しない。
+independent unit-variance componentsならdot product variance≈d_k。√d_kで割りlogit scaleをO(1)にしsoftmax saturationを抑える。
 
 ---
 
-## 理解確認
+## 例題
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+1 query, 2 keys score(2,0)ならweights≈(0.881,0.119)、outputはvalue1寄り。
 
+---
+
+## 条件を変えるとどうなるか
+
+attention weightが高いことをそのままcausal importance/faithful explanationとみなせない。
+
+---
+
+## よくある誤解
+
+attention機構では、式へ数値を代入するだけでは不十分である。attention weightが高いことをそのままcausal importance/faithful explanationとみなせない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+
+---
+
+## 実装・計算上の注意
+
+stable fused attention、mask broadcasting、head/batch dimensions。quadratic sequence memoryをmonitor。
+
+---
+
+## 一段先へ
+
+self-attentionをmulti-head、position information、FFN、residual/normalizationと組み合わせTransformerを作る。
+
+---
+
+## 自分で説明できるか
+
+- 「score matrix shape」を式を見ずに説明できるか
+- 「weighted sum」までの論理を一段ずつ再現できるか
+- attention機構の条件を1つ外した反例を説明できるか
+
+---
+layout: center
 ---
 
 ## 教科書と演習
 
-[教科書](../../textbook/dl-attention-mechanism)
-
-[10問の演習](../../exercises/dl-attention-mechanism)
+- [教科書](../../textbook/dl-attention-mechanism)
+- [10問の演習](../../exercises/dl-attention-mechanism)

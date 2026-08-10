@@ -2,71 +2,68 @@
 
 Course 00｜学習準備
 
-## このTopicの中心問題
+## このTopicの目的
 
-数学的関数とPython関数の対応・相違をどう意識するか。
+数学上の式をPythonへ写すとき、値・型・副作用・例外を区別し、検算可能な小さな関数として実装するにはどうするか。
 
-## まず直感
+## 図の意味
 
-Python関数は入力を受けて計算しreturnする手続き。数学関数と対応させるときは副作用、dtype、例外、有限精度など実装特有の要素を分ける。
+<img src="/visuals/course-00/prep-python-expressions-functions.png" alt="Pythonの式・変数・関数の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-## 図で固定する
+input xがPython関数 `def f(x): ...` に入りreturn valueへ出る。数学関数と違い、実装にはdtype、有限精度、例外、mutable stateなど追加要素があるため、同じ数式でも実装上の振る舞いが変わり得る。
 
-<img src="/visuals/course-00/prep-python-expressions-functions.png" alt="Pythonの式・変数・関数の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+## 定義から順に理解する
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+式 `y = 2*x + 1` では右辺を先に評価し、その結果を名前yへbindする。Python変数は数学の未知数ではなくobjectへの名前。
 
-## 記号・型・意味
+関数は入力parameterとreturnを明示する。純粋関数に近づけると同じ入力に同じ出力が得られ、数学との対応とtestが容易になる。
 
-| 記号 | 意味 |
-|---|---|
-| $f(x)$ | 数学上の関数値 |
-| $def f(x)$ | Pythonでの手続き定義 |
+整数 `/` はfloating division、`//` はfloor division。`**` が累乗で `^` はbitwise XOR。
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+## name bindingと数学の等号は違う
 
-## 中心となる式
+Pythonの
 
-$$
-y=f(x)
-$$
+```python
+x = x + 1
+```
 
-## なぜこの式になるのか
+は数学の方程式 $x=x+1$ ではない。右辺の現在値を計算し、その結果へname `x` を付け直すassignmentである。コードを数式へ翻訳するとき、`=` を「等しい」と機械的に読まない。
 
-1. input contractを決める。
-2. 式/algorithmでoutputを計算する。
-3. return valueと副作用を分離する。
+## mutable objectと副作用
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+```python
+def add_one(xs):
+    xs.append(1)
+```
 
-## 例題：小さい設定で最後まで追う
+はreturn valueがなくても入力listそのものを書き換える。NumPy配列でもviewへ代入すると元配列が変わる場合がある。数学関数に近い推論をしたいコードでは、入力を書き換えるか、新しい値を返すかを明示する。
 
-def square(x): return x*x は実数のx²に対応するが、整数overflow等は実装環境依存。
+## floating pointと例外
 
-### 答案で書く順序
+`1/0` は例外だが、NumPyでは演算によって `inf` や `nan` が生成され処理が続く場合もある。結果だけを見るのではなく、`np.isfinite` やwarningを確認する。
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+## 小さい関数をtestする
 
-## 何を間違えやすいか
+たとえば
 
-- 変数代入=数学的等号と思わない。
+```python
+def affine(x, a, b):
+    return a*x + b
+```
 
-## 自分で確認する問い
+なら `affine(0,a,b)==b`、`affine(1,a,b)==a+b` という境界的な入力を使える。実装前に数式から期待結果を作り、その後コードを実行する順にすると「コードを答え合わせの根拠にする」循環を避けられる。
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
+## 具体例
 
-## 後続Courseへの接続
+`def square_plus_one(x): return x**2 + 1` にx=3なら10。`3^2` は1であり9ではないため、演算子の意味を確認する。
 
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+## 条件を外すと
 
-## 参考
+global listを書き換える関数は、同じ入力でも呼び出し回数で結果やstateが変わる。数学関数と同一視しない。
 
-- Python basics
+## 後続Courseでどう使うか
+
+NumPy、数値実験、ML training codeの再現性へ続く。
 
 [演習へ](/exercises/prep-python-expressions-functions)　|　[スライドへ](/slides/prep-python-expressions-functions/)

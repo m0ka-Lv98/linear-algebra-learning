@@ -11,27 +11,34 @@ Course 03｜確率統計
 
 ---
 
-## 今回の問い
+## 何を解決するか
 
 解析的な標本分布が難しい統計量の不確実性を、データからどう近似するか。
-
----
-
-## 直感
 
 bootstrapは観測された経験分布を「仮の母集団」として復元抽出し、統計量を何度も計算する。permutation testは帰無仮説下で交換可能なラベルを並べ替えて帰無分布を作る。
 
 ---
 
-## 図解
+## 図の意味
 
 <img src="./assets/course-03/stat-bootstrap-permutation-resampling.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
+元データの点群から同じ個数を復元抽出してbootstrap標本を作り、各標本の中央値を横軸へ記録したhistogramが徐々に形成される。破線が元標本の中央値。histogramの広がりが「標本が変わったとき統計量がどれくらい揺れるか」の近似である。
+
 ---
 
-## 動きで確認
+## 記号
 
-<img src="./assets/course-03/stat-bootstrap-permutation-resampling.gif" style="max-height: 330px; display:block; margin:0 auto;" />
+| 記号 | 意味 |
+|---|---|
+| $T(X)$ | 関心のある統計量 |
+| $B$ | 再標本回数 |
+| $T*$ | bootstrap標本での統計量 |
+
+
+- $B$：bootstrap反復回数。
+- $T_b^*$：b番目bootstrap標本で計算した統計量。
+- $\bar T^*=B^{-1}\sum_bT_b^*$。
 
 ---
 
@@ -51,29 +58,38 @@ $$
 
 ---
 
-## 小さい例
+## 省略しない一段
 
-中央値の標準誤差は閉形式が扱いにくいことがある。bootstrapで中央値をB回計算し、その標準偏差をSEとして使う。
+bootstrapでは未知母分布 $F$ の代わりに、観測点それぞれへ質量 $1/n$ を置いた経験分布 $\hat F_n$ を使う。そこから独立にn回復元抽出することが「同じ母分布から別標本を得る」操作の代用になる。
 
----
-
-## 条件を外すと
-
-- 時系列やcluster dataをiid bootstrapしない。
-- bootstrap回数を増やしても元標本のbiasが自動で消えるわけではない。
+permutation testは目的が違う。帰無仮説の下で群ラベルが交換可能なら、観測値を固定してラベルだけを並べ替え、差の統計量の帰無分布を作る。bootstrapはsampling uncertainty、permutationはnull distributionの構成に主眼がある。
 
 ---
 
-## 理解確認
+## 手計算
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+**問題**：データ $[1,3,8,10]$ からbootstrap標本 $[1,1,8,10]$, $[3,3,8,10]$, $[1,8,8,10]$, $[1,3,3,10]$ を得た。各中央値と、その4個の中央値の標本標準偏差を求めよ。
+
+**解答**：中央値は順に4.5, 5.5, 8, 3。平均5.25。平方偏差和は $0.5625+0.0625+7.5625+5.0625=13.25$。標本分散は $13.25/3\approx4.4167$、標準偏差は約2.102。
 
 ---
 
-## 教科書と演習
+## 条件を変える
 
-[教科書](../../textbook/stat-bootstrap-permutation-resampling)
+データ $[1,2,10]$ のbootstrap標本の1つが $[1,1,10]$ なら中央値1、別の標本 $[2,10,10]$ なら中央値10。この反復で中央値の有限標本変動を近似する。
 
-[10問の演習](../../exercises/stat-bootstrap-permutation-resampling)
+---
+
+## どこで壊れるか
+
+時系列やcluster dataを個々の観測としてiid復元抽出すると依存構造を壊す。block bootstrapやcluster bootstrapなど、sampling unitをデータ生成過程に合わせる必要がある。
+
+---
+
+## 次へ
+
+bootstrap percentile区間・BCa区間、permutation p-valueへ発展できる。機械学習のbaggingもbootstrap sampleで複数modelを学習する点で同じ操作を使う。
+
+---
+
+[教科書](../../textbook/stat-bootstrap-permutation-resampling)　|　[10問の演習](../../exercises/stat-bootstrap-permutation-resampling)

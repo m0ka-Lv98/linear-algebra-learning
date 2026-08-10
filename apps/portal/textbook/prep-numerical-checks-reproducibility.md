@@ -2,71 +2,87 @@
 
 Course 00｜学習準備
 
-## このTopicの中心問題
+## このTopicの目的
 
-「コードが動いた」から「計算が正しい」へ進むため、何を記録・検算するか。
+浮動小数点の結果をexact equalityで判定せず、独立な検算と再現可能な実験条件をどう残すか。
 
-## まず直感
+## 図の意味
 
-再現性はseedだけではない。入力、version、dtype、tolerance、algorithm、environmentを記録し、小さい既知例・極端例・invariantで検算する。
+<img src="/visuals/course-00/prep-numerical-checks-reproducibility.png" alt="数値検算と再現性の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-## 図で固定する
+横軸が参照値の大きさ、縦軸が許容誤差。$\text{atol}+\text{rtol}|x|$ は0付近ではabsolute tolerance、値が大きい領域ではrelative toleranceが支配する。1本の固定閾値よりscaleの違う値を比較しやすい。
 
-<img src="/visuals/course-00/prep-numerical-checks-reproducibility.png" alt="数値検算と再現性の図解" style="max-height: 460px; display:block; margin:0 auto;" />
+## 定義から順に理解する
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
+floating pointでは0.1を2進数でexactに表せないため、`0.1+0.2==0.3` が偽になることがある。比較は $|x-y|\le\text{atol}+\text{rtol}|y|$ のようにscaleを考える。
 
-## 記号・型・意味
+検算は同じ式をもう一度計算するだけでなく、独立な性質を使う。線形方程式ならresidual $\|A\hat x-b\|$、SVDなら再構成誤差と直交性、確率なら総和1。
 
-| 記号 | 意味 |
-|---|---|
-| $ε_abs$ | absolute tolerance |
-| $ε_rel$ | relative tolerance |
+randomnessを使う場合はseed、library version、dtype、input、parameterを記録する。
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+## absolute errorとrelative error
 
-## 中心となる式
+真値またはreferenceを $x$、近似値を $\hat x$ とする。absolute errorは
 
 $$
-|x-\hat x|\le \varepsilon_{abs}+\varepsilon_{rel}|x|
+|\hat x-x|,
 $$
 
-## なぜこの式になるのか
+relative errorは $x\ne0$ なら
 
-1. exact equalityが不適切な浮動小数点比較を避ける。
-2. scaleが小さい領域はabsolute tolerance、大きい領域はrelative toleranceで扱う。
-3. expected invariantやreference solutionと併用する。
+$$
+\frac{|\hat x-x|}{|x|}.
+$$
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+値のscaleが大きく異なる問題ではrelative errorが比較しやすいが、$x\approx0$ では分母が小さく不安定。そのため実装では
 
-## 例題：小さい設定で最後まで追う
+$$
+|\hat x-x|\le \mathrm{atol}+\mathrm{rtol}|x|
+$$
 
-0.1+0.2を0.3と==比較するよりnp.isclose相当の許容誤差比較を使う。
+のように両方を組み合わせる。
 
-### 答案で書く順序
+## residualとsolution errorは違う
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+線形方程式 $\mathbf A\mathbf x=\mathbf b$ に近似解 $\hat{\mathbf x}$ を入れたresidualは
 
-## 何を間違えやすいか
+$$
+\mathbf r=\mathbf b-\mathbf A\hat{\mathbf x}.
+$$
 
-- seed固定だけでhardware/library差まで完全再現できると思わない。
+$\|\mathbf r\|$ が小さいことは「方程式をよく満たす」ことだが、condition numberが大きい問題では $\hat{\mathbf x}$ が真のsolutionから遠いこともある。後の数値計算ではresidual、forward error、backward errorを分けて扱う。
 
-## 自分で確認する問い
+## random seedで何が固定されるか
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
+seedは疑似乱数generatorの系列を固定する。しかし結果は
 
-## 後続Courseへの接続
+- library/version
+- algorithm implementation
+- dtype
+- CPU/GPU kernel
+- thread scheduling
 
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+にも依存し得る。再現性の記録にはseedだけでなくenvironment情報が必要。
 
-## 参考
+## 検算を独立な性質で行う
 
-- numerical reproducibility basics
+- 確率vector：各要素が0以上、総和1。
+- orthogonal matrix：$\mathbf Q^T\mathbf Q\approx\mathbf I$。
+- eigenpair：$\|\mathbf A\mathbf v-\lambda\mathbf v\|$。
+- least squares：normal-equation residualやprojection orthogonality。
+
+同じ実装を2回呼ぶだけでは、同じbugを2回再現している可能性がある。別の数学的性質を使う。
+
+## 具体例
+
+計算値1.0000001と参照1.0をatol=1e-8, rtol=1e-6で比較すると誤差1e-7 <=1.01e-6なので一致扱い。
+
+## 条件を外すと
+
+「seedを固定したから完全再現」とは限らない。GPU kernelや並列reduction、library version差でbitwise結果が変わることがある。
+
+## 後続Courseでどう使うか
+
+全Courseの数値例・ML experimentの基本作法。
 
 [演習へ](/exercises/prep-numerical-checks-reproducibility)　|　[スライドへ](/slides/prep-numerical-checks-reproducibility/)

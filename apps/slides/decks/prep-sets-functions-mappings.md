@@ -11,62 +11,49 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-関数を「式」ではなくdomainからcodomainへの対応として読むと何が明確になるか。
-
----
-
-## 直感
-
-関数は各入力へちょうど1つの出力を対応させる規則。domain, codomain, imageを分けると逆関数・最適化・確率変数の定義が明確になる。
+関数を「式」ではなく、定義域の各要素を終域のちょうど1要素へ対応させる写像としてどう読むか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-sets-functions-mappings.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-f:A\to B,\quad x\mapsto f(x)
-$$
+左の点集合が定義域 $A$、右が終域 $B$。各左点から矢印がちょうど1本出ていることが「関数」である条件。同じ右点へ複数矢印が入るのは許される。右側で実際に矢印が到達した点だけを集めた集合が値域 $f(A)$ で、終域B全体とは一致しない場合がある。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. まず入力集合Aと出力先Bを固定する。
-2. 各x∈Aに一意のf(x)∈Bを割り当てる。
-3. 全てのBを使う必要はなく、実際に出る値集合がimage。
+### 集合
+$x\in A$ はxが集合Aの要素、$A\subseteq B$ はAの全要素がBにも属することを表す。和集合 $A\cup B$、共通部分 $A\cap B$、差集合 $A\setminus B$ を定義する。
 
----
+### 関数
+$f:A\to B$ は、各 $x\in A$ に対してただ1つの $f(x)\in B$ を対応させる規則。Aが定義域、Bが終域。値域は $f(A)=\{f(x):x\in A\}\subseteq B$。
 
-## 小さい例
-
-f:R→R, f(x)=x²のimageは[0,∞)。codomain Rとimageは異なる。
-
----
-
-## 条件を外すと
-
-- codomainとimageを同じものと思わない。
+### 単射・全射・全単射
+単射は $f(x_1)=f(x_2)\Rightarrow x_1=x_2$。全射は $f(A)=B$。両方なら全単射で、逆関数 $f^{-1}:B\to A$ を定義できる。
 
 ---
 
-## 理解確認
+## 具体例
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+**例**：$f:\mathbb R\to\mathbb R$, $f(x)=x^2$ は単射でも全射でもない。終域を $[0,\infty)$ に変えれば全射だが単射ではない。定義域を $[0,\infty)$ にも制限すると全単射になり $f^{-1}(y)=\sqrt y$。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-sets-functions-mappings)
+「式が同じなら同じ関数」ではない。$x^2:\mathbb R\to\mathbb R$ と $x^2:[0,\infty)\to[0,\infty)$ は定義域・終域が違う別の関数。
 
-[10問の演習](../../exercises/prep-sets-functions-mappings)
+---
+
+## 次へ
+
+線形写像、確率変数、loss function、neural networkはすべて集合間の写像として読める。
+
+---
+
+[教科書](../../textbook/prep-sets-functions-mappings)　|　[演習](../../exercises/prep-sets-functions-mappings)

@@ -2,77 +2,420 @@
 
 Course 10｜Frontier
 
-## このTopicの中心問題
+## このTopicの位置づけ
 
-KL正則化RLHFからreward–policy relationを導き、なぜDPOがpairwise logistic lossになるか。
+前Topic `frontier-rlhf-reward-model-ppo-kl` では、pairwise preferenceからreward modelを学習し、KL正則化されたpolicy objectiveをPPO等で最適化する標準RLHF pipelineを扱った。
 
-## まず直感
+このTopicでは、そのKL正則化policy optimizationとBradley–Terry preference modelを組み合わせると、**明示的なreward modelをpolicy更新時に使わず、chosen/rejected pairからpolicyを直接学習できる**ことを導く。これがDirect Preference Optimization（DPO）の出発点である。
 
-DPOは「RLHFを使わない魔法のloss」ではなく、KL正則化された最適policyとrewardの閉形式関係をBradley–Terry preference modelへ代入して得る。
+前提として使う記号・概念は次の通り。
 
-## 図で固定する
+- $x$：prompt。
+- $y$：promptに対するresponse。
+- $y_w$：pair内でpreferred（chosen）とされたresponse。
+- $y_l$：pair内でless preferred（rejected）とされたresponse。
+- $\pi_\theta(y\mid x)$：学習するpolicy。parameterは$\theta$。
+- $\pi_{\mathrm{ref}}(y\mid x)$：固定されたreference policy。
+- $r(x,y)$：RLHFを考えるためのlatent reward。
+- $\beta>0$：referenceから離れることへのKL penaltyの強さ。
+- $\sigma(z)=1/(1+e^{-z})$：sigmoid関数。
 
-<img src="/visuals/course-10/frontier-rlhf-preference-optimization.png" alt="RLHFとpreference optimizationの図解" style="max-height: 460px; display:block; margin:0 auto;" />
+## まず何を解きたいのか
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
-
-## 記号・型・意味
-
-| 記号 | 意味 |
-|---|---|
-| $π_θ$ | 学習policy |
-| $π_ref$ | reference policy |
-| $r(x,y)$ | 潜在reward |
-| $β$ | KL regularization scale |
-
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
-
-## 中心となる式
+RLHFのpolicy stageは、prompt $x$ を固定すると概念的には
 
 $$
-\mathcal L_{DPO}=-\log\sigma\left(\beta\left[\log\frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)}-\log\frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)}\right]\right)
+\max_{\pi}
+\left[
+\sum_y \pi(y\mid x)r(x,y)
+-\beta\sum_y\pi(y\mid x)
+\log\frac{\pi(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+\right]
 $$
 
-## なぜこの式になるのか
+を解いているとみなせる。ただし$\pi(\cdot\mid x)$は確率分布なので
 
-1. 固定prompt xで $\max_π E_{y∼π}[r(y)]-βD_{KL}(π||π_{ref})$ を、Σ_yπ(y)=1の制約付きでLagrangian化する。
-2. π(y)で微分して0と置くと $r(y)-β(\log(π/π_{ref})+1)+λ=0$。
-3. 正規化定数をZ(x)へ吸収して $π^*(y|x)=π_{ref}(y|x)\exp(r/β)/Z$。よって $r=β\log(π^*/π_{ref})+β\log Z$。
-4. Bradley–Terryの $P(y_w\succ y_l)=σ(r_w-r_l)$ ではprompt共通のβlogZが差で消える。
-5. π*を学習policyπθでparameterizeしてnegative log-likelihoodを取るとDPO loss。
+$$
+\sum_y\pi(y\mid x)=1
+$$
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+を満たさなければならない。
 
-## 例題：小さい設定で最後まで追う
+DPOの核心は、この最適化問題から**最適policyとrewardの関係式を実際に導き**、そのrewardをpairwise preference likelihoodから消去することである。
 
-chosenのpolicy/reference log-ratioがrejectedより0.8大きくβ=0.5ならpreference logitは0.4で、lossは-log σ(0.4)。
+## 図の各要素は何を表しているか
 
-### 答案で書く順序
+<img src="/visuals/course-10/frontier-rlhf-preference-optimization.png" alt="DPOのchosen/rejected log-ratio差の図解" style="max-height: 480px; display:block; margin:0 auto;" />
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+図の上段では、同じprompt $x$ に対してchosen $y_w$ と rejected $y_l$ がある。各responseについて、学習policyのlog probabilityからreference policyのlog probabilityを引いた
 
-## 何を間違えやすいか
+$$
+\log\frac{\pi_\theta(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
+$$
 
-- βのconventionは論文/実装で逆数的に見える場合があるので定義を確認する。
-- preference dataのbiasやcoverage不足はobjective変換で消えない。
+を計算する。下段ではchosen側のlog-ratioからrejected側のlog-ratioを引く。この差が正になるほど、policyはreferenceに比べてchosenを相対的に強く支持している。
 
-## 自分で確認する問い
+DPO lossは、この差を$\beta$倍した値をsigmoidへ入れ、「chosenがpreferredである確率」を大きくするbinary log-lossとして読める。
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
+## 1. KL正則化policy objectiveから最適policyを導く
 
-## 後続Courseへの接続
+prompt $x$ を固定する。response $y$ は離散集合上にあるとする。簡潔のため
 
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+$$
+\pi_y=\pi(y\mid x),\qquad
+\pi^{\mathrm{ref}}_y=\pi_{\mathrm{ref}}(y\mid x),\qquad
+r_y=r(x,y)
+$$
+
+と置く。
+
+最大化する目的関数は
+
+$$
+J(\pi)
+=\sum_y\pi_y r_y
+-\beta\sum_y\pi_y\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}.
+$$
+
+確率の正規化条件 $\sum_y\pi_y=1$ を入れるため、Lagrange multiplier $\eta$ を導入して
+
+$$
+\mathcal F(\pi,\eta)
+=\sum_y\pi_y r_y
+-\beta\sum_y\pi_y\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}
++\eta\left(\sum_y\pi_y-1\right)
+$$
+
+とする。
+
+### 1.1 各$\pi_y$で微分する
+
+1つのresponse $y$ に関係する項だけ取り出すと
+
+$$
+\pi_y r_y
+-\beta\pi_y\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}
++\eta\pi_y.
+$$
+
+ここで
+
+$$
+\frac{d}{d\pi_y}
+\left[
+\pi_y\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}
+\right]
+=
+\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}+1
+$$
+
+なので、stationarityは
+
+$$
+\frac{\partial\mathcal F}{\partial\pi_y}
+=r_y
+-\beta\left(
+\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}+1
+\right)
++\eta
+=0.
+$$
+
+### 1.2 log-ratioについて解く
+
+上式を移項すると
+
+$$
+\beta\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}
+=r_y+\eta-\beta.
+$$
+
+したがって
+
+$$
+\log\frac{\pi_y}{\pi^{\mathrm{ref}}_y}
+=\frac{r_y}{\beta}
++\frac{\eta}{\beta}-1.
+$$
+
+$\eta/\beta-1$ は同じprompt $x$ のすべてのresponseに共通する定数なので、$C(x)=\beta-\eta$ とまとめれば
+
+$$
+\boxed{
+r(x,y)
+=\beta\log\frac{\pi^*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
++C(x)
+}
+$$
+
+を得る。ここで$\pi^*$はKL正則化objectiveの最適policyである。
+
+これがDPOで使うpolicy–reward relationであり、**仮定として突然置く式ではなく、KL正則化最適化のstationarityから出る**。
+
+### 1.3 最適policy自体の形
+
+同じ式を指数化すると
+
+$$
+\pi^*(y\mid x)
+\propto
+\pi_{\mathrm{ref}}(y\mid x)
+\exp\left(\frac{r(x,y)}{\beta}\right).
+$$
+
+正規化定数を
+
+$$
+Z(x)=\sum_y
+\pi_{\mathrm{ref}}(y\mid x)
+\exp\left(\frac{r(x,y)}{\beta}\right)
+$$
+
+とすれば
+
+$$
+\boxed{
+\pi^*(y\mid x)
+=\frac{1}{Z(x)}
+\pi_{\mathrm{ref}}(y\mid x)
+\exp\left(\frac{r(x,y)}{\beta}\right)
+}
+$$
+
+となる。rewardが高いresponseを増やす一方、reference probabilityも残る形である。
+
+## 2. pairwise preference modelを書く
+
+chosen $y_w$ がrejected $y_l$ より好まれる確率をBradley–Terry型で
+
+$$
+P(y_w\succ y_l\mid x)
+=\sigma\left(r(x,y_w)-r(x,y_l)\right)
+$$
+
+とmodel化する。
+
+ここでrewardは絶対値ではなく**差**でしか現れない。この性質により、先ほどの$C(x)$が消える。
+
+## 3. reward differenceから$C(x)$が消える
+
+policy–reward relationをchosenとrejectedへ適用する。
+
+$$
+r(x,y_w)
+=\beta\log\frac{\pi^*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}+C(x),
+$$
+
+$$
+r(x,y_l)
+=\beta\log\frac{\pi^*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}+C(x).
+$$
+
+2式を引けば$C(x)$は相殺され、
+
+$$
+\begin{aligned}
+r(x,y_w)-r(x,y_l)
+&=\beta\Bigg[
+\log\frac{\pi^*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}
+-\log\frac{\pi^*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
+\Bigg].
+\end{aligned}
+$$
+
+学習時には未知の$\pi^*$をparameterized policy $\pi_\theta$ で表す。
+
+## 4. DPO lossまで変形する
+
+reference側のchosen/rejected log-probability差を
+
+$$
+\Delta_{\mathrm{ref}}
+=
+\log\pi_{\mathrm{ref}}(y_w\mid x)
+-
+\log\pi_{\mathrm{ref}}(y_l\mid x)
+$$
+
+と定義する。
+
+するとpreferred probabilityのlogitは
+
+$$
+\beta\left[
+\log\pi_\theta(y_w\mid x)
+-\log\pi_\theta(y_l\mid x)
+-\Delta_{\mathrm{ref}}
+\right].
+$$
+
+chosenがpreferredという観測のnegative log-likelihoodを取れば
+
+$$
+\boxed{
+\mathcal L_{\mathrm{DPO}}(\theta)
+=-\log\sigma\left(
+\beta\left[
+\log\pi_\theta(y_w\mid x)
+-\log\pi_\theta(y_l\mid x)
+-\Delta_{\mathrm{ref}}
+\right]
+\right)
+}
+$$
+
+を得る。
+
+この式は「chosenのprobabilityだけを上げる」式ではない。**referenceと比較したchosen/rejectedの相対log-ratio差**を増やしている。
+
+## 5. 小さな数値例でlossを計算する
+
+あるpromptについて
+
+$$
+\begin{aligned}
+\log\pi_\theta(y_w\mid x)&=-1.0,\\
+\log\pi_\theta(y_l\mid x)&=-2.0,\\
+\log\pi_{\mathrm{ref}}(y_w\mid x)&=-1.2,\\
+\log\pi_{\mathrm{ref}}(y_l\mid x)&=-1.8,
+\end{aligned}
+$$
+
+とし、$\beta=0.5$ とする。
+
+まずpolicyのchosen–rejected差は
+
+$$
+-1.0-(-2.0)=1.0.
+$$
+
+referenceの差は
+
+$$
+\Delta_{\mathrm{ref}}
+=-1.2-(-1.8)=0.6.
+$$
+
+したがってDPO logitは
+
+$$
+0.5(1.0-0.6)=0.2.
+$$
+
+よって
+
+$$
+P_\theta(y_w\succ y_l\mid x)=\sigma(0.2)\approx0.550,
+$$
+
+$$
+\mathcal L_{\mathrm{DPO}}
+=-\log(0.550)\approx0.598.
+$$
+
+policyはchosenをrejectedより好んでいるだけでなく、**referenceより0.4だけ強くchosen側へ傾いている**ため、positiveなpreference logitになる。
+
+## 6. reference policyが必要な理由
+
+reference項を外して
+
+$$
+\log\pi_\theta(y_w\mid x)-\log\pi_\theta(y_l\mid x)
+$$
+
+だけを見ると、「もともとbase/SFT policyがどの程度chosenを好んでいたか」を区別できない。
+
+DPOのlog-ratioは
+
+$$
+\left[
+\log\pi_\theta(y_w\mid x)-\log\pi_{\mathrm{ref}}(y_w\mid x)
+\right]
+-
+\left[
+\log\pi_\theta(y_l\mid x)-\log\pi_{\mathrm{ref}}(y_l\mid x)
+\right]
+$$
+
+なので、**referenceからどれだけ相対的にbehaviorを変えたか**を測っている。
+
+## 7. $\beta$をどう読むか
+
+上のKL正則化objectiveでは$\beta$が大きいほどreferenceからの逸脱を強く罰する。DPO式では同じ$\beta$がpreference logitをscaleする。
+
+ただし論文・実装によって温度や正則化係数のparameterizationが異なる場合があるため、「$\beta$を大きくすると常に同じ意味」と名称だけで判断せず、実装されているlossの式を確認する。
+
+## 8. DPOと標準RLHFの違い
+
+標準RLHFは概念的に
+
+$$
+\text{preference data}
+\rightarrow
+\text{reward model}
+\rightarrow
+\text{rollout}
+\rightarrow
+\text{RL policy update}
+$$
+
+と段階を分ける。
+
+DPOは特定のKL正則化reward model仮定の下でrewardをpolicy log-ratioへ置換し、offline pairwise datasetから直接$\pi_\theta$を最適化する。そのためtraining loopは単純化するが、preference dataそのもののbias、coverage不足、distribution shiftが消えるわけではない。
+
+## 9. 条件を外すと何が壊れるか
+
+### preference modelが不適切
+
+Bradley–Terry型のreward-difference modelが現実の選好生成を十分表せない場合、導出したclassification likelihoodは近似modelにすぎない。
+
+### reference supportがない
+
+$\pi_{\mathrm{ref}}(y\mid x)=0$ ならlog-ratioは定義できない。実際のlanguage modelではtoken probabilityは通常正だが、truncationやmasking、異なるsupportを持つpolicyを比較する場合は注意する。
+
+### pair dataにsystematic biasがある
+
+verbosity、style、annotator population、position biasなどがchosen/rejected labelへ入れば、DPOはそれをpreference signalとして学習する。DPOは「人間価値の真値」を自動的に得る手法ではない。
+
+### offline preference coverageが狭い
+
+training pairにないbehaviorについて直接比較信号はない。policyがdataset分布から離れた場合、offline objectiveだけでは新しいfailure modeを観測できない。
+
+## 10. 実装時の検算
+
+1. chosen/rejected token log-probabilityを**同じmask規則**で合計しているか。
+2. prompt tokenをresponse lossへ誤って含めていないか。
+3. reference modelを固定しているか。
+4. chosenとrejectedでlength biasが生じていないか。
+5. 次の量を別々にmonitorする。
+
+$$
+\log\pi_\theta(y_w\mid x)-\log\pi_{\mathrm{ref}}(y_w\mid x),
+$$
+
+$$
+\log\pi_\theta(y_l\mid x)-\log\pi_{\mathrm{ref}}(y_l\mid x),
+$$
+
+およびその差。
+
+lossだけが下がっていても、chosen probability自体、rejected probability自体、referenceからの乖離を分離して見る必要がある。
+
+## 次のTopicへの接続
+
+DPOはhuman/model preference pairをfeedback sourceにする。一方 `frontier-reasoning-rl-rlvr` では、数学答案・unit test・formal checkerなど**自動検証可能なreward**をpolicy gradientへ入れる。feedback sourceは異なるが、「何をreward/選好として定義したかがoptimizerの学ぶものを決める」という原理は共通する。
+
+## このTopicの理解確認
+
+- KL正則化objectiveへ正規化制約を加え、$\pi_y$で微分してpolicy–reward relationを導けるか。
+- $C(x)$がchosen/rejected reward differenceで消える理由を説明できるか。
+- $\Delta_{\mathrm{ref}}$を定義し、DPO lossをBradley–Terry likelihoodから再構成できるか。
+- referenceを外したlossとDPOの違いを説明できるか。
+- preference dataがbiasedな場合にDPOが何を学ぶか説明できるか。
 
 ## 参考
 
-- DPO arXiv:2305.18290
-- InstructGPT arXiv:2203.02155
+- Rafailov et al., *Direct Preference Optimization: Your Language Model is Secretly a Reward Model*, arXiv:2305.18290
+- Ouyang et al., *Training language models to follow instructions with human feedback*, arXiv:2203.02155
 
 [演習へ](/exercises/frontier-rlhf-preference-optimization)　|　[スライドへ](/slides/frontier-rlhf-preference-optimization/)

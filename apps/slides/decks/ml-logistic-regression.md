@@ -1,25 +1,36 @@
 ---
 theme: default
 routerMode: hash
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "logistic回帰"
 ---
 
 # logistic回帰
 
-Course 08｜機械学習
+Course 08｜機械学習｜Topic 03/20
 
+---
+layout: center
 ---
 
 ## 今回の問い
 
-Bernoulli確率modelからcross entropy、gradient、Hessianがどう一続きに導かれるか。
+logistic回帰の代表式は、どの定義・仮定から、なぜその形になるのか。
+
+---
+
+## なぜ今これを学ぶのか
+
+前Topic `ml-linear-regression` で得た概念を使い、ここでは logistic回帰 へ進む。
 
 ---
 
 ## 直感
 
-logit z=x^Tβをsigmoidで確率pへ写し、観測y∈{0,1}をBernoulliと仮定する。lossは任意に選んだ罰則でなくnegative log-likelihood。
+分類器は入力からクラス確率またはスコアを作り、決定境界でクラスを分ける。
+
+
 
 ---
 
@@ -27,48 +38,75 @@ logit z=x^Tβをsigmoidで確率pへ写し、観測y∈{0,1}をBernoulliと仮�
 
 <img src="./assets/course-08/ml-logistic-regression.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
+2クラス点群と確率等高線、decision boundaryを描く。 背景の確率面がP(y=1|x)、その0.5等高線がdecision boundary、点が観測データである。モデルの連続な確率出力と離散な最終分類を区別できる。
+
 ---
 
-## 中心式
+## 記号と代表式
+
+- $z=x^Tw+b$
+- $\sigma(z)=1/(1+e^{-z})$
+- $p=P(Y=1|x)$
 
 $$
-\mathcal L(\beta)=-\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)]
+p(y=1\mid\mathbf{x})=\sigma(\mathbf{x}^{\mathsf T}\mathbf{w}+b)
 $$
 
 ---
 
-## 導出
+## 導出 1
 
-1. Bernoulli likelihood $p_i^{y_i}(1-p_i)^{1-y_i}$ を全sampleで掛ける。
-2. logを取りnegativeにするとcross entropyの和。
-3. $dL/dz_i=p_i-y_i$ が整理され、gradientは $X^T(p-y)$。
-4. さらに微分するとHessian $X^T R X$, R=diag(p_i(1-p_i))≥0 なのでconvex。
+$p/(1-p)=e^z$ をpについて解くと $p=e^z/(1+e^z)=\sigma(z)$。
 
 ---
 
-## 小さい例
+## 導出 2
 
-1sample x=1, y=1, z=0ならp=0.5、dL/dz=-0.5なのでgradient descentはzを上げる。
-
----
-
-## 条件を外すと
-
-- sigmoid出力へlogを直接計算してoverflow/underflowさせない。
-- 完全分離では非正則化MLEが発散し得る。
+Bernoulli likelihood $p^y(1-p)^{1-y}$ の-negative logはbinary cross entropy。
 
 ---
 
-## 理解確認
+## 例題
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+z=ln3ならodds3:1、p=3/4。linear score差はprobability差として非線形に圧縮。
 
+---
+
+## 条件を変えるとどうなるか
+
+sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。
+
+---
+
+## よくある誤解
+
+logistic回帰では、式へ数値を代入するだけでは不十分である。sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+
+---
+
+## 実装・計算上の注意
+
+stable `logaddexp`/BCEWithLogitsを使いsigmoid後logを直接取らない。
+
+---
+
+## 一段先へ
+
+binaryをK classesへ一般化するとsoftmax。
+
+---
+
+## 自分で説明できるか
+
+- 「log-oddsからprobability」を式を見ずに説明できるか
+- 「decision boundary」までの論理を一段ずつ再現できるか
+- logistic回帰の条件を1つ外した反例を説明できるか
+
+---
+layout: center
 ---
 
 ## 教科書と演習
 
-[教科書](../../textbook/ml-logistic-regression)
-
-[10問の演習](../../exercises/ml-logistic-regression)
+- [教科書](../../textbook/ml-logistic-regression)
+- [10問の演習](../../exercises/ml-logistic-regression)

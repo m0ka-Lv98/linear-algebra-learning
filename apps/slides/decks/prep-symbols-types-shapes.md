@@ -11,62 +11,51 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-式を計算する前に、scalar・vector・matrix・tensorの型とshapeをどう確認するか。
-
----
-
-## 直感
-
-値が同じでも型・shapeが違えば許される演算が違う。数式の「何を表すか」と実装の「どう格納するか」を分離して読む。
+数式を計算する前に、「その記号は何型で、どのshapeを持ち、演算後のshapeは何になるか」をどう判断するか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-symbols-types-shapes.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-A\mathbf{x}\in\mathbb R^m\quad(A\in\mathbb R^{m\times n},\;\mathbf{x}\in\mathbb R^n)
-$$
+図は左からscalar、vector、matrix、tensorを並べている。scalarは軸を持たない1個の値、vectorは1本のindex、matrixは行・列の2本のindexを持つ。tensorはさらにbatch・height・width・channelのような複数軸を持つ。ここで数学の「ベクトル空間の次元」とNumPyの `ndim` は別物で、shape `(2,3,4)` の配列は `ndim=3` だが24個の実数を持つため、全要素を並べれば $\mathbb R^{24}$ の点として扱える。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. 行列Aの各rowとxの内積が出力1成分になる。
-2. Aにはm rowsがあるので出力はm成分。
-3. inner dimension n が一致しなければ行列積は定義できない。
+### 1. 型を決める
+スカラー $a\in\mathbb R$、ベクトル $\mathbf x\in\mathbb R^n$、行列 $\mathbf A\in\mathbb R^{m\times n}$ を区別する。ベクトルは太字小文字、行列は太字大文字で表す。
 
----
+### 2. shapeを演算の前に確認する
+$\mathbf A\mathbf x$ が定義できるのは $\mathbf A\in\mathbb R^{m\times n}$ と $\mathbf x\in\mathbb R^n$ の内側の次元nが一致するとき。結果は $\mathbb R^m$。行列積 $\mathbf A\mathbf B$ なら $(m,n)(n,p)\to(m,p)$。
 
-## 小さい例
-
-Aが2×3、xが3成分ならAxは2成分。xが2成分ならAxは未定義。
-
----
-
-## 条件を外すと
-
-- 数学のvector次元nとNumPy ndimを混同しない。
+### 3. 数学上の型とコード上の配列を区別する
+数学の列ベクトル $\mathbf x\in\mathbb R^3$ をNumPyで `shape==(3,)` と表すことも `(3,1)` と表すこともあるが、broadcastingや `@` の挙動は異なる。数値が同じでもshapeが同じとは限らない。
 
 ---
 
-## 理解確認
+## 具体例
 
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+**例1**：$\mathbf A\in\mathbb R^{2\times3}$、$\mathbf x\in\mathbb R^3$ なら $\mathbf A\mathbf x\in\mathbb R^2$。
+
+**例2**：$\mathbf A\in\mathbb R^{2\times3}$ と $\mathbf B\in\mathbb R^{4\times2}$ の $\mathbf A\mathbf B$ は内側3と4が一致しないため未定義。値を計算する前にshapeだけで判定できる。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-symbols-types-shapes)
+「要素数が同じなら同じ型」と考えるのは誤り。`(6,)`, `(2,3)`, `(1,6)` は6値を持つが、index構造と演算の意味が違う。
 
-[10問の演習](../../exercises/prep-symbols-types-shapes)
+---
+
+## 次へ
+
+この習慣は線形代数の行列積、確率のrandom vector、機械学習のbatch×feature、深層学習のtensorで常に使う。
+
+---
+
+[教科書](../../textbook/prep-symbols-types-shapes)　|　[演習](../../exercises/prep-symbols-types-shapes)

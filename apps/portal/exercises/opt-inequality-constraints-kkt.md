@@ -1,219 +1,107 @@
 # 不等式制約と相補性：演習
 
-Course 06｜Topic 12/20。10問すべて、このTopic固有の問いとして作成しています。
+Course 06｜最適化
 
-[教科書](/textbook/opt-inequality-constraints-kkt)
+教科書の定義・導出・図・数値例を、自分で再構成できるかを確認する10問。
 
-## 問1. 定義と記号
+## 問題1：4条件を書き分ける
 
-「不等式制約と相補性」の代表式
-
-$$
-\lambda_i g_i(\mathbf{x})=0,\quad\lambda_i\ge0
-$$
-
-について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
-
-<details><summary>ヒント</summary>
-
-式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
-
-</details>
+$\min_{\mathbf x} f(\mathbf x)$ subject to $g_i(\mathbf x)\le0$ のKKT条件をprimal feasibility, dual feasibility, complementary slackness, stationarityに分けて書け。
 
 <details><summary>完全解答</summary>
 
-代表式は結果だけを書くための記号ではない。本文で定義した量を使い、不等式制約と相補性が何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
-
-**inactive constraint**
-
-$g_i(x*)<0$ なら境界から余裕があり、そのconstraintはlocal tangentを制限しない。したがってλ_i=0がcomplementarityで表される。
-
-答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+primal feasibility: $g_i(\mathbf x^*)\le0$。dual feasibility: $\lambda_i^*\ge0$。complementary slackness: $\lambda_i^*g_i(\mathbf x^*)=0$。stationarity: $\nabla f(\mathbf x^*)+\sum_i\lambda_i^*\nabla g_i(\mathbf x^*)=\mathbf0$。等式制約があればそのgradientとfree-sign multiplierもstationarityへ加える。
 
 </details>
 
-## 問2. 導出1：inactive constraint
+## 問題2：active制約の1次元例
 
-「不等式制約と相補性」で **inactive constraint** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「inactive constraint」を、直前の定義から始めて書き直す。
-
-</details>
+$\min_x (x-2)^2$ subject to $x\le1$ をKKTで解け。$x^*$と$\lambda^*$を求め、4条件をすべて確認せよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$g_i(x*)<0$ なら境界から余裕があり、そのconstraintはlocal tangentを制限しない。したがってλ_i=0がcomplementarityで表される。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「active constraint」へ進むときも、この段階で得た量だけを使う。
+$g(x)=x-1\le0$。unconstrained minimizer2はinfeasibleなので候補$x^*=1$。stationarityは$2(x-2)+\lambda=0$なので$x=1$で$-2+\lambda=0$、$\lambda^*=2$。primal: $g(1)=0$、dual:$2\ge0$、complementarity:$2\cdot0=0$、stationarity:$-2+2=0$。convex objectiveとaffine constraintなのでglobal optimum。
 
 </details>
 
-## 問3. 導出2：active constraint
+## 問題3：inactive制約
 
-「不等式制約と相補性」で **active constraint** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「active constraint」を、直前の定義から始めて書き直す。
-
-</details>
+$\min_x (x-2)^2$ subject to $x\le3$ をKKTで解き、なぜ$\lambda^*=0$になるか説明せよ。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$g_i=0$ ではλ_i≥0がobjective gradientをfeasible側へ支えるnormal forceの係数。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「stationarity」へ進むときも、この段階で得た量だけを使う。
+unconstrained minimizer$x^*=2$がfeasibleで$g(2)=-1<0$。complementary slackness $\lambda g=0$ で$g\ne0$なので$\lambda=0$。stationarityも$2(2-2)+0=0$。境界がoptimumを押していないためdual forceは不要。
 
 </details>
 
-## 問4. 導出3：stationarity
+## 問題4：図のgradient balance
 
-「不等式制約と相補性」で **stationarity** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
-
-<details><summary>ヒント</summary>
-
-本文の「stationarity」を、直前の定義から始めて書き直す。
-
-</details>
+KKT図でactive boundaryの外向き法線が$\nabla g(\mathbf x^*)$、目的gradientがその反対向きに描かれている。なぜ $\nabla f(\mathbf x^*)=-\lambda\nabla g(\mathbf x^*)$ となり、$\lambda\ge0$が必要か。
 
 <details><summary>完全解答</summary>
 
-この段階で示すべき内容は次である。
-
-$\nabla f+\sum_iλ_i\nabla g_i=0$。等式の場合と同じnormal spanに、active inequality normalが加わる。
-
-重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+境界上でfeasibleなtangent方向へ一次的に目的を下げられないため、$-\nabla f$はfeasible setのnormal coneに入る。1本のsmooth active inequalityがnormal coneを生成する場合、そのnormalは非負倍$\lambda\nabla g$で表される。よって$-\nabla f=\lambda\nabla g$、すなわちstationarity。負の$\lambda$だとnormal coneと逆向きになり、inequalityのdual feasibilityに反する。
 
 </details>
 
-## 問5. 数値例を途中から再現
+## 問題5：2変数KKT
 
-次の「不等式制約と相補性」の設定を、自分で途中量まで展開して最終結論を確認せよ。
-
-> minimize (x-2)² subject x≤1。unconstrained min2はinfeasible、境界x*=1。g=x-1, gradient f=-2 at1なので -2+λ=0→λ=2。
-
-本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+$\min_{x,y}(x-2)^2+(y-1)^2$ subject to $x+y\le2$ を解け。
 
 <details><summary>完全解答</summary>
 
-設定に対する計算・判断は次の通り。
-
-minimize (x-2)² subject x≤1。unconstrained min2はinfeasible、境界x*=1。g=x-1, gradient f=-2 at1なので -2+λ=0→λ=2。
-
-ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+unconstrained minimizer(2,1)は$x+y=3>2$でinfeasible。$g=x+y-2$。stationarity: $2(x-2)+\lambda=0$, $2(y-1)+\lambda=0$。activeとして$x+y=2$。前2式から$x=2-\lambda/2$, $y=1-\lambda/2$、和$3-\lambda=2$なので$\lambda=1$。よって$(x^*,y^*)=(1.5,0.5)$。$\lambda\ge0$、$g=0$、stationarity成立。strictly convexなので一意global optimum。
 
 </details>
 
-## 問6. 条件を変えたときの差
+## 問題6：CQ失敗反例
 
-次の第二例について、第一例から変更した条件を特定し、その変更によって「不等式制約と相補性」のどの部分が変わるか説明せよ。
-
-> 同じobjectiveでconstraint x≤3ならunconstrained x=2 feasibleかつinactive、λ=0。
+$\min_x x$ subject to $x^2\le0$ で最適点は$x=0$なのに通常KKT multiplierが存在しないことを示せ。
 
 <details><summary>完全解答</summary>
 
-同じobjectiveでconstraint x≤3ならunconstrained x=2 feasibleかつinactive、λ=0。
-
-比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+feasible setは$x=0$だけなので最適点は0。$g(x)=x^2$で$g'(0)=0$、$f'(0)=1$。stationarityは$1+\lambda\cdot0=0$となり、どの$\lambda$でも不可能。constraint gradientがzeroに退化しnormal directionを表せないためCQが失敗している。
 
 </details>
 
-## 問7. 成立条件と反例
+## 問題7：nonconvexでKKTは十分でない
 
-「不等式制約と相補性」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
-
-> nonconvexではKKTを満たしてもglobal optimumとは限らない。constraint qualification failureでoptimumがKKTを満たさないことも。
-
-<details><summary>ヒント</summary>
-
-「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
-
-</details>
+unconstrained problem $\min_x x^3$ の$x=0$がstationarityを満たすがminimumでないことを使い、「KKT point=global optimum」が一般に誤りである理由を説明せよ。
 
 <details><summary>完全解答</summary>
 
-本文で確認する条件は以下である。
-
-- KKT条件には制約資格条件が関わる。
-- 不等式制約では相補性を確認する。
-- 不等式制約と相補性の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-失敗例は次の通り。
-
-nonconvexではKKTを満たしてもglobal optimumとは限らない。constraint qualification failureでoptimumがKKTを満たさないことも。
-
-したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+unconstrained KKTはgradient zeroに相当し、$f'(0)=0$。しかし$x<0$で$x^3<0=f(0)$なので0はlocal minimumでもない。制約付き非凸問題でも同様にKKTは通常necessary candidate conditionで、convexity等がなければglobal optimalityは保証されない。
 
 </details>
 
-## 問8. 実装・数値診断
+## 問題8：KKT residualの計算
 
-「不等式制約と相補性」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
-
-> solver statusとKKT residual、constraint violation、dual signを確認。scaling不良でresidual解釈が難しくなる。
+候補点で $g=-0.01$, $\lambda=0.4$, stationarity residual norm=0.003 とする。complementarity residual $|\lambda g|$ を求め、何を追加確認すべきか述べよ。
 
 <details><summary>完全解答</summary>
 
-solver statusとKKT residual、constraint violation、dual signを確認。scaling不良でresidual解釈が難しくなる。
-
-実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+$|\lambda g|=|0.4\times(-0.01)|=0.004$。これだけで合格とは言えず、primal violation $\max(g,0)$、dual violation $\max(-\lambda,0)$、stationarity residual、各量のscaleやsolver toleranceを一緒に確認する。
 
 </details>
 
-## 問9. 次Topicへの導線
+## 問題9：sign convention
 
-「不等式制約と相補性」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
-
-> simple convex setへ直接projectionできる場合、multiplierを明示せずprojected gradientでfeasibilityを保てる。
+制約を$g(x)\le0$ではなく$h(x)\ge0$と書いた場合、multiplier signをそのまま$\lambda\ge0$としてよいか。$h=-g$として説明せよ。
 
 <details><summary>完全解答</summary>
 
-simple convex setへ直接projectionできる場合、multiplierを明示せずprojected gradientでfeasibilityを保てる。
-
-本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+Lagrangian conventionに依存する。$g\le0$に$+\lambda g$, $\lambda\ge0$を使うなら、$h=-g\ge0$を同じ形へ直すと$-h\le0$なので$+\lambda(-h)$。$h$を直接$+\mu h$と書くなら$\mu\le0$が対応する。制約向きを変えたらmultiplier sign conventionも整合させる。
 
 </details>
 
-## 問10. 総合証明・説明
+## 問題10：総合診断
 
-「不等式制約と相補性」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+solverが$x^*$を返したが、objectiveは小さく、constraint violationは$10^{-7}$、stationarity residualは$10^{-1}$だった。KKT観点で何を結論できるか。
 
 <details><summary>完全解答</summary>
 
-答案では次の流れを一続きにする。
-
-**代表式**
-
-$$
-\lambda_i g_i(\mathbf{x})=0,\quad\lambda_i\ge0
-$$
-
-**導出**
-
-1. **inactive constraint** — $g_i(x*)<0$ なら境界から余裕があり、そのconstraintはlocal tangentを制限しない。したがってλ_i=0がcomplementarityで表される。
-
-2. **active constraint** — $g_i=0$ ではλ_i≥0がobjective gradientをfeasible側へ支えるnormal forceの係数。
-
-3. **stationarity** — $\nabla f+\sum_iλ_i\nabla g_i=0$。等式の場合と同じnormal spanに、active inequality normalが加わる。
-
-**数値・具体例**
-
-minimize (x-2)² subject x≤1。unconstrained min2はinfeasible、境界x*=1。g=x-1, gradient f=-2 at1なので -2+λ=0→λ=2。
-
-**条件を壊すと**
-
-nonconvexではKKTを満たしてもglobal optimumとは限らない。constraint qualification failureでoptimumがKKTを満たさないことも。
-
-**実装**
-
-solver statusとKKT residual、constraint violation、dual signを確認。scaling不良でresidual解釈が難しくなる。
-
-各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+primal feasibilityは良さそうだがstationarityが大きく、KKT pointとして十分収束したとは言いにくい。objective値だけでoptimalと判断せず、scaling、gradient計算、dual multiplier、停止条件を確認し、必要ならより厳しいtoleranceや再scaleで再solveする。
 
 </details>
+
+[教科書へ](/textbook/opt-inequality-constraints-kkt)

@@ -1,0 +1,30 @@
+{
+  "status": "PASS_STATIC_QA",
+  "baseline_main_commit": "65e4d8abe0d11301dab3caa2df0d415a1f7d319c",
+  "scope": {
+    "audited_topics": 58,
+    "textbooks": 58,
+    "slides": 58,
+    "exercise_topics": 49,
+    "exercise_problems": 490,
+    "portal_visual_assets": 70,
+    "slide_visual_assets": 70
+  },
+  "checks": {
+    "generic_boilerplate_errors": 0,
+    "math_delimiter_errors": 0,
+    "missing_file_or_visual_errors": 0,
+    "cross_topic_exact_duplicate_question_errors": 0,
+    "cross_topic_exact_duplicate_answer_errors": 0,
+    "near_duplicate_errors": 0,
+    "short_or_missing_complete_answer_errors": 0,
+    "visual_mirror_errors": 0,
+    "shell_and_node_syntax_checks": "PASS"
+  },
+  "full_repo_build": {
+    "run": false,
+    "reason": "This artifact is a changed-files overlay, not a complete repository checkout. Extract it into the full repository and run RUN_FULL_VERIFY=1 ./APPLY_CORRECTIONS.sh to execute pnpm lint/test/build and verify build purity."
+  },
+  "warnings": [],
+  "errors": []
+}

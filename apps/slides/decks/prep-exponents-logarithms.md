@@ -11,62 +11,44 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-指数と対数を逆関数として理解すると、積・冪・微分の式をどう整理できるか。
-
----
-
-## 直感
-
-log_b xは「bを何乗するとxか」を返す。積が和に変わるためlikelihoodの積をlog-likelihoodの和へ変換するなど、後続統計・MLで頻出する。
+指数法則と対数法則を、定義域の条件まで含めて使い、指数的な積を加法へ変換するにはどうするか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-exponents-logarithms.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-\log_b(xy)=\log_bx+\log_by
-$$
+指数関数 $y=e^x$ と自然対数 $y=\log x$ が直線 $y=x$ に関して鏡映になっている。これは互いが逆関数で、$\log(e^x)=x$、$e^{\log x}=x$（x>0）を図示する。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. x=b^u,y=b^vと置く。
-2. xy=b^{u+v}。
-3. 両辺のlog_bを取ればlog_b(xy)=u+v。
+指数法則 $a^{x+y}=a^xa^y$, $(a^x)^y=a^{xy}$ は $a>0$ を基本にする。自然指数 $e^x$ の逆関数が自然対数 $\log x$ で、定義域はx>0。
 
----
-
-## 小さい例
-
-log_2 8=3。ln(e^x)=x。
+対数法則 $\log(xy)=\log x+\log y$、$\log(x^p)=p\log x$ は正のx,yで成立する。対数は非常に大きな積を和へ変えるため、likelihoodの積をlog-likelihoodの和へ変える統計で特に重要。
 
 ---
 
-## 条件を外すと
+## 具体例
 
-- log(x+y)をlog x+log yとしない。
-
----
-
-## 理解確認
-
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+$e^{2\log3}=e^{\log9}=9$。$\log(1/8)=\log 1-\log8=-3\log2$。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-exponents-logarithms)
+$\log(x+y)=\log x+\log y$ は一般に偽。x=y=1なら左辺はlog2、右辺は0。
 
-[10問の演習](../../exercises/prep-exponents-logarithms)
+---
+
+## 次へ
+
+微積分の指数・対数微分、確率のlog-likelihood、softmax/log-sum-expへ接続。
+
+---
+
+[教科書](../../textbook/prep-exponents-logarithms)　|　[演習](../../exercises/prep-exponents-logarithms)

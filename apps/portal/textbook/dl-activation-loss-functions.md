@@ -1,75 +1,156 @@
 # activation関数とloss：教科書
 
-Course 09｜深層学習
+Course 09｜深層学習｜Topic 03/20
 
-## このTopicの中心問題
+## このTopicは、前の何を受けて始まるか
 
-activationとlossを「慣例」ではなく勾配伝播と確率modelからどう選ぶか。
+前Topic `dl-backprop-computation-graphs` で得た概念を使い、ここでは activation関数とloss へ進む。
 
-## まず直感
+前提として使うのは `stat-entropy-cross-entropy-kl-divergence`、`ml-softmax-multiclass` です。
 
-activationは線形層の合成に非線形性を入れる。lossは観測modelのnegative log-likelihoodとして導ける場合が多く、出力activationと組で数値安定性・gradientを読む。
+## まず直感を作る
 
-## 図で固定する
+activation関数は線形層へ非線形性を入れ、lossは予測と目標のずれを学習信号へ変換する。
 
-<img src="/visuals/course-09/dl-activation-loss-functions.png" alt="activation関数とlossの図解" style="max-height: 460px; display:block; margin:0 auto;" />
 
-図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
 
-## 記号・型・意味
+## 図の解説
 
-| 記号 | 意味 |
-|---|---|
-| $z$ | pre-activation/logit |
-| $a=φ(z)$ | activation output |
-| $L$ | loss |
+<img src="/visuals/course-09/dl-activation-loss-functions.png" alt="activation関数とlossの図解" style="max-height: 440px; display:block; margin:0 auto;" />
 
-この表にない新しい記号を使う場合は、その直前で意味を定義する。
+図の左側はReLU・sigmoid・tanhをpre-activation $z$ の関数として比較している。sigmoid/tanhは $|z|$ が大きい領域で曲線が平らになり、local derivativeが小さくなる。ReLUは $z>0$ で傾き1、$z<0$ で0である。右側はBernoulli cross-entropyで、true label $y=1$ なら $-\log p$、$y=0$ なら $-\log(1-p)$。正しいclassへ高probabilityを置くとlossは0へ近づき、誤ったclassへ高confidenceを置くとlossが急増する。左はnetwork内部のnonlinearity、右はprediction errorをscalarへ変えるobjectiveであり、役割を区別する。
 
-## 中心となる式
+## 記号・型・次元
+
+- $\operatorname{ReLU}(x)=\max(0,x)$
+- $z$：logit
+- $p$：probability
+- $L$：training objective
+
+
+## 正式な定義・代表式
+
+activationはrepresentation nonlinearityとgradient propagationを決め、lossはpredictionとtargetの不一致をscalar化する。classificationではsoftmax/sigmoidとlog-likelihood由来cross entropyを組み合わせる。
+
+代表式は
 
 $$
-\operatorname{ReLU}(z)=\max(0,z),\qquad \frac{\partial L_{BCE}}{\partial z}=\sigma(z)-y
+\operatorname{ReLU}(x)=\max(0,x)
 $$
 
-## なぜこの式になるのか
+です。
 
-1. ReLUはz>0でderivative1、z<0で0。
-2. binary classificationでは Bernoulli NLL がBCE。
-3. $p=σ(z)$ とchain ruleを使うと $dL/dz=p-y$ まで簡約される。
-4. BCEWithLogits等はsigmoid+logをまとめてlog-sum-exp形で安定計算する。
+## なぜこの式・結論になるのか
 
-ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
+### 1. ReLU derivative
 
-## 例題：小さい設定で最後まで追う
+x>0でderivative1、x<0で0。x=0はsubgradient/convention。positive regionでsaturationしない。
 
-z=0,y=1ならp=0.5、gradient=-0.5。gradient descentでzが増え正例確率を上げる。
+### 2. binary CE from likelihood
 
-### 答案で書く順序
+Bernoulli likelihood $p^y(1-p)^{1-y}$ のnegative logが $-y\log p-(1-y)\log(1-p)$。
 
-1. 与えられた量と求める量を定義する。
-2. 適用する式の成立条件を確認する。
-3. 代入または式変形を1段ずつ書く。
-4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
+### 3. logit gradient
 
-## 何を間違えやすいか
+p=σ(z)とCEを合成すると $dL/dz=p-y$。chain ruleでsigmoid derivativeが整理され、numerically stable fused lossが使える。
 
-- classificationにMSEが数学的に禁止という意味ではない。
-- sigmoid/tanh飽和域とReLU dead unitの失敗modeを区別する。
+## 教科書が省略しやすい一段を補う
 
-## 自分で確認する問い
 
-- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
-- 導出の各段階で使った仮定を1つずつ言えるか。
-- 成立条件を1つ外した最小反例または失敗例を作れるか。
-- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
+### activationとlossはgradient flowまで含めて選ぶ
 
-## 後続Courseへの接続
+sigmoid derivativeは $\sigma(z)(1-\sigma(z))\le1/4$ なのでdeep chainで多数掛けるとgradientが小さくなりやすい。ReLUはpositive側derivative1でこの問題を緩和するがnegative側0でdead unitsが起こりうる。GELU等はsmooth gatingとして別trade-offを持つ。
 
-このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
+classificationでsoftmax+cross entropyを組み合わせるとlogit gradientがp-yへ簡約される。これは数値的にも意味的にも扱いやすく、libraryのcombined lossはlog-sum-expでoverflowを避ける。lossをtask metricそのものと同一視せず、trainable surrogateとevaluation metricを分ける。
 
-## 参考
 
-- deep learning standard likelihood losses
+
+## 途中を飛ばさず全体をつなぐ
+
+### activation関数とlossの導出を一本につなげる
+
+activationはrepresentation nonlinearityとgradient propagationを決め、lossはpredictionとtargetの不一致をscalar化する。classificationではsoftmax/sigmoidとlog-likelihood由来cross entropyを組み合わせる。
+
+#### 1. ReLU derivative
+
+まず出発点を固定する。 x>0でderivative1、x<0で0。x=0はsubgradient/convention。positive regionでsaturationしない。 次に必要になるのは「binary CE from likelihood」である。
+
+#### 2. binary CE from likelihood
+
+ここまでで得た結果を次の段階へ渡す。 Bernoulli likelihood $p^y(1-p)^{1-y}$ のnegative logが $-y\log p-(1-y)\log(1-p)$。 次に必要になるのは「logit gradient」である。
+
+#### 3. logit gradient
+
+最後に、前二段階の結果をまとめて結論へ進む。 p=σ(z)とCEを合成すると $dL/dz=p-y$。chain ruleでsigmoid derivativeが整理され、numerically stable fused lossが使える。
+
+#### 代表式へ戻す
+
+以上をまとめた中心式は
+
+$$
+\operatorname{ReLU}(x)=\max(0,x)
+$$
+
+
+### 具体例と一般式を往復する
+
+本文の第一例は次の設定である。
+
+z=0,y=1ならp=0.5, gradient p-y=-0.5でzを上げる方向。
+
+
+tanhはboundedでzero-centeredだがlarge |z|でderivativeが小さくsaturation。
+
+
+### どこまで結論を信頼できるか
+
+このTopicの境界を示す例は次である。
+
+classificationでMSEが常に間違いではないが、Bernoulli/categorical likelihoodとの対応やgradient特性がcross entropyと異なる。
+
+
+## 例題1：小さな数値で最後まで計算する
+
+z=0,y=1ならp=0.5, gradient p-y=-0.5でzを上げる方向。
+
+## 例題2：条件を少し変えて、本質が数値依存でないことを確認する
+
+tanhはboundedでzero-centeredだがlarge |z|でderivativeが小さくsaturation。
+
+## 成立条件と、条件を外したときに何が壊れるか
+
+- 出力層のactivationとlossの組合せを確認する。
+- 飽和領域でgradientが小さくなる。
+- activation関数とlossの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+
+classificationでMSEが常に間違いではないが、Bernoulli/categorical likelihoodとの対応やgradient特性がcross entropyと異なる。
+
+## よくある誤解を分解する
+
+- activation関数とlossの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+
+activation関数とlossでは、式へ数値を代入するだけでは不十分である。classificationでMSEが常に間違いではないが、Bernoulli/categorical likelihoodとの対応やgradient特性がcross entropyと異なる。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+
+## 実装・数値計算では何に注意するか
+
+BCEWithLogits/CrossEntropyLossを使いlog(0)回避。reduction(mean/sum)でgradient scaleが変わる。
+
+## ここから一段だけ発展する
+
+deep layersでsignal/gradient scaleを保つためinitializationとnormalizationへ。
+
+
+## このTopicを理解できたか確認する問い
+
+- 「ReLU derivative」を式を見ずに説明できるか
+- 「logit gradient」までの論理を一段ずつ再現できるか
+- activation関数とlossの条件を1つ外した反例を説明できるか
+
+## 外部教材との照合
+
+- [MIT OCW 6.7960 Deep Learning](https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/)
+- [MIT 6.S191 Introduction to Deep Learning](https://introtodeeplearning.com/)
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
 [演習へ](/exercises/dl-activation-loss-functions)　|　[スライドへ](/slides/dl-activation-loss-functions/)

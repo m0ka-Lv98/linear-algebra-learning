@@ -11,62 +11,46 @@ Course 00｜学習準備
 
 ---
 
-## 今回の問い
+## 何を身につけるか
 
-shapeとaxisを予測してからNumPy演算を実行できるか。
-
----
-
-## 直感
-
-配列は値だけでなくshape・dtype・axisの意味を持つ。数学上同じ3成分でも(3,), (3,1), (1,3)は別shapeでbroadcasting/行列積が変わる。
+配列の値だけでなくshape・axis・dtypeを追い、indexingや行列積の結果shapeを実行前に予測するにはどうするか。
 
 ---
 
-## 図解
+## 図
 
 <img src="./assets/course-00/prep-numpy-arrays-shapes.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
----
-
-## 中心式
-
-$$
-(m,n)@(n,p)\to(m,p)
-$$
+同じ値1,2,3でも `(3,)`、`(3,1)`、`(1,3)` の3形状を並べる。1次元vector、3×1列行列、1×3行行列は見た目の値が同じでも `@` やbroadcastingの結果が違う。
 
 ---
 
-## 導出
+## 定義と理由
 
-1. 行列積では左の最後axisと右の対応axisがcontractされる。
-2. 2Dならinner dimension nが一致する。
-3. 残るm,pが出力shape。
+`ndim` は配列のaxis数、`shape` は各axisの長さ、`size` は全要素数。shape `(2,3,4)` ならndim=3, size=24。
 
----
+`A[:,1]` はaxisを1本落として `(m,)` になるが、`A[:,1:2]` は `(m,1)` を保つ。1D arrayの `.T` はshapeを変えない。
 
-## 小さい例
-
-A.shape=(2,3), B.shape=(3,4)ならA@Bは(2,4)。A[:,1]は(2,), A[:,1:2]は(2,1)。
+`A*B` はelementwise、`A@B` はmatrix multiplication。broadcastingは末尾axisから長さが一致するか1である場合に拡張する。
 
 ---
 
-## 条件を外すと
+## 具体例
 
-- axis=0を単に「縦」と暗記しない。
-
----
-
-## 理解確認
-
-- 式の各記号を定義できるか。
-- 導出を1段ずつ再現できるか。
-- 反例を1つ作れるか。
+A.shape=(2,3), B.shape=(3,4)なら `A@B` は(2,4)。A[:,1]は(2,), A[:,1:2]は(2,1)。
 
 ---
 
-## 教科書と演習
+## ここで誤ると
 
-[教科書](../../textbook/prep-numpy-arrays-shapes)
+reshapeは要素数を保つだけでaxisの意味を理解しない。sample axisとfeature axisを誤って入れ替えてもエラーにならないことがある。
 
-[10問の演習](../../exercises/prep-numpy-arrays-shapes)
+---
+
+## 次へ
+
+Course02の行列shape、Course08/09のbatch×feature×channelを読む基礎。
+
+---
+
+[教科書](../../textbook/prep-numpy-arrays-shapes)　|　[演習](../../exercises/prep-numpy-arrays-shapes)
