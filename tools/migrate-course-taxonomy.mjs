@@ -80,16 +80,143 @@ function enrich(topic) {
   return { ...topic, domain, module, level: topic.course === 'foundation' ? 'introductory' : 'undergraduate', tags: [domain, module] }
 }
 
-const moduleLast = new Map()
-function plannedPrerequisites(id, module) {
-  const previous = moduleLast.get(module)
-  moduleLast.set(module, id)
-  if (id === 'stat-fisher-information-matrix') return ['stat-likelihood-maximum-likelihood', 'prob-multivariate-normal-distribution']
-  if (id === 'stat-estimator-covariance') return ['stat-fisher-information-matrix']
-  if (id === 'stat-vif-collinearity') return ['stat-estimator-covariance']
-  if (id === 'stat-wls-fisher-information') return ['mat-wls-inverse-variance', 'stat-fisher-information-matrix']
-  if (id === 'stat-model-misspecification') return ['stat-likelihood-maximum-likelihood']
-  return previous ? [previous] : []
+// Prerequisites are authored edges, not an artifact of list order. A planned
+// Topic without an entry is intentionally a root until its mathematics is
+// reviewed; it must never inherit an unrelated predecessor from its Module.
+const plannedPrerequisitesById = {
+  'mat-gram-matrix': ['la-inner-products-norms-angles', 'la-matrix-multiplication'],
+  'stat-fisher-information-matrix': ['stat-likelihood-maximum-likelihood', 'prob-multivariate-normal-distribution', 'calc-gradient-directional-derivative', 'calc-hessian-second-order', 'prob-covariance-correlation'],
+  'stat-estimator-covariance': ['stat-fisher-information-matrix', 'prob-covariance-correlation'],
+  'stat-vif-collinearity': ['stat-estimator-covariance', 'mat-gram-matrix'],
+  'stat-wls-fisher-information': ['mat-wls-inverse-variance', 'stat-fisher-information-matrix', 'stat-estimator-covariance'],
+  'stat-model-misspecification': ['stat-likelihood-maximum-likelihood', 'stat-estimator-covariance'],
+  'mat-scalar-by-vector-derivative': ['calc-derivatives-rates', 'calc-multivariable-functions-partial-derivatives', 'la-vectors-linear-combinations', 'prep-symbols-types-shapes'],
+  'mat-vector-by-vector-derivative': ['mat-scalar-by-vector-derivative'],
+  'mat-scalar-by-matrix-derivative': ['mat-scalar-by-vector-derivative', 'la-matrix-multiplication'],
+  'mat-vector-by-matrix-derivative': ['mat-vector-by-vector-derivative', 'mat-scalar-by-matrix-derivative'],
+  'mat-matrix-differential': ['mat-scalar-by-matrix-derivative', 'mat-vector-by-matrix-derivative'],
+  'mat-trace-trick': ['mat-matrix-differential', 'mat-gram-matrix'],
+  'mat-quadratic-form-derivatives': ['mat-scalar-by-vector-derivative', 'la-quadratic-forms-positive-definite'],
+  'mat-inverse-matrix-derivative': ['mat-matrix-differential', 'la-invertibility-inverse-matrices'],
+  'mat-log-determinant-derivative': ['mat-inverse-matrix-derivative', 'mat-matrix-differential'],
+  'mat-matrix-chain-rule': ['mat-vector-by-vector-derivative', 'mat-vector-by-matrix-derivative'],
+  'mat-jacobian-vector-product': ['mat-vector-by-vector-derivative', 'la-matrix-multiplication'],
+  'mat-vector-jacobian-product': ['mat-jacobian-vector-product'],
+  'mat-automatic-differentiation': ['mat-matrix-chain-rule', 'mat-jacobian-vector-product'],
+  'mat-forward-mode-ad': ['mat-automatic-differentiation', 'mat-jacobian-vector-product'],
+  'mat-reverse-mode-ad': ['mat-automatic-differentiation', 'mat-vector-jacobian-product'],
+  'mat-vec-operator': ['mat-matrix-differential', 'prep-symbols-types-shapes'],
+  'mat-kronecker-product': ['mat-vec-operator', 'la-matrix-multiplication'],
+  'prob-bernoulli-distribution': ['prob-random-variables-cdf-pmf-pdf'],
+  'prob-binomial-distribution': ['prob-bernoulli-distribution', 'prob-expectation-variance-moments'],
+  'prob-poisson-distribution': ['prob-binomial-distribution', 'prob-expectation-variance-moments'],
+  'prob-gaussian-distribution': ['prob-continuous-distributions', 'prob-expectation-variance-moments'],
+  'prob-log-normal-distribution': ['prob-gaussian-distribution'],
+  'prob-student-t-distribution': ['prob-gaussian-distribution', 'stat-t-chi-square-sampling-distributions', 'prob-expectation-variance-moments'],
+  'prob-dirichlet-distribution': ['prob-multivariate-normal-distribution', 'prob-expectation-variance-moments'],
+  'prob-gaussian-mixture': ['prob-gaussian-distribution'],
+  'prob-generating-functions': ['prob-random-variables-cdf-pmf-pdf', 'prob-expectation-variance-moments'],
+  'prob-moment-generating-functions': ['prob-generating-functions'],
+  'prob-characteristic-functions': ['prob-moment-generating-functions', 'prep-complex-numbers-euler-form'],
+  'prob-random-walk': ['prob-bernoulli-distribution', 'prob-expectation-variance-moments'],
+  'prob-markov-chains': ['prob-conditional-probability-independence', 'prob-random-walk'],
+  'prob-poisson-process': ['prob-poisson-distribution'],
+  'prob-brownian-motion': ['prob-poisson-process', 'prob-gaussian-distribution'],
+  'prob-gaussian-process': ['prob-brownian-motion', 'prob-multivariate-normal-distribution'],
+  'prob-stationarity-autocorrelation': ['prob-gaussian-process', 'prob-covariance-correlation'],
+  'stat-cramer-rao-lower-bound': ['stat-fisher-information-matrix', 'stat-estimator-covariance'],
+  'stat-observed-information': ['stat-likelihood-maximum-likelihood', 'stat-fisher-information-matrix'],
+  'stat-identifiability': ['stat-likelihood-maximum-likelihood', 'stat-model-misspecification'],
+  'stat-delta-method': ['calc-multivariable-functions-partial-derivatives', 'stat-estimator-covariance'],
+  'stat-error-propagation': ['stat-delta-method', 'prob-covariance-correlation'],
+  'stat-sufficient-statistics': ['stat-likelihood-maximum-likelihood', 'prob-conditional-probability-independence'],
+  'stat-exponential-family': ['stat-sufficient-statistics', 'stat-likelihood-maximum-likelihood'],
+  'stat-generalized-linear-models': ['stat-exponential-family', 'mat-ols-design-matrices'],
+  'stat-poisson-regression': ['stat-generalized-linear-models', 'prob-poisson-distribution'],
+  'stat-covariance-estimation': ['prob-covariance-correlation', 'stat-estimator-covariance'],
+  'stat-experimental-design': ['stat-estimator-covariance', 'stat-identifiability'],
+  'stat-optimal-experimental-design': ['stat-experimental-design', 'stat-fisher-information-matrix'],
+  'stat-sandwich-covariance': ['stat-generalized-linear-models', 'stat-covariance-estimation'],
+  'sig-continuous-time-signals': ['calc-functions-limits-continuity'],
+  'sig-discrete-time-signals': ['sig-continuous-time-signals', 'prob-random-variables-cdf-pmf-pdf'],
+  'sig-impulse-step': ['sig-continuous-time-signals', 'sig-discrete-time-signals'],
+  'sig-lti-systems': ['sig-impulse-step', 'la-matrix-multiplication'],
+  'sig-impulse-response': ['sig-lti-systems'],
+  'sig-convolution': ['sig-impulse-response', 'la-inner-products-norms-angles'],
+  'sig-correlation': ['sig-convolution', 'prob-covariance-correlation'],
+  'sig-autocorrelation': ['sig-correlation', 'prob-stationarity-autocorrelation'],
+  'sig-fourier-series': ['calc-integrals-fundamental-theorem', 'la-inner-products-norms-angles', 'prep-complex-numbers-euler-form'],
+  'sig-fourier-transform': ['sig-fourier-series', 'sig-continuous-time-signals'],
+  'sig-convolution-theorem': ['sig-fourier-transform', 'sig-convolution'],
+  'sig-parseval-theorem': ['sig-fourier-series', 'la-inner-products-norms-angles'],
+  'sig-dft': ['sig-fourier-series', 'sig-discrete-time-signals'],
+  'sig-fft': ['sig-dft'],
+  'sig-sampling-theorem-aliasing': ['sig-fourier-transform', 'sig-dft'],
+  'sig-stft-spectrogram': ['sig-fourier-transform', 'sig-sampling-theorem-aliasing'],
+  'sig-laplace-transform': ['calc-integrals-fundamental-theorem', 'sig-continuous-time-signals'],
+  'ode-first-order': ['calc-derivatives-rates', 'calc-integrals-fundamental-theorem'],
+  'ode-second-order': ['ode-first-order', 'calc-derivatives-rates'],
+  'ode-systems': ['ode-first-order', 'la-matrix-multiplication'],
+  'ode-matrix-exponential': ['ode-systems', 'mat-matrix-differential'],
+  'ode-phase-plane-stability': ['ode-systems', 'calc-multivariable-functions-partial-derivatives'],
+  'ode-boundary-value-problems': ['ode-second-order', 'ode-systems'],
+  'pde-classification': ['calc-multivariable-functions-partial-derivatives', 'ode-first-order'],
+  'pde-heat-equation': ['pde-classification', 'sig-fourier-series'],
+  'pde-wave-equation': ['pde-classification', 'sig-fourier-series'],
+  'pde-laplace-equation': ['pde-classification', 'la-inner-products-norms-angles'],
+  'pde-green-functions': ['pde-laplace-equation', 'sig-convolution'],
+  'pde-eigenfunction-expansion': ['pde-heat-equation', 'pde-wave-equation', 'la-singular-value-decomposition'],
+  'complex-analytic-functions': ['prep-complex-numbers-euler-form', 'calc-multivariable-functions-partial-derivatives'],
+  'complex-cauchy-riemann': ['complex-analytic-functions'],
+  'complex-contour-integration': ['complex-cauchy-riemann', 'calc-integrals-fundamental-theorem'],
+  'complex-residue-theorem': ['complex-contour-integration'],
+  'num-backward-error-analysis': ['num-errors-conditioning-stability', 'num-floating-point-rounding'],
+  'num-chebyshev-approximation': ['num-polynomial-interpolation', 'calc-functions-limits-continuity'],
+  'num-adaptive-quadrature': ['num-numerical-integration-quadrature', 'num-errors-conditioning-stability'],
+  'num-krylov-subspace': ['la-matrix-multiplication', 'la-eigenvalues-eigenvectors'],
+  'num-conjugate-gradient': ['num-krylov-subspace', 'la-quadratic-forms-positive-definite'],
+  'num-gmres': ['num-krylov-subspace', 'num-conjugate-gradient'],
+  'num-sparse-linear-algebra': ['la-matrix-multiplication', 'num-errors-conditioning-stability'],
+  'num-finite-difference': ['calc-derivatives-rates', 'num-errors-conditioning-stability'],
+  'num-finite-element-basics': ['num-finite-difference', 'la-inner-products-norms-angles'],
+  'num-spectral-methods': ['num-finite-element-basics', 'sig-fourier-series'],
+  'opt-bfgs': ['opt-gradient-descent-convergence', 'calc-hessian-second-order'],
+  'opt-subgradient': ['opt-gradient-descent-convergence', 'opt-convex-sets-functions'],
+  'opt-tangent-normal-cones': ['opt-problem-formulation-objectives-constraints', 'la-inner-products-norms-angles'],
+  'opt-constraint-qualification': ['opt-tangent-normal-cones', 'calc-lagrange-multipliers'],
+  'opt-fenchel-duality': ['opt-convex-sets-functions', 'calc-lagrange-multipliers'],
+  'opt-mirror-descent': ['opt-fenchel-duality', 'opt-bregman-divergence'],
+  'opt-bregman-divergence': ['opt-convex-sets-functions', 'stat-entropy-cross-entropy-kl-divergence'],
+  'opt-calculus-variations': ['calc-multivariable-functions-partial-derivatives', 'ode-first-order'],
+  'opt-optimal-control-basics': ['opt-calculus-variations', 'ode-systems'],
+  'inv-well-posedness': ['num-errors-conditioning-stability', 'stat-identifiability'],
+  'inv-linear-inverse-problems': ['inv-well-posedness', 'la-least-squares-computation-pseudoinverse'],
+  'inv-nonlinear-inverse-problems': ['inv-linear-inverse-problems', 'calc-multivariable-functions-partial-derivatives'],
+  'inv-tikhonov-regularization': ['inv-linear-inverse-problems', 'num-regularization-ill-posed-problems'],
+  'inv-bayesian-inverse-problems': ['inv-linear-inverse-problems', 'prob-multivariate-normal-distribution'],
+  'inv-recursive-least-squares': ['inv-linear-inverse-problems', 'mat-wls-inverse-variance'],
+  'inv-kalman-filter': ['inv-recursive-least-squares', 'ode-systems', 'prob-multivariate-normal-distribution'],
+  'inv-extended-kalman-filter': ['inv-kalman-filter', 'inv-nonlinear-inverse-problems'],
+  'inv-wiener-filter': ['sig-fourier-transform', 'prob-covariance-correlation'],
+  'inv-system-identification': ['inv-recursive-least-squares', 'sig-lti-systems'],
+  'inv-observability': ['inv-system-identification', 'ode-systems'],
+  'inv-sensitivity-matrices': ['inv-nonlinear-inverse-problems', 'mat-jacobian-vector-product'],
+  'inv-uncertainty-ellipsoids': ['inv-sensitivity-matrices', 'prob-covariance-correlation'],
+  'info-jensen-shannon-divergence': ['stat-entropy-cross-entropy-kl-divergence', 'prob-gaussian-mixture'],
+  'info-mutual-information': ['prob-conditional-probability-independence', 'stat-entropy-cross-entropy-kl-divergence'],
+  'info-data-processing-inequality': ['info-mutual-information'],
+  'info-maximum-entropy': ['stat-entropy-cross-entropy-kl-divergence', 'prob-conditional-probability-independence'],
+  'model-dimensional-analysis': ['prep-symbols-types-shapes'],
+  'model-buckingham-pi': ['model-dimensional-analysis', 'model-nondimensionalization'],
+  'model-nondimensionalization': ['model-dimensional-analysis', 'calc-derivatives-rates'],
+  'model-sensitivity-analysis': ['model-nondimensionalization', 'inv-sensitivity-matrices'],
+  'model-uncertainty-propagation': ['model-sensitivity-analysis', 'stat-error-propagation'],
+  'model-reduction': ['la-singular-value-decomposition', 'num-sparse-linear-algebra'],
+  'model-validation-residual-analysis': ['model-reduction', 'stat-covariance-estimation'],
+}
+
+function plannedPrerequisites(id) {
+  return plannedPrerequisitesById[id] ?? []
 }
 
 const source = await readFile(topicFile, 'utf8')
@@ -98,12 +225,11 @@ const ids = new Set(topics.map((topic) => topic.id))
 for (const [index, [id, title, module]] of planned.entries()) {
   if (ids.has(id)) continue
   const domain = moduleDomain(module)
-  topics.push({ id, title, summary: `${title}を工学数学Knowledge Baseへ接続するための計画Topic`, status: 'planned', prerequisites: plannedPrerequisites(id, module), estimated_minutes: { slides: 20, textbook: 45, exercises: 30 }, domain, module, level: 'planned', tags: [domain, module] })
+  topics.push({ id, title, summary: `${title}を工学数学Knowledge Baseへ接続するための計画Topic`, status: 'planned', prerequisites: plannedPrerequisites(id), estimated_minutes: { slides: 20, textbook: 45, exercises: 30 }, domain, module, level: 'planned', tags: [domain, module] })
 }
-moduleLast.clear()
 for (const [id] of planned) {
   const topic = topics.find((candidate) => candidate.id === id)
-  if (topic) topic.prerequisites = plannedPrerequisites(id, topic.module)
+  if (topic && topic.status === 'planned') topic.prerequisites = plannedPrerequisites(id)
 }
 const write = process.argv.includes('--write') || !process.argv.includes('--check')
 if (write) await writeFile(topicFile, stringify(topics, { lineWidth: 120 }))

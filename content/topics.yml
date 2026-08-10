@@ -5982,7 +5982,9 @@
   title: Gram matrix
   summary: Gram matrixを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - la-inner-products-norms-angles
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6000,6 +6002,9 @@
   prerequisites:
     - stat-likelihood-maximum-likelihood
     - prob-multivariate-normal-distribution
+    - calc-gradient-directional-derivative
+    - calc-hessian-second-order
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6016,6 +6021,7 @@
   status: planned
   prerequisites:
     - stat-fisher-information-matrix
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6032,6 +6038,7 @@
   status: planned
   prerequisites:
     - stat-estimator-covariance
+    - mat-gram-matrix
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6049,6 +6056,7 @@
   prerequisites:
     - mat-wls-inverse-variance
     - stat-fisher-information-matrix
+    - stat-estimator-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6065,6 +6073,7 @@
   status: planned
   prerequisites:
     - stat-likelihood-maximum-likelihood
+    - stat-estimator-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6079,7 +6088,11 @@
   title: Scalar-by-vector derivative
   summary: Scalar-by-vector derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - calc-derivatives-rates
+    - calc-multivariable-functions-partial-derivatives
+    - la-vectors-linear-combinations
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6111,7 +6124,8 @@
   summary: Scalar-by-matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-vector-by-vector-derivative
+    - mat-scalar-by-vector-derivative
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6127,6 +6141,7 @@
   summary: Vector-by-matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
+    - mat-vector-by-vector-derivative
     - mat-scalar-by-matrix-derivative
   estimated_minutes:
     slides: 20
@@ -6143,6 +6158,7 @@
   summary: Matrix differentialを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
+    - mat-scalar-by-matrix-derivative
     - mat-vector-by-matrix-derivative
   estimated_minutes:
     slides: 20
@@ -6160,6 +6176,7 @@
   status: planned
   prerequisites:
     - mat-matrix-differential
+    - mat-gram-matrix
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6175,7 +6192,8 @@
   summary: Quadratic form derivativesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-trace-trick
+    - mat-scalar-by-vector-derivative
+    - la-quadratic-forms-positive-definite
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6191,7 +6209,8 @@
   summary: Inverse matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-quadratic-form-derivatives
+    - mat-matrix-differential
+    - la-invertibility-inverse-matrices
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6208,6 +6227,7 @@
   status: planned
   prerequisites:
     - mat-inverse-matrix-derivative
+    - mat-matrix-differential
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6223,7 +6243,8 @@
   summary: Matrix chain ruleを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-log-determinant-derivative
+    - mat-vector-by-vector-derivative
+    - mat-vector-by-matrix-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6239,7 +6260,8 @@
   summary: Jacobian-vector productを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-matrix-chain-rule
+    - mat-vector-by-vector-derivative
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6271,7 +6293,8 @@
   summary: Automatic differentiationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-vector-jacobian-product
+    - mat-matrix-chain-rule
+    - mat-jacobian-vector-product
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6288,6 +6311,7 @@
   status: planned
   prerequisites:
     - mat-automatic-differentiation
+    - mat-jacobian-vector-product
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6303,7 +6327,8 @@
   summary: Reverse-mode ADを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-forward-mode-ad
+    - mat-automatic-differentiation
+    - mat-vector-jacobian-product
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6319,7 +6344,8 @@
   summary: vec operatorを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - mat-reverse-mode-ad
+    - mat-matrix-differential
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6336,6 +6362,7 @@
   status: planned
   prerequisites:
     - mat-vec-operator
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6350,7 +6377,8 @@
   title: Bernoulli distribution
   summary: Bernoulli distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-random-variables-cdf-pmf-pdf
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6367,6 +6395,7 @@
   status: planned
   prerequisites:
     - prob-bernoulli-distribution
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6383,6 +6412,7 @@
   status: planned
   prerequisites:
     - prob-binomial-distribution
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6397,7 +6427,9 @@
   title: Gaussian distribution
   summary: Gaussian distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-continuous-distributions
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6429,7 +6461,9 @@
   summary: Student t distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - prob-log-normal-distribution
+    - prob-gaussian-distribution
+    - stat-t-chi-square-sampling-distributions
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6445,7 +6479,8 @@
   summary: Dirichlet distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - prob-student-t-distribution
+    - prob-multivariate-normal-distribution
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6461,7 +6496,7 @@
   summary: Gaussian mixtureを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - prob-dirichlet-distribution
+    - prob-gaussian-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6476,7 +6511,9 @@
   title: Probability generating function
   summary: Probability generating functionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-random-variables-cdf-pmf-pdf
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6509,6 +6546,7 @@
   status: planned
   prerequisites:
     - prob-moment-generating-functions
+    - prep-complex-numbers-euler-form
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6524,7 +6562,8 @@
   summary: Random walkを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - prob-characteristic-functions
+    - prob-bernoulli-distribution
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6540,6 +6579,7 @@
   summary: Markov chainを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
+    - prob-conditional-probability-independence
     - prob-random-walk
   estimated_minutes:
     slides: 20
@@ -6556,7 +6596,7 @@
   summary: Poisson processを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - prob-markov-chains
+    - prob-poisson-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6573,6 +6613,7 @@
   status: planned
   prerequisites:
     - prob-poisson-process
+    - prob-gaussian-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6589,6 +6630,7 @@
   status: planned
   prerequisites:
     - prob-brownian-motion
+    - prob-multivariate-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6605,6 +6647,7 @@
   status: planned
   prerequisites:
     - prob-gaussian-process
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6620,7 +6663,8 @@
   summary: Cramér–Rao lower boundを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-model-misspecification
+    - stat-fisher-information-matrix
+    - stat-estimator-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6636,7 +6680,8 @@
   summary: Observed informationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-cramer-rao-lower-bound
+    - stat-likelihood-maximum-likelihood
+    - stat-fisher-information-matrix
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6652,7 +6697,8 @@
   summary: Identifiabilityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-observed-information
+    - stat-likelihood-maximum-likelihood
+    - stat-model-misspecification
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6668,7 +6714,8 @@
   summary: Delta methodを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-identifiability
+    - calc-multivariable-functions-partial-derivatives
+    - stat-estimator-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6685,6 +6732,7 @@
   status: planned
   prerequisites:
     - stat-delta-method
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6700,7 +6748,8 @@
   summary: Sufficient statisticsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-error-propagation
+    - stat-likelihood-maximum-likelihood
+    - prob-conditional-probability-independence
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6717,6 +6766,7 @@
   status: planned
   prerequisites:
     - stat-sufficient-statistics
+    - stat-likelihood-maximum-likelihood
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6733,6 +6783,7 @@
   status: planned
   prerequisites:
     - stat-exponential-family
+    - mat-ols-design-matrices
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6749,6 +6800,7 @@
   status: planned
   prerequisites:
     - stat-generalized-linear-models
+    - prob-poisson-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6764,7 +6816,8 @@
   summary: Covariance estimationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-poisson-regression
+    - prob-covariance-correlation
+    - stat-estimator-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6780,7 +6833,8 @@
   summary: Experimental designを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-covariance-estimation
+    - stat-estimator-covariance
+    - stat-identifiability
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6797,6 +6851,7 @@
   status: planned
   prerequisites:
     - stat-experimental-design
+    - stat-fisher-information-matrix
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6812,7 +6867,8 @@
   summary: Sandwich covarianceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-optimal-experimental-design
+    - stat-generalized-linear-models
+    - stat-covariance-estimation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6827,7 +6883,8 @@
   title: Continuous-time signals
   summary: Continuous-time signalsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - calc-functions-limits-continuity
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6844,6 +6901,7 @@
   status: planned
   prerequisites:
     - sig-continuous-time-signals
+    - prob-random-variables-cdf-pmf-pdf
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6859,6 +6917,7 @@
   summary: Impulse and step signalsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
+    - sig-continuous-time-signals
     - sig-discrete-time-signals
   estimated_minutes:
     slides: 20
@@ -6876,6 +6935,7 @@
   status: planned
   prerequisites:
     - sig-impulse-step
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6908,6 +6968,7 @@
   status: planned
   prerequisites:
     - sig-impulse-response
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6924,6 +6985,7 @@
   status: planned
   prerequisites:
     - sig-convolution
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6940,6 +7002,7 @@
   status: planned
   prerequisites:
     - sig-correlation
+    - prob-stationarity-autocorrelation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6955,7 +7018,9 @@
   summary: Fourier seriesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - sig-autocorrelation
+    - calc-integrals-fundamental-theorem
+    - la-inner-products-norms-angles
+    - prep-complex-numbers-euler-form
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6972,6 +7037,7 @@
   status: planned
   prerequisites:
     - sig-fourier-series
+    - sig-continuous-time-signals
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -6988,6 +7054,7 @@
   status: planned
   prerequisites:
     - sig-fourier-transform
+    - sig-convolution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7003,7 +7070,8 @@
   summary: Parseval theoremを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - sig-convolution-theorem
+    - sig-fourier-series
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7019,7 +7087,8 @@
   summary: Discrete Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - sig-parseval-theorem
+    - sig-fourier-series
+    - sig-discrete-time-signals
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7051,7 +7120,8 @@
   summary: Sampling theorem and aliasingを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - sig-fft
+    - sig-fourier-transform
+    - sig-dft
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7067,6 +7137,7 @@
   summary: STFT and spectrogramを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
+    - sig-fourier-transform
     - sig-sampling-theorem-aliasing
   estimated_minutes:
     slides: 20
@@ -7083,7 +7154,8 @@
   summary: Laplace transformを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - sig-stft-spectrogram
+    - calc-integrals-fundamental-theorem
+    - sig-continuous-time-signals
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7098,7 +7170,9 @@
   title: First-order ODE
   summary: First-order ODEを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - calc-derivatives-rates
+    - calc-integrals-fundamental-theorem
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7115,6 +7189,7 @@
   status: planned
   prerequisites:
     - ode-first-order
+    - calc-derivatives-rates
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7130,7 +7205,8 @@
   summary: Systems of ODEを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - ode-second-order
+    - ode-first-order
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7147,6 +7223,7 @@
   status: planned
   prerequisites:
     - ode-systems
+    - mat-matrix-differential
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7162,7 +7239,8 @@
   summary: Phase plane and stabilityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - ode-matrix-exponential
+    - ode-systems
+    - calc-multivariable-functions-partial-derivatives
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7178,7 +7256,8 @@
   summary: Boundary value problemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - ode-phase-plane-stability
+    - ode-second-order
+    - ode-systems
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7194,7 +7273,8 @@
   summary: PDE classificationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - ode-boundary-value-problems
+    - calc-multivariable-functions-partial-derivatives
+    - ode-first-order
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7211,6 +7291,7 @@
   status: planned
   prerequisites:
     - pde-classification
+    - sig-fourier-series
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7226,7 +7307,8 @@
   summary: Wave equationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - pde-heat-equation
+    - pde-classification
+    - sig-fourier-series
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7242,7 +7324,8 @@
   summary: Laplace equationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - pde-wave-equation
+    - pde-classification
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7259,6 +7342,7 @@
   status: planned
   prerequisites:
     - pde-laplace-equation
+    - sig-convolution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7274,7 +7358,9 @@
   summary: Eigenfunction expansionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - pde-green-functions
+    - pde-heat-equation
+    - pde-wave-equation
+    - la-singular-value-decomposition
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7289,7 +7375,9 @@
   title: Analytic functions
   summary: Analytic functionsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prep-complex-numbers-euler-form
+    - calc-multivariable-functions-partial-derivatives
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7322,6 +7410,7 @@
   status: planned
   prerequisites:
     - complex-cauchy-riemann
+    - calc-integrals-fundamental-theorem
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7352,7 +7441,9 @@
   title: Backward error analysis
   summary: Backward error analysisを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-errors-conditioning-stability
+    - num-floating-point-rounding
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7368,7 +7459,8 @@
   summary: Chebyshev approximationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - num-backward-error-analysis
+    - num-polynomial-interpolation
+    - calc-functions-limits-continuity
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7384,7 +7476,8 @@
   summary: Adaptive quadratureを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - num-chebyshev-approximation
+    - num-numerical-integration-quadrature
+    - num-errors-conditioning-stability
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7400,7 +7493,8 @@
   summary: Krylov subspace methodsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - num-adaptive-quadrature
+    - la-matrix-multiplication
+    - la-eigenvalues-eigenvectors
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7417,6 +7511,7 @@
   status: planned
   prerequisites:
     - num-krylov-subspace
+    - la-quadratic-forms-positive-definite
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7432,6 +7527,7 @@
   summary: GMRESを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
+    - num-krylov-subspace
     - num-conjugate-gradient
   estimated_minutes:
     slides: 20
@@ -7448,7 +7544,8 @@
   summary: Sparse linear algebraを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - num-gmres
+    - la-matrix-multiplication
+    - num-errors-conditioning-stability
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7464,7 +7561,8 @@
   summary: Finite differenceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - num-sparse-linear-algebra
+    - calc-derivatives-rates
+    - num-errors-conditioning-stability
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7481,6 +7579,7 @@
   status: planned
   prerequisites:
     - num-finite-difference
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7497,6 +7596,7 @@
   status: planned
   prerequisites:
     - num-finite-element-basics
+    - sig-fourier-series
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7511,7 +7611,9 @@
   title: BFGS
   summary: BFGSを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-gradient-descent-convergence
+    - calc-hessian-second-order
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7527,7 +7629,8 @@
   summary: Subgradientを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - opt-bfgs
+    - opt-gradient-descent-convergence
+    - opt-convex-sets-functions
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7543,7 +7646,8 @@
   summary: Tangent and normal conesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - opt-subgradient
+    - opt-problem-formulation-objectives-constraints
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7560,6 +7664,7 @@
   status: planned
   prerequisites:
     - opt-tangent-normal-cones
+    - calc-lagrange-multipliers
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7575,7 +7680,8 @@
   summary: Fenchel dualityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - opt-constraint-qualification
+    - opt-convex-sets-functions
+    - calc-lagrange-multipliers
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7592,6 +7698,7 @@
   status: planned
   prerequisites:
     - opt-fenchel-duality
+    - opt-bregman-divergence
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7607,7 +7714,8 @@
   summary: Bregman divergenceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - opt-mirror-descent
+    - opt-convex-sets-functions
+    - stat-entropy-cross-entropy-kl-divergence
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7623,7 +7731,8 @@
   summary: Calculus of variationsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - opt-bregman-divergence
+    - calc-multivariable-functions-partial-derivatives
+    - ode-first-order
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7640,6 +7749,7 @@
   status: planned
   prerequisites:
     - opt-calculus-variations
+    - ode-systems
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7654,7 +7764,9 @@
   title: Well-posedness and ill-posedness
   summary: Well-posedness and ill-posednessを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-errors-conditioning-stability
+    - stat-identifiability
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7671,6 +7783,7 @@
   status: planned
   prerequisites:
     - inv-well-posedness
+    - la-least-squares-computation-pseudoinverse
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7687,6 +7800,7 @@
   status: planned
   prerequisites:
     - inv-linear-inverse-problems
+    - calc-multivariable-functions-partial-derivatives
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7702,7 +7816,8 @@
   summary: Tikhonov regularizationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - inv-nonlinear-inverse-problems
+    - inv-linear-inverse-problems
+    - num-regularization-ill-posed-problems
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7718,7 +7833,8 @@
   summary: Bayesian inverse problemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - inv-tikhonov-regularization
+    - inv-linear-inverse-problems
+    - prob-multivariate-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7734,7 +7850,8 @@
   summary: Recursive least squaresを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - inv-bayesian-inverse-problems
+    - inv-linear-inverse-problems
+    - mat-wls-inverse-variance
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7751,6 +7868,8 @@
   status: planned
   prerequisites:
     - inv-recursive-least-squares
+    - ode-systems
+    - prob-multivariate-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7767,6 +7886,7 @@
   status: planned
   prerequisites:
     - inv-kalman-filter
+    - inv-nonlinear-inverse-problems
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7782,7 +7902,8 @@
   summary: Wiener filterを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - inv-extended-kalman-filter
+    - sig-fourier-transform
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7798,7 +7919,8 @@
   summary: System identificationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - inv-wiener-filter
+    - inv-recursive-least-squares
+    - sig-lti-systems
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7815,6 +7937,7 @@
   status: planned
   prerequisites:
     - inv-system-identification
+    - ode-systems
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7830,7 +7953,8 @@
   summary: Sensitivity matricesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - inv-observability
+    - inv-nonlinear-inverse-problems
+    - mat-jacobian-vector-product
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7847,6 +7971,7 @@
   status: planned
   prerequisites:
     - inv-sensitivity-matrices
+    - prob-covariance-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7862,7 +7987,8 @@
   summary: Jensen–Shannon divergenceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - stat-sandwich-covariance
+    - stat-entropy-cross-entropy-kl-divergence
+    - prob-gaussian-mixture
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7878,7 +8004,8 @@
   summary: Mutual informationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - info-jensen-shannon-divergence
+    - prob-conditional-probability-independence
+    - stat-entropy-cross-entropy-kl-divergence
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7910,7 +8037,8 @@
   summary: Maximum entropyを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - info-data-processing-inequality
+    - stat-entropy-cross-entropy-kl-divergence
+    - prob-conditional-probability-independence
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7925,7 +8053,8 @@
   title: Dimensional analysis
   summary: Dimensional analysisを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7942,6 +8071,7 @@
   status: planned
   prerequisites:
     - model-dimensional-analysis
+    - model-nondimensionalization
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7957,7 +8087,8 @@
   summary: Nondimensionalizationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites:
-    - model-buckingham-pi
+    - model-dimensional-analysis
+    - calc-derivatives-rates
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7974,6 +8105,7 @@
   status: planned
   prerequisites:
     - model-nondimensionalization
+    - inv-sensitivity-matrices
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -7990,6 +8122,7 @@
   status: planned
   prerequisites:
     - model-sensitivity-analysis
+    - stat-error-propagation
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -8004,7 +8137,9 @@
   title: Model reduction
   summary: Model reductionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - la-singular-value-decomposition
+    - num-sparse-linear-algebra
   estimated_minutes:
     slides: 20
     textbook: 45
@@ -8021,6 +8156,7 @@
   status: planned
   prerequisites:
     - model-reduction
+    - stat-covariance-estimation
   estimated_minutes:
     slides: 20
     textbook: 45

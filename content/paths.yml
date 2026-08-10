@@ -20,7 +20,7 @@ paths:
   - id: spectral-cytometry-mathematics
     title: Spectral Cytometryの数学
     description: 混合、WLS、推定、スペクトル解析を応用へ接続する経路。
-    topics: [la-matrix-multiplication, la-least-squares-computation-pseudoinverse, mat-wls-inverse-variance, mat-pca-svd-computation, mat-fourier-bases-dft]
+    topics: [la-matrix-multiplication, la-least-squares-computation-pseudoinverse, mat-wls-inverse-variance, prob-covariance-correlation, prob-multivariate-normal-distribution, stat-fisher-information-matrix, stat-estimator-covariance, stat-model-misspecification, stat-identifiability, la-matrix-norms-condition-number, mat-pca-svd-computation, stat-wls-fisher-information, mat-fourier-bases-dft]
   - id: hotspot-matrix
     title: Hotspot Matrixを理解する
     description: 既存Topicを複製せず、行列・推定・情報量を順序付ける横断経路。
