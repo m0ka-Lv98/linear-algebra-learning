@@ -1,0 +1,10 @@
+version: 1
+
+case_studies:
+  - { id: hotspot-matrix, title: Hotspot Matrix, domain: estimation-inverse-problems, requires: [la-singular-value-decomposition, mat-wls-inverse-variance], connects: [spectral-unmixing, wlsm], status: planned }
+  - { id: spectral-unmixing, title: Spectral Unmixing, domain: spectral-cytometry, requires: [la-least-squares-computation-pseudoinverse, mat-wls-inverse-variance, mat-pca-svd-computation], connects: [hotspot-matrix], status: planned }
+  - { id: wlsm, title: Weighted Least Squares Method, domain: estimation-inverse-problems, requires: [mat-wls-inverse-variance, stat-likelihood-maximum-likelihood], connects: [hotspot-matrix], status: planned }
+  - { id: pca-from-svd, title: PCA from SVD, domain: linear-algebra, requires: [la-singular-value-decomposition, mat-pca-svd-computation], connects: [spectral-unmixing], status: planned }
+  - { id: fourier-filtering, title: Fourier Filtering, domain: signal-processing, requires: [mat-fourier-bases-dft, mat-filtering-regularization], connects: [spectral-unmixing], status: planned }
+  - { id: kalman-filter, title: Kalman Filter, domain: control-systems, requires: [stat-estimators-bias-variance-mse, mat-wls-inverse-variance], connects: [wlsm], status: planned }
+  - { id: inverse-problem-regularization, title: Inverse Problem Regularization, domain: estimation-inverse-problems, requires: [num-regularization-ill-posed-problems, la-singular-value-decomposition], connects: [spectral-unmixing], status: planned }

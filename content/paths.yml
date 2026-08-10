@@ -1,0 +1,27 @@
+version: 1
+
+paths:
+  - id: engineering-mathematics-core
+    title: 工学数学コア
+    description: 微積分・線形代数・確率・数値計算を横断する基礎経路。
+    topics: [prep-symbols-types-shapes, calc-derivatives-rates, la-matrix-multiplication, prob-expectation-variance-moments, num-errors-conditioning-stability]
+  - id: machine-learning-mathematics
+    title: 機械学習の数学
+    description: 行列、確率、推定、最適化から機械学習へ進む経路。
+    topics: [la-vectors-linear-combinations, la-matrix-multiplication, la-singular-value-decomposition, prob-multivariate-normal-distribution, stat-likelihood-maximum-likelihood, opt-gradient-descent-convergence, ml-linear-regression]
+  - id: signal-processing-mathematics
+    title: 信号処理の数学
+    description: 複素数、Fourier、畳み込み、正則化をつなぐ経路。
+    topics: [prep-complex-numbers-euler-form, mat-fourier-bases-dft, mat-convolution-linear-systems, mat-filtering-regularization]
+  - id: statistical-estimation
+    title: 統計推定
+    description: 尤度、MLE、Fisher情報、回帰と不確実性を学ぶ経路。
+    topics: [prob-covariance-correlation, prob-multivariate-normal-distribution, stat-estimators-bias-variance-mse, stat-likelihood-maximum-likelihood, mat-ols-design-matrices, mat-wls-inverse-variance]
+  - id: spectral-cytometry-mathematics
+    title: Spectral Cytometryの数学
+    description: 混合、WLS、推定、スペクトル解析を応用へ接続する経路。
+    topics: [la-matrix-multiplication, la-least-squares-computation-pseudoinverse, mat-wls-inverse-variance, mat-pca-svd-computation, mat-fourier-bases-dft]
+  - id: hotspot-matrix
+    title: Hotspot Matrixを理解する
+    description: 既存Topicを複製せず、行列・推定・情報量を順序付ける横断経路。
+    topics: [la-vectors-linear-combinations, la-matrix-multiplication, la-inner-products-norms-angles, mat-gram-matrix, la-quadratic-forms-positive-definite, la-least-squares-geometry, mat-wls-inverse-variance, prob-covariance-correlation, prob-multivariate-normal-distribution, stat-likelihood-maximum-likelihood, stat-fisher-information-matrix, stat-estimator-covariance, la-singular-value-decomposition, la-matrix-norms-condition-number, stat-vif-collinearity, hotspot-matrix, stat-wls-fisher-information, stat-model-misspecification]

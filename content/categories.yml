@@ -1,0 +1,18 @@
+version: 1
+
+categories:
+  - id: foundations
+    title: Foundations
+    title_ja: 数学の基礎
+  - id: core-mathematics
+    title: Core Mathematics
+    title_ja: コア数学
+  - id: engineering-mathematics
+    title: Engineering Mathematics
+    title_ja: 工学数学
+  - id: computational-mathematics
+    title: Computational Mathematics
+    title_ja: 計算数学
+  - id: applications
+    title: Applications
+    title_ja: 応用

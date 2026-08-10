@@ -108,6 +108,10 @@ export async function validateTopicFiles(root, topic) {
 export async function validateRepositoryContent(root) {
   const { topics, warnings } = await loadTopics(root)
   const errors = []
-  for (const topic of topics) errors.push(...await validateTopicFiles(root, topic))
+  // Planned topics are metadata-only entries until their learning artifacts are authored.
+  // Implemented topics retain the existing four-artifact and cross-link checks.
+  for (const topic of topics) {
+    if (topic.status !== 'planned') errors.push(...await validateTopicFiles(root, topic))
+  }
   return { topics, errors, warnings }
 }

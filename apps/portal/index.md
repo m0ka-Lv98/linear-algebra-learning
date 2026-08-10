@@ -19,3 +19,12 @@ Course 00の学習準備から、微積分、線形代数、確率統計、離�
 ## 教材構成
 
 各Topicにはテーマホーム、概要スライド、詳細教科書、10問の演習と完全解答がある。
+
+## Topic Knowledge Base
+
+Courseの一本道に加えて、数学分野・目的別の学習経路・応用事例からTopicを探せます。
+
+- [数学分野から探す](/knowledge-base/domains)
+- [目的から学ぶ](/knowledge-base/paths)
+- [応用から探す](/knowledge-base/case-studies)
+- [全Topic](/knowledge-base/topics)

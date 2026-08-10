@@ -1,0 +1,27 @@
+version: 1
+
+domains:
+  - { id: mathematical-foundations, category: foundations, title: Mathematical Foundations, title_ja: 数学基礎 }
+  - { id: calculus-analysis, category: core-mathematics, title: Calculus & Analysis, title_ja: 微積分・解析 }
+  - { id: linear-algebra, category: core-mathematics, title: Linear Algebra, title_ja: 線形代数 }
+  - { id: probability-statistics, category: core-mathematics, title: Probability & Statistics, title_ja: 確率・統計 }
+  - { id: differential-equations, category: engineering-mathematics, title: Differential Equations, title_ja: 微分方程式 }
+  - { id: complex-analysis, category: core-mathematics, title: Complex Analysis, title_ja: 複素解析 }
+  - { id: discrete-mathematics, category: core-mathematics, title: Discrete Mathematics, title_ja: 離散数学 }
+  - { id: geometry-tensors, category: engineering-mathematics, title: Geometry & Tensors, title_ja: 幾何・テンソル }
+  - { id: matrix-calculus, category: engineering-mathematics, title: Matrix Calculus, title_ja: 行列微分 }
+  - { id: signals-systems-transforms, category: engineering-mathematics, title: Signals, Systems & Transforms, title_ja: 信号・システム・変換 }
+  - { id: stochastic-processes, category: engineering-mathematics, title: Stochastic Processes, title_ja: 確率過程 }
+  - { id: estimation-inverse-problems, category: engineering-mathematics, title: Estimation & Inverse Problems, title_ja: 推定・逆問題 }
+  - { id: control-systems, category: engineering-mathematics, title: Control Systems, title_ja: 制御システム }
+  - { id: information-theory, category: engineering-mathematics, title: Information Theory, title_ja: 情報理論 }
+  - { id: mathematical-modeling, category: engineering-mathematics, title: Mathematical Modeling, title_ja: 数理モデリング }
+  - { id: numerical-analysis, category: computational-mathematics, title: Numerical Analysis, title_ja: 数値解析 }
+  - { id: optimization, category: computational-mathematics, title: Optimization, title_ja: 最適化 }
+  - { id: scientific-computing, category: computational-mathematics, title: Scientific Computing, title_ja: 科学計算 }
+  - { id: machine-learning, category: applications, title: Machine Learning, title_ja: 機械学習 }
+  - { id: deep-learning, category: applications, title: Deep Learning, title_ja: 深層学習 }
+  - { id: foundation-models, category: applications, title: Foundation Models, title_ja: Foundation Model }
+  - { id: signal-processing, category: applications, title: Signal Processing, title_ja: 信号処理 }
+  - { id: computational-biology, category: applications, title: Computational Biology, title_ja: 計算生物学 }
+  - { id: spectral-cytometry, category: applications, title: Spectral Cytometry, title_ja: スペクトルサイトメトリー }

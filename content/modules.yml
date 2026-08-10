@@ -1,0 +1,24 @@
+version: 1
+
+modules:
+  - { id: foundations-literacy, domain: mathematical-foundations, title: Mathematical Literacy }
+  - { id: calculus-core, domain: calculus-analysis, title: Calculus Core }
+  - { id: linear-algebra-core, domain: linear-algebra, title: Linear Algebra Core }
+  - { id: probability-foundations, domain: probability-statistics, title: Probability Foundations }
+  - { id: probability-discrete-distributions, domain: probability-statistics, title: Discrete Distributions }
+  - { id: probability-continuous-distributions, domain: probability-statistics, title: Continuous Distributions }
+  - { id: probability-processes, domain: stochastic-processes, title: Probability Processes }
+  - { id: statistics-estimation, domain: probability-statistics, title: Statistics & Estimation }
+  - { id: discrete-proof-algorithms, domain: discrete-mathematics, title: Proofs & Algorithms }
+  - { id: numerical-analysis-core, domain: numerical-analysis, title: Numerical Analysis Core }
+  - { id: optimization-core, domain: optimization, title: Optimization Core }
+  - { id: matrix-calculus-differentiation, domain: matrix-calculus, title: Matrix Calculus & Differentiation }
+  - { id: signals-fourier-analysis, domain: signals-systems-transforms, title: Signals & Fourier Analysis }
+  - { id: differential-equations-core, domain: differential-equations, title: Differential Equations }
+  - { id: estimation-inverse-problems-core, domain: estimation-inverse-problems, title: Estimation & Inverse Problems }
+  - { id: machine-learning-core, domain: machine-learning, title: Machine Learning Core }
+  - { id: deep-learning-core, domain: deep-learning, title: Deep Learning Core }
+  - { id: foundation-models-core, domain: foundation-models, title: Foundation Models Core }
+  - { id: scientific-computing-core, domain: scientific-computing, title: Scientific Computing }
+  - { id: complex-analysis-core, domain: complex-analysis, title: Complex Analysis }
+  - { id: mathematical-modeling-core, domain: mathematical-modeling, title: Mathematical Modeling }

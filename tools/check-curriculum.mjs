@@ -11,7 +11,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 export async function runCurriculumCheck(checkRoot = root) {
   const courses = await loadCourses(checkRoot)
   const curriculum = await loadCurriculum(checkRoot)
-  const { topics: implementedTopics } = await loadTopics(checkRoot)
+  const { topics } = await loadTopics(checkRoot)
+  // Planned Knowledge Base entries intentionally have no legacy Course artifacts yet.
+  // Keep the compatibility curriculum scoped to authored topics.
+  const implementedTopics = topics.filter((topic) => topic.status !== 'planned')
   const courseResult = validateCourses(courses)
   const curriculumResult = validateCurriculum(curriculum, courses, implementedTopics.map((topic) => topic.id))
   const errors = [...courseResult.errors, ...curriculumResult.errors]
