@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "MDPとBellman方程式"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # MDPとBellman方程式
@@ -97,3 +98,25 @@ modelが既知ならBellman operatorを反復するdynamic programming、未知�
 ---
 
 [教科書](../../textbook/ml-mdp-bellman-equations)　|　[10問の演習](../../exercises/ml-mdp-bellman-equations)
+
+---
+
+## 今回の問い
+
+「MDPとBellman方程式」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 逐次意思決定を、状態・行動・報酬・遷移の確率modelとしてどう定式化するか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 逐次意思決定を、状態・行動・報酬・遷移の確率modelとしてどう定式化するか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "policy gradientとREINFORCE"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # policy gradientとREINFORCE
@@ -95,3 +96,25 @@ actor–criticはcriticでadvantageを推定しvarianceを下げる。PPOはpoli
 ---
 
 [教科書](../../textbook/ml-policy-gradient-reinforce)　|　[10問の演習](../../exercises/ml-policy-gradient-reinforce)
+
+---
+
+## 今回の問い
+
+「policy gradientとREINFORCE」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 価値のargmaxを介さず、確率policyそのものを期待returnが増える方向へどう更新するか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 価値のargmaxを介さず、確率policyそのものを期待returnが増える方向へどう更新するか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

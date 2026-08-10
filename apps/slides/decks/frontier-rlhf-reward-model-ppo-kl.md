@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "RLHF：reward model・PPO・KL制御"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # RLHF：reward model・PPO・KL制御
@@ -94,3 +95,25 @@ DPOはKL-regularized optimal policyとBradley–Terry preference modelを組み�
 ---
 
 [教科書](../../textbook/frontier-rlhf-reward-model-ppo-kl)　|　[10問の演習](../../exercises/frontier-rlhf-reward-model-ppo-kl)
+
+---
+
+## 今回の問い
+
+「RLHF：reward model・PPO・KL制御」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 人間のpairwise preferenceをrewardへ変換し、policyをreferenceから離しすぎず改善する標準RLHF pipelineはどうつながるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 人間のpairwise preferenceをrewardへ変換し、policyをreferenceから離しすぎず改善する標準RLHF pipelineはどうつながるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

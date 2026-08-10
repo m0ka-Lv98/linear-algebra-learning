@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "Fenchel共役とFenchel双対"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # Fenchel共役とFenchel双対
@@ -93,3 +94,25 @@ Lagrange duality、regularization、exponential family、mirror descentに現れ
 ---
 
 [教科書](../../textbook/opt-fenchel-duality-conjugates)　|　[10問の演習](../../exercises/opt-fenchel-duality-conjugates)
+
+---
+
+## 今回の問い
+
+「Fenchel共役とFenchel双対」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 関数を傾き空間へ写すFenchel共役が、なぜ双対問題と正則化の理解に役立つか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 関数を傾き空間へ写すFenchel共役が、なぜ双対問題と正則化の理解に役立つか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

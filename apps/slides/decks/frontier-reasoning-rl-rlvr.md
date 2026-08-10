@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "推論RLとverifiable reward"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 推論RLとverifiable reward
@@ -93,3 +94,25 @@ RLHFのpreference rewardと同じpolicy optimization基盤を使いつつ、feed
 ---
 
 [教科書](../../textbook/frontier-reasoning-rl-rlvr)　|　[10問の演習](../../exercises/frontier-reasoning-rl-rlvr)
+
+---
+
+## 今回の問い
+
+「推論RLとverifiable reward」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 数学・codingのように答えを自動検証できる課題では、preference modelを介さずどのようにRL信号を作れるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 数学・codingのように答えを自動検証できる課題では、preference modelを介さずどのようにRL信号を作れるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

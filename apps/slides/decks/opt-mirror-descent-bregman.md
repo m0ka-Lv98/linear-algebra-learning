@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "Mirror descentとBregman divergence"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # Mirror descentとBregman divergence
@@ -94,3 +95,25 @@ exponentiated gradient、online learning、natural gradientと関係する。確
 ---
 
 [教科書](../../textbook/opt-mirror-descent-bregman)　|　[10問の演習](../../exercises/opt-mirror-descent-bregman)
+
+---
+
+## 今回の問い
+
+「Mirror descentとBregman divergence」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- Euclidean距離が自然でない確率simplexなどで、勾配法のgeometryをどう変えるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. Euclidean距離が自然でない確率simplexなどで、勾配法のgeometryをどう変えるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

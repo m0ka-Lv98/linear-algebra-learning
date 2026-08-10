@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "pretraining data：dedup・mixture・contamination"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # pretraining data：dedup・mixture・contamination
@@ -93,3 +94,25 @@ data scaling law、curriculum/data scheduling、synthetic data、evaluation cont
 ---
 
 [教科書](../../textbook/frontier-data-dedup-mixtures-contamination)　|　[10問の演習](../../exercises/frontier-data-dedup-mixtures-contamination)
+
+---
+
+## 今回の問い
+
+「pretraining data：dedup・mixture・contamination」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 同じtoken数でも、重複・domain mixture・benchmark contaminationで学習結果がなぜ変わるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 同じtoken数でも、重複・domain mixture・benchmark contaminationで学習結果がなぜ変わるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

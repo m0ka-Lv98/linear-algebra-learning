@@ -1,212 +1,125 @@
 ---
 theme: default
 routerMode: hash
+generatedBy: course02-10-refined-v1
 layout: cover
-title: "DPO：KL正則化RLHFからpreference lossへ"
+title: "RLHFとpreference optimization"
 ---
 
-# DPO：KL正則化RLHFからpreference lossへ
+# RLHFとpreference optimization
 
 Course 10｜Frontier
 
 ---
+layout: center
+---
 
 ## 今回の問い
 
-なぜreward modelを明示的にpolicy更新へ使わず、chosen/rejected pairだけでpolicyを学習できるのか。
+RLHFとpreference optimizationで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## 前提
+## 到達目標
 
-前Topic：`frontier-rlhf-reward-model-ppo-kl`
-
-- $x$：prompt
-- $y_w,y_l$：chosen / rejected response
-- $\pi_\theta$：学習policy
-- $\pi_{\mathrm{ref}}$：固定reference policy
-- $\beta>0$：KL penalty係数
+- RLHFとpreference optimizationの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
-## 図：何を比較しているか
+## 直感
 
-<img src="./assets/course-10/frontier-rlhf-preference-optimization.png" style="max-height: 360px; display:block; margin:0 auto;" />
+preference optimizationは候補応答の比較データから、望ましい応答を相対的に高確率にする。
 
-chosen側とrejected側で
-
-$$
-\log\frac{\pi_\theta(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}
-$$
-
-を計算し、その差を比べる。
+**前提:** opt-stochastic-gradient, ml-logistic-regression
 
 ---
 
-## 出発点：KL正則化policy optimization
+## 図解
 
-prompt $x$ を固定すると
-
-$$
-\max_\pi
-\sum_y\pi_y r_y
--\beta\sum_y\pi_y\log\frac{\pi_y}{\pi_y^{\mathrm{ref}}}
-$$
-
-subject to
-
-$$
-\sum_y\pi_y=1.
-$$
+<img src="./assets/course-10/frontier-rlhf-preference-optimization.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## Lagrangianを微分する
+## 図を見るポイント
 
-$$
-\mathcal F
-=\sum_y\pi_y r_y
--\beta\sum_y\pi_y\log\frac{\pi_y}{\pi_y^{\mathrm{ref}}}
-+\eta(\sum_y\pi_y-1)
-$$
-
-$$
-0=\frac{\partial\mathcal F}{\partial\pi_y}
-=r_y-\beta\left(\log\frac{\pi_y}{\pi_y^{\mathrm{ref}}}+1\right)+\eta.
-$$
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
 
 ---
 
-## rewardとpolicy log-ratioの関係
-
-整理すると
+## 代表式
 
 $$
-r(x,y)
-=\beta\log\frac{\pi^*(y\mid x)}{\pi_{\mathrm{ref}}(y\mid x)}+C(x).
+\mathcal{L}_{DPO}=-\log\sigma(\beta[\log\pi_\theta(y_w\mid x)-\log\pi_\theta(y_l\mid x)-\Delta_{ref}])
 $$
 
-同じprompt内では$C(x)$はresponseに依存しない。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## chosen − rejectedで定数が消える
+## 式をどう読むか
 
-$$
-\begin{aligned}
-r_w-r_l
-=\beta\Bigg[
-&\log\frac{\pi^*(y_w\mid x)}{\pi_{\mathrm{ref}}(y_w\mid x)}\\
--&\log\frac{\pi^*(y_l\mid x)}{\pi_{\mathrm{ref}}(y_l\mid x)}
-\Bigg].
-\end{aligned}
-$$
+- **対象:** RLHF、preference、optimization
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## Bradley–Terry preference model
+## 小さな例
 
-$$
-P(y_w\succ y_l\mid x)=\sigma(r_w-r_l).
-$$
+chosen/rejected pairからpolicy更新へ流れるpipelineを描く。
 
-reward差へpolicy log-ratio差を代入する。
+最小の非自明な設定で、手計算と実装を照合する。
 
 ---
 
-## DPO loss
+## 動き／思考実験で確認
 
-$$
-\Delta_{\mathrm{ref}}
-=\log\pi_{\mathrm{ref}}(y_w\mid x)
--\log\pi_{\mathrm{ref}}(y_l\mid x)
-$$
-
-$$
-\boxed{
-\mathcal L_{\mathrm{DPO}}
-=-\log\sigma\left(\beta[
-\log\pi_\theta(y_w\mid x)
--\log\pi_\theta(y_l\mid x)
--\Delta_{\mathrm{ref}}]
-\right)
-}
-$$
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
 
 ---
 
-## 数値例
+## 成立条件
 
-$$
-\log\pi_\theta(y_w)=-1.0,\quad
-\log\pi_\theta(y_l)=-2.0
-$$
-
-$$
-\log\pi_{ref}(y_w)=-1.2,\quad
-\log\pi_{ref}(y_l)=-1.8,
-\quad\beta=0.5.
-$$
-
-policy差$=1.0$、reference差$=0.6$なのでlogit$=0.2$。
-
-$$
-\sigma(0.2)\approx0.550,
-\qquad
-\mathcal L\approx0.598.
-$$
+- preference dataのbiasがpolicyへ入る。
+- reward hackingやoveroptimizationを監視する。
+- RLHFとpreference optimizationの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
-## referenceを入れる意味
+## よくある誤解
 
-DPOが増やすのは単なる
-
-$$
-\log\pi_\theta(y_w)-\log\pi_\theta(y_l)
-$$
-
-ではない。
-
-**referenceからの変化量のchosen/rejected差**を増やす。
+- RLHFとpreference optimizationの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 壊れる条件
+## 数値・実装で検算
 
-- preference pairがsystematically biased
-- offline pairのcoverageが狭い
-- chosen/rejectedでmaskやlength処理が違う
-- reference supportとpolicy supportが合わない
-- $\beta$の定義を実装ごとに確認していない
-
----
-
-## 標準RLHFとの関係
-
-標準RLHF：
-
-`preference → reward model → rollout → RL update`
-
-DPO：
-
-`preference pair → policy/reference log-ratio → binary loss`
-
-training loopは簡単になるが、preference dataのbiasは消えない。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で導けるか
+## 後続分野への接続
 
-1. KL正則化objectiveを$\pi_y$で微分する。
-2. $r=\beta\log(\pi^*/\pi_{ref})+C(x)$を得る。
-3. chosen−rejectedで$C(x)$を消す。
-4. Bradley–Terryへ代入する。
-5. negative logを取ってDPO lossにする。
+RLHFとpreference optimizationは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
 
-## 教科書と演習
+## 理解確認
+
+- RLHFとpreference optimizationを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
 
 [教科書](../../textbook/frontier-rlhf-preference-optimization)
 

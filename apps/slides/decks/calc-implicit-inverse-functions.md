@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "陰関数微分と逆関数"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 陰関数微分と逆関数
@@ -93,3 +94,25 @@ $F_y=0$ の点で公式を使うと0除算になる。たとえば円の $(1,0)$
 ---
 
 [教科書](../../textbook/calc-implicit-inverse-functions)　|　[10問の演習](../../exercises/calc-implicit-inverse-functions)
+
+---
+
+## 今回の問い
+
+「陰関数微分と逆関数」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- yを明示的に解けない式でも、なぜ dy/dx を計算できるのか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. yを明示的に解けない式でも、なぜ dy/dx を計算できるのか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

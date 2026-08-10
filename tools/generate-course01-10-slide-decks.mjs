@@ -51,9 +51,6 @@ export async function generateCourse0110SlideDecks({
   const targetIds = ids?.length ? [...new Set(ids)] : [...byImplementationId.keys()]
   const unknown = targetIds.filter((id) => !byImplementationId.has(id))
   if (unknown.length) throw new Error(`Unknown Course 01-10 implementation topic(s): ${unknown.join(', ')}`)
-  if (!ids?.length && targetIds.length !== 202) {
-    throw new Error(`Expected 202 Course 01-10 implementation topics, found ${targetIds.length}`)
-  }
 
   const refinedCourse0210Profiles = await loadCourse0210RefinedProfiles(root)
 

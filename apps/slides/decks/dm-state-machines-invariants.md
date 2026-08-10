@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "状態機械と不変量"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 状態機械と不変量
@@ -93,3 +94,25 @@ loop invariant、distributed protocol、安全性証明へ直結する。動的�
 ---
 
 [教科書](../../textbook/dm-state-machines-invariants)　|　[10問の演習](../../exercises/dm-state-machines-invariants)
+
+---
+
+## 今回の問い
+
+「状態機械と不変量」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 時間とともに状態が変わる系の正しさを、毎step追わずにどう証明するか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 時間とともに状態が変わる系の正しさを、毎step追わずにどう証明するか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

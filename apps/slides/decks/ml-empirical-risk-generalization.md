@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "経験リスク・期待リスク・汎化"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 経験リスク・期待リスク・汎化
@@ -95,3 +96,25 @@ bias–variance、regularization、cross-validation、learning theoryへつな�
 ---
 
 [教科書](../../textbook/ml-empirical-risk-generalization)　|　[10問の演習](../../exercises/ml-empirical-risk-generalization)
+
+---
+
+## 今回の問い
+
+「経験リスク・期待リスク・汎化」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- training lossを下げることと、未知データで良い予測をすることはなぜ同じではないのか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. training lossを下げることと、未知データで良い予測をすることはなぜ同じではないのか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

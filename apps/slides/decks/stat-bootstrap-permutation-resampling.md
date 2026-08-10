@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "bootstrap・permutation・再標本化"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # bootstrap・permutation・再標本化
@@ -93,3 +94,25 @@ bootstrap percentile区間・BCa区間、permutation p-valueへ発展できる�
 ---
 
 [教科書](../../textbook/stat-bootstrap-permutation-resampling)　|　[10問の演習](../../exercises/stat-bootstrap-permutation-resampling)
+
+---
+
+## 今回の問い
+
+「bootstrap・permutation・再標本化」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 解析的な標本分布が難しい統計量の不確実性を、データからどう近似するか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 解析的な標本分布が難しい統計量の不確実性を、データからどう近似するか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

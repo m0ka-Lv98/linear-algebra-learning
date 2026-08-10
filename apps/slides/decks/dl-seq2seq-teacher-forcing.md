@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "seq2seq・encoder-decoder・teacher forcing"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # seq2seq・encoder-decoder・teacher forcing
@@ -94,3 +95,25 @@ RNN encoder-decoderからattentionを導入すると固定長context bottleneck�
 ---
 
 [教科書](../../textbook/dl-seq2seq-teacher-forcing)　|　[10問の演習](../../exercises/dl-seq2seq-teacher-forcing)
+
+---
+
+## 今回の問い
+
+「seq2seq・encoder-decoder・teacher forcing」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 入力長と出力長が異なる系列変換を、encoderとdecoderへ分けてどう学習するか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 入力長と出力長が異なる系列変換を、encoderとdecoderへ分けてどう学習するか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

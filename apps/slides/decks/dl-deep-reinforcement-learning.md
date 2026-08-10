@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "Deep Reinforcement Learning"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # Deep Reinforcement Learning
@@ -93,3 +94,25 @@ actor–critic、PPO、model-based RLへ進む。Course10のRLHFではstateがpr
 ---
 
 [教科書](../../textbook/dl-deep-reinforcement-learning)　|　[10問の演習](../../exercises/dl-deep-reinforcement-learning)
+
+---
+
+## 今回の問い
+
+「Deep Reinforcement Learning」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 表形式のQやpolicyをニューラルnetworkへ置き換えると、何が可能になり、何が不安定になるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 表形式のQやpolicyをニューラルnetworkへ置き換えると、何が可能になり、何が不安定になるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

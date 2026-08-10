@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "LLM推論：prefill・decode・KV cache"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # LLM推論：prefill・decode・KV cache
@@ -94,3 +95,25 @@ continuous batchingでは各requestのdecode stepを同じGPU batchへ詰める�
 ---
 
 [教科書](../../textbook/frontier-inference-prefill-decode-kv-cache)　|　[10問の演習](../../exercises/frontier-inference-prefill-decode-kv-cache)
+
+---
+
+## 今回の問い
+
+「LLM推論：prefill・decode・KV cache」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- LLM inferenceでprompt処理と1 tokenずつの生成は、計算特性がなぜ異なるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. LLM inferenceでprompt処理と1 tokenずつの生成は、計算特性がなぜ異なるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "ベクトル場と線積分"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # ベクトル場と線積分
@@ -94,3 +95,25 @@ Green/Stokes/Gaussの定理は境界上の線積分と内部の微分量を結�
 ---
 
 [教科書](../../textbook/calc-vector-fields-line-integrals)　|　[10問の演習](../../exercises/calc-vector-fields-line-integrals)
+
+---
+
+## 今回の問い
+
+「ベクトル場と線積分」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 空間の各点にベクトルがあるとき、曲線に沿った仕事をどう足し上げるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 空間の各点にベクトルがあるとき、曲線に沿った仕事をどう足し上げるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

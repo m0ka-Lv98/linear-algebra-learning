@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "検定力と標本サイズ"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 検定力と標本サイズ
@@ -95,3 +96,25 @@ sample size設計、equivalence/non-inferiority、multiple testingでのpower低
 ---
 
 [教科書](../../textbook/stat-power-sample-size)　|　[10問の演習](../../exercises/stat-power-sample-size)
+
+---
+
+## 今回の問い
+
+「検定力と標本サイズ」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 「有意差が出なかった」を、効果がない証拠とみなしてよいのはいつか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 「有意差が出なかった」を、効果がない証拠とみなしてよいのはいつか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

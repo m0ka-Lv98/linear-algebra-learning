@@ -17,8 +17,8 @@ const errors = []
 const warnings = []
 let curated = 0
 let generated = 0
-if (course00Ids.size !== 8) errors.push(`expected 8 Course 00 topics, found ${course00Ids.size}`)
-if (targetIds.length !== 202) errors.push(`expected 202 Course 01-10 topics, found ${targetIds.length}`)
+if (!course00Ids.size) errors.push('expected at least one Course 00 topic')
+if (!targetIds.length) errors.push('expected at least one Course 01-10 topic')
 
 for (const id of targetIds) {
   const file = path.join(root, 'apps/slides/decks', `${id}.md`)

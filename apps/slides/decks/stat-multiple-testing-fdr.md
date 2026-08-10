@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "多重検定とFDR"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 多重検定とFDR
@@ -95,3 +96,25 @@ omics・画像・大規模A/B testなど多数仮説で不可欠。selective inf
 ---
 
 [教科書](../../textbook/stat-multiple-testing-fdr)　|　[10問の演習](../../exercises/stat-multiple-testing-fdr)
+
+---
+
+## 今回の問い
+
+「多重検定とFDR」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 何百・何千個も検定すると、なぜ偶然の有意差が増え、どう制御するか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 何百・何千個も検定すると、なぜ偶然の有意差が増え、どう制御するか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

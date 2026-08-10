@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "媒介変数表示と極座標"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 媒介変数表示と極座標
@@ -93,3 +94,25 @@ $dx/dt=0$ の点で比を取ってはいけない。$dy/dt\ne0$ なら垂直接�
 ---
 
 [教科書](../../textbook/calc-parametric-polar-curves)　|　[10問の演習](../../exercises/calc-parametric-polar-curves)
+
+---
+
+## 今回の問い
+
+「媒介変数表示と極座標」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- xを独立変数にできない曲線を、媒介変数や極座標でどう扱うか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. xを独立変数にできない曲線を、媒介変数や極座標でどう扱うか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

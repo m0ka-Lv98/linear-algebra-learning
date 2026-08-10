@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "無限級数と収束判定"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 無限級数と収束判定
@@ -93,3 +94,25 @@ Taylor級数は係数が導関数で決まる無限級数。次Topicでは「級
 ---
 
 [教科書](../../textbook/calc-infinite-series-convergence)　|　[10問の演習](../../exercises/calc-infinite-series-convergence)
+
+---
+
+## 今回の問い
+
+「無限級数と収束判定」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 無限個の項を足すとは何を意味し、どの条件で有限値へ収束するのか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 無限個の項を足すとは何を意味し、どの条件で有限値へ収束するのか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "tool useのsecurity boundaryとprompt injection"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # tool useのsecurity boundaryとprompt injection
@@ -93,3 +94,25 @@ agent security、MCP/tool permissions、data exfiltration対策、sandboxing、s
 ---
 
 [教科書](../../textbook/frontier-tool-security-prompt-injection)　|　[10問の演習](../../exercises/frontier-tool-security-prompt-injection)
+
+---
+
+## 今回の問い
+
+「tool useのsecurity boundaryとprompt injection」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 外部documentやweb内容を読むagentで、なぜ「読んだ文字列」を「実行すべき命令」と同一視してはいけないか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 外部documentやweb内容を読むagentで、なぜ「読んだ文字列」を「実行すべき命令」と同一視してはいけないか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

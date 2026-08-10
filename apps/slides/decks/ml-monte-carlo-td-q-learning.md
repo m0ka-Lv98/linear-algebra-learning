@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "Monte Carlo・TD・Q-learning"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # Monte Carlo・TD・Q-learning
@@ -93,3 +94,25 @@ Deep Q-NetworkはQ tableをneural networkへ置き換え、replay bufferとtarge
 ---
 
 [教科書](../../textbook/ml-monte-carlo-td-q-learning)　|　[10問の演習](../../exercises/ml-monte-carlo-td-q-learning)
+
+---
+
+## 今回の問い
+
+「Monte Carlo・TD・Q-learning」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 遷移modelが未知でも、経験sampleだけから価値関数をどう学ぶか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 遷移modelが未知でも、経験sampleだけから価値関数をどう学ぶか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

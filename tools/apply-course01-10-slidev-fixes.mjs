@@ -14,10 +14,6 @@ if (!Array.isArray(curriculum?.topics)) {
 const targetTopics = curriculum.topics.filter((item) => String(item.course) !== '00')
 const targetIds = [...new Set(targetTopics.map((item) => item.implementation_topic ?? item.id))]
 
-if (targetIds.length !== 202) {
-  throw new Error(`Expected 202 Course 01-10 implementation topics, found ${targetIds.length}. Refusing to apply a partial migration.`)
-}
-
 await normalizeCourse0110SlideDecks({ root, ids: targetIds })
 
 

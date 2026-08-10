@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "二部matchingとHallの定理"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 二部matchingとHallの定理
@@ -93,3 +94,25 @@ assignment問題、network flow、marriage theorem、resource allocationへつ�
 ---
 
 [教科書](../../textbook/dm-bipartite-matching-hall)　|　[10問の演習](../../exercises/dm-bipartite-matching-hall)
+
+---
+
+## 今回の問い
+
+「二部matchingとHallの定理」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 左側の全頂点を重複なく右側へ割り当てられる条件は何か。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 左側の全頂点を重複なく右側へ割り当てられる条件は何か。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

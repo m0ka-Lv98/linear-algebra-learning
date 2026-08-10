@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "Taylor級数・剰余・収束半径"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # Taylor級数・剰余・収束半径
@@ -93,3 +94,25 @@ $\sin x$ の0周り3次Taylor多項式は $x-x^3/6$。$|x|\le1$ なら次の非�
 ---
 
 [教科書](../../textbook/calc-taylor-series-remainder)　|　[10問の演習](../../exercises/calc-taylor-series-remainder)
+
+---
+
+## 今回の問い
+
+「Taylor級数・剰余・収束半径」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 有限次数のTaylor近似を無限級数へ伸ばすと、いつ元の関数そのものになるのか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 有限次数のTaylor近似を無限級数へ伸ばすと、いつ元の関数そのものになるのか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

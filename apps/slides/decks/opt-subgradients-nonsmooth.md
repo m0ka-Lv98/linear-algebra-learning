@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "劣勾配と非滑らか最適化"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 劣勾配と非滑らか最適化
@@ -93,3 +94,25 @@ L1正則化、hinge loss、proximal gradientへつながる。soft-thresholding�
 ---
 
 [教科書](../../textbook/opt-subgradients-nonsmooth)　|　[10問の演習](../../exercises/opt-subgradients-nonsmooth)
+
+---
+
+## 今回の問い
+
+「劣勾配と非滑らか最適化」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- |x|やL1正則化のように微分できない点があっても、凸最適化をどう続けるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. |x|やL1正則化のように微分できない点があっても、凸最適化をどう続けるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

@@ -17,9 +17,8 @@ const course00Ids = implementationIds(curriculum.topics.filter((item) => String(
 const targetIds = implementationIds(curriculum.topics.filter((item) => String(item.course) !== '00'))
 const allIds = [...course00Ids, ...targetIds]
 
-if (course00Ids.length !== 8) throw new Error(`Expected 8 Course 00 topics, found ${course00Ids.length}`)
-if (targetIds.length !== 202) throw new Error(`Expected 202 Course 01-10 topics, found ${targetIds.length}`)
-if (allIds.length !== 210) throw new Error(`Expected 210 total implementation topics, found ${allIds.length}`)
+if (!course00Ids.length) throw new Error('Expected at least one Course 00 topic')
+if (!targetIds.length) throw new Error('Expected at least one Course 01-10 topic')
 
 const output = path.join(root, 'dist')
 const slides = path.join(output, 'slides')

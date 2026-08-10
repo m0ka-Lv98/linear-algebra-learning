@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "t分布・χ²分布と標本分布"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # t分布・χ²分布と標本分布
@@ -94,3 +95,25 @@ $\chi^2$ は分散推定や適合度検定、tは平均の区間推定・検定�
 ---
 
 [教科書](../../textbook/stat-t-chi-square-sampling-distributions)　|　[10問の演習](../../exercises/stat-t-chi-square-sampling-distributions)
+
+---
+
+## 今回の問い
+
+「t分布・χ²分布と標本分布」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 母分散が未知のとき、なぜ標準正規ではなくt分布が現れるのか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 母分散が未知のとき、なぜ標準正規ではなくt分布が現れるのか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

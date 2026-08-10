@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "value iterationとpolicy iteration"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # value iterationとpolicy iteration
@@ -93,3 +94,25 @@ value iterationはfixed-point numerical methodとしてCourse05の収束理論�
 ---
 
 [教科書](../../textbook/ml-dynamic-programming-value-policy-iteration)　|　[10問の演習](../../exercises/ml-dynamic-programming-value-policy-iteration)
+
+---
+
+## 今回の問い
+
+「value iterationとpolicy iteration」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

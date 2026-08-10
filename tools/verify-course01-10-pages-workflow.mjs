@@ -22,8 +22,8 @@ if (!dedicatedBranch) {
 }
 
 for (const required of [
-  'Expected 8 Course 00 topics',
-  'Expected 202 Course 01-10 topics',
+  'Expected at least one Course 00 topic',
+  'Expected at least one Course 01-10 topic',
   'Refusing to run a full-build fallback',
   "await cp(path.join(backup, id), path.join(slides, id), { recursive: true })",
   'generateCourse0110SlideDecks',

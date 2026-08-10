@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "変数変換とJacobian determinant"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # 変数変換とJacobian determinant
@@ -93,3 +94,25 @@ $|\det J|=0$ の点では局所的に面積が潰れ、通常の1対1な座標�
 ---
 
 [教科書](../../textbook/calc-change-of-variables-jacobian)　|　[10問の演習](../../exercises/calc-change-of-variables-jacobian)
+
+---
+
+## 今回の問い
+
+「変数変換とJacobian determinant」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 座標変換で積分するとき、なぜJacobian determinantの絶対値を掛けるのか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 座標変換で積分するとき、なぜJacobian determinantの絶対値を掛けるのか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

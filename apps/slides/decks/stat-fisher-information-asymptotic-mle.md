@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "Fisher情報量とMLEの漸近分布"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # Fisher情報量とMLEの漸近分布
@@ -95,3 +96,25 @@ Cramér–Rao下界、Wald/LR/score検定、natural gradientへつながる。�
 ---
 
 [教科書](../../textbook/stat-fisher-information-asymptotic-mle)　|　[10問の演習](../../exercises/stat-fisher-information-asymptotic-mle)
+
+---
+
+## 今回の問い
+
+「Fisher情報量とMLEの漸近分布」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 尤度の「尖り具合」が、推定量の精度とどう結びつくか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 尤度の「尖り具合」が、推定量の精度とどう結びつくか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

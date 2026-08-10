@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "SFT・instruction tuning"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # SFT・instruction tuning
@@ -93,3 +94,25 @@ PEFTはSFTなどのobjectiveを、全parameterではなくLoRA等の小さなpar
 ---
 
 [教科書](../../textbook/frontier-supervised-finetuning-instruction-tuning)　|　[10問の演習](../../exercises/frontier-supervised-finetuning-instruction-tuning)
+
+---
+
+## 今回の問い
+
+「SFT・instruction tuning」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- pretrained LMを「指示に従うmodel」へ変える最初の段階は何を最適化しているか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. pretrained LMを「指示に従うmodel」へ変える最初の段階は何を最適化しているか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる

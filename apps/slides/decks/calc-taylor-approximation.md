@@ -1,7 +1,7 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: textbook-plus-sequential-v3
+generatedBy: course01-10-curated-upgrade-v2
 layout: cover
 title: "Taylor展開と局所近似"
 ---
@@ -112,3 +112,18 @@ layout: center
 
 - [教科書](../../textbook/calc-taylor-approximation)
 - [10問の演習](../../exercises/calc-taylor-approximation)
+
+---
+
+## 到達目標
+
+- Taylor展開、局所近似の定義と成立条件を説明できる
+- Taylor展開と局所近似を小規模に計算・実装し検算できる
+
+---
+
+## 理解確認
+
+1. Taylor展開、局所近似の定義と成立条件を説明できる
+2. Taylor展開と局所近似を小規模に計算・実装し検算できる
+3. 代表式・計算手順・成立条件を小さな例で検算できるか。

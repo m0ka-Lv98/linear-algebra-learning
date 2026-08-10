@@ -3,6 +3,7 @@ theme: default
 routerMode: hash
 layout: cover
 title: "LLM serving・continuous batching・speculative decoding"
+generatedBy: course01-10-curated-upgrade-v2
 ---
 
 # LLM serving・continuous batching・speculative decoding
@@ -94,3 +95,25 @@ prefill/decode disaggregation、scheduler policy、tensor/pipeline parallel、lo
 ---
 
 [教科書](../../textbook/frontier-serving-batching-speculative-decoding)　|　[10問の演習](../../exercises/frontier-serving-batching-speculative-decoding)
+
+---
+
+## 今回の問い
+
+「LLM serving・continuous batching・speculative decoding」は何を表し、どの条件で使え、結果をどう検算するのか？
+
+---
+
+## 到達目標
+
+- 複数requestを低latencyかつ高throughputで処理するため、serving systemは何をscheduleするか。
+- 中心式の記号と成立条件を説明できる
+- 小さい例と反例で検算できる
+
+---
+
+## 理解確認
+
+1. 複数requestを低latencyかつ高throughputで処理するため、serving systemは何をscheduleするか。
+2. 中心式の記号と成立条件を説明できる
+3. 小さい例と反例で検算できる
