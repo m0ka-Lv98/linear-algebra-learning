@@ -1,103 +1,266 @@
-# 擬似逆行列とrank不足の連立方程式：教科書
+# 擬似逆行列とrank不足系：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 27/29
 
-rank不足では解がない／複数あるが起こる。Moore–Penrose擬似逆は、最小二乗と最小ノルムという基準で代表解を一意に選ぶ。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+Topic 18ではfull-column-rankの場合に限って擬似逆を導入した。SVDを正式に学んだ今、rank不足のとき何を逆にし、何を逆にしないかを厳密に説明できる。さらに $\mathbf A\mathbf A^+$ と $\mathbf A^+\mathbf A$ が射影になることも導ける。
 
-## 前提知識
+**前提知識**：SVD、最小二乗、null space。
 
-前提Topic: la-singular-value-decomposition, la-least-squares-computation-pseudoinverse。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+rank不足では、入力の一部が完全に消える。消えた情報は出力から復元できない。擬似逆は「観測できる成分は正確に逆へ戻し、観測できないnull-space成分は勝手に推測せず0にする」という最も保守的な逆写像である。
 
-rank不足では解がない／複数あるが起こる。Moore–Penrose擬似逆は、最小二乗と最小ノルムという基準で代表解を一意に選ぶ。
+## 図の解説
 
-<img src="/visuals/course-02/la-pseudoinverse-rank-deficient-systems.png" alt="擬似逆行列とrank不足の連立方程式の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-pseudoinverse-rank-deficient-systems.png" alt="擬似逆行列とrank不足系の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図では入力側の一つの方向が $\mathbf A$ で出力の0へ潰れ、別の方向だけが出力の列空間へ残る。擬似逆は残った出力成分を入力側のrow-space方向へ戻すが、消えたnull-space方向は復元しない。
+
+したがってminimum-norm解ではnull-space成分が0になる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- compact SVD：$\mathbf A=\mathbf U_r\mathbf\Sigma_r\mathbf V_r^T$。
+- $r=\operatorname{rank}(\mathbf A)$。
+- $\mathbf\Sigma_r=\operatorname{diag}(\sigma_1,\ldots,\sigma_r)$、全て正。
+- $\mathbf A^+=\mathbf V_r\mathbf\Sigma_r^{-1}\mathbf U_r^T$。
+
 
 ## 正式な定義
 
-SVD $A=U\Sigma V^T$ に対し、非zero特異値を逆数へした $\Sigma^+$ で $A^+=V\Sigma^+U^T$。$x^*=A^+b$ は最小ノルム最小二乗解。
-
-代表式：
+SVDから
 
 $$
-\mathbf{A}^{+}=\mathbf{V}\mathbf{\Sigma}^{+}\mathbf{U}^{\mathsf T}
+\boxed{\mathbf A^+=\mathbf V\mathbf\Sigma^+\mathbf U^T}
 $$
 
-## 代表式の記号を定義する
+と定義する。Moore–Penrose擬似逆は次の4条件を満たす唯一の行列：
 
-- $\mathbf{A}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^{\mathsf T}$: $\mathbf{A}$のSVD。
-- $\mathbf{\Sigma}^{+}$: nonzero特異値$\sigma_i$を$1/\sigma_i$へ置き換えた擬似逆対角行列。
-- $\mathbf{A}^{+}$: Moore–Penrose擬似逆行列。
-- rank不足では、$\mathbf{A}^{+}\mathbf{b}$が最小二乗解のうち最小2-normのものを選ぶ。
+$$
+\mathbf A\mathbf A^+\mathbf A=\mathbf A,
+$$
 
-## なぜこの式になるのか
+$$
+\mathbf A^+\mathbf A\mathbf A^+=\mathbf A^+,
+$$
 
-SVD座標ではrank方向とnull方向が分離される。観測可能な方向だけ逆変換し、null方向の係数を0にすることで最小ノルムになる。
+$$
+(\mathbf A\mathbf A^+)^T=\mathbf A\mathbf A^+,
+$$
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+(\mathbf A^+\mathbf A)^T=\mathbf A^+\mathbf A.
+$$
 
-## 小さな手計算
+## なぜこの式・定理になるのか
 
-$A=[1\;1]$（1×2）, $b=2$。解は$x_1+x_2=2$で無限にあるが、最小ノルム解は$(1,1)^T$。
+### 出力空間側の射影 $\mathbf A\mathbf A^+$
 
-さらに確認問題：$A=[1\;1]$、$b=6$ の最小ノルム解を求めよ。
+compact SVDを使うと
 
-**解答**：制約$x_1+x_2=6$の下で$x_1^2+x_2^2$を最小にすると対称性から$x_1=x_2=3$。擬似逆でも$(3,3)^T$。
+$$
+\mathbf A\mathbf A^+
+=(\mathbf U_r\mathbf\Sigma_r\mathbf V_r^T)
+(\mathbf V_r\mathbf\Sigma_r^{-1}\mathbf U_r^T).
+$$
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$\mathbf V_r^T\mathbf V_r=\mathbf I$、$\mathbf\Sigma_r\mathbf\Sigma_r^{-1}=\mathbf I$ より
 
-## 計算手順・アルゴリズム
+$$
+\boxed{\mathbf A\mathbf A^+=\mathbf U_r\mathbf U_r^T}.
+$$
 
-SVD→閾値以上の特異値だけ逆数→$A^+$を適用。実装では `lstsq`/`pinv` のrcondを確認。
+$\mathbf U_r$ の列は $C(\mathbf A)$ の正規直交基底なので、これは $C(\mathbf A)$ への直交射影。
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+したがって任意の $\mathbf b$ について
 
-## 成立条件と典型的な誤り
+$$
+\mathbf A\mathbf A^+\mathbf b
+$$
 
-- 非常に小さい特異値を無条件に逆数にするとノイズを大幅増幅。
-- 最小ノルム基準は追加の物理制約を自動的に満たすわけではない。
-- rank判定は有限精度では閾値依存。
+は $\mathbf b$ の列空間への最も近い点である。
 
-特に、次の主張を自力で診断できるようにする。
+### 入力空間側の射影 $\mathbf A^+\mathbf A$
 
-> 「rank不足なら数値解は一切求められない」
+同様に
 
-**診断**：厳密解が複数/存在しない場合でも、擬似逆で最小ノルム最小二乗解を定義できる。
+$$
+\mathbf A^+\mathbf A
+=\mathbf V_r\mathbf V_r^T.
+$$
 
-## 数値実装での検算
+これはrow space $C(\mathbf A^T)$ への直交射影。入力を「出力に影響する成分」へ射影し、null space成分を除く。
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+### minimum-norm解の厳密な分解
 
-## 後続Topicへの接続
+任意の $\mathbf x$ を
 
-under-determined inverse problems、共線性のある回帰、spectral unmixingのrank不足。
+$$
+\mathbf x=\mathbf x_r+\mathbf x_0,
+$$
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+$$
+\mathbf x_r\in C(\mathbf A^T),
+\qquad
+\mathbf x_0\in N(\mathbf A)
+$$
+
+と直交分解する。$\mathbf A\mathbf x_0=0$ なので出力は $\mathbf x_r$ だけで決まる。一方
+
+$$
+\|\mathbf x\|_2^2
+=\|\mathbf x_r\|_2^2+\|\mathbf x_0\|_2^2.
+$$
+
+同じ出力を作る解の中でノルム最小にするには $\mathbf x_0=0$。$\mathbf A^+\mathbf b$ はrow spaceに属するのでこの条件を満たす。
+
+## 小さな数値例を最後まで計算する
+
+$$
+\mathbf A=\begin{bmatrix}1&1\\2&2\end{bmatrix},
+\qquad
+\mathbf b=\begin{bmatrix}3\\6\end{bmatrix}.
+$$
+
+方程式は $x_1+x_2=3$ なので解は $(3-t,t)^T$。ノルム二乗は
+
+$$
+(3-t)^2+t^2=2\left(t-\frac32\right)^2+\frac92.
+$$
+
+最小は $t=3/2$、したがってminimum-norm解は $(1.5,1.5)^T$。擬似逆はこの対称な分配を返す。
+
+## もう一段丁寧に：擬似逆が二つの射影を作ることを導く
+
+### 1. rank-$r$ SVDから出発する
+
+$$
+\mathbf A=\mathbf U_r\mathbf\Sigma_r\mathbf V_r^T
+$$
+
+とする。$\mathbf\Sigma_r$ は正の特異値だけを持つので可逆。擬似逆は
+
+$$
+\boxed{
+\mathbf A^+
+=\mathbf V_r\mathbf\Sigma_r^{-1}\mathbf U_r^T
+}.
+$$
+
+### 2. $\mathbf A\mathbf A^+$ はcolumn spaceへの射影
+
+掛け算すると
+
+$$
+\begin{aligned}
+\mathbf A\mathbf A^+
+&=\mathbf U_r\mathbf\Sigma_r\mathbf V_r^T
+\mathbf V_r\mathbf\Sigma_r^{-1}\mathbf U_r^T\\
+&=\mathbf U_r\mathbf U_r^T.
+\end{aligned}
+$$
+
+$\mathbf U_r$ の列は $C(\mathbf A)$ のorthonormal basisなので
+
+$$
+\boxed{\mathbf A\mathbf A^+
+=\mathbf U_r\mathbf U_r^T}
+$$
+
+はcolumn spaceへのorthogonal projectorである。したがって任意の $\mathbf b$ に対し
+
+$$
+\mathbf A\mathbf A^+\mathbf b
+$$
+
+が再現可能な出力の中で $\mathbf b$ に最も近い点になる。
+
+### 3. $\mathbf A^+\mathbf A$ はrow spaceへの射影
+
+同様に
+
+$$
+\mathbf A^+\mathbf A
+=\mathbf V_r\mathbf V_r^T.
+$$
+
+$\mathbf V_r$ の列はrow space $C(\mathbf A^T)$ のorthonormal basisなので、これは入力空間側のrow-space projectorである。
+
+この二つは同じ行列ではない。$\mathbf A\mathbf A^+$ は $m\times m$ で出力空間に作用し、$\mathbf A^+\mathbf A$ は $n\times n$ で入力空間に作用する。
+
+### 4. underdetermined systemでminimum normを選ぶ
+
+$\mathbf A\mathbf x=\mathbf b$ が解を持つがnull spaceが非自明とする。任意の解は
+
+$$
+\mathbf x=\mathbf x_r+\mathbf x_0,
+$$
+
+$$
+\mathbf x_r\in C(\mathbf A^T),
+\qquad
+\mathbf x_0\in N(\mathbf A)
+$$
+
+と直交分解できる。$\mathbf A\mathbf x_0=0$ なので、$\mathbf x_0$ を加えても同じ出力。
+
+row spaceとnull spaceは直交するため
+
+$$
+\|\mathbf x\|_2^2
+=\|\mathbf x_r\|_2^2+\|\mathbf x_0\|_2^2.
+$$
+
+よって最小ノルムは $\mathbf x_0=0$ のとき。擬似逆解 $\mathbf A^+\mathbf b$ はrow space内にあるので、まさにこの解を選ぶ。
+
+### 5. Penrose条件の意味
+
+Moore–Penrose擬似逆は
+
+$$
+\mathbf A\mathbf A^+\mathbf A=\mathbf A,
+$$
+
+$$
+\mathbf A^+\mathbf A\mathbf A^+=\mathbf A^+,
+$$
+
+$$
+(\mathbf A\mathbf A^+)^T=\mathbf A\mathbf A^+,
+$$
+
+$$
+(\mathbf A^+\mathbf A)^T=\mathbf A^+\mathbf A
+$$
+
+を満たす一意な行列である。前二つは「有効な部分空間では逆として振る舞う」こと、後二つは二つの射影がorthogonal projectorであることを表す。SVD式を代入すれば各条件を直接確認できる。
+
+## 成立条件・壊れる場合
+
+擬似逆は任意行列に定義されるが、小特異値を逆にすることでノイズを増幅しうる。厳密rankとnumerical rankを区別し、cutoffの意味を理解する。
+
+## ここから発展
+
+小特異値を0扱いするtruncated SVDや、$1/\sigma_i$ の代わりに $\sigma_i/(\sigma_i^2+\lambda)$ のような穏やかな逆を使うridge/Tikhonov regularizationは、ill-posed inverse problemへ進む自然な次段階。
+
+
+## このTopicの理解確認
+
+- $\mathbf A^+=\mathbf V_r\mathbf\Sigma_r^{-1}\mathbf U_r^T$ がzero singular directionsを逆にしない理由を説明できるか。
+- $\mathbf A\mathbf A^+=\mathbf U_r\mathbf U_r^T$ と $\mathbf A^+\mathbf A=\mathbf V_r\mathbf V_r^T$ がどの空間へのprojectionか区別できるか。
+- minimum-norm solutionでnull-space componentを0にする理由をPythagorasで示せるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
 
-## 演習へ
+- [MIT OpenCourseWare 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
 
-[10問の演習](/exercises/la-pseudoinverse-rank-deficient-systems)
+
+## 演習
+
+[このTopicの10問の演習](/exercises/la-pseudoinverse-rank-deficient-systems)

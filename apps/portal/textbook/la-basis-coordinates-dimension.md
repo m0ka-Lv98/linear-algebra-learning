@@ -1,104 +1,174 @@
 # 基底・座標・次元：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 10/29
 
-基底は「空間を重複なく生成する最小限の方向セット」。座標は、基底を使ってベクトルを再現する係数である。次元は基底ベクトルの本数で、基底の選び方によらない。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+空間を生成するだけならspanで十分だが、生成ベクトルが従属だと同じベクトルに複数の係数表現が生じる。そこで「空間全体を生成し、しかも冗長でない」ベクトル集合を基底とする。基底を選ぶと、各ベクトルに一意な座標を割り当てられる。
 
-## 前提知識
+**前提知識**：spanと線形独立。
 
-前提Topic: la-linear-independence。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+地図上の点を緯度・経度で表すように、ベクトル空間でも基底を決めるとベクトルを係数の組で表せる。同じ幾何学的ベクトルでも、基底を変えれば座標の数値は変わる。しかしベクトルそのものが変わるわけではない。
 
-基底は「空間を重複なく生成する最小限の方向セット」。座標は、基底を使ってベクトルを再現する係数である。次元は基底ベクトルの本数で、基底の選び方によらない。
+## 図の解説
 
-<img src="/visuals/course-02/la-basis-coordinates-dimension.png" alt="基底・座標・次元の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-basis-coordinates-dimension.png" alt="基底・座標・次元の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図では斜めの基底 $\mathbf b_1,\mathbf b_2$ を使って同じ $\mathbf x$ を $2\mathbf b_1-\mathbf b_2$ と分解している。このとき座標ベクトルは $[\mathbf x]_{\mathcal B}=(2,-1)^T$ である。
+
+図中の $\mathbf x$ の位置は基底を変えても同じだが、「基底を何本ずつ使うか」という座標値だけが変わる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $V$：対象のベクトル空間。
+- $\mathcal B=(\mathbf b_1,\ldots,\mathbf b_k)$：順序付き基底。
+- $[\mathbf x]_{\mathcal B}\in\mathbb R^k$：$\mathcal B$ に関する座標ベクトル。
+- $\dim V$：空間の次元。
+
 
 ## 正式な定義
 
-$\mathcal{B}=(v_1,\ldots,v_k)$ が空間Vをspanし独立なら基底。$x=\sum_i c_i v_i$ の係数列 $[x]_\mathcal{B}=(c_1,\ldots,c_k)^T$ が座標。
+$\mathcal B=(\mathbf b_1,\ldots,\mathbf b_k)$ が $V$ の基底であるとは、
 
-代表式：
+1. $\mathbf b_1,\ldots,\mathbf b_k$ が線形独立であり、
+2. $V=\operatorname{span}\{\mathbf b_1,\ldots,\mathbf b_k\}$
+
+であること。任意の $\mathbf x\in V$ は一意に
 
 $$
-[\mathbf{x}]_{\mathcal{B}}=[c_1,\ldots,c_k]^{\mathsf T}
+\mathbf x=c_1\mathbf b_1+\cdots+c_k\mathbf b_k
 $$
 
-## 代表式の記号を定義する
+と書け、この係数を
 
-- $\mathcal{B}=(\mathbf{v}_1,\ldots,\mathbf{v}_k)$: 順序付きの基底。
-- $\mathbf{x}$: 基底$\mathcal{B}$で表したいベクトル。
-- $[\mathbf{x}]_{\mathcal{B}}\in\mathbb{R}^k$: $\mathcal{B}$に関する座標ベクトル。
-- $c_i$: $\mathbf{x}=\sum_i c_i\mathbf{v}_i$を満たす座標成分。
+$$
+[\mathbf x]_{\mathcal B}=\begin{bmatrix}c_1\\\vdots\\c_k\end{bmatrix}
+$$
 
-## なぜこの式になるのか
+とする。基底の本数 $k$ が $\dim V$ である。
 
-spanにより全ベクトルを表現でき、独立性により表現の一意性が保証される。この2条件が「座標系」として機能する理由。
+## なぜこの式・定理になるのか
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+### なぜ「span」と「独立」の両方が必要なのか
 
-## 小さな手計算
+span条件は**存在**を保証する。つまり全ての $\mathbf x\in V$ に対して、何らかの係数 $c_i$ が存在する。
 
-$\mathcal{B}=((1,1)^T,(1,-1)^T)$。$x=(4,2)^T$ は $3(1,1)+1(1,-1)$ なので $[x]_\mathcal{B}=(3,1)^T$。
+独立条件は**一意性**を保証する。もし二つの係数表示があれば、差を取ると0の線形結合になり、独立性から係数差が全て0になる。
 
-さらに確認問題：$B=((1,0,1)^T,(0,1,1)^T)$ が張る平面で $x=(2,-1,1)^T$ のB座標を求めよ。
+したがって基底とは「全てのベクトルに座標が存在し、その座標が一意に決まる」ための必要な二条件をまとめたものと理解できる。
 
-**解答**：$c_1(1,0,1)+c_2(0,1,1)=(c_1,c_2,c_1+c_2)$。$c_1=2,c_2=-1$ で3成分目も1。よって座標は $(2,-1)^T$。
+### 座標写像は線形である
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$\mathbf x,\mathbf y\in V$ に対して
 
-## 計算手順・アルゴリズム
+$$
+[\mathbf x]_{\mathcal B}=\mathbf c,
+\qquad
+[\mathbf y]_{\mathcal B}=\mathbf d
+$$
 
-基底ベクトルを列にしたBを作り $Bc=x$ を解いて座標cを得る。基底なら正方かつ可逆（空間全体の場合）。
+なら、
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$$
+[a\mathbf x+b\mathbf y]_{\mathcal B}=a\mathbf c+b\mathbf d.
+$$
 
-## 成立条件と典型的な誤り
+これは基底での係数をそのまま線形結合できるため。つまり座標化そのものが線形写像である。
 
-- 座標ベクトルと元のベクトルを同じものとみなさない。
-- 基底は順序付きと考える。順序を変えると座標成分も変わる。
-- 生成集合が基底になるには独立性も必要。
+## 小さな数値例を最後まで計算する
 
-特に、次の主張を自力で診断できるようにする。
+$\mathbf b_1=(1,1)^T$、$\mathbf b_2=(1,-1)^T$、$\mathbf x=(3,1)^T$ とする。
 
-> 「同じベクトルなら、どの基底でも座標成分は同じ」
+$$
+c_1\begin{bmatrix}1\\1\end{bmatrix}
++c_2\begin{bmatrix}1\\-1\end{bmatrix}
+=\begin{bmatrix}3\\1\end{bmatrix}
+$$
 
-**診断**：座標は基底依存。幾何的ベクトルは同じでも、基底を変えると係数は変わる。
+より $c_1+c_2=3$、$c_1-c_2=1$。解いて $c_1=2,c_2=1$。したがって
 
-## 数値実装での検算
+$$
+[\mathbf x]_{\mathcal B}=(2,1)^T.
+$$
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+## もう一段丁寧に：basisは「生成」と「一意性」を同時に満たす
 
-## 後続Topicへの接続
+### 1. なぜspanだけでは足りないのか
 
-基底変換、固有ベクトル基底、Fourier/PCA表現の理解に直結。
+あるベクトル集合が空間 $V$ をspanしていれば、任意の $\mathbf x\in V$ をその線形結合で表せる。しかし生成ベクトルに冗長性があると係数は一意でない。座標として使うには、同じ点に複数の座標が付くのは困る。
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+そこでbasisには
+
+1. $V$ をspanすること（存在）
+2. 線形独立であること（一意性）
+
+の両方を要求する。
+
+### 2. basisなら座標が存在し一意になる証明
+
+$\mathcal B=(\mathbf b_1,\ldots,\mathbf b_k)$ が $V$ のbasisとする。spanするので任意の $\mathbf x\in V$ に対し
+
+$$
+\mathbf x=c_1\mathbf b_1+\cdots+c_k\mathbf b_k
+$$
+
+となる係数が少なくとも一組存在する。
+
+もし別の係数 $d_i$ でも同じ $\mathbf x$ を作るなら
+
+$$
+\sum_i(c_i-d_i)\mathbf b_i=\mathbf0.
+$$
+
+basisは独立なので $c_i-d_i=0$。よって係数は一意。この係数ベクトル
+
+$$
+[\mathbf x]_{\mathcal B}
+=\begin{bmatrix}c_1\\\vdots\\c_k\end{bmatrix}
+$$
+
+を $\mathcal B$ に関する座標という。
+
+### 3. basisは違っても本数が同じになる
+
+有限次元空間では、どのbasisを選んでもベクトル本数は同じになる。この共通の本数をdimensionと定義する。直感的には「空間内で独立に動ける方向の数」である。
+
+たとえば $\mathbb R^3$ の平面
+
+$$
+V=\{(x,y,z)^T:x+y+z=0\}
+$$
+
+は3成分を持つが、一つの独立な制約があるため自由度は2であり、basisは2本になる。ambient dimensionと部分空間のdimensionを区別する。
+
+### 4. 座標ベクトルと元のベクトルは同じものではない
+
+$\mathbf x$ は実際の空間内のベクトルで、$[\mathbf x]_{\mathcal B}$ はbasisに依存する係数表現である。basisを変えると座標値は変わるが、表している幾何学的ベクトル自体は変わらない。次のchange-of-basis Topicではこの区別を行列で扱う。
+
+## 成立条件・壊れる場合
+
+基底は集合としてだけでなく、座標を扱うときは順序が重要。$(\mathbf b_1,\mathbf b_2)$ と $(\mathbf b_2,\mathbf b_1)$ は同じベクトル集合でも座標成分の順序が変わる。
+
+## ここから発展
+
+有限次元ベクトル空間では全ての基底の本数が同じになる。この事実によって「次元」が基底選択に依存しない空間固有の量として定義できる。厳密証明には交換補題などを使うが、本Courseではrank-nullityと合わせて構造を使えることを重視する。
+
+
+## このTopicの理解確認
+
+- basisの「span」と「independent」がそれぞれ座標の存在と一意性を保証することを証明できるか。
+- $[\mathbf x]_{\mathcal B}$ と実ベクトル $\mathbf x$ を区別できるか。
+- ambient dimensionとsubspace dimensionが異なる例を説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [MIT OpenCourseWare 18.700 Linear Algebra](https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-basis-coordinates-dimension)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-basis-coordinates-dimension)

@@ -1,134 +1,241 @@
-# 最小二乗法の計算と擬似逆行列：演習
+# 最小二乗法の計算と擬似逆行列への準備：演習
 
-[教科書](/textbook/la-least-squares-computation-pseudoinverse)と対応する10問。問題は概念・手計算・導出・診断・実装・応用を重複なく配置し、完全解答を付ける。
+[教科書](/textbook/la-least-squares-computation-pseudoinverse)と対応する10問。Topic 26のSVDを前提にせず、full-column-rankの最小二乗とQRを中心に扱う。
 
-### LA-LSCP-01：概念
+### LS-COMP-01：概念
 
-最小二乗法の計算と擬似逆行列を、単なる計算手順ではなく「何を入力し、何を出力し、何を保存・失う概念か」という観点から2〜4文で説明せよ。
-
-<details><summary>ヒント・解法方針・完全解答</summary>
-
-- **ヒント**: 代表式の左辺と右辺を日本語へ翻訳する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 最小二乗を計算する方法は一つではない。理論式として擬似逆行列が統一的だが、数値計算ではQRやSVDを使い、rank不足も含めて安定に扱う。 $\hat x=A^+b$。full column rankなら $A^+=(A^TA)^{-1}A^T$ だが、一般にはSVD $A=U\Sigma V^T$ から $A^+=V\Sigma^+U^T$。
-- **よくある誤答**: 公式名だけを書き、入力・出力や意味を説明しない。
-
-</details>
-
-### LA-LSCP-02：手計算
-
-$A=\operatorname{diag}(2,0)$, $b=(6,5)^T$。$A^+$と最小ノルム最小二乗解を求めよ。
+$\mathbf A\in\mathbb R^{m\times n}$ がfull-column-rankであるとする。least-squares problemを「出力空間での射影」と「入力係数の決定」の二段階に分けて説明せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: shapeを確認してから、途中計算を省略せずに進める。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: $A^+=\operatorname{diag}(1/2,0)$。したがって $x=A^+b=(3,0)^T$。再構成は$(6,0)^T$で残差$(0,5)^T$。
-- **よくある誤答**: 答えだけを書き、どの定義を使ったか示さない。
+**ヒント**：$\hat{\mathbf b}=\mathbf A\hat{\mathbf x}$ と残差 $\mathbf r$ を使う。
+
+**完全解答**：まず $\mathbf b$ に最も近い $C(\mathbf A)$ 上の点 $\hat{\mathbf b}$ を求める。最短点では $\mathbf r=\mathbf b-\hat{\mathbf b}$ が $C(\mathbf A)$ に直交する。次に $\hat{\mathbf b}=\mathbf A\hat{\mathbf x}$ を満たす係数を求める。full-column-rankなら $N(\mathbf A)=\{0\}$ なので、同じ $\hat{\mathbf b}$ を作る係数は一意である。
 
 </details>
 
-### LA-LSCP-03：成立条件
+### LS-COMP-02：normal equationの導出
 
-代表式 `$\hat{\mathbf{x}}=\mathbf{A}^{+}\mathbf{b}$` を使う前に確認すべき条件を3つ挙げ、それぞれ条件を外したとき何が起こりうるか説明せよ。
+残差の直交条件から
+
+$$
+\mathbf A^T\mathbf A\hat{\mathbf x}=\mathbf A^T\mathbf b
+$$
+
+を、一行ずつ導出せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 「未定義」「非一意」「不安定」を区別する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 確認すべき代表例は次の通り。$(A^TA)^{-1}A^T$ はrank不足では使えない。 小さい特異値の逆数はノイズを増幅する。 `pinv`のcutoffは数値rankの定義に影響する。 条件を外した場合は、式自体が定義できない場合、解が一意でなくなる場合、数値誤差が増幅される場合を区別する。
-- **よくある誤答**: 「shapeが合う」だけで数学的・数値的条件をすべて満たしたと判断する。
+**完全解答**：$\mathbf r=\mathbf b-\mathbf A\hat{\mathbf x}$。最適残差は各列に直交するので $\mathbf A^T\mathbf r=0$。したがって
+
+$$
+\mathbf A^T(\mathbf b-\mathbf A\hat{\mathbf x})=0,
+$$
+
+$$
+\mathbf A^T\mathbf b-\mathbf A^T\mathbf A\hat{\mathbf x}=0,
+$$
+
+ゆえに
+
+$$
+\mathbf A^T\mathbf A\hat{\mathbf x}=\mathbf A^T\mathbf b.
+$$
 
 </details>
 
-### LA-LSCP-04：導出
+### LS-COMP-03：なぜ $A^TA$ は可逆か
 
-最小二乗法の計算と擬似逆行列の代表式がなぜ自然に現れるのか、定義または幾何から主要な論理を3段階以上で導け。
+$\mathbf A$ がfull-column-rankなら $\mathbf A^T\mathbf A$ が可逆であることを、null spaceを使って証明せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: いきなり最終式を書かず、中間の意味を言葉で置く。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: SVD座標では各特異方向ごとに $\sigma_i z_i\approx u_i^Tb$ を解く。非zero特異値だけ逆数を取ることで、rank不足でも最小ノルム解を選べる。
-- **よくある誤答**: 式変形だけを並べ、何を保存しているか説明しない。
+**完全解答**：$\mathbf A^T\mathbf A\mathbf z=0$ と仮定する。左から $\mathbf z^T$ を掛けると
+
+$$
+0=\mathbf z^T\mathbf A^T\mathbf A\mathbf z
+=\|\mathbf A\mathbf z\|_2^2.
+$$
+
+したがって $\mathbf A\mathbf z=0$。full-column-rankより $\mathbf z=0$。よって $N(\mathbf A^T\mathbf A)=\{0\}$。$\mathbf A^T\mathbf A$ は正方行列なので可逆である。
 
 </details>
 
-### LA-LSCP-05：幾何・可視化
+### LS-COMP-04：closed formの導出
 
-図 `/visuals/course-02/la-least-squares-computation-pseudoinverse.png` を見る前に、最小二乗法の計算と擬似逆行列で入力を少し変えたとき図のどこが変わるか予測せよ。その後、予測を代表式で説明せよ。
+前問とnormal equationを使って
+
+$$
+\hat{\mathbf x}=(\mathbf A^T\mathbf A)^{-1}\mathbf A^T\mathbf b
+$$
+
+を導き、各行列のshapeを示せ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 軸・矢印・部分空間・楕円・残差など、図の要素を式の項と対応させる。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: $A=\begin{bmatrix}1&0\\0&0\end{bmatrix}$, $b=(2,3)^T$。最小二乗では第2成分3は再現不能。擬似逆で最小ノルム解 $(2,0)^T$ を得る。 この具体例を基準に、変化する係数・方向・長さが式のどの項へ入るかを追えばよい。
-- **よくある誤答**: 図の形だけを記憶し、式の各項との対応を示さない。
+**完全解答**：$\mathbf A^T\mathbf A\in\mathbb R^{n\times n}$ は可逆なので、normal equationの左からその逆を掛ける。
+
+$$
+\hat{\mathbf x}
+=(\mathbf A^T\mathbf A)^{-1}\mathbf A^T\mathbf b.
+$$
+
+$(\mathbf A^T\mathbf A)^{-1}$ は $n\times n$、$\mathbf A^T$ は $n\times m$、$\mathbf b$ は $m$ 次元なので結果は $n$ 次元となり、$\hat{\mathbf x}\in\mathbb R^n$ と一致する。
 
 </details>
 
-### LA-LSCP-06：誤りの診断
+### LS-COMP-05：図と射影
 
-次の主張を判定し、誤りなら反例または正しい条件を示せ：「「擬似逆行列は逆行列が存在するときだけ定義される」」
+教科書の図で、なぜ $\mathbf A\mathbf A^+\mathbf b$ が $\mathbf b$ より列空間に近いのではなく、**列空間上で $\mathbf b$ に最も近い点そのもの**になるのか説明せよ。ここでは $\mathbf A^+=(\mathbf A^T\mathbf A)^{-1}\mathbf A^T$ とする。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 真偽だけでなく、最小の反例を作る。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 逆。擬似逆は長方形・rank不足を含む任意行列に定義でき、可逆正方行列では通常の逆行列と一致する。
-- **よくある誤答**: 「なんとなく違う」で終わり、反例や条件を示さない。
+**完全解答**：$\hat{\mathbf x}=\mathbf A^+\mathbf b$ と置けば $\hat{\mathbf b}=\mathbf A\hat{\mathbf x}=\mathbf A\mathbf A^+\mathbf b$ は明らかに $C(\mathbf A)$ 内にある。さらに
+
+$$
+\mathbf A^T(\mathbf b-\hat{\mathbf b})
+=\mathbf A^T\mathbf b-
+\mathbf A^T\mathbf A(\mathbf A^T\mathbf A)^{-1}\mathbf A^T\mathbf b
+=0.
+$$
+
+したがって残差は列空間に直交する。Topic 15のclosest-point theoremより、$\hat{\mathbf b}$ は列空間上の一意な最短点である。
 
 </details>
 
-### LA-LSCP-07：アルゴリズム
+### LS-COMP-06：QRの導出
 
-最小二乗法の計算と擬似逆行列を2〜5次元程度の小さな数値例で実装するときの手順を、入力検査→計算→検算の順で書け。
+$\mathbf A=\mathbf Q\mathbf R$、$\mathbf Q^T\mathbf Q=\mathbf I_n$ とする。残差直交条件から
+
+$$
+\mathbf R\hat{\mathbf x}=\mathbf Q^T\mathbf b
+$$
+
+を導け。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: shape・rank・残差・直交性など、このTopic固有の検算量を入れる。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 実装は `np.linalg.lstsq` またはQR/SVD。擬似逆行列を明示的に作るのは、多数のbへ繰り返し適用する等の理由がある場合に限定。 最後に代表式を再計算するか、残差・再構成誤差・直交性など独立な量で検算する。
-- **よくある誤答**: ライブラリ関数を1行呼んだだけで、前提と検算を書かない。
+**完全解答**：$C(\mathbf Q)=C(\mathbf A)$ なので
+
+$$
+\mathbf Q^T(\mathbf b-\mathbf Q\mathbf R\hat{\mathbf x})=0.
+$$
+
+展開して
+
+$$
+\mathbf Q^T\mathbf b-\mathbf Q^T\mathbf Q\mathbf R\hat{\mathbf x}=0.
+$$
+
+$\mathbf Q^T\mathbf Q=\mathbf I_n$ より
+
+$$
+\mathbf R\hat{\mathbf x}=\mathbf Q^T\mathbf b.
+$$
 
 </details>
 
-### LA-LSCP-08：数値計算
+### LS-COMP-07：二つの方法の同値性
 
-浮動小数点計算で最小二乗法の計算と擬似逆行列を扱うとき、理論式をそのまま実装すると問題になりうる点を1つ挙げ、より安定な方法または検算方法を示せ。
+normal equationへ $\mathbf A=\mathbf Q\mathbf R$ を代入し、QR法と同じ三角方程式が得られることを示せ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 逆行列の明示形成、normal equation、小pivot、小特異値などを検討する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 数値計算では定義とアルゴリズムを分ける。実装は `np.linalg.lstsq` またはQR/SVD。擬似逆行列を明示的に作るのは、多数のbへ繰り返し適用する等の理由がある場合に限定。 理論上同値でも丸め誤差の増幅が異なるため、残差だけでなくconditionや直交性も確認する。
-- **よくある誤答**: 数式上等価なら計算上も同じ安定性だと考える。
+**完全解答**：
+
+$$
+\mathbf A^T\mathbf A
+=\mathbf R^T\mathbf Q^T\mathbf Q\mathbf R
+=\mathbf R^T\mathbf R,
+$$
+
+$$
+\mathbf A^T\mathbf b=\mathbf R^T\mathbf Q^T\mathbf b.
+$$
+
+したがって
+
+$$
+\mathbf R^T\mathbf R\hat{\mathbf x}
+=\mathbf R^T\mathbf Q^T\mathbf b.
+$$
+
+full-column-rankなら $\mathbf R$ が可逆なので $\mathbf R^T$ も可逆。左から $(\mathbf R^T)^{-1}$ を掛けて
+
+$$
+\mathbf R\hat{\mathbf x}=\mathbf Q^T\mathbf b.
+$$
 
 </details>
 
-### LA-LSCP-09：応用
+### LS-COMP-08：数値例
 
-rank不足回帰、inverse problem、WLSMの拡張、minimum-norm solution。 この接続を一つ選び、最小二乗法の計算と擬似逆行列が「入力表現・目的関数・制約・解法・診断」のどの役割で現れるか説明せよ。
+$$
+\mathbf A=\begin{bmatrix}1&0\\1&1\\1&2\end{bmatrix},
+\qquad
+\mathbf b=\begin{bmatrix}1\\2\\2\end{bmatrix}
+$$
+
+についてnormal equationを作り、$\hat{\mathbf x}$ と残差 $\mathbf r$ を求め、$\mathbf A^T\mathbf r=0$ を確認せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 後続Topicの式に今回の量がどこへ入るかを書く。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: rank不足回帰、inverse problem、WLSMの拡張、minimum-norm solution。 重要なのは名前が再登場することではなく、今回の定義が後続の式でどの役割を担うかを具体化すること。
-- **よくある誤答**: 応用名を列挙するだけで数式上の役割を説明しない。
+**完全解答**：
+
+$$
+\mathbf A^T\mathbf A=\begin{bmatrix}3&3\\3&5\end{bmatrix},
+\qquad
+\mathbf A^T\mathbf b=\begin{bmatrix}5\\6\end{bmatrix}.
+$$
+
+したがって $3x_1+3x_2=5$、$3x_1+5x_2=6$。差から $x_2=1/2$、さらに $x_1=7/6$。
+
+$$
+\hat{\mathbf x}=\begin{bmatrix}7/6\\1/2\end{bmatrix}.
+$$
+
+$$
+\mathbf r
+=\mathbf b-\mathbf A\hat{\mathbf x}
+=\begin{bmatrix}-1/6\\1/3\\-1/6\end{bmatrix}.
+$$
+
+直接掛けると $\mathbf A^T\mathbf r=(0,0)^T$ となる。
 
 </details>
 
-### LA-LSCP-10：総合
+### LS-COMP-09：rank不足の診断
 
-最小二乗法の計算と擬似逆行列について、(1) 定義、(2) 代表式、(3) 小さな例、(4) 成立条件、(5) よくある誤り、(6) 数値検算をA4半ページ程度にまとめよ。
+$$
+\mathbf A=\begin{bmatrix}1&1\\2&2\end{bmatrix}
+$$
+
+について、なぜfull-column-rank用の式を使えないか、$\mathbf A^T\mathbf A$ とnull spaceの両方から説明せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: この教科書の章構造を、自分の言葉で圧縮する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: (1) $\hat x=A^+b$。full column rankなら $A^+=(A^TA)^{-1}A^T$ だが、一般にはSVD $A=U\Sigma V^T$ から $A^+=V\Sigma^+U^T$。 (2) 代表式は $\hat{\mathbf{x}}=\mathbf{A}^{+}\mathbf{b}$。(3) $A=\begin{bmatrix}1&0\\0&0\end{bmatrix}$, $b=(2,3)^T$。最小二乗では第2成分3は再現不能。擬似逆で最小ノルム解 $(2,0)^T$ を得る。 (4)(5) $(A^TA)^{-1}A^T$ はrank不足では使えない。 小さい特異値の逆数はノイズを増幅する。 `pinv`のcutoffは数値rankの定義に影響する。 (6) 実装は `np.linalg.lstsq` またはQR/SVD。擬似逆行列を明示的に作るのは、多数のbへ繰り返し適用する等の理由がある場合に限定。
-- **よくある誤答**: 教科書本文をそのまま写し、条件や検算を自分で再構成しない。
+**完全解答**：2列が等しいので列は従属。
+
+$$
+\mathbf A^T\mathbf A=\begin{bmatrix}5&5\\5&5\end{bmatrix}
+$$
+
+もsingularで逆行列を持たない。また
+
+$$
+\mathbf A\begin{bmatrix}1\\-1\end{bmatrix}=0
+$$
+
+なのでnull spaceが非自明。同じ出力を作る係数が複数存在し、least-squares coefficientは一意でない。一般の擬似逆による選択はTopic 27で扱う。
 
 </details>
 
+### LS-COMP-10：総合説明
+
+「normal equationのclosed formを知っているのに、なぜQRを学ぶ必要があるのか」を、数学的意味と数値計算の両方から説明せよ。
+
+<details><summary>ヒント・解法方針・完全解答</summary>
+
+**完全解答**：数学的には両者は同じ残差直交条件を解く。normal equationでは $\mathbf A^T\mathbf A$ を作り、理論式ではさらに逆行列を記述する。一方QRでは列空間のorthonormal basisへ座標を変え、$\mathbf R\hat{\mathbf x}=\mathbf Q^T\mathbf b$ という三角系を直接解く。逆行列全体を明示形成する必要がなく、$\mathbf A^T\mathbf A$ を作ることによる数値上の不利益も避けやすい。したがってclosed formは理論理解、QRは同じ問題をより直接に計算する方法として役割が異なる。
+
+</details>

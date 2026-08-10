@@ -9,7 +9,6 @@
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: 代表式の左辺と右辺を日本語へ翻訳する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: 行列積は「写像の合成」である。要素ごとの積ではない。$\mathbf{B}$ を先に作用させ、その結果へ $\mathbf{A}$ を作用させる写像が $\mathbf{A}\mathbf{B}$ である。 $\mathbf{A}\in\mathbb{R}^{m\times n}$、$\mathbf{B}\in\mathbb{R}^{n\times p}$ のとき $\mathbf{C}=\mathbf{A}\mathbf{B}\in\mathbb{R}^{m\times p}$、$c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}$。
 - **よくある誤答**: 公式名だけを書き、入力・出力や意味を説明しない。
 
@@ -22,7 +21,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: shapeを確認してから、途中計算を省略せずに進める。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: $\mathbf{A}\mathbf{B}=\begin{bmatrix}-1&7\\1&3\end{bmatrix}$。例えば左上は $1\cdot2+(-1)\cdot1+2\cdot(-1)=-1$。
 - **よくある誤答**: 答えだけを書き、どの定義を使ったか示さない。
 
@@ -35,9 +33,7 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: 「未定義」「非一意」「不安定」を区別する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: 確認すべき代表例は次の通り。一般に $\mathbf{A}\mathbf{B}\neq\mathbf{B}\mathbf{A}$。 Hadamard積（要素ごとの積）と混同しない。 積のshapeは外側の次元 $(m,p)$ になる。 条件を外した場合は、式自体が定義できない場合、解が一意でなくなる場合、数値誤差が増幅される場合を区別する。
-- **よくある誤答**: 「shapeが合う」だけで数学的・数値的条件をすべて満たしたと判断する。
 
 </details>
 
@@ -48,7 +44,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: いきなり最終式を書かず、中間の意味を言葉で置く。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: 第$j$列について $(\mathbf{A}\mathbf{B})_{:j}=\mathbf{A}(\mathbf{B}_{:j})$。つまり積の各列は、$\mathbf{B}$ の列を $\mathbf{A}$ で変換したもの。これが合成の意味を最も直接に示す。
 - **よくある誤答**: 式変形だけを並べ、何を保存しているか説明しない。
 
@@ -56,14 +51,13 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 
 ### LA-MM-05：幾何・可視化
 
-図 `/visuals/course-02/la-matrix-multiplication.png` を見る前に、行列積で入力を少し変えたとき図のどこが変わるか予測せよ。その後、予測を代表式で説明せよ。
+図 `/visuals/course-02/la-matrix-multiplication.png` に描かれた内容を数式で説明せよ。特に、図で示された変換・分解・直交・伸縮のうち、このTopicの中心となる関係を一つ選び、その関係がなぜ成り立つかを述べよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 軸・矢印・部分空間・楕円・残差など、図の要素を式の項と対応させる。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: $\mathbf{A}=\begin{bmatrix}1&2\\0&1\end{bmatrix}$、$\mathbf{B}=\begin{bmatrix}2&0\\1&3\end{bmatrix}$ なら $\mathbf{A}\mathbf{B}=\begin{bmatrix}4&6\\1&3\end{bmatrix}$。 この具体例を基準に、変化する係数・方向・長さが式のどの項へ入るかを追えばよい。
-- **よくある誤答**: 図の形だけを記憶し、式の各項との対応を示さない。
+- **ヒント**: 図の具体的なラベルを使い、対応する式を一つ書く。
+- **解法方針**: 図の幾何的事実を、定義または導出済みの式へ戻す。
+- **完全解答**: 図は同じ格子を左から右へ追っている。左は入力、中央は $\mathbf A$ を適用した後、右はさらに $\mathbf B$ を適用した後である。最終的な格子は $\mathbf B\mathbf A$ を一度だけ適用しても同じになる。 順序が重要で、$\mathbf B\mathbf A$ は「まず $\mathbf A$、次に $\mathbf B$」を意味する。右から左へ作用することに注意する。
 
 </details>
 
@@ -74,7 +68,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: 真偽だけでなく、最小の反例を作る。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: 誤り。$\mathbf{A}$ が $2\times3$、$\mathbf{B}$ が $3\times4$ なら $AB$ は定義されるが $BA$ は $4$ と $2$ が一致せず定義されない。
 - **よくある誤答**: 「なんとなく違う」で終わり、反例や条件を示さない。
 
@@ -86,8 +79,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: shape・rank・残差・直交性など、このTopic固有の検算量を入れる。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: まず内側の次元が一致するか確認する。次に「行×列」の内積として各要素を計算するか、列ごとに $\mathbf{A}\mathbf{b}_j$ を計算する。 最後に代表式を再計算するか、残差・再構成誤差・直交性など独立な量で検算する。
 - **よくある誤答**: ライブラリ関数を1行呼んだだけで、前提と検算を書かない。
 
@@ -99,8 +90,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 逆行列の明示形成、normal equation、小pivot、小特異値などを検討する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: 数値計算では定義とアルゴリズムを分ける。まず内側の次元が一致するか確認する。次に「行×列」の内積として各要素を計算するか、列ごとに $\mathbf{A}\mathbf{b}_j$ を計算する。 理論上同値でも丸め誤差の増幅が異なるため、残差だけでなくconditionや直交性も確認する。
 - **よくある誤答**: 数式上等価なら計算上も同じ安定性だと考える。
 
@@ -113,7 +102,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: 後続Topicの式に今回の量がどこへ入るかを書く。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: 複数の線形層の合成、基底変換、共分散変換、連鎖的な座標変換で不可欠。 重要なのは名前が再登場することではなく、今回の定義が後続の式でどの役割を担うかを具体化すること。
 - **よくある誤答**: 応用名を列挙するだけで数式上の役割を説明しない。
 
@@ -126,7 +114,6 @@ $\mathbf{A}=\begin{bmatrix}1&-1&2\\0&2&1\end{bmatrix}$、$\mathbf{B}=\begin{bmat
 <details><summary>ヒント・解法方針・完全解答</summary>
 
 - **ヒント**: この教科書の章構造を、自分の言葉で圧縮する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
 - **完全解答**: (1) $\mathbf{A}\in\mathbb{R}^{m\times n}$、$\mathbf{B}\in\mathbb{R}^{n\times p}$ のとき $\mathbf{C}=\mathbf{A}\mathbf{B}\in\mathbb{R}^{m\times p}$、$c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}$。 (2) 代表式は $c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}$。(3) $\mathbf{A}=\begin{bmatrix}1&2\\0&1\end{bmatrix}$、$\mathbf{B}=\begin{bmatrix}2&0\\1&3\end{bmatrix}$ なら $\mathbf{A}\mathbf{B}=\begin{bmatrix}4&6\\1&3\end{bmatrix}$。 (4)(5) 一般に $\mathbf{A}\mathbf{B}\neq\mathbf{B}\mathbf{A}$。 Hadamard積（要素ごとの積）と混同しない。 積のshapeは外側の次元 $(m,p)$ になる。 (6) まず内側の次元が一致するか確認する。次に「行×列」の内積として各要素を計算するか、列ごとに $\mathbf{A}\mathbf{b}_j$ を計算する。
 - **よくある誤答**: 教科書本文をそのまま写し、条件や検算を自分で再構成しない。
 

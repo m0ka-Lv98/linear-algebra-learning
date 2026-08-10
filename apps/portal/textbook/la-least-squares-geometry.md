@@ -1,103 +1,245 @@
-# 最小二乗法の幾何学：教科書
+# 最小二乗法の幾何：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 17/29
 
-方程式 $Ax=b$ が解けないとき、最小二乗法は「bに最も近い列空間上の点」を選ぶ。解そのものより、$A\hat x$ がbの直交射影になることが本質。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+$\mathbf A\mathbf x=\mathbf b$ が解けないのは $\mathbf b\notin C(\mathbf A)$ だからだった。そこで「完全一致」を諦め、$C(\mathbf A)$ の中で $\mathbf b$ に最も近い $\mathbf A\mathbf x$ を選ぶ。これがleast squares（最小二乗法）。
 
-## 前提知識
+**前提知識**：列空間、直交射影、QR。
 
-前提Topic: orthogonal-projection, la-column-space-null-space。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+未知ベクトル $\mathbf x$ を直接 $\mathbf b$ に近づけるのではなく、$\mathbf A\mathbf x$ という**モデルが作れる出力**を $\mathbf b$ に近づける。モデル出力は列空間から出られないので、最善は $\mathbf b$ の列空間への直交射影になる。
 
-方程式 $Ax=b$ が解けないとき、最小二乗法は「bに最も近い列空間上の点」を選ぶ。解そのものより、$A\hat x$ がbの直交射影になることが本質。
+## 図の解説
 
-<img src="/visuals/course-02/la-least-squares-geometry.png" alt="最小二乗法の幾何学の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-least-squares-geometry.png" alt="最小二乗法の幾何の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の斜めの直線が $C(\mathbf A)$、$\mathbf b$ は列空間の外にある観測ベクトル、$\mathbf A\hat{\mathbf x}$ が列空間上の最短点である。残差 $\mathbf r=\mathbf b-\mathbf A\hat{\mathbf x}$ は列空間へ垂直に描かれている。
+
+列空間の全ての方向は $\mathbf A$ の列の線形結合なので、残差が列空間に直交する条件は「全ての列との内積が0」、すなわち $\mathbf A^T\mathbf r=0$ とまとめられる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{m\times n}$：モデル行列。
+- $\mathbf b\in\mathbb R^m$：観測ベクトル。
+- $\hat{\mathbf x}\in\mathbb R^n$：least-squares solution。
+- $\mathbf r=\mathbf b-\mathbf A\hat{\mathbf x}$：残差。
+
 
 ## 正式な定義
 
-$\hat x=\arg\min_x\|Ax-b\|_2^2$。最適条件は $A^T(A\hat x-b)=0$、すなわち $A^TA\hat x=A^Tb$。
-
-代表式：
+最小二乗解は
 
 $$
-\min_{\mathbf{x}}\|\mathbf{A}\mathbf{x}-\mathbf{b}\|_2^2
+\hat{\mathbf x}\in\arg\min_{\mathbf x\in\mathbb R^n}
+\|\mathbf A\mathbf x-\mathbf b\|_2^2
 $$
 
-## 代表式の記号を定義する
+を満たす $\mathbf x$ である。
 
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$: design matrix（説明変数を列に持つ行列）。
-- $\mathbf{x}\in\mathbb{R}^n$: 推定する係数ベクトル。
-- $\mathbf{b}\in\mathbb{R}^m$: 観測ベクトル。
-- $\mathbf{r}=\mathbf{b}-\mathbf{A}\mathbf{x}$: 残差。最小二乗解では$\mathbf{r}$が$\operatorname{Col}(\mathbf{A})$に直交する。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### 幾何からnormal equationを導く
 
-目的関数を微分してもよいし、幾何学的に残差rがCol(A)へ直交することから $A^Tr=0$ を得てもよい。後者がMIT 18.06の中心的見方。
+最小二乗では $\mathbf A\hat{\mathbf x}$ が $\mathbf b$ の $C(\mathbf A)$ への直交射影になる。したがって残差
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+\mathbf r=\mathbf b-\mathbf A\hat{\mathbf x}
+$$
 
-## 小さな手計算
+は列空間に直交する。
 
-点$(0,1),(1,2),(2,2)$へ直線 $y=c+mx$ を当てる。Aの列は定数項とx、bはy値。bをCol(A)へ射影して係数を得る。
+$\mathbf A$ の各列を $\mathbf a_j$ とすれば
 
-さらに確認問題：$A=\begin{bmatrix}1\\1\end{bmatrix}$, $b=(2,4)^T$。定数$c$でbを近似する最小二乗解を求めよ。
+$$
+\mathbf a_j^T\mathbf r=0
+\quad(j=1,\ldots,n).
+$$
 
-**解答**：$c$は平均で3。$A\hat c=(3,3)^T$、残差$(-1,1)^T$はAの列$(1,1)^T$と内積0。
+これをまとめると
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+\mathbf A^T\mathbf r=\mathbf0.
+$$
 
-## 計算手順・アルゴリズム
+$\mathbf r$ を代入して
 
-design matrix Aとbを作る→QRや `lstsq` で解く→残差rを計算→$A^Tr\approx0$ を検算。
+$$
+\mathbf A^T(\mathbf b-\mathbf A\hat{\mathbf x})=\mathbf0,
+$$
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+よって
 
-## 成立条件と典型的な誤り
+$$
+\boxed{\mathbf A^T\mathbf A\hat{\mathbf x}=\mathbf A^T\mathbf b}.
+$$
 
-- 正規方程式を数値実装の第一選択にしない（条件数を二乗しうる）。
-- 最小二乗解は「元の方程式を厳密に満たす解」とは限らない。
-- residual normとparameter normを混同しない。
+これがnormal equations（正規方程式）。式を暗記するより、「残差を列空間へ直交させる」から作る方が意味を失わない。
 
-特に、次の主張を自力で診断できるようにする。
+### 微分からも同じ式が出る
 
-> 「最小二乗では残差ベクトルが0になる」
+目的関数を
 
-**診断**：bがCol(A)に入る場合だけ0。一般には残差は非zeroだが、Col(A)へ直交する。
+$$
+f(\mathbf x)=\|\mathbf A\mathbf x-\mathbf b\|_2^2
+$$
 
-## 数値実装での検算
+とすると
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+$$
+f(\mathbf x)
+=(\mathbf A\mathbf x-\mathbf b)^T(\mathbf A\mathbf x-\mathbf b).
+$$
 
-## 後続Topicへの接続
+展開して
 
-線形回帰、スペクトルunmixing、校正曲線、過剰決定系。
+$$
+f(\mathbf x)=\mathbf x^T\mathbf A^T\mathbf A\mathbf x-2\mathbf b^T\mathbf A\mathbf x+\mathbf b^T\mathbf b.
+$$
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+勾配は
+
+$$
+\nabla f(\mathbf x)=2\mathbf A^T\mathbf A\mathbf x-2\mathbf A^T\mathbf b.
+$$
+
+停留条件 $\nabla f=0$ から同じ正規方程式が得られる。
+
+## 小さな数値例を最後まで計算する
+
+$\mathbf A=(1,1)^T\in\mathbb R^{2\times1}$、$\mathbf b=(2,0)^T$ とする。モデル出力は $x(1,1)^T$ なので、対角線上の点しか作れない。
+
+正規方程式は
+
+$$
+[1\ 1]\begin{bmatrix}1\\1\end{bmatrix}\hat x
+=[1\ 1]\begin{bmatrix}2\\0\end{bmatrix}
+$$
+
+より $2\hat x=2$、$\hat x=1$。したがって射影は $(1,1)^T$、残差 $(1,-1)^T$。確かに $(1,1)^T\cdot(1,-1)^T=0$。
+
+## もう一段丁寧に：最小二乗は「解けない方程式」をどう置き換えているか
+
+### 1. まず「何が解けない」のかを列空間で言い直す
+
+$\mathbf A\in\mathbb R^{m\times n}$、$\mathbf b\in\mathbb R^m$ とする。厳密な方程式
+
+$$
+\mathbf A\mathbf x=\mathbf b
+$$
+
+が解を持つのは $\mathbf b\in C(\mathbf A)$ のときだけである。観測誤差やモデルの不足があると $\mathbf b$ は列空間の外に出る。その場合「存在しない厳密解」を探し続けるのではなく、列空間内で $\mathbf b$ に最も近い点を探す。
+
+### 2. 最も近い点が直交射影になる証明
+
+列空間内の候補を $\mathbf p=\mathbf A\hat{\mathbf x}$ とし、残差を
+
+$$
+\mathbf r=\mathbf b-\mathbf p
+$$
+
+と置く。$\mathbf p$ が最短点なら $\mathbf r$ は列空間に直交する。これを逆向きにも証明する。
+
+任意の別候補 $\mathbf p+\mathbf w$（$\mathbf w\in C(\mathbf A)$）に対し、$\mathbf r\perp\mathbf w$ なら
+
+$$
+\begin{aligned}
+\|\mathbf b-(\mathbf p+\mathbf w)\|_2^2
+&=\|\mathbf r-\mathbf w\|_2^2\\
+&=\|\mathbf r\|_2^2+\|\mathbf w\|_2^2\\
+&\ge \|\mathbf r\|_2^2.
+\end{aligned}
+$$
+
+したがって直交射影が最小二乗の幾何学的解である。
+
+### 3. 残差が各列へ直交することからnormal equationを得る
+
+列空間は $\mathbf A$ の列 $\mathbf a_1,\ldots,\mathbf a_n$ で張られる。$\mathbf r$ が列空間へ直交するとは
+
+$$
+\mathbf a_j^T\mathbf r=0\qquad(j=1,\ldots,n)
+$$
+
+がすべて成立すること。これらをまとめると
+
+$$
+\mathbf A^T\mathbf r=\mathbf0.
+$$
+
+$\mathbf r=\mathbf b-\mathbf A\hat{\mathbf x}$ を代入して
+
+$$
+\mathbf A^T(\mathbf b-\mathbf A\hat{\mathbf x})=\mathbf0,
+$$
+
+$$
+\boxed{\mathbf A^T\mathbf A\hat{\mathbf x}=\mathbf A^T\mathbf b}.
+$$
+
+これがnormal equationである。「微分したら出る公式」ではなく、最短距離の直交条件を座標で書いたものだと分かる。
+
+### 4. 微分から導いて同じ結論を確認する
+
+目的関数
+
+$$
+f(\mathbf x)=\|\mathbf A\mathbf x-\mathbf b\|_2^2
+$$
+
+を展開すると
+
+$$
+f(\mathbf x)
+=\mathbf x^T\mathbf A^T\mathbf A\mathbf x
+-2\mathbf b^T\mathbf A\mathbf x
++\mathbf b^T\mathbf b.
+$$
+
+$\mathbf A^T\mathbf A$ は対称なので
+
+$$
+\nabla f(\mathbf x)
+=2\mathbf A^T\mathbf A\mathbf x-2\mathbf A^T\mathbf b.
+$$
+
+停留条件 $\nabla f(\hat{\mathbf x})=0$ から同じnormal equationを得る。幾何と微分が同じ式へ到達することを確認することで、公式の意味が固定される。
+
+### 5. 最小二乗解は一意とは限らない
+
+$\mathbf A$ の列が従属なら、ある $\mathbf z\ne0$ が $\mathbf A\mathbf z=0$ を満たす。すると
+
+$$
+\mathbf A(\hat{\mathbf x}+\mathbf z)
+=\mathbf A\hat{\mathbf x}
+$$
+
+なので、同じ射影点を作る係数が複数存在する。**射影点 $\mathbf p$ は一意でも、係数 $\hat{\mathbf x}$ は一意でないことがある。** 次Topicの擬似逆は、この非一意な係数の中からどれを選ぶかまで扱う。
+
+## 成立条件・壊れる場合
+
+最小二乗解は常に存在するが、一意とは限らない。列が線形独立なら $\mathbf A^T\mathbf A$ は可逆で一意解が得られる。rank不足では同じ最小残差を与える $\mathbf x$ が複数存在しうる。
+
+## ここから発展
+
+次Topicでは、正規方程式をfull-column-rankの条件から丁寧に解き、QRから同じ最小二乗解が得られる理由を導く。rank不足の一般解法は、固有構造とSVDを学んだ後まで保留する。
+
+
+## このTopicの理解確認
+
+- inconsistent systemをcolumn-space projectionへ置き換える論理を説明できるか。
+- 残差直交からnormal equationを導けるか。
+- projection pointの一意性とcoefficientの一意性を区別できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-least-squares-geometry)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-least-squares-geometry)

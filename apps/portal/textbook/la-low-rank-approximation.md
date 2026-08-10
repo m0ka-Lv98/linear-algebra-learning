@@ -1,104 +1,208 @@
-# 低ランク近似：教科書
+# 低rank近似：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 28/29
 
-低ランク近似は、行列の情報を少数の主要な特異方向へ圧縮する。SVDは「どのrank-r近似がFrobenius/2-normで最良か」を直接与える。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+データ行列の全ての方向が同じ重要度を持つとは限らない。SVDでは特異値が方向ごとの伸縮量・エネルギーの大きさを表すため、小さい特異値方向を捨てて主要構造だけ残すことができる。
 
-## 前提知識
+**前提知識**：SVD、rank、直交射影。
 
-前提Topic: la-singular-value-decomposition。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+細長い点群を1本の直線で近似するなら、点群が最も伸びている方向を残し、それと直交する小さなばらつきを捨てるのが自然。高次元でもSVDが同じことを行う。
 
-低ランク近似は、行列の情報を少数の主要な特異方向へ圧縮する。SVDは「どのrank-r近似がFrobenius/2-normで最良か」を直接与える。
+## 図の解説
 
-<img src="/visuals/course-02/la-low-rank-approximation.png" alt="低ランク近似の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-low-rank-approximation.png" alt="低rank近似の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の点群は斜め方向に強く伸びている。太い直線が第1特異ベクトル方向に対応し、各点からその直線への破線が捨てられる直交成分を表す。
+
+rank-1近似では各点をこの直線上へ射影するため、主要な共変動は残るが、直交方向の細かな変動は失われる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- SVD：$\mathbf A=\sum_{i=1}^r\sigma_i\mathbf u_i\mathbf v_i^T$。
+- $\sigma_1\ge\cdots\ge\sigma_r>0$。
+- $\mathbf A_k=\sum_{i=1}^k\sigma_i\mathbf u_i\mathbf v_i^T$：rank-$k$ truncated SVD。
+
 
 ## 正式な定義
 
-$A_r=\sum_{i=1}^r\sigma_i u_i v_i^T$。Eckart–Young–Mirsky定理により、$\|A-A_r\|_2=\sigma_{r+1}$ で最良。
-
-代表式：
+rank-$k$近似として
 
 $$
-\mathbf{A}_r=\sum_{i=1}^{r}\sigma_i\mathbf{u}_i\mathbf{v}_i^{\mathsf T}
+\boxed{\mathbf A_k
+=\mathbf U_k\mathbf\Sigma_k\mathbf V_k^T
+=\sum_{i=1}^k\sigma_i\mathbf u_i\mathbf v_i^T}
 $$
 
-## 代表式の記号を定義する
+を使う。Eckart–Young theoremにより、これは2-normおよびFrobenius normで最良のrank-$k$近似になる。
 
-- $\sigma_i$: 大きい順に並べた特異値。
-- $\mathbf{u}_i,\mathbf{v}_i$: 第$i$左・右特異ベクトル。
-- $r$: 残す特異成分の数（近似rank）。
-- $\mathbf{A}_r$: 上位$r$成分だけで再構成したrank高々$r$の近似行列。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### SVDをrank-1行列の和として読む
 
-SVDでは直交するrank-1成分が特異値順に並ぶ。小さい特異値の成分を捨てると、最大のエネルギーを保ちながらrankを下げられる。
+$$
+\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T
+$$
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+の積を対角成分ごとに展開すると
 
-## 小さな手計算
+$$
+\mathbf A
+=\sigma_1\mathbf u_1\mathbf v_1^T
++\cdots+
+\sigma_r\mathbf u_r\mathbf v_r^T.
+$$
 
-特異値が(10,3,0.2)ならrank1近似は10の成分だけ、rank2なら10と3を残す。rank2のspectral誤差は0.2。
+各 $\mathbf u_i\mathbf v_i^T$ はrank 1。したがって先頭$k$項だけ残した $\mathbf A_k$ はrank高々$k$。
 
-さらに確認問題：特異値が $8,2,0.5$ の行列をrank1近似したときのspectral norm誤差とFrobenius norm誤差を求めよ。
+### Frobenius誤差が特異値の二乗和になる
 
-**解答**：spectral誤差は次の特異値2。Frobenius誤差は $\sqrt{2^2+0.5^2}=\sqrt{4.25}\approx2.062$。
+残差は
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+\mathbf A-\mathbf A_k
+=\sum_{i=k+1}^r\sigma_i\mathbf u_i\mathbf v_i^T.
+$$
 
-## 計算手順・アルゴリズム
+これらのrank-1成分はFrobenius内積で互いに直交するため、Pythagorasより
 
-SVD→特異値を可視化→rを選択→先頭r成分で再構成→再構成誤差と圧縮率を評価。
+$$
+\boxed{
+\|\mathbf A-\mathbf A_k\|_F^2
+=\sum_{i=k+1}^r\sigma_i^2
+}.
+$$
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+つまり捨てた特異値の二乗が、そのまま失ったFrobenius energyになる。
 
-## 成立条件と典型的な誤り
+### なぜ大きい特異値から残すのか
 
-- rを増やせば訓練データ再構成は必ず改善するが、意味のある構造が増えるとは限らない。
-- 特異値のscaleだけでrを自動決定しない。
-- center/scaleの有無でデータ行列の低ランク構造は変わる。
+rank-$k$という制約の下で誤差を最小にしたいなら、捨てる二乗和を最小にするため小さい特異値から捨てるのが最善。この直感を厳密化したものがEckart–Young theorem。
 
-特に、次の主張を自力で診断できるようにする。
+## 小さな数値例を最後まで計算する
 
-> 「rank1近似は元行列の1行だけ残すこと」
+特異値が $(10,3,1)$ の行列をrank 1で近似すると、Frobenius誤差二乗は
 
-**診断**：rank1近似は $\sigma_1u_1v_1^T$ という外積で、一般にすべての行・列に非zero成分を持つ。
+$$
+3^2+1^2=10.
+$$
 
-## 数値実装での検算
+rank 2なら誤差二乗は1だけ。したがって第2成分を残す価値がどれだけあるかを特異値から直接評価できる。
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+## もう一段丁寧に：truncated SVDが最良近似になる理由を理解する
 
-## 後続Topicへの接続
+### 1. SVDをrank-1行列の和として読む
 
-画像圧縮、PCA、ノイズ除去、潜在因子、NMFとの比較。
+$$
+\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T
+$$
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+は
+
+$$
+\boxed{
+\mathbf A
+=\sum_{i=1}^{r}
+\sigma_i\mathbf u_i\mathbf v_i^T
+}
+$$
+
+と展開できる。$\mathbf u_i\mathbf v_i^T$ はrank 1なので、SVDは行列を互いにorthogonalなrank-1成分へ分解している。
+
+特異値を
+
+$$
+\sigma_1\ge\sigma_2\ge\cdots\ge\sigma_r>0
+$$
+
+と並べると、各成分のFrobenius normは
+
+$$
+\|\sigma_i\mathbf u_i\mathbf v_i^T\|_F=\sigma_i.
+$$
+
+したがって特異値は各rank-1成分の大きさでもある。
+
+### 2. rank-$k$ truncated SVD
+
+大きい順に $k$ 個だけ残して
+
+$$
+\boxed{
+\mathbf A_k
+=\sum_{i=1}^{k}
+\sigma_i\mathbf u_i\mathbf v_i^T
+}
+$$
+
+とする。rankは高くても $k$ まで。
+
+捨てた部分は
+
+$$
+\mathbf A-\mathbf A_k
+=\sum_{i=k+1}^{r}
+\sigma_i\mathbf u_i\mathbf v_i^T.
+$$
+
+rank-1成分同士がFrobenius inner productで直交するので、Pythagorasと同じように
+
+$$
+\boxed{
+\|\mathbf A-\mathbf A_k\|_F^2
+=\sum_{i=k+1}^{r}\sigma_i^2
+}.
+$$
+
+### 3. なぜ「小さい特異値を捨てる」のが合理的か
+
+$k$ 個しか独立方向を保持できないなら、大きな $\sigma_i$ の方向を捨てるほど誤差が大きい。truncated SVDは最大の $k$ 成分をすべて保持し、残りだけを誤差へ回す。
+
+Eckart–Young theoremはさらに強く、**どんなrank-$k$行列を選んでも、SVDの上位$k$成分より小さい2-norm/Frobenius-norm誤差にはできない**ことを保証する。
+
+Frobenius normについての直感は、SVD座標へ移れば $\mathbf A$ が対角的な $\mathbf\Sigma$ になり、rank $k$ では高々$k$個の独立成分しか保持できないため、最大の対角成分を残すのが最も誤差を小さくするというもの。
+
+### 4. データ圧縮としてのshape
+
+$\mathbf A_k$ をそのまま $m\times n$ 個保存する代わりに
+
+- $\mathbf U_k\in\mathbb R^{m\times k}$
+- $\mathbf\Sigma_k\in\mathbb R^{k\times k}$
+- $\mathbf V_k\in\mathbb R^{n\times k}$
+
+を保存すれば、必要な数は概ね $k(m+n+1)$。$k\ll\min(m,n)$ なら大幅に圧縮できる。
+
+### 5. PCAへの接続はcentering後に行う
+
+データ行列を平均中心化した後、そのSVDの右特異ベクトルは共分散構造のprincipal directionsとつながる。ただし「SVD=常にPCA」ではない。PCAでは標本・特徴量の向き、centering、必要ならscalingを明示して初めて対応が定まる。この統計的意味はCourse 03/07で再訪する。
+
+## 成立条件・壊れる場合
+
+「小さい特異値=ノイズ」とは限らない。近似目的にとって重要な弱い信号が小特異値方向にあることもある。rank選択は数学的誤差だけでなく、目的・ノイズ・汎化性能と合わせて判断する。
+
+## ここから発展
+
+中心化したデータ行列へSVDを適用するとPCAと直接つながる。PCAでは右特異ベクトルが特徴空間の主成分方向、特異値二乗が分散と関係する。ただし中心化やスケーリングの意味を明示して進む。
+
+
+## このTopicの理解確認
+
+- SVDをrank-1 matricesの和へ展開できるか。
+- $\|A-A_k\|_F^2=\sum_{i>k}\sigma_i^2$ をorthogonalityから説明できるか。
+- truncated SVDがdata compressionになるときのstorage sizeをshapeから評価できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [MIT OpenCourseWare 18.065 Matrix Methods](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
 
-## 演習へ
+- [MIT OpenCourseWare 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
 
-[10問の演習](/exercises/la-low-rank-approximation)
+
+## 演習
+
+[このTopicの10問の演習](/exercises/la-low-rank-approximation)

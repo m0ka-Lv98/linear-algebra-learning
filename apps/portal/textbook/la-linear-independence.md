@@ -1,104 +1,261 @@
-# 線形独立と線形従属：教科書
+# 線形独立：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 09/29
 
-線形独立とは「どのベクトルも他のベクトルの線形結合で作れない」こと。独立なら係数表現に冗長性がない。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+同じ空間を生成するために、不要に重複したベクトルを含めることがある。あるベクトルが他の線形結合で作れるなら、そのベクトルは新しい方向を追加していない。この冗長性を排除する概念が線形独立である。
 
-## 前提知識
+**前提知識**：線形結合、span、null space。
 
-前提Topic: la-span-subspaces。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+2次元で同じ直線上にある2本のベクトルは、一方が他方のスカラー倍なので独立ではない。平行でない2本なら、それぞれが新しい方向を提供する。独立性は「見た目に違う矢印か」ではなく、「0を作る線形結合が自明なものしかないか」で判定する。
 
-線形独立とは「どのベクトルも他のベクトルの線形結合で作れない」こと。独立なら係数表現に冗長性がない。
+## 図の解説
 
-<img src="/visuals/course-02/la-linear-independence.png" alt="線形独立と線形従属の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-linear-independence.png" alt="線形独立の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の $\mathbf v_3$ は $2\mathbf v_1$ と同じ方向であり、新しい方向を追加していない。したがって $\mathbf v_3-2\mathbf v_1=\mathbf0$ という、係数が全て0ではない線形結合で0を作れる。
+
+一方、$\mathbf v_1$ と $\mathbf v_2$ が平行でなければ、2次元では $c_1\mathbf v_1+c_2\mathbf v_2=\mathbf0$ を満たすのは $c_1=c_2=0$ のみである。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf v_1,\ldots,\mathbf v_k\in\mathbb R^n$：判定対象。
+- $c_1,\ldots,c_k$：線形結合の係数。
+- $\mathbf V=[\mathbf v_1\ \cdots\ \mathbf v_k]$：列に並べた行列。
+
 
 ## 正式な定義
 
-$c_1v_1+\cdots+c_kv_k=0$ の解が $c_1=\cdots=c_k=0$ だけなら独立。非自明解があれば従属。
-
-代表式：
+ベクトル集合 $\{\mathbf v_1,\ldots,\mathbf v_k\}$ が線形独立であるとは
 
 $$
-c_1\mathbf{v}_1+\cdots+c_k\mathbf{v}_k=\mathbf{0}
+c_1\mathbf v_1+\cdots+c_k\mathbf v_k=\mathbf0
 $$
 
-## 代表式の記号を定義する
+から必ず $c_1=\cdots=c_k=0$ が従うことをいう。
 
-- $\mathbf{v}_1,\ldots,\mathbf{v}_k$: 独立性を判定するベクトル。
-- $c_1,\ldots,c_k$: 線形関係の係数。
-- $\mathbf{0}$: zeroベクトル。
-- 「線形独立」とは、zeroベクトルを作る係数が$c_1=\cdots=c_k=0$だけであること。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### 行列のnull spaceとの関係
 
-列を並べた行列Vに対し $Vc=0$ を考えると、独立性はnull spaceが$\{0\}$かどうかと同じ。pivotが各列にあるかでも判定できる。
+$\mathbf V=[\mathbf v_1\ \cdots\ \mathbf v_k]$、$\mathbf c=(c_1,\ldots,c_k)^T$ とすれば
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+\mathbf V\mathbf c
+=c_1\mathbf v_1+\cdots+c_k\mathbf v_k.
+$$
 
-## 小さな手計算
+したがって線形独立とは
 
-$v_1=(1,0)^T$, $v_2=(0,1)^T$ は独立。$v_3=(1,1)^T$ を加えると $v_1+v_2-v_3=0$ という非自明関係ができる。
+$$
+\mathbf V\mathbf c=\mathbf0
+\quad\Longrightarrow\quad
+\mathbf c=\mathbf0
+$$
 
-さらに確認問題：$(1,2,0)^T,(0,1,1)^T,(1,3,1)^T$ は独立か。
+ということ、つまり $N(\mathbf V)=\{\mathbf0\}$ と同値である。
 
-**解答**：3本目は1本目+2本目? $(1,2,0)+(0,1,1)=(1,3,1)$ なので従属。関係 $v_1+v_2-v_3=0$。
+### なぜ独立だと係数表現が一意になるのか
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+同じベクトル $\mathbf y$ に対して
 
-## 計算手順・アルゴリズム
+$$
+\mathbf y=\sum_i c_i\mathbf v_i
+=\sum_i d_i\mathbf v_i
+$$
 
-ベクトルを列に並べてRREF→自由変数がなければ独立。少数なら明らかな線形関係を直接探してもよい。
+という二つの表現があるとする。差を取ると
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$$
+\sum_i(c_i-d_i)\mathbf v_i=\mathbf0.
+$$
 
-## 成立条件と典型的な誤り
+ベクトルが独立なら $c_i-d_i=0$、したがって $c_i=d_i$。よって係数は一意である。これが次Topicの「基底で座標が一意になる」理由になる。
 
-- 直交なら独立だが、独立だから直交とは限らない。
-- ゼロベクトルを含む集合は必ず従属。
-- $\mathbb{R}^n$で$n$本を超えるベクトルは必ず従属。
+## 小さな数値例を最後まで計算する
 
-特に、次の主張を自力で診断できるようにする。
+$\mathbf v_1=(1,2,0)^T$、$\mathbf v_2=(0,1,1)^T$、$\mathbf v_3=(1,3,1)^T$ とすると
 
-> 「互いに平行でなければ3本のベクトルは必ず独立」
+$$
+\mathbf v_3=\mathbf v_1+\mathbf v_2.
+$$
 
-**診断**：$\mathbb{R}^2$では3本は必ず従属。また$\mathbb{R}^3$でも1本が他2本の和なら、どの2本も平行でなくても従属。
+したがって
 
-## 数値実装での検算
+$$
+\mathbf v_1+\mathbf v_2-\mathbf v_3=\mathbf0
+$$
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+という非自明な関係があり、3本は線形従属である。
 
-## 後続Topicへの接続
+## もう一段丁寧に：線形独立は「表現の一意性」を保証する
 
-基底選択、特徴量の冗長性、full column rank、QRや最小二乗の一意性につながる。
+### 1. 定義をなぜ斉次方程式で書くのか
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+$\mathbf v_1,\ldots,\mathbf v_k$ が線形独立とは
+
+$$
+c_1\mathbf v_1+\cdots+c_k\mathbf v_k=\mathbf0
+$$
+
+を満たす係数が
+
+$$
+c_1=\cdots=c_k=0
+$$
+
+しかないことをいう。ゼロを作る線形結合を調べるのは、一見特殊に見えるが、実は任意のベクトルの表現一意性と同値である。
+
+### 2. 表現が二通りあれば差を取る
+
+ある $\mathbf y$ が
+
+$$
+\mathbf y=\sum_i a_i\mathbf v_i
+=\sum_i b_i\mathbf v_i
+$$
+
+と二通りに書けたとする。差を取れば
+
+$$
+\mathbf0
+=\sum_i(a_i-b_i)\mathbf v_i.
+$$
+
+ベクトルが独立なら $a_i-b_i=0$、つまり $a_i=b_i$ である。したがって表現は一意。
+
+逆に非自明な係数 $c_i$ で $\sum_i c_i\mathbf v_i=0$ が作れるなら、一つのベクトル表現へこの「ゼロ」を足すことで別の係数表現を作れてしまう。
+
+### 3. 行列の列独立性とnull space
+
+$\mathbf A=[\mathbf v_1\cdots\mathbf v_k]$ と置けば
+
+$$
+\mathbf A\mathbf c
+=c_1\mathbf v_1+\cdots+c_k\mathbf v_k.
+$$
+
+よって列が独立である条件は
+
+$$
+N(\mathbf A)=\{\mathbf0\}
+$$
+
+と同じ。消去法ではこれは「すべての列がpivot列」として検出できる。
+
+### 4. $\mathbb R^n$ に $n$ 本より多い独立ベクトルは存在できない
+
+$\mathbb R^n$ で $k>n$ 本のベクトルを列に並べると $n\times k$ 行列になる。pivotは最大でも行数 $n$ 個なので、少なくとも一つの自由変数が生じる。したがって $\mathbf A\mathbf c=0$ は非自明解を持ち、列は従属になる。dimensionの概念を学ぶ前でも、eliminationからこの上限を理解できる。
+
+## 依存関係が見つかったら何が分かるのか
+
+### 1. 一つのベクトルを他のベクトルで表せる
+
+非自明な関係
+
+$$
+c_1\mathbf v_1+\cdots+c_k\mathbf v_k=0
+$$
+
+があり、たとえば $c_j\ne0$ とする。すると
+
+$$
+\mathbf v_j
+=-\sum_{i\ne j}\frac{c_i}{c_j}\mathbf v_i.
+$$
+
+つまり少なくとも一つのベクトルは他のベクトルのspanに入っている。
+
+逆も成立する。もし $\mathbf v_j$ が他のベクトルの線形結合なら、全部を一辺へ移すことで非自明なzero combinationが作れる。したがって
+
+> 線形従属 ⇔ 少なくとも一つのベクトルが他のベクトルのspanに入る
+
+と読める。
+
+### 2. dependent vectorを取り除いてもspanが変わらない
+
+上の $\mathbf v_j$ は他のベクトルから作れるので、生成集合から取り除いても作れるベクトル全体は変わらない。
+
+この操作を繰り返すと、spanを変えずに冗長なベクトルを削って独立な集合を得られる。これがbasisを作る基本発想である。
+
+## 3本のベクトルを実際に判定する
+
+$$
+\mathbf v_1=
+\begin{bmatrix}1\\0\\1\end{bmatrix},
+\quad
+\mathbf v_2=
+\begin{bmatrix}0\\1\\1\end{bmatrix},
+\quad
+\mathbf v_3=
+\begin{bmatrix}1\\1\\2\end{bmatrix}.
+$$
+
+明らかに
+
+$$
+\mathbf v_3=\mathbf v_1+\mathbf v_2.
+$$
+
+したがって
+
+$$
+\mathbf v_1+\mathbf v_2-\mathbf v_3=0
+$$
+
+という非自明関係があり、3本はdependent。
+
+行列
+
+$$
+\mathbf A=[\mathbf v_1\ \mathbf v_2\ \mathbf v_3]
+$$
+
+を作ると、係数
+
+$$
+\mathbf c=(1,1,-1)^T
+$$
+
+が
+
+$$
+\mathbf A\mathbf c=0
+$$
+
+を満たす。したがって「ベクトル集合のindependence」と「homogeneous systemのnontrivial solution」は同じ問題である。
+
+## pairwiseに違うだけではindependentとは限らない
+
+3本のベクトルが互いにscalar multipleでないことだけでは、3本全体のindependenceを保証しない。上の例では、どの2本も同一直線上ではないが、3本目が最初の2本の和なので3本全体ではdependent。
+
+高次元でindependenceを判断するときは「見た目が違う」「どの二本も平行でない」ではなく、全係数を含むhomogeneous equationを調べる必要がある。
+
+## 成立条件・壊れる場合
+
+「本数が次元以下なら独立」は誤り。$\mathbb R^3$ に2本しかなくても平行なら従属。一方、「本数が次元を超えたら従属」は正しい。$\mathbb R^n$ では$n$を超える独立ベクトルは存在しない。
+
+## ここから発展
+
+独立で、かつ空間全体をspanする最小限の集合が基底である。独立性は「重複なし」、spanは「不足なし」と考えると、次Topicの基底が理解しやすい。
+
+
+## このTopicの理解確認
+
+- zero combinationを調べることが座標表現の一意性と同値な理由を証明できるか。
+- dependent setから冗長ベクトルを一つ除いてもspanが変わらない理由を示せるか。
+- pairwiseに平行でないだけではindependentを保証しない反例を示せるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [MIT OpenCourseWare 18.700 Linear Algebra](https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-linear-independence)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-linear-independence)

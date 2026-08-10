@@ -1,103 +1,272 @@
-# 階数とrank-nullity：教科書
+# rankとrank-nullity theorem：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 11/29
 
-rankは行列が保っている独立な情報の数、nullityは失っている入力方向の数である。入力次元はこの二つへ分解される。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+列空間とnull spaceがどちらも部分空間であるなら、それぞれの次元を測れる。列空間の次元がrank、null spaceの次元がnullityである。rank-nullity theoremは、入力空間の自由度$n$が「出力に残る自由度」と「0へ潰れる自由度」へ分かれることを定量化する。
 
-## 前提知識
+**前提知識**：列空間、null space、基底、次元。
 
-前提Topic: la-column-space-null-space, la-basis-coordinates-dimension。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+$n$次元入力のうち、行列作用で区別可能な方向がrank個、完全に消える独立方向がnullity個ある。両方を足すと元の入力次元$n$に戻る。これは単なる暗記式ではなく、入力自由度の会計式である。
 
-rankは行列が保っている独立な情報の数、nullityは失っている入力方向の数である。入力次元はこの二つへ分解される。
+## 図の解説
 
-<img src="/visuals/course-02/la-rank-rank-nullity.png" alt="階数とrank-nullityの図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-rank-rank-nullity.png" alt="rankとrank-nullity theoremの図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図では3次元入力のうち2つの独立方向が像へ残り、1つの方向が0へ潰れる様子を模式化している。残る2方向がrank=2、消える1方向がnullity=1で、合計3が入力次元になる。
+
+null spaceに入る方向は「存在しなくなる」のではなく、異なる入力を同じ出力へまとめてしまう自由度である。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{m\times n}$。
+- $\operatorname{rank}(\mathbf A)=\dim C(\mathbf A)$。
+- $\operatorname{nullity}(\mathbf A)=\dim N(\mathbf A)$。
+- $n$：定義域 $\mathbb R^n$ の次元。
+
 
 ## 正式な定義
 
-$A:\mathbb{R}^n\to\mathbb{R}^m$ に対して $\operatorname{rank}(A)=\dim\operatorname{Col}(A)$、$\operatorname{nullity}(A)=\dim\operatorname{Null}(A)$、$\operatorname{rank}(A)+\operatorname{nullity}(A)=n$。
-
-代表式：
+rank-nullity theoremは
 
 $$
-\operatorname{rank}(\mathbf{A})+\operatorname{nullity}(\mathbf{A})=n
+\operatorname{rank}(\mathbf A)+\operatorname{nullity}(\mathbf A)=n
 $$
 
-## 代表式の記号を定義する
+を主張する。
 
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$: 対象行列。
-- $\operatorname{rank}(\mathbf{A})$: 列空間の次元、すなわち独立な列方向の数。
-- $\operatorname{nullity}(\mathbf{A})$: 零空間の次元。
-- $n$: $\mathbf{A}$の列数、すなわち入力空間の次元。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### pivot変数と自由変数から見る
 
-RREFでは$n$個の変数がpivot変数と自由変数に分かれる。pivotの個数がrank、自由変数の個数がnullityなので和はn。
+$\mathbf A$ をRREFへ行変形したとする。pivot列の本数を$r$とする。pivot列は列空間の独立な方向の本数に等しいので
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+\operatorname{rank}(\mathbf A)=r.
+$$
 
-## 小さな手計算
+未知数は$n$個あり、そのうち$r$個がpivot変数なので、自由変数は$n-r$個。斉次方程式 $\mathbf A\mathbf x=\mathbf0$ の一般解は自由変数1個につき1本のspecial solutionを持つから
 
-$2\times4$ 行列にpivotが2個ならrank=2、nullity=2。入力4次元のうち2方向だけが独立な出力として残り、2方向は0へ潰れる。
+$$
+\operatorname{nullity}(\mathbf A)=n-r.
+$$
 
-さらに確認問題：$A=\begin{bmatrix}1&2&3&4\\0&1&1&2\\1&3&4&6\end{bmatrix}$ のrankが2だと分かった。nullityはいくつか。
+したがって
 
-**解答**：列数$n=4$なのでrank-nullityより nullity $=4-2=2$。
+$$
+\operatorname{rank}(\mathbf A)+\operatorname{nullity}(\mathbf A)
+=r+(n-r)=n.
+$$
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+### 一意解との関係
 
-## 計算手順・アルゴリズム
+正方行列 $n\times n$ でrankが$n$ならnullityは0。したがって $N(\mathbf A)=\{\mathbf0\}$ となり、斉次解は自明解だけ。これが可逆性へつながる。
 
-RREFまたはSVDでrankを判定する。厳密計算ならpivot数、浮動小数点なら特異値に閾値を設ける。
+## 小さな数値例を最後まで計算する
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$$
+\mathbf A=\begin{bmatrix}1&2&3\\0&1&1\end{bmatrix}.
+$$
 
-## 成立条件と典型的な誤り
+2行は独立でpivotが2個あるのでrank=2。列数$n=3$ だからnullity=1。実際、$\mathbf A\mathbf x=0$ を解くと1個の自由変数を持つ。よって $2+1=3$。
 
-- rankは単に行数や列数の小さい方とは限らない（上限にすぎない）。
-- 数値rankは閾値依存。
-- rank-nullityのnは列数＝入力次元。
+## もう一段丁寧に：rank-nullityは「入力の自由度がどこへ行くか」を数えている
 
-特に、次の主張を自力で診断できるようにする。
+### 1. rankとnullityの定義
 
-> 「$3\times5$ 行列でrank=3ならnullity=0」
+$\mathbf A\in\mathbb R^{m\times n}$ に対して
 
-**診断**：nullityは列数5からrank3を引いて2。full row rankでもnull spaceは残りうる。
+$$
+\operatorname{rank}(\mathbf A)=\dim C(\mathbf A),
+$$
 
-## 数値実装での検算
+$$
+\operatorname{nullity}(\mathbf A)=\dim N(\mathbf A).
+$$
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+rankは出力側へ残る独立方向の数、nullityは0へ潰れる入力方向の数である。
 
-## 後続Topicへの接続
+### 2. eliminationから定理を導く
 
-解の自由度、特徴量冗長性、identifiability、擬似逆行列、低ランク近似へ接続。
+$\mathbf A$ を行簡約し、pivot列が $r$ 本あるとする。未知数は全部で $n$ 個なので、自由変数は $n-r$ 個。
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+- pivot列の数 $r$ は列空間のdimension、すなわちrank。
+- 斉次方程式 $\mathbf A\mathbf x=0$ の一般解では、各自由変数に独立なパラメータを1個ずつ与えられるのでnullityは $n-r$。
+
+したがって
+
+$$
+\boxed{\operatorname{rank}(\mathbf A)+\operatorname{nullity}(\mathbf A)=n}.
+$$
+
+右辺が行数 $m$ ではなく**列数 $n$**なのは、この定理が入力空間 $\mathbb R^n$ の自由度を分配しているからである。
+
+### 3. 写像としての意味
+
+入力空間には $n$ 個の独立方向がある。そのうちnull spaceに入る方向は出力で0へ潰れる。残りの独立方向が像へ運ばれ、column spaceを張る。したがって
+
+$$
+\text{入力の自由度}
+=\text{出力に残る自由度}+\text{失われる自由度}
+$$
+
+という保存則のように読める。
+
+### 4. 具体例
+
+$$
+\mathbf A=
+\begin{bmatrix}
+1&0&1\\
+0&1&1
+\end{bmatrix}
+$$
+
+はrank 2。$\mathbf A\mathbf x=0$ から
+
+$$
+x_1=-x_3,\qquad x_2=-x_3.
+$$
+
+$x_3=t$ と置けば
+
+$$
+\mathbf x=t\begin{bmatrix}-1\\-1\\1\end{bmatrix},
+$$
+
+よってnullity 1。確かに $2+1=3=n$。
+
+この例では3次元の入力係数のうち1方向が出力で失われ、2方向分だけが $\mathbb R^2$ の出力へ残る。
+
+## rank-nullityからすぐ導ける重要な帰結
+
+$\mathbf A\in\mathbb R^{m\times n}$ とする。
+
+### 1. full-column-rankの場合
+
+full-column-rankとは
+
+$$
+\operatorname{rank}(\mathbf A)=n
+$$
+
+である。rank-nullityより
+
+$$
+\operatorname{nullity}(\mathbf A)
+=n-n=0.
+$$
+
+したがって
+
+$$
+N(\mathbf A)=\{0\}.
+$$
+
+つまり入力を潰す方向がない。よって
+
+$$
+\mathbf A\mathbf x_1=\mathbf A\mathbf x_2
+$$
+
+なら
+
+$$
+\mathbf A(\mathbf x_1-\mathbf x_2)=0
+$$
+
+から $\mathbf x_1=\mathbf x_2$。写像はinjectiveである。
+
+### 2. full-row-rankの場合
+
+$\operatorname{rank}(\mathbf A)=m$ なら
+
+$$
+\dim C(\mathbf A)=m.
+$$
+
+しかし $C(\mathbf A)\subseteq\mathbb R^m$ なので
+
+$$
+C(\mathbf A)=\mathbb R^m.
+$$
+
+したがって任意の $\mathbf b\in\mathbb R^m$ に対して $\mathbf A\mathbf x=\mathbf b$ は少なくとも一つ解を持つ。写像はsurjectiveである。
+
+### 3. 正方行列では二つが同時に起こる
+
+$n\times n$ 行列でrank $n$ ならnullity 0かつcolumn space $\mathbb R^n$。したがってinjectiveかつsurjectiveで、逆行列が存在する。
+
+ここで、これまで別々に見えた
+
+- 全列pivot
+- null spaceが0
+- 列が独立
+- column spaceが全空間
+- 任意の右辺に一意解
+- invertible
+
+がrank $n$ という一つの条件で結ばれる。
+
+## rank不足のleast squaresへどうつながるか
+
+$\operatorname{rank}(\mathbf A)<n$ ならnullityは正。
+
+$$
+\operatorname{nullity}(\mathbf A)=n-\operatorname{rank}(\mathbf A)>0.
+$$
+
+したがって非零 $\mathbf z$ で $\mathbf A\mathbf z=0$ が存在する。
+
+ある係数 $\hat{\mathbf x}$ がleast-squares prediction $\mathbf A\hat{\mathbf x}$ を作るなら
+
+$$
+\mathbf A(\hat{\mathbf x}+t\mathbf z)
+=\mathbf A\hat{\mathbf x}
+$$
+
+なので、同じpredictionを作る係数が無限にある。この事実はTopic 18でfull-column-rank条件が必要になる理由、Topic 27でminimum-norm solutionを選ぶ理由へ直結する。
+
+## rankは「非零成分の個数」ではない
+
+たとえば
+
+$$
+\mathbf A=
+\begin{bmatrix}
+1&1\\2&2
+\end{bmatrix}
+$$
+
+には非零成分が4個あるが、列は同じ方向なのでrankは1。
+
+rankが数えているのはentryの個数ではなく、線形写像として保持される**独立方向の数**である。
+
+## 成立条件・壊れる場合
+
+rankは行列の行数・列数の小さい方を超えない：$\operatorname{rank}(\mathbf A)\le\min(m,n)$。数値計算では「特異値が厳密に0か」ではなく閾値でnumerical rankを決めるため、理論rankと数値rankを区別する。
+
+## ここから発展
+
+rank-nullityは抽象線形写像 $T:V\to W$ に対しても $\dim V=\dim\ker T+\dim\operatorname{im}T$ と書ける。行列版はその座標表現である。
+
+
+## このTopicの理解確認
+
+- rank-nullityの右辺が行数 $m$ ではなく列数 $n$ になる理由を説明できるか。
+- full-column-rankからnullity 0とinjectivityを導けるか。
+- rank不足がleast-squares coefficientの非一意性へつながる理由を示せるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-rank-rank-nullity)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-rank-rank-nullity)

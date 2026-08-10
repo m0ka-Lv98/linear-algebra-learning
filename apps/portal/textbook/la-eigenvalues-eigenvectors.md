@@ -1,104 +1,338 @@
 # 固有値と固有ベクトル：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 21/29
 
-固有ベクトルは、行列を作用させても「向きが変わらず、伸び縮みだけする」特別な方向。固有値がその倍率である。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+一般のベクトルは行列作用で方向も長さも変わる。しかし特別な方向では、行列を掛けても方向が変わらず倍率だけが変わる。その方向が固有ベクトル、倍率が固有値である。
 
-## 前提知識
+**前提知識**：線形写像、可逆性、determinant、null space。
 
-前提Topic: la-invertibility-inverse-matrices, la-determinants-volume-invertibility。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+変形された楕円の主軸のように、「この方向だけは行列を掛けても同じ直線上に残る」という方向を探す。行列全体を理解するための自然な座標軸候補になる。
 
-固有ベクトルは、行列を作用させても「向きが変わらず、伸び縮みだけする」特別な方向。固有値がその倍率である。
+## 図の解説
 
-<img src="/visuals/course-02/la-eigenvalues-eigenvectors.png" alt="固有値と固有ベクトルの図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-eigenvalues-eigenvectors.png" alt="固有値と固有ベクトルの図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の円を行列で変換すると楕円になる。通常の円周上の点は方向を変えるが、図で示した固有ベクトル方向は変換後も同一直線上にあり、長さだけが $\lambda_i$ 倍される。
+
+固有ベクトルは「楕円の長軸・短軸」と必ず一致するわけではない一般行列もあるが、対称行列ではこの直感が特に正確になる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{n\times n}$。
+- $\mathbf v\ne\mathbf0$：固有ベクトル。
+- $\lambda\in\mathbb C$：固有値（実行列でも複素数になることがある）。
+- $E_\lambda=N(\mathbf A-\lambda\mathbf I)$：固有空間。
+
 
 ## 正式な定義
 
-$Av=\lambda v$、$v\neq0$。正方行列では $\det(A-\lambda I)=0$ から固有値を求め、各λでnull$(A-\lambda I)$を求める。
-
-代表式：
-
 $$
-\mathbf{A}\mathbf{v}=\lambda\mathbf{v}
+\mathbf A\mathbf v=\lambda\mathbf v,
+\qquad \mathbf v\ne\mathbf0
 $$
 
-## 代表式の記号を定義する
+を満たす $(\lambda,\mathbf v)$ を固有対という。
 
-- $\mathbf{A}\in\mathbb{R}^{n\times n}$: 正方行列。
-- $\mathbf{v}\ne\mathbf{0}$: 固有ベクトル。
-- $\lambda$: $\mathbf{v}$に対応する固有値。
-- $\mathbf{A}\mathbf{v}=\lambda\mathbf{v}$は、$\mathbf{v}$方向が$\mathbf{A}$で向きを変えず倍率$\lambda$だけ伸縮することを表す。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### なぜ $\det(A-\lambda I)=0$ を解くのか
 
-一般のベクトルは方向も変わるが、固有方向では作用がスカラー倍に簡約される。固有ベクトル基底があれば複雑な反復作用も成分ごとの倍率計算になる。
+固有方程式を移項すると
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+(\mathbf A-\lambda\mathbf I)\mathbf v=\mathbf0.
+$$
 
-## 小さな手計算
+求めたいのは $\mathbf v\ne0$ という**非自明解**。斉次方程式が非自明解を持つには $\mathbf A-\lambda\mathbf I$ が可逆であってはいけない。正方行列の可逆性とdeterminantの関係から
 
-$A=\begin{bmatrix}2&0\\0&3\end{bmatrix}$ ならe1,e2が固有ベクトル、固有値2,3。
+$$
+\det(\mathbf A-\lambda\mathbf I)=0.
+$$
 
-さらに確認問題：$A=\begin{bmatrix}2&1\\0&3\end{bmatrix}$ の固有値を求めよ。
+この多項式をcharacteristic polynomial（特性多項式）と呼ぶ。
 
-**解答**：上三角なので固有値は対角成分2,3。特性多項式も $(2-\lambda)(3-\lambda)$。
+### 固有値を求めた後に固有ベクトルを求める
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$\lambda$ を得たら
 
-## 計算手順・アルゴリズム
+$$
+(\mathbf A-\lambda\mathbf I)\mathbf v=0
+$$
 
-小行列は特性方程式。数値計算では `eig`/対称なら `eigh`。得た固有対は残差 $\|Av-\lambda v\|$ で検算。
+を通常のnull-space問題として解く。固有ベクトルは1本だけでなく、そのnull space内の全ての非零ベクトルであり、その空間が固有空間。
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+## 小さな数値例を最後まで計算する
 
-## 成立条件と典型的な誤り
+$$
+\mathbf A=\begin{bmatrix}2&1\\1&2\end{bmatrix}.
+$$
 
-- 0ベクトルは固有ベクトルではない。
-- 固有値が重複しても独立な固有ベクトルが同数あるとは限らない。
-- 非対称行列では複素固有値がありうる。
+$$
+\det(\mathbf A-\lambda\mathbf I)
+=(2-\lambda)^2-1
+=(\lambda-1)(\lambda-3).
+$$
 
-特に、次の主張を自力で診断できるようにする。
+したがって固有値は1と3。
 
-> 「固有ベクトルは行列の列ベクトルである」
+$\lambda=3$ では $(\mathbf A-3\mathbf I)\mathbf v=0$ より $v_1=v_2$、固有ベクトルは $(1,1)^T$ の倍数。$\lambda=1$ では $v_1=-v_2$。
 
-**診断**：一般には無関係。固有ベクトルは $Av=\lambda v$ を満たす入力方向で、Aの列そのものとは限らない。
+## もう一段丁寧に：固有値問題を「特殊な連立方程式」として理解する
 
-## 数値実装での検算
+### 1. 固有ベクトルはなぜゼロを除くのか
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+$$
+\mathbf A\mathbf0=\lambda\mathbf0
+$$
 
-## 後続Topicへの接続
+はどんな $\lambda$ に対しても成立する。もし $\mathbf0$ を固有ベクトルとして許すと、すべての数がすべての行列の固有値になってしまい、方向を抽出するという目的を失う。そのため定義で $\mathbf v\ne\mathbf0$ を明示する。
 
-動的系、Markov chain、PCA（共分散固有ベクトル）、安定性解析。
+### 2. eigenspaceは一つのベクトルではなく部分空間
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+ある固有値 $\lambda$ に対して
+
+$$
+E_\lambda=N(\mathbf A-\lambda\mathbf I)
+$$
+
+と定義する。null spaceなので $E_\lambda$ は部分空間である。ただし固有ベクトル集合そのものは $\mathbf0$ を除くため部分空間ではない。「固有空間」には0を含め、そこから0以外を選んだものが固有ベクトルである。
+
+### 3. 異なる固有値に属する固有ベクトルは独立
+
+2本の場合を証明する。$\lambda_1\ne\lambda_2$、
+
+$$
+\mathbf A\mathbf v_1=\lambda_1\mathbf v_1,
+\qquad
+\mathbf A\mathbf v_2=\lambda_2\mathbf v_2
+$$
+
+とする。もし $c_1\mathbf v_1+c_2\mathbf v_2=0$ なら、$\mathbf A$ を掛けて
+
+$$
+c_1\lambda_1\mathbf v_1+c_2\lambda_2\mathbf v_2=0.
+$$
+
+元の式を $\lambda_2$ 倍して引くと
+
+$$
+c_1(\lambda_1-\lambda_2)\mathbf v_1=0.
+$$
+
+$\mathbf v_1\ne0$、$\lambda_1\ne\lambda_2$ なので $c_1=0$。元の式から $c_2=0$。一般の本数にも拡張できる。この事実が「固有値が十分異なれば対角化できる」理由の一部になる。
+
+### 4. algebraic multiplicityとgeometric multiplicity
+
+特性多項式で $\lambda$ が何回根として現れるかをalgebraic multiplicity、
+
+$$
+\dim E_\lambda
+$$
+
+をgeometric multiplicityと呼ぶ。後者は独立な固有ベクトルが何本取れるかを表す。一般に
+
+$$
+1\le \dim E_\lambda\le
+\text{algebraic multiplicity}
+$$
+
+である。二つが一致しない例が、次Topicで対角化できない行列として現れる。
+
+### 5. 反復作用で固有値の意味が見える
+
+もし初期ベクトルが固有ベクトルなら
+
+$$
+\mathbf A^k\mathbf v
+=\lambda^k\mathbf v.
+$$
+
+したがって $|\lambda|>1$ なら大きくなり、$|\lambda|<1$ なら0へ縮み、$\lambda<0$ なら符号を反転しながら伸縮する。固有値がdynamic systemの長期挙動に使われる理由は、反復作用が単なるスカラーの累乗へ簡約されるからである。
+
+## 2×2例で特性方程式から固有空間まで完走する
+
+$$
+\mathbf A=
+\begin{bmatrix}
+4&1\\
+2&3
+\end{bmatrix}
+$$
+
+とする。
+
+### Step 1: characteristic polynomial
+
+$$
+\mathbf A-\lambda\mathbf I
+=
+\begin{bmatrix}
+4-\lambda&1\\
+2&3-\lambda
+\end{bmatrix}.
+$$
+
+したがって
+
+$$
+\begin{aligned}
+\det(\mathbf A-\lambda\mathbf I)
+&=(4-\lambda)(3-\lambda)-2\\
+&=12-7\lambda+\lambda^2-2\\
+&=\lambda^2-7\lambda+10\\
+&=(\lambda-5)(\lambda-2).
+\end{aligned}
+$$
+
+よって固有値は
+
+$$
+\lambda_1=5,
+\qquad
+\lambda_2=2.
+$$
+
+### Step 2: $\lambda=5$ のeigenspace
+
+$$
+\mathbf A-5\mathbf I
+=
+\begin{bmatrix}
+-1&1\\2&-2
+\end{bmatrix}.
+$$
+
+方程式
+
+$$
+(\mathbf A-5\mathbf I)\mathbf v=0
+$$
+
+は
+
+$$
+-v_1+v_2=0
+$$
+
+なので $v_2=v_1$。
+
+$$
+E_5
+=\operatorname{span}\left(
+\begin{bmatrix}1\\1\end{bmatrix}
+\right).
+$$
+
+### Step 3: $\lambda=2$ のeigenspace
+
+$$
+\mathbf A-2\mathbf I
+=
+\begin{bmatrix}
+2&1\\2&1
+\end{bmatrix}.
+$$
+
+$$
+2v_1+v_2=0
+$$
+
+より $v_2=-2v_1$。
+
+$$
+E_2
+=\operatorname{span}\left(
+\begin{bmatrix}1\\-2\end{bmatrix}
+\right).
+$$
+
+### Step 4: definitionへ戻って検算
+
+$$
+\mathbf A
+\begin{bmatrix}1\\1\end{bmatrix}
+=
+\begin{bmatrix}5\\5\end{bmatrix}
+=5
+\begin{bmatrix}1\\1\end{bmatrix}.
+$$
+
+また
+
+$$
+\mathbf A
+\begin{bmatrix}1\\-2\end{bmatrix}
+=
+\begin{bmatrix}2\\-4\end{bmatrix}
+=2
+\begin{bmatrix}1\\-2\end{bmatrix}.
+$$
+
+特性多項式の根を求めただけで終わらず、最後に $\mathbf A\mathbf v=\lambda\mathbf v$ へ戻って確認する。
+
+## 実固有ベクトルを持たない実行列もある
+
+90度回転
+
+$$
+\mathbf R=
+\begin{bmatrix}
+0&-1\\1&0
+\end{bmatrix}
+$$
+
+では、非零の実ベクトルはすべて方向を90度変える。したがって実数倍だけで元の方向に残る実固有ベクトルは存在しない。
+
+特性多項式は
+
+$$
+\det(\mathbf R-\lambda\mathbf I)
+=\lambda^2+1,
+$$
+
+実数解を持たない。
+
+この例から「実行列なら実固有値が必ずある」という誤解を防げる。複素数まで広げれば $\lambda=\pm i$ が現れるが、複素線形代数の詳細はここでは発展扱いとする。
+
+## 固有ベクトルのscaleは一意でない
+
+もし $\mathbf A\mathbf v=\lambda\mathbf v$ なら、非零scalar $c$ に対して
+
+$$
+\mathbf A(c\mathbf v)
+=c\mathbf A\mathbf v
+=c\lambda\mathbf v
+=\lambda(c\mathbf v).
+$$
+
+したがって $c\mathbf v$ も同じ固有値の固有ベクトル。固有ベクトルは「一本の特定の矢印」ではなく、eigenspace内のdirectionを表す。数値計算では便宜上norm 1に正規化することが多いが、それは固有ベクトルの定義条件ではない。
+
+## 成立条件・壊れる場合
+
+固有ベクトルはゼロベクトルを含めない。固有値は重複しうる。実行列でも回転行列のように実固有値を持たず複素固有値を持つ場合がある。
+
+## ここから発展
+
+固有ベクトルが$n$本独立にそろえば、それらを基底にして行列を対角化できる。次Topicで $\mathbf A^k$ の計算が劇的に簡単になる理由を導く。
+
+
+## このTopicの理解確認
+
+- $Av=\lambda v$ から $\det(A-\lambda I)=0$ を導けるか。
+- 固有vector setとeigenspaceの違い（zero vectorの扱い）を説明できるか。
+- repeated eigenvalueでも十分なindependent eigenvectorsが得られない例を説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [MIT OpenCourseWare 18.700 Linear Algebra](https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-eigenvalues-eigenvectors)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-eigenvalues-eigenvectors)

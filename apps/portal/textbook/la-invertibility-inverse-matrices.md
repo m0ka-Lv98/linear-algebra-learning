@@ -1,104 +1,215 @@
 # 可逆性と逆行列：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 05/29
 
-逆行列は線形写像を「元に戻す」写像である。ただし正方行列なら必ず存在するわけではなく、情報を潰さない（rankが最大）場合に限る。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+$\mathbf A\mathbf x=\mathbf b$ を全ての $\mathbf b$ に対して一意に解けるなら、$\mathbf A$ は入力情報を失っていない。この「元へ戻せる」性質を可逆性と呼び、逆向きの変換を $\mathbf A^{-1}$ で表す。
 
-## 前提知識
+**前提知識**：連立一次方程式と消去法。
 
-前提Topic: la-linear-systems-elimination。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+変換によって二つの異なる入力が同じ出力へ潰れてしまったら、出力だけから元の入力を区別できない。逆行列が存在するためには、異なる入力を異なる出力へ送り、かつ出力空間の全てへ到達できる必要がある。
 
-逆行列は線形写像を「元に戻す」写像である。ただし正方行列なら必ず存在するわけではなく、情報を潰さない（rankが最大）場合に限る。
+## 図の解説
 
-<img src="/visuals/course-02/la-invertibility-inverse-matrices.png" alt="可逆性と逆行列の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-invertibility-inverse-matrices.png" alt="可逆性と逆行列の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の左の円が $\mathbf A$ によって中央の楕円へ変換され、さらに $\mathbf A^{-1}$ によって元の円へ戻る。可逆な変換では、円が楕円へ伸びたり傾いたりしても、面積を完全に0へ潰すことはない。
+
+もし一方向が完全に0へ潰れて線分になれば、元の円上の異なる点が同じ点へ重なり、逆変換は作れない。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{n\times n}$：正方行列。
+- $\mathbf I\in\mathbb R^{n\times n}$：単位行列。
+- $\mathbf A^{-1}$：$\mathbf A$ の逆行列。
+
 
 ## 正式な定義
 
-正方行列 $\mathbf{A}\in\mathbb{R}^{n\times n}$ に対し $\mathbf{A}^{-1}\mathbf{A}=\mathbf{A}\mathbf{A}^{-1}=\mathbf{I}$ を満たす行列が存在するとき可逆という。
-
-代表式：
+正方行列 $\mathbf A$ に対し
 
 $$
-\mathbf{A}^{-1}\mathbf{A}=\mathbf{I}
+\mathbf A^{-1}\mathbf A=\mathbf A\mathbf A^{-1}=\mathbf I
 $$
 
-## 代表式の記号を定義する
+を満たす行列 $\mathbf A^{-1}$ が存在するとき、$\mathbf A$ を可逆という。
 
-- $\mathbf{A}\in\mathbb{R}^{n\times n}$: 正方行列。
-- $\mathbf{A}^{-1}$: $\mathbf{A}^{-1}\mathbf{A}=\mathbf{A}\mathbf{A}^{-1}=\mathbf{I}$を満たす逆行列。
-- $\mathbf{I}\in\mathbb{R}^{n\times n}$: 単位行列。
-- 可逆（invertible）: 逆行列が存在すること。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### なぜ逆行列があれば連立方程式を解けるのか
 
-$A$ が可逆なら $A\mathbf{x}=\mathbf{0}$ に左から $A^{-1}$ を掛けて $\mathbf{x}=0$。したがってnull spaceは自明で列は独立。逆にrankが$n$なら各 $\mathbf{b}$ に一意解があり逆写像を定義できる。
+$\mathbf A\mathbf x=\mathbf b$ の左から $\mathbf A^{-1}$ を掛けると
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+\mathbf A^{-1}\mathbf A\mathbf x=\mathbf A^{-1}\mathbf b.
+$$
 
-## 小さな手計算
+結合則より
 
-$\mathbf{A}=\begin{bmatrix}2&1\\1&1\end{bmatrix}$ は $\det A=1$ で、$\mathbf{A}^{-1}=\begin{bmatrix}1&-1\\-1&2\end{bmatrix}$。
+$$
+\mathbf I\mathbf x=\mathbf A^{-1}\mathbf b,
+$$
 
-さらに確認問題：$\mathbf{A}=\begin{bmatrix}3&1\\2&1\end{bmatrix}$ の逆行列を求め、$\mathbf{b}=(7,5)^T$ を解け。
+したがって
 
-**解答**：$\det A=1$ なので $A^{-1}=\begin{bmatrix}1&-1\\-2&3\end{bmatrix}$。$x=A^{-1}b=(2,1)^T$。
+$$
+\mathbf x=\mathbf A^{-1}\mathbf b.
+$$
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+さらに解が一意であることも示せる。もし $\mathbf A\mathbf x_1=\mathbf b$ と $\mathbf A\mathbf x_2=\mathbf b$ なら、差を取って
 
-## 計算手順・アルゴリズム
+$$
+\mathbf A(\mathbf x_1-\mathbf x_2)=\mathbf0.
+$$
 
-理論上はGauss-Jordanで $[A\mid I]\to[I\mid A^{-1}]$。数値計算では逆行列を明示的に作らず `solve(A,b)` を使うのが基本。
+左から $\mathbf A^{-1}$ を掛けると $\mathbf x_1-\mathbf x_2=\mathbf0$ なので $\mathbf x_1=\mathbf x_2$。
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+### 2×2逆行列の式がなぜ出るか
 
-## 成立条件と典型的な誤り
+$\mathbf A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$ とする。候補
 
-- detが0に近い行列では理論上可逆でも数値的に不安定。
-- 長方形行列に通常の逆行列はない。
-- $A^{-1}b$ を計算するために `inv(A) @ b` を標準手順にしない。
+$$
+\mathbf B=\frac1{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}
+$$
 
-特に、次の主張を自力で診断できるようにする。
+を掛けると
 
-> 「detが小さくても0でなければ数値計算上の問題はない」
+$$
+\mathbf A\mathbf B
+=\frac1{ad-bc}\begin{bmatrix}ad-bc&0\\0&ad-bc\end{bmatrix}=\mathbf I.
+$$
 
-**診断**：誤り。detの絶対値だけで安定性は判断できないが、ほぼ特異な行列では条件数が大きくなり、入力誤差が解で増幅されうる。
+分母 $ad-bc$ が0ならこの式は定義できない。この量が後で学ぶ determinant（行列式）である。
 
-## 数値実装での検算
+## 小さな数値例を最後まで計算する
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+$\mathbf A=\begin{bmatrix}2&1\\1&1\end{bmatrix}$ では $ad-bc=1$ なので
 
-## 後続Topicへの接続
+$$
+\mathbf A^{-1}=\begin{bmatrix}1&-1\\-1&2\end{bmatrix}.
+$$
 
-一意な線形系、座標変換の逆変換、可逆な前処理の理解に使う。
+$\mathbf b=(5,3)^T$ に対して
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+$$
+\mathbf x=\mathbf A^{-1}\mathbf b
+=\begin{bmatrix}2\\1\end{bmatrix}.
+$$
+
+確認として $\mathbf A\mathbf x=(5,3)^T$ に戻る。
+
+## もう一段丁寧に：「逆行列がある」とは何が保証されることか
+
+### 1. 逆行列は写像を完全に元へ戻す
+
+正方行列 $\mathbf A\in\mathbb R^{n\times n}$ の逆行列 $\mathbf A^{-1}$ は
+
+$$
+\mathbf A^{-1}\mathbf A=\mathbf I,
+\qquad
+\mathbf A\mathbf A^{-1}=\mathbf I
+$$
+
+を満たす。したがって $\mathbf y=\mathbf A\mathbf x$ が与えられれば
+
+$$
+\mathbf A^{-1}\mathbf y
+=\mathbf A^{-1}\mathbf A\mathbf x
+=\mathbf x
+$$
+
+と入力を一意に復元できる。
+
+### 2. null spaceが0だけであることとの同値性
+
+もし $\mathbf A$ が可逆で $\mathbf A\mathbf x=\mathbf0$ なら、左から $\mathbf A^{-1}$ を掛けて
+
+$$
+\mathbf x=\mathbf A^{-1}\mathbf0=\mathbf0.
+$$
+
+よって $N(\mathbf A)=\{\mathbf0\}$。
+
+逆に正方行列でnull spaceが $\{\mathbf0\}$ なら、列は線形独立でpivotが $n$ 個ある。$n\times n$ 行列なので全行にもpivotがあり、任意の $\mathbf b\in\mathbb R^n$ に対して $\mathbf A\mathbf x=\mathbf b$ が一意に解ける。この解を $\mathbf x=\mathbf A^{-1}\mathbf b$ と対応させることで逆写像が得られる。
+
+この一連の同値関係が「invertible matrix theorem」の中心である。
+
+### 3. なぜ $\mathbf A\mathbf x=\mathbf b$ を逆行列で解けるのか
+
+$$
+\mathbf A\mathbf x=\mathbf b
+$$
+
+の両辺へ左から $\mathbf A^{-1}$ を掛けると
+
+$$
+\mathbf A^{-1}\mathbf A\mathbf x
+=\mathbf A^{-1}\mathbf b,
+$$
+
+$$
+\mathbf I\mathbf x=\mathbf A^{-1}\mathbf b,
+$$
+
+したがって
+
+$$
+\mathbf x=\mathbf A^{-1}\mathbf b.
+$$
+
+ここで左から掛けることが重要である。行列積は一般に可換でないので、スカラー方程式のように「$\mathbf A$ を右辺へ移項した」と考えるのは危険である。
+
+### 4. 2×2逆行列公式はどこから出るか
+
+$$
+\mathbf A=\begin{bmatrix}a&b\\c&d\end{bmatrix}
+$$
+
+に対し、未知行列
+
+$$
+\mathbf X=\begin{bmatrix}p&q\\r&s\end{bmatrix}
+$$
+
+が $\mathbf A\mathbf X=\mathbf I$ を満たすよう解くと、二つの右辺 $\mathbf e_1,\mathbf e_2$ に対して同じ係数行列を解くことになる。整理すると
+
+$$
+\mathbf A^{-1}
+=\frac{1}{ad-bc}
+\begin{bmatrix}d&-b\\-c&a\end{bmatrix},
+$$
+
+ただし $ad-bc\ne0$。分母が0なら列が潰れて面積が0になり、逆写像を作れない。後のdeterminant Topicで、この分母がなぜ面積倍率と可逆性を同時に表すのかを学ぶ。
+
+### 5. 理論上の逆行列と数値解法を分ける
+
+$\mathbf A^{-1}$ は理論を整理するには非常に便利だが、数値計算で $\mathbf A\mathbf x=\mathbf b$ を解くたびに逆行列を明示形成する必要はない。消去法やLU分解で直接solveする方が計算量・数値誤差の両面で自然である。「逆行列が存在する」という数学的事実と、「逆行列を実際に計算する」というアルゴリズムは別である。
+
+## 成立条件・壊れる場合
+
+逆行列は正方行列に対して定義する。長方形行列には通常の意味の両側逆行列は存在しない。また、理論上可逆でも非常にconditionが悪い行列では、逆行列を明示的に作ると数値誤差が増える。実装では `inv(A) @ b` より `solve(A,b)` を優先する。
+
+## ここから発展
+
+この後、可逆性はpivot、null space、rank、determinant、固有値など多くの条件と同値であることが見えてくる。現時点では同値条件を暗記せず、「情報を潰さず一意に戻せる」という核を保持する。
+
+
+## このTopicの理解確認
+
+- $N(\mathbf A)=\{0\}$ と可逆性の関係を説明できるか。
+- $\mathbf A^{-1}\mathbf b$ を「移項」と呼ばず、左からinverseを掛ける操作として導けるか。
+- 理論上inverseが存在することと、数値計算でinverseを明示形成することを区別できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [OpenStax Precalculus 2e, Chapter 9: Systems of Equations and Inequalities](https://openstax.org/books/precalculus-2e/pages/9-introduction-to-systems-of-equations-and-inequalities)
 
-## 演習へ
 
-[10問の演習](/exercises/la-invertibility-inverse-matrices)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-invertibility-inverse-matrices)

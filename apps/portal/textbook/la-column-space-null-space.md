@@ -1,103 +1,179 @@
-# 列空間と零空間：教科書
+# 列空間とnull space：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 08/29
 
-列空間は「Aが出力として作れるもの」、零空間は「Aが見えなくしてしまう入力」を表す。$Ax=b$ の解の存在と一意性を、この2つで整理できる。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+$\mathbf A\mathbf x$ は $\mathbf A$ の列ベクトルの線形結合だった。したがって $\mathbf A$ が作れる出力全体は、列のspanとして表せる。一方、$\mathbf A$ によって0へ潰れる入力方向もある。この二つが列空間とnull spaceである。
 
-## 前提知識
+**前提知識**：span、部分空間、行列とベクトルの積。
 
-前提Topic: la-span-subspaces, la-linear-systems-elimination。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+列空間は「この行列で到達できる出力の世界」、null spaceは「入力を変えても出力に現れない方向」である。逆問題 $\mathbf A\mathbf x=\mathbf b$ を考えると、$\mathbf b$ が列空間に入っているかが解の存在を決め、null spaceが0以外を含むかが解の一意性に関係する。
 
-列空間は「Aが出力として作れるもの」、零空間は「Aが見えなくしてしまう入力」を表す。$Ax=b$ の解の存在と一意性を、この2つで整理できる。
+## 図の解説
 
-<img src="/visuals/course-02/la-column-space-null-space.png" alt="列空間と零空間の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-column-space-null-space.png" alt="列空間とnull spaceの図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の右側の直線が列空間 $C(\mathbf A)$ である。一般の入力 $\mathbf x$ は $\mathbf A\mathbf x$ としてその直線上へ写る。一方、null spaceに属する $\mathbf z$ は $\mathbf A\mathbf z=\mathbf0$ となり、出力では原点へ潰れる。
+
+したがって $\mathbf x$ と $\mathbf x+\mathbf z$ は異なる入力でも、$\mathbf A(\mathbf x+\mathbf z)=\mathbf A\mathbf x$ となる。null spaceが非自明だと逆問題の解が一意でなくなる理由が図から見える。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{m\times n}$。
+- $C(\mathbf A)\subseteq\mathbb R^m$：column space（列空間）。
+- $N(\mathbf A)\subseteq\mathbb R^n$：null space（零空間、核）。
+
 
 ## 正式な定義
 
-$\operatorname{Col}(A)=\{Ax\mid x\in\mathbb{R}^n\}\subseteq\mathbb{R}^m$、$\operatorname{Null}(A)=\{x\in\mathbb{R}^n\mid Ax=0\}$。
-
-代表式：
-
 $$
-\operatorname{Null}(\mathbf{A})=\{\mathbf{x}\mid\mathbf{A}\mathbf{x}=\mathbf{0}\}
+C(\mathbf A)=\{\mathbf A\mathbf x:\mathbf x\in\mathbb R^n\}
+=\operatorname{span}\{\mathbf a_1,\ldots,\mathbf a_n\},
 $$
 
-## 代表式の記号を定義する
+$$
+N(\mathbf A)=\{\mathbf x\in\mathbb R^n:\mathbf A\mathbf x=\mathbf0\}.
+$$
 
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$: 線形写像を表す行列。
-- $\operatorname{Col}(\mathbf{A})\subseteq\mathbb{R}^m$: $\mathbf{A}$の列空間、すなわち到達可能な出力の集合。
-- $\operatorname{Null}(\mathbf{A})\subseteq\mathbb{R}^n$: $\mathbf{A}\mathbf{x}=\mathbf{0}$となる入力の集合（零空間）。
-- $\mathbf{0}$: 対応する次元のzeroベクトル。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### なぜ列空間が「解の存在」を決めるのか
 
-$Ax=b$ が解を持つのは $b\in\operatorname{Col}(A)$ のとき。もし $z\in\operatorname{Null}(A)$ なら、解$x_p$から$x_p+z$も同じbへ写る。
+方程式 $\mathbf A\mathbf x=\mathbf b$ に解があるとは、ある $\mathbf x$ に対して $\mathbf b=\mathbf A\mathbf x$ と書けること。そのようなベクトル全体の定義が $C(\mathbf A)$ だから、
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+\mathbf A\mathbf x=\mathbf b\text{ が可解}
+\quad\Longleftrightarrow\quad
+\mathbf b\in C(\mathbf A).
+$$
 
-## 小さな手計算
+### なぜnull spaceが「一意性」を決めるのか
 
-$A=\begin{bmatrix}1&2&3\\0&1&1\end{bmatrix}$ では第3列 $(3,1)^T$ は第1列 $(1,0)^T$ と第2列 $(2,1)^T$ の和である。したがって列は従属であり、RREFから零空間の自由変数を求められる。
+$\mathbf x_0$ が一つの解とし、$\mathbf z\in N(\mathbf A)$ とする。すると
 
-さらに確認問題：$A=\begin{bmatrix}1&2&3\\0&1&1\end{bmatrix}$ の零空間の基底を求めよ。
+$$
+\mathbf A(\mathbf x_0+\mathbf z)
+=\mathbf A\mathbf x_0+\mathbf A\mathbf z
+=\mathbf b+\mathbf0
+=\mathbf b.
+$$
 
-**解答**：$x_2+x_3=0$ より $x_2=-x_3$、$x_1+2x_2+3x_3=0$ より $x_1=-x_3$。したがって $x=t(-1,-1,1)^T$。
+したがって、非零の $\mathbf z$ がnull spaceにあれば解を無限に作れる。逆に二つの解 $\mathbf x_1,\mathbf x_2$ があれば
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+\mathbf A(\mathbf x_1-\mathbf x_2)=\mathbf0
+$$
 
-## 計算手順・アルゴリズム
+なので差はnull spaceに属する。よって解の非一意性とnull spaceは同じ構造を表す。
 
-RREFでpivot列を特定し、列空間の基底は元のAのpivot列から取る。null spaceはRREFの自由変数ごとのspecial solutionから基底を作る。
+## 小さな数値例を最後まで計算する
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$$
+\mathbf A=\begin{bmatrix}1&1\\2&2\end{bmatrix}.
+$$
 
-## 成立条件と典型的な誤り
+列は両方とも $(1,2)^T$ の倍数なので、列空間はそのベクトルが張る直線。null spaceは
 
-- 列空間の基底にRREFの列をそのまま使わない（元の列空間が変わる）。
-- null spaceは入力側 $\mathbb{R}^n$ にある。
-- column spaceは出力側 $\mathbb{R}^m$ にある。
+$$
+x_1+x_2=0
+$$
 
-特に、次の主張を自力で診断できるようにする。
+より $\mathbf x=t(1,-1)^T$。したがって入力の $(1,-1)^T$ 方向は出力に全く現れない。
 
-> 「行基本変形しても列空間そのものは保存される」
+## もう一段丁寧に：列空間とnull spaceは同じ式の二つの側面
 
-**診断**：行空間・零空間に関する情報は保たれるが、列空間の具体的なベクトル集合は一般に変わる。pivot列の番号を元のAへ戻す。
+### 1. 列空間は「作れる出力」の集合
 
-## 数値実装での検算
+$\mathbf A=[\mathbf a_1\cdots\mathbf a_n]\in\mathbb R^{m\times n}$ なら
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+$$
+\mathbf A\mathbf x
+=x_1\mathbf a_1+\cdots+x_n\mathbf a_n.
+$$
 
-## 後続Topicへの接続
+したがって $\mathbf A\mathbf x$ として作れる出力全体は
 
-最小二乗ではbを列空間へ射影し、rank不足ではnull spaceが解の非一意性を生む。
+$$
+C(\mathbf A)=\operatorname{span}(\mathbf a_1,\ldots,\mathbf a_n).
+$$
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+方程式 $\mathbf A\mathbf x=\mathbf b$ が解を持つ条件は、まさに
+
+$$
+\mathbf b\in C(\mathbf A)
+$$
+
+である。
+
+### 2. null spaceは「出力に見えない入力変化」の集合
+
+$$
+N(\mathbf A)=\{\mathbf z\in\mathbb R^n:\mathbf A\mathbf z=\mathbf0\}.
+$$
+
+もし $\mathbf x_0$ が $\mathbf A\mathbf x=\mathbf b$ の一つの解で、$\mathbf z\in N(\mathbf A)$ なら
+
+$$
+\mathbf A(\mathbf x_0+\mathbf z)
+=\mathbf A\mathbf x_0+\mathbf A\mathbf z
+=\mathbf b.
+$$
+
+つまりnull space方向へ入力を動かしても出力は変わらない。
+
+逆に、$\mathbf x_1,\mathbf x_2$ が同じ $\mathbf b$ を作るなら
+
+$$
+\mathbf A\mathbf x_1=\mathbf A\mathbf x_2
+$$
+
+より
+
+$$
+\mathbf A(\mathbf x_1-\mathbf x_2)=\mathbf0,
+$$
+
+したがって $\mathbf x_1-\mathbf x_2\in N(\mathbf A)$。よって解の非一意性はnull spaceで完全に記述できる。
+
+### 3. 一般解が $\mathbf x_0+N(\mathbf A)$ になる理由
+
+上の二方向を合わせると、非斉次方程式の全解は
+
+$$
+\boxed{\mathbf x=\mathbf x_0+\mathbf z,\qquad \mathbf z\in N(\mathbf A)}
+$$
+
+である。一つの特解 $\mathbf x_0$ に、斉次方程式の全解を足せばよい。この構造は微分方程式などでも繰り返し現れる。
+
+### 4. 入力空間と出力空間を混同しない
+
+$C(\mathbf A)$ は $\mathbb R^m$ の部分空間だが、$N(\mathbf A)$ は $\mathbb R^n$ の部分空間である。矩形行列ではそもそも存在する空間が異なる。「どちらもAに関する部分空間だから同じ空間内にある」と考えないこと。
+
+## 成立条件・壊れる場合
+
+列空間は $\mathbb R^m$ の部分空間、null spaceは $\mathbb R^n$ の部分空間であり、住んでいる空間が違う。両方を同じ座標図に無理に描くと混乱しやすい。shapeを明示すること。
+
+## ここから発展
+
+列空間の次元がrank、null spaceの次元がnullityである。両者が入力次元$n$をどう分けるかをTopic 11のrank-nullity theoremで示す。
+
+
+## このTopicの理解確認
+
+- $\mathbf b\in C(\mathbf A)$ と $\mathbf A\mathbf x=\mathbf b$ の可解性が同値な理由を説明できるか。
+- 二つの解の差がnull spaceに入ることを証明できるか。
+- column spaceが $\mathbb R^m$、null spaceが $\mathbb R^n$ に属することをshapeから説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-column-space-null-space)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-column-space-null-space)

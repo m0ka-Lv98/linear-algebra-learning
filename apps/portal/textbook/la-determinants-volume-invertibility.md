@@ -1,104 +1,246 @@
 # 行列式・体積・可逆性：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 20/29
 
-行列式は、線形写像が向き付き体積を何倍にするかを表す一つのスカラー。0なら少なくとも1方向を潰して体積が0になり、可逆でない。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+可逆性のTopicで2×2逆行列の分母に $ad-bc$ が現れた。行列式はこの量を$n$次元へ一般化したもので、単なる計算用スカラーではなく、線形変換が面積・体積を何倍するかを表す。
 
-## 前提知識
+**前提知識**：行列、可逆性、基底。
 
-前提Topic: la-invertibility-inverse-matrices。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+2次元で単位正方形を行列で変換すると平行四辺形になる。その面積が元の何倍になったかが $|\det\mathbf A|$。determinantが0なら面積が0へ潰れ、平面が線や点へ押しつぶされるため逆変換できない。
 
-行列式は、線形写像が向き付き体積を何倍にするかを表す一つのスカラー。0なら少なくとも1方向を潰して体積が0になり、可逆でない。
+## 図の解説
 
-<img src="/visuals/course-02/la-determinants-volume-invertibility.png" alt="行列式・体積・可逆性の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-determinants-volume-invertibility.png" alt="行列式・体積・可逆性の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の単位正方形は $\mathbf A$ によって、列ベクトル $\mathbf A\mathbf e_1$ と $\mathbf A\mathbf e_2$ が張る平行四辺形へ移る。平行四辺形の面積は $|\det\mathbf A|$ である。
+
+符号は面積そのものではなく向きも記録する。$\det\mathbf A<0$ なら、基底の向きが反転している。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{n\times n}$。
+- $\det(\mathbf A)$：行列式。
+- 2×2では $\mathbf A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$。
+
 
 ## 正式な定義
 
-正方行列Aに対し $\det(AB)=\det A\det B$。$|\det A|$ は単位立方体の体積倍率、符号は向き反転を表す。$\det A\neq0\iff A$可逆。
-
-代表式：
+2×2では
 
 $$
-\det(\mathbf{A}\mathbf{B})=\det(\mathbf{A})\det(\mathbf{B})
+\det\begin{bmatrix}a&b\\c&d\end{bmatrix}=ad-bc.
 $$
 
-## 代表式の記号を定義する
+一般に行列式は、線形変換の符号付き体積倍率として特徴づけられ、積について
 
-- $\det(\mathbf{A})$: 正方行列$\mathbf{A}$の行列式。
-- $\mathbf{A},\mathbf{B}\in\mathbb{R}^{n\times n}$: 正方行列。
-- $|\det(\mathbf{A})|$: 線形写像$\mathbf{A}$による$n$次元体積の倍率。
-- $\det(\mathbf{A})=0$は体積を潰す方向があり、$\mathbf{A}$が非可逆であることと同値。
+$$
+\det(\mathbf A\mathbf B)=\det(\mathbf A)\det(\mathbf B)
+$$
 
-## なぜこの式になるのか
+を満たす。
 
-三角行列のdetは対角積。消去でAを三角化し、行交換で符号反転、行の定数倍でdetも同倍率という規則を追えば効率よく計算できる。
+## なぜこの式・定理になるのか
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+### 2×2で面積から $ad-bc$ が出る
 
-## 小さな手計算
+列ベクトルを $\mathbf a_1=(a,c)^T$、$\mathbf a_2=(b,d)^T$ とする。この2本が作る平行四辺形の符号付き面積は $ad-bc$ になる。たとえば $\mathbf a_1$ を底辺と見て高さを計算してもよいし、平行四辺形を長方形と三角形へ分解しても同じ式が得られる。
 
-$A=\begin{bmatrix}2&1\\0&3\end{bmatrix}$ はdet=6。単位正方形の面積を6倍する。
+### なぜdet=0なら可逆でないのか
 
-さらに確認問題：$A=\begin{bmatrix}1&2\\3&5\end{bmatrix}$ のdetと可逆性を判定せよ。
+$\det\mathbf A=0$ は変換後の$n$次元体積が0になることを意味する。つまり列ベクトルが$n$次元の独立な平行多面体を作れず、低次元部分空間へ潰れている。したがって列は線形従属でrank<n、null spaceに非零ベクトルが存在し、可逆ではない。
 
-**解答**：$\det A=1\cdot5-2\cdot3=-1$。0でないので可逆。面積倍率は1、向きは反転。
+逆に可逆なら
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+1=\det\mathbf I
+=\det(\mathbf A\mathbf A^{-1})
+=\det\mathbf A\det\mathbf A^{-1}
+$$
 
-## 計算手順・アルゴリズム
+なので $\det\mathbf A\ne0$。
 
-小行列は公式、一般にはLU分解を使ってdetを対角積とpivot符号から求める。大規模ではdetそのものよりlogdetを使うことも多い。
+## 小さな数値例を最後まで計算する
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$$
+\mathbf A=\begin{bmatrix}2&1\\1&3\end{bmatrix}
+$$
 
-## 成立条件と典型的な誤り
+なら $\det\mathbf A=6-1=5$。単位正方形は面積5の平行四辺形へ変換される。determinantが非零なので可逆。
 
-- detは長方形行列には通常定義しない。
-- detが大きい/小さいだけで条件数は判断できない。
-- 余因子展開は理論には便利だが大規模数値計算には非効率。
+## もう一段丁寧に：determinantが可逆性と体積を同時に表す理由
 
-特に、次の主張を自力で診断できるようにする。
+### 1. 2次元で面積倍率を見る
 
-> 「det(A+B)=det(A)+det(B)」
+$$
+\mathbf A=[\mathbf a_1\ \mathbf a_2]
+=\begin{bmatrix}a&b\\c&d\end{bmatrix}
+$$
 
-**診断**：一般には成り立たない。detは行列積に対して乗法的だが、加法的ではない。
+は標準basis $\mathbf e_1,\mathbf e_2$ を $\mathbf a_1,\mathbf a_2$ へ写す。単位正方形はこの2本を辺とする平行四辺形へ移り、その符号付き面積は
 
-## 数値実装での検算
+$$
+\det\mathbf A=ad-bc.
+$$
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+絶対値 $|\det\mathbf A|$ が面積倍率、符号がorientationの反転を表す。
 
-## 後続Topicへの接続
+### 2. なぜdeterminant 0なら可逆でないのか
 
-可逆性、体積変換、確率密度の変数変換、正定値行列のlog determinant。
+$\det\mathbf A=0$ なら変換後の平行四辺形の面積が0。つまり2本の列は同一直線上へ潰れており、線形従属である。異なる入力が同じ出力へ写るので逆写像を作れない。
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+一般の $n$ 次元でも $\det\mathbf A=0$ は $n$ 次元体積が0へ潰れることを意味し、rankが $n$ 未満であることと一致する。
+
+### 3. 行基本変形とdeterminant
+
+行交換はorientationを反転するのでdeterminantの符号を反転する。1行を $c$ 倍すれば、その方向の長さが $c$ 倍されるので体積も $c$ 倍。別の行の倍数を加えるshearは体積を変えない。
+
+この三規則を使えばeliminationで三角行列へ変形し、三角行列のdeterminantが対角積になることから一般のdeterminantを計算できる。
+
+### 4. なぜ $\det(\mathbf A\mathbf B)=\det\mathbf A\det\mathbf B$ なのか
+
+$\mathbf B$ が体積を $\det\mathbf B$ 倍し、その後 $\mathbf A$ がさらに $\det\mathbf A$ 倍する。合成変換 $\mathbf A\mathbf B$ の全倍率は積になるので
+
+$$
+\det(\mathbf A\mathbf B)
+=\det\mathbf A\det\mathbf B.
+$$
+
+この式から可逆行列について
+
+$$
+1=\det\mathbf I
+=\det(\mathbf A\mathbf A^{-1})
+=\det\mathbf A\det\mathbf A^{-1}
+$$
+
+なので
+
+$$
+\det\mathbf A^{-1}=\frac1{\det\mathbf A}
+$$
+
+も自然に出る。
+
+### 5. determinantは数値解法の万能な診断ではない
+
+理論上、$\det\mathbf A\ne0$ は可逆性と同値である。しかし「determinantの絶対値が小さいから数値的に危険」とだけ判断するのは不十分である。determinantは次元や各方向のscaleをまとめて一つの数にした量で、入力誤差が解へ何倍伝わるかを直接表してはいない。数値的な感度は、Topic 26でSVDを学んだ後、Topic 29のcondition numberで改めて定量化する。
+
+## 2×2 determinant公式を面積から導く
+
+$$
+\mathbf a_1=\begin{bmatrix}a\\c\end{bmatrix},
+\qquad
+\mathbf a_2=\begin{bmatrix}b\\d\end{bmatrix}
+$$
+
+を辺とする平行四辺形のsigned areaが $ad-bc$ になることを、線形性から見る。
+
+第2ベクトルを
+
+$$
+\mathbf a_2
+=\begin{bmatrix}b\\0\end{bmatrix}
++
+\begin{bmatrix}0\\d\end{bmatrix}
+$$
+
+に分けて考えると、determinantは各列についてlinearなので
+
+$$
+\det\begin{bmatrix}a&b\\c&d\end{bmatrix}
+=
+\det\begin{bmatrix}a&b\\c&0\end{bmatrix}
++
+\det\begin{bmatrix}a&0\\c&d\end{bmatrix}.
+$$
+
+各項は向きを含めた長方形/三角形の面積としてそれぞれ $-bc$ と $ad$ になり
+
+$$
+\det\mathbf A=ad-bc.
+$$
+
+2×2公式を単なる暗記対象ではなく、「二つの列方向が作るsigned area」として保持する。
+
+## 三角行列で対角積になる理由
+
+上三角行列
+
+$$
+\mathbf U=
+\begin{bmatrix}
+u_{11}&*&\cdots\\
+0&u_{22}&\cdots\\
+\vdots&&\ddots
+\end{bmatrix}
+$$
+
+では、eliminationで対角を変えずに上側のoff-diagonal entriesを除去できる。別の行の倍数を加える操作はdeterminantを変えないため、最終的に対角行列
+
+$$
+\operatorname{diag}(u_{11},\ldots,u_{nn})
+$$
+
+と同じdeterminantを持つ。各coordinate directionを $u_{ii}$ 倍する対角変換の体積倍率は積なので
+
+$$
+\boxed{
+\det\mathbf U=\prod_{i=1}^{n}u_{ii}
+}.
+$$
+
+これがeliminationでdeterminantを効率よく計算できる理由である。
+
+## transposeでdeterminantが変わらないこと
+
+$$
+\det(\mathbf A^T)=\det(\mathbf A)
+$$
+
+が成り立つ。幾何的にはrowsで見てもcolumnsで見ても同じn-dimensional volume scalingを表すため。
+
+この性質により、後で
+
+$$
+\det(\mathbf A^T\mathbf A)
+=\det(\mathbf A^T)\det(\mathbf A)
+=(\det\mathbf A)^2
+$$
+
+のような式も自然に扱える。ただし $\mathbf A$ が矩形なら $\det\mathbf A$ 自体は定義されないので注意する。
+
+## determinantの存在条件を明確にする
+
+通常のdeterminantはsquare matrixに対して定義する。$m\times n$ で $m\ne n$ の行列に「determinantが0」と言うのは誤りで、そもそも通常のdeterminantが定義されていない。
+
+矩形行列の「空間を何方向保つか」はrankで扱い、伸縮量の詳細はTopic 26のSVDで扱う。この役割分担を明確にする。
+
+## 成立条件・壊れる場合
+
+determinantは正方行列に対して定義する。大規模数値計算で可逆性判定を `det(A)==0` で行うのは不安定。実務では分解やrank、conditionを使う。
+
+## ここから発展
+
+固有値を学ぶと、行列式は固有値の積 $\det\mathbf A=\prod_i\lambda_i$ としても理解できる。これはTopic 21以降で接続する。
+
+
+## このTopicの理解確認
+
+- $|\det A|$ がvolume scale、signがorientationを表すことを2D例で説明できるか。
+- row operationごとのdeterminant変化を説明できるか。
+- $\det A=0$ とnoninvertibilityをvolume collapseとcolumn dependenceの両方から説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [OpenStax Precalculus 2e, Chapter 9: Systems of Equations and Inequalities](https://openstax.org/books/precalculus-2e/pages/9-introduction-to-systems-of-equations-and-inequalities)
 
-## 演習へ
 
-[10問の演習](/exercises/la-determinants-volume-invertibility)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-determinants-volume-invertibility)

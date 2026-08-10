@@ -1,104 +1,176 @@
 # 線形写像と基底変換：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 12/29
 
-同じ線形写像でも、基底を変えると行列表現は変わる。基底変換は「幾何学的対象を変える」のではなく「座標の書き方を変える」操作である。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+同じ幾何ベクトルでも基底を変えると座標が変わる。線形写像の行列表現も同様で、どの基底で入力・出力を記述するかによって成分が変わる。ここでは「対象そのもの」と「座標表示」を分離する。
 
-## 前提知識
+**前提知識**：基底・座標、行列積、可逆性。
 
-前提Topic: la-basis-coordinates-dimension, la-matrices-data-linear-maps。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+日本の位置を緯度経度で書くか、地図上の別の座標系で書くかで数値は変わっても、場所そのものは変わらない。基底変換も同じで、ベクトルや線形写像の幾何的内容を変えずに座標だけを変更する。
 
-同じ線形写像でも、基底を変えると行列表現は変わる。基底変換は「幾何学的対象を変える」のではなく「座標の書き方を変える」操作である。
+## 図の解説
 
-<img src="/visuals/course-02/la-linear-maps-change-of-basis.png" alt="線形写像と基底変換の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-linear-maps-change-of-basis.png" alt="線形写像と基底変換の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図には斜めの基底による格子と、その上に同じベクトル $\mathbf x$ が描かれている。格子線が標準座標軸と一致していないため、$\mathbf x$ の標準座標と基底座標は異なる。
+
+重要なのは矢印 $\mathbf x$ 自体は1本しかないこと。二種類の座標値は同じ矢印を異なる「ものさし」で測った結果である。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathcal B=(\mathbf b_1,\ldots,\mathbf b_n)$：新しい基底。
+- $\mathbf P=[\mathbf b_1\ \cdots\ \mathbf b_n]$：基底ベクトルを標準座標で列に並べたchange-of-basis行列。
+- $[\mathbf x]_{\mathcal B}$：基底 $\mathcal B$ での座標。
+- $\mathbf A$：線形写像の標準基底での行列。
+- $\mathbf A_{\mathcal B}$：同じ写像を基底 $\mathcal B$ で表した行列。
+
 
 ## 正式な定義
 
-$P_{C\leftarrow B}$ はB座標をC座標へ変換し $[x]_C=P_{C\leftarrow B}[x]_B$。同一空間の線形写像Aは $[T]_C=P^{-1}[T]_B P$ のようにsimilarityで変わる。
-
-代表式：
+基底座標と標準座標の関係は
 
 $$
-[\mathbf{x}]_{\mathcal{C}}=\mathbf{P}_{\mathcal{C}\leftarrow\mathcal{B}}[\mathbf{x}]_{\mathcal{B}}
+\mathbf x=\mathbf P[\mathbf x]_{\mathcal B}.
 $$
 
-## 代表式の記号を定義する
+したがって
 
-- $\mathcal{B},\mathcal{C}$: 同じベクトル空間の2つの順序付き基底。
-- $[\mathbf{x}]_{\mathcal{B}},[\mathbf{x}]_{\mathcal{C}}$: 同じ幾何学的ベクトル$\mathbf{x}$の各基底での座標。
-- $\mathbf{P}_{\mathcal{C}\leftarrow\mathcal{B}}$: $\mathcal{B}$座標を$\mathcal{C}$座標へ変換する基底変換行列。
-- 矢印$\mathcal{C}\leftarrow\mathcal{B}$は「入力が$\mathcal{B}$、出力が$\mathcal{C}$」を表す。
+$$
+[\mathbf x]_{\mathcal B}=\mathbf P^{-1}\mathbf x.
+$$
 
-## なぜこの式になるのか
+同じ基底を入力・出力に使う線形写像では
 
-まずB座標から実ベクトルへ戻し、次にC座標へ読み替える。この2段階を合成したものが基底変換行列。
+$$
+\mathbf A_{\mathcal B}=\mathbf P^{-1}\mathbf A\mathbf P.
+$$
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+## なぜこの式・定理になるのか
 
-## 小さな手計算
+### ベクトルの座標変換
 
-$B=((1,1),(1,-1))$, 標準基底E。$P_{E\leftarrow B}=\begin{bmatrix}1&1\\1&-1\end{bmatrix}$。B座標$(3,1)$は標準座標$(4,2)$へ変わる。
+$[\mathbf x]_{\mathcal B}=\mathbf c$ と書くことは
 
-さらに確認問題：$B=((1,1)^T,(1,-1)^T)$。$[x]_B=(2,-1)^T$ を標準座標へ変換せよ。
+$$
+\mathbf x=c_1\mathbf b_1+\cdots+c_n\mathbf b_n
+$$
 
-**解答**：$x=2(1,1)-1(1,-1)=(1,3)^T$。変換行列を使っても $\begin{bmatrix}1&1\\1&-1\end{bmatrix}(2,-1)^T=(1,3)^T$。
+という意味。列をまとめれば
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+\mathbf x=\mathbf P\mathbf c.
+$$
 
-## 計算手順・アルゴリズム
+基底は独立なので $\mathbf P$ は可逆で、
 
-「どこからどこへ」を添字で固定する→基底ベクトルを適切な座標で列に並べる→必要なら逆行列で逆方向を得る。
+$$
+\mathbf c=\mathbf P^{-1}\mathbf x.
+$$
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+### 写像の行列表現が $P^{-1}AP$ になる理由
 
-## 成立条件と典型的な誤り
+入力座標 $[\mathbf x]_{\mathcal B}$ から始める。
 
-- $P_{C\leftarrow B}$ と $P_{B\leftarrow C}$ を取り違えない。
-- similarity変換の左右の順序を暗記だけで使わない。
-- 基底変更で固有値は変わらない。
+1. $\mathbf P$ を掛けて標準座標へ戻す：$\mathbf x=\mathbf P[\mathbf x]_{\mathcal B}$。
+2. 標準基底で $\mathbf A$ を作用させる：$\mathbf A\mathbf P[\mathbf x]_{\mathcal B}$。
+3. 出力を基底 $\mathcal B$ の座標へ変える：$\mathbf P^{-1}\mathbf A\mathbf P[\mathbf x]_{\mathcal B}$。
 
-特に、次の主張を自力で診断できるようにする。
+したがって基底 $\mathcal B$ での行列は
 
-> 「基底を変えるとベクトル自体も別の幾何学的ベクトルになる」
+$$
+\mathbf A_{\mathcal B}=\mathbf P^{-1}\mathbf A\mathbf P.
+$$
 
-**診断**：変わるのは座標表示。対象ベクトルや線形写像そのものは同じ。
+この式は順序を意味から組み立てれば暗記する必要がない。
 
-## 数値実装での検算
+## 小さな数値例を最後まで計算する
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+$\mathbf b_1=(1,1)^T$、$\mathbf b_2=(1,-1)^T$ なら
 
-## 後続Topicへの接続
+$$
+\mathbf P=\begin{bmatrix}1&1\\1&-1\end{bmatrix}.
+$$
 
-固有分解、対角化、PCA、物理の座標系、表現学習で同じ対象を便利な座標へ移す。
+$\mathbf x=(3,1)^T$ について
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+$$
+[\mathbf x]_{\mathcal B}=\mathbf P^{-1}\mathbf x=(2,1)^T.
+$$
+
+これは前Topicの手計算と一致する。
+
+## もう一段丁寧に：change of basisは「対象を変えずに座標だけ変える」
+
+### 1. 二つのbasisを用意する
+
+$V=\mathbb R^n$ にbasis $\mathcal B=(\mathbf b_1,\ldots,\mathbf b_n)$ と標準basisを考える。basisベクトルを列に並べた
+
+$$
+\mathbf P=[\mathbf b_1\ \cdots\ \mathbf b_n]
+$$
+
+を作る。$\mathcal B$ 座標 $\mathbf c=[\mathbf x]_{\mathcal B}$ から実ベクトルへ戻す式は
+
+$$
+\boxed{\mathbf x=\mathbf P\mathbf c}.
+$$
+
+$\mathbf P$ の列がbasisなので線形独立で、$\mathbf P$ は可逆。したがって
+
+$$
+\boxed{[\mathbf x]_{\mathcal B}=\mathbf P^{-1}\mathbf x}.
+$$
+
+### 2. 線形写像の行列がbasisで変わる理由
+
+同じ線形写像 $T$ を標準basisで $\mathbf A$ と表す。$\mathcal B$ 座標 $\mathbf c$ を入力したとき、実際の処理は
+
+1. $\mathbf P\mathbf c$ で標準座標へ戻す。
+2. $\mathbf A$ を作用させる。
+3. $\mathbf P^{-1}$ で再び $\mathcal B$ 座標へ直す。
+
+したがって $\mathcal B$ 座標での表現行列は
+
+$$
+\boxed{\mathbf A_{\mathcal B}=\mathbf P^{-1}\mathbf A\mathbf P}.
+$$
+
+これがsimilarity transformation（相似変換）である。
+
+### 3. なぜ左右に別々の行列が付くのか
+
+右の $\mathbf P$ は**入力座標を実ベクトルへ変換**し、左の $\mathbf P^{-1}$ は**出力実ベクトルを新座標へ変換**する。単に公式を $P^{-1}AP$ と暗記すると左右を間違えやすいが、処理順を右から追えば自然に決まる。
+
+### 4. 何が変わり、何が変わらないか
+
+$\mathbf A$ と $\mathbf P^{-1}\mathbf A\mathbf P$ は数表としては異なるが、同じ線形写像を異なるbasisで記述している。したがって固有値、determinant、traceのような写像固有の量は変わらない。一方、個々の成分値はbasisに依存する。次の固有値・対角化では「写像を最も簡単に見せるbasisを選ぶ」という発想が中心になる。
+
+## 成立条件・壊れる場合
+
+$\mathbf P$ の列は基底なので必ず線形独立で、正方かつ可逆である。独立でないベクトルを列に並べてもchange-of-basis行列にはならない。
+
+## ここから発展
+
+$\mathbf P^{-1}\mathbf A\mathbf P$ の形はsimilarity（相似変換）と呼ばれる。後の対角化では、$\mathbf P$ を固有ベクトル行列に選ぶことで $\mathbf A$ を対角行列へ変換する。
+
+
+## このTopicの理解確認
+
+- $\mathbf x=\mathbf P[\mathbf x]_{\mathcal B}$ と $[\mathbf x]_{\mathcal B}=\mathbf P^{-1}\mathbf x$ を導けるか。
+- $P^{-1}AP$ の左右の $P$ がそれぞれ何をしているか、処理順で説明できるか。
+- basisが変わっても線形写像そのものは変わらないという意味を説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [MIT OpenCourseWare 18.700 Linear Algebra](https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-linear-maps-change-of-basis)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-linear-maps-change-of-basis)

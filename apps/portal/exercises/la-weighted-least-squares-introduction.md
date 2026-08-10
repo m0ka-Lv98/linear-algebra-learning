@@ -1,134 +1,158 @@
-# 重み付き最小二乗法の導入：演習
+# 重み付き最小二乗法（WLS）：演習
 
-[教科書](/textbook/la-weighted-least-squares-introduction)と対応する10問。問題は概念・手計算・導出・診断・実装・応用を重複なく配置し、完全解答を付ける。
+[教科書](/textbook/la-weighted-least-squares-introduction)と対応する10問。このTopicでは正の対角重みだけを使い、variance/covarianceを前提にしない。
 
-### LA-WLSI-01：概念
+### WLS-01：概念
 
-重み付き最小二乗法の導入を、単なる計算手順ではなく「何を入力し、何を出力し、何を保存・失う概念か」という観点から2〜4文で説明せよ。
-
-<details><summary>ヒント・解法方針・完全解答</summary>
-
-- **ヒント**: 代表式の左辺と右辺を日本語へ翻訳する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 重み付き最小二乗（WLS）は、残差をすべて同じ重要度で数えるのではなく、信頼度や分散に応じて方向ごとのペナルティを変える。 $\hat x=\arg\min_x (Ax-b)^T W(Ax-b)$。$W\succ0$ なら $C^TC=W$ を満たすCで $\|C(Ax-b)\|_2^2$ と等価。
-- **よくある誤答**: 公式名だけを書き、入力・出力や意味を説明しない。
-
-</details>
-
-### LA-WLSI-02：手計算
-
-定数$c$を観測 $b=(1,5)^T$ に合わせる。重み $w=(4,1)$ のWLS解を求めよ。
+通常least squaresとWLSの違いを、残差の「距離の測り方」という観点から説明せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: shapeを確認してから、途中計算を省略せずに進める。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 目的は $4(c-1)^2+(c-5)^2$。微分 $8(c-1)+2(c-5)=0$ より $10c-18=0$、$c=1.8$。重い第1観測へ近い。
-- **よくある誤答**: 答えだけを書き、どの定義を使ったか示さない。
+**完全解答**：通常LSは $\sum_i r_i^2$ を最小化し、すべての残差成分を同じscaleで数える。WLSは正の重み $w_i$ を用いて $\sum_i w_i r_i^2$ を最小化する。$w_i$ が大きい成分のずれほど目的関数へ大きく寄与するので、残差空間の距離尺度を変更していると解釈できる。
 
 </details>
 
-### LA-WLSI-03：成立条件
+### WLS-02：行列表現
 
-代表式 `$\min_{\mathbf{x}}(\mathbf{A}\mathbf{x}-\mathbf{b})^{\mathsf T}\mathbf{W}(\mathbf{A}\mathbf{x}-\mathbf{b})$` を使う前に確認すべき条件を3つ挙げ、それぞれ条件を外したとき何が起こりうるか説明せよ。
+$\mathbf W=\operatorname{diag}(w_1,\ldots,w_m)$ とすると
+
+$$
+\mathbf r^T\mathbf W\mathbf r
+=
+\sum_i w_i r_i^2
+$$
+
+となることを成分で示せ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 「未定義」「非一意」「不安定」を区別する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 確認すべき代表例は次の通り。重みを「大きい分散ほど大きく」設定しない（逆分散が基本）。 Wのスケール全体を定数倍しても最適解は変わらないが目的値は変わる。 相関誤差では対角Wだけでは不十分。 条件を外した場合は、式自体が定義できない場合、解が一意でなくなる場合、数値誤差が増幅される場合を区別する。
-- **よくある誤答**: 「shapeが合う」だけで数学的・数値的条件をすべて満たしたと判断する。
+**完全解答**：$\mathbf W\mathbf r=(w_1r_1,\ldots,w_mr_m)^T$。したがって
+
+$$
+\mathbf r^T\mathbf W\mathbf r
+=\sum_i r_i(w_i r_i)
+=\sum_i w_i r_i^2.
+$$
 
 </details>
 
-### LA-WLSI-04：導出
+### WLS-03：square-root scaling
 
-重み付き最小二乗法の導入の代表式がなぜ自然に現れるのか、定義または幾何から主要な論理を3段階以上で導け。
+$w_i>0$ とし、$\mathbf D=\operatorname{diag}(\sqrt{w_1},\ldots,\sqrt{w_m})$ と置く。WLSが
+
+$$
+\min_{\mathbf x}\|\mathbf D\mathbf A\mathbf x-\mathbf D\mathbf b\|_2^2
+$$
+
+という通常LSに変換できることを示せ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: いきなり最終式を書かず、中間の意味を言葉で置く。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 独立な観測誤差の分散が$\sigma_i^2$なら、$W=\operatorname{diag}(1/\sigma_i^2)$ とすると、ばらつきの小さい観測をより強く合わせる。これはwhitening後の通常LSと同じ。
-- **よくある誤答**: 式変形だけを並べ、何を保存しているか説明しない。
+**完全解答**：$\mathbf D^T\mathbf D=\mathbf W$ なので
+
+$$
+(\mathbf b-\mathbf A\mathbf x)^T\mathbf W(\mathbf b-\mathbf A\mathbf x)
+=\|\mathbf D(\mathbf b-\mathbf A\mathbf x)\|_2^2.
+$$
+
+分配すれば $\|\mathbf D\mathbf b-\mathbf D\mathbf A\mathbf x\|_2^2$。符号を反転してもnormは同じなので問題文の形と一致する。
 
 </details>
 
-### LA-WLSI-05：幾何・可視化
+### WLS-04：weighted normal equation
 
-図 `/visuals/course-02/la-weighted-least-squares-introduction.png` を見る前に、重み付き最小二乗法の導入で入力を少し変えたとき図のどこが変わるか予測せよ。その後、予測を代表式で説明せよ。
+前問の変換後LSから
+
+$$
+\mathbf A^T\mathbf W\mathbf A\hat{\mathbf x}
+=
+\mathbf A^T\mathbf W\mathbf b
+$$
+
+を導け。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 軸・矢印・部分空間・楕円・残差など、図の要素を式の項と対応させる。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 2観測の残差が同じ1でも、分散が1と9なら逆分散重みは1と1/9。第1観測のずれを第2より9倍強く罰する。 この具体例を基準に、変化する係数・方向・長さが式のどの項へ入るかを追えばよい。
-- **よくある誤答**: 図の形だけを記憶し、式の各項との対応を示さない。
+**完全解答**：$\widetilde{\mathbf A}=\mathbf D\mathbf A$、$\widetilde{\mathbf b}=\mathbf D\mathbf b$ と置く。通常LSのnormal equationは $\widetilde A^T\widetilde A\hat x=\widetilde A^T\widetilde b$。$D^TD=W$ を使うと左辺は $A^TWA\hat x$、右辺は $A^TWb$ になる。
 
 </details>
 
-### LA-WLSI-06：誤りの診断
+### WLS-05：図の解釈
 
-次の主張を判定し、誤りなら反例または正しい条件を示せ：「「WLSの重みを全部2倍すると推定値も2倍になる」」
+同じ大きさの残差を持つ二つの観測に $w_1=4$、$w_2=1/4$ を与える。目的関数への寄与の比を求め、図で重みの大きい観測へ推定が強く引かれる理由を説明せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 真偽だけでなく、最小の反例を作る。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 目的関数全体が2倍になるだけでargminは同じ。
-- **よくある誤答**: 「なんとなく違う」で終わり、反例や条件を示さない。
+**完全解答**：$|r_1|=|r_2|=r$ なら寄与は $4r^2$ と $r^2/4$。比は16:1。したがって同じ絶対ずれなら第1観測のずれを16倍大きく評価するため、最適化は第1残差を減らすことをより強く優先する。
 
 </details>
 
-### LA-WLSI-07：アルゴリズム
+### WLS-06：数値例
 
-重み付き最小二乗法の導入を2〜5次元程度の小さな数値例で実装するときの手順を、入力検査→計算→検算の順で書け。
+$$
+\mathbf A=(1,1,1)^T,
+\quad
+\mathbf b=(0,2,10)^T,
+\quad
+\mathbf W=\operatorname{diag}(1,1,0.1)
+$$
+
+についてWLS解を求めよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: shape・rank・残差・直交性など、このTopic固有の検算量を入れる。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 誤差共分散または重みを定義→Wが対称正定値か確認→Cholesky等でwhitening→QR/SVDでLSを解く。normal equationを直接形成しない。 最後に代表式を再計算するか、残差・再構成誤差・直交性など独立な量で検算する。
-- **よくある誤答**: ライブラリ関数を1行呼んだだけで、前提と検算を書かない。
+**完全解答**：scalar $x$ を求めるので
+
+$$
+(A^TWA)x=A^TWb.
+$$
+
+$A^TWA=1+1+0.1=2.1$、$A^TWb=0+2+1=3$。したがって
+
+$$
+\hat x=3/2.1=10/7\approx1.43.
+$$
+
+通常LSの平均4より、重みの小さい10の影響が弱くなっている。
 
 </details>
 
-### LA-WLSI-08：数値計算
+### WLS-07：全重みのscale
 
-浮動小数点計算で重み付き最小二乗法の導入を扱うとき、理論式をそのまま実装すると問題になりうる点を1つ挙げ、より安定な方法または検算方法を示せ。
+$\mathbf W$ を $c\mathbf W$（$c>0$）へ変えてもminimizerが変わらないことを示せ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 逆行列の明示形成、normal equation、小pivot、小特異値などを検討する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: 数値計算では定義とアルゴリズムを分ける。誤差共分散または重みを定義→Wが対称正定値か確認→Cholesky等でwhitening→QR/SVDでLSを解く。normal equationを直接形成しない。 理論上同値でも丸め誤差の増幅が異なるため、残差だけでなくconditionや直交性も確認する。
-- **よくある誤答**: 数式上等価なら計算上も同じ安定性だと考える。
+**完全解答**：目的関数全体が $J_c(\mathbf x)=cJ(\mathbf x)$ になる。$c>0$ なので候補間の大小関係は変わらない。したがってargminは同じ。weighted normal equationでも両辺が同じ $c$ 倍になるので消える。
 
 </details>
 
-### LA-WLSI-09：応用
+### WLS-08：0または負の重み
 
-ユーザーのWLSM学習、heteroscedastic regression、センサ統合、spectral unmixing。 この接続を一つ選び、重み付き最小二乗法の導入が「入力表現・目的関数・制約・解法・診断」のどの役割で現れるか説明せよ。
+$w_i=0$ と $w_i<0$ では、それぞれ目的関数の意味がどう変わるか説明せよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: 後続Topicの式に今回の量がどこへ入るかを書く。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: ユーザーのWLSM学習、heteroscedastic regression、センサ統合、spectral unmixing。 重要なのは名前が再登場することではなく、今回の定義が後続の式でどの役割を担うかを具体化すること。
-- **よくある誤答**: 応用名を列挙するだけで数式上の役割を説明しない。
+**完全解答**：$w_i=0$ なら第$i$残差は目的関数に全く寄与せず、その観測を無視するのと同じ。$w_i<0$ では残差を大きくするほど目的関数を小さくできる方向が生じうるため、距離二乗としてのleast-squares解釈を失う。このTopicでは $w_i>0$ に限定する。
 
 </details>
 
-### LA-WLSI-10：総合
+### WLS-09：学習順
 
-重み付き最小二乗法の導入について、(1) 定義、(2) 代表式、(3) 小さな例、(4) 成立条件、(5) よくある誤り、(6) 数値検算をA4半ページ程度にまとめよ。
+「WLSなら最初からcovariance matrixの逆を使えばよい」という説明が、このCourseのTopic 19では不適切な理由を述べよ。
 
 <details><summary>ヒント・解法方針・完全解答</summary>
 
-- **ヒント**: この教科書の章構造を、自分の言葉で圧縮する。
-- **解法方針**: 定義と成立条件を先に固定し、小さな計算または反例で検証する。
-- **完全解答**: (1) $\hat x=\arg\min_x (Ax-b)^T W(Ax-b)$。$W\succ0$ なら $C^TC=W$ を満たすCで $\|C(Ax-b)\|_2^2$ と等価。 (2) 代表式は $\min_{\mathbf{x}}(\mathbf{A}\mathbf{x}-\mathbf{b})^{\mathsf T}\mathbf{W}(\mathbf{A}\mathbf{x}-\mathbf{b})$。(3) 2観測の残差が同じ1でも、分散が1と9なら逆分散重みは1と1/9。第1観測のずれを第2より9倍強く罰する。 (4)(5) 重みを「大きい分散ほど大きく」設定しない（逆分散が基本）。 Wのスケール全体を定数倍しても最適解は変わらないが目的値は変わる。 相関誤差では対角Wだけでは不十分。 (6) 誤差共分散または重みを定義→Wが対称正定値か確認→Cholesky等でwhitening→QR/SVDでLSを解く。normal equationを直接形成しない。
-- **よくある誤答**: 教科書本文をそのまま写し、条件や検算を自分で再構成しない。
+**完全解答**：covarianceはCourse 03で定義する確率・統計の概念で、一般の対称重み行列を安定に分解する説明にはTopic 24のpositive definite matrixやTopic 25のCholeskyも必要になる。未学習概念を公式として置くより、まずpositive diagonal weightsをrow scalingとして完全に理解し、その後に一般化する方が論理順序を保てる。
 
 </details>
 
+### WLS-10：総合
+
+WLSを「正の対角重みを使ったrow-scaled least squares」として、定義→変換→normal equation→数値例の順で説明せよ。
+
+<details><summary>ヒント・解法方針・完全解答</summary>
+
+**完全解答**：$J(x)=\sum_i w_i r_i^2=r^TWr$、$W=\operatorname{diag}(w_i)$。$D=\operatorname{diag}(\sqrt{w_i})$ とすれば $W=D^TD$ なので $J=\|D(b-Ax)\|^2$。よって $\widetilde A=DA,\widetilde b=Db$ に通常LSを適用し、$A^TWA\hat x=A^TWb$ を得る。重みが大きい残差ほど目的関数で強く罰せられる。重みの確率的決定やfull covarianceは後続Topic/Courseで扱う。
+
+</details>

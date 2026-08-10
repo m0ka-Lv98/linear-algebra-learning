@@ -1,103 +1,198 @@
-# 対角化と行列の累乗：教科書
+# 対角化と行列のべき：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 22/29
 
-十分な数の独立な固有ベクトルがあると、行列を固有ベクトル基底で見るだけで対角行列になる。すると累乗は固有値を累乗するだけになる。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+固有ベクトル方向では行列作用は単なるスカラー倍になる。もし固有ベクトルが基底を作れるほど十分にあれば、その基底では行列全体が対角行列になる。これが対角化であり、反復作用 $\mathbf A^k$ を簡単にする。
 
-## 前提知識
+**前提知識**：固有値・固有ベクトル、基底変換。
 
-前提Topic: la-eigenvalues-eigenvectors, la-basis-coordinates-dimension。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+複雑な変換を、固有ベクトルという「行列にとって自然な座標軸」で見ると、各座標成分が独立に $\lambda_i$ 倍されるだけになる。混ざり合う成分をほどいてから計算し、最後に元の座標へ戻す。
 
-十分な数の独立な固有ベクトルがあると、行列を固有ベクトル基底で見るだけで対角行列になる。すると累乗は固有値を累乗するだけになる。
+## 図の解説
 
-<img src="/visuals/course-02/la-diagonalization-matrix-powers.png" alt="対角化と行列の累乗の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-diagonalization-matrix-powers.png" alt="対角化と行列のべきの図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図は $\mathbf x$ をまず $\mathbf V^{-1}$ で固有基底座標へ移し、対角行列 $\mathbf\Lambda$ で各成分を独立に伸縮し、$\mathbf V$ で元の座標へ戻す流れを示している。
+
+同じ変換を$k$回繰り返すと、中央の倍率だけを $\lambda_i^k$ にすればよいので $\mathbf A^k$ が簡単になる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf v_1,\ldots,\mathbf v_n$：独立な固有ベクトル。
+- $\mathbf V=[\mathbf v_1\ \cdots\ \mathbf v_n]$。
+- $\mathbf\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$。
+- $\mathbf A$：対角化する行列。
+
 
 ## 正式な定義
 
-$A=V\Lambda V^{-1}$ なら $A^k=V\Lambda^kV^{-1}$。Vの列は独立な固有ベクトル、Λは対応固有値を対角に並べる。
-
-代表式：
+$\mathbf A$ が対角化可能とは、可逆行列 $\mathbf V$ と対角行列 $\mathbf\Lambda$ があって
 
 $$
-\mathbf{A}^{k}=\mathbf{V}\mathbf{\Lambda}^{k}\mathbf{V}^{-1}
+\mathbf A=\mathbf V\mathbf\Lambda\mathbf V^{-1}
 $$
 
-## 代表式の記号を定義する
+と書けること。
 
-- $\mathbf{V}$: 独立な固有ベクトルを列に並べた可逆行列。
-- $\mathbf{\Lambda}$: 対応する固有値を対角に並べた対角行列。
-- $k$: 非負整数の累乗回数。
-- 対角化可能なら$\mathbf{A}=\mathbf{V}\mathbf{\Lambda}\mathbf{V}^{-1}$であり、累乗は対角成分ごとの累乗へ還元できる。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### 固有方程式を列ごとに並べる
 
-$A(Ve_i)=\lambda_i(Ve_i)$ なので $AV=V\Lambda$。右から$V^{-1}$を掛ければ分解が得られる。累乗では中間の$V^{-1}V$が消える。
+各固有ベクトルについて
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+$$
+\mathbf A\mathbf v_i=\lambda_i\mathbf v_i.
+$$
 
-## 小さな手計算
+これを列に並べると
 
-$A=\begin{bmatrix}2&0\\0&3\end{bmatrix}$ は既に対角。$A^5=\operatorname{diag}(32,243)$。非対角でも固有基底へ移れば同様。
+$$
+\mathbf A[\mathbf v_1\ \cdots\ \mathbf v_n]
+=[\lambda_1\mathbf v_1\ \cdots\ \lambda_n\mathbf v_n].
+$$
 
-さらに確認問題：$A=\operatorname{diag}(1/2,2)$ の $A^4(1,1)^T$ を求めよ。
+右辺は
 
-**解答**：$A^4=\operatorname{diag}(1/16,16)$ なので結果は $(1/16,16)^T$。各固有方向が独立に倍率を累乗する。
+$$
+[\mathbf v_1\ \cdots\ \mathbf v_n]
+\operatorname{diag}(\lambda_1,\ldots,\lambda_n)
+$$
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+なので
 
-## 計算手順・アルゴリズム
+$$
+\mathbf A\mathbf V=\mathbf V\mathbf\Lambda.
+$$
 
-固有値・固有ベクトルを求める→Vがfull rankか確認→$V^{-1}AV$が対角になるか検算。
+固有ベクトルが独立なら $\mathbf V$ は可逆。右から $\mathbf V^{-1}$ を掛けて
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$$
+\boxed{\mathbf A=\mathbf V\mathbf\Lambda\mathbf V^{-1}}.
+$$
 
-## 成立条件と典型的な誤り
+### なぜべきが簡単になるのか
 
-- すべての行列が対角化可能ではない。
-- 固有値の重複だけで不可とは言えない。幾何重複度を見る。
-- 数値計算で ill-conditioned V は不安定。
+$$
+\mathbf A^2
+=(\mathbf V\mathbf\Lambda\mathbf V^{-1})(\mathbf V\mathbf\Lambda\mathbf V^{-1})
+=\mathbf V\mathbf\Lambda^2\mathbf V^{-1}
+$$
 
-特に、次の主張を自力で診断できるようにする。
+で、中間の $\mathbf V^{-1}\mathbf V=\mathbf I$ が消える。同様に
 
-> 「固有値が全部実数なら必ず対角化できる」
+$$
+\boxed{\mathbf A^k=\mathbf V\mathbf\Lambda^k\mathbf V^{-1}}.
+$$
 
-**診断**：誤り。例 $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ は実固有値1のみだが独立固有ベクトルが1本しかなく対角化できない。
+対角行列のべきは対角成分をべき乗するだけ：
 
-## 数値実装での検算
+$$
+\mathbf\Lambda^k=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k).
+$$
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+## 小さな数値例を最後まで計算する
 
-## 後続Topicへの接続
+前Topicの $\mathbf A=\begin{bmatrix}2&1\\1&2\end{bmatrix}$ は、固有ベクトル $(1,1)^T,(1,-1)^T$ を持つ。正規化して $\mathbf V$ を作れば $\mathbf\Lambda=\operatorname{diag}(3,1)$。したがって $\mathbf A^k$ の長期挙動は固有値3の方向が $3^k$ で支配する。
 
-差分方程式、Markov chain、行列指数、長時間反復の解析。
+## もう一段丁寧に：対角化は「固有ベクトルbasisへ座標変換する」だけ
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+### 1. 固有ベクトルを列に並べる
+
+$n$ 本の独立な固有ベクトル $\mathbf v_1,\ldots,\mathbf v_n$ があり、対応する固有値を $\lambda_1,\ldots,\lambda_n$ とする。
+
+$$
+\mathbf P=[\mathbf v_1\ \cdots\ \mathbf v_n],
+\qquad
+\mathbf D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).
+$$
+
+各列について $\mathbf A\mathbf v_j=\lambda_j\mathbf v_j$ だから、まとめると
+
+$$
+\mathbf A\mathbf P=\mathbf P\mathbf D.
+$$
+
+### 2. なぜ $\mathbf A=\mathbf P\mathbf D\mathbf P^{-1}$ になるのか
+
+固有ベクトルが独立なので $\mathbf P$ は可逆。右から $\mathbf P^{-1}$ を掛けて
+
+$$
+\boxed{\mathbf A=\mathbf P\mathbf D\mathbf P^{-1}}.
+$$
+
+逆に
+
+$$
+\boxed{\mathbf D=\mathbf P^{-1}\mathbf A\mathbf P}.
+$$
+
+これはchange of basisの式そのもの。$\mathbf P^{-1}$ で固有ベクトル座標へ移ると、$\mathbf A$ の作用が成分ごとの $\lambda_i$ 倍、つまり対角行列 $\mathbf D$ になる。
+
+### 3. 行列の累乗が簡単になる
+
+$$
+\mathbf A^2
+=(\mathbf P\mathbf D\mathbf P^{-1})
+(\mathbf P\mathbf D\mathbf P^{-1})
+=\mathbf P\mathbf D^2\mathbf P^{-1}
+$$
+
+であり、中間の $\mathbf P^{-1}\mathbf P=\mathbf I$ が消える。同様に
+
+$$
+\boxed{\mathbf A^k=\mathbf P\mathbf D^k\mathbf P^{-1}}.
+$$
+
+$\mathbf D^k$ は各対角成分を $\lambda_i^k$ にするだけなので、反復作用の解析が大幅に簡単になる。
+
+### 4. 対角化できない例
+
+$$
+\mathbf A=
+\begin{bmatrix}
+1&1\\0&1
+\end{bmatrix}
+$$
+
+の固有値は $\lambda=1$ が重複度2。しかし
+
+$$
+\mathbf A-\mathbf I=
+\begin{bmatrix}0&1\\0&0\end{bmatrix}
+$$
+
+のnull spaceは $\operatorname{span}((1,0)^T)$ でdimension 1しかない。独立な固有ベクトルを2本作れないため $\mathbf P$ を可逆にできず、対角化できない。
+
+### 5. 「固有値がある」ことと「対角化できる」ことを分ける
+
+複素数まで許せば固有値が存在する場合は広いが、対角化には**空間全体を張るだけの独立な固有ベクトル**が必要である。この条件を落として $\mathbf A=\mathbf P\mathbf D\mathbf P^{-1}$ を使ってはいけない。対称行列ではこの問題が起こらず必ずorthogonally diagonalizableになることを次Topicで学ぶ。
+
+## 成立条件・壊れる場合
+
+固有値が$n$個（重複込み）あっても、独立な固有ベクトルが$n$本なければ対角化できない。例えばJordan blockは固有ベクトルが不足する。distinct eigenvaluesなら対応固有ベクトルは独立なので対角化可能。
+
+## ここから発展
+
+$\mathbf A^k$ だけでなく、行列指数 $e^{t\mathbf A}$ も $\mathbf V e^{t\mathbf\Lambda}\mathbf V^{-1}$ と計算でき、線形微分方程式へつながる。ただしここでは行列べきで対角化の意味を固定してから進む。
+
+
+## このTopicの理解確認
+
+- $\mathbf A\mathbf P=\mathbf P\mathbf D$ から $\mathbf A=\mathbf P\mathbf D\mathbf P^{-1}$ を導けるか。
+- なぜ $\mathbf A^k=\mathbf P\mathbf D^k\mathbf P^{-1}$ で中間の $\mathbf P^{-1}\mathbf P$ が消えるか説明できるか。
+- eigenvaluesが存在してもdiagonalizableとは限らない理由を例で示せるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-diagonalization-matrix-powers)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-diagonalization-matrix-powers)

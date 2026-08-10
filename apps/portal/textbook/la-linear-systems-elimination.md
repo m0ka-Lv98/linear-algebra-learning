@@ -1,104 +1,168 @@
-# 連立一次方程式とガウス消去法：教科書
+# 連立一次方程式と消去法：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 04/29
 
-連立一次方程式は「複数の線形条件を同時に満たす点」を探す問題である。ガウス消去法は、解集合を変えない行基本変形で方程式を解きやすい形へ整理する。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+行列 $\mathbf A$ を変換として見ると、方程式 $\mathbf A\mathbf x=\mathbf b$ は「どの入力 $\mathbf x$ を入れれば、指定した出力 $\mathbf b$ が得られるか」という逆問題になる。最も基本的な解法がGaussian elimination（ガウス消去法）である。
 
-## 前提知識
+**前提知識**：行列積、行列とベクトルの積。
 
-前提Topic: la-matrix-multiplication。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+2変数なら各一次方程式は平面上の直線を表し、連立方程式の解は直線の交点である。消去法は直線そのものを無関係な直線へ変える操作ではない。元の方程式から等価な方程式を作り、**共通解を保ったまま**未知数を一つずつ消している。
 
-連立一次方程式は「複数の線形条件を同時に満たす点」を探す問題である。ガウス消去法は、解集合を変えない行基本変形で方程式を解きやすい形へ整理する。
+## 図の解説
 
-<img src="/visuals/course-02/la-linear-systems-elimination.png" alt="連立一次方程式とガウス消去法の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-linear-systems-elimination.png" alt="連立一次方程式と消去法の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図には $x+2y=5$ と $2x+y=4$ の2直線が描かれ、交点 $(1,2)$ が共通解になっている。第2式から第1式の2倍を引くと $-3y=-6$ となり、$y=2$ がすぐ分かる。この行基本変形を行っても交点は変わらない。
+
+つまり消去法の本質は「方程式の見た目を簡単にするが、解集合は保存する」ことである。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{m\times n}$：係数行列。
+- $\mathbf x\in\mathbb R^n$：未知ベクトル。
+- $\mathbf b\in\mathbb R^m$：右辺ベクトル。
+- $[\mathbf A\mid\mathbf b]$：拡大係数行列。
+- pivot（ピボット）：行消去で基準にする非零成分。
+
 
 ## 正式な定義
 
-$\mathbf{A}\mathbf{x}=\mathbf{b}$ を拡大係数行列 $[\mathbf{A}\mid\mathbf{b}]$ にし、行交換・非零定数倍・他行の倍数の加算で行階段形へ変形する。
-
-代表式：
+連立一次方程式を
 
 $$
-\mathbf{A}\mathbf{x}=\mathbf{b}
+\mathbf A\mathbf x=\mathbf b
 $$
 
-## 代表式の記号を定義する
+と表す。Gaussian eliminationは、拡大係数行列 $[\mathbf A\mid\mathbf b]$ に行基本変形を施し、上三角形または行階段形へ変換して解を求める方法である。
 
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$: 係数行列。
-- $\mathbf{x}\in\mathbb{R}^n$: 未知変数ベクトル。
-- $\mathbf{b}\in\mathbb{R}^m$: 右辺ベクトル。
-- pivot: 消去で基準にする非zero成分。RREFはreduced row echelon form（簡約行階段形）。
+## なぜこの式・定理になるのか
 
-## なぜこの式になるのか
+### なぜ行基本変形は解を保つのか
 
-行基本変形は方程式の線形結合を置き換えているだけなので解集合を保存する。pivotの位置から主変数と自由変数、矛盾行から解なしが判定できる。
+許される行基本変形は3種類ある。
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+1. 二つの方程式を入れ替える。
+2. 一つの方程式を非零定数倍する。
+3. 一つの方程式へ別の方程式の定数倍を加える。
 
-## 小さな手計算
+1は方程式の順番を変えるだけである。2は、たとえば $f(\mathbf x)=0$ と $cf(\mathbf x)=0$（$c\ne0$）が同じ解をもつことから分かる。3も、$f(\mathbf x)=0$ と $g(\mathbf x)=0$ を満たすなら $g(\mathbf x)+cf(\mathbf x)=0$ を満たし、逆に $f=0$ と $g+cf=0$ から $g=0$ を復元できる。したがって各操作は可逆で、解集合を変えない。
 
-$x+2y=5$, $2x+3y=8$。第2式から第1式の2倍を引くと $-y=-2$ なので $y=2$, $x=1$。
+### pivotが何を教えるか
 
-さらに確認問題：$x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$ を解け。
+行階段形にしたとき、pivotのある列は基本変数に対応し、pivotのない列は自由変数に対応する。自由変数があれば解は一般に一意ではない。一方、$[0\ \cdots\ 0\mid c]$（$c\ne0$）という行が現れれば $0=c$ を要求することになり、解は存在しない。
 
-**解答**：消去すると $-3y-z=-9$, $y-2z=-4$。後者から $y=2z-4$、前者へ代入して $-6z+12-z=-9$ より $z=3$, $y=2$, $x=1$。
+## 小さな数値例を最後まで計算する
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+\begin{cases}
+x+2y=5\\
+2x+y=4
+\end{cases}
+$$
 
-## 計算手順・アルゴリズム
+第2式から第1式の2倍を引く：
 
-拡大係数行列を作る→pivotを選ぶ→pivot下を0にする→次の列へ進む→後退代入。必要ならRREFまで進め、自由変数を明示する。
+$$
+(2x+y)-2(x+2y)=4-10
+$$
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+より $-3y=-6$、したがって $y=2$。第1式へ戻すと $x+4=5$ なので $x=1$。
 
-## 成立条件と典型的な誤り
+重要なのは「第2式を捨てた」のではなく、元の第1式と組み合わせて等価な式へ置き換えた点である。
 
-- 途中で行を定数倍するとき右辺も同じ操作をする。
-- 0 pivotでは行交換を検討する。
-- 解が一意・無限・なしの3ケースをpivotだけでなく拡大行列で判定する。
+## もう一段丁寧に：消去法はなぜ解を変えないのか
 
-特に、次の主張を自力で診断できるようにする。
+### 1. 連立方程式と拡大係数行列
 
-> 「行基本変形で列を入れ替えても解集合は変わらない」
+$\mathbf A\mathbf x=\mathbf b$ は、$m$ 本の一次方程式をまとめた表現である。消去法では拡大係数行列
 
-**診断**：列交換は変数の意味を入れ替えるため、同じ変数順序のままでは解集合を保存しない。ガウス消去で自由に行うのは行操作。
+$$
+[\mathbf A\mid\mathbf b]
+$$
 
-## 数値実装での検算
+に行基本変形を施す。重要なのは「行列を見やすくする」ことではなく、**同じ解集合を持つ別の方程式系へ置き換える**ことである。
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+### 2. 三つの行基本変形が解を保存する理由
 
-## 後続Topicへの接続
+(1) 二つの方程式の順序を入れ替える。満たすべき式の順番が変わるだけなので解集合は変わらない。
 
-回帰、回路、物質収支、unmixingなど多くのモデルが最終的に線形系へ落ちる。
+(2) ある方程式を非零定数 $c$ 倍する。式 $f(\mathbf x)=0$ と $cf(\mathbf x)=0$ は $c\ne0$ なら同値である。$c=0$ は情報を消してしまうので許されない。
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+(3) ある方程式へ別の方程式の $c$ 倍を加える。元の二式を満たす解は新しい式も満たす。逆に、新しい式から加えた $c$ 倍を引けば元へ戻れるため、解集合は変わらない。
+
+つまり各行基本変形は**逆操作を持つ**。だから変形の前後で論理的に同値な方程式系になる。
+
+### 3. pivotは何を意味しているか
+
+消去後に現れるpivotは、その列に新しい独立な制約が存在することを表す。一方、pivotのない変数列は自由変数になる。たとえば
+
+$$
+\begin{bmatrix}
+1&2&0\
+0&0&1
+\end{bmatrix}
+\mathbf x
+=\begin{bmatrix}3\\4\end{bmatrix}
+$$
+
+では $x_1,x_3$ がpivot変数、$x_2$ が自由変数である。$x_2=t$ と置けば
+
+$$
+x_1=3-2t,\qquad x_3=4.
+$$
+
+自由変数があることは「計算が終わっていない」のではなく、元の方程式がその方向を拘束していないことを意味する。
+
+### 4. 解なしはどこで検出されるか
+
+消去途中で
+
+$$
+[0\ 0\ \cdots\ 0\mid c],\qquad c\ne0
+$$
+
+という行が出れば、これは $0=c$ を要求しているので矛盾であり、解は存在しない。逆に
+
+$$
+[0\ 0\ \cdots\ 0\mid0]
+$$
+
+なら、その行は新しい条件を何も追加していない。
+
+### 5. 消去法と後続Topicの関係
+
+pivotの数はrankへ、自由変数の数はnullityへ進む。正方行列で全列にpivotがあれば逆行列が存在し、$\mathbf A\mathbf x=\mathbf b$ はすべての $\mathbf b$ に対して一意に解ける。したがってGaussian eliminationは単なる計算法ではなく、Course 02全体の構造を目で確認する方法でもある。
+
+## 成立条件・壊れる場合
+
+pivotが0または非常に小さい場合、理論上は別の行との交換で進められる。数値計算では丸め誤差を抑えるためpartial pivoting（部分ピボット選択）が重要になる。手計算の「0でなければよい」と数値計算の「十分大きいpivotを選ぶ」は区別する。
+
+## ここから発展
+
+消去法の各操作を行列として保存するとLU分解になる。したがってLUは別の魔法の公式ではなく、このTopicの消去手順を再利用可能な形に分解したものとして次に学ぶ。
+
+
+## このTopicの理解確認
+
+- 三つの行基本変形が解集合を変えない理由を、それぞれ逆操作とともに説明できるか。
+- pivot variableとfree variableの違いを一般解に反映できるか。
+- $[0\cdots0\mid c]$（$c\ne0$）がなぜ矛盾を表すか説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [OpenStax Precalculus 2e, Chapter 9: Systems of Equations and Inequalities](https://openstax.org/books/precalculus-2e/pages/9-introduction-to-systems-of-equations-and-inequalities)
 
-## 演習へ
+- [OpenStax Intermediate Algebra 2e — Solve Systems of Equations Using Matrices](https://openstax.org/books/intermediate-algebra-2e/pages/4-5-solve-systems-of-equations-using-matrices)
 
-[10問の演習](/exercises/la-linear-systems-elimination)
+- [OpenStax Intermediate Algebra 2e — Solve Systems of Equations Using Matrices](https://openstax.org/books/intermediate-algebra-2e/pages/4-5-solve-systems-of-equations-using-matrices)
+
+
+## 演習
+
+[このTopicの10問の演習](/exercises/la-linear-systems-elimination)

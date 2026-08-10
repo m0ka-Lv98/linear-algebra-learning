@@ -1,105 +1,264 @@
 # 行列ノルムと条件数：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 29/29
 
-行列ノルムは「行列がベクトルをどれだけ大きくできるか」を測り、条件数は「逆問題で入力誤差がどれだけ解へ増幅されうるか」を測る。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+ここまで「理論上解けるか」を扱ってきたが、数値計算では入力に微小誤差がある。可逆でも、少しの誤差が解で大きく増幅される行列がある。その感度を定量化するのがcondition number（条件数）。SVDを学んだ後なら幾何的に理解できる。
 
-## 前提知識
+**前提知識**：ノルム、SVD、特異値、可逆性。
 
-前提Topic: la-singular-value-decomposition, la-inner-products-norms-angles。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+単位円をほぼ円のまま拡大する行列は、どの方向も似た倍率で伸ばすので逆変換も安定。一方、極端に細長い楕円へ変える行列は、一方向をほとんど潰す。逆変換ではその細い方向を大きく引き伸ばすため、わずかなノイズも増幅される。
 
-行列ノルムは「行列がベクトルをどれだけ大きくできるか」を測り、条件数は「逆問題で入力誤差がどれだけ解へ増幅されうるか」を測る。
+## 図の解説
 
-<img src="/visuals/course-02/la-matrix-norms-condition-number.png" alt="行列ノルムと条件数の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-matrix-norms-condition-number.png" alt="行列ノルムと条件数の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図の単位円が横に大きく、縦に小さく伸縮され、細長い楕円になっている。長半径が最大特異値 $\sigma_{\max}$、短半径が最小特異値 $\sigma_{\min}$。その比が2-norm条件数である。
+
+短半径が0に近づくほど、異なる入力がほぼ同じ出力へ潰れる。逆問題ではその小さな差を復元するため大きく拡大するので、誤差に敏感になる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\|\mathbf A\|_2$：induced 2-norm。
+- $\sigma_{\max}(\mathbf A)$、$\sigma_{\min}(\mathbf A)$：最大・最小特異値。
+- $\kappa_2(\mathbf A)$：2-norm条件数。可逆正方行列では $\|\mathbf A\|_2\|\mathbf A^{-1}\|_2$。
+
 
 ## 正式な定義
 
-$\|A\|_2=\sigma_{\max}(A)$。可逆Aでは $\kappa_2(A)=\|A\|_2\|A^{-1}\|_2=\sigma_{\max}/\sigma_{\min}$。
-
-代表式：
+行列のinduced 2-normは
 
 $$
-\kappa_2(\mathbf{A})=\frac{\sigma_{\max}(\mathbf{A})}{\sigma_{\min}(\mathbf{A})}
+\|\mathbf A\|_2
+=\max_{\mathbf x\ne0}\frac{\|\mathbf A\mathbf x\|_2}{\|\mathbf x\|_2}
+=\sigma_{\max}(\mathbf A).
 $$
 
-## 代表式の記号を定義する
+可逆行列について
 
-- $\|\mathbf{A}\|_2=\sigma_{\max}(\mathbf{A})$: 2-normに対応するspectral norm。
-- $\sigma_{\max},\sigma_{\min}$: 最大・最小特異値（可逆正方行列では$\sigma_{\min}>0$）。
-- $\kappa_2(\mathbf{A})$: 2-norm条件数。入力・丸め誤差が解へどれだけ増幅され得るかの感度尺度。
-- singularな行列では通常$\kappa_2=\infty$とみなす。
+$$
+\boxed{\kappa_2(\mathbf A)
+=\|\mathbf A\|_2\|\mathbf A^{-1}\|_2
+=\frac{\sigma_{\max}}{\sigma_{\min}}}.
+$$
 
-## なぜこの式になるのか
+## なぜこの式・定理になるのか
 
-最大特異値方向は最も伸びる方向、最小特異値方向は最も潰れる方向。逆写像は後者を$1/\sigma_{min}$倍するため、比が大きいほど誤差に敏感。
+### なぜ $\|A\|_2=\sigma_{max}$ なのか
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+SVDで $\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T$。直交行列は2-normを保存するので、$\mathbf z=\mathbf V^T\mathbf x$ と置くと
 
-## 小さな手計算
+$$
+\|\mathbf A\mathbf x\|_2
+=\|\mathbf\Sigma\mathbf z\|_2.
+$$
 
-$A=\operatorname{diag}(100,1)$ は $\kappa_2=100$。第2方向と比較して第1方向のスケール差が大きく、逆問題の相対誤差が増幅されうる。
+$\|\mathbf z\|=\|\mathbf x\|$。単位ベクトル $\|\mathbf z\|=1$ に対し
 
-さらに確認問題：$A=\operatorname{diag}(5,0.1)$ の2-normと2-norm条件数を求めよ。
+$$
+\|\mathbf\Sigma\mathbf z\|_2^2
+=\sum_i\sigma_i^2z_i^2
+\le\sigma_{\max}^2\sum_i z_i^2
+=\sigma_{\max}^2.
+$$
 
-**解答**：特異値は5と0.1。$\|A\|_2=5$、$\kappa_2=5/0.1=50$。
+等号は $\mathbf z$ を最大特異値方向に選べば達成。よって $\|\mathbf A\|_2=\sigma_{\max}$。
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+### 逆行列のnorm
 
-## 計算手順・アルゴリズム
+可逆なら $\mathbf A^{-1}=\mathbf V\mathbf\Sigma^{-1}\mathbf U^T$ なので、その最大特異値は $1/\sigma_{\min}$。したがって
 
-用途に合うnormを選ぶ。2-norm/condition numberはSVDで評価。`cond(A)`を使い、値だけでなくスケーリングや特異値分布も確認。
+$$
+\|\mathbf A^{-1}\|_2=\frac1{\sigma_{\min}}.
+$$
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+両者を掛けて条件数の式が出る。
 
-## 成立条件と典型的な誤り
+### 相対誤差の増幅
 
-- 条件数はアルゴリズムの悪さではなく問題自体の感度。
-- 大きなdetでも条件数が大きいことはある。
-- $A^TA$を形成すると2-norm条件数が概ね二乗される。
+$\mathbf A\mathbf x=\mathbf b$ とし、右辺が $\mathbf b+\delta\mathbf b$ へ変わると解は $\mathbf x+\delta\mathbf x$ で
 
-特に、次の主張を自力で診断できるようにする。
+$$
+\mathbf A\delta\mathbf x=\delta\mathbf b,
+\qquad
+\delta\mathbf x=\mathbf A^{-1}\delta\mathbf b.
+$$
 
-> 「条件数が大きいのはソルバ実装が悪いから」
+したがって
 
-**診断**：条件数は問題の感度を表す。安定なアルゴリズムでもill-conditioned問題ではforward errorが大きくなりうる。
+$$
+\|\delta\mathbf x\|
+\le\|\mathbf A^{-1}\|\|\delta\mathbf b\|.
+$$
 
-## 数値実装での検算
+一方 $\|\mathbf b\|=\|\mathbf A\mathbf x\|\le\|\mathbf A\|\|\mathbf x\|$ だから
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+$$
+\frac{\|\delta\mathbf x\|}{\|\mathbf x\|}
+\le
+\kappa(\mathbf A)
+\frac{\|\delta\mathbf b\|}{\|\mathbf b\|}.
+$$
 
-## 後続Topicへの接続
+条件数は「最悪の場合、相対誤差が何倍まで増幅されうるか」の上界を与える。
 
-数値線形代数、WLSM、逆問題、正規方程式を避ける理由、モデルidentifiability。
+## 小さな数値例を最後まで計算する
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+$\mathbf A=\operatorname{diag}(100,1)$ なら特異値は100と1で $\kappa_2=100$。$\operatorname{diag}(100,0.001)$ なら $\kappa_2=100000$ まで増える。
+
+後者では第2方向を0.001倍しているため、逆変換では1000倍する必要があり、その方向のノイズが大きく増幅される。
+
+## もう一段丁寧に：condition numberを誤差伝播から導く
+
+### 1. induced 2-normは最大伸長率
+
+行列 $\mathbf A\in\mathbb R^{m\times n}$ に対して
+
+$$
+\|\mathbf A\|_2
+=
+\max_{\mathbf x\ne0}
+\frac{\|\mathbf A\mathbf x\|_2}{\|\mathbf x\|_2}
+$$
+
+と定義する。単位ベクトルだけに制限すれば
+
+$$
+\|\mathbf A\|_2
+=\max_{\|\mathbf x\|_2=1}\|\mathbf A\mathbf x\|_2.
+$$
+
+SVDで $\mathbf x=\mathbf V\mathbf z$ と置くとorthogonal変換なので $\|\mathbf z\|_2=\|\mathbf x\|_2$。さらに
+
+$$
+\|\mathbf A\mathbf x\|_2
+=\|\mathbf U\mathbf\Sigma\mathbf z\|_2
+=\|\mathbf\Sigma\mathbf z\|_2.
+$$
+
+単位ノルムの $\mathbf z$ で最大になるのは最大特異値方向なので
+
+$$
+\boxed{\|\mathbf A\|_2=\sigma_{\max}}.
+$$
+
+### 2. 可逆正方行列の逆写像は最小特異値で決まる
+
+可逆なら $\mathbf A^{-1}$ の特異値は $1/\sigma_i$。したがって
+
+$$
+\|\mathbf A^{-1}\|_2
+=\frac1{\sigma_{\min}}.
+$$
+
+よって2-norm condition numberは
+
+$$
+\boxed{
+\kappa_2(\mathbf A)
+=\|\mathbf A\|_2\|\mathbf A^{-1}\|_2
+=\frac{\sigma_{\max}}{\sigma_{\min}}
+}.
+$$
+
+図で単位円が細長い楕円へ写るほど、最大伸長と最小伸長の比が大きい。
+
+### 3. 右辺の誤差が解へどう伝わるか
+
+$\mathbf A\mathbf x=\mathbf b$ とし、右辺が $\mathbf b+\delta\mathbf b$ に変わって解が $\mathbf x+\delta\mathbf x$ になったとする。
+
+$$
+\mathbf A\delta\mathbf x=\delta\mathbf b
+$$
+
+なので
+
+$$
+\delta\mathbf x=\mathbf A^{-1}\delta\mathbf b.
+$$
+
+したがって
+
+$$
+\|\delta\mathbf x\|_2
+\le
+\|\mathbf A^{-1}\|_2\|\delta\mathbf b\|_2.
+$$
+
+一方 $\mathbf b=\mathbf A\mathbf x$ より
+
+$$
+\|\mathbf b\|_2
+\le
+\|\mathbf A\|_2\|\mathbf x\|_2,
+$$
+
+したがって
+
+$$
+\frac1{\|\mathbf x\|_2}
+\le
+\frac{\|\mathbf A\|_2}{\|\mathbf b\|_2}.
+$$
+
+二つを組み合わせると
+
+$$
+\boxed{
+\frac{\|\delta\mathbf x\|_2}{\|\mathbf x\|_2}
+\le
+\kappa_2(\mathbf A)
+\frac{\|\delta\mathbf b\|_2}{\|\mathbf b\|_2}
+}.
+$$
+
+これがcondition numberを「相対誤差の増幅率」と読む根拠である。
+
+### 4. condition numberが大きいこととalgorithmが悪いことは別
+
+$\kappa(\mathbf A)$ が大きいのは**問題そのもの**が入力誤差に敏感だという意味。一方、numerically unstable algorithmは、問題が本来持つ以上に丸め誤差を増幅する。良い数値計算法はconditionの悪さを消すことはできないが、余計な誤差をできるだけ増やさない。
+
+### 5. normal equationでconditionが二乗される
+
+full-column-rankなら $\mathbf A^T\mathbf A$ の固有値は $\sigma_i^2$ なので
+
+$$
+\kappa_2(\mathbf A^T\mathbf A)
+=\frac{\sigma_{\max}^2}{\sigma_{\min}^2}
+=\kappa_2(\mathbf A)^2.
+$$
+
+Topic 18で「理論式 $(A^TA)^{-1}A^Tb$ を知っていても、実装ではQR/SVDを選ぶことがある」と述べた理由がここで定量化される。
+
+## 成立条件・壊れる場合
+
+条件数が大きいことはアルゴリズムが悪いという意味ではなく、**問題そのものが敏感**であることを示す。一方、backward stable algorithmかどうかはアルゴリズム側の性質。問題conditionとalgorithm stabilityを区別する。
+
+またcondition numberはnormに依存する。$\kappa_2$ のときだけ特異値比として簡単に書ける。
+
+## ここから発展
+
+ill-conditioned problemでは正則化が必要になる場合がある。ridge/Tikhonovは小特異値方向の逆増幅を抑える方法としてSVD座標で理解できる。ここまででCourse 02の「線形結合→空間→直交→最小二乗→固有構造→SVD→感度」が一周する。
+
+
+## このTopicの理解確認
+
+- $\|A\|_2=\sigma_{max}$ をSVDから導けるか。
+- $\kappa_2(A)=\sigma_{max}/\sigma_{min}$ をinverse normから導けるか。
+- problem conditioningとalgorithm stabilityを区別し、normal equationでconditionがsquareされる理由を説明できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
-- [MIT OpenCourseWare 18.335J Introduction to Numerical Methods](https://ocw.mit.edu/courses/18-335j-introduction-to-numerical-methods-spring-2019/)
-- [MIT OpenCourseWare 18.065 Matrix Methods](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
 
-## 演習へ
+- [MIT OpenCourseWare 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
 
-[10問の演習](/exercises/la-matrix-norms-condition-number)
+
+## 演習
+
+[このTopicの10問の演習](/exercises/la-matrix-norms-condition-number)

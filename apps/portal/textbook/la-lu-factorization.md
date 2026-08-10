@@ -1,103 +1,240 @@
 # LU分解：教科書
 
-## この章で理解すること
+Course 02｜線形代数｜Topic 06/29
 
-LU分解はガウス消去を「一度分解として保存」する方法である。$L$ に消去係数、$U$ に消去後の上三角行列を持たせる。
+## このTopicの位置づけ
 
-この章では、**直感 → 記号・shape → 定義 → なぜ成り立つか → 手計算 → 幾何 → アルゴリズム → 失敗条件 → 後続への接続**の順で理解する。
+同じ係数行列 $\mathbf A$ に対して右辺 $\mathbf b$ だけを変えて何度も連立方程式を解く場合、毎回Gaussian eliminationを最初から行うのは無駄が多い。消去の結果と、どの倍数を使って消去したかを分離して保存したものがLU分解である。
 
-## 前提知識
+**前提知識**：Gaussian elimination、可逆性。
 
-前提Topic: la-linear-systems-elimination。新しい記号は使う前に定義し、ベクトルは太字小文字、行列は太字大文字で表す。
+## まず直感を作る
 
-## まず直感
+$\mathbf U$ は消去後の上三角行列、$\mathbf L$ は「下の行から上の行を何倍引いたか」という消去履歴を保存する下三角行列である。$\mathbf A=\mathbf L\mathbf U$ と分けると、$\mathbf A\mathbf x=\mathbf b$ はまず $\mathbf L\mathbf y=\mathbf b$ を前進代入で解き、次に $\mathbf U\mathbf x=\mathbf y$ を後退代入で解ける。
 
-LU分解はガウス消去を「一度分解として保存」する方法である。$L$ に消去係数、$U$ に消去後の上三角行列を持たせる。
+## 図の解説
 
-<img src="/visuals/course-02/la-lu-factorization.png" alt="LU分解の図解" style="max-height: 390px; display:block; margin: 0 auto;" />
+<img src="/visuals/course-02/la-lu-factorization.png" alt="LU分解の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
 
-図を見るときは、軸・矢印・列空間・残差・楕円などの**各要素が数式のどの量に対応するか**を先に確認する。
+図では $\mathbf A$ から消去によって $\mathbf U$ が得られ、その消去を逆向きに戻す行列が $\mathbf L$ として示されている。例では第2行から第1行の2倍を引くため、その「2」が $\mathbf L$ の下三角成分に保存される。
+
+$\mathbf U$ だけを見ると消去前の情報の一部が見えなくなるが、$\mathbf L$ と組にすれば $\mathbf L\mathbf U$ から元の $\mathbf A$ を再構成できる。
 
 ## 記号・型・次元
 
-- スカラーは小文字、ベクトルは $\mathbf{x},\mathbf{y}$、行列は $\mathbf{A},\mathbf{B}$ とする。
-- $\mathbf{A}\in\mathbb{R}^{m\times n}$ なら、列数$n$が入力次元、行数$m$が出力次元である。
-- 積・加算・逆・分解を行う前にshapeと成立条件を確認する。
-- このTopicの代表式に含まれるすべての記号は、式の直前または直後で意味を説明する。
+- $\mathbf A\in\mathbb R^{n\times n}$：分解対象。
+- $\mathbf L$：対角成分を1とする下三角行列。
+- $\mathbf U$：上三角行列。
+- $m_{ij}$：消去で用いるmultiplier（倍率）。
+
 
 ## 正式な定義
 
-適切なpivot条件の下で $\mathbf{A}=\mathbf{L}\mathbf{U}$。実用上は行交換を含め $\mathbf{P}\mathbf{A}=\mathbf{L}\mathbf{U}$ とすることが多い。
-
-代表式：
+pivot交換を必要としない場合、Gaussian eliminationから
 
 $$
-\mathbf{A}=\mathbf{L}\mathbf{U}
+\mathbf A=\mathbf L\mathbf U
 $$
 
-## 代表式の記号を定義する
+という分解を得る。実用上は行交換を含め
 
-- $\mathbf{A}\in\mathbb{R}^{n\times n}$: 分解対象の行列。
-- $\mathbf{L}$: 対角成分を1とする下三角行列（lower triangular matrix）。
-- $\mathbf{U}$: 上三角行列（upper triangular matrix）。
-- pivotingを含む実装では$\mathbf{P}\mathbf{A}=\mathbf{L}\mathbf{U}$とし、$\mathbf{P}$は行交換を表す置換行列。
+$$
+\mathbf P\mathbf A=\mathbf L\mathbf U
+$$
 
-## なぜこの式になるのか
+と書くことが多い。$\mathbf P$ は置換行列である。
 
-ガウス消去で使う「行$i$から$m_{ij}$倍のpivot行を引く」操作を逆に集めると、下三角行列$L$になる。右辺が変わってもAが同じなら分解を再利用できる。
+## なぜこの式・定理になるのか
 
-ここでは最終式だけでなく、**どの条件から何が導かれたか**を追うことが重要である。
+### 2×2で消去行列から導く
 
-## 小さな手計算
+$$
+\mathbf A=\begin{bmatrix}a&b\\c&d\end{bmatrix},\qquad a\ne0
+$$
 
-$\mathbf{A}=\begin{bmatrix}2&1\\4&3\end{bmatrix}$ は $L=\begin{bmatrix}1&0\\2&1\end{bmatrix}$, $U=\begin{bmatrix}2&1\\0&1\end{bmatrix}$。
+とする。第2行から第1行の $m=c/a$ 倍を引く消去行列は
 
-さらに確認問題：$A=\begin{bmatrix}1&2\\3&8\end{bmatrix}$ をpivotingなしでLU分解せよ。
+$$
+\mathbf E=\begin{bmatrix}1&0\\-m&1\end{bmatrix}.
+$$
 
-**解答**：第1pivotで係数3を使うので $L=\begin{bmatrix}1&0\\3&1\end{bmatrix}$、$U=\begin{bmatrix}1&2\\0&2\end{bmatrix}$。積を戻すとAになる。
+すると
 
-小さい例で結果を先に予測し、その後で一般式へ戻る。
+$$
+\mathbf E\mathbf A
+=\begin{bmatrix}a&b\\0&d-mb\end{bmatrix}
+=\mathbf U.
+$$
 
-## 計算手順・アルゴリズム
+両辺の左から $\mathbf E^{-1}$ を掛けると
 
-pivoting付きLUを作る→$Ly=Pb$ を前進代入→$Ux=y$ を後退代入。複数の右辺を解くとき特に有利。
+$$
+\mathbf A=\mathbf E^{-1}\mathbf U.
+$$
 
-理論上の定義と、有限精度で安全に計算するアルゴリズムは区別する。
+$\mathbf E^{-1}=\begin{bmatrix}1&0\\m&1\end{bmatrix}$ なので、これを $\mathbf L$ と呼べば $\mathbf A=\mathbf L\mathbf U$。つまり $\mathbf L$ の下三角成分に消去倍率が正符号で入る。
 
-## 成立条件と典型的な誤り
+### 解法への利用
 
-- pivotingなしLUが常に安定とは限らない。
-- $L$ の対角を1とする流儀など規約を確認する。
-- 分解と「逆行列を求めること」を混同しない。
+$$
+\mathbf A\mathbf x=\mathbf b
+\quad\Longrightarrow\quad
+\mathbf L\mathbf U\mathbf x=\mathbf b.
+$$
 
-特に、次の主張を自力で診断できるようにする。
+$\mathbf y=\mathbf U\mathbf x$ と置けば
 
-> 「LU分解できればpivotingは不要」
+$$
+\mathbf L\mathbf y=\mathbf b,
+$$
 
-**診断**：存在と数値安定性は別。小さいpivotを使うと丸め誤差が増幅されるため、実装では部分pivotingを伴う $PA=LU$ が標準。
+を前進代入で解き、その後
 
-## 数値実装での検算
+$$
+\mathbf U\mathbf x=\mathbf y
+$$
 
-1. 入力の `shape` と `dtype` を確認する。
-2. 2〜5次元の例で手計算した期待値を先に書く。
-3. NumPy/SciPy等で計算する。
-4. 残差、再構成誤差、直交性、rank、特異値など、このTopicに適した独立な量で検算する。
-5. 逆行列の明示形成、normal equation、小pivot、小特異値など、数値誤差を増幅する実装を避ける。
+を後退代入で解く。分解は一度だけ行えば、異なる $\mathbf b$ に再利用できる。
 
-## 後続Topicへの接続
+## 小さな数値例を最後まで計算する
 
-多数の右辺を持つ線形系、数値線形代数、最適化内部の線形ソルバで使われる。
+$$
+\mathbf A=\begin{bmatrix}2&1\\4&3\end{bmatrix}.
+$$
 
-Course 02の目的は各公式を孤立して覚えることではなく、**線形結合 → 空間 → 直交 → 最小二乗 → 固有構造 → SVD → 条件数**という一本の流れとして理解することにある。
+$m=4/2=2$ なので
+
+$$
+\mathbf L=\begin{bmatrix}1&0\\2&1\end{bmatrix},\qquad
+\mathbf U=\begin{bmatrix}2&1\\0&1\end{bmatrix}.
+$$
+
+実際、
+
+$$
+\mathbf L\mathbf U
+=\begin{bmatrix}2&1\\4&3\end{bmatrix}=\mathbf A.
+$$
+
+## もう一段丁寧に：LU分解はGaussian eliminationの記録である
+
+### 1. 消去操作を行列として書く
+
+例として
+
+$$
+\mathbf A=\begin{bmatrix}2&1\\6&5\end{bmatrix}
+$$
+
+を考える。第2行から第1行の3倍を引けば
+
+$$
+\mathbf U=\begin{bmatrix}2&1\\0&2\end{bmatrix}.
+$$
+
+この行操作は左から
+
+$$
+\mathbf E=\begin{bmatrix}1&0\\-3&1\end{bmatrix}
+$$
+
+を掛けることと同じなので
+
+$$
+\mathbf E\mathbf A=\mathbf U.
+$$
+
+したがって
+
+$$
+\mathbf A=\mathbf E^{-1}\mathbf U.
+$$
+
+$\mathbf E^{-1}$ は
+
+$$
+\mathbf E^{-1}=\begin{bmatrix}1&0\\3&1\end{bmatrix}.
+$$
+
+この下三角行列を $\mathbf L$ と呼べば
+
+$$
+\mathbf A=\mathbf L\mathbf U.
+$$
+
+$\mathbf L$ に保存されている3は、消去で使ったmultiplierそのものである。
+
+### 2. 一般の場合も同じ構造
+
+複数回の消去で
+
+$$
+\mathbf E_k\cdots\mathbf E_2\mathbf E_1\mathbf A=\mathbf U
+$$
+
+になったとする。両辺へ逆行列を順に掛ければ
+
+$$
+\mathbf A=
+\mathbf E_1^{-1}\mathbf E_2^{-1}\cdots\mathbf E_k^{-1}\mathbf U.
+$$
+
+消去行列の逆は下三角であり、適切な条件の下でその積も下三角になる。この積が $\mathbf L$ である。
+
+### 3. なぜ一度分解すれば複数の右辺を速く解けるのか
+
+$\mathbf A\mathbf x=\mathbf b$ に $\mathbf A=\mathbf L\mathbf U$ を代入すると
+
+$$
+\mathbf L\mathbf U\mathbf x=\mathbf b.
+$$
+
+まず
+
+$$
+\mathbf L\mathbf y=\mathbf b
+$$
+
+を前進代入で解き、次に
+
+$$
+\mathbf U\mathbf x=\mathbf y
+$$
+
+を後退代入で解く。同じ $\mathbf A$ に対して $\mathbf b$ だけが変わるなら、重い分解は一度だけでよい。
+
+### 4. pivotingが必要になる理由
+
+消去中のpivotが0なら、そのままでは割り算できない。0でなくても非常に小さいpivotで割ると、有限精度計算では誤差が大きく増幅されることがある。そこで実用的なLUでは行交換を含むpartial pivotingを行い、
+
+$$
+\mathbf P\mathbf A=\mathbf L\mathbf U
+$$
+
+と書くことが多い。$\mathbf P$ は行交換を表す置換行列である。理論上の $\mathbf A=\mathbf L\mathbf U$ と数値ライブラリの出力が少し違うのはこのためである。
+
+## 成立条件・壊れる場合
+
+pivotが0なら行交換なしの単純なLUは進められない。数値計算では小さいpivotも不安定なので、通常はpartial pivotingを行い $\mathbf P\mathbf A=\mathbf L\mathbf U$ とする。「数学的にLUが存在する」と「数値的に安定なLUを得る」は同じ主張ではない。
+
+## ここから発展
+
+対称正定値行列では、LUより構造を利用したCholesky分解 $\mathbf A=\mathbf L\mathbf L^T$ が使える。これはTopic 25で、正定値性を学んだ後に導く。
+
+
+## このTopicの理解確認
+
+- 消去行列 $\mathbf E$ から $\mathbf A=\mathbf L\mathbf U$ がどのように出るか、小さい例で再現できるか。
+- $L$ のsubdiagonal entriesがelimination multiplierを記録する理由を説明できるか。
+- pivotingが必要になる数学的・数値的理由を区別できるか。
 
 ## 外部教材との照合
 
-この章の説明順・例題・成立条件は、以下の公開教材を参照して再構成した。本文は転載ではなく、本教材向けに日本語で再説明している。
 
-- [MIT OpenCourseWare 18.06SC Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
+- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-- [Jim Hefferon, Linear Algebra (free textbook)](https://hefferon.net/linearalgebra/)
 
-## 演習へ
 
-[10問の演習](/exercises/la-lu-factorization)
+## 演習
+
+[このTopicの10問の演習](/exercises/la-lu-factorization)
