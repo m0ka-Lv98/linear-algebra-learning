@@ -40,44 +40,13 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 24.12.0, cache: pnpm }
       - run: pnpm install --frozen-lockfile
-      - id: slides-cache
-        uses: actions/cache/restore@v4
-        with:
-          path: dist/slides
-          key: slidev-${{ hashFiles('pnpm-lock.yaml', 'apps/slides/package.json') }}-${{ github.sha }}
-          restore-keys: |
-            slidev-${{ hashFiles('pnpm-lock.yaml', 'apps/slides/package.json') }}-
       - name: Build site
-        env:
-          COURSE: ${{ inputs.course }}
-          TOPIC: ${{ inputs.topic }}
-          COURSES_01_10: ${{ inputs.courses_01_10 }}
-          FULL: ${{ inputs.full }}
-          CACHE_MATCHED: ${{ steps.slides-cache.outputs.cache-matched-key }}
-          DIFF_BASE: ${{ github.event.before }}
-          SLIDE_BUILD_CONCURRENCY: 4
-          NODE_OPTIONS: --max-old-space-size=6144
         run: |
           set -euo pipefail
-          if [ "$COURSES_01_10" = "true" ]; then
-            if [ "$FULL" = "true" ] || [ -n "$COURSE" ] || [ -n "$TOPIC" ]; then
-              echo "ERROR: courses_01_10 cannot be combined with course, topic, or full."
-              exit 2
-            fi
-            BASE_PATH=/linear-algebra-learning/ node tools/build-courses-01-10.mjs
-          elif [ "$FULL" = "true" ] || [ -z "$CACHE_MATCHED" ]; then
-            BASE_PATH=/linear-algebra-learning/ pnpm build
-          elif [ -n "$COURSE" ]; then
-            BASE_PATH=/linear-algebra-learning/ pnpm build:incremental -- --course "$COURSE"
-          elif [ -n "$TOPIC" ]; then
-            BASE_PATH=/linear-algebra-learning/ pnpm build:incremental -- --topic "$TOPIC"
-          else
-            BASE_PATH=/linear-algebra-learning/ pnpm build:incremental -- --auto
-          fi
-      - name: Verify slide completeness
-        run: node tools/verify-slide-build.mjs
-      - name: Verify Course 01-10 slide quality
-        run: node tools/verify-course01-10-slidev-fixes.mjs
+          rm -rf dist
+          BASE_PATH=/linear-algebra-learning/ pnpm build:portal
+          mkdir -p dist
+          cp -R apps/portal/.vitepress/dist/. dist/
       - name: Audit learning-material quality
         run: node tools/check-learning-quality.mjs
       - name: Assert build did not mutate source files
@@ -87,11 +56,6 @@ jobs:
             echo "ERROR: build mutated repository source files. Build steps must be pure."
             exit 1
           fi
-      - uses: actions/cache/save@v4
-        if: success() && steps.slides-cache.outputs.cache-primary-key != steps.slides-cache.outputs.cache-matched-key
-        with:
-          path: dist/slides
-          key: slidev-${{ hashFiles('pnpm-lock.yaml', 'apps/slides/package.json') }}-${{ github.sha }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with: { path: dist }
