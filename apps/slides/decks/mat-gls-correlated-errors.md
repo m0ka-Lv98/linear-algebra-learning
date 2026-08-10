@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "GLSと相関誤差"
 ---
 
 # GLSと相関誤差
 
-Course 07｜データ解析の行列手法｜Topic 08/20
+Course 07｜データ解析
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-GLSと相関誤差の代表式は、どの定義・仮定から、なぜその形になるのか。
+GLSと相関誤差で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `mat-wls-inverse-variance` で得た概念を使い、ここでは GLSと相関誤差 へ進む。
+- GLSと相関誤差の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,96 @@ GLSと相関誤差の代表式は、どの定義・仮定から、なぜその�
 
 観測ごとの信頼度が異なるとき、残差を同じ重みで扱わず、分散の小さい観測を強く反映する。
 
-
+**前提:** mat-wls-inverse-variance, prob-multivariate-normal-distribution
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-gls-correlated-errors.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-同じ散布点にOLSと逆分散WLSを当て、誤差バーの小さい点へ線が寄る様子を見る。 各点から回帰線への残差に異なる重みが掛かる。分散の小さい観測ほど信頼度が高いとき1/σ_i²で重くするのはGaussian likelihoodから導かれる。
+<img src="./assets/course-07/mat-gls-correlated-errors.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $Cov(\varepsilon)=\Sigma\succ0$
-- $\Sigma^{-1}$：precision
-- $L L^T=\Sigma$：Cholesky
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \min_{\boldsymbol{\beta}}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^{\mathsf T}\mathbf{\Sigma}^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})
 $$
 
----
-
-## 導出 1
-
-$-\log p(y|β)=const+\frac12r^TΣ^{-1}r+\frac12\log|Σ|$。Σ fixedならβに関係するのはquadratic term。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$Σ=LL^T$ とし $L^{-1}r$ のEuclidean normを最小化。$r^TΣ^{-1}r=\|L^{-1}r\|²$。
-
----
-
-## 例題
-
-time series residualが隣接時点でpositive correlatedなら独立WLSよりeffective informationが少ない。
+- **対象:** GLS、相関誤差
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-Σ estimated poorly/singularならinverse unstable。correlation structureを無視したstandard errorsは過小評価し得る。
+同じ散布点にOLSと逆分散WLSを当て、誤差バーの小さい点へ線が寄る様子を見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-07/mat-gls-correlated-errors.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- Wは通常対称正定値を想定する。
+- 重みを大きくする意味は「その点を信頼する」こと。
+- GLSと相関誤差の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-GLSと相関誤差では、式へ数値を代入するだけでは不十分である。Σ estimated poorly/singularならinverse unstable。correlation structureを無視したstandard errorsは過小評価し得る。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- GLSと相関誤差の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-Cholesky triangular solveでwhitenしinverseを作らない。structured covariance(AR,block)を利用。
-
----
-
-## 一段先へ
-
-regularizationはnoise modelとは別にcoefficient complexityへconstraint/penaltyを加える。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「Gaussian log likelihood」を式を見ずに説明できるか
-- 「GLS normal equation」までの論理を一段ずつ再現できるか
-- GLSと相関誤差の条件を1つ外した反例を説明できるか
+GLSと相関誤差は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/mat-gls-correlated-errors)
-- [10問の演習](../../exercises/mat-gls-correlated-errors)
+- GLSと相関誤差を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/mat-gls-correlated-errors)
+
+[10問の演習](../../exercises/mat-gls-correlated-errors)

@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "RNNと系列model"
 ---
 
 # RNNと系列model
 
-Course 09｜深層学習｜Topic 07/20
+Course 09｜深層学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-RNNと系列modelの代表式は、どの定義・仮定から、なぜその形になるのか。
+RNNと系列modelで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `dl-cnn-convolution` で得た概念を使い、ここでは RNNと系列model へ進む。
+- RNNと系列modelの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,96 @@ RNNと系列modelの代表式は、どの定義・仮定から、なぜその形
 
 系列modelは時刻ごとの入力と過去状態を組み合わせ、順序依存の情報を保持する。
 
-
+**前提:** dl-perceptron-mlp, dm-recurrence-relations
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-rnn-sequence-models.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-時系列nodeを左から右へつなぎ、hidden stateが伝わる様子を見る。 時刻tのhidden stateが過去情報を次時刻へ運ぶ。長い依存では同じJacobian積が繰り返されるためgradientが消失・爆発しやすい。
+<img src="./assets/course-09/dl-rnn-sequence-models.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $x_t$：time t input
-- $h_t$：hidden state
-- $W_h,W_x$
-- $h_t=\phi(W_hh_{t-1}+W_xx_t)$
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbf{h}_t=\phi(\mathbf{W}_h\mathbf{h}_{t-1}+\mathbf{W}_x\mathbf{x}_t)
 $$
 
----
-
-## 導出 1
-
-$h_t=F(h_{t-1},x_t)$ をunrollするとh_tはx_1…x_tのnested composition。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-同じW_h,W_xを全tで使うためsequence lengthにparameter数が比例しない。
-
----
-
-## 例題
-
-scalar h_t=0.5h_{t-1}+x_tでは古いinput contributionは0.5^{lag}で指数減衰。
+- **対象:** RNN、系列model
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-hidden stateがfixed sizeなのでlong context情報を全て保持できる保証はない。
+時系列nodeを左から右へつなぎ、hidden stateが伝わる様子を見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-09/dl-rnn-sequence-models.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- 長系列では勾配消失・爆発が起こりうる。
+- padding maskを忘れない。
+- RNNと系列modelの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-RNNと系列modelでは、式へ数値を代入するだけでは不十分である。hidden stateがfixed sizeなのでlong context情報を全て保持できる保証はない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- RNNと系列modelの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-mask/padded length、state detach、truncated BPTT、gradient clipping。
-
----
-
-## 一段先へ
-
-各queryがsequence内の任意positionを直接参照できるattentionへ。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「recurrent composition」を式を見ずに説明できるか
-- 「BPTT gradient」までの論理を一段ずつ再現できるか
-- RNNと系列modelの条件を1つ外した反例を説明できるか
+RNNと系列modelは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/dl-rnn-sequence-models)
-- [10問の演習](../../exercises/dl-rnn-sequence-models)
+- RNNと系列modelを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/dl-rnn-sequence-models)
+
+[10問の演習](../../exercises/dl-rnn-sequence-models)

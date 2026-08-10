@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "softmaxと多クラス分類"
 ---
 
 # softmaxと多クラス分類
 
-Course 08｜機械学習｜Topic 04/20
+Course 08｜機械学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-softmaxと多クラス分類の代表式は、どの定義・仮定から、なぜその形になるのか。
+softmaxと多クラス分類で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `ml-logistic-regression` で得た概念を使い、ここでは softmaxと多クラス分類 へ進む。
+- softmaxと多クラス分類の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,96 @@ softmaxと多クラス分類の代表式は、どの定義・仮定から、な�
 
 分類器は入力からクラス確率またはスコアを作り、決定境界でクラスを分ける。
 
-
+**前提:** ml-logistic-regression, stat-entropy-cross-entropy-kl-divergence
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-softmax-multiclass.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-2クラス点群と確率等高線、decision boundaryを描く。 背景の確率面がP(y=1|x)、その0.5等高線がdecision boundary、点が観測データである。モデルの連続な確率出力と離散な最終分類を区別できる。
+<img src="./assets/course-08/ml-softmax-multiclass.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $z_k$：class k logit
-- $K$：class数
-- $p_k=e^{z_k}/\sum_j e^{z_j}$
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 p(y=k\mid\mathbf{x})=\frac{e^{z_k}}{\sum_j e^{z_j}}
 $$
 
----
-
-## 導出 1
-
-exp(z_k)>0でclass scoreをpositive化。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-全scoreのsumで割りsum_k p_k=1。
-
----
-
-## 例題
-
-logits(0,0,0)→各1/3。logits(2,0,0)ではclass1 probability e²/(e²+2)。
+- **対象:** softmax、多クラス分類
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-argmax classだけ見ればconfidence/calibration情報を失う。
+2クラス点群と確率等高線、decision boundaryを描く。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-08/ml-softmax-multiclass.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- 確率出力とhard labelを区別する。
+- 閾値は目的に応じて調整する。
+- softmaxと多クラス分類の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-softmaxと多クラス分類では、式へ数値を代入するだけでは不十分である。argmax classだけ見ればconfidence/calibration情報を失う。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- softmaxと多クラス分類の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-log-sum-exp trick、mask、label smoothing convention確認。
-
----
-
-## 一段先へ
-
-Bayes ruleでclass-conditional modelからposteriorを作るgenerative classifierへ。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「positive score」を式を見ずに説明できるか
-- 「cross entropy gradient」までの論理を一段ずつ再現できるか
-- softmaxと多クラス分類の条件を1つ外した反例を説明できるか
+softmaxと多クラス分類は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/ml-softmax-multiclass)
-- [10問の演習](../../exercises/ml-softmax-multiclass)
+- softmaxと多クラス分類を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/ml-softmax-multiclass)
+
+[10問の演習](../../exercises/ml-softmax-multiclass)

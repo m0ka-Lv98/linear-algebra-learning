@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "離散確率・指示変数・乱択アルゴリズム"
 ---
 
 # 離散確率・指示変数・乱択アルゴリズム
 
-Course 04｜離散数学と証明｜Topic 20/20
+Course 04｜離散数学
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-離散確率・指示変数・乱択アルゴリズムの代表式は、どの定義・仮定から、なぜその形になるのか。
+離散確率・指示変数・乱択アルゴリズムで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `dm-directed-graphs-dags-topological-order` で得た概念を使い、ここでは 離散確率・指示変数・乱択アルゴリズム へ進む。
+- 離散確率・指示変数・乱択アルゴリズムの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,95 @@ layout: center
 
 確率は事象へ0〜1の重みを与え、和・積・補集合の規則で複雑な事象を組み立てる。
 
-
+**前提:** dm-counting-principles-pigeonhole, dm-algorithm-specifications-correctness
 
 ---
 
 ## 図解
 
-<img src="./assets/course-04/dm-discrete-probability-indicators-randomized-algorithms.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-2個のサイコロの標本空間を格子で描き、事象をセル集合として見る。 格子の1セルが1つの基本結果、色付き領域が事象である。和事象は領域の和集合、積事象は共通部分、補事象は標本空間からその領域を除いた部分に対応する。
+<img src="./assets/course-04/dm-discrete-probability-indicators-randomized-algorithms.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $I_A$：事象Aなら1、そうでなければ0のindicator
-- $E[I_A]=P(A)$
-- $X=\sum_i I_i$：数えたい個数
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbb{E}[I_A]=\mathbb{P}(A)
 $$
 
----
-
-## 導出 1
-
-$E[I_A]=1·P(A)+0·P(A^c)=P(A)$。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-条件を満たす対象数Xは、各対象iが条件を満たすindicatorの和 $X=\sum I_i$。
-
----
-
-## 例題
-
-ランダム順列のfixed point数。各位置iが固定される確率1/nなので、期待fixed pointsはn·(1/n)=1。事象は独立でなくてもよい。
+- **対象:** 離散確率、指示変数、乱択アルゴリズム
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-期待値が1だから必ず1個起こるわけではない。fixed point数は0,1,2,…を取り得る。expectationは長期平均。
+2個のサイコロの標本空間を格子で描き、事象をセル集合として見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 排反と独立は別概念。
+- 確率は事象に対して定義される。
+- 離散確率・指示変数・乱択アルゴリズムの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-離散確率・指示変数・乱択アルゴリズムでは、式へ数値を代入するだけでは不十分である。期待値が1だから必ず1個起こるわけではない。fixed point数は0,1,2,…を取り得る。expectationは長期平均。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 離散確率・指示変数・乱択アルゴリズムの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-randomized algorithm評価ではseed固定の1 runで期待性能を判断せず、多数runと理論期待値を比較する。
-
----
-
-## 一段先へ
-
-indicatorとlinearity of expectationはhashing、randomized quicksort、concentration inequalitiesの基礎。Course08のrandomized ML評価にも再登場する。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「indicatorの期待値」を式を見ずに説明できるか
-- 「期待値の線形性」までの論理を一段ずつ再現できるか
-- 離散確率・指示変数・乱択アルゴリズムの条件を1つ外した反例を説明できるか
+離散確率・指示変数・乱択アルゴリズムは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/dm-discrete-probability-indicators-randomized-algorithms)
-- [10問の演習](../../exercises/dm-discrete-probability-indicators-randomized-algorithms)
+- 離散確率・指示変数・乱択アルゴリズムを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/dm-discrete-probability-indicators-randomized-algorithms)
+
+[10問の演習](../../exercises/dm-discrete-probability-indicators-randomized-algorithms)

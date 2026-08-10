@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "RLHFとpreference optimization"
 ---
 
 # RLHFとpreference optimization
 
-Course 10｜Frontier｜Topic 11/20
+Course 10｜Frontier
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-RLHFとpreference optimizationの代表式は、どの定義・仮定から、なぜその形になるのか。
+RLHFとpreference optimizationで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `frontier-multi-agent-systems` で得た概念を使い、ここでは RLHFとpreference optimization へ進む。
+- RLHFとpreference optimizationの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,85 +32,95 @@ RLHFとpreference optimizationの代表式は、どの定義・仮定から、�
 
 preference optimizationは候補応答の比較データから、望ましい応答を相対的に高確率にする。
 
-
+**前提:** opt-stochastic-gradient, ml-logistic-regression
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-rlhf-preference-optimization.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-chosen/rejected pairからpolicy更新へ流れるpipelineを描く。 同じpromptへの複数応答の選好比較から、望ましい出力方向を学ぶ。DPO等では選好された応答と非選好応答の相対log-probabilityを直接最適化する。
+<img src="./assets/course-10/frontier-rlhf-preference-optimization.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $x$：prompt
-- $y_w,y_l$：preferred/rejected responses
-- $\pi_\theta$：policy
-- $\pi_{ref}$：reference policy
-- $\beta$：deviation strength
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathcal{L}_{DPO}=-\log\sigma(\beta[\log\pi_\theta(y_w\mid x)-\log\pi_\theta(y_l\mid x)-\Delta_{ref}])
 $$
 
----
-
-## 導出 1
-
-absolute scoreより $P(y_w\succ y_l|x)$ をmodel化。Bradley–Terry型でreward differenceをsigmoidへ。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-KL-regularized optimal policyではrewardが $\beta\log[\pi^*(y|x)/\pi_{ref}(y|x)]$ とconstantで表せる。
-
----
-
-## 例題
-
-same promptにhelpful correct responseとless preferred response pairを作り、preferred log-ratioをreference relativeに増やす。
+- **対象:** RLHF、preference、optimization
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-preference data自体がbiased/inconsistentならoptimizerはそのbiasを学ぶ。preference=ground-truth safetyではない。
+chosen/rejected pairからpolicy更新へ流れるpipelineを描く。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- preference dataのbiasがpolicyへ入る。
+- reward hackingやoveroptimizationを監視する。
+- RLHFとpreference optimizationの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-RLHFとpreference optimizationでは、式へ数値を代入するだけでは不十分である。preference data自体がbiased/inconsistentならoptimizerはそのbiasを学ぶ。preference=ground-truth safetyではない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- RLHFとpreference optimizationの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-pair construction、reference model version、length bias、chosen/rejected leakage、reward/eval separation。
-
----
-
-## 一段先へ
-
-preference optimizationはalignmentの一手段。policy constraints、red teaming、system safetyを広く次Topicで扱う。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「relative preference」を式を見ずに説明できるか
-- 「DPO objective」までの論理を一段ずつ再現できるか
-- RLHFとpreference optimizationの条件を1つ外した反例を説明できるか
+RLHFとpreference optimizationは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/frontier-rlhf-preference-optimization)
-- [10問の演習](../../exercises/frontier-rlhf-preference-optimization)
+- RLHFとpreference optimizationを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/frontier-rlhf-preference-optimization)
+
+[10問の演習](../../exercises/frontier-rlhf-preference-optimization)

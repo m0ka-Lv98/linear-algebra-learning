@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "Foundation modelの設計原理"
 ---
 
 # Foundation modelの設計原理
 
-Course 10｜Frontier｜Topic 01/20
+Course 10｜Frontier
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-Foundation modelの設計原理の代表式は、どの定義・仮定から、なぜその形になるのか。
+Foundation modelの設計原理で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-Course 10 の入口として、Foundation modelの設計原理 を定義から組み立てる。
+- Foundation modelの設計原理の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ Course 10 の入口として、Foundation modelの設計原理 を定義から�
 
 Foundation modelは大規模な事前学習で汎用表現・生成能力を獲得し、下流taskへ適応する。
 
-
+**前提:** dl-transformers, dl-scaling-distributed-training
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-foundation-model-paradigm.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-pretraining→adaptation→taskの流れを大きなpipelineとして描く。 大量dataでpretrainingした共通modelを、prompt・retrieval・fine-tuning等で個別taskへ適応する。基盤部分を共有するため下流taskごとの学習量を減らせる。
+<img src="./assets/course-10/frontier-foundation-model-paradigm.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $x_1,\ldots,x_T$：token sequence
-- $p_\theta$：parameter θのmodel distribution
-- $x_{<t}$：時刻tより前のtokens
-- $T$：sequence length
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 p_\theta(x_1,\ldots,x_T)=\prod_{t=1}^{T}p_\theta(x_t\mid x_{<t})
 $$
 
----
-
-## 導出 1
-
-$p(x_1,\ldots,x_T)=p(x_1)p(x_2|x_1)\cdots p(x_T|x_{<T})$。独立仮定ではなく確率のchain rule。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-negative logを取ると積が和へ変わり $-\sum_t\log p_\theta(x_t|x_{<t})$。teacher forcingで各positionをsupervisionとして使える。
-
----
-
-## 例題
-
-3-token sequence probabilityはp(x1)p(x2|x1)p(x3|x1,x2)。各factorが低ければjointも低くなる。
+- **対象:** Foundation、modelの設計原理
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-next-token likelihoodが高いこととfactual correctness/safety/task successは同義でない。training objectiveとdownstream metricを区別する。
+pretraining→adaptation→taskの流れを大きなpipelineとして描く。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 事前学習lossの改善と下流能力は一対一ではない。
+- data/model/computeの相互依存を見る。
+- Foundation modelの設計原理の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-Foundation modelの設計原理では、式へ数値を代入するだけでは不十分である。next-token likelihoodが高いこととfactual correctness/safety/task successは同義でない。training objectiveとdownstream metricを区別する。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- Foundation modelの設計原理の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-token-level cross entropy、padding mask、context truncation、data deduplicationを記録。generationはtemperature/top-p等decoder settingで出力distributionが変わる。
-
----
-
-## 一段先へ
-
-next-token modelが扱う最小単位tokenと、そのembedding/context representationを次に理解する。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「probability chain rule」を式を見ずに説明できるか
-- 「generation」までの論理を一段ずつ再現できるか
-- Foundation modelの設計原理の条件を1つ外した反例を説明できるか
+Foundation modelの設計原理は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/frontier-foundation-model-paradigm)
-- [10問の演習](../../exercises/frontier-foundation-model-paradigm)
+- Foundation modelの設計原理を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/frontier-foundation-model-paradigm)
+
+[10問の演習](../../exercises/frontier-foundation-model-paradigm)

@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "多変量正規分布"
 ---
 
 # 多変量正規分布
 
-Course 03｜確率統計｜Topic 13/20
+Course 03｜確率統計
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-多変量正規分布の代表式は、どの定義・仮定から、なぜその形になるのか。
+多変量正規分布で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `prob-laws-large-numbers-central-limit-theorem` で得た概念を使い、ここでは 多変量正規分布 へ進む。
+- 多変量正規分布の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ layout: center
 
 同時分布は複数変数の組を一度に扱い、周辺化は不要な軸を足し合わせる操作。
 
-
+**前提:** prob-covariance-correlation, prob-continuous-distributions, la-quadratic-forms-positive-definite
 
 ---
 
 ## 図解
 
-<img src="./assets/course-03/prob-multivariate-normal-distribution.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-2次元ヒートマップから行・列方向に足して周辺分布を作る。 2軸は2つの変数、各セルや密度の高さは同時にその値を取る重みを表す。一方の軸方向へ足し上げる・積分すると他方だけの周辺分布が残る。
+<img src="./assets/course-03/prob-multivariate-normal-distribution.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\mathbf X\in\mathbb R^d$：d次元確率ベクトル
-- $\boldsymbol\mu\in\mathbb R^d$：平均ベクトル
-- $\mathbf\Sigma\in\mathbb R^{d\times d}$：共分散行列
-- $\mathbf\Sigma\succ0$：正定値
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbf{X}\sim\mathcal{N}(\boldsymbol{\mu},\mathbf{\Sigma})
 $$
 
----
-
-## 導出 1
-
-$\mathbf Z\sim N(\mathbf0,\mathbf I)$ は球対称。線形変換 $\mathbf X=\boldsymbol\mu+\mathbf L\mathbf Z$ を考える。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$E[\mathbf X]=\boldsymbol\mu$、$Cov(\mathbf X)=\mathbf L\mathbf L^T$。$\mathbf\Sigma=\mathbf L\mathbf L^T$ を満たすLを選べば所望の共分散になる。
-
----
-
-## 例題
-
-$\Sigma=\begin{pmatrix}4&0\\0&1\end{pmatrix}$ ならx方向標準偏差2、y方向1の軸平行楕円。off-diagonalが正なら楕円が正傾斜へ回転する。
+- **対象:** 多変量正規分布
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-共分散行列は任意の対称行列ではなく半正定値でなければならない。負の固有値がある行列を「共分散」として使うと、ある方向の分散が負になる矛盾。
+2次元ヒートマップから行・列方向に足して周辺分布を作る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 相関0でも一般には独立とは限らない。
+- 共分散はスケール依存。
+- 多変量正規分布の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-多変量正規分布では、式へ数値を代入するだけでは不十分である。共分散行列は任意の対称行列ではなく半正定値でなければならない。負の固有値がある行列を「共分散」として使うと、ある方向の分散が負になる矛盾。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 多変量正規分布の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-密度計算で明示逆行列を作るよりCholesky分解を用いて二次形式とlog determinantを計算する方が安定。高次元ではlog-densityを使う。
-
----
-
-## 一段先へ
-
-Mahalanobis距離、Gaussian discriminant analysis、Kalman filteringなどへつながる。Course07ではwhiteningとPCAを共分散行列の固有構造から扱う。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「独立標準正規から始める」を式を見ずに説明できるか
-- 「楕円等密度面を得る」までの論理を一段ずつ再現できるか
-- 多変量正規分布の条件を1つ外した反例を説明できるか
+多変量正規分布は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/prob-multivariate-normal-distribution)
-- [10問の演習](../../exercises/prob-multivariate-normal-distribution)
+- 多変量正規分布を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/prob-multivariate-normal-distribution)
+
+[10問の演習](../../exercises/prob-multivariate-normal-distribution)

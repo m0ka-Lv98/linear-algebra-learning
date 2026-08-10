@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "道・閉路・連結性"
 ---
 
 # 道・閉路・連結性
 
-Course 04｜離散数学と証明｜Topic 17/20
+Course 04｜離散数学
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-道・閉路・連結性の代表式は、どの定義・仮定から、なぜその形になるのか。
+道・閉路・連結性で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `dm-graphs-representations-degrees` で得た概念を使い、ここでは 道・閉路・連結性 へ進む。
+- 道・閉路・連結性の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ layout: center
 
 グラフは頂点と辺で関係を表し、道・連結性・次数は局所と大域の構造をつなぐ。
 
-
+**前提:** dm-graphs-representations-degrees
 
 ---
 
 ## 図解
 
-<img src="./assets/course-04/dm-paths-cycles-connectivity.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-小さなグラフで次数、最短路、連結成分を色分けする。 頂点が対象、辺が対象間の関係である。pathは隣接辺を順にたどる列、cycleは始点へ戻るpathであり、連結性や到達可能性を図上で直接確認できる。
+<img src="./assets/course-04/dm-paths-cycles-connectivity.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $u,v\in V$：vertex
-- path：隣接edgeを連続して辿るvertex列
-- $d(u,v)$：最短path長
-- connected component：互いに到達可能な最大集合
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 d(u,v)=\min\{\text{path length}\}
 $$
 
----
-
-## 導出 1
-
-長さ0pathで反射、pathを逆に辿れて対称、二つのpathを連結して推移。よって同値関係。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-同値関係なのでvertex集合は互いに交わらないconnected componentへ分割される。
-
----
-
-## 例題
-
-無重みgraphでBFSはstartから距離0,1,2,…のlayer順に探索するため最短pathを見つける。
+- **対象:** 道、閉路、連結性
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-有向graphではu→v pathがあっても逆pathがあるとは限らず、単純な到達可能性は対称でない。strong/weak connectivityを区別する。
+小さなグラフで次数、最短路、連結成分を色分けする。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 無向と有向で次数や到達可能性が変わる。
+- 隣接行列の対称性は無向グラフに対応する。
+- 道・閉路・連結性の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-道・閉路・連結性では、式へ数値を代入するだけでは不十分である。有向graphではu→v pathがあっても逆pathがあるとは限らず、単純な到達可能性は対称でない。strong/weak connectivityを区別する。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 道・閉路・連結性の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-BFS/DFSでvisitedを管理しないとcycleで無限探索し得る。graph representationでcomplexityも変わる。
-
----
-
-## 一段先へ
-
-cycleを持たないconnected graphがtree。最小edge数でconnectednessを保つ構造として次Topicへ。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「到達可能性の3性質」を式を見ずに説明できるか
-- 「最短距離の三角不等式」までの論理を一段ずつ再現できるか
-- 道・閉路・連結性の条件を1つ外した反例を説明できるか
+道・閉路・連結性は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/dm-paths-cycles-connectivity)
-- [10問の演習](../../exercises/dm-paths-cycles-connectivity)
+- 道・閉路・連結性を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/dm-paths-cycles-connectivity)
+
+[10問の演習](../../exercises/dm-paths-cycles-connectivity)

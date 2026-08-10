@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "alignment・安全policy・red teaming"
 ---
 
 # alignment・安全policy・red teaming
 
-Course 10｜Frontier｜Topic 12/20
+Course 10｜Frontier
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-alignment・安全policy・red teamingの代表式は、どの定義・仮定から、なぜその形になるのか。
+alignment・安全policy・red teamingで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `frontier-rlhf-preference-optimization` で得た概念を使い、ここでは alignment・安全policy・red teaming へ進む。
+- alignment・安全policy・red teamingの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ alignment・安全policy・red teamingの代表式は、どの定義・仮定か
 
 alignmentとred teamingは、意図したpolicyと実際のmodel挙動の差を攻撃的テストで探す。
 
-
+**前提:** dl-evaluation-robustness-safety, frontier-rlhf-preference-optimization
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-alignment-safety-policies.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-通常testとadversarial testを分けた評価matrixを描く。 model capabilityの経路に対し、policy・preference・safety constraint・evaluationを別レイヤとして重ねる。性能向上と望ましい振る舞いは同じ目的関数ではない。
+<img src="./assets/course-10/frontier-alignment-safety-policies.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\mathcal X_{adv}$：adversarial/test space
-- $Risk(f,x)$：harm/failure score
-- $P$：policy/constraints
-- threat model
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \max_{x\in\mathcal{X}_{adv}}\operatorname{Risk}(f_\theta,x)
 $$
 
----
-
-## 導出 1
-
-誰が何をでき、何を守るかを定義しないと「安全」の検証範囲が決まらない。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$\max_{x\in X_{adv}}Risk$ はred-team/adversarial evaluationの抽象形。search methodが弱いとriskを過小評価。
-
----
-
-## 例題
-
-tool agentでread-only questionとmoney transferに同じpermission thresholdを使わずimpact別control。
+- **対象:** alignment、安全policy、red、teaming
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-特定benchmark scoreが高い=all-context safeではない。unknown attacks/distribution shiftを残す。
+通常testとadversarial testを分けた評価matrixを描く。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 既知attackに強いことと一般安全性は同じでない。
+- policy違反率だけで有用性を無視しない。
+- alignment・安全policy・red teamingの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-alignment・安全policy・red teamingでは、式へ数値を代入するだけでは不十分である。特定benchmark scoreが高い=all-context safeではない。unknown attacks/distribution shiftを残す。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- alignment・安全policy・red teamingの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-incident taxonomy、red-team dataset version、policy changes、false positive/negative、human escalation。
-
----
-
-## 一段先へ
-
-安全を含むfoundation model evaluationをstatistical experimentとして設計する。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「threat model」を式を見ずに説明できるか
-- 「defense in depth」までの論理を一段ずつ再現できるか
-- alignment・安全policy・red teamingの条件を1つ外した反例を説明できるか
+alignment・安全policy・red teamingは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/frontier-alignment-safety-policies)
-- [10問の演習](../../exercises/frontier-alignment-safety-policies)
+- alignment・安全policy・red teamingを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/frontier-alignment-safety-policies)
+
+[10問の演習](../../exercises/frontier-alignment-safety-policies)

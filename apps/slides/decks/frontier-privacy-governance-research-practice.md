@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "privacy・governance・研究実践"
 ---
 
 # privacy・governance・研究実践
 
-Course 10｜Frontier｜Topic 20/20
+Course 10｜Frontier
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-privacy・governance・研究実践の代表式は、どの定義・仮定から、なぜその形になるのか。
+privacy・governance・研究実践で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `frontier-scientific-machine-learning` で得た概念を使い、ここでは privacy・governance・研究実践 へ進む。
+- privacy・governance・研究実践の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ privacy・governance・研究実践の代表式は、どの定義・仮定から
 
 privacyとgovernanceはmodel性能だけでなく、data access、risk、audit、再現性をsystemとして管理する。
 
-
+**前提:** stat-bayesian-inference-map, frontier-alignment-safety-policies
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-privacy-governance-research-practice.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-data→training→deployment→auditのlifecycleを描く。 data収集、学習、評価、deployment、monitoringの各段階にprivacy・権限・auditのcontrol pointを置く。技術対策と運用制度を別レイヤで管理する。
+<img src="./assets/course-10/frontier-privacy-governance-research-practice.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $D,D^{\prime}$：1 recordだけ異なるneighboring datasets
-- $M$：randomized mechanism
-- $(\varepsilon,\delta)$：differential privacy parameters
-- $S$：output event
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbb{P}(M(D)\in S)\le e^{\varepsilon}\mathbb{P}(M(D^{\prime})\in S)+\delta
 $$
 
----
-
-## 導出 1
-
-1人のrecord有無で $P(M(D)\in S)$ と $P(M(D\prime)\in S)$ を全Sで比較。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$P_D(S)\le e^\varepsilon P_{D\prime}(S)+\delta$。ε小ほどdistributionsが近くsingle-record influenceを制限。
-
----
-
-## 例題
-
-DP-SGDはper-example gradient clipping+noiseでtraining mechanismのprivacyをboundし、accountantでεを算定。
+- **対象:** privacy、governance、研究実践
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-「dataを匿名化した」だけでre-identification riskがゼロとは限らない。DP guaranteeとheuristic de-identificationを区別。
+data→training→deployment→auditのlifecycleを描く。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- privacy guaranteeとaccess controlを混同しない。
+- policyは運用監査まで含めて実効性を持つ。
+- privacy・governance・研究実践の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-privacy・governance・研究実践では、式へ数値を代入するだけでは不十分である。「dataを匿名化した」だけでre-identification riskがゼロとは限らない。DP guaranteeとheuristic de-identificationを区別。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- privacy・governance・研究実践の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-privacy accountant assumptions、access logs、retention、consent/license、incident response、reproducible research artifact。
-
----
-
-## 一段先へ
-
-Course 10の終点では、新手法を追う際も「定義→仮定→実験設計→uncertainty→failure mode→governance」の順序で検証する習慣を残す。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「neighbor comparison」を式を見ずに説明できるか
-- 「composition」までの論理を一段ずつ再現できるか
-- privacy・governance・研究実践の条件を1つ外した反例を説明できるか
+privacy・governance・研究実践は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/frontier-privacy-governance-research-practice)
-- [10問の演習](../../exercises/frontier-privacy-governance-research-practice)
+- privacy・governance・研究実践を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/frontier-privacy-governance-research-practice)
+
+[10問の演習](../../exercises/frontier-privacy-governance-research-practice)

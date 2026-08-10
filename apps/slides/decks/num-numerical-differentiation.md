@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "数値微分"
 ---
 
 # 数値微分
 
-Course 05｜数値計算｜Topic 07/20
+Course 05｜数値計算
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-数値微分の代表式は、どの定義・仮定から、なぜその形になるのか。
+数値微分で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `num-splines-piecewise-approximation` で得た概念を使い、ここでは 数値微分 へ進む。
+- 数値微分の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ layout: center
 
 有限差分は微分を近傍点の差で近似し、刻み幅hに打切り誤差と丸め誤差のトレードオフがある。
 
-
+**前提:** num-errors-conditioning-stability, calc-taylor-approximation
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-numerical-differentiation.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-hを変えて近似誤差がU字型になる様子を見る。 真の関数と近似関数の縦の差が局所誤差である。近似次数や刻み幅を変えたとき、その差が理論上の次数どおり縮むかを図で確認する。
+<img src="./assets/course-05/num-numerical-differentiation.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $h$：有限差分step
-- $f^{\prime}(x)$：求める導関数
-- 截断誤差：Taylor高次項を捨てた誤差
-- 丸め誤差：有限精度による誤差
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 f^{\prime}(x)\approx\frac{f(x+h)-f(x-h)}{2h}
 $$
 
----
-
-## 導出 1
-
-$f(x\pm h)=f(x)\pm hf^{\prime}(x)+h^2f^{\prime\prime}/2\pm h^3f^{(3)}/6+\cdots$。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$f(x+h)-f(x-h)=2hf^{\prime}(x)+h^3f^{(3)}(x)/3+\cdots$。
-
----
-
-## 例題
-
-$f(x)=x^2$, x=1なら中心差分は任意hで [(1+h)²-(1-h)²]/2h=2 とexact。
+- **対象:** 数値微分
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-「hは小さいほど良い」は誤り。subtraction cancellationによりroundoff項およそO(u/h)が増える。
+hを変えて近似誤差がU字型になる様子を見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- hを小さくすれば無限に精度が上がるわけではない。
+- 前進差分と中心差分で次数が違う。
+- 数値微分の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-数値微分では、式へ数値を代入するだけでは不十分である。「hは小さいほど良い」は誤り。subtraction cancellationによりroundoff項およそO(u/h)が増える。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 数値微分の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-automatic differentiationはfinite differenceと異なり、演算graphのchain ruleでmachine precision精度の導関数を得る。gradient checkには中心差分を使える。
-
----
-
-## 一段先へ
-
-積分も局所近似を区間全体へ足すことで数値化できる。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「前後Taylor展開」を式を見ずに説明できるか
-- 「2hで割る」までの論理を一段ずつ再現できるか
-- 数値微分の条件を1つ外した反例を説明できるか
+数値微分は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/num-numerical-differentiation)
-- [10問の演習](../../exercises/num-numerical-differentiation)
+- 数値微分を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/num-numerical-differentiation)
+
+[10問の演習](../../exercises/num-numerical-differentiation)

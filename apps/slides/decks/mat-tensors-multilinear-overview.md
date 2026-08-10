@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "tensorと多重線形構造"
 ---
 
 # tensorと多重線形構造
 
-Course 07｜データ解析の行列手法｜Topic 20/20
+Course 07｜データ解析
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-tensorと多重線形構造の代表式は、どの定義・仮定から、なぜその形になるのか。
+tensorと多重線形構造で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `mat-graph-spectral-methods` で得た概念を使い、ここでは tensorと多重線形構造 へ進む。
+- tensorと多重線形構造の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ tensorと多重線形構造の代表式は、どの定義・仮定から、な�
 
 tensorは3軸以上を持つデータを、軸構造を壊さず扱う表現。
 
-
+**前提:** prep-symbols-types-shapes, la-singular-value-decomposition
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-tensors-multilinear-overview.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-3次元配列をsliceとrank-1外積の和として図示する。 行列の2軸を3軸以上へ拡張した配列としてtensorを描く。各modeを固定・展開する操作が、行列分解を多方向へ一般化する入口になる。
+<img src="./assets/course-07/mat-tensors-multilinear-overview.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\mathcal X\in\mathbb R^{I\times J\times K}$：3-way tensor
-- $\circ$：outer product
-- $a_r\circ b_r\circ c_r$：rank-1 tensor
-- $R$：CP components
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathcal{X}\approx\sum_{r=1}^{R}\mathbf{a}_r\circ\mathbf{b}_r\circ\mathbf{c}_r
 $$
 
----
-
-## 導出 1
-
-$(a\circ b\circ c)_{ijk}=a_i b_j c_k$。各modeのfactorがmultiplicatively結合。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$X_{ijk}\approx\sum_{r=1}^R a_{ir}b_{jr}c_{kr}$。matrix factorizationより多way structureを保つ。
-
----
-
-## 例題
-
-sample×gene×time dataを3-wayのままfactorizeし、sample pattern・gene pattern・time patternをcomponentごとに分ける。
+- **対象:** tensor、多重線形構造
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-tensor rankはmatrix rankほど単純でなくbest low-rank approximationが存在しないcaseすらある。
+3次元配列をsliceとrank-1外積の和として図示する。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 行列へflattenすると軸の意味を失う場合がある。
+- 分解rankの定義は行列より複雑。
+- tensorと多重線形構造の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-tensorと多重線形構造では、式へ数値を代入するだけでは不十分である。tensor rankはmatrix rankほど単純でなくbest low-rank approximationが存在しないcaseすらある。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- tensorと多重線形構造の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-ALS local minima/scale/permutation ambiguity。normalizationとmultiple startsを使う。
-
----
-
-## 一段先へ
-
-Course08ではこれらのmatrix/data representationsをpredictive modelとevaluation pipelineへ組み込む。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「rank-1 entry」を式を見ずに説明できるか
-- 「unfolding」までの論理を一段ずつ再現できるか
-- tensorと多重線形構造の条件を1つ外した反例を説明できるか
+tensorと多重線形構造は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/mat-tensors-multilinear-overview)
-- [10問の演習](../../exercises/mat-tensors-multilinear-overview)
+- tensorと多重線形構造を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/mat-tensors-multilinear-overview)
+
+[10問の演習](../../exercises/mat-tensors-multilinear-overview)

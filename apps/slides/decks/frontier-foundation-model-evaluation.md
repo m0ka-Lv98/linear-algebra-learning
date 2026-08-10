@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "Foundation model評価"
 ---
 
 # Foundation model評価
 
-Course 10｜Frontier｜Topic 13/20
+Course 10｜Frontier
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-Foundation model評価の代表式は、どの定義・仮定から、なぜその形になるのか。
+Foundation model評価で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `frontier-alignment-safety-policies` で得た概念を使い、ここでは Foundation model評価 へ進む。
+- Foundation model評価の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,95 @@ Foundation model評価の代表式は、どの定義・仮定から、なぜそ�
 
 Foundation model評価ではtask平均だけでなく、subgroup、variance、judge bias、contaminationを分離して測る。
 
-
+**前提:** ml-metrics-calibration-imbalance, stat-hypothesis-testing
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-foundation-model-evaluation.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-複数benchmarkのscoreとconfidence intervalを並べる。 taskごとの入力→出力→scoringを分離し、平均scoreだけでなくslice・failure type・contaminationも追う。benchmark値は測定設計の結果である。
+<img src="./assets/course-10/frontier-foundation-model-evaluation.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $s_A^{(i)},s_B^{(i)}$：item iのmodel scores
-- $\hat\Delta=n^{-1}\sum(s_A-s_B)$：paired effect estimate
-- $n$：evaluation items
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \widehat{\Delta}=\frac{1}{n}\sum_i(s_A^{(i)}-s_B^{(i)})
 $$
 
----
-
-## 導出 1
-
-$d_i=s_A^{(i)}-s_B^{(i)}$ を作るとitem-specific common difficultyが差でcancel。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$\hat\Delta=\bar d$、SE≈s_d/√n。point estimateだけでranking certaintyを語らない。
-
----
-
-## 例題
-
-同じ1000 promptsでA/Bを評価しbootstrap CI of paired score difference。
+- **対象:** Foundation、model評価
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-leaderboard差0.2ptをn/variance無視して「優位」と断言できない。
+複数benchmarkのscoreとconfidence intervalを並べる。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 単一leaderboard順位を能力そのものとみなさない。
+- test contaminationを確認する。
+- Foundation model評価の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-Foundation model評価では、式へ数値を代入するだけでは不十分である。leaderboard差0.2ptをn/variance無視して「優位」と断言できない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- Foundation model評価の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-eval prompt/version/model snapshot、sampling temperature、judge rubric、contamination check、raw per-item results。
-
----
-
-## 一段先へ
-
-aggregate scoreで見えない内部mechanismをinterpretabilityで調べる。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「paired differences」を式を見ずに説明できるか
-- 「multiple dimensions」までの論理を一段ずつ再現できるか
-- Foundation model評価の条件を1つ外した反例を説明できるか
+Foundation model評価は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/frontier-foundation-model-evaluation)
-- [10問の演習](../../exercises/frontier-foundation-model-evaluation)
+- Foundation model評価を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/frontier-foundation-model-evaluation)
+
+[10問の演習](../../exercises/frontier-foundation-model-evaluation)

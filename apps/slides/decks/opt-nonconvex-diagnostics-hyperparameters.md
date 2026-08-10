@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "非凸最適化の診断とhyperparameter"
 ---
 
 # 非凸最適化の診断とhyperparameter
 
-Course 06｜最適化｜Topic 20/20
+Course 06｜最適化
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-非凸最適化の診断とhyperparameterの代表式は、どの定義・仮定から、なぜその形になるのか。
+非凸最適化の診断とhyperparameterで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `opt-admm-splitting` で得た概念を使い、ここでは 非凸最適化の診断とhyperparameter へ進む。
+- 非凸最適化の診断とhyperparameterの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,95 @@ layout: center
 
 非凸問題では局所最小・鞍点・平坦領域が共存し、単一の最終値だけでなく軌跡や初期値依存性を診断する。
 
-
+**前提:** opt-adaptive-optimizers, num-verification-benchmarking-reproducibility
 
 ---
 
 ## 図解
 
-<img src="./assets/course-06/opt-nonconvex-diagnostics-hyperparameters.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-複数初期値から同じ目的関数を最適化し、到達点を比較する。 複数の谷・鞍点・平坦部が同じ等高線図に現れる。局所的な一階・二階条件だけでは大域最適性を保証できないことが形から分かる。
+<img src="./assets/course-06/opt-nonconvex-diagnostics-hyperparameters.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $w^*(\lambda)$：training optimizationで得るparameter
-- $\lambda$：hyperparameter
-- $L_{val}$：validation loss
-- $\Lambda$：search space
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \min_{\lambda\in\Lambda}\;\mathcal{L}_{\mathrm{val}}(\mathbf{w}^{\ast}(\lambda))
 $$
 
----
-
-## 導出 1
-
-inner: $w^*(λ)\approx argmin_w L_{train}(w;λ)$。outer: $min_λ L_{val}(w^*(λ);λ)$。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-λをtraining lossで選ぶとmodel complexityを増やす方向へ偏る。held-out validationがgeneralization proxy。
-
----
-
-## 例題
-
-learning rateが大きすぎてdivergeする場合と、train lossは低いがval loss悪化するoverfitは対策が異なる。
+- **対象:** 非凸最適化の診断、hyperparameter
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-test setでhyperparameterを何度も選ぶとtestがvalidation化し最終性能estimateがoptimistic。
+複数初期値から同じ目的関数を最適化し、到達点を比較する。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- train lossだけでhyperparameterを選ばない。
+- 再初期化で安定性を見る。
+- 非凸最適化の診断とhyperparameterの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-非凸最適化の診断とhyperparameterでは、式へ数値を代入するだけでは不十分である。test setでhyperparameterを何度も選ぶとtestがvalidation化し最終性能estimateがoptimistic。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 非凸最適化の診断とhyperparameterの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-experiment trackingでcode/data split/seed/optimizer/scheduleを固定記録。early stopping criterionもhyperparameter。
-
----
-
-## 一段先へ
-
-Course08ではこの最適化をmodel学習の内部要素として使い、data split・評価・model selectionをより体系化する。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「二層problem」を式を見ずに説明できるか
-- 「診断の分離」までの論理を一段ずつ再現できるか
-- 非凸最適化の診断とhyperparameterの条件を1つ外した反例を説明できるか
+非凸最適化の診断とhyperparameterは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/opt-nonconvex-diagnostics-hyperparameters)
-- [10問の演習](../../exercises/opt-nonconvex-diagnostics-hyperparameters)
+- 非凸最適化の診断とhyperparameterを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/opt-nonconvex-diagnostics-hyperparameters)
+
+[10問の演習](../../exercises/opt-nonconvex-diagnostics-hyperparameters)

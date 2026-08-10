@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "有向グラフ・DAG・トポロジカル順序"
 ---
 
 # 有向グラフ・DAG・トポロジカル順序
 
-Course 04｜離散数学と証明｜Topic 19/20
+Course 04｜離散数学
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-有向グラフ・DAG・トポロジカル順序の代表式は、どの定義・仮定から、なぜその形になるのか。
+有向グラフ・DAG・トポロジカル順序で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `dm-trees-spanning-trees` で得た概念を使い、ここでは 有向グラフ・DAG・トポロジカル順序 へ進む。
+- 有向グラフ・DAG・トポロジカル順序の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,95 @@ layout: center
 
 DAGでは辺の向きに矛盾しない線形順序を作れる。
 
-
+**前提:** dm-graphs-representations-degrees, dm-loop-invariants-termination
 
 ---
 
 ## 図解
 
-<img src="./assets/course-04/dm-directed-graphs-dags-topological-order.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-依存関係グラフを左から右へ並べ替え、トポロジカル順序を示す。 矢印の向きが依存関係を表す。閉じた有向cycleがないため、入次数0の頂点から順に取り除くと全頂点を依存順に並べられる。
+<img src="./assets/course-04/dm-directed-graphs-dags-topological-order.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $u\to v$：有向edge
-- DAG：directed acyclic graph
-- $\operatorname{order}(v)$：topological orderでの位置
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 u\to v\Longrightarrow\operatorname{order}(u)<\operatorname{order}(v)
 $$
 
----
-
-## 導出 1
-
-全vertexにincoming edgeがあると仮定し、incomingを遡り続けると有限vertexなのでどこかを再訪しcycleになる。矛盾。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-in-degree0 vertexを1つ除く。残りもDAGなので同じ操作を繰り返し、全edgeが前→後になる順序を構成できる。
-
----
-
-## 例題
-
-course prerequisite graphは「前提→後続」。DAGなら履修可能順をtopological sortで得る。
+- **対象:** 有向グラフ、DAG、トポロジカル順序
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-cycle A→B→C→AがあるとA<B<C<Aを同時に満たす順序は存在しない。
+依存関係グラフを左から右へ並べ替え、トポロジカル順序を示す。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 閉路があるとトポロジカル順序は存在しない。
+- 順序は一意とは限らない。
+- 有向グラフ・DAG・トポロジカル順序の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-有向グラフ・DAG・トポロジカル順序では、式へ数値を代入するだけでは不十分である。cycle A→B→C→AがあるとA<B<C<Aを同時に満たす順序は存在しない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 有向グラフ・DAG・トポロジカル順序の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-build systemやtask schedulerで依存graphをDAGとして扱う。dynamic dependency追加時はcycle detectionが必要。
-
----
-
-## 一段先へ
-
-最後にindicator変数を使い、離散構造上のrandomized processを期待値で解析する。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「DAGにはin-degree 0 vertexがある」を式を見ずに説明できるか
-- 「逆方向」までの論理を一段ずつ再現できるか
-- 有向グラフ・DAG・トポロジカル順序の条件を1つ外した反例を説明できるか
+有向グラフ・DAG・トポロジカル順序は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/dm-directed-graphs-dags-topological-order)
-- [10問の演習](../../exercises/dm-directed-graphs-dags-topological-order)
+- 有向グラフ・DAG・トポロジカル順序を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/dm-directed-graphs-dags-topological-order)
+
+[10問の演習](../../exercises/dm-directed-graphs-dags-topological-order)

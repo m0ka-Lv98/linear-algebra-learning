@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "誤差逆伝播と計算graph"
 ---
 
 # 誤差逆伝播と計算graph
 
-Course 09｜深層学習｜Topic 02/20
+Course 09｜深層学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-誤差逆伝播と計算graphの代表式は、どの定義・仮定から、なぜその形になるのか。
+誤差逆伝播と計算graphで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `dl-perceptron-mlp` で得た概念を使い、ここでは 誤差逆伝播と計算graph へ進む。
+- 誤差逆伝播と計算graphの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,96 @@ layout: center
 
 backpropは計算graphを前向きに値計算し、逆向きに連鎖律で勾配を伝える。
 
-
+**前提:** calc-multivariable-chain-rule, dm-directed-graphs-dags-topological-order
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-backprop-computation-graphs.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-forward矢印とreverse gradient矢印を順にハイライトする。 forward矢印が値の計算、逆向き矢印が局所微分をchain ruleで掛け合わせるgradient計算である。同じ中間量を再利用することで全parameterの微分を効率よく得る。
+<img src="./assets/course-09/dl-backprop-computation-graphs.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $y=f(x)$：node operation
-- $J_f$：Jacobian
-- $\bar y=\partial L/\partial y$：upstream gradient
-- $\bar x=J_f^T\bar y$
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \frac{\partial\mathcal{L}}{\partial\mathbf{x}}=\mathbf{J}_f(\mathbf{x})^{\mathsf T}\frac{\partial\mathcal{L}}{\partial f}
 $$
 
----
-
-## 導出 1
-
-$dy=J_f dx$。scalar lossのchangeは $dL=\bar y^Tdy=\bar y^TJ_fdx=(J_f^T\bar y)^Tdx$。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-よってdownstream gradientは $\bar x=J_f^T\bar y$。full Jacobianを形成せずVJPを計算できる。
-
----
-
-## 例題
-
-$z=xy$, $L=z^2$。forward z=xy。reverse dL/dz=2z、dL/dx=2z·y=2xy²、dL/dy=2z·x=2x²y。
+- **対象:** 誤差逆伝播、計算graph
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-backpropはgradient descentそのものではない。backpropはgradient計算、optimizerはそのgradientを使ってparameter update。
+forward矢印とreverse gradient矢印を順にハイライトする。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-09/dl-backprop-computation-graphs.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- gradientのshapeを各nodeで確認する。
+- 局所微分を掛ける順序を間違えない。
+- 誤差逆伝播と計算graphの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-誤差逆伝播と計算graphでは、式へ数値を代入するだけでは不十分である。backpropはgradient descentそのものではない。backpropはgradient計算、optimizerはそのgradientを使ってparameter update。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 誤差逆伝播と計算graphの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-in-place ops、detach、mixed precision、checkpointingでgraph semanticsが変わる。finite-difference gradient checkをsmall modelで。
-
----
-
-## 一段先へ
-
-gradientが流れる形はactivation/loss選択に左右される。次Topicでderivativeとprobabilistic lossを整理する。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「local linearization」を式を見ずに説明できるか
-- 「graph reuse」までの論理を一段ずつ再現できるか
-- 誤差逆伝播と計算graphの条件を1つ外した反例を説明できるか
+誤差逆伝播と計算graphは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/dl-backprop-computation-graphs)
-- [10問の演習](../../exercises/dl-backprop-computation-graphs)
+- 誤差逆伝播と計算graphを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/dl-backprop-computation-graphs)
+
+[10問の演習](../../exercises/dl-backprop-computation-graphs)

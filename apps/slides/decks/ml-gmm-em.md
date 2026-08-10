@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "Gaussian mixtureとEM"
 ---
 
 # Gaussian mixtureとEM
 
-Course 08｜機械学習｜Topic 13/20
+Course 08｜機械学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-Gaussian mixtureとEMの代表式は、どの定義・仮定から、なぜその形になるのか。
+Gaussian mixtureとEMで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `ml-clustering-kmeans-hierarchical` で得た概念を使い、ここでは Gaussian mixtureとEM へ進む。
+- Gaussian mixtureとEMの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,96 @@ Gaussian mixtureとEMの代表式は、どの定義・仮定から、なぜそ�
 
 clusteringは正解ラベルなしで近い点を群へまとめる。距離と群の形状仮定が結果を決める。
 
-
+**前提:** prob-multivariate-normal-distribution, stat-likelihood-maximum-likelihood
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-gmm-em.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-k-means中心が反復で動く様子を追う。 点群とクラスタ中心/密度成分を描く。教師ラベルではなく、距離や確率モデルが定める内部構造に基づいて割当てが更新される。
+<img src="./assets/course-08/ml-gmm-em.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\pi_k$：mixture weights
-- $\mu_k,\Sigma_k$
-- $\gamma_{ik}=P(z_i=k|x_i)$：responsibility
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 p(\mathbf{x})=\sum_{k=1}^{K}\pi_k\mathcal{N}(\mathbf{x}\mid\boldsymbol{\mu}_k,\mathbf{\Sigma}_k)
 $$
 
----
-
-## 導出 1
-
-$\log\sum_k\pi_kN(x|\mu_k,Σ_k)$ はparameterがsum内で直接maxしにくい。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-current parameterでBayes ruleからresponsibility γ_ikを計算。
-
----
-
-## 例題
-
-overlapping 2 Gaussiansでboundary pointはγ≈0.5となりsoft assignment。
+- **対象:** Gaussian、mixture、EM
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-GMM likelihoodはcomponent covarianceを1 pointへcollapseさせるとunboundedになることがありregularization必要。
+k-means中心が反復で動く様子を追う。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-08/ml-gmm-em.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- k-meansは球状・同程度分散の群を好む。
+- cluster番号自体に順序や意味はない。
+- Gaussian mixtureとEMの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-Gaussian mixtureとEMでは、式へ数値を代入するだけでは不十分である。GMM likelihoodはcomponent covarianceを1 pointへcollapseさせるとunboundedになることがありregularization必要。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- Gaussian mixtureとEMの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-log-sum-exp、covariance floor、多initialization。label switching。
-
----
-
-## 一段先へ
-
-representation dimensionを下げるPCA/manifold methodsへ。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「incomplete likelihoodのlog-sum」を式を見ずに説明できるか
-- 「M-step」までの論理を一段ずつ再現できるか
-- Gaussian mixtureとEMの条件を1つ外した反例を説明できるか
+Gaussian mixtureとEMは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/ml-gmm-em)
-- [10問の演習](../../exercises/ml-gmm-em)
+- Gaussian mixtureとEMを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/ml-gmm-em)
+
+[10問の演習](../../exercises/ml-gmm-em)

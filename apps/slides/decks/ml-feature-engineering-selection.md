@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "特徴量設計と特徴選択"
 ---
 
 # 特徴量設計と特徴選択
 
-Course 08｜機械学習｜Topic 16/20
+Course 08｜機械学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-特徴量設計と特徴選択の代表式は、どの定義・仮定から、なぜその形になるのか。
+特徴量設計と特徴選択で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `ml-anomaly-detection` で得た概念を使い、ここでは 特徴量設計と特徴選択 へ進む。
+- 特徴量設計と特徴選択の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,95 @@ layout: center
 
 特徴量設計は生データから予測に必要な情報を抽出し、特徴選択は冗長・不要な次元を減らす。
 
-
+**前提:** mat-data-matrices-centering-scaling, mat-ridge-lasso-elastic-net
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-feature-engineering-selection.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-候補特徴の重要度と選択前後の性能を比較する。 元の座標から新しい特徴へ写すと、同じデータでも線形分離性や距離構造が変わる。特徴量はモデルへ渡す表現そのものを設計する操作である。
+<img src="./assets/course-08/ml-feature-engineering-selection.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\phi(x)$：feature transform
-- $S$：selected features
-- $\lambda\|β\|_1$：embedded selection例
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \min_{\boldsymbol{\beta}}\mathcal{L}(\boldsymbol{\beta})+\lambda\|\boldsymbol{\beta}\|_1
 $$
 
----
-
-## 導出 1
-
-linear model on φ(x) is nonlinear in raw x。representationがmodel expressivityを決める。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-many featuresからbestをsame dataで選ぶほどselection noiseへ適応。validation/CV内でselectionをfit。
-
----
-
-## 例題
-
-cyclic timeをhour scalarよりsin/cos pairへ変換すると23時と0時が近いgeometry。
+- **対象:** 特徴量設計、特徴選択
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-test data correlationを見てfeatures削除/追加するとtest leakage。
+候補特徴の重要度と選択前後の性能を比較する。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- 選択処理もcross-validationの内側で行う。
+- 標的漏洩を避ける。
+- 特徴量設計と特徴選択の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-特徴量設計と特徴選択では、式へ数値を代入するだけでは不十分である。test data correlationを見てfeatures削除/追加するとtest leakage。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 特徴量設計と特徴選択の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-Pipeline/ColumnTransformerでfold内fit。feature namesとunitsをtrace。
-
----
-
-## 一段先へ
-
-feature/model flexibilityを増やすとbias–variance tradeoffが生まれる。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「transform changes hypothesis class」を式を見ずに説明できるか
-- 「L1 embedded selection」までの論理を一段ずつ再現できるか
-- 特徴量設計と特徴選択の条件を1つ外した反例を説明できるか
+特徴量設計と特徴選択は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/ml-feature-engineering-selection)
-- [10問の演習](../../exercises/ml-feature-engineering-selection)
+- 特徴量設計と特徴選択を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/ml-feature-engineering-selection)
+
+[10問の演習](../../exercises/ml-feature-engineering-selection)

@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "固有値計算・べき乗法・QR法"
 ---
 
 # 固有値計算・べき乗法・QR法
 
-Course 05｜数値計算｜Topic 13/20
+Course 05｜数値計算
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-固有値計算・べき乗法・QR法の代表式は、どの定義・仮定から、なぜその形になるのか。
+固有値計算・べき乗法・QR法で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `num-least-squares-qr-svd` で得た概念を使い、ここでは 固有値計算・べき乗法・QR法 へ進む。
+- 固有値計算・べき乗法・QR法の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,96 @@ layout: center
 
 固有値計算では全成分を解くより、支配的な方向を反復で増幅する考え方が使える。
 
-
+**前提:** la-eigenvalues-eigenvectors, la-gram-schmidt-qr, num-convergence-orders-stopping
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-eigenvalue-power-qr.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-べき乗法でベクトルが最大固有値の固有方向へ揃う過程を見る。 反復でベクトルをAへ何度も掛けると、絶対値最大固有値に対応する成分が相対的に支配する。正規化を挟むことで方向だけを追跡するのがpower iterationである。
+<img src="./assets/course-05/num-eigenvalue-power-qr.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $A v_i=\lambda_i v_i$
-- $x_k$：power iteration vector
-- $\lambda_1$：絶対値最大固有値（単純と仮定）
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbf{x}_{k+1}=\frac{\mathbf{A}\mathbf{x}_k}{\|\mathbf{A}\mathbf{x}_k\|_2}
 $$
 
----
-
-## 導出 1
-
-$x_0=\sum c_i v_i$ とすれば $A^k x_0=\sum c_i\lambda_i^k v_i$。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$\lambda_1^k[c_1v_1+\sum_{i>1}c_i(\lambda_i/\lambda_1)^k v_i]$。$|\lambda_i/\lambda_1|<1$ なら後項が消える。
-
----
-
-## 例題
-
-A=diag(5,2), x0=(1,1)。A^k x0=(5^k,2^k)、normalizeすると(1,0)方向へ。error ratioは(2/5)^k。
+- **対象:** 固有値計算、べき乗法、QR法
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-x0がdominant eigenvectorに完全直交（係数c1=0）ならその成分は永遠に生成されずdominantへ収束しない。
+べき乗法でベクトルが最大固有値の固有方向へ揃う過程を見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-05/num-eigenvalue-power-qr.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- 最大固有値の絶対値が分離していることが重要。
+- 正規化しないと数値的にoverflow/underflowする。
+- 固有値計算・べき乗法・QR法の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-固有値計算・べき乗法・QR法では、式へ数値を代入するだけでは不十分である。x0がdominant eigenvectorに完全直交（係数c1=0）ならその成分は永遠に生成されずdominantへ収束しない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 固有値計算・べき乗法・QR法の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-QR algorithmは全eigenvalue用。sparse大型ではLanczos/Arnoldi。residual $\|Av-\lambda v\|$ を必ず確認。
-
----
-
-## 一段先へ
-
-singular valuesはA^TAのeigenvalue平方根だが、数値計算ではA^TAを直接形成しないSVD algorithmを使う。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「固有basisへ展開」を式を見ずに説明できるか
-- 「normalize」までの論理を一段ずつ再現できるか
-- 固有値計算・べき乗法・QR法の条件を1つ外した反例を説明できるか
+固有値計算・べき乗法・QR法は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/num-eigenvalue-power-qr)
-- [10問の演習](../../exercises/num-eigenvalue-power-qr)
+- 固有値計算・べき乗法・QR法を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/num-eigenvalue-power-qr)
+
+[10問の演習](../../exercises/num-eigenvalue-power-qr)

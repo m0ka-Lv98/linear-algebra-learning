@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "Bayesian推論とMAP推定"
 ---
 
 # Bayesian推論とMAP推定
 
-Course 03｜確率統計｜Topic 16/20
+Course 03｜確率統計
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-Bayesian推論とMAP推定の代表式は、どの定義・仮定から、なぜその形になるのか。
+Bayesian推論とMAP推定で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `stat-likelihood-maximum-likelihood` で得た概念を使い、ここでは Bayesian推論とMAP推定 へ進む。
+- Bayesian推論とMAP推定の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,85 +32,96 @@ Bayesian推論とMAP推定の代表式は、どの定義・仮定から、なぜ
 
 Bayes更新は、事前の信念に観測の尤もらしさを掛け、全体で正規化して事後分布を得る。
 
-
+**前提:** prob-bayes-theorem, stat-likelihood-maximum-likelihood
 
 ---
 
 ## 図解
 
-<img src="./assets/course-03/stat-bayesian-inference-map.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-2つの仮説の事前確率が1回の観測でどう更新されるかを棒グラフで追う。 左の高さが観測前の仮説の重み、観測による尤度の倍率を掛けた中間量を正規化したものが右の事後確率である。観測と整合する仮説ほど棒が相対的に高くなる。
+<img src="./assets/course-03/stat-bayesian-inference-map.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\theta$：未知母数
-- $p(\theta)$：事前分布
-- $p(\mathbf x\mid\theta)$：尤度
-- $p(\theta\mid\mathbf x)$：事後分布
-- $\hat\theta_{MAP}$：事後密度を最大化する値
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 p(\theta\mid\mathbf{x})\propto p(\mathbf{x}\mid\theta)p(\theta)
 $$
 
----
-
-## 導出 1
-
-$p(\theta|x)=p(x|\theta)p(\theta)/p(x)$。分母 $p(x)=\int p(x|\theta)p(\theta)d\theta$ はθに依らない正規化定数。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-argmaxだけなら分母は無視でき、$\hat\theta_{MAP}=\arg\max[p(x|\theta)p(\theta)]$。logを取ればlog尤度+log事前。
-
----
-
-## 例題
-
-Bernoulli pにBeta(a,b)事前。k成功ならposteriorはBeta(a+k,b+n-k)。MAPは条件を満たせば $(a+k-1)/(a+b+n-2)$。観測数が増えるとデータの影響が強くなる。
+- **対象:** Bayesian推論、MAP推定
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-MAPだけを見るとposteriorの幅や多峰性を失う。同じmodeでも不確実性が全く違うposteriorがあり得るため、Bayesian推論=MAPではない。
+2つの仮説の事前確率が1回の観測でどう更新されるかを棒グラフで追う。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-03/stat-bayesian-inference-map.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- 尤度はθの関数、確率密度はデータの関数として読む。
+- base rateを無視しない。
+- Bayesian推論とMAP推定の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-Bayesian推論とMAP推定では、式へ数値を代入するだけでは不十分である。MAPだけを見るとposteriorの幅や多峰性を失う。同じmodeでも不確実性が全く違うposteriorがあり得るため、Bayesian推論=MAPではない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- Bayesian推論とMAP推定の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-共役事前なら解析式、一般にはMCMC・変分推論等が必要になる。log posteriorを使い、正規化定数が必要な量と不要な最適化を区別する。
-
----
-
-## 一段先へ
-
-posteriorからcredible intervalを作れる。次の頻度論的confidence intervalとは「未知母数をランダムとみなすか」「反復標本の被覆率か」で解釈が異なる。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「Bayes則を密度へ一般化する」を式を見ずに説明できるか
-- 「MLEとの関係」までの論理を一段ずつ再現できるか
-- Bayesian推論とMAP推定の条件を1つ外した反例を説明できるか
+Bayesian推論とMAP推定は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/stat-bayesian-inference-map)
-- [10問の演習](../../exercises/stat-bayesian-inference-map)
+- Bayesian推論とMAP推定を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/stat-bayesian-inference-map)
+
+[10問の演習](../../exercises/stat-bayesian-inference-map)

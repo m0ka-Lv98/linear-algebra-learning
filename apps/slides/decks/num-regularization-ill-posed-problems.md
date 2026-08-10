@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "正則化と悪条件・不適切問題"
 ---
 
 # 正則化と悪条件・不適切問題
 
-Course 05｜数値計算｜Topic 15/20
+Course 05｜数値計算
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-正則化と悪条件・不適切問題の代表式は、どの定義・仮定から、なぜその形になるのか。
+正則化と悪条件・不適切問題で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `num-svd-low-rank-computation` で得た概念を使い、ここでは 正則化と悪条件・不適切問題 へ進む。
+- 正則化と悪条件・不適切問題の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,95 @@ layout: center
 
 逆問題では観測ノイズが小さい特異値方向で大きく増幅されるため、正則化で安定性と忠実度を調整する。
 
-
+**前提:** num-least-squares-qr-svd, num-svd-low-rank-computation, la-matrix-norms-condition-number
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-regularization-ill-posed-problems.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-λを変えたときの残差と解ノルムのトレードオフを見る。 小さい特異値方向では観測ノイズが逆演算で1/σ_i倍に増幅される。正則化はその方向の逆増幅を抑え、biasとvarianceを交換する。
+<img src="./assets/course-05/num-regularization-ill-posed-problems.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $\lambda\ge0$：regularization強度
-- $\|Ax-b\|^2$：data fit
-- $\|x\|^2$：solution size penalty
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \min_{\mathbf{x}}\|\mathbf{A}\mathbf{x}-\mathbf{b}\|_2^2+\lambda\|\mathbf{x}\|_2^2
 $$
 
----
-
-## 導出 1
-
-$J(x)=\|Ax-b\|^2+\lambda\|x\|^2$。gradientは $2A^T(Ax-b)+2\lambda x$。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-0と置き $(A^TA+\lambda I)x=A^Tb$。λ>0ならnull方向にもcurvatureが加わる。
-
----
-
-## 例題
-
-σ=0.001方向をnaive inverseすると1000倍。λ=0.01ならfilter≈0.09999でnoise amplificationを強く抑える。
+- **対象:** 正則化、悪条件、不適切問題
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-regularizationは「正解を自動回復」する魔法ではない。penaltyが真のsolution構造に不適切ならbiasを導入する。
+λを変えたときの残差と解ノルムのトレードオフを見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- λ=0が常に最良ではない。
+- 正則化はバイアスを導入して分散を抑える。
+- 正則化と悪条件・不適切問題の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-正則化と悪条件・不適切問題では、式へ数値を代入するだけでは不十分である。regularizationは「正解を自動回復」する魔法ではない。penaltyが真のsolution構造に不適切ならbiasを導入する。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 正則化と悪条件・不適切問題の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-λはvalidation, L-curve, GCV等で選ぶ。feature scalingがpenalty効果へ直接影響するため標準化を検討。
-
----
-
-## 一段先へ
-
-large matrixではfull SVDを避けrandomized range finderでdominant subspaceを近似する方法がある。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「目的関数を微分」を式を見ずに説明できるか
-- 「SVD filterとして読む」までの論理を一段ずつ再現できるか
-- 正則化と悪条件・不適切問題の条件を1つ外した反例を説明できるか
+正則化と悪条件・不適切問題は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/num-regularization-ill-posed-problems)
-- [10問の演習](../../exercises/num-regularization-ill-posed-problems)
+- 正則化と悪条件・不適切問題を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/num-regularization-ill-posed-problems)
+
+[10問の演習](../../exercises/num-regularization-ill-posed-problems)

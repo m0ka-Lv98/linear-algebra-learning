@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "boostingとgradient boosting"
 ---
 
 # boostingとgradient boosting
 
-Course 08｜機械学習｜Topic 09/20
+Course 08｜機械学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-boostingとgradient boostingの代表式は、どの定義・仮定から、なぜその形になるのか。
+boostingとgradient boostingで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `ml-ensembles-bagging-random-forests` で得た概念を使い、ここでは boostingとgradient boosting へ進む。
+- boostingとgradient boostingの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,96 @@ boostingとgradient boostingの代表式は、どの定義・仮定から、な�
 
 boostingは前までの誤りを次の弱学習器が補うように加算モデルを構築する。
 
-
+**前提:** ml-decision-trees, opt-gradient-descent-convergence
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-boosting-gradient-boosting.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-1本目、2本目、3本目と予測曲線が残差へ適合する過程を見る。 弱学習器を順番に追加し、前段で残った誤差へ後段が焦点を当てる。最終予測は各学習器の寄与の加算として形成される。
+<img src="./assets/course-08/ml-boosting-gradient-boosting.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $F_m$：m stage ensemble
-- $h_m$：weak learner
-- $\eta$：shrinkage
-- $-\partial\ell/\partial F$：functional negative gradient
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 F_m(\mathbf{x})=F_{m-1}(\mathbf{x})+\eta h_m(\mathbf{x})
 $$
 
----
-
-## 導出 1
-
-各sample prediction F(x_i)に対するloss derivativeを計算。negative gradientが欲しいprediction change。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-$h_m(x_i)$ をpseudo-residualへregressionし、利用可能なtree family内で方向を近似。
-
----
-
-## 例題
-
-squared lossで最初constant mean、次treeが残差structureを説明し、stageごとに補正。
+- **対象:** boosting、gradient
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-training lossはstage追加で下がってもvalidationは悪化し得る。early stopping。
+1本目、2本目、3本目と予測曲線が残差へ適合する過程を見る。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-08/ml-boosting-gradient-boosting.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- 学習率と木数のトレードオフ。
+- 同じデータで早期停止を評価しない。
+- boostingとgradient boostingの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-boostingとgradient boostingでは、式へ数値を代入するだけでは不十分である。training lossはstage追加で下がってもvalidationは悪化し得る。early stopping。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- boostingとgradient boostingの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-XGBoost/LightGBMでobjective derivatives、subsampling、tree regularizationを確認。
-
----
-
-## 一段先へ
-
-margin最大化という別のclassification原理SVMへ。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「functional gradient」を式を見ずに説明できるか
-- 「step」までの論理を一段ずつ再現できるか
-- boostingとgradient boostingの条件を1つ外した反例を説明できるか
+boostingとgradient boostingは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/ml-boosting-gradient-boosting)
-- [10問の演習](../../exercises/ml-boosting-gradient-boosting)
+- boostingとgradient boostingを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/ml-boosting-gradient-boosting)
+
+[10問の演習](../../exercises/ml-boosting-gradient-boosting)

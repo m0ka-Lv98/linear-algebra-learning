@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "residual connectionとnormalization"
 ---
 
 # residual connectionとnormalization
 
-Course 09｜深層学習｜Topic 10/20
+Course 09｜深層学習
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-residual connectionとnormalizationの代表式は、どの定義・仮定から、なぜその形になるのか。
+residual connectionとnormalizationで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `dl-transformers` で得た概念を使い、ここでは residual connectionとnormalization へ進む。
+- residual connectionとnormalizationの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,83 +32,95 @@ residual connectionとnormalizationの代表式は、どの定義・仮定から
 
 normalizationは中間表現のスケールを整え、residual connectionは恒等経路を残して深いnetworkの学習を助ける。
 
-
+**前提:** dl-initialization-normalization
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-normalization-residuals.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-層を通る前後のactivation分布を比較する。 層へ入るactivation分布と正規化後の分布を比較する。尺度を制御することでoptimization landscapeとgradient scaleを扱いやすくする。
+<img src="./assets/course-09/dl-normalization-residuals.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $y=x+F(x)$：residual block
-- $J=I+J_F$：local Jacobian
-- $LN(x)$：feature-wise normalization
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbf{y}=\mathbf{x}+F(\mathbf{x})
 $$
 
----
-
-## 導出 1
-
-F=0ならblockはexact identity。deep stackが少なくともinformationを通すparameterizationを持つ。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-Jacobian $I+J_F$ なのでbackpropにidentity contributionがあり、pure product J_Fのみよりgradient propagationを助ける。
-
----
-
-## 例題
-
-100 blocksでもeach residual smallならstateはincremental updatesとして変化。
+- **対象:** residual、connection、normalization
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-residualならgradient problemが完全解決するわけではなくscale/init/depthでinstability。
+層を通る前後のactivation分布を比較する。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
+- 図の形がどう変わるか予測してから次へ進む。
+
+---
+
+## 成立条件
+
+- trainとinferenceで統計量の扱いが異なる方式がある。
+- residual加算はshape一致が必要。
+- residual connectionとnormalizationの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-residual connectionとnormalizationでは、式へ数値を代入するだけでは不十分である。residualならgradient problemが完全解決するわけではなくscale/init/depthでinstability。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- residual connectionとnormalizationの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-eps, RMSNorm vs LayerNorm, residual scalingをconfig確認。
-
----
-
-## 一段先へ
-
-representationをlatent variableとしてprobabilisticにmodelするVAEへ。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「identity solution」を式を見ずに説明できるか
-- 「LayerNorm」までの論理を一段ずつ再現できるか
-- residual connectionとnormalizationの条件を1つ外した反例を説明できるか
+residual connectionとnormalizationは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/dl-normalization-residuals)
-- [10問の演習](../../exercises/dl-normalization-residuals)
+- residual connectionとnormalizationを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/dl-normalization-residuals)
+
+[10問の演習](../../exercises/dl-normalization-residuals)

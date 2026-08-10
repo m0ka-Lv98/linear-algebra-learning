@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "等式制約とKKT条件"
 ---
 
 # 等式制約とKKT条件
 
-Course 06｜最適化｜Topic 11/20
+Course 06｜最適化
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-等式制約とKKT条件の代表式は、どの定義・仮定から、なぜその形になるのか。
+等式制約とKKT条件で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `opt-coordinate-conjugate-directions` で得た概念を使い、ここでは 等式制約とKKT条件 へ進む。
+- 等式制約とKKT条件の定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,96 @@ layout: center
 
 制約付き最適化では自由に動ける方向が限定され、最適点で目的勾配と制約の法線が釣り合う。
 
-
+**前提:** calc-lagrange-multipliers, opt-optimality-conditions
 
 ---
 
 ## 図解
 
-<img src="./assets/course-06/opt-equality-constrained-kkt.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-等高線と制約曲線、接点を描く。 制約境界上の接線方向では目的関数を一次的に改善できない。そのため目的gradientは境界の法線、すなわち制約gradientの線形結合になる。
+<img src="./assets/course-06/opt-equality-constrained-kkt.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $g(x)=0$：m本の等式制約
-- $J_g\in\mathbb R^{m\times n}$：constraint Jacobian
-- $\lambda\in\mathbb R^m$：multipliers
-- $\mathcal L=f+\lambda^Tg$
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \nabla f(\mathbf{x})+\mathbf{J}_g(\mathbf{x})^{\mathsf T}\boldsymbol{\lambda}=\mathbf{0}
 $$
 
----
-
-## 導出 1
-
-constraint curve x(t)でg(x(t))=0を微分すると $J_g d=0$。feasible first-order direction dはnull(Jg)。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-全feasible tangent dに対し $\nabla f^Td=0$。つまり∇fはnull(Jg)のorthogonal complement。
-
----
-
-## 例題
-
-$f=x²+y²$, constraint x+y=1。stationarity (2x,2y)+λ(1,1)=0からx=y、制約で1/2ずつ。
+- **対象:** 等式制約、KKT条件
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-constraint gradientがzero/rank deficientだとregularityが壊れ、multiplier存在/一意性の標準議論が使えない。
+等高線と制約曲線、接点を描く。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-06/opt-equality-constrained-kkt.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- KKT条件には制約資格条件が関わる。
+- 不等式制約では相補性を確認する。
+- 等式制約とKKT条件の定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-等式制約とKKT条件では、式へ数値を代入するだけでは不十分である。constraint gradientがzero/rank deficientだとregularityが壊れ、multiplier存在/一意性の標準議論が使えない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 等式制約とKKT条件の定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-KKT matrixはindefinite。generic SPD solverを使わずappropriate factorization/Schur complementを選ぶ。
-
----
-
-## 一段先へ
-
-inequalityではactiveかinactiveかが未知になり、multiplier非負性とcomplementarityが追加される。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「feasible tangent」を式を見ずに説明できるか
-- 「fundamental subspace relation」までの論理を一段ずつ再現できるか
-- 等式制約とKKT条件の条件を1つ外した反例を説明できるか
+等式制約とKKT条件は、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/opt-equality-constrained-kkt)
-- [10問の演習](../../exercises/opt-equality-constrained-kkt)
+- 等式制約とKKT条件を図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/opt-equality-constrained-kkt)
+
+[10問の演習](../../exercises/opt-equality-constrained-kkt)

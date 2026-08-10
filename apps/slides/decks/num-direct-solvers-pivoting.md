@@ -1,14 +1,14 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course01-10-curated-upgrade-v2
+generatedBy: course02-10-refined-v1
 layout: cover
 title: "連立方程式の直接法とpivoting"
 ---
 
 # 連立方程式の直接法とpivoting
 
-Course 05｜数値計算｜Topic 09/20
+Course 05｜数値計算
 
 ---
 layout: center
@@ -16,22 +16,15 @@ layout: center
 
 ## 今回の問い
 
-## 到達目標
-
-- 定義と代表式を、自分の言葉と記号で説明できる。
-- 成立条件を確認し、手計算と結果を検算できる。
-
-## 理解確認
-
-- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
-
-連立方程式の直接法とpivotingの代表式は、どの定義・仮定から、なぜその形になるのか。
+連立方程式の直接法とpivotingで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
 
 ---
 
-## なぜ今これを学ぶのか
+## 到達目標
 
-前Topic `num-numerical-integration-quadrature` で得た概念を使い、ここでは 連立方程式の直接法とpivoting へ進む。
+- 連立方程式の直接法とpivotingの定義と代表式を言葉で説明できる
+- 図と式の対応を説明できる
+- 小さな例で成立条件と失敗条件を検算できる
 
 ---
 
@@ -39,84 +32,96 @@ layout: center
 
 連立一次方程式を、解集合を変えない行基本変形で階段形へ整理する操作として見る。
 
-
+**前提:** la-lu-factorization, num-errors-conditioning-stability
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-direct-solvers-pivoting.png" style="max-height: 350px; display:block; margin:0 auto;" />
-
-2変数または3変数の方程式を1行ずつ消去し、係数行列が三角化される過程を追う。 行列の各行は方程式、消去操作は解集合を変えない行基本変形である。pivot下を0にして三角形構造を作ることで、最後は後退代入だけで解ける。
+<img src="./assets/course-05/num-direct-solvers-pivoting.png" style="max-height: 330px; display:block; margin:0 auto;" />
 
 ---
 
-## 記号と代表式
+## 図を見るポイント
 
-- $P$：row permutation
-- $A$：係数行列
-- $L$：unit lower triangular
-- $U$：upper triangular
+- 軸・node・矢印・領域が何を表すか確認する
+- 代表式の各項と図の要素を対応づける
+- 条件を変えたとき、どこが変化するか予測する
+
+---
+
+## 代表式
 
 $$
 \mathbf{P}\mathbf{A}=\mathbf{L}\mathbf{U}
 $$
 
----
-
-## 導出 1
-
-第k列下を消す multiplier $l_{ik}=a_{ik}/a_{kk}$ をLに保存すると、消去操作の積をまとめてA=LUと表せる。
+左辺の出力 → 右辺の操作 → 入力の型の順で読む。
 
 ---
 
-## 導出 2
+## 式をどう読むか
 
-pivotが0なら割れず、小さすぎれば丸め誤差を増幅。候補行を交換して大きいpivotを選ぶためPが入る。
-
----
-
-## 例題
-
-$A=\begin{pmatrix}0&1\\1&1\end{pmatrix}$ は最初pivot0。row swapでPを適用すれば消去可能。
+- **対象:** 連立方程式の直接法、pivoting
+- shape・次元・定義域を先に確定する
+- 計算後に符号・大きさ・残差・確率などを図と照合する
 
 ---
 
-## 条件を変えるとどうなるか
+## 小さな例
 
-$A^{-1}b$ を明示inverseで計算するのは通常solveより高cost・不安定。理論式と数値algorithmを区別する。
+2変数または3変数の方程式を1行ずつ消去し、係数行列が三角化される過程を追う。
+
+最小の非自明な設定で、手計算と実装を照合する。
+
+---
+
+## 動き／思考実験で確認
+
+<img src="./assets/course-05/num-direct-solvers-pivoting.gif" style="max-height: 310px; display:block; margin:0 auto;" />
+
+- 各frameで、何が固定され何が更新されるかを追う。
+
+---
+
+## 成立条件
+
+- pivotが0または極端に小さい場合は行交換を考える。
+- 行基本変形は解集合を保存する。
+- 連立方程式の直接法とpivotingの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
 ---
 
 ## よくある誤解
 
-連立方程式の直接法とpivotingでは、式へ数値を代入するだけでは不十分である。$A^{-1}b$ を明示inverseで計算するのは通常solveより高cost・不安定。理論式と数値algorithmを区別する。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
+- 連立方程式の直接法とpivotingの定義と計算手順を同一視する
+- 成立条件を確認せず公式を適用する
+- 数学上の次元と配列のshapeを混同する
 
 ---
 
-## 実装・計算上の注意
+## 数値・実装で検算
 
-partial pivotingが標準。sparseではfill-inを減らすpermutationも重要。residualとbackward errorで検算する。
-
----
-
-## 一段先へ
-
-大規模sparse系ではfactorization cost/memoryが重く、matrix-vector product中心のiterative solverへ進む。
+1. 小さい入力を作る
+2. 定義式から期待値を手で求める
+3. NumPy等の実装結果と比較する
+4. shape・残差・許容誤差・seedを記録する
 
 ---
 
-## 自分で説明できるか
+## 後続分野への接続
 
-- 「消去をlower係数として保存」を式を見ずに説明できるか
-- 「solveへ分解」までの論理を一段ずつ再現できるか
-- 連立方程式の直接法とpivotingの条件を1つ外した反例を説明できるか
+連立方程式の直接法とpivotingは、後続の数値計算・データ解析・機械学習で前提となる。
+
+このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
 
 ---
-layout: center
----
 
-## 教科書と演習
+## 理解確認
 
-- [教科書](../../textbook/num-direct-solvers-pivoting)
-- [10問の演習](../../exercises/num-direct-solvers-pivoting)
+- 連立方程式の直接法とpivotingを図→式→小例の順で説明できるか
+- 条件を1つ外した反例を作れるか
+
+[教科書](../../textbook/num-direct-solvers-pivoting)
+
+[10問の演習](../../exercises/num-direct-solvers-pivoting)
