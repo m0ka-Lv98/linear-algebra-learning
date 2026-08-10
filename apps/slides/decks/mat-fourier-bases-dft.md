@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "Fourier基底とDFT"
 ---
 
 # Fourier基底とDFT
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 11/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-Fourier基底とDFTで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+Fourier基底とDFTの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- Fourier基底とDFTの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `mat-robust-regression-m-estimators` で得た概念を使い、ここでは Fourier基底とDFT へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ Fourier基底とDFTで、何を入力し、代表式がどの量を出力し、�
 
 Fourier表現は信号を周波数ごとの正弦波成分へ分解し、時間領域と周波数領域を往復する。
 
-**前提:** prep-exponents-logarithms, la-orthogonal-orthonormal-bases
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-fourier-bases-dft.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-07/mat-fourier-bases-dft.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+2つの周波数を足した信号とDFTスペクトルを並べる。 時間/空間領域の信号を、周波数ごとのsin/cosまたは複素指数の係数へ分解する。周期の短い成分ほど高い周波数binに現れる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $x_n,n=0,\ldots,N-1$
+- $X_k$：frequency coefficient
+- $e^{-2\pi i kn/N}$：complex sinusoid basis
 
 $$
 X_k=\sum_{n=0}^{N-1}x_n e^{-2\pi i kn/N}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$\sum_{n=0}^{N-1}e^{2\pi i(k-l)n/N}=0$ for k≠l, =N for k=l。geometric seriesから従う。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** Fourier基底、DFT
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+orthogonal basisへのprojectionとして $X_k=\sum_n x_ne^{-2πikn/N}$。normalization conventionはforward/inverseで分配。
 
 ---
 
-## 小さな例
+## 例題
 
-2つの周波数を足した信号とDFTスペクトルを並べる。
-
-最小の非自明な設定で、手計算と実装を照合する。
+constant signal x_n=1はDC k=0 coefficient Nのみ、他frequency0。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- sampling rateとNyquist周波数を確認する。
-- 位相情報も信号再構成に必要。
-- Fourier基底とDFTの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+DFT bin外frequencyの有限window sinusoidは1 binだけでなくspectral leakage。
 
 ---
 
 ## よくある誤解
 
-- Fourier基底とDFTの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+Fourier基底とDFTでは、式へ数値を代入するだけでは不十分である。DFT bin外frequencyの有限window sinusoidは1 binだけでなくspectral leakage。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+FFTはDFTと同じ数学変換をO(N log N)で計算。normalization、frequency ordering、real FFT shapeを確認。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-Fourier基底とDFTは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+frequency domainでconvolutionがpointwise multiplicationになる。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- Fourier基底とDFTを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「basis orthogonality」を式を見ずに説明できるか
+- 「reconstruction」までの論理を一段ずつ再現できるか
+- Fourier基底とDFTの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/mat-fourier-bases-dft)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/mat-fourier-bases-dft)
+## 教科書と演習
+
+- [教科書](../../textbook/mat-fourier-bases-dft)
+- [10問の演習](../../exercises/mat-fourier-bases-dft)

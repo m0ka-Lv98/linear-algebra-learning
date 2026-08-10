@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "matrix completion"
 ---
 
 # matrix completion
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 18/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-matrix completionで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+matrix completionの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- matrix completionの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `mat-random-projections-jl` で得た概念を使い、ここでは matrix completion へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ matrix completionで、何を入力し、代表式がどの量を出力し、ど
 
 低ランク近似はデータの主要な方向だけ残し、情報を圧縮する。
 
-**前提:** la-low-rank-approximation, opt-proximal-gradient
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-matrix-completion.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-07/mat-matrix-completion.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+行列画像を特異値1個、2個、…と増やして再構成する。 特異値を大きい順に並べると、各rank-1成分がデータをどれだけ強く説明するかが見える。小さい特異値の成分を落とすと低rank近似になる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\Omega$：observed index set
+- $P_\Omega$：observed entriesだけ残すoperator
+- $\|M\|_*$：nuclear norm
 
 $$
 \min_{\mathbf{M}}\|\mathbf{M}\|_*\quad\text{s.t. }P_{\Omega}(\mathbf{M})=P_{\Omega}(\mathbf{X})
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$M=UV^T$ with small rならdegrees of freedomがmnより小さく、missing entriesへconstraintを共有できる。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** matrix、completion
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+nuclear normはsingular valuesのL1 sumでrankのconvex surrogate。
 
 ---
 
-## 小さな例
+## 例題
 
-行列画像を特異値1個、2個、…と増やして再構成する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+user-item rating matrixをlatent factorsで補完。ただしmissing-not-at-randomならbias。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 打ち切りrankは情報量と誤差のトレードオフ。
-- Frobenius誤差とspectral誤差の意味を区別する。
-- matrix completionの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+1列しか観測されない等、sampling patternが偏るとlow-rankでも一意recovery不能。
 
 ---
 
 ## よくある誤解
 
-- matrix completionの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+matrix completionでは、式へ数値を代入するだけでは不十分である。1列しか観測されない等、sampling patternが偏るとlow-rankでも一意recovery不能。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+alternating factorizationはscalableだがnonconvex。validationはobserved held-out entriesで。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-matrix completionは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+graphにもmatrix spectrumがあり、Laplacian eigenvectorsでgeometryを捉える。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- matrix completionを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「low-rank assumption」を式を見ずに説明できるか
+- 「observation constraint」までの論理を一段ずつ再現できるか
+- matrix completionの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/mat-matrix-completion)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/mat-matrix-completion)
+## 教科書と演習
+
+- [教科書](../../textbook/mat-matrix-completion)
+- [10問の演習](../../exercises/mat-matrix-completion)

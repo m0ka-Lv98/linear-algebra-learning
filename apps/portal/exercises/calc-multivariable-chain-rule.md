@@ -1,193 +1,219 @@
 # 多変数の連鎖律：演習
 
-大学初年次の定期試験を想定した10問。**問題→自力で解く→解答で途中式と条件を照合**の順で使う。
+Course 01｜Topic 11/13。10問すべて、このTopic固有の問いとして作成しています。
 
-教科書の[多変数の連鎖律](/textbook/calc-multivariable-chain-rule)と対応しています。
+[教科書](/textbook/calc-multivariable-chain-rule)
 
-## 問1：経路1
+## 問1. 定義と記号
 
-$z=x^2+y$, $x=t^2,y=3t$ の $dz/dt$ を求めよ。
+「多変数の連鎖律」の代表式
+
+$$
+\mathbf J_{f\circ g}(\mathbf{x})=\mathbf J_f(g(\mathbf{x}))\mathbf J_g(\mathbf{x})
+$$
+
+について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$z_x=2x,z_y=1,x'=2t,y'=3$。よって $dz/dt=2x(2t)+3=4t^3+3$。
+代表式は結果だけを書くための記号ではない。本文で定義した量を使い、多変数の連鎖律が何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
 
+**内側の局所近似**
 
+$g(\mathbf x+\mathbf h)=g(\mathbf x)+\mathbf J_g\mathbf h+o(\|\mathbf h\|)$。中間変数の変化は $\Delta\mathbf z\approx\mathbf J_g\mathbf h$。
+
+答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
 
 </details>
 
-## 問2：経路2
+## 問2. 導出1：内側の局所近似
 
-$z=xy$, $x=e^t,y=\sin t$ の $dz/dt$ を求めよ。
+「多変数の連鎖律」で **内側の局所近似** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文の「内側の局所近似」を、直前の定義から始めて書き直す。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$dz/dt=y e^t+x\cos t=e^t(\sin t+\cos t)$。
+この段階で示すべき内容は次である。
 
+$g(\mathbf x+\mathbf h)=g(\mathbf x)+\mathbf J_g\mathbf h+o(\|\mathbf h\|)$。中間変数の変化は $\Delta\mathbf z\approx\mathbf J_g\mathbf h$。
 
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「外側へ渡す」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-## 問3：shape
+## 問3. 導出2：外側へ渡す
 
-$g:\mathbb R^4\to\mathbb R^2$, $f:\mathbb R^2\to\mathbb R^3$。$J_fJ_g$ のshapeは。
+「多変数の連鎖律」で **外側へ渡す** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文の「外側へ渡す」を、直前の定義から始めて書き直す。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$J_f$ は $3\times2$、$J_g$ は $2\times4$、積は $3\times4$。
+この段階で示すべき内容は次である。
 
+$f(\mathbf z+\Delta\mathbf z)=f(\mathbf z)+\mathbf J_f\Delta\mathbf z+o(\|\Delta\mathbf z\|)$。$\Delta\mathbf z\approx\mathbf J_g\mathbf h$ を代入すると一次項は $\mathbf J_f\mathbf J_g\mathbf h$。
 
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「shapeが順序を決める」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-## 問4：順序
+## 問4. 導出3：shapeが順序を決める
 
-なぜ一般に $J_gJ_f$ ではいけないか。
+「多変数の連鎖律」で **shapeが順序を決める** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文の「shapeが順序を決める」を、直前の定義から始めて書き直す。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-関数の適用順は $\mathbf x\xrightarrow{g}\mathbb R^p\xrightarrow{f}\mathbb R^m$。線形近似も入力側から $J_g$、次に $J_f$ が作用するので積は $J_fJ_g$。shapeも通常逆では合わない。
+この段階で示すべき内容は次である。
 
+$(m\times p)(p\times n)=m\times n$ で入力 $\mathbb R^n$ から出力 $\mathbb R^m$ への写像になる。逆順 $\mathbf J_g\mathbf J_f$ は通常shapeが合わず、関数合成の順序とも一致しない。
 
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-## 問5：scalar合成
+## 問5. 数値例を途中から再現
 
-$y=\ln(1+x^2)$ を連鎖律で微分せよ。
+次の「多変数の連鎖律」の設定を、自分で途中量まで展開して最終結論を確認せよ。
+
+> $g(x,y)=(x+y,xy)^T$、$f(u,v)=u^2+v$。$\mathbf J_g=\begin{bmatrix}1&1\\y&x\end{bmatrix}$、$\mathbf J_f=[2u,1]$。積は $[2(x+y)+y,\ 2(x+y)+x]$ で、直接 $f(g)= (x+y)^2+xy$ を偏微分した結果と一致。
+
+本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+
+<details><summary>完全解答</summary>
+
+設定に対する計算・判断は次の通り。
+
+$g(x,y)=(x+y,xy)^T$、$f(u,v)=u^2+v$。$\mathbf J_g=\begin{bmatrix}1&1\\y&x\end{bmatrix}$、$\mathbf J_f=[2u,1]$。積は $[2(x+y)+y,\ 2(x+y)+x]$ で、直接 $f(g)= (x+y)^2+xy$ を偏微分した結果と一致。
+
+ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+
+</details>
+
+## 問6. 条件を変えたときの差
+
+次の第二例について、第一例から変更した条件を特定し、その変更によって「多変数の連鎖律」のどの部分が変わるか説明せよ。
+
+> スカラーloss $L$ と中間ベクトル $\mathbf z$、入力 $\mathbf x$ を考える。$\nabla_{\mathbf x}L=\mathbf J_g^T\nabla_{\mathbf z}L$ という転置形は、backpropagationで上流gradientを入力側へ戻す基本形。
+
+<details><summary>完全解答</summary>
+
+スカラーloss $L$ と中間ベクトル $\mathbf z$、入力 $\mathbf x$ を考える。$\nabla_{\mathbf x}L=\mathbf J_g^T\nabla_{\mathbf z}L$ という転置形は、backpropagationで上流gradientを入力側へ戻す基本形。
+
+比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+
+</details>
+
+## 問7. 成立条件と反例
+
+「多変数の連鎖律」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
+
+> 行列積は可換でないので $\mathbf J_f\mathbf J_g=\mathbf J_g\mathbf J_f$ としてはいけない。shapeが偶然一致しても、写像の適用順序が逆になる。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-外側 $\ln u$ の微分 $1/u$、内側 $u=1+x^2$ の微分 $2x$。よって $2x/(1+x^2)$。
+本文で確認する条件は以下である。
 
+- 各写像が対応点で全微分可能であること
+- Jacobianのshapeと掛ける順序を確認する
+- スカラー勾配表記とJacobian表記で転置の規約を混同しない
 
+失敗例は次の通り。
 
-</details>
+行列積は可換でないので $\mathbf J_f\mathbf J_g=\mathbf J_g\mathbf J_f$ としてはいけない。shapeが偶然一致しても、写像の適用順序が逆になる。
 
-## 問6：共有入力
-
-$u=x^2,v=x^3,z=u+v$。計算グラフで $dz/dx$ を求めよ。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
 
 </details>
+
+## 問8. 実装・数値診断
+
+「多変数の連鎖律」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
+
+> reverse-mode ADは、スカラーlossに対してvector-Jacobian productを出力側から逆向きに計算し、巨大なJacobian全体を保存しない。これがdeep neural networkのbackpropagationを効率化する。
 
 <details><summary>完全解答</summary>
 
-$z_u=z_v=1$ なので $dz/dx=1\cdot2x+1\cdot3x^2=2x+3x^2$。
+reverse-mode ADは、スカラーlossに対してvector-Jacobian productを出力側から逆向きに計算し、巨大なJacobian全体を保存しない。これがdeep neural networkのbackpropagationを効率化する。
 
-
-
-</details>
-
-## 問7：複数経路
-
-$u=x^2,z=u^2+x$ の $dz/dx$ を求めよ。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
 
 </details>
+
+## 問9. 次Topicへの導線
+
+「多変数の連鎖律」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
+
+> 計算graphがDAGなら、各nodeの局所Jacobianをトポロジカル順に合成できる。Course 09でこの構造を誤差逆伝播として詳しく扱う。
 
 <details><summary>完全解答</summary>
 
-$x$ は $u$ 経路と直接経路の2つを持つ。$dz/dx=2u\cdot2x+1=4x^3+1$。
+計算graphがDAGなら、各nodeの局所Jacobianをトポロジカル順に合成できる。Course 09でこの構造を誤差逆伝播として詳しく扱う。
 
-
-
-</details>
-
-## 問8：評価点
-
-$z=x^2+y^2,x=t,y=2t$ の $t=1$ で $dz/dt$ を求めよ。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
 
 </details>
+
+## 問10. 総合証明・説明
+
+「多変数の連鎖律」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
 
 <details><summary>完全解答</summary>
 
-$dz/dt=2x+2y\cdot2=2t+8t=10t$、よって10。
+答案では次の流れを一続きにする。
 
+**代表式**
 
+$$
+\mathbf J_{f\circ g}(\mathbf{x})=\mathbf J_f(g(\mathbf{x}))\mathbf J_g(\mathbf{x})
+$$
 
-</details>
+**導出**
 
-## 問9：1変数との関係
+1. **内側の局所近似** — $g(\mathbf x+\mathbf h)=g(\mathbf x)+\mathbf J_g\mathbf h+o(\|\mathbf h\|)$。中間変数の変化は $\Delta\mathbf z\approx\mathbf J_g\mathbf h$。
 
-Jacobian連鎖律が1変数連鎖律へ戻ることを説明せよ。
+2. **外側へ渡す** — $f(\mathbf z+\Delta\mathbf z)=f(\mathbf z)+\mathbf J_f\Delta\mathbf z+o(\|\Delta\mathbf z\|)$。$\Delta\mathbf z\approx\mathbf J_g\mathbf h$ を代入すると一次項は $\mathbf J_f\mathbf J_g\mathbf h$。
 
-<details><summary>ヒント</summary>
+3. **shapeが順序を決める** — $(m\times p)(p\times n)=m\times n$ で入力 $\mathbb R^n$ から出力 $\mathbb R^m$ への写像になる。逆順 $\mathbf J_g\mathbf J_f$ は通常shapeが合わず、関数合成の順序とも一致しない。
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+**数値・具体例**
 
-</details>
+$g(x,y)=(x+y,xy)^T$、$f(u,v)=u^2+v$。$\mathbf J_g=\begin{bmatrix}1&1\\y&x\end{bmatrix}$、$\mathbf J_f=[2u,1]$。積は $[2(x+y)+y,\ 2(x+y)+x]$ で、直接 $f(g)= (x+y)^2+xy$ を偏微分した結果と一致。
 
-<details><summary>完全解答</summary>
+**条件を壊すと**
 
-全次元が1ならJacobianは $1\times1$ 行列、つまり通常の導関数。積 $J_fJ_g$ は $f'(g(x))g'(x)$ になる。
+行列積は可換でないので $\mathbf J_f\mathbf J_g=\mathbf J_g\mathbf J_f$ としてはいけない。shapeが偶然一致しても、写像の適用順序が逆になる。
 
+**実装**
 
+reverse-mode ADは、スカラーlossに対してvector-Jacobian productを出力側から逆向きに計算し、巨大なJacobian全体を保存しない。これがdeep neural networkのbackpropagationを効率化する。
 
-</details>
-
-## 問10：誤答診断
-
-$z=f(x,y(t))$ の微分で $f_x$ の項も入れた。$x$ が定数ならどうなるか。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
 
 </details>
-
-<details><summary>完全解答</summary>
-
-$dx/dt=0$ なので $f_x\,dx/dt$ は0。依存していない経路からの寄与はない。
-
-
-
-</details>
-
-## 採点用セルフチェック
-
-- 最終結果だけでなく、必要な途中式がある。
-- 定理・判定法を使う条件を確認している。
-- 「存在しない」「判定不能」「候補」などを勝手に「0」「最小」へ置き換えていない。
-- 記号の意味を説明できる。
-- 解答を閉じた状態で8/10以上なら、次Topicへ進む目安になる。

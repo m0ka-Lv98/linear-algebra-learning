@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "OLSとdesign matrix"
 ---
 
 # OLSとdesign matrix
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 06/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-OLSとdesign matrixで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+OLSとdesign matrixの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- OLSとdesign matrixの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `mat-whitening-mahalanobis` で得た概念を使い、ここでは OLSとdesign matrix へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ OLSとdesign matrixで、何を入力し、代表式がどの量を出力し、�
 
 回帰は入力から平均的な出力を説明・予測する関係をモデル化する。
 
-**前提:** la-least-squares-geometry, stat-linear-regression-probabilistic-model
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-ols-design-matrices.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-07/mat-ols-design-matrices.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+散布点、回帰線、残差を同時に描く。 点が観測値、線がモデル予測、点から線までの縦の差が残差である。二乗残差を合計する最小二乗では、大きな残差ほど強く目的関数へ効く。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $X\in\mathbb R^{n\times p}$：design matrix
+- $y\in\mathbb R^n$
+- $\beta\in\mathbb R^p$
+- $r=y-X\beta$
 
 $$
 \hat{\boldsymbol{\beta}}=\arg\min_{\boldsymbol{\beta}}\|\mathbf{X}\boldsymbol{\beta}-\mathbf{y}\|_2^2
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$J=\|y-Xβ\|²=(y-Xβ)^T(y-Xβ)$。gradient $-2X^T(y-Xβ)$。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** OLS、design、matrix
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+$X^Tr=0$。residualは全design columnに直交。
 
 ---
 
-## 小さな例
+## 例題
 
-散布点、回帰線、残差を同時に描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+切片column1とx columnでstraight line fit。normal equationsはresidual sum=0とresidual-x inner product=0。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 予測と因果を混同しない。
-- 外挿では不確実性が増える。
-- OLSとdesign matrixの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+X^TX inverse formulaをrank checkなしに使うと失敗。
 
 ---
 
 ## よくある誤解
 
-- OLSとdesign matrixの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+OLSとdesign matrixでは、式へ数値を代入するだけでは不十分である。X^TX inverse formulaをrank checkなしに使うと失敗。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+QR/SVD `lstsq`。intercept duplication、categorical dummy trap、feature scalingを確認。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-OLSとdesign matrixは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+観測noise varianceが異なるとEuclidean residual normが自然でなく、inverse-variance WLSへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- OLSとdesign matrixを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「objective gradient」を式を見ずに説明できるか
+- 「solve」までの論理を一段ずつ再現できるか
+- OLSとdesign matrixの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/mat-ols-design-matrices)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/mat-ols-design-matrices)
+## 教科書と演習
+
+- [教科書](../../textbook/mat-ols-design-matrices)
+- [10問の演習](../../exercises/mat-ols-design-matrices)

@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "尤度と最尤推定"
 ---
 
 # 尤度と最尤推定
 
-Course 03｜確率統計
+Course 03｜確率統計｜Topic 15/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-尤度と最尤推定で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+尤度と最尤推定の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 尤度と最尤推定の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `stat-estimators-bias-variance-mse` で得た概念を使い、ここでは 尤度と最尤推定 へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 尤度は観測データを固定し、パラメータを動かしたときの説明力を見る関数。
 
-**前提:** stat-estimators-bias-variance-mse, prob-discrete-distributions, prob-continuous-distributions, prep-exponents-logarithms
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-03/stat-likelihood-maximum-likelihood.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-03/stat-likelihood-maximum-likelihood.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+Bernoulli観測の成功回数からpの尤度曲線を描き、最大点を探す。 パラメータを横軸に固定してデータの確率を縦軸に描く。観測済みデータを固定してパラメータだけを動かす点が、確率分布そのものを描く場合との違いである。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $x_1,\ldots,x_n$：観測済みデータ
+- $\theta$：未知母数
+- $L(\theta)=p(x_1,\ldots,x_n\mid\theta)$：データを固定し母数の関数として読む尤度
+- $\ell(\theta)=\log L(\theta)$：対数尤度
 
 $$
 \hat{\theta}_{\mathrm{MLE}}=\arg\max_{\theta}L(\theta)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+データを観測後は $x_i$ を固定し、$p(\mathbf x\mid\theta)$ をθについて比較する。これがlikelihood。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 尤度、最尤推定
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+$L(\theta)=\prod_i p(x_i\mid\theta)$。logは単調増加なのでargmaxは変わらず、$\ell(\theta)=\sum_i\log p(x_i\mid\theta)$。
 
 ---
 
-## 小さな例
+## 例題
 
-Bernoulli観測の成功回数からpの尤度曲線を描き、最大点を探す。
-
-最小の非自明な設定で、手計算と実装を照合する。
+Bernoulli観測で成功k回、失敗n-k回。$\ell(p)=k\log p+(n-k)\log(1-p)$。微分して $k/p-(n-k)/(1-p)=0$、整理すると $\hat p=k/n$。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 尤度をθについて積分して1にする必要はない。
-- 対数尤度は最大点を変えない。
-- 尤度と最尤推定の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+尤度 $L(\theta)$ はθの確率分布ではないため、θについて積分して1になる必要はない。「尤度0.8だからθの確率80%」とは読めない。
 
 ---
 
 ## よくある誤解
 
-- 尤度と最尤推定の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+尤度と最尤推定では、式へ数値を代入するだけでは不十分である。尤度 $L(\theta)$ はθの確率分布ではないため、θについて積分して1になる必要はない。「尤度0.8だからθの確率80%」とは読めない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+積の尤度はunderflowするためlog-likelihoodを使う。最適化ではgradientだけでなくbound・constraint・複数極値も確認する。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-尤度と最尤推定は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+MLEに事前分布を掛けるとposteriorが得られ、posteriorのmodeを取ればMAP推定。次TopicでBayesian推論として区別する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 尤度と最尤推定を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「同時密度を母数の関数として読む」を式を見ずに説明できるか
+- 「微分して最適条件を解く」までの論理を一段ずつ再現できるか
+- 尤度と最尤推定の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/stat-likelihood-maximum-likelihood)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/stat-likelihood-maximum-likelihood)
+## 教科書と演習
+
+- [教科書](../../textbook/stat-likelihood-maximum-likelihood)
+- [10問の演習](../../exercises/stat-likelihood-maximum-likelihood)

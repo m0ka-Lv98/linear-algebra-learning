@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "mechanistic interpretability"
 ---
 
 # mechanistic interpretability
 
-Course 10｜Frontier
+Course 10｜Frontier｜Topic 14/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-mechanistic interpretabilityで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+mechanistic interpretabilityの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- mechanistic interpretabilityの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `frontier-foundation-model-evaluation` で得た概念を使い、ここでは mechanistic interpretability へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ mechanistic interpretabilityで、何を入力し、代表式がどの量を出�
 
 mechanistic interpretabilityは内部activationや回路を観測し、特定の計算がどのcomponentで実現されるかを追う。
 
-**前提:** dl-attention-mechanism, la-linear-maps-change-of-basis
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-interpretability-mechanistic.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-10/frontier-interpretability-mechanistic.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+layerごとのactivationをnode graphとして強調する。 内部activationや重みから観測可能な量を抽出し、入力変更との因果的関係を検証する。可視化されたcorrelationだけで機構を断定しない。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $h^{(l)}$：layer l activations
+- $F_l$：layer transform
+- feature/circuit/probe
 
 $$
 \mathbf{h}^{(l+1)}=F_l(\mathbf{h}^{(l)})
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$h^{l+1}=F_l(h^l)$。behaviorは多数layers/pathsのcomposition。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** mechanistic、interpretability
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+activationからpropertyをpredictできることはinformation presenceを示すが、そのinformationがbehaviorに使われることを証明しない。
 
 ---
 
-## 小さな例
+## 例題
 
-layerごとのactivationをnode graphとして強調する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+particular head ablationでspecific task scoreが落ちるか、matched controlsと比較。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 相関するactivationが因果的役割とは限らない。
-- 介入実験で検証する。
-- mechanistic interpretabilityの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+attention visualizationだけでreasoning circuitを確定しない。
 
 ---
 
 ## よくある誤解
 
-- mechanistic interpretabilityの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+mechanistic interpretabilityでは、式へ数値を代入するだけでは不十分である。attention visualizationだけでreasoning circuitを確定しない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+baseline/control, multiple examples, layer normalization confounds, reproducible hooks。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-mechanistic interpretabilityは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+internal understandingだけでなくoutput confidenceをcalibrateし必要ならabstainするdecision policyへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- mechanistic interpretabilityを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「layer composition」を式を見ずに説明できるか
+- 「intervention」までの論理を一段ずつ再現できるか
+- mechanistic interpretabilityの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/frontier-interpretability-mechanistic)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/frontier-interpretability-mechanistic)
+## 教科書と演習
+
+- [教科書](../../textbook/frontier-interpretability-mechanistic)
+- [10問の演習](../../exercises/frontier-interpretability-mechanistic)

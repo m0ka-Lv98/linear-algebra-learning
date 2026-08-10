@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "random projectionとJohnson–Lindenstrauss"
 ---
 
 # random projectionとJohnson–Lindenstrauss
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 17/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-random projectionとJohnson–Lindenstraussで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+random projectionとJohnson–Lindenstraussの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- random projectionとJohnson–Lindenstraussの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `mat-cca-multiview` で得た概念を使い、ここでは random projectionとJohnson–Lindenstrauss へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ random projectionとJohnson–Lindenstraussで、何を入力し、代表式が�
 
 乱択法は高次元構造を完全に読む代わりに、ランダムな部分空間へ写して主要情報を安価に捉える。
 
-**前提:** num-randomized-numerical-linear-algebra, prob-laws-large-numbers-central-limit-theorem
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-random-projections-jl.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-07/mat-random-projections-jl.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+高次元点間距離が低次元射影でも概ね保たれる様子を見る。 高次元点群を低次元へ写しても、ランダム写像を適切に正規化すれば点間距離が概ね保存される。元の距離と写像後距離の対応を散布として確認する。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $R\in\mathbb R^{k\times d}$：random projection
+- $z=R x/\sqrt k$
+- $\varepsilon$：許容distance distortion
 
 $$
 \mathbf{z}=\frac{1}{\sqrt{k}}\mathbf{R}\mathbf{x}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+random isotropic RではE||Rx/√k||²=||x||²。独立rowのsumがconcentrationする。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** random、projection、Johnson–Lindenstrauss
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+n点にはO(n²) pair。1 pair failure probabilityを十分小さくしunion boundすると全distance保存を高確率保証。
 
 ---
 
-## 小さな例
+## 例題
 
-高次元点間距離が低次元射影でも概ね保たれる様子を見る。
-
-最小の非自明な設定で、手計算と実装を照合する。
+10000 points, moderate εなら元dimension百万でもkはpoint数のlogに依存。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 乱数seedと再現性を記録する。
-- 射影次元が小さすぎると歪みが大きい。
-- random projectionとJohnson–Lindenstraussの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+JLは任意projectionが良いわけでなくrandom distribution/normalizationが条件。individual coordinate interpretabilityは失う。
 
 ---
 
 ## よくある誤解
 
-- random projectionとJohnson–Lindenstraussの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+random projectionとJohnson–Lindenstraussでは、式へ数値を代入するだけでは不十分である。JLは任意projectionが良いわけでなくrandom distribution/normalizationが条件。individual coordinate interpretabilityは失う。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+seed、distribution、sparsity、distance error quantileを記録。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-random projectionとJohnson–Lindenstraussは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+missing entriesからlow-rank matrixを推定するmatrix completionへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- random projectionとJohnson–Lindenstraussを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「固定vectorのnorm concentration」を式を見ずに説明できるか
+- 「dimension」までの論理を一段ずつ再現できるか
+- random projectionとJohnson–Lindenstraussの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/mat-random-projections-jl)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/mat-random-projections-jl)
+## 教科書と演習
+
+- [教科書](../../textbook/mat-random-projections-jl)
+- [10問の演習](../../exercises/mat-random-projections-jl)

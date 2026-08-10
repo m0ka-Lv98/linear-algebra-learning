@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "常微分方程式・Euler法・Runge–Kutta法"
 ---
 
 # 常微分方程式・Euler法・Runge–Kutta法
 
-Course 05｜数値計算
+Course 05｜数値計算｜Topic 17/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-常微分方程式・Euler法・Runge–Kutta法で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+常微分方程式・Euler法・Runge–Kutta法の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 常微分方程式・Euler法・Runge–Kutta法の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `num-randomized-numerical-linear-algebra` で得た概念を使い、ここでは 常微分方程式・Euler法・Runge–Kutta法 へ進む。
 
 ---
 
@@ -32,96 +40,84 @@ layout: center
 
 ODE数値解法は微分方程式が与える局所傾きを短い時間ステップで積み重ねる。
 
-**前提:** calc-derivatives-rates, calc-integrals-fundamental-theorem, num-convergence-orders-stopping
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-ode-euler-runge-kutta.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-05/num-ode-euler-runge-kutta.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+Euler法の折れ線と真の解を、刻み幅を変えながら比較する。 曲線が真の解、離散点が数値解である。各ステップでは現在点の微分方程式が与える傾きを使って次点を予測し、刻み幅が局所誤差と安定性の双方に効く。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $y^{\prime}=f(t,y)$：初期値問題
+- $h$：time step
+- $t_k=t_0+kh$
+- $y_k\approx y(t_k)$
 
 $$
 y_{k+1}=y_k+h f(t_k,y_k)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$y(t+h)=y(t)+hy^{\prime}(t)+O(h^2)$。ODEから $y^{\prime}=f(t,y)$。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 常微分方程式、Euler法、Runge–Kutta法
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+$y(t+h)\approx y(t)+hf(t,y(t))$。真値y(t)を近似y_kで置換してEuler更新。
 
 ---
 
-## 小さな例
+## 例題
 
-Euler法の折れ線と真の解を、刻み幅を変えながら比較する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+$y^{\prime}=-y,y(0)=1,h=0.1$。Eulerでy1=0.9、y2=0.81。真値e^-0.2≈0.8187。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-05/num-ode-euler-runge-kutta.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 安定性と精度は別問題。
-- 硬い方程式では陽解法の刻み幅制約が厳しい。
-- 常微分方程式・Euler法・Runge–Kutta法の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+hを粗くすると高精度法でも失敗。さらにstiff問題ではexplicit法が精度上十分小さくなくてもstabilityのため極小hを要求する。
 
 ---
 
 ## よくある誤解
 
-- 常微分方程式・Euler法・Runge–Kutta法の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+常微分方程式・Euler法・Runge–Kutta法では、式へ数値を代入するだけでは不十分である。hを粗くすると高精度法でも失敗。さらにstiff問題ではexplicit法が精度上十分小さくなくてもstabilityのため極小hを要求する。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+adaptive solverはlocal error estimateからhを調整する。rtol/atol、event detection、dense outputの意味を確認。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-常微分方程式・Euler法・Runge–Kutta法は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+次Topicでtest equationを使い、accuracyとは別のstability regionを調べる。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 常微分方程式・Euler法・Runge–Kutta法を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「Taylor展開」を式を見ずに説明できるか
+- 「局所からglobal error」までの論理を一段ずつ再現できるか
+- 常微分方程式・Euler法・Runge–Kutta法の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/num-ode-euler-runge-kutta)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/num-ode-euler-runge-kutta)
+## 教科書と演習
+
+- [教科書](../../textbook/num-ode-euler-runge-kutta)
+- [10問の演習](../../exercises/num-ode-euler-runge-kutta)

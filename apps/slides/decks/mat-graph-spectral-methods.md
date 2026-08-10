@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "グラフspectral method"
 ---
 
 # グラフspectral method
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 19/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-グラフspectral methodで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+グラフspectral methodの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- グラフspectral methodの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `mat-matrix-completion` で得た概念を使い、ここでは グラフspectral method へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 グラフは頂点と辺で関係を表し、道・連結性・次数は局所と大域の構造をつなぐ。
 
-**前提:** dm-graphs-representations-degrees, la-symmetric-matrices-spectral-theorem
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-graph-spectral-methods.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-07/mat-graph-spectral-methods.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+小さなグラフで次数、最短路、連結成分を色分けする。 頂点が対象、辺が対象間の関係である。pathは隣接辺を順にたどる列、cycleは始点へ戻るpathであり、連結性や到達可能性を図上で直接確認できる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $A$：adjacency
+- $D$：degree diagonal
+- $L=D-A$：graph Laplacian
+- $x^TLx=\sum_{(i,j)\in E}(x_i-x_j)^2$（undirected）
 
 $$
 \mathbf{L}=\mathbf{D}-\mathbf{A}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$x^TDx- x^TAx$ をedge sumへ整理すると各edge difference squareの和。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** グラフspectral、method
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+square sumなので≥0。constant vectorは全difference0でL1=0。
 
 ---
 
-## 小さな例
+## 例題
 
-小さなグラフで次数、最短路、連結成分を色分けする。
-
-最小の非自明な設定で、手計算と実装を照合する。
+connected path graphのsecond eigenvectorは端から端へ滑らかに変化しspectral embedding coordinateになる。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 無向と有向で次数や到達可能性が変わる。
-- 隣接行列の対称性は無向グラフに対応する。
-- グラフspectral methodの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+directed/negative-weight graphではstandard symmetric Laplacianの性質をそのまま使えない。
 
 ---
 
 ## よくある誤解
 
-- グラフspectral methodの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+グラフspectral methodでは、式へ数値を代入するだけでは不十分である。directed/negative-weight graphではstandard symmetric Laplacianの性質をそのまま使えない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+sparse eigensolverでsmall eigenpairs。isolated nodes、normalization conventionを確認。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-グラフspectral methodは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+matrixからさらに多way interactionを持つtensorへ一般化する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- グラフspectral methodを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「quadratic form展開」を式を見ずに説明できるか
+- 「components」までの論理を一段ずつ再現できるか
+- グラフspectral methodの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/mat-graph-spectral-methods)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/mat-graph-spectral-methods)
+## 教科書と演習
+
+- [教科書](../../textbook/mat-graph-spectral-methods)
+- [10問の演習](../../exercises/mat-graph-spectral-methods)

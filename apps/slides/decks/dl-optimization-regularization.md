@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "深層学習の最適化と正則化"
 ---
 
 # 深層学習の最適化と正則化
 
-Course 09｜深層学習
+Course 09｜深層学習｜Topic 05/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-深層学習の最適化と正則化で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+深層学習の最適化と正則化の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 深層学習の最適化と正則化の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `dl-initialization-normalization` で得た概念を使い、ここでは 深層学習の最適化と正則化 へ進む。
 
 ---
 
@@ -32,96 +40,84 @@ layout: center
 
 確率的最適化は全データ勾配の代わりにノイズを含む推定勾配を使い、計算量と分散を交換する。
 
-**前提:** opt-adaptive-optimizers, ml-bias-variance-regularization
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-optimization-regularization.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-09/dl-optimization-regularization.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+full gradientとmini-batch軌跡を比較する。 full gradientの滑らかな軌跡に対しmini-batch gradientは揺らぐが、期待的には同じ下降方向を推定する。学習率は進む速さとノイズ平均化の両方を制御する。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $w_k$：parameters
+- $g_k$：mini-batch gradient
+- $m_k,v_k$：Adam moments
+- $\lambda$：weight decay
 
 $$
 \mathbf{w}_{k+1}=\mathbf{w}_k-\eta\frac{\hat{\mathbf{m}}_k}{\sqrt{\hat{\mathbf{v}}_k}+\varepsilon}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+full objective gradientのestimateとしてg_k。batch noiseは探索を助ける場合もあるがvariance source。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 深層学習の最適化、正則化
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+EMA first/second momentsから $\hat m/(\sqrt{\hat v}+ε)$ でcoordinate scale調整。
 
 ---
 
-## 小さな例
+## 例題
 
-full gradientとmini-batch軌跡を比較する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+train loss低下中でもval loss上昇ならoverfit。early stoppingはtraining timeをregularizerとして使う。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-09/dl-optimization-regularization.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 学習率scheduleが収束に強く影響する。
-- batchの乱数seedとshuffleを管理する。
-- 深層学習の最適化と正則化の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+optimizerを変えてtraining lossが速く下がることとtest performanceが良いことは同義でない。
 
 ---
 
 ## よくある誤解
 
-- 深層学習の最適化と正則化の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+深層学習の最適化と正則化では、式へ数値を代入するだけでは不十分である。optimizerを変えてtraining lossが速く下がることとtest performanceが良いことは同義でない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+gradient clipping、mixed precision loss scaling、scheduler、optimizer state checkpoint。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-深層学習の最適化と正則化は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+次にarchitecture-specific inductive biasとしてlocal translation structureを使うCNNへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 深層学習の最適化と正則化を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「mini-batch gradient」を式を見ずに説明できるか
+- 「weight decay」までの論理を一段ずつ再現できるか
+- 深層学習の最適化と正則化の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/dl-optimization-regularization)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/dl-optimization-regularization)
+## 教科書と演習
+
+- [教科書](../../textbook/dl-optimization-regularization)
+- [10問の演習](../../exercises/dl-optimization-regularization)

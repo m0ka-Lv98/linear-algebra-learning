@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "activation関数とloss"
 ---
 
 # activation関数とloss
 
-Course 09｜深層学習
+Course 09｜深層学習｜Topic 03/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-activation関数とlossで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+activation関数とlossの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- activation関数とlossの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `dl-backprop-computation-graphs` で得た概念を使い、ここでは activation関数とloss へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ activation関数とlossで、何を入力し、代表式がどの量を出力し
 
 activation関数は線形層へ非線形性を入れ、lossは予測と目標のずれを学習信号へ変換する。
 
-**前提:** stat-entropy-cross-entropy-kl-divergence, ml-softmax-multiclass
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-activation-loss-functions.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-09/dl-activation-loss-functions.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+ReLU, sigmoid, tanhの曲線と勾配が小さくなる領域を比較する。 曲線の傾きが逆伝播される局所gradientになる。sigmoid/tanhの飽和域では傾きが小さく、ReLUでは正側で一定なのでgradient伝播の性質が異なる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\operatorname{ReLU}(x)=\max(0,x)$
+- $z$：logit
+- $p$：probability
+- $L$：training objective
 
 $$
 \operatorname{ReLU}(x)=\max(0,x)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+x>0でderivative1、x<0で0。x=0はsubgradient/convention。positive regionでsaturationしない。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** activation関数、loss
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+Bernoulli likelihood $p^y(1-p)^{1-y}$ のnegative logが $-y\log p-(1-y)\log(1-p)$。
 
 ---
 
-## 小さな例
+## 例題
 
-ReLU, sigmoid, tanhの曲線と勾配が小さくなる領域を比較する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+z=0,y=1ならp=0.5, gradient p-y=-0.5でzを上げる方向。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 出力層のactivationとlossの組合せを確認する。
-- 飽和領域でgradientが小さくなる。
-- activation関数とlossの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+classificationでMSEが常に間違いではないが、Bernoulli/categorical likelihoodとの対応やgradient特性がcross entropyと異なる。
 
 ---
 
 ## よくある誤解
 
-- activation関数とlossの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+activation関数とlossでは、式へ数値を代入するだけでは不十分である。classificationでMSEが常に間違いではないが、Bernoulli/categorical likelihoodとの対応やgradient特性がcross entropyと異なる。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+BCEWithLogits/CrossEntropyLossを使いlog(0)回避。reduction(mean/sum)でgradient scaleが変わる。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-activation関数とlossは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+deep layersでsignal/gradient scaleを保つためinitializationとnormalizationへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- activation関数とlossを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「ReLU derivative」を式を見ずに説明できるか
+- 「logit gradient」までの論理を一段ずつ再現できるか
+- activation関数とlossの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/dl-activation-loss-functions)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/dl-activation-loss-functions)
+## 教科書と演習
+
+- [教科書](../../textbook/dl-activation-loss-functions)
+- [10問の演習](../../exercises/dl-activation-loss-functions)

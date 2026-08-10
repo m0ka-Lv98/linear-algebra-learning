@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "近接勾配法"
 ---
 
 # 近接勾配法
 
-Course 06｜最適化
+Course 06｜最適化｜Topic 16/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-近接勾配法で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+近接勾配法の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 近接勾配法の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `opt-duality-dual-gradient` で得た概念を使い、ここでは 近接勾配法 へ進む。
 
 ---
 
@@ -32,96 +40,82 @@ layout: center
 
 近接法は非滑らかな項を直接微分せず、近接写像で「縮める」操作として扱う。
 
-**前提:** opt-projected-gradient, opt-convex-sets-functions
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-06/opt-proximal-gradient.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-06/opt-proximal-gradient.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+L1近接写像のsoft-thresholdingを入力値ごとに描く。 gradient step後の点をそのまま採用せず、正則化項を含むproximal subproblemで近い点へ戻す。L1なら成分ごとのsoft-thresholdingとして0へ吸着する。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $F(x)=f(x)+g(x)$：smooth f + possibly nonsmooth g
+- $prox_{ηg}(z)=argmin_x[g(x)+\frac1{2η}\|x-z\|²]$
 
 $$
 \mathbf{x}_{k+1}=\operatorname{prox}_{\eta g}(\mathbf{x}_k-\eta\nabla f(\mathbf{x}_k))
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$f(x)\approx f(x_k)+∇f_k^T(x-x_k)+\frac1{2η}\|x-x_k\|²$。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 近接勾配法
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+g(x)を加え、x依存部分をまとめると $g(x)+\frac1{2η}\|x-(x_k-η∇f_k)\|²$。
 
 ---
 
-## 小さな例
+## 例題
 
-L1近接写像のsoft-thresholdingを入力値ごとに描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+g=λ||x||_1ならproxはsoft-thresholding。gradient step後に小さい成分をzeroへ縮めるISTA。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-06/opt-proximal-gradient.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- proxは単なるgradient stepではない。
-- step sizeと正則化係数の積を確認する。
-- 近接勾配法の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+gのproxが難しいと1stepがcheapとは限らない。分割が不適切なら利点を失う。
 
 ---
 
 ## よくある誤解
 
-- 近接勾配法の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+近接勾配法では、式へ数値を代入するだけでは不十分である。gのproxが難しいと1stepがcheapとは限らない。分割が不適切なら利点を失う。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+FISTA acceleration、backtracking、duality gapを利用。thresholdのλ/η conventionをlibraryで確認。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-近接勾配法は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+dataが巨大ならfull gradientをsample gradientへ置換するstochastic gradientへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 近接勾配法を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「fのquadratic upper model」を式を見ずに説明できるか
+- 「prox update」までの論理を一段ずつ再現できるか
+- 近接勾配法の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/opt-proximal-gradient)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/opt-proximal-gradient)
+## 教科書と演習
+
+- [教科書](../../textbook/opt-proximal-gradient)
+- [10問の演習](../../exercises/opt-proximal-gradient)

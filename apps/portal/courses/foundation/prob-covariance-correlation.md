@@ -1,42 +1,24 @@
 # 共分散と相関
 
-## Course・Unit内での位置付け
+Course 03「確率統計」のTopic 8/20。
 
-Course 03「確率統計」第308 Topic。確率・分布・推測・情報量を順に学ぶ。
+## 今回の中心問い
 
-## 今回解く問い
+共分散と相関の代表式は、どの定義・仮定から、なぜその形になるのか。
 
-共分散と相関を、共分散、相関係数、標準化、無相関と独立、共分散行列、相関と因果として定義し、観測データと機械学習へどう接続するか。
+## このTopicでできるようになること
 
-## 概要
-
-確率変数と実現値を区別し、定義、手計算、数値確認、統計的解釈を一つの流れで学ぶ。
-
-## 学習目標
-
-- 共分散、相関係数、標準化、無相関と独立、共分散行列、相関と因果の定義と前提を説明できる。
-- 小さな例を手計算し、標準PythonとNumPyで検算できる。
-
-## 前提Topic
-
-Course 00〜02の前提と同Unitの前Topic。
-
-## 想定学習時間
-
-スライド20分 / 教科書65分 / 演習55分
+- 共分散と相関の定義と代表式の意味を説明できる
+- 中心化した積を見るを途中式から再現できる
+- 成立条件を外したときの失敗を具体例で診断できる
 
 ## 学習順序
 
-Course 03の301〜320の順に学ぶ。
+前: [prob-joint-marginal-conditional-distributions](/courses/foundation/prob-joint-marginal-conditional-distributions)  
+次: [prob-discrete-distributions](/courses/foundation/prob-discrete-distributions)
 
 ## 教材
 
-- [スライド](/slides/prob-covariance-correlation/)
 - [教科書](/textbook/prob-covariance-correlation)
 - [演習](/exercises/prob-covariance-correlation)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/prob-joint-marginal-conditional-distributions)
-
-- [次のTopic](/courses/foundation/prob-discrete-distributions)
+- [スライド](/slides/prob-covariance-correlation/)

@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "ridge・Lasso・Elastic Net"
 ---
 
 # ridge・Lasso・Elastic Net
 
-Course 07｜データ解析
+Course 07｜データ解析の行列手法｜Topic 09/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-ridge・Lasso・Elastic Netで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+ridge・Lasso・Elastic Netの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- ridge・Lasso・Elastic Netの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `mat-gls-correlated-errors` で得た概念を使い、ここでは ridge・Lasso・Elastic Net へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ ridge・Lasso・Elastic Netで、何を入力し、代表式がどの量を出�
 
 正則化回帰はデータ適合と係数の複雑さを同時に最小化し、過学習を抑える。
 
-**前提:** num-regularization-ill-posed-problems, opt-proximal-gradient
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-07/mat-ridge-lasso-elastic-net.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-07/mat-ridge-lasso-elastic-net.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+λを増やしたときの係数パスを描く。 データ適合だけの解と、係数の大きさに罰則を加えた解を比較する。罰則を強めるほど係数は縮み、variance低下とbias増加の交換が起きる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\lambda\ge0$
+- $\|β\|_2²$：ridge penalty
+- $\|β\|_1$：Lasso penalty
+- $\alpha$：Elastic Net mix
 
 $$
 \min_{\boldsymbol{\beta}}\|\mathbf{X}\boldsymbol{\beta}-\mathbf{y}\|_2^2+\lambda\|\boldsymbol{\beta}\|_1
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$J=\|Xβ-y\|²+λ\|β\|²$。gradient=0から $(X^TX+λI)β=X^Ty$。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** ridge、Lasso、Elastic、Net
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+L1 ballはaxis上にcorner。quadratic loss contourがboundaryへ接する点がcornerになりやすく係数0。
 
 ---
 
-## 小さな例
+## 例題
 
-λを増やしたときの係数パスを描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+collinear featuresでridgeはcoefficientsを安定に分配しvarianceを減らす。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- L1とL2で係数の縮み方が違う。
-- 標準化の有無で罰則の意味が変わる。
-- ridge・Lasso・Elastic Netの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+Lassoが選んだfeatureが「真に重要」とは限らない。correlated featuresでは選択が不安定。
 
 ---
 
 ## よくある誤解
 
-- ridge・Lasso・Elastic Netの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+ridge・Lasso・Elastic Netでは、式へ数値を代入するだけでは不十分である。Lassoが選んだfeatureが「真に重要」とは限らない。correlated featuresでは選択が不安定。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+coordinate descent/proximal gradient、CVでλ選択。intercept penalize conventionを確認。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-ridge・Lasso・Elastic Netは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+outlierへquadratic lossが敏感な問題はloss functionそのものをrobustに変えるM-estimationへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- ridge・Lasso・Elastic Netを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「ridge normal equation」を式を見ずに説明できるか
+- 「Bayesian view」までの論理を一段ずつ再現できるか
+- ridge・Lasso・Elastic Netの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/mat-ridge-lasso-elastic-net)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/mat-ridge-lasso-elastic-net)
+## 教科書と演習
+
+- [教科書](../../textbook/mat-ridge-lasso-elastic-net)
+- [10問の演習](../../exercises/mat-ridge-lasso-elastic-net)

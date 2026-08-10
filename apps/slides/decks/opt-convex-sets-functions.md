@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "凸集合と凸関数"
 ---
 
 # 凸集合と凸関数
 
-Course 06｜最適化
+Course 06｜最適化｜Topic 02/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-凸集合と凸関数で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+凸集合と凸関数の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 凸集合と凸関数の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `opt-problem-formulation-objectives-constraints` で得た概念を使い、ここでは 凸集合と凸関数 へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 凸性があると局所最小が大域最小になり、最適化の幾何が大幅に単純になる。
 
-**前提:** opt-problem-formulation-objectives-constraints, la-span-subspaces
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-06/opt-convex-sets-functions.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-06/opt-convex-sets-functions.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+2点を結ぶ線分と関数グラフを描き、chordより下にある条件を見る。 2点を結ぶ線分全体が集合内に残るのが凸集合である。関数では2点を結ぶchordよりgraphが上へ出ないことがJensen型不等式に対応する。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\theta\in[0,1]$
+- $\theta x+(1-\theta)y$：2点を結ぶ線分上の点
+- $\mathcal C$：convex set
+- $f$：convex function
 
 $$
 f(\theta\mathbf{x}+(1-\theta)\mathbf{y})\le\theta f(\mathbf{x})+(1-\theta)f(\mathbf{y})
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+θ=0でy、θ=1でx、その間がstraight segment。これを全て含むことが凸集合。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 凸集合、凸関数
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+epigraph $\{(x,t):t\ge f(x)\}$ がconvexであることとf convexは同値。chordよりgraphが下という幾何になる。
 
 ---
 
-## 小さな例
+## 例題
 
-2点を結ぶ線分と関数グラフを描き、chordより下にある条件を見る。
-
-最小の非自明な設定で、手計算と実装を照合する。
+quadratic f(x)=x²はconvex。second derivative2>0。line segment inequalityも平方完成で確認できる。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 凸集合と凸関数を区別する。
-- 強凸性は単なる厳密凸性より強い。
-- 凸集合と凸関数の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+constraintの各式がlinearでも「≠」やdiscrete constraintを入れるとfeasible setが非convexになることがある。
 
 ---
 
 ## よくある誤解
 
-- 凸集合と凸関数の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+凸集合と凸関数では、式へ数値を代入するだけでは不十分である。constraintの各式がlinearでも「≠」やdiscrete constraintを入れるとfeasible setが非convexになることがある。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+CVX/DCPはcomposition ruleでconvexityを機械検証する。solverが「local optimum」と返す非convex problemとconvex guaranteeを区別。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-凸集合と凸関数は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+convexityだけでなくsmoothnessとstrong convexityを入れるとgradient methodのrateを定量化できる。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 凸集合と凸関数を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「線分のparameterization」を式を見ずに説明できるか
+- 「local minimumがglobal」までの論理を一段ずつ再現できるか
+- 凸集合と凸関数の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/opt-convex-sets-functions)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/opt-convex-sets-functions)
+## 教科書と演習
+
+- [教科書](../../textbook/opt-convex-sets-functions)
+- [10問の演習](../../exercises/opt-convex-sets-functions)

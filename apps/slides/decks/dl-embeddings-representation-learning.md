@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "embeddingと表現学習"
 ---
 
 # embeddingと表現学習
 
-Course 09｜深層学習
+Course 09｜深層学習｜Topic 15/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-embeddingと表現学習で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+embeddingと表現学習の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- embeddingと表現学習の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `dl-self-supervised-contrastive` で得た概念を使い、ここでは embeddingと表現学習 へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ embeddingと表現学習で、何を入力し、代表式がどの量を出力�
 
 embeddingは離散IDを連続ベクトルへ写し、類似性や関係を幾何として扱えるようにする。
 
-**前提:** la-low-rank-approximation, dl-self-supervised-contrastive
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-embeddings-representation-learning.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-09/dl-embeddings-representation-learning.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+token点群を2次元へ描き、近い概念が近く配置される模式図を見る。 離散IDが連続ベクトルへ写され、近いベクトル同士が似た文脈や意味を持つよう学習される。距離・内積が後続modelの計算単位になる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $E\in\mathbb R^{V\times d}$：embedding table
+- $1_i$：one-hot token
+- $e_i=E^T1_i$
 
 $$
 \mathbf{e}_i=\mathbf{E}^{\mathsf T}\mathbf{1}_i
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$E^T1_i$ はEのi-th rowを選ぶ。lookupはmatrix multiplyのsparse special case。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** embedding、表現学習
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+dot/cosineでembedding geometryを評価するが、meaningはobjective/context依存。
 
 ---
 
-## 小さな例
+## 例題
 
-token点群を2次元へ描き、近い概念が近く配置される模式図を見る。
-
-最小の非自明な設定で、手計算と実装を照合する。
+vocab50k,d=768ならtable 38.4M parameters。one-hot 50k dimensionをexplicit生成不要。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 距離の意味は学習目的に依存する。
-- indexとembedding vectorを混同しない。
-- embeddingと表現学習の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+cosine近い=causal/semantic equivalentを保証しない。dataset biasを反映。
 
 ---
 
 ## よくある誤解
 
-- embeddingと表現学習の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+embeddingと表現学習では、式へ数値を代入するだけでは不十分である。cosine近い=causal/semantic equivalentを保証しない。dataset biasを反映。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+padding index、OOV、normalization、vocab resize。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-embeddingと表現学習は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+node IDs/featuresをgraph neighborhood aggregationで更新するGNNへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- embeddingと表現学習を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「one-hot multiplication」を式を見ずに説明できるか
+- 「shared embedding」までの論理を一段ずつ再現できるか
+- embeddingと表現学習の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/dl-embeddings-representation-learning)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/dl-embeddings-representation-learning)
+## 教科書と演習
+
+- [教科書](../../textbook/dl-embeddings-representation-learning)
+- [10問の演習](../../exercises/dl-embeddings-representation-learning)

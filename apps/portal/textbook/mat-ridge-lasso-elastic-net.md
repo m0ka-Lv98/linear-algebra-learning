@@ -1,202 +1,164 @@
 # ridge・Lasso・Elastic Net：教科書
 
-## この章で理解すること
+Course 07｜データ解析の行列手法｜Topic 09/20
 
-この章では「ridge・Lasso・Elastic Net」を、定義、式の型、計算手順、成立条件、数値的な確認へ分解する。ridge・Lasso・Elastic Netの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する。単に公式を再現するのではなく、入力、出力、仮定、失敗条件を説明できる状態を目標とする。
+## このTopicは、前の何を受けて始まるか
 
-## 前提知識
+前Topic `mat-gls-correlated-errors` で得た概念を使い、ここでは ridge・Lasso・Elastic Net へ進む。
 
-主な前提は正則化と悪条件・不適切問題、近接勾配法である。新しい記号は初出時に意味を定義する。ベクトルは太字小文字、行列は太字大文字、スカラーは通常の小文字で表す。配列を扱う場合は数学上の次元とNumPyのshapeを分けて記述する。
+前提として使うのは `num-regularization-ill-posed-problems`、`opt-proximal-gradient` です。
 
-## 今回扱う問い
-
-ridge・Lasso・Elastic Netは何を表し、どの条件で使え、どの量を計算するのか。結果をどのように検算し、どの典型的な誤りを避けるべきか。
-
-## 主要概念
-
-- **ridge**：このTopicで定義し、例と反例を用いて境界を確認する。
-- **Lasso**：このTopicで定義し、例と反例を用いて境界を確認する。
-- **Elastic**：このTopicで定義し、例と反例を用いて境界を確認する。
-- **Net**：このTopicで定義し、例と反例を用いて境界を確認する。
-
-## 直感的な説明
-
-ridge・Lasso・Elastic Netを理解する第一歩は、計算の見た目よりも「何を入力し、何を保存し、何を変換するか」を捉えることである。小さな例では、各項や各成分を明示して操作を追う。一般式へ進むときは、添字範囲、定義域、終域、制約条件を省略しない。
-
-<!-- course02-10-refined:start -->
-
-## このTopicの核心
+## まず直感を作る
 
 正則化回帰はデータ適合と係数の複雑さを同時に最小化し、過学習を抑える。
 
-代表式は次の通りです。
+
+
+## 図の解説
+
+<img src="/visuals/course-07/mat-ridge-lasso-elastic-net.png" alt="ridge・Lasso・Elastic Netの図解" style="max-height: 440px; display:block; margin:0 auto;" />
+
+λを増やしたときの係数パスを描く。 データ適合だけの解と、係数の大きさに罰則を加えた解を比較する。罰則を強めるほど係数は縮み、variance低下とbias増加の交換が起きる。
+
+## 記号・型・次元
+
+- $\lambda\ge0$
+- $\|β\|_2²$：ridge penalty
+- $\|β\|_1$：Lasso penalty
+- $\alpha$：Elastic Net mix
+
+
+## 正式な定義・代表式
+
+penalized regressionはfitとcoefficient complexityのtradeoff。ridge smooth shrinkage、Lassoはnonsmooth cornerによりzero coefficientsを作り得る。
+
+代表式は
 
 $$
 \min_{\boldsymbol{\beta}}\|\mathbf{X}\boldsymbol{\beta}-\mathbf{y}\|_2^2+\lambda\|\boldsymbol{\beta}\|_1
 $$
 
-式を暗記するのではなく、**入力 → 変換 → 出力**と、図のどの要素が各項に対応するかを確認します。
+です。
 
-## 図解
+## なぜこの式・結論になるのか
 
-<img src="/visuals/course-07/mat-ridge-lasso-elastic-net.png" alt="ridge・Lasso・Elastic Netの図解" style="max-height: 380px; display: block; margin: 0 auto;" />
+### 1. ridge normal equation
 
-### 図を見るポイント
+$J=\|Xβ-y\|²+λ\|β\|²$。gradient=0から $(X^TX+λI)β=X^Ty$。
 
-- 軸・node・矢印・領域が何を表すかを最初に確認する。
-- 代表式の各項と図の要素を1対1で対応づける。
-- 条件を1つ変えたとき、図のどこが変化するかを予測してから確認する。
+### 2. L1 geometry
 
-## 代表式を読む手順
+L1 ballはaxis上にcorner。quadratic loss contourがboundaryへ接する点がcornerになりやすく係数0。
 
-1. **左辺**が何を出力しているかを言葉にする。
-2. **右辺**を、入力・係数・変換・集約の役割に分ける。
-3. 各記号の次元、shape、定義域、単位を確定する。
-4. 極端な入力、ゼロ、対称な入力などで式の挙動を予測する。
-5. 図の矢印・領域・曲線・分布のどこが各項に対応するかを確認する。
+### 3. Bayesian view
 
-この順序で読むと、式変形だけを追って『何を計算しているのか』を見失うのを防げます。
+Gaussian prior→ridge, Laplace prior→L1 MAP。ただしregularizationをpriorと解釈するにはscaling/likelihoodも含める。
 
-## 最小例で考える
+## 教科書が省略しやすい一段を補う
 
-λを増やしたときの係数パスを描く。
 
-最小の非自明な設定で手計算し、同じ入力をNumPy等でも計算して、shape・符号・大きさ・残差・確率などを照合します。数値を変えた2例目も作り、結論が特定の数値に依存していないことを確認します。
+### penaltyのgeometryがsolutionの形を変える
 
-## このTopic固有の成立条件
+ridgeは $\|y-X\beta\|^2+\lambda\|\beta\|_2^2$。gradient=0から $(X^TX+\lambda I)\hat\beta=X^Ty$、small singular directionsのinverse amplificationを抑える。LassoはL1 penaltyでnondifferentiableだがconstraint ballにcornerがあり、level setとの接触がaxis上で起こりやすいためexact zero coefficientsを作る。
+
+Elastic NetはL1+L2でsparsityとcorrelated feature stabilizationを組み合わせる。lambdaはtraining loss最小ではなくvalidation/CVでprediction goalに合わせて選ぶ。interceptをpenalizeするか、feature scalingをどうするかでsolutionが変わる。
+
+
+### orthonormal designでshrinkageを直接見る
+
+$X^TX=I$ ならOLS coefficient $z=X^Ty$。ridge solutionは $\hat\beta_j=z_j/(1+\lambda)$ と全componentをcontinuous shrink。Lassoは（scale conventionによるが）soft-threshold $\operatorname{sign}(z_j)(|z_j|-\lambda)_+$ でsmall coefficientsをexact zeroにする。
+
+correlated designではcoordinatesがcoupleしこの単純式は崩れるが、L2/L1 penaltyの基本geometryを理解する小例として有効。
+
+## 途中を飛ばさず全体をつなぐ
+
+### ridge・Lasso・Elastic Netの導出を一本につなげる
+
+penalized regressionはfitとcoefficient complexityのtradeoff。ridge smooth shrinkage、Lassoはnonsmooth cornerによりzero coefficientsを作り得る。
+
+#### 1. ridge normal equation
+
+まず出発点を固定する。 $J=\|Xβ-y\|²+λ\|β\|²$。gradient=0から $(X^TX+λI)β=X^Ty$。 次に必要になるのは「L1 geometry」である。
+
+#### 2. L1 geometry
+
+ここまでで得た結果を次の段階へ渡す。 L1 ballはaxis上にcorner。quadratic loss contourがboundaryへ接する点がcornerになりやすく係数0。 次に必要になるのは「Bayesian view」である。
+
+#### 3. Bayesian view
+
+最後に、前二段階の結果をまとめて結論へ進む。 Gaussian prior→ridge, Laplace prior→L1 MAP。ただしregularizationをpriorと解釈するにはscaling/likelihoodも含める。
+
+#### 代表式へ戻す
+
+以上をまとめた中心式は
+
+$$
+\min_{\boldsymbol{\beta}}\|\mathbf{X}\boldsymbol{\beta}-\mathbf{y}\|_2^2+\lambda\|\boldsymbol{\beta}\|_1
+$$
+
+である。ここでは式だけを新しい事実として追加しているのではなく、上の各段階で定義した量・仮定・変形を一つの形に圧縮している。したがって式を使うときは、途中で必要だった条件が保たれている範囲までしか結論を延長できない。
+
+### 具体例と一般式を往復する
+
+本文の第一例は次の設定である。
+
+collinear featuresでridgeはcoefficientsを安定に分配しvarianceを減らす。
+
+この例は特定の数値だけを覚えるためではない。上の導出で現れた量を小さい設定で実際に計算し、代表式の左辺・右辺が同じ対象を表していることを確認するためのものである。第二例では
+
+Lassoはfeature scalingでpenalty相対強度が変わるため通常standardization。
+
+と条件を変えている。二つを比較すると、数値や入力が変わっても残る構造と、仮定を変えたために変化する結論を分離できる。
+
+### どこまで結論を信頼できるか
+
+このTopicの境界を示す例は次である。
+
+Lassoが選んだfeatureが「真に重要」とは限らない。correlated featuresでは選択が不安定。
+
+この失敗例は、単に「例外がある」という注意ではない。上の導出を逆にたどると、どの段階で必要条件が失われ、その後の式変形または解釈を続けられなくなるかを特定できる。したがって反例は定理の外側を覚えるためではなく、定理が何を仮定していたかを確認するために使う。
+
+## 例題1：小さな数値で最後まで計算する
+
+collinear featuresでridgeはcoefficientsを安定に分配しvarianceを減らす。
+
+## 例題2：条件を少し変えて、本質が数値依存でないことを確認する
+
+Lassoはfeature scalingでpenalty相対強度が変わるため通常standardization。
+
+## 成立条件と、条件を外したときに何が壊れるか
 
 - L1とL2で係数の縮み方が違う。
 - 標準化の有無で罰則の意味が変わる。
 - ridge・Lasso・Elastic Netの定義と計算手順を区別し、数値例だけで一般性を判断しない。
 
-成立条件は『公式を使ってよいか』を決めます。条件を外した場合、**未定義になるのか、解が一意でなくなるのか、近似誤差が増えるのか、数値的に不安定になるのか、統計的な解釈が崩れるのか**を区別してください。
+Lassoが選んだfeatureが「真に重要」とは限らない。correlated featuresでは選択が不安定。
 
-## 数値・実装での検算
-
-- まず2〜5要素程度の小さな入力を作る。
-- 代表式を手計算し、期待する出力を先に書く。
-- NumPy等で同じ計算を実行し、手計算と照合する。
-- 配列なら `shape` と `dtype`、反復法なら残差と反復回数、確率なら総和・積分と範囲を確認する。
-- 浮動小数点比較では完全一致ではなく適切な許容誤差を使う。
-- 乱数を使う場合はseedだけでなく、標本数と生成分布も記録する。
-
-## 後続Topicでどこに現れるか
-
-ridge・Lasso・Elastic Netは、後続の数値計算・データ解析・機械学習で前提となる。
-
-後続でこの量が **入力表現・目的関数・制約・更新則・診断指標** のどれとして再登場するかを意識すると、Course間のつながりが見えやすくなります。
-
-## このTopicで特に避ける誤解
+## よくある誤解を分解する
 
 - ridge・Lasso・Elastic Netの定義と計算手順を同一視する
 - 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
-- L1とL2で係数の縮み方が違う。
 
-## 自力説明チェック
+ridge・Lasso・Elastic Netでは、式へ数値を代入するだけでは不十分である。Lassoが選んだfeatureが「真に重要」とは限らない。correlated featuresでは選択が不安定。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
-- ridge・Lasso・Elastic Netを式を見ずに一文で説明できるか。
-- 代表式の左辺と右辺を日本語で説明できるか。
-- 図のどの要素が代表式の各項に対応するか。
-- 成立条件を1つ外した反例を作れるか。
-- 小さな入力で手計算と実装を一致させられるか。
-- 後続分野で何のために使われるか説明できるか。
+## 実装・数値計算では何に注意するか
 
-## 理解を一段深めるための観点
+coordinate descent/proximal gradient、CVでλ選択。intercept penalize conventionを確認。
 
-### 1. 定義とアルゴリズムを分ける
+## ここから一段だけ発展する
 
-ridge・Lasso・Elastic Netそのものの**数学的・統計的な定義**と、それを計算するための**アルゴリズム**は別物です。同じ対象でも複数の計算法があり、計算方法を変えても定義は変わりません。逆に、似た計算手順でも前提条件が違えば別の対象を計算している場合があります。まず『何が定義なのか』を固定してから、実装を選びます。
+outlierへquadratic lossが敏感な問題はloss functionそのものをrobustに変えるM-estimationへ。
 
-### 2. 小さい例から一般式へ戻る
 
-最初から一般式だけを追わず、2次元・2クラス・数個の標本・数回の反復など、目で追える大きさまで問題を縮めます。そこで各中間量をすべて書き出し、代表式の各項と対応づけます。その後で一般の次元へ戻ると、添字・shape・確率変数・反復indexの役割を見失いにくくなります。
+## このTopicを理解できたか確認する問い
 
-### 3. 反例で境界を確認する
+- 「ridge normal equation」を式を見ずに説明できるか
+- 「Bayesian view」までの論理を一段ずつ再現できるか
+- ridge・Lasso・Elastic Netの条件を1つ外した反例を説明できるか
 
-成立条件は暗記項目ではなく、**どこまで結論を信頼できるかの境界**です。条件を1つだけ意図的に壊し、何が起きるか確認します。未定義になる、解が複数になる、誤差が増幅する、収束しない、確率解釈が崩れる、汎化性能が落ちる、といった失敗の種類を区別すると、条件の意味が具体化します。
+## 外部教材との照合
 
-### 4. 図・式・実装の三者を往復する
+- [MIT OCW 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
+- [Boyd & Vandenberghe, Introduction to Applied Linear Algebra](https://web.stanford.edu/~boyd/vmls/)
 
-図だけで分かった気にならず、代表式へ戻って図の形を説明します。式だけで計算せず、結果を図に戻して向き・距離・分布・残差・loss・計算量などの意味を確認します。最後に小さな実装で数値を再現し、手計算との差が丸め誤差なのか、shapeミスなのか、定義の取り違えなのかを切り分けます。
-
-### 5. 後続Topicで役割が変わることを見る
-
-同じ概念が後続では別の役割で現れます。あるCourseでは定義対象だった量が、次のCourseでは目的関数、制約、特徴量、更新則、評価指標として使われます。ridge・Lasso・Elastic Netは、後続の数値計算・データ解析・機械学習で前提となる。 この接続を意識すると、各Topicを独立した公式集ではなく、同じ数学を異なる目的で再利用する体系として理解できます。
-
-## 数式を使う前のチェックリスト
-
-1. **対象を定義したか**：スカラー、ベクトル、行列、確率変数、関数、graph、model parameterなど、何を扱っているかを明示する。
-2. **記号を定義したか**：式に出る文字、添字、集合、期待値、norm、微分記号を未定義のまま使わない。
-3. **shape・次元を確認したか**：積や加算が定義できるか、入力と出力の次元が意図通りかを確認する。
-4. **成立条件を確認したか**：可逆性、独立性、滑らかさ、正定値性、凸性、分布仮定、有限精度、data splitなど、このTopic固有の条件を確認する。
-5. **極端な例を試したか**：ゼロ、同じ値、完全相関、rank不足、非常に大きい/小さい値、標本数が少ない場合などで挙動を見る。
-6. **結果を別の方法で検算したか**：手計算、図、別アルゴリズム、残差、保存量、simulationなど、少なくとも1つ独立な確認方法を使う。
-
-## 学習ログに残すべきもの
-
-このTopicを実装して確認した場合は、入力値だけでなく、shape、dtype、乱数seed、反復回数、停止条件、許容誤差、使用した正規化や前処理も記録します。『コードが動いた』だけでは再現性も数学的妥当性も保証されません。**何を期待し、何を観測し、どの基準で一致と判断したか**まで残すと、後で別のTopicへ接続するときに検算可能な知識になります。
-
-<!-- course02-10-refined:end -->
-
-## 正式な定義
-
-ridge、Lasso、Elastic、Netを定義する。定義は必要な条件を列挙する文であり、計算例や経験則ではない。複数の定義が同値になる場合は、どの仮定の下で同値かを示す。反例がある場合は、どの条件を外したときに結論が壊れるかを明記する。
-
-## 代表式
-
-$$
-\min_{\boldsymbol{\beta}}\|\mathbf{X}\boldsymbol{\beta}-\mathbf{y}\|_2^2+\lambda\|\boldsymbol{\beta}\|_1
-$$
-
-この式に現れる記号は、本文中で対象、次元、添字範囲、成立条件を定義する。式を暗記するのではなく、左辺が表す量、右辺が行う操作、出力の型を順に確認する。
-
-## 小さな例
-
-最小限の次元または少数の標本を使って計算する。最初に入力を列挙し、次に定義へ代入し、最後に出力の型・符号・大きさを確認する。結果が直感と異なる場合は、定義域、正規化、基準、単位を再確認する。
-
-## 導出と計算手順
-
-1. 対象と記号を定義する。
-2. 適用する定義または目的関数を書く。
-3. 各変形の根拠を一行ずつ示す。
-4. 出力の型、次元、制約を確認する。
-5. 小さな例、極端な例、境界条件で検算する。
-
-この順序を守ると、記号操作が正しくても対象がずれているという種類の誤りを減らせる。
-
-## 幾何・確率・計算上の解釈
-
-Courseに応じて、量を幾何的な方向・距離・部分空間、確率的な平均・ばらつき・不確実性、計算的な反復・誤差・資源として解釈する。複数の解釈がある場合は、同じ式のどの部分に対応するかを明示する。
-
-## 数値・実装上の確認
-
-小さな入力を用意し、定義から得られる結果と実装結果を照合する。必要な場合は入力shape、出力shape、dtype、許容誤差、反復回数を記録する。外部ライブラリ固有の便利関数を先に使わず、計算の意味を追跡する。
-
-## 成立条件と失敗条件
-
-公式やアルゴリズムは無条件には使えない。定義域、rank、可逆性、正定値性、独立性、滑らかさ、有限精度、標本設計など、このTopicに関係する条件を先に確認する。条件を満たさない場合は、代替手法、正則化、近似、診断を検討する。
-
-## 後続分野への接続
-
-ridge・Lasso・Elastic Netは、後続の数値計算・データ解析・機械学習で前提となる。 この接続では、現在のTopicで定義した量が、後続Topicの入力、目的関数、制約、評価指標のどれとして使われるかを確認する。
-
-## よくある誤解
-
-- ridge・Lasso・Elastic Netの定義と計算手順を同一視する。
-- 成立条件を確認せず公式を適用する。
-- 数学上の次元と配列のshapeを混同する。
-- 小さな数値例で一致したことを一般的な証明とみなす。
-- 実装がエラーを出さないことを数学的妥当性の証拠とみなす。
-
-## まとめ
-
-ridge・Lasso・Elastic Netでは、ridge、Lasso、Elastic、Netを区別し、入力・出力・条件・検算を一組として扱う。定義を言葉で説明し、代表式を展開し、小さな例で結果を確認できれば、次のTopicへ進める。
-
-## 演習
-
-[10問の演習と完全解答](/exercises/mat-ridge-lasso-elastic-net)
-
-## 出典と位置付け
-
-本章は公開されている標準的な数学・計算機科学の知識を基に独自に構成した学習用ドラフトである。外部教材の文章、図、演習を翻訳または転載していない。
+[演習へ](/exercises/mat-ridge-lasso-elastic-net)　|　[スライドへ](/slides/mat-ridge-lasso-elastic-net/)

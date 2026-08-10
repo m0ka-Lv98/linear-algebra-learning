@@ -1,43 +1,24 @@
 # CNNと畳み込み
 
-## Course・Unit内での位置付け
+Course 09「深層学習」のTopic 6/20。
 
-Course 09「深層学習」／Unit「主要architecture」／第906 Topic。
+## 今回の中心問い
 
-## 今回解く問い
+CNNと畳み込みの代表式は、どの定義・仮定から、なぜその形になるのか。
 
-CNNと畳み込みの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する。どの条件で成立し、どの出力を得て、どの後続Topicへ接続するかを明確にする。
+## このTopicでできるようになること
 
-## 概要
-
-CNN、畳み込みを、定義、直感、小さな例、計算、実装上の注意の順に整理する。
-
-## 学習目標
-
-- CNN、畳み込みの主要な定義と成立条件を説明できる。
-- 小さな問題を手計算し、式・shape・数値結果を検証できる。
-- CNNと畳み込みは、後続の数値計算・データ解析・機械学習で前提となる。
-
-## 前提Topic
-
-- [畳み込みと線形時不変系](/courses/foundation/mat-convolution-linear-systems)
-- [perceptronと多層network](/courses/foundation/dl-perceptron-mlp)
-
-## 想定学習時間
-
-スライド20分 / 教科書65分 / 演習55分
+- CNNと畳み込みの定義と代表式の意味を説明できる
+- local receptive fieldを途中式から再現できる
+- 成立条件を外したときの失敗を具体例で診断できる
 
 ## 学習順序
 
-スライドで全体像を把握し、教科書で定義と導出を確認し、演習で誤解を診断する。
+前: [dl-optimization-regularization](/courses/foundation/dl-optimization-regularization)  
+次: [dl-rnn-sequence-models](/courses/foundation/dl-rnn-sequence-models)
 
 ## 教材
 
-- [スライド](/slides/dl-cnn-convolution/)
 - [教科書](/textbook/dl-cnn-convolution)
 - [演習](/exercises/dl-cnn-convolution)
-
-## 前後Topic
-
-- [前のTopic：深層学習の最適化と正則化](/courses/foundation/dl-optimization-regularization)
-- [次のTopic：RNNと系列model](/courses/foundation/dl-rnn-sequence-models)
+- [スライド](/slides/dl-cnn-convolution/)

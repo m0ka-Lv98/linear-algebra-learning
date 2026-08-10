@@ -1,134 +1,219 @@
 # 線形回帰の確率モデル：演習
 
-[教科書](/textbook/stat-linear-regression-probabilistic-model)と対応する10問。ヒント以降は折りたたんである。
+Course 03｜Topic 19/20。10問すべて、このTopic固有の問いとして作成しています。
 
-### PST-319-01：概念
+[教科書](/textbook/stat-linear-regression-probabilistic-model)
 
-1. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+## 問1. 定義と記号
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+「線形回帰の確率モデル」の代表式
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+$$
+\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}
+$$
+
+について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
+
+<details><summary>ヒント</summary>
+
+式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
+
 </details>
 
-### PST-319-02：概念
+<details><summary>完全解答</summary>
 
-2. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+代表式は結果だけを書くための記号ではない。本文で定義した量を使い、線形回帰の確率モデルが何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+**条件付き平均をモデル化する**
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+$E[\mathbf y|\mathbf X]=\mathbf X\beta$ と置く。各係数は他の列を固定した線形効果として読む。
+
+答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+
 </details>
 
-### PST-319-03：手計算・導出
+## 問2. 導出1：条件付き平均をモデル化する
 
-3. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+「線形回帰の確率モデル」で **条件付き平均をモデル化する** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+本文の「条件付き平均をモデル化する」を、直前の定義から始めて書き直す。
+
 </details>
 
-### PST-319-04：手計算・導出
+<details><summary>完全解答</summary>
 
-4. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+$E[\mathbf y|\mathbf X]=\mathbf X\beta$ と置く。各係数は他の列を固定した線形効果として読む。
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「二乗損失が正規尤度から出る」へ進むときも、この段階で得た量だけを使う。
+
 </details>
 
-### PST-319-05：手計算・導出
+## 問3. 導出2：二乗損失が正規尤度から出る
 
-5. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+「線形回帰の確率モデル」で **二乗損失が正規尤度から出る** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+本文の「二乗損失が正規尤度から出る」を、直前の定義から始めて書き直す。
+
 </details>
 
-### PST-319-06：誤りの診断
+<details><summary>完全解答</summary>
 
-6. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+$\varepsilon_i\sim N(0,\sigma^2)$ 独立ならlog尤度は定数を除き $-\frac1{2\sigma^2}\|y-X\beta\|^2$。最大化はOLS最小化と同値。
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「推定と不確実性を分ける」へ進むときも、この段階で得た量だけを使う。
+
 </details>
 
-### PST-319-07：誤りの診断
+## 問4. 導出3：推定と不確実性を分ける
 
-7. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+「線形回帰の確率モデル」で **推定と不確実性を分ける** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+本文の「推定と不確実性を分ける」を、直前の定義から始めて書き直す。
+
 </details>
 
-### PST-319-08：実装・数値読解
+<details><summary>完全解答</summary>
 
-8. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+点推定 $\hat\beta$ だけでなく、誤差仮定から $Var(\hat\beta)$ を導きSE・CI・検定へ進む。
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+
 </details>
 
-### PST-319-09：応用
+## 問5. 数値例を途中から再現
 
-9. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+次の「線形回帰の確率モデル」の設定を、自分で途中量まで展開して最終結論を確認せよ。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+> 切片と1説明変数なら $y_i=\beta_0+\beta_1x_i+\varepsilon_i$。$\beta_1$ はxが1増えたとき条件付き平均がどれだけ変わるか。
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+
+<details><summary>完全解答</summary>
+
+設定に対する計算・判断は次の通り。
+
+切片と1説明変数なら $y_i=\beta_0+\beta_1x_i+\varepsilon_i$。$\beta_1$ はxが1増えたとき条件付き平均がどれだけ変わるか。
+
+ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+
 </details>
 
-### PST-319-10：応用
+## 問6. 条件を変えたときの差
 
-10. 線形回帰の確率モデルについて、design matrix、response、parameter、Gaussian noise、homoscedasticity、residual、MLE、WLSへの接続のうち一つを定義し、式 $$\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$$ が表す量を説明せよ。
+次の第二例について、第一例から変更した条件を特定し、その変更によって「線形回帰の確率モデル」のどの部分が変わるか説明せよ。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+> 誤差分散がxとともに増えるheteroscedasticデータではOLS点推定が使えても、等分散を仮定した標準誤差は誤る。WLS/robust SEが必要。
 
-- ヒント1: 確率変数は大文字、観測値は小文字で書き、supportとshapeを確認する。
-- ヒント2: 正規化、条件、単位、独立性の仮定を先に列挙する。
-- 解法方針: 定義を式へ展開し、小さな値を代入して範囲と解釈を確認する。
-- 完全解答: \mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}を定義に従って読み、必要な和・積分・条件付けを行う。結果が確率なら0以上1以下、分布なら正規化を確認し、最後に統計・機械学習への接続を述べる。
-- よくある誤答: PDFを一点の確率と読む、排反と独立を混同する、p-valueや尤度を確率として扱う。
+<details><summary>完全解答</summary>
+
+誤差分散がxとともに増えるheteroscedasticデータではOLS点推定が使えても、等分散を仮定した標準誤差は誤る。WLS/robust SEが必要。
+
+比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+
 </details>
 
+## 問7. 成立条件と反例
+
+「線形回帰の確率モデル」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
+
+> 高い $R^2$ や有意な係数だけで因果関係は証明できない。交絡、selection、model misspecificationは確率モデル外の問題。
+
+<details><summary>ヒント</summary>
+
+「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
+
+</details>
+
+<details><summary>完全解答</summary>
+
+本文で確認する条件は以下である。
+
+- 予測と因果を混同しない。
+- 外挿では不確実性が増える。
+- 線形回帰の確率モデルの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+
+失敗例は次の通り。
+
+高い $R^2$ や有意な係数だけで因果関係は証明できない。交絡、selection、model misspecificationは確率モデル外の問題。
+
+したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+
+</details>
+
+## 問8. 実装・数値診断
+
+「線形回帰の確率モデル」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
+
+> 逆行列を明示的に作らずQR/SVDでlstsqを解く。residual plot、leverage、heteroscedasticityを診断し、train/test目的なら推論と予測を区別する。
+
+<details><summary>完全解答</summary>
+
+逆行列を明示的に作らずQR/SVDでlstsqを解く。residual plot、leverage、heteroscedasticityを診断し、train/test目的なら推論と予測を区別する。
+
+実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+
+</details>
+
+## 問9. 次Topicへの導線
+
+「線形回帰の確率モデル」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
+
+> Course07でOLS, WLS, GLSを行列幾何と誤差共分散の観点から深掘りし、Course08で予測モデルとして正則化・validationを加える。
+
+<details><summary>完全解答</summary>
+
+Course07でOLS, WLS, GLSを行列幾何と誤差共分散の観点から深掘りし、Course08で予測モデルとして正則化・validationを加える。
+
+本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+
+</details>
+
+## 問10. 総合証明・説明
+
+「線形回帰の確率モデル」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+
+<details><summary>完全解答</summary>
+
+答案では次の流れを一続きにする。
+
+**代表式**
+
+$$
+\mathbf{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}
+$$
+
+**導出**
+
+1. **条件付き平均をモデル化する** — $E[\mathbf y|\mathbf X]=\mathbf X\beta$ と置く。各係数は他の列を固定した線形効果として読む。
+
+2. **二乗損失が正規尤度から出る** — $\varepsilon_i\sim N(0,\sigma^2)$ 独立ならlog尤度は定数を除き $-\frac1{2\sigma^2}\|y-X\beta\|^2$。最大化はOLS最小化と同値。
+
+3. **推定と不確実性を分ける** — 点推定 $\hat\beta$ だけでなく、誤差仮定から $Var(\hat\beta)$ を導きSE・CI・検定へ進む。
+
+**数値・具体例**
+
+切片と1説明変数なら $y_i=\beta_0+\beta_1x_i+\varepsilon_i$。$\beta_1$ はxが1増えたとき条件付き平均がどれだけ変わるか。
+
+**条件を壊すと**
+
+高い $R^2$ や有意な係数だけで因果関係は証明できない。交絡、selection、model misspecificationは確率モデル外の問題。
+
+**実装**
+
+逆行列を明示的に作らずQR/SVDでlstsqを解く。residual plot、leverage、heteroscedasticityを診断し、train/test目的なら推論と予測を区別する。
+
+各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+
+</details>

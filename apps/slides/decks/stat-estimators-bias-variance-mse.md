@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "推定量・バイアス・分散・MSE"
 ---
 
 # 推定量・バイアス・分散・MSE
 
-Course 03｜確率統計
+Course 03｜確率統計｜Topic 14/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-推定量・バイアス・分散・MSEで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+推定量・バイアス・分散・MSEの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 推定量・バイアス・分散・MSEの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `prob-multivariate-normal-distribution` で得た概念を使い、ここでは 推定量・バイアス・分散・MSE へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 推定量はデータから未知パラメータを返す規則で、バイアスと分散の両方で性能を見る。
 
-**前提:** prob-expectation-variance-moments, prob-laws-large-numbers-central-limit-theorem
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-03/stat-estimators-bias-variance-mse.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-03/stat-estimators-bias-variance-mse.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+同じ母集団から反復標本を取り、推定値の中心とばらつきを可視化する。 横軸上の推定量の分布に対し、真値からの系統的なずれがbias、分布の広がりがvarianceである。MSEはこの2種類の誤差を二乗誤差としてまとめる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\theta$：未知の母数
+- $\hat\theta=T(X_1,\ldots,X_n)$：データから計算する推定量
+- $\operatorname{Bias}(\hat\theta)=E[\hat\theta]-\theta$
+- $\operatorname{MSE}=E[(\hat\theta-\theta)^2]$
 
 $$
 \operatorname{MSE}(\hat{\theta})=\mathbb{E}[(\hat{\theta}-\theta)^2]
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$\hat\theta-\theta=(\hat\theta-E\hat\theta)+(E\hat\theta-\theta)$。第一項は平均0のランダム変動、第二項は定数bias。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 推定量、バイアス、分散、MSE
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+二乗すると分散項、bias二乗、交差項が出る。交差項の期待値は $2Bias\,E[\hat\theta-E\hat\theta]=0$。
 
 ---
 
-## 小さな例
+## 例題
 
-同じ母集団から反復標本を取り、推定値の中心とばらつきを可視化する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+$X_i\sim(\mu,\sigma^2)$ の標本平均は不偏で $Var(\bar X)=\sigma^2/n$、MSEも同じ。標本数4倍でMSEは1/4。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 1回の推定値と推定量の分布を区別する。
-- MSEはbias^2+varianceに分解される。
-- 推定量・バイアス・分散・MSEの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+「不偏推定量なら常に最良」は誤り。不偏性は平均的中心だけを評価し、ばらつきは無視する。MSEや目的に応じた損失で比較する必要がある。
 
 ---
 
 ## よくある誤解
 
-- 推定量・バイアス・分散・MSEの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+推定量・バイアス・分散・MSEでは、式へ数値を代入するだけでは不十分である。「不偏推定量なら常に最良」は誤り。不偏性は平均的中心だけを評価し、ばらつきは無視する。MSEや目的に応じた損失で比較する必要がある。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+simulationで同じ母数から多数datasetを生成し、推定量のsampling distributionを観察するとbiasとvarianceを分離できる。1つのdataset内の標本分散とは別物。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-推定量・バイアス・分散・MSEは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+推定量をどう選ぶかの代表原理が尤度最大化。次Topicでは観測データを最も説明する母数としてMLEを導入する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 推定量・バイアス・分散・MSEを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「誤差を平均周りに分ける」を式を見ずに説明できるか
+- 「MSE分解」までの論理を一段ずつ再現できるか
+- 推定量・バイアス・分散・MSEの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/stat-estimators-bias-variance-mse)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/stat-estimators-bias-variance-mse)
+## 教科書と演習
+
+- [教科書](../../textbook/stat-estimators-bias-variance-mse)
+- [10問の演習](../../exercises/stat-estimators-bias-variance-mse)

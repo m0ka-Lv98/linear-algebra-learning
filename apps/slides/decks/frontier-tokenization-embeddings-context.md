@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "tokenization・embedding・context"
 ---
 
 # tokenization・embedding・context
 
-Course 10｜Frontier
+Course 10｜Frontier｜Topic 02/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-tokenization・embedding・contextで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+tokenization・embedding・contextの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- tokenization・embedding・contextの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `frontier-foundation-model-paradigm` で得た概念を使い、ここでは tokenization・embedding・context へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ tokenization・embedding・contextで、何を入力し、代表式がどの量�
 
 tokenizationは入力文字列を離散token列へ分割し、embeddingがtokenを連続ベクトルへ写す。contextはtoken列全体の条件情報。
 
-**前提:** dl-embeddings-representation-learning, dl-transformers
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-tokenization-embeddings-context.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-10/frontier-tokenization-embeddings-context.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+文字列→token ID→embedding→context表現の段階を描く。 文字列がtoken列へ分割され、各token IDがembedding vectorへ変換される。context modelが扱う長さは文字数ではなくtoken数で決まる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $x_t$：token ID
+- $e(x_t)\in\mathbb R^d$：token embedding
+- $p_t$：position representation
+- $h_t=e(x_t)+p_t$：input state例
 
 $$
 \mathbf{h}_t=\mathbf{e}(x_t)+\mathbf{p}_t
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+same stringでもvocabulary/segmentationによりTが変わり、compute、context消費、rare-word representationが変わる。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** tokenization、embedding、context
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+one-hotにembedding matrixを掛けることとrow lookupは同値。token identityをcontinuous stateへ。
 
 ---
 
-## 小さな例
+## 例題
 
-文字列→token ID→embedding→context表現の段階を描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+同じ日本語語句が1 tokenか複数subwordかでcontext token数が変わる。character数とtoken数は同一でない。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- token数は文字数と一致しない。
-- context lengthは実効memoryや計算量に影響する。
-- tokenization・embedding・contextの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+embedding cosineが近いtokenを「同じ意味」と断定できない。contextual layers後のrepresentationとstatic input embeddingも別。
 
 ---
 
 ## よくある誤解
 
-- tokenization・embedding・contextの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+tokenization・embedding・contextでは、式へ数値を代入するだけでは不十分である。embedding cosineが近いtokenを「同じ意味」と断定できない。contextual layers後のrepresentationとstatic input embeddingも別。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+tokenizer version、special tokens、normalization、max lengthをmodelと一緒にpin。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-tokenization・embedding・contextは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+model/data/computeを増やしたときlossがどう変わるかをempirical scaling lawで整理する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- tokenization・embedding・contextを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「tokenization changes sequence」を式を見ずに説明できるか
+- 「position necessity」までの論理を一段ずつ再現できるか
+- tokenization・embedding・contextの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/frontier-tokenization-embeddings-context)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/frontier-tokenization-embeddings-context)
+## 教科書と演習
+
+- [教科書](../../textbook/frontier-tokenization-embeddings-context)
+- [10問の演習](../../exercises/frontier-tokenization-embeddings-context)

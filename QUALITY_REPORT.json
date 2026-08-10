@@ -1,0 +1,164 @@
+{
+  "generated": "2026-08-10",
+  "courses": [
+    {
+      "course": "01",
+      "topics": 13,
+      "questions": 130,
+      "unique": 130,
+      "min_bytes": 9186,
+      "mean_bytes": 9879.4,
+      "max_bytes": 12449,
+      "png": 22,
+      "gif": 5,
+      "max_para_repeat": 2
+    },
+    {
+      "course": "03",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 8131,
+      "mean_bytes": 8889.7,
+      "max_bytes": 9722,
+      "png": 20,
+      "gif": 4,
+      "max_para_repeat": 1
+    },
+    {
+      "course": "04",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 7110,
+      "mean_bytes": 7796.6,
+      "max_bytes": 8278,
+      "png": 20,
+      "gif": 0,
+      "max_para_repeat": 1
+    },
+    {
+      "course": "05",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 7315,
+      "mean_bytes": 7909.9,
+      "max_bytes": 9122,
+      "png": 20,
+      "gif": 9,
+      "max_para_repeat": 1
+    },
+    {
+      "course": "06",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 6948,
+      "mean_bytes": 7792.4,
+      "max_bytes": 8394,
+      "png": 20,
+      "gif": 14,
+      "max_para_repeat": 2
+    },
+    {
+      "course": "07",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 6964,
+      "mean_bytes": 7475.7,
+      "max_bytes": 8486,
+      "png": 20,
+      "gif": 6,
+      "max_para_repeat": 2
+    },
+    {
+      "course": "08",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 6717,
+      "mean_bytes": 7300.6,
+      "max_bytes": 8175,
+      "png": 20,
+      "gif": 9,
+      "max_para_repeat": 2
+    },
+    {
+      "course": "09",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 6900,
+      "mean_bytes": 7491.8,
+      "max_bytes": 8615,
+      "png": 20,
+      "gif": 9,
+      "max_para_repeat": 2
+    },
+    {
+      "course": "10",
+      "topics": 20,
+      "questions": 200,
+      "unique": 200,
+      "min_bytes": 7618,
+      "mean_bytes": 8308.9,
+      "max_bytes": 9049,
+      "png": 20,
+      "gif": 6,
+      "max_para_repeat": 2
+    }
+  ],
+  "order_qa": {
+    "01": {
+      "first": "calc-functions-limits-continuity",
+      "last": "calc-lagrange-multipliers",
+      "future_prereq": 0
+    },
+    "03": {
+      "first": "prob-counting-sample-spaces",
+      "last": "stat-entropy-cross-entropy-kl-divergence",
+      "future_prereq": 0
+    },
+    "04": {
+      "first": "dm-propositions-connectives-truth-tables",
+      "last": "dm-discrete-probability-indicators-randomized-algorithms",
+      "future_prereq": 0
+    },
+    "05": {
+      "first": "num-floating-point-rounding",
+      "last": "num-verification-benchmarking-reproducibility",
+      "future_prereq": 0
+    },
+    "06": {
+      "first": "opt-problem-formulation-objectives-constraints",
+      "last": "opt-nonconvex-diagnostics-hyperparameters",
+      "future_prereq": 0
+    },
+    "07": {
+      "first": "mat-data-matrices-centering-scaling",
+      "last": "mat-tensors-multilinear-overview",
+      "future_prereq": 0
+    },
+    "08": {
+      "first": "ml-problem-formulation-data-splits",
+      "last": "ml-uncertainty-interpretability-monitoring",
+      "future_prereq": 0
+    },
+    "09": {
+      "first": "dl-perceptron-mlp",
+      "last": "dl-evaluation-robustness-safety",
+      "future_prereq": 0
+    },
+    "10": {
+      "first": "frontier-foundation-model-paradigm",
+      "last": "frontier-privacy-governance-research-practice",
+      "future_prereq": 0
+    }
+  },
+  "total_topics": 173,
+  "total_topic_markdown": 692,
+  "total_exercises": 1730,
+  "unique_exercises": 1730
+}

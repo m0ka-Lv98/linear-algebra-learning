@@ -1,8 +1,9 @@
 ---
 theme: default
 routerMode: hash
-layout: cover
 generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
+layout: cover
 title: "全微分とJacobian"
 ---
 
@@ -16,135 +17,107 @@ layout: center
 
 ## 今回の問い
 
-多変数関数を、ある点の近くで最もよい線形写像として近似するにはどうするか。
-
----
-
 ## 到達目標
 
-- 全微分を一次近似として説明できる
-- Jacobianのshapeを入力次元・出力次元から決められる
-- ベクトル値関数のJacobianを計算できる
-- 線形近似を使って小さな入力変化から出力変化を近似できる
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+多入力・多出力の非線形関数を、一点の近くで一つの行列として近似できるのはなぜか。
 
 ---
 
-## 試験での基本姿勢
+## なぜ今これを学ぶのか
 
-1. 何を求める問題か確認
-2. 定義・成立条件を確認
-3. 計算
-4. 判定
-5. 検算して結論
+スカラー出力では勾配の内積が局所変化を表した。出力もベクトルになると、各出力の勾配を並べた行列が局所線形写像になる。
 
 ---
 
-## 記号
+## 直感
 
-| 記号 | 意味 |
-|---|---|
-| $\mathbf{x}\in\mathbb R^n$ | 入力ベクトル |
-| $\mathbf{f}:\mathbb R^n\to\mathbb R^m$ | $m$ 次元出力を返す関数 |
-| $J_{\mathbf f}(\mathbf x)$ | $m\times n$ のJacobian行列 |
-| $d\mathbf x$ | 十分小さい入力変化 |
-| $d\mathbf f$ | 一次近似された出力変化 |
+多変数関数も十分小さな範囲では線形写像として見られる。その局所線形写像を表す行列がJacobianである。
+
+地図の非線形な座標変換も、十分小さな領域だけ拡大すると平行四辺形へ写す線形変換に見える。Jacobianはその瞬間の拡大・回転・せん断をまとめる。
 
 ---
 
-## 中心概念 1
+## 図解
 
-1. 全微分
-スカラー値関数 $f(x,y)$ では、小さい変化 $(dx,dy)$ に対して
-$$df\approx f_x\,dx+f_y\,dy.$$
-これは接平面による一次近似。
+<img src="./assets/course-01/calc-total-derivative-jacobian.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
-
+図では入力側の小さな正方形格子が、非線形写像で曲がった格子へ移る。その一点をさらに拡大するとほぼ平行四辺形になり、その二本の辺がJacobianの各列、すなわち標準基底を局所的に写した方向になる。
 
 ---
 
-## 中心概念 2
+## 記号と代表式
 
-### 2. Jacobian
-$\mathbf f:\mathbb R^n\to\mathbb R^m$ のJacobianを
-$$J_{\mathbf f}(\mathbf x)=\left[\frac{\partial f_i}{\partial x_j}\right]_{m\times n}$$
-と定義する。**行は出力成分、列は入力成分**。したがって入力変化 $d\mathbf x\in\mathbb R^n$ に対し
-$$d\mathbf f\approx J_{\mathbf f}(\mathbf x)d\mathbf x\in\mathbb R^m.$$
+- $f:\mathbb R^n\to\mathbb R^m$：ベクトル値関数
+- $\Delta\mathbf{x}\in\mathbb R^n$：小さな入力変位
+- $\mathbf J_f\in\mathbb R^{m\times n}$：Jacobian
+- $(\mathbf J_f)_{ij}=\partial f_i/\partial x_j$：第 $i$ 出力の第 $j$ 入力に対する偏微分
 
-
-
----
-
-## 図で確認
-
-![全微分とJacobianの図解](./assets/course-01/jacobian_grid.png)
+$$
+f(\mathbf{x}+\Delta\mathbf{x})\approx f(\mathbf{x})+\mathbf J_f(\mathbf{x})\Delta\mathbf{x}
+$$
 
 ---
 
-## 標準手順
+## 導出 1
 
-- 関数の入力次元 $n$ と出力次元 $m$ を書く
-- Jacobianが $m\times n$ になることを先に決める
-- 各出力 $f_i$ を各入力 $x_j$ で偏微分する
-- 評価点を代入する
-- 小変化を近似するなら $Jd\mathbf x$ を計算する
-- 行列積のshapeが $m\times n$ と $n\times1$ で整合するか確認する
+$\mathbf h=h\mathbf e_j$ とすると、全微分の線形部分は $h\mathbf A\mathbf e_j$。一方、各出力の変化率は偏微分列 $(\partial f_i/\partial x_j)_i$。よって $\mathbf A$ の第 $j$ 列はその偏微分列でなければならない。
 
 ---
 
-## 典型例
+## 導出 2
 
-**例1：** $\mathbf f(x,y)=[x^2+y,\ xy]^T$ なら
-$$J=\begin{bmatrix}2x&1\\y&x\end{bmatrix}.$$
-$(1,2)$ では $J=\begin{bmatrix}2&1\\2&1\end{bmatrix}$。
+各入力座標 $j=1,\ldots,n$ について上の列を並べると $\mathbf A=[\partial f_i/\partial x_j]_{m\times n}=\mathbf J_f$。
 
 ---
 
-## よくある誤り
+## 例題
 
-- Jacobianの行列を転置してしまう
-- 出力と入力の順序を混同する
-- $Jd\mathbf x$ ではなく $d\mathbf xJ$ と掛ける
-- 全微分の等号を有限変化にも厳密に使う
+$f(x,y)=(x^2y,\ x+y^2)^T$。Jacobianは $\begin{bmatrix}2xy&x^2\\1&2y\end{bmatrix}$。$(1,2)$ では $\begin{bmatrix}4&1\\1&4\end{bmatrix}$。$\Delta\mathbf x=(0.01,-0.02)^T$ なら出力変化を行列積で一次近似できる。
 
 ---
 
-## 満点答案のポイント
+## 条件を変えるとどうなるか
 
-- 最初に $\mathbb R^n\to\mathbb R^m$ とshapeを書く
-- 行＝出力、列＝入力を固定する
-- 一次近似なので大きな変化では誤差が増えると説明する
+全偏微分が存在しても全微分可能とは限らないので、「Jacobianを書けた＝必ず良い局所線形近似」とは言えない。前Topicの原点反例がそのまま使える。
 
 ---
 
-## 機械学習との接続
+## よくある誤解
 
-ニューラルネットの各層はベクトル値関数。各層のJacobianを連鎖律で掛けることがbackpropagationの線形代数的な見方である。
-
----
-
-## 30秒確認 1
-
-中心式または中心定義を、記号の意味まで含めて口頭で説明できるか。
+Jacobianを「偏微分を表にしたもの」とだけ覚えるとshapeや行列積の意味が曖昧になる。Jacobianは入力の微小ベクトルを出力の微小ベクトルへ写す線形写像。
 
 ---
 
-## 30秒確認 2
+## 実装・計算上の注意
 
-「この条件がないと結論できない」という成立条件を1つ挙げられるか。
-
----
-
-## 30秒確認 3
-
-典型的な誤答を1つ挙げ、どこが誤りか説明できるか。
+自動微分ライブラリではJacobian全体を明示生成すると巨大になる場合がある。実務ではJacobian-vector productやvector-Jacobian productを計算し、必要な方向だけ伝播させる。
 
 ---
 
-## 演習へ
+## 一段先へ
+
+局所線形写像を二つ連続して適用すれば行列積になる。この考えが多変数連鎖律であり、deep learningのbackpropagationへ直結する。
+
+---
+
+## 自分で説明できるか
+
+- $m\times n$ になる理由を入力・出力次元から説明できるか
+- Jacobianの各列を標準基底方向の方向微分として説明できるか
+- 「全微分可能」の残差条件が何を保証するか
+
+---
+layout: center
+---
+
+## 教科書と演習
 
 - [教科書](../../textbook/calc-total-derivative-jacobian)
 - [10問の演習](../../exercises/calc-total-derivative-jacobian)
-## 理解確認
-
-- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
-- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

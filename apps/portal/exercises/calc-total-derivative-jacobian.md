@@ -1,193 +1,219 @@
 # 全微分とJacobian：演習
 
-大学初年次の定期試験を想定した10問。**問題→自力で解く→解答で途中式と条件を照合**の順で使う。
+Course 01｜Topic 09/13。10問すべて、このTopic固有の問いとして作成しています。
 
-教科書の[全微分とJacobian](/textbook/calc-total-derivative-jacobian)と対応しています。
+[教科書](/textbook/calc-total-derivative-jacobian)
 
-## 問1：shape
+## 問1. 定義と記号
 
-$\mathbf f:\mathbb R^3\to\mathbb R^2$ のJacobianのshapeは。
+「全微分とJacobian」の代表式
+
+$$
+f(\mathbf{x}+\Delta\mathbf{x})\approx f(\mathbf{x})+\mathbf J_f(\mathbf{x})\Delta\mathbf{x}
+$$
+
+について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-出力次元×入力次元なので $2\times3$。
+代表式は結果だけを書くための記号ではない。本文で定義した量を使い、全微分とJacobianが何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
 
+**線形近似の候補を列ごとに決める**
 
+$\mathbf h=h\mathbf e_j$ とすると、全微分の線形部分は $h\mathbf A\mathbf e_j$。一方、各出力の変化率は偏微分列 $(\partial f_i/\partial x_j)_i$。よって $\mathbf A$ の第 $j$ 列はその偏微分列でなければならない。
+
+答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
 
 </details>
 
-## 問2：Jacobian計算
+## 問2. 導出1：線形近似の候補を列ごとに決める
 
-$\mathbf f(x,y)=[x+y,xy]^T$ のJacobianを求めよ。
+「全微分とJacobian」で **線形近似の候補を列ごとに決める** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文の「線形近似の候補を列ごとに決める」を、直前の定義から始めて書き直す。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$J=\begin{bmatrix}1&1\\y&x\end{bmatrix}$。
+この段階で示すべき内容は次である。
 
+$\mathbf h=h\mathbf e_j$ とすると、全微分の線形部分は $h\mathbf A\mathbf e_j$。一方、各出力の変化率は偏微分列 $(\partial f_i/\partial x_j)_i$。よって $\mathbf A$ の第 $j$ 列はその偏微分列でなければならない。
 
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「全列を並べる」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-## 問3：点で評価
+## 問3. 導出2：全列を並べる
 
-上の $J$ を $(2,3)$ で評価せよ。
+「全微分とJacobian」で **全列を並べる** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文の「全列を並べる」を、直前の定義から始めて書き直す。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$\begin{bmatrix}1&1\\3&2\end{bmatrix}$。
+この段階で示すべき内容は次である。
 
+各入力座標 $j=1,\ldots,n$ について上の列を並べると $\mathbf A=[\partial f_i/\partial x_j]_{m\times n}=\mathbf J_f$。
 
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「近似誤差の条件」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-## 問4：線形近似
+## 問4. 導出3：近似誤差の条件
 
-$(2,3)$ で $d\mathbf x=[0.1,0]^T$ のとき出力変化を一次近似せよ。
+「全微分とJacobian」で **近似誤差の条件** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文の「近似誤差の条件」を、直前の定義から始めて書き直す。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$Jd\mathbf x=[0.1,0.3]^T$。
+この段階で示すべき内容は次である。
 
+単に偏微分を並べるだけでなく、残差 $\mathbf r(\mathbf h)$ が $\|\mathbf h\|$ より速く0へ行くことで、どの方向へ小さく動いても同じ行列が一次近似になることを保証する。
 
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-## 問5：scalar output
+## 問5. 数値例を途中から再現
 
-$f(x,y)=x^2+3y$ のJacobianと勾配の関係を書け。
+次の「全微分とJacobian」の設定を、自分で途中量まで展開して最終結論を確認せよ。
+
+> $f(x,y)=(x^2y,\ x+y^2)^T$。Jacobianは $\begin{bmatrix}2xy&x^2\\1&2y\end{bmatrix}$。$(1,2)$ では $\begin{bmatrix}4&1\\1&4\end{bmatrix}$。$\Delta\mathbf x=(0.01,-0.02)^T$ なら出力変化を行列積で一次近似できる。
+
+本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+
+<details><summary>完全解答</summary>
+
+設定に対する計算・判断は次の通り。
+
+$f(x,y)=(x^2y,\ x+y^2)^T$。Jacobianは $\begin{bmatrix}2xy&x^2\\1&2y\end{bmatrix}$。$(1,2)$ では $\begin{bmatrix}4&1\\1&4\end{bmatrix}$。$\Delta\mathbf x=(0.01,-0.02)^T$ なら出力変化を行列積で一次近似できる。
+
+ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+
+</details>
+
+## 問6. 条件を変えたときの差
+
+次の第二例について、第一例から変更した条件を特定し、その変更によって「全微分とJacobian」のどの部分が変わるか説明せよ。
+
+> $f(x,y)=(e^x\cos y,e^x\sin y)$ は極座標的変換。$(0,0)$ でJacobianは単位行列なので、その点のごく近くでは入力変位がほぼそのまま出力変位になる。
+
+<details><summary>完全解答</summary>
+
+$f(x,y)=(e^x\cos y,e^x\sin y)$ は極座標的変換。$(0,0)$ でJacobianは単位行列なので、その点のごく近くでは入力変位がほぼそのまま出力変位になる。
+
+比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+
+</details>
+
+## 問7. 成立条件と反例
+
+「全微分とJacobian」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
+
+> 全偏微分が存在しても全微分可能とは限らないので、「Jacobianを書けた＝必ず良い局所線形近似」とは言えない。前Topicの原点反例がそのまま使える。
 
 <details><summary>ヒント</summary>
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
 
 </details>
 
 <details><summary>完全解答</summary>
 
-$J_f=[2x,3]$、$\nabla f=[2x,3]^T$ なので $J_f=\nabla f^T$。
+本文で確認する条件は以下である。
 
+- Jacobianのshapeは「出力数×入力数」
+- 全微分可能性は座標ごとの偏微分存在より強い
+- 近似記号は高次残差を無視していることを意識する
 
+失敗例は次の通り。
 
-</details>
+全偏微分が存在しても全微分可能とは限らないので、「Jacobianを書けた＝必ず良い局所線形近似」とは言えない。前Topicの原点反例がそのまま使える。
 
-## 問6：全微分
-
-$f=x^2y$ の全微分 $df$ を書け。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
 
 </details>
+
+## 問8. 実装・数値診断
+
+「全微分とJacobian」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
+
+> 自動微分ライブラリではJacobian全体を明示生成すると巨大になる場合がある。実務ではJacobian-vector productやvector-Jacobian productを計算し、必要な方向だけ伝播させる。
 
 <details><summary>完全解答</summary>
 
-$f_x=2xy,f_y=x^2$ より $df=2xy\,dx+x^2\,dy$。
+自動微分ライブラリではJacobian全体を明示生成すると巨大になる場合がある。実務ではJacobian-vector productやvector-Jacobian productを計算し、必要な方向だけ伝播させる。
 
-
-
-</details>
-
-## 問7：接平面近似
-
-$f=x^2+y^2$ を $(1,1)$ 近傍で一次近似せよ。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
 
 </details>
+
+## 問9. 次Topicへの導線
+
+「全微分とJacobian」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
+
+> 局所線形写像を二つ連続して適用すれば行列積になる。この考えが多変数連鎖律であり、deep learningのbackpropagationへ直結する。
 
 <details><summary>完全解答</summary>
 
-$f(1,1)=2,\nabla f=[2,2]^T$。よって $f(x,y)\approx2+2(x-1)+2(y-1)$。
+局所線形写像を二つ連続して適用すれば行列積になる。この考えが多変数連鎖律であり、deep learningのbackpropagationへ直結する。
 
-
-
-</details>
-
-## 問8：shape検算
-
-$J$ が $4\times3$, $d\mathbf x$ が $3\times1$ のとき $Jd\mathbf x$ のshapeは。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
 
 </details>
+
+## 問10. 総合証明・説明
+
+「全微分とJacobian」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
 
 <details><summary>完全解答</summary>
 
-$4\times1$。出力次元4に一致する。
+答案では次の流れを一続きにする。
 
+**代表式**
 
+$$
+f(\mathbf{x}+\Delta\mathbf{x})\approx f(\mathbf{x})+\mathbf J_f(\mathbf{x})\Delta\mathbf{x}
+$$
 
-</details>
+**導出**
 
-## 問9：一次近似の限界
+1. **線形近似の候補を列ごとに決める** — $\mathbf h=h\mathbf e_j$ とすると、全微分の線形部分は $h\mathbf A\mathbf e_j$。一方、各出力の変化率は偏微分列 $(\partial f_i/\partial x_j)_i$。よって $\mathbf A$ の第 $j$ 列はその偏微分列でなければならない。
 
-なぜ $d\mathbf x$ が大きいと $Jd\mathbf x$ の近似誤差が増えやすいか。
+2. **全列を並べる** — 各入力座標 $j=1,\ldots,n$ について上の列を並べると $\mathbf A=[\partial f_i/\partial x_j]_{m\times n}=\mathbf J_f$。
 
-<details><summary>ヒント</summary>
+3. **近似誤差の条件** — 単に偏微分を並べるだけでなく、残差 $\mathbf r(\mathbf h)$ が $\|\mathbf h\|$ より速く0へ行くことで、どの方向へ小さく動いても同じ行列が一次近似になることを保証する。
 
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+**数値・具体例**
 
-</details>
+$f(x,y)=(x^2y,\ x+y^2)^T$。Jacobianは $\begin{bmatrix}2xy&x^2\\1&2y\end{bmatrix}$。$(1,2)$ では $\begin{bmatrix}4&1\\1&4\end{bmatrix}$。$\Delta\mathbf x=(0.01,-0.02)^T$ なら出力変化を行列積で一次近似できる。
 
-<details><summary>完全解答</summary>
+**条件を壊すと**
 
-Jacobianは点の近くでの一次項だけを使うため。二次以上の非線形項が無視できなくなる。
+全偏微分が存在しても全微分可能とは限らないので、「Jacobianを書けた＝必ず良い局所線形近似」とは言えない。前Topicの原点反例がそのまま使える。
 
+**実装**
 
+自動微分ライブラリではJacobian全体を明示生成すると巨大になる場合がある。実務ではJacobian-vector productやvector-Jacobian productを計算し、必要な方向だけ伝播させる。
 
-</details>
-
-## 問10：誤答診断
-
-$\mathbb R^2\to\mathbb R^3$ のJacobianを $2\times3$ とした。正しいshapeと理由は。
-
-<details><summary>ヒント</summary>
-
-まず定義・成立条件・使う公式を1行で書き、その後に計算する。答えが出たら符号・単位・shape・定義域のうち該当するものを検算する。
+各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
 
 </details>
-
-<details><summary>完全解答</summary>
-
-$3\times2$。行が3つの出力、列が2つの入力。
-
-
-
-</details>
-
-## 採点用セルフチェック
-
-- 最終結果だけでなく、必要な途中式がある。
-- 定理・判定法を使う条件を確認している。
-- 「存在しない」「判定不能」「候補」などを勝手に「0」「最小」へ置き換えていない。
-- 記号の意味を説明できる。
-- 解答を閉じた状態で8/10以上なら、次Topicへ進む目安になる。

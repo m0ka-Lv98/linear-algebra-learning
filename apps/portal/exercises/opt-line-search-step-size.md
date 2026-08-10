@@ -1,183 +1,219 @@
 # line searchとstep size：演習
 
-[教科書](/textbook/opt-line-search-step-size)と対応する10問。ヒント以降は折りたたんである。
+Course 06｜Topic 05/20。10問すべて、このTopic固有の問いとして作成しています。
 
-### 06-605-01：概念
+[教科書](/textbook/opt-line-search-step-size)
 
-1. lineを定義し、searchとの違いを説明せよ。
+## 問1. 定義と記号
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+「line searchとstep size」の代表式
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
+$$
+f(\mathbf{x}+\alpha\mathbf{p})\le f(\mathbf{x})+c_1\alpha\nabla f(\mathbf{x})^{\mathsf T}\mathbf{p}
+$$
 
-- ヒント2: 最小の非自明な例と境界条件を確認する。
+について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
 
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
+<details><summary>ヒント</summary>
 
-- 完全解答: lineは対象と条件を定める概念であり、searchとは役割または適用範囲が異なる。定義に含まれる条件を列挙し、小さな例を示す。
-
-- よくある誤答: line searchとstep sizeの定義と計算手順を同一視する。
-
-</details>
-
-### 06-605-02：概念
-
-2. 「line searchとstep size」で入力、出力、成立条件をそれぞれ一つ挙げよ。
-
-<details><summary>ヒント・解法方針・完全解答</summary>
-
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 入力は対象となる値・ベクトル・標本・構造、出力は計算される量または判定、成立条件は定義域やrankなどである。具体的な内容は本文の定義に従う。
-
-- よくある誤答: 成立条件を確認せず公式を適用する。
+式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
 
 </details>
 
-### 06-605-03：手計算・導出
+<details><summary>完全解答</summary>
 
-3. 次の代表式を読み、各記号の意味と出力の型を説明せよ：$$f(\mathbf{x}+\alpha\mathbf{p})\le f(\mathbf{x})+c_1\alpha\nabla f(\mathbf{x})^{\mathsf T}\mathbf{p}$$
+代表式は結果だけを書くための記号ではない。本文で定義した量を使い、line searchとstep sizeが何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+**一次予測**
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
+$f(x+\alpha p)\approx f(x)+\alpha\nabla f(x)^Tp$。descent directionなら内積<0。
 
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 式の左辺を目的量、右辺を計算手順として読む。各記号の対象、添字範囲、次元を示し、最終的な出力がスカラー・ベクトル・行列・確率・判定のどれかを答える。
-
-- よくある誤答: 数学上の次元と配列のshapeを混同する。
+答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
 
 </details>
 
-### 06-605-04：手計算・導出
+## 問2. 導出1：一次予測
 
-4. line searchとstep sizeを最小の非自明な例で計算せよ。
+「line searchとstep size」で **一次予測** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 2〜3要素または2次元の例を設定し、定義へ代入して中間結果を示す。最後に型、符号、正規化、制約を確認する。
-
-- よくある誤答: line searchとstep sizeの定義と計算手順を同一視する。
+本文の「一次予測」を、直前の定義から始めて書き直す。
 
 </details>
 
-### 06-605-05：手計算・導出
+<details><summary>完全解答</summary>
 
-5. lineに関する性質を一つ選び、定義から導出せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+$f(x+\alpha p)\approx f(x)+\alpha\nabla f(x)^Tp$。descent directionなら内積<0。
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 仮定を明記し、定義を展開して各変形の根拠を書く。結論が成立する範囲と、条件を外した場合の反例を併記する。
-
-- よくある誤答: 成立条件を確認せず公式を適用する。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「十分減少」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-### 06-605-06：誤りの診断
+## 問3. 導出2：十分減少
 
-6. 「line searchとstep sizeの定義と計算手順を同一視する」という説明の問題点を診断せよ。
+「line searchとstep size」で **十分減少** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 定義と手順は別である。何を満たせば対象と呼べるかが定義であり、計算手順はその対象を求めたり利用したりする方法である。
-
-- よくある誤答: 数学上の次元と配列のshapeを混同する。
+本文の「十分減少」を、直前の定義から始めて書き直す。
 
 </details>
 
-### 06-605-07：誤りの診断
+<details><summary>完全解答</summary>
 
-7. 成立条件を確認せずにline searchとstep sizeの公式を適用した。どの項目を検査すべきか。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+高次項があるので予測通り全部下がる必要はない。$f(x+αp)\le f(x)+c_1α∇f^Tp$ を要求。
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 定義域、入力shape、rank・可逆性・正定値性、独立性、滑らかさ、有限精度、標本数など、本文で示した条件を順に検査する。
-
-- よくある誤答: line searchとstep sizeの定義と計算手順を同一視する。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「backtracking」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-### 06-605-08：実装・数値読解
+## 問4. 導出3：backtracking
 
-8. line searchとstep sizeを実装した関数の入力・出力・検算項目を設計せよ。
+「line searchとstep size」で **backtracking** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: 入力の型とshape、出力の型とshape、境界値、既知の小例、残差または目的関数、許容誤差を記録する。乱数を使う場合はseedと環境も記録する。
-
-- よくある誤答: 成立条件を確認せず公式を適用する。
+本文の「backtracking」を、直前の定義から始めて書き直す。
 
 </details>
 
-### 06-605-09：応用
+<details><summary>完全解答</summary>
 
-9. line searchとstep sizeが最適化の後続Topicでどのように使われるか説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+大きいαからρ倍して条件成立まで縮める。smoothなdescent directionなら十分小さいαで成立。
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
-
-- ヒント2: 最小の非自明な例と境界条件を確認する。
-
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
-
-- 完全解答: line searchとstep sizeは、後続の数値計算・データ解析・機械学習で前提となる。 現Topicの出力が後続Topicの入力・目的関数・制約・評価指標のどれになるかを具体的に述べる。
-
-- よくある誤答: 数学上の次元と配列のshapeを混同する。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
 
 </details>
 
-### 06-605-10：応用
+## 問5. 数値例を途中から再現
 
-10. line searchとstep sizeの結果が不安定または不適切だった場合の診断手順を提案せよ。
+次の「line searchとstep size」の設定を、自分で途中量まで展開して最終結論を確認せよ。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+> quadraticでsteepest descent p=-g。αが大きすぎるとvalleyを飛び越え、backtrackingが安定なstepへ縮める。
 
-- ヒント1: 記号、入力、出力、成立条件を最初に書く。
+本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
 
-- ヒント2: 最小の非自明な例と境界条件を確認する。
+<details><summary>完全解答</summary>
 
-- 解法方針: 定義を適用し、中間結果、型・shape、検算を分けて示す。
+設定に対する計算・判断は次の通り。
 
-- 完全解答: 入力と前処理、成立条件、尺度、数値誤差、初期値、停止条件、評価データを順に確認する。必要なら別の解法、正則化、再標本化、感度分析を行う。
+quadraticでsteepest descent p=-g。αが大きすぎるとvalleyを飛び越え、backtrackingが安定なstepへ縮める。
 
-- よくある誤答: line searchとstep sizeの定義と計算手順を同一視する。
+ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+
+</details>
+
+## 問6. 条件を変えたときの差
+
+次の第二例について、第一例から変更した条件を特定し、その変更によって「line searchとstep size」のどの部分が変わるか説明せよ。
+
+> fixed learning rateはcheapだがproblem scaleで再調整が必要。line searchはfunction/gradient evaluation追加cost。
+
+<details><summary>完全解答</summary>
+
+fixed learning rateはcheapだがproblem scaleで再調整が必要。line searchはfunction/gradient evaluation追加cost。
+
+比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+
+</details>
+
+## 問7. 成立条件と反例
+
+「line searchとstep size」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
+
+> pがdescent directionでない（g^Tp≥0）ならαを小さくしてもArmijoの意味ある下降を保証できない。
+
+<details><summary>ヒント</summary>
+
+「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
+
+</details>
+
+<details><summary>完全解答</summary>
+
+本文で確認する条件は以下である。
+
+- step sizeが大きすぎると発散、小さすぎると遅い。
+- 勾配のスケールは変数のスケールに依存する。
+- line searchとstep sizeの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+
+失敗例は次の通り。
+
+pがdescent directionでない（g^Tp≥0）ならαを小さくしてもArmijoの意味ある下降を保証できない。
+
+したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+
+</details>
+
+## 問8. 実装・数値診断
+
+「line searchとstep size」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
+
+> NaN region, bound constraintsがある場合trial step validityも確認。function evaluation countをbenchmarkに含める。
+
+<details><summary>完全解答</summary>
+
+NaN region, bound constraintsがある場合trial step validityも確認。function evaluation countをbenchmarkに含める。
+
+実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+
+</details>
+
+## 問9. 次Topicへの導線
+
+「line searchとstep size」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
+
+> step size ruleを得た上でgradient descentの収束rateを導く。
+
+<details><summary>完全解答</summary>
+
+step size ruleを得た上でgradient descentの収束rateを導く。
+
+本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+
+</details>
+
+## 問10. 総合証明・説明
+
+「line searchとstep size」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+
+<details><summary>完全解答</summary>
+
+答案では次の流れを一続きにする。
+
+**代表式**
+
+$$
+f(\mathbf{x}+\alpha\mathbf{p})\le f(\mathbf{x})+c_1\alpha\nabla f(\mathbf{x})^{\mathsf T}\mathbf{p}
+$$
+
+**導出**
+
+1. **一次予測** — $f(x+\alpha p)\approx f(x)+\alpha\nabla f(x)^Tp$。descent directionなら内積<0。
+
+2. **十分減少** — 高次項があるので予測通り全部下がる必要はない。$f(x+αp)\le f(x)+c_1α∇f^Tp$ を要求。
+
+3. **backtracking** — 大きいαからρ倍して条件成立まで縮める。smoothなdescent directionなら十分小さいαで成立。
+
+**数値・具体例**
+
+quadraticでsteepest descent p=-g。αが大きすぎるとvalleyを飛び越え、backtrackingが安定なstepへ縮める。
+
+**条件を壊すと**
+
+pがdescent directionでない（g^Tp≥0）ならαを小さくしてもArmijoの意味ある下降を保証できない。
+
+**実装**
+
+NaN region, bound constraintsがある場合trial step validityも確認。function evaluation countをbenchmarkに含める。
+
+各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
 
 </details>

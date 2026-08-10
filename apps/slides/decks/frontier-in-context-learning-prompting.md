@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "in-context learningとprompt設計"
 ---
 
 # in-context learningとprompt設計
 
-Course 10｜Frontier
+Course 10｜Frontier｜Topic 04/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-in-context learningとprompt設計で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+in-context learningとprompt設計の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- in-context learningとprompt設計の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `frontier-pretraining-scaling-laws` で得た概念を使い、ここでは in-context learningとprompt設計 へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ in-context learningとprompt設計で、何を入力し、代表式がどの量�
 
 in-context learningではparameterを更新せず、context内の例・指示からtaskを推論する。
 
-**前提:** frontier-tokenization-embeddings-context, ml-problem-formulation-data-splits
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-in-context-learning-prompting.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-10/frontier-in-context-learning-prompting.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+instructionとfew-shot例がqueryへ情報を流す模式図を見る。 instruction・demonstration・queryが同じcontextへ入り、parameter更新なしに次token分布を変える。few-shot例はtraining dataではなく推論時条件として働く。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\mathcal C$：prompt内のinstructions/examples/context
+- $x$：query
+- $p(y|x,\mathcal C)$：context-conditioned output
 
 $$
 p(y\mid x,\mathcal{C})
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+pretrained conditional distributionに追加context Cを入れることで $p(y|x)$ から $p(y|x,C)$ へ変化。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** in-context、learning、prompt設計
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+input-output pairsをcontextへ置くとattention等を通じpattern/format/task informationがcurrent query representationへ影響。
 
 ---
 
-## 小さな例
+## 例題
 
-instructionとfew-shot例がqueryへ情報を流す模式図を見る。
-
-最小の非自明な設定で、手計算と実装を照合する。
+2 examplesでsentiment output formatを示し、3つ目queryだけをask。parameter updateなしでlabel vocabularyをcontextから使える。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 例の順序や表現で結果が変わりうる。
-- promptだけで保証された制御はできない。
-- in-context learningとprompt設計の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+promptで1回成功したexampleをgeneral capability proofにしない。prompt overfittingとtest contaminationを区別する。
 
 ---
 
 ## よくある誤解
 
-- in-context learningとprompt設計の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+in-context learningとprompt設計では、式へ数値を代入するだけでは不十分である。promptで1回成功したexampleをgeneral capability proofにしない。prompt overfittingとtest contaminationを区別する。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+prompt template/version、system/user separation、temperature、few-shot examplesをartifact化して評価。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-in-context learningとprompt設計は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+promptだけで不足するとき、base model weightsの小部分/low-rank updateを学ぶparameter-efficient fine-tuningへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- in-context learningとprompt設計を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「conditioning viewpoint」を式を見ずに説明できるか
+- 「order/format sensitivity」までの論理を一段ずつ再現できるか
+- in-context learningとprompt設計の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/frontier-in-context-learning-prompting)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/frontier-in-context-learning-prompting)
+## 教科書と演習
+
+- [教科書](../../textbook/frontier-in-context-learning-prompting)
+- [10問の演習](../../exercises/frontier-in-context-learning-prompting)

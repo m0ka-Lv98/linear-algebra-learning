@@ -1,43 +1,24 @@
 # Newton法と準Newton法
 
-## Course・Unit内での位置付け
+Course 06「最適化」のTopic 8/20。
 
-Course 06「最適化」／Unit「一階法・二階法」／第608 Topic。
+## 今回の中心問い
 
-## 今回解く問い
+Newton法と準Newton法の代表式は、どの定義・仮定から、なぜその形になるのか。
 
-Newton法と準Newton法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する。どの条件で成立し、どの出力を得て、どの後続Topicへ接続するかを明確にする。
+## このTopicでできるようになること
 
-## 概要
-
-Newton法、準Newton法を、定義、直感、小さな例、計算、実装上の注意の順に整理する。
-
-## 学習目標
-
-- Newton法、準Newton法の主要な定義と成立条件を説明できる。
-- 小さな問題を手計算し、式・shape・数値結果を検証できる。
-- Newton法と準Newton法は、後続の数値計算・データ解析・機械学習で前提となる。
-
-## 前提Topic
-
-- [勾配降下法と収束](/courses/foundation/opt-gradient-descent-convergence)
-- [Hessianと二次近似](/courses/foundation/calc-hessian-second-order)
-
-## 想定学習時間
-
-スライド20分 / 教科書65分 / 演習55分
+- Newton法と準Newton法の定義と代表式の意味を説明できる
+- 二次modelを途中式から再現できる
+- 成立条件を外したときの失敗を具体例で診断できる
 
 ## 学習順序
 
-スライドで全体像を把握し、教科書で定義と導出を確認し、演習で誤解を診断する。
+前: [opt-momentum-accelerated-gradient](/courses/foundation/opt-momentum-accelerated-gradient)  
+次: [opt-trust-region-methods](/courses/foundation/opt-trust-region-methods)
 
 ## 教材
 
-- [スライド](/slides/opt-newton-quasi-newton/)
 - [教科書](/textbook/opt-newton-quasi-newton)
 - [演習](/exercises/opt-newton-quasi-newton)
-
-## 前後Topic
-
-- [前のTopic：momentumと加速勾配法](/courses/foundation/opt-momentum-accelerated-gradient)
-- [次のTopic：trust region法](/courses/foundation/opt-trust-region-methods)
+- [スライド](/slides/opt-newton-quasi-newton/)

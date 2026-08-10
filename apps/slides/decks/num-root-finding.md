@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "非線形方程式の求根法"
 ---
 
 # 非線形方程式の求根法
 
-Course 05｜数値計算
+Course 05｜数値計算｜Topic 04/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-非線形方程式の求根法で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+非線形方程式の求根法の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 非線形方程式の求根法の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `num-convergence-orders-stopping` で得た概念を使い、ここでは 非線形方程式の求根法 へ進む。
 
 ---
 
@@ -32,96 +40,83 @@ layout: center
 
 求根法はf(x)=0を直接解けないとき、現在点から次の近似点を反復的に作る。
 
-**前提:** num-convergence-orders-stopping, calc-derivatives-rates
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-root-finding.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-05/num-root-finding.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+Newton法の接線と根へのジャンプをアニメーションで追う。 曲線がf(x)、現在点で引いた接線とx軸の交点が次のNewton反復である。接線による一次近似を0と置いて解くため、x_{k+1}=x_k-f(x_k)/f'(x_k)が現れる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $f(x)=0$：求める根
+- $x_k$：現在の近似
+- $f^{\prime}(x_k)$：現在点の接線傾き
 
 $$
 x_{k+1}=x_k-\frac{f(x_k)}{f^{\prime}(x_k)}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$f(x_k+h)\approx f(x_k)+f^{\prime}(x_k)h$。真の根付近では左辺を0にしたい。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 非線形方程式の求根法
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+$0=f(x_k)+f^{\prime}(x_k)h$ から $h=-f(x_k)/f^{\prime}(x_k)$。
 
 ---
 
-## 小さな例
+## 例題
 
-Newton法の接線と根へのジャンプをアニメーションで追う。
-
-最小の非自明な設定で、手計算と実装を照合する。
+$f(x)=x^2-2$, x0=1。x1=1.5, x2=1.41667, x3≈1.41422 と $\sqrt2$ へ急速に近づく。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-05/num-root-finding.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 導関数が小さい点ではNewton法が不安定。
-- 初期値によって別の根へ収束することがある。
-- 非線形方程式の求根法の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+$f^{\prime}(x_k)=0$ では更新不能。導関数が極小、rootから遠い、multiple rootでは発散・遅い・別根へ行くことがある。
 
 ---
 
 ## よくある誤解
 
-- 非線形方程式の求根法の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+非線形方程式の求根法では、式へ数値を代入するだけでは不十分である。$f^{\prime}(x_k)=0$ では更新不能。導関数が極小、rootから遠い、multiple rootでは発散・遅い・別根へ行くことがある。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+Newtonにbracketing/line searchを組み合わせるhybrid法が実務的。residualとstepを両方監視する。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-非線形方程式の求根法は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+非線形systemではfをvector、導関数をJacobianへ置換し、各stepで線形系を解く。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 非線形方程式の求根法を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「一次Taylor近似」を式を見ずに説明できるか
+- 「更新式」までの論理を一段ずつ再現できるか
+- 非線形方程式の求根法の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/num-root-finding)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/num-root-finding)
+## 教科書と演習
+
+- [教科書](../../textbook/num-root-finding)
+- [10問の演習](../../exercises/num-root-finding)

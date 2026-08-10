@@ -1,134 +1,219 @@
 # アルゴリズムの仕様と正しさ：演習
 
-[教科書](/textbook/dm-algorithm-specifications-correctness)と対応する10問。ヒント以降は折りたたんである。
+Course 04｜Topic 11/20。10問すべて、このTopic固有の問いとして作成しています。
 
-### DM-411-01：概念
+[教科書](/textbook/dm-algorithm-specifications-correctness)
 
-1. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+## 問1. 定義と記号
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+「アルゴリズムの仕様と正しさ」の代表式
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+$$
+\{P\}\ C\ \{Q\}
+$$
+
+について、左辺が表す量、右辺の各主要量、式を使う目的を文章で説明せよ。未定義の記号を残さないこと。
+
+<details><summary>ヒント</summary>
+
+式を日本語へ翻訳し、入力・出力・parameter・条件を分ける。
+
 </details>
 
-### DM-411-02：概念
+<details><summary>完全解答</summary>
 
-2. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+代表式は結果だけを書くための記号ではない。本文で定義した量を使い、アルゴリズムの仕様と正しさが何を計算・比較・最適化しているかを説明する。特に次の最初の導出が式の役割を具体化する。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+**仕様を状態集合として読む**
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+Pは許される初期状態集合、Qは望む終了状態集合。CがPからQへ写すことを示す。
+
+答案では式の両辺の型・次元または確率的役割まで整合していることを確認する。
+
 </details>
 
-### DM-411-03：証明・導出・手計算
+## 問2. 導出1：仕様を状態集合として読む
 
-3. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+「アルゴリズムの仕様と正しさ」で **仕様を状態集合として読む** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+本文の「仕様を状態集合として読む」を、直前の定義から始めて書き直す。
+
 </details>
 
-### DM-411-04：証明・導出・手計算
+<details><summary>完全解答</summary>
 
-4. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+Pは許される初期状態集合、Qは望む終了状態集合。CがPからQへ写すことを示す。
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「逐次composition」へ進むときも、この段階で得た量だけを使う。
+
 </details>
 
-### DM-411-05：証明・導出・手計算
+## 問3. 導出2：逐次composition
 
-5. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+「アルゴリズムの仕様と正しさ」で **逐次composition** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+本文の「逐次composition」を、直前の定義から始めて書き直す。
+
 </details>
 
-### DM-411-06：誤りの診断
+<details><summary>完全解答</summary>
 
-6. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+$\{P\}C_1\{R\}$ と $\{R\}C_2\{Q\}$ があれば、中間assertion Rを介して $\{P\}C_1;C_2\{Q\}$。
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「正しさと停止を分離する」へ進むときも、この段階で得た量だけを使う。
+
 </details>
 
-### DM-411-07：誤りの診断
+## 問4. 導出3：正しさと停止を分離する
 
-7. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+「アルゴリズムの仕様と正しさ」で **正しさと停止を分離する** が必要になる理由を述べ、本文の途中式・論理を自分で再現せよ。結果だけでなく、どの定義または仮定を使ったかを書くこと。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+<details><summary>ヒント</summary>
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+本文の「正しさと停止を分離する」を、直前の定義から始めて書き直す。
+
 </details>
 
-### DM-411-08：アルゴリズム・実装読解
+<details><summary>完全解答</summary>
 
-8. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+この段階で示すべき内容は次である。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+無限loopは誤った値を返さないという意味で部分正当性を空虚に満たし得る。実用的正しさにはtermination証明が別途必要。
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+重要なのはこの結果を独立な公式として置かず、直前までの定義・仮定から導くことである。次の「最終結論」へ進むときも、この段階で得た量だけを使う。
+
 </details>
 
-### DM-411-09：応用
+## 問5. 数値例を途中から再現
 
-9. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+次の「アルゴリズムの仕様と正しさ」の設定を、自分で途中量まで展開して最終結論を確認せよ。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+> C=`x=x+1`, P:`x=0`ならQ:`x=1`。より一般にP:`x=a`からQ:`x=a+1`。
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+本文の結論を引用するだけでなく、少なくとも1つ中間計算・中間判断を示すこと。
+
+<details><summary>完全解答</summary>
+
+設定に対する計算・判断は次の通り。
+
+C=`x=x+1`, P:`x=0`ならQ:`x=1`。より一般にP:`x=a`からQ:`x=a+1`。
+
+ここで得た値だけでなく、代表式のどの量へ代入したか、また結果の符号・確率範囲・shape・単位などが妥当かを検算する。
+
 </details>
 
-### DM-411-10：応用
+## 問6. 条件を変えたときの差
 
-10. アルゴリズムの仕様と正しさについて、入力、出力、前提条件、事後条件、partial correctness、total correctness、停止性、反例、testとproofのうち一つを定義し、式 $$\lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbrace$$ が示す条件または結論を説明せよ。
+次の第二例について、第一例から変更した条件を特定し、その変更によって「アルゴリズムの仕様と正しさ」のどの部分が変わるか説明せよ。
 
-<details><summary>ヒント・解法方針・完全解答</summary>
+> 整数除算algorithmではpostconditionだけでなく「余り0≤r<d」のような範囲条件も仕様へ含める。
 
-- ヒント1: 記号の定義、仮定、入力サイズ、対象構造を最初に書く。
-- ヒント2: 小さな例と反例を作り、境界条件と向きを確認する。
-- 解法方針: 定義を適用し、証明なら基底・仮定・推論、アルゴリズムなら不変量・停止性・計算量を分けて示す。
-- 完全解答: \lbrace\text{input},\text{output},\text{precondition},\text{postcondition}\rbraceを定義に従って読み、仮定から結論までの推論を明記する。必要なら小さな入力を列挙し、結果が一般主張と整合することを確認する。
-- よくある誤答: 具体例だけで証明する、逆と対偶を混同する、Big Oを等式と読む、木とDAGを混同する。
+<details><summary>完全解答</summary>
+
+整数除算algorithmではpostconditionだけでなく「余り0≤r<d」のような範囲条件も仕様へ含める。
+
+比較では、定義そのものが変わったのか、parameterだけが変わったのか、成立条件が変わったのかを区別する。同じ代表式が使える場合は、なぜ使える条件が保たれているかも述べる。
+
 </details>
 
+## 問7. 成立条件と反例
+
+「アルゴリズムの仕様と正しさ」について、本文の成立条件を確認したうえで、次の失敗例で何が壊れているか診断せよ。
+
+> testが100件通っても全入力のcorrectness証明ではない。testは反例を見つけられるが未試験状態を排除しない。
+
+<details><summary>ヒント</summary>
+
+「式が未定義」「解が非一意」「近似が悪い」「確率解釈が崩れる」など失敗の種類を分ける。
+
+</details>
+
+<details><summary>完全解答</summary>
+
+本文で確認する条件は以下である。
+
+- 実行例が通ることは一般的正しさの証明ではない。
+- 停止性を別途確認する。
+- アルゴリズムの仕様と正しさの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+
+失敗例は次の通り。
+
+testが100件通っても全入力のcorrectness証明ではない。testは反例を見つけられるが未試験状態を排除しない。
+
+したがって、どの仮定を外したため、代表式またはその解釈のどの部分まで保証できなくなったかを対応づけて説明する。
+
+</details>
+
+## 問8. 実装・数値診断
+
+「アルゴリズムの仕様と正しさ」を実装するときの次の注意点について、数学的に正しい式とcomputer上の計算がなぜ同じ安全性を持たないか説明せよ。
+
+> assertion、type、contractをコードへ埋め込むと仕様の一部をruntime確認できるが、完全な形式証明とは異なる。
+
+<details><summary>完全解答</summary>
+
+assertion、type、contractをコードへ埋め込むと仕様の一部をruntime確認できるが、完全な形式証明とは異なる。
+
+実装答案では、単にlibrary関数名を書くのではなく、overflow/underflow、conditioning、data leakage、finite precision、停止条件など、このTopicで問題になる原因と対策を結び付ける。
+
+</details>
+
+## 問9. 次Topicへの導線
+
+「アルゴリズムの仕様と正しさ」から次の発展へ進む論理を、未学習概念を途中で仮定せず説明せよ。
+
+> loopを含むprogramでは各反復で保たれるloop invariantと、停止を保証するvariantが核心になる。
+
+<details><summary>完全解答</summary>
+
+loopを含むprogramでは各反復で保たれるloop invariantと、停止を保証するvariantが核心になる。
+
+本文で既に得た定義・式のうち何を一般化または再利用するかを明示する。後続Topicで初めて定義する対象が必要なら、ここでは必要性の説明までに留める。
+
+</details>
+
+## 問10. 総合証明・説明
+
+「アルゴリズムの仕様と正しさ」を、(1)前提、(2)代表式、(3)導出の3段階、(4)数値例、(5)反例、(6)実装上の注意、の順で説明せよ。各段階の因果関係が分かる答案にすること。
+
+<details><summary>完全解答</summary>
+
+答案では次の流れを一続きにする。
+
+**代表式**
+
+$$
+\{P\}\ C\ \{Q\}
+$$
+
+**導出**
+
+1. **仕様を状態集合として読む** — Pは許される初期状態集合、Qは望む終了状態集合。CがPからQへ写すことを示す。
+
+2. **逐次composition** — $\{P\}C_1\{R\}$ と $\{R\}C_2\{Q\}$ があれば、中間assertion Rを介して $\{P\}C_1;C_2\{Q\}$。
+
+3. **正しさと停止を分離する** — 無限loopは誤った値を返さないという意味で部分正当性を空虚に満たし得る。実用的正しさにはtermination証明が別途必要。
+
+**数値・具体例**
+
+C=`x=x+1`, P:`x=0`ならQ:`x=1`。より一般にP:`x=a`からQ:`x=a+1`。
+
+**条件を壊すと**
+
+testが100件通っても全入力のcorrectness証明ではない。testは反例を見つけられるが未試験状態を排除しない。
+
+**実装**
+
+assertion、type、contractをコードへ埋め込むと仕様の一部をruntime確認できるが、完全な形式証明とは異なる。
+
+各節を独立な箇条書きにせず、「前の結果が次の式をなぜ許すか」を接続して書く。
+
+</details>

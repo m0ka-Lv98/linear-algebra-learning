@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "最小二乗法の数値解法"
 ---
 
 # 最小二乗法の数値解法
 
-Course 05｜数値計算
+Course 05｜数値計算｜Topic 12/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-最小二乗法の数値解法で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+最小二乗法の数値解法の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 最小二乗法の数値解法の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `num-sparse-matrices-preconditioning` で得た概念を使い、ここでは 最小二乗法の数値解法 へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 方程式を厳密に満たせないとき、残差ベクトルの長さを最小にする近似解を選ぶ。
 
-**前提:** la-least-squares-computation-pseudoinverse, la-gram-schmidt-qr, num-errors-conditioning-stability
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-05/num-least-squares-qr-svd.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-05/num-least-squares-qr-svd.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+散布点へ直線を当て、縦方向の残差平方和が最小になる線を比較する。 観測ベクトルbをAの列空間へ直交射影した点がA x_hatで、残差r=b-A x_hatは列空間に垂直になる。QRはこの直交座標を数値的に安定に作る。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $A\in\mathbb R^{m\times n},m\ge n$
+- $Q^TQ=I$
+- $R$：upper triangular
+- $r=b-Ax$：residual
 
 $$
 \mathbf{A}=\mathbf{Q}\mathbf{R},\quad\min\|\mathbf{R}\mathbf{x}-\mathbf{Q}^{\mathsf T}\mathbf{b}\|_2
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$\|Ax-b\|=\|QRx-b\|=\|Q^Tb-Rx\|$（full Qなら直交変換が2-norm保存）。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 最小二乗法の数値解法
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+thin QRではbをQ列空間成分 $Q^Tb$ と直交残差へ分ける。xで変えられるのは列空間成分だけ。
 
 ---
 
-## 小さな例
+## 例題
 
-散布点へ直線を当て、縦方向の残差平方和が最小になる線を比較する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+Aの列がほぼ依存だとκ(A)=10^6ならκ(A^TA)≈10^12。normal equationは有効桁を大きく失う一方QRが有利。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 正規方程式だけが解法ではない。
-- 悪条件ではQRやSVDが安定。
-- 最小二乗法の数値解法の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+理論上同じ解式でもfloating-pointでは同じ精度ではない。$(A^TA)^{-1}A^Tb$ を標準実装としない。
 
 ---
 
 ## よくある誤解
 
-- 最小二乗法の数値解法の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+最小二乗法の数値解法では、式へ数値を代入するだけでは不十分である。理論上同じ解式でもfloating-pointでは同じ精度ではない。$(A^TA)^{-1}A^Tb$ を標準実装としない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+`lstsq`のdriver、rank threshold、residual返却条件を確認。explicit Qが不要ならHouseholder reflectorsをcompactに保存する。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-最小二乗法の数値解法は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+SVDはrankと感度をsingular valueで直接見せ、low-rank computationへつながる。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 最小二乗法の数値解法を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「QRで残差normを変換」を式を見ずに説明できるか
+- 「R系を解く」までの論理を一段ずつ再現できるか
+- 最小二乗法の数値解法の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/num-least-squares-qr-svd)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/num-least-squares-qr-svd)
+## 教科書と演習
+
+- [教科書](../../textbook/num-least-squares-qr-svd)
+- [10問の演習](../../exercises/num-least-squares-qr-svd)

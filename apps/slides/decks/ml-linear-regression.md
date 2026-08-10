@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "線形回帰"
 ---
 
 # 線形回帰
 
-Course 08｜機械学習
+Course 08｜機械学習｜Topic 02/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-線形回帰で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+線形回帰の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 線形回帰の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `ml-problem-formulation-data-splits` で得た概念を使い、ここでは 線形回帰 へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 回帰は入力から平均的な出力を説明・予測する関係をモデル化する。
 
-**前提:** mat-ols-design-matrices, opt-gradient-descent-convergence
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-linear-regression.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-08/ml-linear-regression.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+散布点、回帰線、残差を同時に描く。 点が観測値、線がモデル予測、点から線までの縦の差が残差である。二乗残差を合計する最小二乗では、大きな残差ほど強く目的関数へ効く。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $x\in\mathbb R^p$
+- $\beta\in\mathbb R^p$
+- $b$：intercept
+- $\hat y=x^T\beta+b$
 
 $$
 \hat{y}=\mathbf{x}^{\mathsf T}\boldsymbol{\beta}+b
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+各feature contribution β_jx_jを足し、interceptでoriginをずらす。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 線形回帰
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+Gaussian noise MLEまたはEuclidean fitから $\sum(y_i-\hat y_i)^2$。
 
 ---
 
-## 小さな例
+## 例題
 
-散布点、回帰線、残差を同時に描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+house priceをarea, ageでfit。β_areaは他feature固定時のlinear marginal effect。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 予測と因果を混同しない。
-- 外挿では不確実性が増える。
-- 線形回帰の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+extrapolationでlinear assumptionが壊れ、train range外で非現実的予測。
 
 ---
 
 ## よくある誤解
 
-- 線形回帰の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+線形回帰では、式へ数値を代入するだけでは不十分である。extrapolationでlinear assumptionが壊れ、train range外で非現実的予測。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+pipeline内でscaling/feature transformをfit。metricsはMSE/MAE等目的に合わせる。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-線形回帰は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+binary targetではlinear scoreを0〜1 probabilityへmapするlogistic regressionへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 線形回帰を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「linear score」を式を見ずに説明できるか
+- 「regularization/validation」までの論理を一段ずつ再現できるか
+- 線形回帰の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/ml-linear-regression)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/ml-linear-regression)
+## 教科書と演習
+
+- [教科書](../../textbook/ml-linear-regression)
+- [10問の演習](../../exercises/ml-linear-regression)

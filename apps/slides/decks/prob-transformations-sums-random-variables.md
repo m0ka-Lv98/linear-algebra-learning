@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "確率変数の変換と和"
 ---
 
 # 確率変数の変換と和
 
-Course 03｜確率統計
+Course 03｜確率統計｜Topic 11/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-確率変数の変換と和で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+確率変数の変換と和の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 確率変数の変換と和の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `prob-continuous-distributions` で得た概念を使い、ここでは 確率変数の変換と和 へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 分布は確率変数がどの値をどれくらい取りやすいかをまとめたもの。PMF/PDFとCDFは同じ分布の別表現。
 
-**前提:** prob-joint-marginal-conditional-distributions, prob-discrete-distributions, prob-continuous-distributions
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-03/prob-transformations-sums-random-variables.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-03/prob-transformations-sums-random-variables.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+離散分布の棒と連続分布の曲線、CDFの累積を並べる。 離散なら棒1本が1点の確率、連続なら曲線下の区間面積が確率である。CDFは左端からその位置までの確率を累積するので必ず非減少になる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $Y=g(X)$：確率変数の変換
+- $a,b$：定数
+- $X_1,\ldots,X_n$：複数の確率変数
+- $S=\sum_iX_i$：和
 
 $$
 \operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$E[aX+b]=aE[X]+b$ は期待値の和・定数倍に対する線形性から従い、独立性は不要。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 確率変数の変換、和
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+$aX+b-E[aX+b]=a(X-E[X])$。二乗して平均すると $a^2Var(X)$。
 
 ---
 
-## 小さな例
+## 例題
 
-離散分布の棒と連続分布の曲線、CDFの累積を並べる。
-
-最小の非自明な設定で、手計算と実装を照合する。
+$X$ の平均3、分散4なら $Y=2X-5$ は平均1、分散16。標準偏差は4で、係数2に比例する。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- PDFの高さそのものは確率ではない。
-- CDFは単調非減少。
-- 確率変数の変換と和の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+独立でないX,Yについて $Var(X+Y)=Var(X)+Var(Y)$ とすると誤る。例えばY=Xなら本当は4Var(X)だが誤式は2Var(X)。
 
 ---
 
 ## よくある誤解
 
-- 確率変数の変換と和の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+確率変数の変換と和では、式へ数値を代入するだけでは不十分である。独立でないX,Yについて $Var(X+Y)=Var(X)+Var(Y)$ とすると誤る。例えばY=Xなら本当は4Var(X)だが誤式は2Var(X)。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+vectorized simulationで変換前後の標本平均・分散を比較できる。非線形変換ではJacobianを用いた密度変換やMonte Carloが必要になる。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-確率変数の変換と和は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+多くの独立変数の和を標準化したときの極限形が中心極限定理。次Topicで標本平均の分布へ接続する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 確率変数の変換と和を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「平均の線形性」を式を見ずに説明できるか
+- 「和の分散を展開する」までの論理を一段ずつ再現できるか
+- 確率変数の変換と和の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/prob-transformations-sums-random-variables)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/prob-transformations-sums-random-variables)
+## 教科書と演習
+
+- [教科書](../../textbook/prob-transformations-sums-random-variables)
+- [10問の演習](../../exercises/prob-transformations-sums-random-variables)

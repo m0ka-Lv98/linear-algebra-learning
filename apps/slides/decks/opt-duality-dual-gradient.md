@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "Lagrange双対とdual gradient"
 ---
 
 # Lagrange双対とdual gradient
 
-Course 06｜最適化
+Course 06｜最適化｜Topic 15/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-Lagrange双対とdual gradientで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+Lagrange双対とdual gradientの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- Lagrange双対とdual gradientの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `opt-barrier-interior-point` で得た概念を使い、ここでは Lagrange双対とdual gradient へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ Lagrange双対とdual gradientで、何を入力し、代表式がどの量を�
 
 双対問題は制約違反へ価格を付け、元問題の下界を与える別の最適化問題を作る。
 
-**前提:** opt-inequality-constraints-kkt
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-06/opt-duality-dual-gradient.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-06/opt-duality-dual-gradient.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+primal値とdual値のgapを棒で比較する。 primalの実行可能点から得る上界/下界と、dual変数から得る境界値の間のgapを描く。強双対では最適点でこのgapが0になる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\mathcal L(x,λ)=f(x)+λ^Tg(x)$
+- $q(λ)=\inf_x\mathcal L(x,λ)$：dual function
+- $p^*$：primal optimum
+- $d^*$：dual optimum
 
 $$
 g(\boldsymbol{\lambda})=\inf_{\mathbf{x}}\mathcal{L}(\mathbf{x},\boldsymbol{\lambda})
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+feasible xでg_i(x)≤0, λ_i≥0なのでλ^Tg≤0、よってL(x,λ)≤f(x)。さらにq(λ)=inf_x L≤L(x,λ)≤f(x)。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** Lagrange双対、dual、gradient
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+λを選んでq(λ)を最大化すれば最も強いlower bound。これがdual problem。
 
 ---
 
-## 小さな例
+## 例題
 
-primal値とdual値のgapを棒で比較する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+簡単なquadratic+linear constraintでdualを解析し、primal solutionと同じobjectiveを得るとstrong dualityを確認できる。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 弱双対と強双対を区別する。
-- dual variableの符号制約を確認する。
-- Lagrange双対とdual gradientの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+nonconvexではduality gapがpositiveになり得る。dual optimumだけからprimal exact solutionを保証しない。
 
 ---
 
 ## よくある誤解
 
-- Lagrange双対とdual gradientの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+Lagrange双対とdual gradientでは、式へ数値を代入するだけでは不十分である。nonconvexではduality gapがpositiveになり得る。dual optimumだけからprimal exact solutionを保証しない。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+dual gradient/subgradientではinner inf solve accuracyも影響。primal recoveryとfeasibilityを別監視。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-Lagrange双対とdual gradientは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+nonsmooth regularizerを分離して扱うproximal operatorはdualityとも深く関係するが、まずproximal gradientを構成する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- Lagrange双対とdual gradientを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「lower bound」を式を見ずに説明できるか
+- 「gap」までの論理を一段ずつ再現できるか
+- Lagrange双対とdual gradientの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/opt-duality-dual-gradient)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/opt-duality-dual-gradient)
+## 教科書と演習
+
+- [教科書](../../textbook/opt-duality-dual-gradient)
+- [10問の演習](../../exercises/opt-duality-dual-gradient)

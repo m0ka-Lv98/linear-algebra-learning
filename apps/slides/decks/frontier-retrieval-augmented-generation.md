@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "Retrieval-Augmented Generation"
 ---
 
 # Retrieval-Augmented Generation
 
-Course 10｜Frontier
+Course 10｜Frontier｜Topic 06/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-Retrieval-Augmented Generationで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+Retrieval-Augmented Generationの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- Retrieval-Augmented Generationの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `frontier-parameter-efficient-finetuning` で得た概念を使い、ここでは Retrieval-Augmented Generation へ進む。
 
 ---
 
@@ -32,96 +40,85 @@ Retrieval-Augmented Generationで、何を入力し、代表式がどの量を�
 
 RAGはqueryで外部文書を検索し、取得文書をcontextへ入れて生成することで知識を補う。
 
-**前提:** frontier-foundation-model-paradigm, ml-knn-distance-methods
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-retrieval-augmented-generation.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-10/frontier-retrieval-augmented-generation.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+query→embedding→retrieval→context→generationを段階表示する。 queryからretrieverが外部文書を選び、その文書をcontextとしてgeneratorへ渡す。最終出力はparameter内部知識だけでなく検索結果に条件づけられる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $x$：query
+- $d$：retrieved document/chunk
+- $\mathcal D_k$：top-k retrieved set
+- $p(d|x)$：retriever weight
+- $p(y|x,d)$：generator
 
 $$
 p(y\mid x)=\sum_{d\in\mathcal{D}_k}p(y\mid x,d)p(d\mid x)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+dが未確定ならtotal probabilityにより $p(y|x)=\sum_d p(y,d|x)=\sum_dp(y|x,d)p(d|x)$。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** Retrieval-Augmented、Generation
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+全corpus sumは不可能なのでretrieverが高score dだけ $\mathcal D_k$ へ絞る。ここでretrieval recall lossが入る。
 
 ---
 
-## 小さな例
+## 例題
 
-query→embedding→retrieval→context→generationを段階表示する。
-
-最小の非自明な設定で、手計算と実装を照合する。
+質問に対しcorrect manual sectionがtop-3に入ればgeneratorは引用付き回答可能。top-k全てirrelevantならgeneratorだけで事実を回復する保証なし。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-10/frontier-retrieval-augmented-generation.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- retrieval失敗とgeneration失敗を分離評価する。
-- 引用元がcontextに本当に存在するか確認する。
-- Retrieval-Augmented Generationの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+RAGを使えばhallucinationが自動消滅するわけではない。retrieved evidenceを無視/誤解釈/誤引用し得る。
 
 ---
 
 ## よくある誤解
 
-- Retrieval-Augmented Generationの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+Retrieval-Augmented Generationでは、式へ数値を代入するだけでは不十分である。RAGを使えばhallucinationが自動消滅するわけではない。retrieved evidenceを無視/誤解釈/誤引用し得る。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+retrieval hit@k, MRR, answer correctness, citation supportを別metric。chunking/index version/corpus snapshotを記録。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-Retrieval-Augmented Generationは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+retrieverの基盤となるdense vector similarityとapproximate nearest-neighbor indexを次に分解する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- Retrieval-Augmented Generationを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「documentをlatent evidenceとみなす」を式を見ずに説明できるか
+- 「context generation」までの論理を一段ずつ再現できるか
+- Retrieval-Augmented Generationの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/frontier-retrieval-augmented-generation)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/frontier-retrieval-augmented-generation)
+## 教科書と演習
+
+- [教科書](../../textbook/frontier-retrieval-augmented-generation)
+- [10問の演習](../../exercises/frontier-retrieval-augmented-generation)

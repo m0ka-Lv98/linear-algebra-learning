@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "異常検知"
 ---
 
 # 異常検知
 
-Course 08｜機械学習
+Course 08｜機械学習｜Topic 15/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-異常検知で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+異常検知の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 異常検知の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `ml-dimensionality-reduction-pca-manifold` で得た概念を使い、ここでは 異常検知 へ進む。
 
 ---
 
@@ -32,95 +40,83 @@ layout: center
 
 異常検知は「通常データからどれだけ外れるか」のscoreを作り、閾値で判定する。
 
-**前提:** prob-multivariate-normal-distribution, ml-gmm-em
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-anomaly-detection.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-08/ml-anomaly-detection.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+密度の低い点を負対数尤度で高scoreにする。 高密度領域から離れた点ほど正常モデルの確率または近傍密度が小さくなる。閾値をどこに置くかでfalse positiveと見逃しが変わる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $s(x)$：anomaly score
+- $s=-\log p(x)$：density-based score例
+- $\tau$：decision threshold
 
 $$
 s(\mathbf{x})=-\log p(\mathbf{x})
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+p(x)が小さいほどsurprisal -log pが大きい。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 異常検知
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+flag=1[s(x)>τ]。τ変更でFPR/TPR tradeoff。
 
 ---
 
-## 小さな例
+## 例題
 
-密度の低い点を負対数尤度で高scoreにする。
-
-最小の非自明な設定で、手計算と実装を照合する。
+1D normalで|z|大のpointsがhigh score。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- 異常率が低いのでaccuracyは不適切な場合が多い。
-- 閾値は運用コストで決める。
-- 異常検知の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+labelled rare classとunsupervised anomalyは同じ問題ではない。rare but valid subpopulationを誤検知し得る。
 
 ---
 
 ## よくある誤解
 
-- 異常検知の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+異常検知では、式へ数値を代入するだけでは不十分である。labelled rare classとunsupervised anomalyは同じ問題ではない。rare but valid subpopulationを誤検知し得る。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+thresholdはvalidation operational dataで校正。driftでnormal distributionが変わると再calibration。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-異常検知は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+performanceはinput representation/featuresに強く依存するためfeature engineering/selectionへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 異常検知を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「density view」を式を見ずに説明できるか
+- 「high dimension caveat」までの論理を一段ずつ再現できるか
+- 異常検知の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/ml-anomaly-detection)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/ml-anomaly-detection)
+## 教科書と演習
+
+- [教科書](../../textbook/ml-anomaly-detection)
+- [10問の演習](../../exercises/ml-anomaly-detection)

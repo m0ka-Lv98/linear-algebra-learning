@@ -1,42 +1,24 @@
 # 同時分布・周辺分布・条件付き分布
 
-## Course・Unit内での位置付け
+Course 03「確率統計」のTopic 7/20。
 
-Course 03「確率統計」第307 Topic。確率・分布・推測・情報量を順に学ぶ。
+## 今回の中心問い
 
-## 今回解く問い
+同時分布・周辺分布・条件付き分布の代表式は、どの定義・仮定から、なぜその形になるのか。
 
-同時分布・周辺分布・条件付き分布を、同時分布、周辺分布、条件付き分布、周辺化、独立、二次元表、二重積分として定義し、観測データと機械学習へどう接続するか。
+## このTopicでできるようになること
 
-## 概要
-
-確率変数と実現値を区別し、定義、手計算、数値確認、統計的解釈を一つの流れで学ぶ。
-
-## 学習目標
-
-- 同時分布、周辺分布、条件付き分布、周辺化、独立、二次元表、二重積分の定義と前提を説明できる。
-- 小さな例を手計算し、標準PythonとNumPyで検算できる。
-
-## 前提Topic
-
-Course 00〜02の前提と同Unitの前Topic。
-
-## 想定学習時間
-
-スライド20分 / 教科書65分 / 演習55分
+- 同時分布・周辺分布・条件付き分布の定義と代表式の意味を説明できる
+- X=xという事象を分割するを途中式から再現できる
+- 成立条件を外したときの失敗を具体例で診断できる
 
 ## 学習順序
 
-Course 03の301〜320の順に学ぶ。
+前: [prob-expectation-variance-moments](/courses/foundation/prob-expectation-variance-moments)  
+次: [prob-covariance-correlation](/courses/foundation/prob-covariance-correlation)
 
 ## 教材
 
-- [スライド](/slides/prob-joint-marginal-conditional-distributions/)
 - [教科書](/textbook/prob-joint-marginal-conditional-distributions)
 - [演習](/exercises/prob-joint-marginal-conditional-distributions)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/prob-expectation-variance-moments)
-
-- [次のTopic](/courses/foundation/prob-covariance-correlation)
+- [スライド](/slides/prob-joint-marginal-conditional-distributions/)

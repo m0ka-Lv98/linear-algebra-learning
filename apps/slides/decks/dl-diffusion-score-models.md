@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "diffusionとscore model"
 ---
 
 # diffusionとscore model
 
-Course 09｜深層学習
+Course 09｜深層学習｜Topic 13/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-diffusionとscore modelで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+diffusionとscore modelの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- diffusionとscore modelの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `dl-gans-adversarial-training` で得た概念を使い、ここでは diffusionとscore model へ進む。
 
 ---
 
@@ -32,96 +40,84 @@ diffusionとscore modelで、何を入力し、代表式がどの量を出力し
 
 diffusionはデータへ段階的にnoiseを加えるforward過程と、noiseを除いて戻すreverse過程を学習する。
 
-**前提:** prob-continuous-distributions, num-ode-euler-runge-kutta
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-09/dl-diffusion-score-models.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-09/dl-diffusion-score-models.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+画像状の点群がnoise化し、逆に構造へ戻る過程を描く。 前向き過程で徐々にnoiseを加え、逆過程では各noise levelから少しずつdenoiseする。多数の小さな逆遷移を学習することで複雑な分布を生成する。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $x_0$：data
+- $x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\epsilon$
+- $\epsilon\sim N(0,I)$
+- $\epsilon_\theta(x_t,t)$：noise predictor
 
 $$
 \mathbf{x}_t=\sqrt{\bar{\alpha}_t}\mathbf{x}_0+\sqrt{1-\bar{\alpha}_t}\boldsymbol{\varepsilon}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+Gaussian Markov stepsを合成すると任意tのx_tをx0と1個のstandard noiseのlinear combinationとしてsampleできる。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** diffusion、score、model
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+生成したεが既知なのでnetworkへx_t,tを与えε prediction MSEを学習できる。
 
 ---
 
-## 小さな例
+## 例題
 
-画像状の点群がnoise化し、逆に構造へ戻る過程を描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+t smallではx_tほぼdata、t largeではnoise dominant。networkはnoise levelに応じdenoise。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-09/dl-diffusion-score-models.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 時刻tのnoise scheduleが重要。
-- 生成step数と品質・速度を分けて考える。
-- diffusionとscore modelの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+forward formulaだけでgenerationできない。learned reverse dynamicsが必要。
 
 ---
 
 ## よくある誤解
 
-- diffusionとscore modelの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+diffusionとscore modelでは、式へ数値を代入するだけでは不十分である。forward formulaだけでgenerationできない。learned reverse dynamicsが必要。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+schedule, prediction target(ε/v/x0), sampler steps、guidance scaleを記録。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-diffusionとscore modelは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+label無しdataからrepresentationを学ぶcontrastive/self-supervised objectivesへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- diffusionとscore modelを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「closed-form noising」を式を見ずに説明できるか
+- 「reverse」までの論理を一段ずつ再現できるか
+- diffusionとscore modelの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/dl-diffusion-score-models)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/dl-diffusion-score-models)
+## 教科書と演習
+
+- [教科書](../../textbook/dl-diffusion-score-models)
+- [10問の演習](../../exercises/dl-diffusion-score-models)

@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "Scientific Machine Learning"
 ---
 
 # Scientific Machine Learning
 
-Course 10｜Frontier
+Course 10｜Frontier｜Topic 19/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-Scientific Machine Learningで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+Scientific Machine Learningの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- Scientific Machine Learningの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `frontier-synthetic-data-data-curation` で得た概念を使い、ここでは Scientific Machine Learning へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ Scientific Machine Learningで、何を入力し、代表式がどの量を出�
 
 Scientific MLは観測dataのlossと物理法則・方程式の残差を同時に最小化して、data不足を構造知識で補う。
 
-**前提:** num-ode-euler-runge-kutta, dl-perceptron-mlp
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-scientific-machine-learning.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-10/frontier-scientific-machine-learning.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+data pointとphysics residualを同じ目的関数へ合流させる。 物理・科学modelが与える制約とdata-driven modelを同じ計算graphで結ぶ。単なる予測精度だけでなく保存則・境界条件・不確実性も評価対象になる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $L_{data}$：observation fit
+- $L_{physics}$：equation/constraint residual
+- $\lambda$：balance
+- $u_\theta$：learned field/model
 
 $$
 \mathcal{L}=\mathcal{L}_{data}+\lambda\mathcal{L}_{physics}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+PDE/ODE $F[u]=0$ にmodel $u_θ$ を代入しcollocation pointsで $r=F[u_θ]$。autodiffでderivatives計算。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** Scientific、Machine、Learning
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+$L=L_{data}+λL_{physics}$。λはunits/scale/optimization dynamicsを調整。
 
 ---
 
-## 小さな例
+## 例題
 
-data pointとphysics residualを同じ目的関数へ合流させる。
-
-最小の非自明な設定で、手計算と実装を照合する。
+heat equationのtemperature fieldをsparse measurementsとPDE residualからfit。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- physics constraintが誤っていればbiasになる。
-- 単位と無次元化を確認する。
-- Scientific Machine Learningの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+physics lossが小さい=真のphysical solution一意とは限らない。boundary/initial conditions、model error、identifiabilityが必要。
 
 ---
 
 ## よくある誤解
 
-- Scientific Machine Learningの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+Scientific Machine Learningでは、式へ数値を代入するだけでは不十分である。physics lossが小さい=真のphysical solution一意とは限らない。boundary/initial conditions、model error、identifiabilityが必要。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+units/non-dimensionalization、collocation sampling、residual scales、baseline numerical solver comparison。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-Scientific Machine Learningは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+最後にprivacy/governance/research practiceでtechnical performance以外のconstraintsとevidence standardsを統合する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- Scientific Machine Learningを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「governing equation residual」を式を見ずに説明できるか
+- 「inverse problem」までの論理を一段ずつ再現できるか
+- Scientific Machine Learningの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/frontier-scientific-machine-learning)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/frontier-scientific-machine-learning)
+## 教科書と演習
+
+- [教科書](../../textbook/frontier-scientific-machine-learning)
+- [10問の演習](../../exercises/frontier-scientific-machine-learning)

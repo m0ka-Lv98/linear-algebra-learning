@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "評価指標・calibration・class imbalance"
 ---
 
 # 評価指標・calibration・class imbalance
 
-Course 08｜機械学習
+Course 08｜機械学習｜Topic 19/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-評価指標・calibration・class imbalanceで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+評価指標・calibration・class imbalanceの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 評価指標・calibration・class imbalanceの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `ml-model-selection-cross-validation` で得た概念を使い、ここでは 評価指標・calibration・class imbalance へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 calibrationは予測確率0.8の集合で実際に約80%当たるかを確認する。
 
-**前提:** stat-hypothesis-testing, ml-softmax-multiclass
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-metrics-calibration-imbalance.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-08/ml-metrics-calibration-imbalance.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+reliability diagramと理想対角線を描く。 予測確率を横軸、実際の陽性率を縦軸に置き、対角線に近いほど確率の意味が校正されている。accuracyが高くてもcalibrationが良いとは限らない。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $TP,FP,FN,TN$
+- $Precision=TP/(TP+FP)$
+- $Recall=TP/(TP+FN)$
+- $p(x)$：predicted probability
 
 $$
 \operatorname{Precision}=\frac{TP}{TP+FP}
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+thresholdでprobabilityをhard labelへすると4 counts。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 評価指標、calibration、class、imbalance
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+false positive数はnegative population sizeに依存するためsame TPR/FPRでもprevalenceでprecision変化。
 
 ---
 
-## 小さな例
+## 例題
 
-reliability diagramと理想対角線を描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+rare disease prevalence1%ではFPR5%でもfalse positivesが多数になりprecision低くなり得る。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- AUCが高くてもcalibrationが良いとは限らない。
-- class imbalanceでは複数指標を見る。
-- 評価指標・calibration・class imbalanceの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+accuracy99%はprevalence99%でall-negative predictorでも達成し得る。
 
 ---
 
 ## よくある誤解
 
-- 評価指標・calibration・class imbalanceの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+評価指標・calibration・class imbalanceでは、式へ数値を代入するだけでは不十分である。accuracy99%はprevalence99%でall-negative predictorでも達成し得る。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+PR-AUC/ROC-AUC、macro/micro、thresholdはbusiness costと共に。calibrationはheld-out data。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-評価指標・calibration・class imbalanceは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+deployment後はuncertainty, explanation, drift monitoringを統合する。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 評価指標・calibration・class imbalanceを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「confusion counts」を式を見ずに説明できるか
+- 「calibration」までの論理を一段ずつ再現できるか
+- 評価指標・calibration・class imbalanceの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/ml-metrics-calibration-imbalance)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/ml-metrics-calibration-imbalance)
+## 教科書と演習
+
+- [教科書](../../textbook/ml-metrics-calibration-imbalance)
+- [10問の演習](../../exercises/ml-metrics-calibration-imbalance)

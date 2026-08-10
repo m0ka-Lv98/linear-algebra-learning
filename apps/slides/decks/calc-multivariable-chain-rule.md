@@ -1,8 +1,9 @@
 ---
 theme: default
 routerMode: hash
-layout: cover
 generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
+layout: cover
 title: "多変数の連鎖律"
 ---
 
@@ -16,131 +17,108 @@ layout: center
 
 ## 今回の問い
 
-複数の中間変数を通る変化を、漏れなく合成するにはどうするか。
-
----
-
 ## 到達目標
 
-- 経路に沿うスカラー関数の連鎖律を書ける
-- Jacobian積として多変数連鎖律を書ける
-- 行列shapeで式の向きを検算できる
-- 計算グラフ上の複数経路の寄与を足し合わせられる
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+多段の多変数写像で変化を伝えると、なぜJacobianの行列積になるのか。
 
 ---
 
-## 試験での基本姿勢
+## なぜ今これを学ぶのか
 
-1. 何を求める問題か確認
-2. 定義・成立条件を確認
-3. 計算
-4. 判定
-5. 検算して結論
+各関数は局所的にはJacobianという線形写像で近似できる。二つの関数を合成したとき、その局所線形近似も「二つの線形写像の合成」になるはずであり、行列積が自然に現れる。
 
 ---
 
-## 記号
+## 直感
 
-| 記号 | 意味 |
-|---|---|
-| $x(t),y(t)$ | $t$ に依存する中間変数 |
-| $z=f(x,y)$ | 中間変数から作る出力 |
-| $J_f$ | 関数 $f$ のJacobian |
-| $J_{f\circ g}$ | 合成関数 $f(g(\cdot))$ のJacobian |
+局所的な線形写像を順に合成すると行列積になる。多変数の連鎖律はこの事実そのものである。
+
+一変数では倍率×倍率だった。多変数では入力変化の方向も混ざるため、倍率が行列に置き換わり、順序を保った行列積になる。
 
 ---
 
-## 中心概念 1
+## 図解
 
-1. スカラー経路
-$z=f(x,y)$、$x=x(t),y=y(t)$ なら
-$$\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}.$$
-$t$ の変化が $x$ 経路と $y$ 経路の両方を通って $z$ に影響するため、寄与を足す。
+<img src="./assets/course-01/calc-multivariable-chain-rule.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
-
+図では $\mathbf x\in\mathbb R^n\to\mathbf z=g(\mathbf x)\in\mathbb R^p\to\mathbf y=f(\mathbf z)\in\mathbb R^m$ の3層を描く。小変位 $d\mathbf x$ がまず $\mathbf J_gd\mathbf x$ へ、次に $\mathbf J_f(\mathbf J_gd\mathbf x)$ へ写るため全体行列は $\mathbf J_f\mathbf J_g$。
 
 ---
 
-## 中心概念 2
+## 記号と代表式
 
-### 2. Jacobianによる連鎖律
-$g:\mathbb R^n\to\mathbb R^p$、$f:\mathbb R^p\to\mathbb R^m$ のとき
-$$J_{f\circ g}(\mathbf x)=J_f(g(\mathbf x))J_g(\mathbf x).$$
-shapeは $(m\times p)(p\times n)=m\times n$。**順序を逆にしない**。
+- $g:\mathbb R^n\to\mathbb R^p$
+- $f:\mathbb R^p\to\mathbb R^m$
+- $\mathbf J_g\in\mathbb R^{p\times n}$
+- $\mathbf J_f\in\mathbb R^{m\times p}$
+- $\mathbf J_{f\circ g}\in\mathbb R^{m\times n}$
 
-
-
----
-
-## 図で確認
-
-![多変数の連鎖律の図解](./assets/course-01/chain_rule_flow.png)
+$$
+\mathbf J_{f\circ g}(\mathbf{x})=\mathbf J_f(g(\mathbf{x}))\mathbf J_g(\mathbf{x})
+$$
 
 ---
 
-## 標準手順
+## 導出 1
 
-- 依存関係を図か式で明示する
-- 各関数の入力・出力次元を書く
-- 局所Jacobianを求める
-- 外側Jacobian×内側Jacobianの順に掛ける
-- 複数経路なら寄与を足す
-- 最終shapeが入力→出力の写像に一致するか確認する
+$g(\mathbf x+\mathbf h)=g(\mathbf x)+\mathbf J_g\mathbf h+o(\|\mathbf h\|)$。中間変数の変化は $\Delta\mathbf z\approx\mathbf J_g\mathbf h$。
 
 ---
 
-## 典型例
+## 導出 2
 
-**例1：経路。** $z=x^2+y^2$, $x=t$, $y=t^2$。$dz/dt=2x\cdot1+2y\cdot2t=2t+4t^3$。
-
----
-
-## よくある誤り
-
-- Jacobian積の順序を逆にする
-- 複数経路の寄与を1つしか数えない
-- 中間点 $g(\mathbf x)$ で外側Jacobianを評価しない
-- shape確認をせず転置ミスをする
+$f(\mathbf z+\Delta\mathbf z)=f(\mathbf z)+\mathbf J_f\Delta\mathbf z+o(\|\Delta\mathbf z\|)$。$\Delta\mathbf z\approx\mathbf J_g\mathbf h$ を代入すると一次項は $\mathbf J_f\mathbf J_g\mathbf h$。
 
 ---
 
-## 満点答案のポイント
+## 例題
 
-- 依存関係を矢印で紙に書くのは有効だが、答案では式も必ず書く
-- 行列の内側次元が一致するかを毎回確認する
-- 「経路では掛ける、合流では足す」を言葉でも説明できるようにする
+$g(x,y)=(x+y,xy)^T$、$f(u,v)=u^2+v$。$\mathbf J_g=\begin{bmatrix}1&1\\y&x\end{bmatrix}$、$\mathbf J_f=[2u,1]$。積は $[2(x+y)+y,\ 2(x+y)+x]$ で、直接 $f(g)= (x+y)^2+xy$ を偏微分した結果と一致。
 
 ---
 
-## 機械学習との接続
+## 条件を変えるとどうなるか
 
-backpropagationそのもの。深いニューラルネットでは局所Jacobianの積を効率よく計算し、損失から各パラメータへの勾配を伝播する。
-
----
-
-## 30秒確認 1
-
-中心式または中心定義を、記号の意味まで含めて口頭で説明できるか。
+行列積は可換でないので $\mathbf J_f\mathbf J_g=\mathbf J_g\mathbf J_f$ としてはいけない。shapeが偶然一致しても、写像の適用順序が逆になる。
 
 ---
 
-## 30秒確認 2
+## よくある誤解
 
-「この条件がないと結論できない」という成立条件を1つ挙げられるか。
-
----
-
-## 30秒確認 3
-
-典型的な誤答を1つ挙げ、どこが誤りか説明できるか。
+「偏微分を全部掛ける」ではなく、中間変数ごとの経路を足し合わせる構造。行列表記はその多数の経路和を一度に表している。
 
 ---
 
-## 演習へ
+## 実装・計算上の注意
+
+reverse-mode ADは、スカラーlossに対してvector-Jacobian productを出力側から逆向きに計算し、巨大なJacobian全体を保存しない。これがdeep neural networkのbackpropagationを効率化する。
+
+---
+
+## 一段先へ
+
+計算graphがDAGなら、各nodeの局所Jacobianをトポロジカル順に合成できる。Course 09でこの構造を誤差逆伝播として詳しく扱う。
+
+---
+
+## 自分で説明できるか
+
+- shapeだけからJacobian積の順序を決められるか
+- 直接微分とJacobian積が一致する2変数例を計算できるか
+- reverse-modeで転置が現れる理由を内積・連鎖律から説明できるか
+
+---
+layout: center
+---
+
+## 教科書と演習
 
 - [教科書](../../textbook/calc-multivariable-chain-rule)
 - [10問の演習](../../exercises/calc-multivariable-chain-rule)
-## 理解確認
-
-- 到達目標の各項目を、定義・計算手順・成立条件とともに説明できるか確認する。
-- 教科書と演習の対応箇所を参照し、式の意味を自分の言葉で説明する。

@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "pretrainingとscaling law"
 ---
 
 # pretrainingとscaling law
 
-Course 10｜Frontier
+Course 10｜Frontier｜Topic 03/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-pretrainingとscaling lawで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+pretrainingとscaling lawの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- pretrainingとscaling lawの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `frontier-tokenization-embeddings-context` で得た概念を使い、ここでは pretrainingとscaling law へ進む。
 
 ---
 
@@ -32,96 +40,85 @@ pretrainingとscaling lawで、何を入力し、代表式がどの量を出力�
 
 scaling lawはmodel/data/computeを増やしたときのloss改善を経験的なべき則で要約する。
 
-**前提:** frontier-foundation-model-paradigm, dl-scaling-distributed-training
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-10/frontier-pretraining-scaling-laws.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-10/frontier-pretraining-scaling-laws.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+log-log軸で規模とlossの関係を描く。 横軸をmodel/data/compute規模、縦軸をlossとしてlog-logで描くと、経験的power lawはおおむね直線になる。資源配分の議論はこの傾きと飽和を読む。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $N$：model parameters規模
+- $D$：training tokens/data規模
+- $C$：compute
+- $\mathcal L$：validation/pretraining loss
+- $\alpha,\beta$：empirical exponents
 
 $$
 \mathcal{L}(N,D,C)\approx A N^{-\alpha}+B D^{-\beta}+E
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$L(N)\approx A N^{-\alpha}+E$ ならirreducible Eを除いた部分のlogは $\log A-\alpha\log N$。実験点からslopeをfit。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** pretraining、scaling、law
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+Nだけ増やしてD不足ならdata-limited、Dだけ増やしてN不足ならmodel-limited。general formは各resource contributionを含む。
 
 ---
 
-## 小さな例
+## 例題
 
-log-log軸で規模とlossの関係を描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+modelを2倍してloss改善がpredictableでも、dataset quality/domainが変われば同じfitを外挿できない。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-10/frontier-pretraining-scaling-laws.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 外挿は分布やtraining recipeが変わると外れる。
-- compute-optimal balanceを考える。
-- pretrainingとscaling lawの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+benchmark scoreやemergent capabilityがpretraining lossの単純power lawに必ず従うわけではない。fit range外の巨大外挿はuncertain。
 
 ---
 
 ## よくある誤解
 
-- pretrainingとscaling lawの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+pretrainingとscaling lawでは、式へ数値を代入するだけでは不十分である。benchmark scoreやemergent capabilityがpretraining lossの単純power lawに必ず従うわけではない。fit range外の巨大外挿はuncertain。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+experiment FLOPs算定、token count、data mixture、optimizer/architectureを揃えないとscale studyを混同。confidence interval付きfit。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-pretrainingとscaling lawは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+pretrained modelをparameter updateせずexamples/instructionsだけでtaskへadaptするin-context learningへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- pretrainingとscaling lawを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「log-log linearization」を式を見ずに説明できるか
+- 「compute constraint」までの論理を一段ずつ再現できるか
+- pretrainingとscaling lawの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/frontier-pretraining-scaling-laws)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/frontier-pretraining-scaling-laws)
+## 教科書と演習
+
+- [教科書](../../textbook/frontier-pretraining-scaling-laws)
+- [10問の演習](../../exercises/frontier-pretraining-scaling-laws)

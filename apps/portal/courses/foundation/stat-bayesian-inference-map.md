@@ -1,42 +1,24 @@
 # Bayesian推論とMAP推定
 
-## Course・Unit内での位置付け
+Course 03「確率統計」のTopic 16/20。
 
-Course 03「確率統計」第316 Topic。確率・分布・推測・情報量を順に学ぶ。
+## 今回の中心問い
 
-## 今回解く問い
+Bayesian推論とMAP推定の代表式は、どの定義・仮定から、なぜその形になるのか。
 
-Bayesian推論とMAP推定を、prior、likelihood、posterior、evidence、conjugate prior、posterior mean、MAP、MLEとの違いとして定義し、観測データと機械学習へどう接続するか。
+## このTopicでできるようになること
 
-## 概要
-
-確率変数と実現値を区別し、定義、手計算、数値確認、統計的解釈を一つの流れで学ぶ。
-
-## 学習目標
-
-- prior、likelihood、posterior、evidence、conjugate prior、posterior mean、MAP、MLEとの違いの定義と前提を説明できる。
-- 小さな例を手計算し、標準PythonとNumPyで検算できる。
-
-## 前提Topic
-
-Course 00〜02の前提と同Unitの前Topic。
-
-## 想定学習時間
-
-スライド20分 / 教科書65分 / 演習55分
+- Bayesian推論とMAP推定の定義と代表式の意味を説明できる
+- Bayes則を密度へ一般化するを途中式から再現できる
+- 成立条件を外したときの失敗を具体例で診断できる
 
 ## 学習順序
 
-Course 03の301〜320の順に学ぶ。
+前: [stat-likelihood-maximum-likelihood](/courses/foundation/stat-likelihood-maximum-likelihood)  
+次: [stat-confidence-intervals](/courses/foundation/stat-confidence-intervals)
 
 ## 教材
 
-- [スライド](/slides/stat-bayesian-inference-map/)
 - [教科書](/textbook/stat-bayesian-inference-map)
 - [演習](/exercises/stat-bayesian-inference-map)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/stat-likelihood-maximum-likelihood)
-
-- [次のTopic](/courses/foundation/stat-confidence-intervals)
+- [スライド](/slides/stat-bayesian-inference-map/)

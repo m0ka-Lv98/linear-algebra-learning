@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "主要な連続分布"
 ---
 
 # 主要な連続分布
 
-Course 03｜確率統計
+Course 03｜確率統計｜Topic 10/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-主要な連続分布で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+主要な連続分布の代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 主要な連続分布の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `prob-discrete-distributions` で得た概念を使い、ここでは 主要な連続分布 へ進む。
 
 ---
 
@@ -32,95 +40,84 @@ layout: center
 
 分布は確率変数がどの値をどれくらい取りやすいかをまとめたもの。PMF/PDFとCDFは同じ分布の別表現。
 
-**前提:** prob-random-variables-cdf-pmf-pdf, prob-expectation-variance-moments, calc-integrals-fundamental-theorem
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-03/prob-continuous-distributions.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-03/prob-continuous-distributions.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+離散分布の棒と連続分布の曲線、CDFの累積を並べる。 離散なら棒1本が1点の確率、連続なら曲線下の区間面積が確率である。CDFは左端からその位置までの確率を累積するので必ず非減少になる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $\mu$：正規分布の平均
+- $\sigma^2>0$：分散
+- $f_X(x)$：PDF
+- $Z=(X-\mu)/\sigma$：標準化変数
 
 $$
 X\sim\mathcal{N}(\mu,\sigma^2)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$x-\mu$ で中心を0へ移し、$\sigma$ で割って単位を除くと $z=(x-\mu)/\sigma$。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 主要な連続分布
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+標準正規密度 $\phi(z)$ に $z=(x-\mu)/\sigma$ を代入し、$dx=\sigma dz$ を保つため密度には $1/\sigma$ が掛かる。
 
 ---
 
-## 小さな例
+## 例題
 
-離散分布の棒と連続分布の曲線、CDFの累積を並べる。
-
-最小の非自明な設定で、手計算と実装を照合する。
+$X\sim N(10,4)$ なら標準偏差2。$P(X\le12)=P(Z\le1)=\Phi(1)\approx0.8413$。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-- このTopicでは静止図を中心に条件を1つずつ変える思考実験を行う。
-- 図の形がどう変わるか予測してから次へ進む。
-
----
-
-## 成立条件
-
-- PDFの高さそのものは確率ではない。
-- CDFは単調非減少。
-- 主要な連続分布の定義と計算手順を区別し、数値例だけで一般性を判断しない。
+正規分布の密度の最大値が1を超える場合があっても問題ない。確率は面積であり、狭い分布では高さが1を超え得る。
 
 ---
 
 ## よくある誤解
 
-- 主要な連続分布の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+主要な連続分布では、式へ数値を代入するだけでは不十分である。正規分布の密度の最大値が1を超える場合があっても問題ない。確率は面積であり、狭い分布では高さが1を超え得る。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+CDFの極端なtailでは 1-cdf より survival functionを使う方が数値精度が良いことがある。random generatorのparameterがvarianceかstandard deviationかも確認する。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-主要な連続分布は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+正規分布は独立な小効果の和の極限としてCLTに現れる。多変数版では平均ベクトルと共分散行列で楕円形の等密度面を表す。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 主要な連続分布を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「中心と幅を分ける」を式を見ずに説明できるか
+- 「区間確率をCDFで求める」までの論理を一段ずつ再現できるか
+- 主要な連続分布の条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/prob-continuous-distributions)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/prob-continuous-distributions)
+## 教科書と演習
+
+- [教科書](../../textbook/prob-continuous-distributions)
+- [10問の演習](../../exercises/prob-continuous-distributions)

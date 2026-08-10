@@ -1,14 +1,15 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
+generatedBy: course01-10-curated-upgrade-v2
+generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "生成的分類器・Naive Bayes・LDA"
 ---
 
 # 生成的分類器・Naive Bayes・LDA
 
-Course 08｜機械学習
+Course 08｜機械学習｜Topic 05/20
 
 ---
 layout: center
@@ -16,15 +17,22 @@ layout: center
 
 ## 今回の問い
 
-生成的分類器・Naive Bayes・LDAで、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
+## 到達目標
+
+- 定義と代表式を、自分の言葉と記号で説明できる。
+- 成立条件を確認し、手計算と結果を検算できる。
+
+## 理解確認
+
+- 定義・条件・計算結果を自分の言葉で説明できるか確認する。
+
+生成的分類器・Naive Bayes・LDAの代表式は、どの定義・仮定から、なぜその形になるのか。
 
 ---
 
-## 到達目標
+## なぜ今これを学ぶのか
 
-- 生成的分類器・Naive Bayes・LDAの定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+前Topic `ml-softmax-multiclass` で得た概念を使い、ここでは 生成的分類器・Naive Bayes・LDA へ進む。
 
 ---
 
@@ -32,96 +40,83 @@ layout: center
 
 分類器は入力からクラス確率またはスコアを作り、決定境界でクラスを分ける。
 
-**前提:** prob-bayes-theorem, prob-multivariate-normal-distribution
+
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-generative-classifiers-naive-bayes-lda.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-08/ml-generative-classifiers-naive-bayes-lda.png" style="max-height: 350px; display:block; margin:0 auto;" />
+
+2クラス点群と確率等高線、decision boundaryを描く。 背景の確率面がP(y=1|x)、その0.5等高線がdecision boundary、点が観測データである。モデルの連続な確率出力と離散な最終分類を区別できる。
 
 ---
 
-## 図を見るポイント
+## 記号と代表式
 
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+- $p(x|y)$：class-conditional density
+- $p(y)$：prior
+- $p(y|x)\propto p(x|y)p(y)$
 
 $$
 p(y\mid\mathbf{x})\propto p(\mathbf{x}\mid y)p(y)
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出 1
+
+$argmax_y p(y|x)=argmax_y p(x|y)p(y)$ because p(x) common。
 
 ---
 
-## 式をどう読むか
+## 導出 2
 
-- **対象:** 生成的分類器、Naive、Bayes、LDA
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+conditional independence仮定で $p(x|y)=\prod_jp(x_j|y)$。高dim density estimationを1D factorsへ簡略化。
 
 ---
 
-## 小さな例
+## 例題
 
-2クラス点群と確率等高線、decision boundaryを描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
+text Naive Bayesでword occurrence likelihoodをclassごとに掛ける。log domainでsum。
 
 ---
 
-## 動き／思考実験で確認
+## 条件を変えるとどうなるか
 
-<img src="./assets/course-08/ml-generative-classifiers-naive-bayes-lda.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 確率出力とhard labelを区別する。
-- 閾値は目的に応じて調整する。
-- 生成的分類器・Naive Bayes・LDAの定義と計算手順を区別し、数値例だけで一般性を判断しない。
+Naive independenceが大きく破れてもclassificationが使える場合はあるがprobability calibrationは悪化し得る。
 
 ---
 
 ## よくある誤解
 
-- 生成的分類器・Naive Bayes・LDAの定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
+生成的分類器・Naive Bayes・LDAでは、式へ数値を代入するだけでは不十分である。Naive independenceが大きく破れてもclassificationが使える場合はあるがprobability calibrationは悪化し得る。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
 
 ---
 
-## 数値・実装で検算
+## 実装・計算上の注意
 
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
+zero countにsmoothing。Gaussian covariance singularならregularization。
 
 ---
 
-## 後続分野への接続
+## 一段先へ
 
-生成的分類器・Naive Bayes・LDAは、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+parametric distributionを置かず近傍dataから直接predictするkNNへ。
 
 ---
 
-## 理解確認
+## 自分で説明できるか
 
-- 生成的分類器・Naive Bayes・LDAを図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 「Bayes decision」を式を見ずに説明できるか
+- 「LDA linear boundary」までの論理を一段ずつ再現できるか
+- 生成的分類器・Naive Bayes・LDAの条件を1つ外した反例を説明できるか
 
-[教科書](../../textbook/ml-generative-classifiers-naive-bayes-lda)
+---
+layout: center
+---
 
-[10問の演習](../../exercises/ml-generative-classifiers-naive-bayes-lda)
+## 教科書と演習
+
+- [教科書](../../textbook/ml-generative-classifiers-naive-bayes-lda)
+- [10問の演習](../../exercises/ml-generative-classifiers-naive-bayes-lda)
