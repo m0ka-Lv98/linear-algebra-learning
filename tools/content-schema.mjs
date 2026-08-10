@@ -28,12 +28,13 @@ export function validateTopic(topic, index = 0) {
   const errors = []
   const warnings = []
   const label = `topics[${index}]`
-  const required = ['id', 'title', 'course', 'order', 'summary', 'status', 'prerequisites', 'estimated_minutes', 'routes']
+  const required = ['id', 'title', 'summary', 'status', 'prerequisites', 'estimated_minutes']
+  if (topic?.status !== 'planned') required.push('course', 'order', 'routes')
   for (const field of required) if (!(field in (topic ?? {}))) errors.push(`${label}.${field} is required`)
   if (typeof topic?.id !== 'string' || !TOPIC_ID_PATTERN.test(topic.id)) errors.push(`${label}.id must contain lowercase letters, numbers, and hyphens only`)
   if (typeof topic?.title !== 'string' || !topic.title.trim()) errors.push(`${label}.title must not be empty`)
-  if (!COURSES.includes(topic?.course)) errors.push(`${label}.course must be one of: ${COURSES.join(', ')}`)
-  if (!Number.isInteger(topic?.order) || topic.order < 0) errors.push(`${label}.order must be a non-negative integer`)
+  if (topic?.status !== 'planned' && !COURSES.includes(topic?.course)) errors.push(`${label}.course must be one of: ${COURSES.join(', ')}`)
+  if (topic?.status !== 'planned' && (!Number.isInteger(topic?.order) || topic.order < 0)) errors.push(`${label}.order must be a non-negative integer`)
   if (typeof topic?.summary !== 'string' || !topic.summary.trim()) errors.push(`${label}.summary must not be empty`)
   if (!STATUSES.includes(topic?.status)) errors.push(`${label}.status must be one of: ${STATUSES.join(', ')}`)
   if (!Array.isArray(topic?.prerequisites) || topic.prerequisites.some((item) => typeof item !== 'string')) errors.push(`${label}.prerequisites must be an array of strings`)
@@ -42,8 +43,8 @@ export function validateTopic(topic, index = 0) {
     if (!Number.isInteger(topic?.estimated_minutes?.[field]) || topic.estimated_minutes[field] <= 0) errors.push(`${label}.estimated_minutes.${field} must be a positive integer`)
   }
   const routes = topic?.routes
-  for (const field of ['home', 'slides', 'textbook', 'exercises']) if (typeof routes?.[field] !== 'string') errors.push(`${label}.routes.${field} is required`)
-  if (routes && typeof topic?.id === 'string' && typeof topic?.course === 'string') {
+  if (topic?.status !== 'planned') for (const field of ['home', 'slides', 'textbook', 'exercises']) if (typeof routes?.[field] !== 'string') errors.push(`${label}.routes.${field} is required`)
+  if (topic?.status !== 'planned' && routes && typeof topic?.id === 'string' && typeof topic?.course === 'string') {
     const expected = expectedRoutes(topic)
     for (const field of Object.keys(expected)) if (routes[field] !== expected[field]) errors.push(`${label}.routes.${field} must be ${expected[field]}`)
   }

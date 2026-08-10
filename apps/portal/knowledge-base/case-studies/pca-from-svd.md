@@ -6,8 +6,8 @@
 
 ## 必要なTopic
 
-- [特異値分解](/knowledge-base/topics#la-singular-value-decomposition)
-- [PCAのSVD計算](/knowledge-base/topics#mat-pca-svd-computation)
+- [特異値分解](/knowledge-base/topics/la-singular-value-decomposition)
+- [PCAのSVD計算](/knowledge-base/topics/mat-pca-svd-computation)
 
 ## 接続先
 

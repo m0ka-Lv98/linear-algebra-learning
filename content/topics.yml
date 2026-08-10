@@ -5980,8 +5980,6 @@
     - foundation-models-core
 - id: mat-gram-matrix
   title: Gram matrix
-  course: foundation
-  order: 2000
   summary: Gram matrixを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -5989,11 +5987,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-gram-matrix
-    slides: /slides/mat-gram-matrix/
-    textbook: /textbook/mat-gram-matrix
-    exercises: /exercises/mat-gram-matrix
   domain: linear-algebra
   module: linear-algebra-core
   level: introductory
@@ -6002,20 +5995,15 @@
     - linear-algebra-core
 - id: stat-fisher-information-matrix
   title: Fisher information matrix
-  course: foundation
-  order: 2001
   summary: Fisher information matrixを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-likelihood-maximum-likelihood
+    - prob-multivariate-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-fisher-information-matrix
-    slides: /slides/stat-fisher-information-matrix/
-    textbook: /textbook/stat-fisher-information-matrix
-    exercises: /exercises/stat-fisher-information-matrix
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6024,20 +6012,14 @@
     - statistics-estimation
 - id: stat-estimator-covariance
   title: Estimator covariance
-  course: foundation
-  order: 2002
   summary: Estimator covarianceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-fisher-information-matrix
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-estimator-covariance
-    slides: /slides/stat-estimator-covariance/
-    textbook: /textbook/stat-estimator-covariance
-    exercises: /exercises/stat-estimator-covariance
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6046,20 +6028,14 @@
     - statistics-estimation
 - id: stat-vif-collinearity
   title: VIF and collinearity
-  course: foundation
-  order: 2003
   summary: VIF and collinearityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-estimator-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-vif-collinearity
-    slides: /slides/stat-vif-collinearity/
-    textbook: /textbook/stat-vif-collinearity
-    exercises: /exercises/stat-vif-collinearity
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6068,20 +6044,15 @@
     - statistics-estimation
 - id: stat-wls-fisher-information
   title: WLS Fisher information
-  course: foundation
-  order: 2004
   summary: WLS Fisher informationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-wls-inverse-variance
+    - stat-fisher-information-matrix
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-wls-fisher-information
-    slides: /slides/stat-wls-fisher-information/
-    textbook: /textbook/stat-wls-fisher-information
-    exercises: /exercises/stat-wls-fisher-information
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6090,20 +6061,14 @@
     - statistics-estimation
 - id: stat-model-misspecification
   title: Model misspecification
-  course: foundation
-  order: 2005
   summary: Model misspecificationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-likelihood-maximum-likelihood
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-model-misspecification
-    slides: /slides/stat-model-misspecification/
-    textbook: /textbook/stat-model-misspecification
-    exercises: /exercises/stat-model-misspecification
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6112,8 +6077,6 @@
     - statistics-estimation
 - id: mat-scalar-by-vector-derivative
   title: Scalar-by-vector derivative
-  course: foundation
-  order: 2006
   summary: Scalar-by-vector derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -6121,11 +6084,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-scalar-by-vector-derivative
-    slides: /slides/mat-scalar-by-vector-derivative/
-    textbook: /textbook/mat-scalar-by-vector-derivative
-    exercises: /exercises/mat-scalar-by-vector-derivative
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6134,20 +6092,14 @@
     - matrix-calculus-differentiation
 - id: mat-vector-by-vector-derivative
   title: Vector-by-vector derivative
-  course: foundation
-  order: 2007
   summary: Vector-by-vector derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-scalar-by-vector-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-vector-by-vector-derivative
-    slides: /slides/mat-vector-by-vector-derivative/
-    textbook: /textbook/mat-vector-by-vector-derivative
-    exercises: /exercises/mat-vector-by-vector-derivative
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6156,20 +6108,14 @@
     - matrix-calculus-differentiation
 - id: mat-scalar-by-matrix-derivative
   title: Scalar-by-matrix derivative
-  course: foundation
-  order: 2008
   summary: Scalar-by-matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-vector-by-vector-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-scalar-by-matrix-derivative
-    slides: /slides/mat-scalar-by-matrix-derivative/
-    textbook: /textbook/mat-scalar-by-matrix-derivative
-    exercises: /exercises/mat-scalar-by-matrix-derivative
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6178,20 +6124,14 @@
     - matrix-calculus-differentiation
 - id: mat-vector-by-matrix-derivative
   title: Vector-by-matrix derivative
-  course: foundation
-  order: 2009
   summary: Vector-by-matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-scalar-by-matrix-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-vector-by-matrix-derivative
-    slides: /slides/mat-vector-by-matrix-derivative/
-    textbook: /textbook/mat-vector-by-matrix-derivative
-    exercises: /exercises/mat-vector-by-matrix-derivative
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6200,20 +6140,14 @@
     - matrix-calculus-differentiation
 - id: mat-matrix-differential
   title: Matrix differential
-  course: foundation
-  order: 2010
   summary: Matrix differentialを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-vector-by-matrix-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-matrix-differential
-    slides: /slides/mat-matrix-differential/
-    textbook: /textbook/mat-matrix-differential
-    exercises: /exercises/mat-matrix-differential
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6222,20 +6156,14 @@
     - matrix-calculus-differentiation
 - id: mat-trace-trick
   title: Trace trick
-  course: foundation
-  order: 2011
   summary: Trace trickを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-matrix-differential
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-trace-trick
-    slides: /slides/mat-trace-trick/
-    textbook: /textbook/mat-trace-trick
-    exercises: /exercises/mat-trace-trick
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6244,20 +6172,14 @@
     - matrix-calculus-differentiation
 - id: mat-quadratic-form-derivatives
   title: Quadratic form derivatives
-  course: foundation
-  order: 2012
   summary: Quadratic form derivativesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-trace-trick
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-quadratic-form-derivatives
-    slides: /slides/mat-quadratic-form-derivatives/
-    textbook: /textbook/mat-quadratic-form-derivatives
-    exercises: /exercises/mat-quadratic-form-derivatives
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6266,20 +6188,14 @@
     - matrix-calculus-differentiation
 - id: mat-inverse-matrix-derivative
   title: Inverse matrix derivative
-  course: foundation
-  order: 2013
   summary: Inverse matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-quadratic-form-derivatives
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-inverse-matrix-derivative
-    slides: /slides/mat-inverse-matrix-derivative/
-    textbook: /textbook/mat-inverse-matrix-derivative
-    exercises: /exercises/mat-inverse-matrix-derivative
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6288,20 +6204,14 @@
     - matrix-calculus-differentiation
 - id: mat-log-determinant-derivative
   title: Log-determinant derivative
-  course: foundation
-  order: 2014
   summary: Log-determinant derivativeを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-inverse-matrix-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-log-determinant-derivative
-    slides: /slides/mat-log-determinant-derivative/
-    textbook: /textbook/mat-log-determinant-derivative
-    exercises: /exercises/mat-log-determinant-derivative
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6310,20 +6220,14 @@
     - matrix-calculus-differentiation
 - id: mat-matrix-chain-rule
   title: Matrix chain rule
-  course: foundation
-  order: 2015
   summary: Matrix chain ruleを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-log-determinant-derivative
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-matrix-chain-rule
-    slides: /slides/mat-matrix-chain-rule/
-    textbook: /textbook/mat-matrix-chain-rule
-    exercises: /exercises/mat-matrix-chain-rule
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6332,20 +6236,14 @@
     - matrix-calculus-differentiation
 - id: mat-jacobian-vector-product
   title: Jacobian-vector product
-  course: foundation
-  order: 2016
   summary: Jacobian-vector productを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-matrix-chain-rule
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-jacobian-vector-product
-    slides: /slides/mat-jacobian-vector-product/
-    textbook: /textbook/mat-jacobian-vector-product
-    exercises: /exercises/mat-jacobian-vector-product
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6354,20 +6252,14 @@
     - matrix-calculus-differentiation
 - id: mat-vector-jacobian-product
   title: Vector-Jacobian product
-  course: foundation
-  order: 2017
   summary: Vector-Jacobian productを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-jacobian-vector-product
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-vector-jacobian-product
-    slides: /slides/mat-vector-jacobian-product/
-    textbook: /textbook/mat-vector-jacobian-product
-    exercises: /exercises/mat-vector-jacobian-product
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6376,20 +6268,14 @@
     - matrix-calculus-differentiation
 - id: mat-automatic-differentiation
   title: Automatic differentiation
-  course: foundation
-  order: 2018
   summary: Automatic differentiationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-vector-jacobian-product
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-automatic-differentiation
-    slides: /slides/mat-automatic-differentiation/
-    textbook: /textbook/mat-automatic-differentiation
-    exercises: /exercises/mat-automatic-differentiation
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6398,20 +6284,14 @@
     - matrix-calculus-differentiation
 - id: mat-forward-mode-ad
   title: Forward-mode AD
-  course: foundation
-  order: 2019
   summary: Forward-mode ADを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-automatic-differentiation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-forward-mode-ad
-    slides: /slides/mat-forward-mode-ad/
-    textbook: /textbook/mat-forward-mode-ad
-    exercises: /exercises/mat-forward-mode-ad
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6420,20 +6300,14 @@
     - matrix-calculus-differentiation
 - id: mat-reverse-mode-ad
   title: Reverse-mode AD
-  course: foundation
-  order: 2020
   summary: Reverse-mode ADを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-forward-mode-ad
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-reverse-mode-ad
-    slides: /slides/mat-reverse-mode-ad/
-    textbook: /textbook/mat-reverse-mode-ad
-    exercises: /exercises/mat-reverse-mode-ad
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6442,20 +6316,14 @@
     - matrix-calculus-differentiation
 - id: mat-vec-operator
   title: vec operator
-  course: foundation
-  order: 2021
   summary: vec operatorを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-reverse-mode-ad
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-vec-operator
-    slides: /slides/mat-vec-operator/
-    textbook: /textbook/mat-vec-operator
-    exercises: /exercises/mat-vec-operator
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6464,20 +6332,14 @@
     - matrix-calculus-differentiation
 - id: mat-kronecker-product
   title: Kronecker product
-  course: foundation
-  order: 2022
   summary: Kronecker productを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - mat-vec-operator
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/mat-kronecker-product
-    slides: /slides/mat-kronecker-product/
-    textbook: /textbook/mat-kronecker-product
-    exercises: /exercises/mat-kronecker-product
   domain: matrix-calculus
   module: matrix-calculus-differentiation
   level: introductory
@@ -6486,8 +6348,6 @@
     - matrix-calculus-differentiation
 - id: prob-bernoulli-distribution
   title: Bernoulli distribution
-  course: foundation
-  order: 2023
   summary: Bernoulli distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -6495,11 +6355,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-bernoulli-distribution
-    slides: /slides/prob-bernoulli-distribution/
-    textbook: /textbook/prob-bernoulli-distribution
-    exercises: /exercises/prob-bernoulli-distribution
   domain: probability-statistics
   module: probability-discrete-distributions
   level: introductory
@@ -6508,20 +6363,14 @@
     - probability-discrete-distributions
 - id: prob-binomial-distribution
   title: Binomial distribution
-  course: foundation
-  order: 2024
   summary: Binomial distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-bernoulli-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-binomial-distribution
-    slides: /slides/prob-binomial-distribution/
-    textbook: /textbook/prob-binomial-distribution
-    exercises: /exercises/prob-binomial-distribution
   domain: probability-statistics
   module: probability-discrete-distributions
   level: introductory
@@ -6530,20 +6379,14 @@
     - probability-discrete-distributions
 - id: prob-poisson-distribution
   title: Poisson distribution
-  course: foundation
-  order: 2025
   summary: Poisson distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-binomial-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-poisson-distribution
-    slides: /slides/prob-poisson-distribution/
-    textbook: /textbook/prob-poisson-distribution
-    exercises: /exercises/prob-poisson-distribution
   domain: probability-statistics
   module: probability-discrete-distributions
   level: introductory
@@ -6552,8 +6395,6 @@
     - probability-discrete-distributions
 - id: prob-gaussian-distribution
   title: Gaussian distribution
-  course: foundation
-  order: 2026
   summary: Gaussian distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -6561,11 +6402,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-gaussian-distribution
-    slides: /slides/prob-gaussian-distribution/
-    textbook: /textbook/prob-gaussian-distribution
-    exercises: /exercises/prob-gaussian-distribution
   domain: probability-statistics
   module: probability-continuous-distributions
   level: introductory
@@ -6574,20 +6410,14 @@
     - probability-continuous-distributions
 - id: prob-log-normal-distribution
   title: Log-normal distribution
-  course: foundation
-  order: 2027
   summary: Log-normal distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-gaussian-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-log-normal-distribution
-    slides: /slides/prob-log-normal-distribution/
-    textbook: /textbook/prob-log-normal-distribution
-    exercises: /exercises/prob-log-normal-distribution
   domain: probability-statistics
   module: probability-continuous-distributions
   level: introductory
@@ -6596,20 +6426,14 @@
     - probability-continuous-distributions
 - id: prob-student-t-distribution
   title: Student t distribution
-  course: foundation
-  order: 2028
   summary: Student t distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-log-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-student-t-distribution
-    slides: /slides/prob-student-t-distribution/
-    textbook: /textbook/prob-student-t-distribution
-    exercises: /exercises/prob-student-t-distribution
   domain: probability-statistics
   module: probability-continuous-distributions
   level: introductory
@@ -6618,20 +6442,14 @@
     - probability-continuous-distributions
 - id: prob-dirichlet-distribution
   title: Dirichlet distribution
-  course: foundation
-  order: 2029
   summary: Dirichlet distributionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-student-t-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-dirichlet-distribution
-    slides: /slides/prob-dirichlet-distribution/
-    textbook: /textbook/prob-dirichlet-distribution
-    exercises: /exercises/prob-dirichlet-distribution
   domain: probability-statistics
   module: probability-continuous-distributions
   level: introductory
@@ -6640,20 +6458,14 @@
     - probability-continuous-distributions
 - id: prob-gaussian-mixture
   title: Gaussian mixture
-  course: foundation
-  order: 2030
   summary: Gaussian mixtureを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-dirichlet-distribution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-gaussian-mixture
-    slides: /slides/prob-gaussian-mixture/
-    textbook: /textbook/prob-gaussian-mixture
-    exercises: /exercises/prob-gaussian-mixture
   domain: probability-statistics
   module: probability-continuous-distributions
   level: introductory
@@ -6662,8 +6474,6 @@
     - probability-continuous-distributions
 - id: prob-generating-functions
   title: Probability generating function
-  course: foundation
-  order: 2031
   summary: Probability generating functionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -6671,11 +6481,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-generating-functions
-    slides: /slides/prob-generating-functions/
-    textbook: /textbook/prob-generating-functions
-    exercises: /exercises/prob-generating-functions
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6684,20 +6489,14 @@
     - probability-processes
 - id: prob-moment-generating-functions
   title: Moment generating function
-  course: foundation
-  order: 2032
   summary: Moment generating functionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-generating-functions
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-moment-generating-functions
-    slides: /slides/prob-moment-generating-functions/
-    textbook: /textbook/prob-moment-generating-functions
-    exercises: /exercises/prob-moment-generating-functions
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6706,20 +6505,14 @@
     - probability-processes
 - id: prob-characteristic-functions
   title: Characteristic function
-  course: foundation
-  order: 2033
   summary: Characteristic functionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-moment-generating-functions
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-characteristic-functions
-    slides: /slides/prob-characteristic-functions/
-    textbook: /textbook/prob-characteristic-functions
-    exercises: /exercises/prob-characteristic-functions
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6728,20 +6521,14 @@
     - probability-processes
 - id: prob-random-walk
   title: Random walk
-  course: foundation
-  order: 2034
   summary: Random walkを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-characteristic-functions
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-random-walk
-    slides: /slides/prob-random-walk/
-    textbook: /textbook/prob-random-walk
-    exercises: /exercises/prob-random-walk
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6750,20 +6537,14 @@
     - probability-processes
 - id: prob-markov-chains
   title: Markov chain
-  course: foundation
-  order: 2035
   summary: Markov chainを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-random-walk
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-markov-chains
-    slides: /slides/prob-markov-chains/
-    textbook: /textbook/prob-markov-chains
-    exercises: /exercises/prob-markov-chains
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6772,20 +6553,14 @@
     - probability-processes
 - id: prob-poisson-process
   title: Poisson process
-  course: foundation
-  order: 2036
   summary: Poisson processを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-markov-chains
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-poisson-process
-    slides: /slides/prob-poisson-process/
-    textbook: /textbook/prob-poisson-process
-    exercises: /exercises/prob-poisson-process
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6794,20 +6569,14 @@
     - probability-processes
 - id: prob-brownian-motion
   title: Brownian motion
-  course: foundation
-  order: 2037
   summary: Brownian motionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-poisson-process
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-brownian-motion
-    slides: /slides/prob-brownian-motion/
-    textbook: /textbook/prob-brownian-motion
-    exercises: /exercises/prob-brownian-motion
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6816,20 +6585,14 @@
     - probability-processes
 - id: prob-gaussian-process
   title: Gaussian process
-  course: foundation
-  order: 2038
   summary: Gaussian processを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-brownian-motion
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-gaussian-process
-    slides: /slides/prob-gaussian-process/
-    textbook: /textbook/prob-gaussian-process
-    exercises: /exercises/prob-gaussian-process
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6838,20 +6601,14 @@
     - probability-processes
 - id: prob-stationarity-autocorrelation
   title: Stationarity and autocorrelation
-  course: foundation
-  order: 2039
   summary: Stationarity and autocorrelationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - prob-gaussian-process
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/prob-stationarity-autocorrelation
-    slides: /slides/prob-stationarity-autocorrelation/
-    textbook: /textbook/prob-stationarity-autocorrelation
-    exercises: /exercises/prob-stationarity-autocorrelation
   domain: stochastic-processes
   module: probability-processes
   level: introductory
@@ -6860,20 +6617,14 @@
     - probability-processes
 - id: stat-cramer-rao-lower-bound
   title: Cramér–Rao lower bound
-  course: foundation
-  order: 2040
   summary: Cramér–Rao lower boundを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-model-misspecification
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-cramer-rao-lower-bound
-    slides: /slides/stat-cramer-rao-lower-bound/
-    textbook: /textbook/stat-cramer-rao-lower-bound
-    exercises: /exercises/stat-cramer-rao-lower-bound
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6882,20 +6633,14 @@
     - statistics-estimation
 - id: stat-observed-information
   title: Observed information
-  course: foundation
-  order: 2041
   summary: Observed informationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-cramer-rao-lower-bound
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-observed-information
-    slides: /slides/stat-observed-information/
-    textbook: /textbook/stat-observed-information
-    exercises: /exercises/stat-observed-information
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6904,20 +6649,14 @@
     - statistics-estimation
 - id: stat-identifiability
   title: Identifiability
-  course: foundation
-  order: 2042
   summary: Identifiabilityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-observed-information
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-identifiability
-    slides: /slides/stat-identifiability/
-    textbook: /textbook/stat-identifiability
-    exercises: /exercises/stat-identifiability
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6926,20 +6665,14 @@
     - statistics-estimation
 - id: stat-delta-method
   title: Delta method
-  course: foundation
-  order: 2043
   summary: Delta methodを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-identifiability
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-delta-method
-    slides: /slides/stat-delta-method/
-    textbook: /textbook/stat-delta-method
-    exercises: /exercises/stat-delta-method
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6948,20 +6681,14 @@
     - statistics-estimation
 - id: stat-error-propagation
   title: Error propagation
-  course: foundation
-  order: 2044
   summary: Error propagationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-delta-method
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-error-propagation
-    slides: /slides/stat-error-propagation/
-    textbook: /textbook/stat-error-propagation
-    exercises: /exercises/stat-error-propagation
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6970,20 +6697,14 @@
     - statistics-estimation
 - id: stat-sufficient-statistics
   title: Sufficient statistics
-  course: foundation
-  order: 2045
   summary: Sufficient statisticsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-error-propagation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-sufficient-statistics
-    slides: /slides/stat-sufficient-statistics/
-    textbook: /textbook/stat-sufficient-statistics
-    exercises: /exercises/stat-sufficient-statistics
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -6992,20 +6713,14 @@
     - statistics-estimation
 - id: stat-exponential-family
   title: Exponential family
-  course: foundation
-  order: 2046
   summary: Exponential familyを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-sufficient-statistics
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-exponential-family
-    slides: /slides/stat-exponential-family/
-    textbook: /textbook/stat-exponential-family
-    exercises: /exercises/stat-exponential-family
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7014,20 +6729,14 @@
     - statistics-estimation
 - id: stat-generalized-linear-models
   title: Generalized linear models
-  course: foundation
-  order: 2047
   summary: Generalized linear modelsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-exponential-family
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-generalized-linear-models
-    slides: /slides/stat-generalized-linear-models/
-    textbook: /textbook/stat-generalized-linear-models
-    exercises: /exercises/stat-generalized-linear-models
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7036,20 +6745,14 @@
     - statistics-estimation
 - id: stat-poisson-regression
   title: Poisson regression
-  course: foundation
-  order: 2048
   summary: Poisson regressionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-generalized-linear-models
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-poisson-regression
-    slides: /slides/stat-poisson-regression/
-    textbook: /textbook/stat-poisson-regression
-    exercises: /exercises/stat-poisson-regression
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7058,20 +6761,14 @@
     - statistics-estimation
 - id: stat-covariance-estimation
   title: Covariance estimation
-  course: foundation
-  order: 2049
   summary: Covariance estimationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-poisson-regression
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-covariance-estimation
-    slides: /slides/stat-covariance-estimation/
-    textbook: /textbook/stat-covariance-estimation
-    exercises: /exercises/stat-covariance-estimation
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7080,20 +6777,14 @@
     - statistics-estimation
 - id: stat-experimental-design
   title: Experimental design
-  course: foundation
-  order: 2050
   summary: Experimental designを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-covariance-estimation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-experimental-design
-    slides: /slides/stat-experimental-design/
-    textbook: /textbook/stat-experimental-design
-    exercises: /exercises/stat-experimental-design
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7102,20 +6793,14 @@
     - statistics-estimation
 - id: stat-optimal-experimental-design
   title: Optimal experimental design
-  course: foundation
-  order: 2051
   summary: Optimal experimental designを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-experimental-design
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-optimal-experimental-design
-    slides: /slides/stat-optimal-experimental-design/
-    textbook: /textbook/stat-optimal-experimental-design
-    exercises: /exercises/stat-optimal-experimental-design
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7124,20 +6809,14 @@
     - statistics-estimation
 - id: stat-sandwich-covariance
   title: Sandwich covariance
-  course: foundation
-  order: 2052
   summary: Sandwich covarianceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-optimal-experimental-design
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/stat-sandwich-covariance
-    slides: /slides/stat-sandwich-covariance/
-    textbook: /textbook/stat-sandwich-covariance
-    exercises: /exercises/stat-sandwich-covariance
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -7146,8 +6825,6 @@
     - statistics-estimation
 - id: sig-continuous-time-signals
   title: Continuous-time signals
-  course: foundation
-  order: 2053
   summary: Continuous-time signalsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -7155,11 +6832,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-continuous-time-signals
-    slides: /slides/sig-continuous-time-signals/
-    textbook: /textbook/sig-continuous-time-signals
-    exercises: /exercises/sig-continuous-time-signals
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7168,20 +6840,14 @@
     - signals-fourier-analysis
 - id: sig-discrete-time-signals
   title: Discrete-time signals
-  course: foundation
-  order: 2054
   summary: Discrete-time signalsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-continuous-time-signals
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-discrete-time-signals
-    slides: /slides/sig-discrete-time-signals/
-    textbook: /textbook/sig-discrete-time-signals
-    exercises: /exercises/sig-discrete-time-signals
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7190,20 +6856,14 @@
     - signals-fourier-analysis
 - id: sig-impulse-step
   title: Impulse and step signals
-  course: foundation
-  order: 2055
   summary: Impulse and step signalsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-discrete-time-signals
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-impulse-step
-    slides: /slides/sig-impulse-step/
-    textbook: /textbook/sig-impulse-step
-    exercises: /exercises/sig-impulse-step
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7212,20 +6872,14 @@
     - signals-fourier-analysis
 - id: sig-lti-systems
   title: LTI systems
-  course: foundation
-  order: 2056
   summary: LTI systemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-impulse-step
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-lti-systems
-    slides: /slides/sig-lti-systems/
-    textbook: /textbook/sig-lti-systems
-    exercises: /exercises/sig-lti-systems
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7234,20 +6888,14 @@
     - signals-fourier-analysis
 - id: sig-impulse-response
   title: Impulse response
-  course: foundation
-  order: 2057
   summary: Impulse responseを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-lti-systems
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-impulse-response
-    slides: /slides/sig-impulse-response/
-    textbook: /textbook/sig-impulse-response
-    exercises: /exercises/sig-impulse-response
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7256,20 +6904,14 @@
     - signals-fourier-analysis
 - id: sig-convolution
   title: Convolution
-  course: foundation
-  order: 2058
   summary: Convolutionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-impulse-response
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-convolution
-    slides: /slides/sig-convolution/
-    textbook: /textbook/sig-convolution
-    exercises: /exercises/sig-convolution
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7278,20 +6920,14 @@
     - signals-fourier-analysis
 - id: sig-correlation
   title: Correlation
-  course: foundation
-  order: 2059
   summary: Correlationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-convolution
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-correlation
-    slides: /slides/sig-correlation/
-    textbook: /textbook/sig-correlation
-    exercises: /exercises/sig-correlation
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7300,20 +6936,14 @@
     - signals-fourier-analysis
 - id: sig-autocorrelation
   title: Autocorrelation
-  course: foundation
-  order: 2060
   summary: Autocorrelationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-correlation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-autocorrelation
-    slides: /slides/sig-autocorrelation/
-    textbook: /textbook/sig-autocorrelation
-    exercises: /exercises/sig-autocorrelation
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7322,20 +6952,14 @@
     - signals-fourier-analysis
 - id: sig-fourier-series
   title: Fourier series
-  course: foundation
-  order: 2061
   summary: Fourier seriesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-autocorrelation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-fourier-series
-    slides: /slides/sig-fourier-series/
-    textbook: /textbook/sig-fourier-series
-    exercises: /exercises/sig-fourier-series
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7344,20 +6968,14 @@
     - signals-fourier-analysis
 - id: sig-fourier-transform
   title: Continuous Fourier transform
-  course: foundation
-  order: 2062
   summary: Continuous Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-fourier-series
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-fourier-transform
-    slides: /slides/sig-fourier-transform/
-    textbook: /textbook/sig-fourier-transform
-    exercises: /exercises/sig-fourier-transform
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7366,20 +6984,14 @@
     - signals-fourier-analysis
 - id: sig-convolution-theorem
   title: Convolution theorem
-  course: foundation
-  order: 2063
   summary: Convolution theoremを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-fourier-transform
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-convolution-theorem
-    slides: /slides/sig-convolution-theorem/
-    textbook: /textbook/sig-convolution-theorem
-    exercises: /exercises/sig-convolution-theorem
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7388,20 +7000,14 @@
     - signals-fourier-analysis
 - id: sig-parseval-theorem
   title: Parseval theorem
-  course: foundation
-  order: 2064
   summary: Parseval theoremを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-convolution-theorem
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-parseval-theorem
-    slides: /slides/sig-parseval-theorem/
-    textbook: /textbook/sig-parseval-theorem
-    exercises: /exercises/sig-parseval-theorem
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7410,20 +7016,14 @@
     - signals-fourier-analysis
 - id: sig-dft
   title: Discrete Fourier transform
-  course: foundation
-  order: 2065
   summary: Discrete Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-parseval-theorem
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-dft
-    slides: /slides/sig-dft/
-    textbook: /textbook/sig-dft
-    exercises: /exercises/sig-dft
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7432,20 +7032,14 @@
     - signals-fourier-analysis
 - id: sig-fft
   title: Fast Fourier transform
-  course: foundation
-  order: 2066
   summary: Fast Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-dft
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-fft
-    slides: /slides/sig-fft/
-    textbook: /textbook/sig-fft
-    exercises: /exercises/sig-fft
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7454,20 +7048,14 @@
     - signals-fourier-analysis
 - id: sig-sampling-theorem-aliasing
   title: Sampling theorem and aliasing
-  course: foundation
-  order: 2067
   summary: Sampling theorem and aliasingを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-fft
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-sampling-theorem-aliasing
-    slides: /slides/sig-sampling-theorem-aliasing/
-    textbook: /textbook/sig-sampling-theorem-aliasing
-    exercises: /exercises/sig-sampling-theorem-aliasing
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7476,20 +7064,14 @@
     - signals-fourier-analysis
 - id: sig-stft-spectrogram
   title: STFT and spectrogram
-  course: foundation
-  order: 2068
   summary: STFT and spectrogramを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-sampling-theorem-aliasing
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-stft-spectrogram
-    slides: /slides/sig-stft-spectrogram/
-    textbook: /textbook/sig-stft-spectrogram
-    exercises: /exercises/sig-stft-spectrogram
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7498,20 +7080,14 @@
     - signals-fourier-analysis
 - id: sig-laplace-transform
   title: Laplace transform
-  course: foundation
-  order: 2069
   summary: Laplace transformを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - sig-stft-spectrogram
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/sig-laplace-transform
-    slides: /slides/sig-laplace-transform/
-    textbook: /textbook/sig-laplace-transform
-    exercises: /exercises/sig-laplace-transform
   domain: signals-systems-transforms
   module: signals-fourier-analysis
   level: introductory
@@ -7520,8 +7096,6 @@
     - signals-fourier-analysis
 - id: ode-first-order
   title: First-order ODE
-  course: foundation
-  order: 2070
   summary: First-order ODEを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -7529,11 +7103,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/ode-first-order
-    slides: /slides/ode-first-order/
-    textbook: /textbook/ode-first-order
-    exercises: /exercises/ode-first-order
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7542,20 +7111,14 @@
     - differential-equations-core
 - id: ode-second-order
   title: Second-order ODE
-  course: foundation
-  order: 2071
   summary: Second-order ODEを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - ode-first-order
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/ode-second-order
-    slides: /slides/ode-second-order/
-    textbook: /textbook/ode-second-order
-    exercises: /exercises/ode-second-order
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7564,20 +7127,14 @@
     - differential-equations-core
 - id: ode-systems
   title: Systems of ODE
-  course: foundation
-  order: 2072
   summary: Systems of ODEを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - ode-second-order
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/ode-systems
-    slides: /slides/ode-systems/
-    textbook: /textbook/ode-systems
-    exercises: /exercises/ode-systems
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7586,20 +7143,14 @@
     - differential-equations-core
 - id: ode-matrix-exponential
   title: Matrix exponential
-  course: foundation
-  order: 2073
   summary: Matrix exponentialを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - ode-systems
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/ode-matrix-exponential
-    slides: /slides/ode-matrix-exponential/
-    textbook: /textbook/ode-matrix-exponential
-    exercises: /exercises/ode-matrix-exponential
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7608,20 +7159,14 @@
     - differential-equations-core
 - id: ode-phase-plane-stability
   title: Phase plane and stability
-  course: foundation
-  order: 2074
   summary: Phase plane and stabilityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - ode-matrix-exponential
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/ode-phase-plane-stability
-    slides: /slides/ode-phase-plane-stability/
-    textbook: /textbook/ode-phase-plane-stability
-    exercises: /exercises/ode-phase-plane-stability
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7630,20 +7175,14 @@
     - differential-equations-core
 - id: ode-boundary-value-problems
   title: Boundary value problems
-  course: foundation
-  order: 2075
   summary: Boundary value problemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - ode-phase-plane-stability
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/ode-boundary-value-problems
-    slides: /slides/ode-boundary-value-problems/
-    textbook: /textbook/ode-boundary-value-problems
-    exercises: /exercises/ode-boundary-value-problems
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7652,20 +7191,14 @@
     - differential-equations-core
 - id: pde-classification
   title: PDE classification
-  course: foundation
-  order: 2076
   summary: PDE classificationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - ode-boundary-value-problems
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/pde-classification
-    slides: /slides/pde-classification/
-    textbook: /textbook/pde-classification
-    exercises: /exercises/pde-classification
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7674,20 +7207,14 @@
     - differential-equations-core
 - id: pde-heat-equation
   title: Heat equation
-  course: foundation
-  order: 2077
   summary: Heat equationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - pde-classification
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/pde-heat-equation
-    slides: /slides/pde-heat-equation/
-    textbook: /textbook/pde-heat-equation
-    exercises: /exercises/pde-heat-equation
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7696,20 +7223,14 @@
     - differential-equations-core
 - id: pde-wave-equation
   title: Wave equation
-  course: foundation
-  order: 2078
   summary: Wave equationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - pde-heat-equation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/pde-wave-equation
-    slides: /slides/pde-wave-equation/
-    textbook: /textbook/pde-wave-equation
-    exercises: /exercises/pde-wave-equation
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7718,20 +7239,14 @@
     - differential-equations-core
 - id: pde-laplace-equation
   title: Laplace equation
-  course: foundation
-  order: 2079
   summary: Laplace equationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - pde-wave-equation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/pde-laplace-equation
-    slides: /slides/pde-laplace-equation/
-    textbook: /textbook/pde-laplace-equation
-    exercises: /exercises/pde-laplace-equation
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7740,20 +7255,14 @@
     - differential-equations-core
 - id: pde-green-functions
   title: Green functions
-  course: foundation
-  order: 2080
   summary: Green functionsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - pde-laplace-equation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/pde-green-functions
-    slides: /slides/pde-green-functions/
-    textbook: /textbook/pde-green-functions
-    exercises: /exercises/pde-green-functions
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7762,20 +7271,14 @@
     - differential-equations-core
 - id: pde-eigenfunction-expansion
   title: Eigenfunction expansion
-  course: foundation
-  order: 2081
   summary: Eigenfunction expansionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - pde-green-functions
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/pde-eigenfunction-expansion
-    slides: /slides/pde-eigenfunction-expansion/
-    textbook: /textbook/pde-eigenfunction-expansion
-    exercises: /exercises/pde-eigenfunction-expansion
   domain: differential-equations
   module: differential-equations-core
   level: introductory
@@ -7784,8 +7287,6 @@
     - differential-equations-core
 - id: complex-analytic-functions
   title: Analytic functions
-  course: foundation
-  order: 2082
   summary: Analytic functionsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -7793,11 +7294,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/complex-analytic-functions
-    slides: /slides/complex-analytic-functions/
-    textbook: /textbook/complex-analytic-functions
-    exercises: /exercises/complex-analytic-functions
   domain: complex-analysis
   module: complex-analysis-core
   level: introductory
@@ -7806,20 +7302,14 @@
     - complex-analysis-core
 - id: complex-cauchy-riemann
   title: Cauchy–Riemann equations
-  course: foundation
-  order: 2083
   summary: Cauchy–Riemann equationsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - complex-analytic-functions
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/complex-cauchy-riemann
-    slides: /slides/complex-cauchy-riemann/
-    textbook: /textbook/complex-cauchy-riemann
-    exercises: /exercises/complex-cauchy-riemann
   domain: complex-analysis
   module: complex-analysis-core
   level: introductory
@@ -7828,20 +7318,14 @@
     - complex-analysis-core
 - id: complex-contour-integration
   title: Contour integration
-  course: foundation
-  order: 2084
   summary: Contour integrationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - complex-cauchy-riemann
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/complex-contour-integration
-    slides: /slides/complex-contour-integration/
-    textbook: /textbook/complex-contour-integration
-    exercises: /exercises/complex-contour-integration
   domain: complex-analysis
   module: complex-analysis-core
   level: introductory
@@ -7850,20 +7334,14 @@
     - complex-analysis-core
 - id: complex-residue-theorem
   title: Residue theorem
-  course: foundation
-  order: 2085
   summary: Residue theoremを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - complex-contour-integration
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/complex-residue-theorem
-    slides: /slides/complex-residue-theorem/
-    textbook: /textbook/complex-residue-theorem
-    exercises: /exercises/complex-residue-theorem
   domain: complex-analysis
   module: complex-analysis-core
   level: introductory
@@ -7872,8 +7350,6 @@
     - complex-analysis-core
 - id: num-backward-error-analysis
   title: Backward error analysis
-  course: foundation
-  order: 2086
   summary: Backward error analysisを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -7881,11 +7357,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-backward-error-analysis
-    slides: /slides/num-backward-error-analysis/
-    textbook: /textbook/num-backward-error-analysis
-    exercises: /exercises/num-backward-error-analysis
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -7894,20 +7365,14 @@
     - numerical-analysis-core
 - id: num-chebyshev-approximation
   title: Chebyshev approximation
-  course: foundation
-  order: 2087
   summary: Chebyshev approximationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-backward-error-analysis
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-chebyshev-approximation
-    slides: /slides/num-chebyshev-approximation/
-    textbook: /textbook/num-chebyshev-approximation
-    exercises: /exercises/num-chebyshev-approximation
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -7916,20 +7381,14 @@
     - numerical-analysis-core
 - id: num-adaptive-quadrature
   title: Adaptive quadrature
-  course: foundation
-  order: 2088
   summary: Adaptive quadratureを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-chebyshev-approximation
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-adaptive-quadrature
-    slides: /slides/num-adaptive-quadrature/
-    textbook: /textbook/num-adaptive-quadrature
-    exercises: /exercises/num-adaptive-quadrature
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -7938,20 +7397,14 @@
     - numerical-analysis-core
 - id: num-krylov-subspace
   title: Krylov subspace methods
-  course: foundation
-  order: 2089
   summary: Krylov subspace methodsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-adaptive-quadrature
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-krylov-subspace
-    slides: /slides/num-krylov-subspace/
-    textbook: /textbook/num-krylov-subspace
-    exercises: /exercises/num-krylov-subspace
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -7960,20 +7413,14 @@
     - numerical-analysis-core
 - id: num-conjugate-gradient
   title: Conjugate gradient
-  course: foundation
-  order: 2090
   summary: Conjugate gradientを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-krylov-subspace
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-conjugate-gradient
-    slides: /slides/num-conjugate-gradient/
-    textbook: /textbook/num-conjugate-gradient
-    exercises: /exercises/num-conjugate-gradient
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -7982,20 +7429,14 @@
     - numerical-analysis-core
 - id: num-gmres
   title: GMRES
-  course: foundation
-  order: 2091
   summary: GMRESを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-conjugate-gradient
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-gmres
-    slides: /slides/num-gmres/
-    textbook: /textbook/num-gmres
-    exercises: /exercises/num-gmres
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -8004,20 +7445,14 @@
     - numerical-analysis-core
 - id: num-sparse-linear-algebra
   title: Sparse linear algebra
-  course: foundation
-  order: 2092
   summary: Sparse linear algebraを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-gmres
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-sparse-linear-algebra
-    slides: /slides/num-sparse-linear-algebra/
-    textbook: /textbook/num-sparse-linear-algebra
-    exercises: /exercises/num-sparse-linear-algebra
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -8026,20 +7461,14 @@
     - numerical-analysis-core
 - id: num-finite-difference
   title: Finite difference
-  course: foundation
-  order: 2093
   summary: Finite differenceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-sparse-linear-algebra
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-finite-difference
-    slides: /slides/num-finite-difference/
-    textbook: /textbook/num-finite-difference
-    exercises: /exercises/num-finite-difference
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -8048,20 +7477,14 @@
     - numerical-analysis-core
 - id: num-finite-element-basics
   title: Finite element basics
-  course: foundation
-  order: 2094
   summary: Finite element basicsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-finite-difference
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-finite-element-basics
-    slides: /slides/num-finite-element-basics/
-    textbook: /textbook/num-finite-element-basics
-    exercises: /exercises/num-finite-element-basics
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -8070,20 +7493,14 @@
     - numerical-analysis-core
 - id: num-spectral-methods
   title: Spectral methods
-  course: foundation
-  order: 2095
   summary: Spectral methodsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - num-finite-element-basics
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/num-spectral-methods
-    slides: /slides/num-spectral-methods/
-    textbook: /textbook/num-spectral-methods
-    exercises: /exercises/num-spectral-methods
   domain: numerical-analysis
   module: numerical-analysis-core
   level: introductory
@@ -8092,8 +7509,6 @@
     - numerical-analysis-core
 - id: opt-bfgs
   title: BFGS
-  course: foundation
-  order: 2096
   summary: BFGSを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -8101,11 +7516,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-bfgs
-    slides: /slides/opt-bfgs/
-    textbook: /textbook/opt-bfgs
-    exercises: /exercises/opt-bfgs
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8114,20 +7524,14 @@
     - optimization-core
 - id: opt-subgradient
   title: Subgradient
-  course: foundation
-  order: 2097
   summary: Subgradientを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-bfgs
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-subgradient
-    slides: /slides/opt-subgradient/
-    textbook: /textbook/opt-subgradient
-    exercises: /exercises/opt-subgradient
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8136,20 +7540,14 @@
     - optimization-core
 - id: opt-tangent-normal-cones
   title: Tangent and normal cones
-  course: foundation
-  order: 2098
   summary: Tangent and normal conesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-subgradient
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-tangent-normal-cones
-    slides: /slides/opt-tangent-normal-cones/
-    textbook: /textbook/opt-tangent-normal-cones
-    exercises: /exercises/opt-tangent-normal-cones
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8158,20 +7556,14 @@
     - optimization-core
 - id: opt-constraint-qualification
   title: Constraint qualification
-  course: foundation
-  order: 2099
   summary: Constraint qualificationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-tangent-normal-cones
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-constraint-qualification
-    slides: /slides/opt-constraint-qualification/
-    textbook: /textbook/opt-constraint-qualification
-    exercises: /exercises/opt-constraint-qualification
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8180,20 +7572,14 @@
     - optimization-core
 - id: opt-fenchel-duality
   title: Fenchel duality
-  course: foundation
-  order: 2100
   summary: Fenchel dualityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-constraint-qualification
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-fenchel-duality
-    slides: /slides/opt-fenchel-duality/
-    textbook: /textbook/opt-fenchel-duality
-    exercises: /exercises/opt-fenchel-duality
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8202,20 +7588,14 @@
     - optimization-core
 - id: opt-mirror-descent
   title: Mirror descent
-  course: foundation
-  order: 2101
   summary: Mirror descentを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-fenchel-duality
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-mirror-descent
-    slides: /slides/opt-mirror-descent/
-    textbook: /textbook/opt-mirror-descent
-    exercises: /exercises/opt-mirror-descent
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8224,20 +7604,14 @@
     - optimization-core
 - id: opt-bregman-divergence
   title: Bregman divergence
-  course: foundation
-  order: 2102
   summary: Bregman divergenceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-mirror-descent
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-bregman-divergence
-    slides: /slides/opt-bregman-divergence/
-    textbook: /textbook/opt-bregman-divergence
-    exercises: /exercises/opt-bregman-divergence
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8246,20 +7620,14 @@
     - optimization-core
 - id: opt-calculus-variations
   title: Calculus of variations
-  course: foundation
-  order: 2103
   summary: Calculus of variationsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-bregman-divergence
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-calculus-variations
-    slides: /slides/opt-calculus-variations/
-    textbook: /textbook/opt-calculus-variations
-    exercises: /exercises/opt-calculus-variations
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8268,20 +7636,14 @@
     - optimization-core
 - id: opt-optimal-control-basics
   title: Optimal control basics
-  course: foundation
-  order: 2104
   summary: Optimal control basicsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - opt-calculus-variations
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/opt-optimal-control-basics
-    slides: /slides/opt-optimal-control-basics/
-    textbook: /textbook/opt-optimal-control-basics
-    exercises: /exercises/opt-optimal-control-basics
   domain: optimization
   module: optimization-core
   level: introductory
@@ -8290,8 +7652,6 @@
     - optimization-core
 - id: inv-well-posedness
   title: Well-posedness and ill-posedness
-  course: foundation
-  order: 2105
   summary: Well-posedness and ill-posednessを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -8299,11 +7659,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-well-posedness
-    slides: /slides/inv-well-posedness/
-    textbook: /textbook/inv-well-posedness
-    exercises: /exercises/inv-well-posedness
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8312,20 +7667,14 @@
     - estimation-inverse-problems-core
 - id: inv-linear-inverse-problems
   title: Linear inverse problems
-  course: foundation
-  order: 2106
   summary: Linear inverse problemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-well-posedness
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-linear-inverse-problems
-    slides: /slides/inv-linear-inverse-problems/
-    textbook: /textbook/inv-linear-inverse-problems
-    exercises: /exercises/inv-linear-inverse-problems
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8334,20 +7683,14 @@
     - estimation-inverse-problems-core
 - id: inv-nonlinear-inverse-problems
   title: Nonlinear inverse problems
-  course: foundation
-  order: 2107
   summary: Nonlinear inverse problemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-linear-inverse-problems
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-nonlinear-inverse-problems
-    slides: /slides/inv-nonlinear-inverse-problems/
-    textbook: /textbook/inv-nonlinear-inverse-problems
-    exercises: /exercises/inv-nonlinear-inverse-problems
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8356,20 +7699,14 @@
     - estimation-inverse-problems-core
 - id: inv-tikhonov-regularization
   title: Tikhonov regularization
-  course: foundation
-  order: 2108
   summary: Tikhonov regularizationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-nonlinear-inverse-problems
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-tikhonov-regularization
-    slides: /slides/inv-tikhonov-regularization/
-    textbook: /textbook/inv-tikhonov-regularization
-    exercises: /exercises/inv-tikhonov-regularization
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8378,20 +7715,14 @@
     - estimation-inverse-problems-core
 - id: inv-bayesian-inverse-problems
   title: Bayesian inverse problems
-  course: foundation
-  order: 2109
   summary: Bayesian inverse problemsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-tikhonov-regularization
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-bayesian-inverse-problems
-    slides: /slides/inv-bayesian-inverse-problems/
-    textbook: /textbook/inv-bayesian-inverse-problems
-    exercises: /exercises/inv-bayesian-inverse-problems
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8400,20 +7731,14 @@
     - estimation-inverse-problems-core
 - id: inv-recursive-least-squares
   title: Recursive least squares
-  course: foundation
-  order: 2110
   summary: Recursive least squaresを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-bayesian-inverse-problems
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-recursive-least-squares
-    slides: /slides/inv-recursive-least-squares/
-    textbook: /textbook/inv-recursive-least-squares
-    exercises: /exercises/inv-recursive-least-squares
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8422,20 +7747,14 @@
     - estimation-inverse-problems-core
 - id: inv-kalman-filter
   title: Kalman filter
-  course: foundation
-  order: 2111
   summary: Kalman filterを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-recursive-least-squares
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-kalman-filter
-    slides: /slides/inv-kalman-filter/
-    textbook: /textbook/inv-kalman-filter
-    exercises: /exercises/inv-kalman-filter
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8444,20 +7763,14 @@
     - estimation-inverse-problems-core
 - id: inv-extended-kalman-filter
   title: Extended Kalman filter
-  course: foundation
-  order: 2112
   summary: Extended Kalman filterを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-kalman-filter
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-extended-kalman-filter
-    slides: /slides/inv-extended-kalman-filter/
-    textbook: /textbook/inv-extended-kalman-filter
-    exercises: /exercises/inv-extended-kalman-filter
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8466,20 +7779,14 @@
     - estimation-inverse-problems-core
 - id: inv-wiener-filter
   title: Wiener filter
-  course: foundation
-  order: 2113
   summary: Wiener filterを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-extended-kalman-filter
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-wiener-filter
-    slides: /slides/inv-wiener-filter/
-    textbook: /textbook/inv-wiener-filter
-    exercises: /exercises/inv-wiener-filter
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8488,20 +7795,14 @@
     - estimation-inverse-problems-core
 - id: inv-system-identification
   title: System identification
-  course: foundation
-  order: 2114
   summary: System identificationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-wiener-filter
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-system-identification
-    slides: /slides/inv-system-identification/
-    textbook: /textbook/inv-system-identification
-    exercises: /exercises/inv-system-identification
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8510,20 +7811,14 @@
     - estimation-inverse-problems-core
 - id: inv-observability
   title: Observability
-  course: foundation
-  order: 2115
   summary: Observabilityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-system-identification
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-observability
-    slides: /slides/inv-observability/
-    textbook: /textbook/inv-observability
-    exercises: /exercises/inv-observability
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8532,20 +7827,14 @@
     - estimation-inverse-problems-core
 - id: inv-sensitivity-matrices
   title: Sensitivity matrices
-  course: foundation
-  order: 2116
   summary: Sensitivity matricesを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-observability
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-sensitivity-matrices
-    slides: /slides/inv-sensitivity-matrices/
-    textbook: /textbook/inv-sensitivity-matrices
-    exercises: /exercises/inv-sensitivity-matrices
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8554,20 +7843,14 @@
     - estimation-inverse-problems-core
 - id: inv-uncertainty-ellipsoids
   title: Uncertainty ellipsoids
-  course: foundation
-  order: 2117
   summary: Uncertainty ellipsoidsを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - inv-sensitivity-matrices
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/inv-uncertainty-ellipsoids
-    slides: /slides/inv-uncertainty-ellipsoids/
-    textbook: /textbook/inv-uncertainty-ellipsoids
-    exercises: /exercises/inv-uncertainty-ellipsoids
   domain: estimation-inverse-problems
   module: estimation-inverse-problems-core
   level: introductory
@@ -8576,20 +7859,14 @@
     - estimation-inverse-problems-core
 - id: info-jensen-shannon-divergence
   title: Jensen–Shannon divergence
-  course: foundation
-  order: 2118
   summary: Jensen–Shannon divergenceを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - stat-sandwich-covariance
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/info-jensen-shannon-divergence
-    slides: /slides/info-jensen-shannon-divergence/
-    textbook: /textbook/info-jensen-shannon-divergence
-    exercises: /exercises/info-jensen-shannon-divergence
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -8598,20 +7875,14 @@
     - statistics-estimation
 - id: info-mutual-information
   title: Mutual information
-  course: foundation
-  order: 2119
   summary: Mutual informationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - info-jensen-shannon-divergence
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/info-mutual-information
-    slides: /slides/info-mutual-information/
-    textbook: /textbook/info-mutual-information
-    exercises: /exercises/info-mutual-information
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -8620,20 +7891,14 @@
     - statistics-estimation
 - id: info-data-processing-inequality
   title: Data processing inequality
-  course: foundation
-  order: 2120
   summary: Data processing inequalityを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - info-mutual-information
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/info-data-processing-inequality
-    slides: /slides/info-data-processing-inequality/
-    textbook: /textbook/info-data-processing-inequality
-    exercises: /exercises/info-data-processing-inequality
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -8642,20 +7907,14 @@
     - statistics-estimation
 - id: info-maximum-entropy
   title: Maximum entropy
-  course: foundation
-  order: 2121
   summary: Maximum entropyを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - info-data-processing-inequality
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/info-maximum-entropy
-    slides: /slides/info-maximum-entropy/
-    textbook: /textbook/info-maximum-entropy
-    exercises: /exercises/info-maximum-entropy
   domain: probability-statistics
   module: statistics-estimation
   level: introductory
@@ -8664,8 +7923,6 @@
     - statistics-estimation
 - id: model-dimensional-analysis
   title: Dimensional analysis
-  course: foundation
-  order: 2122
   summary: Dimensional analysisを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -8673,11 +7930,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-dimensional-analysis
-    slides: /slides/model-dimensional-analysis/
-    textbook: /textbook/model-dimensional-analysis
-    exercises: /exercises/model-dimensional-analysis
   domain: mathematical-modeling
   module: mathematical-modeling-core
   level: introductory
@@ -8686,20 +7938,14 @@
     - mathematical-modeling-core
 - id: model-buckingham-pi
   title: Buckingham Pi theorem
-  course: foundation
-  order: 2123
   summary: Buckingham Pi theoremを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - model-dimensional-analysis
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-buckingham-pi
-    slides: /slides/model-buckingham-pi/
-    textbook: /textbook/model-buckingham-pi
-    exercises: /exercises/model-buckingham-pi
   domain: mathematical-modeling
   module: mathematical-modeling-core
   level: introductory
@@ -8708,20 +7954,14 @@
     - mathematical-modeling-core
 - id: model-nondimensionalization
   title: Nondimensionalization
-  course: foundation
-  order: 2124
   summary: Nondimensionalizationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - model-buckingham-pi
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-nondimensionalization
-    slides: /slides/model-nondimensionalization/
-    textbook: /textbook/model-nondimensionalization
-    exercises: /exercises/model-nondimensionalization
   domain: mathematical-modeling
   module: mathematical-modeling-core
   level: introductory
@@ -8730,20 +7970,14 @@
     - mathematical-modeling-core
 - id: model-sensitivity-analysis
   title: Sensitivity analysis
-  course: foundation
-  order: 2125
   summary: Sensitivity analysisを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - model-nondimensionalization
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-sensitivity-analysis
-    slides: /slides/model-sensitivity-analysis/
-    textbook: /textbook/model-sensitivity-analysis
-    exercises: /exercises/model-sensitivity-analysis
   domain: mathematical-modeling
   module: mathematical-modeling-core
   level: introductory
@@ -8752,20 +7986,14 @@
     - mathematical-modeling-core
 - id: model-uncertainty-propagation
   title: Uncertainty propagation
-  course: foundation
-  order: 2126
   summary: Uncertainty propagationを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - model-sensitivity-analysis
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-uncertainty-propagation
-    slides: /slides/model-uncertainty-propagation/
-    textbook: /textbook/model-uncertainty-propagation
-    exercises: /exercises/model-uncertainty-propagation
   domain: mathematical-modeling
   module: mathematical-modeling-core
   level: introductory
@@ -8774,8 +8002,6 @@
     - mathematical-modeling-core
 - id: model-reduction
   title: Model reduction
-  course: foundation
-  order: 2127
   summary: Model reductionを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
   prerequisites: []
@@ -8783,11 +8009,6 @@
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-reduction
-    slides: /slides/model-reduction/
-    textbook: /textbook/model-reduction
-    exercises: /exercises/model-reduction
   domain: scientific-computing
   module: scientific-computing-core
   level: introductory
@@ -8796,45 +8017,17 @@
     - scientific-computing-core
 - id: model-validation-residual-analysis
   title: Model validation and residual analysis
-  course: foundation
-  order: 2128
   summary: Model validation and residual analysisを工学数学Knowledge Baseへ接続するための計画Topic
   status: planned
-  prerequisites: []
+  prerequisites:
+    - model-reduction
   estimated_minutes:
     slides: 20
     textbook: 45
     exercises: 30
-  routes:
-    home: /courses/foundation/model-validation-residual-analysis
-    slides: /slides/model-validation-residual-analysis/
-    textbook: /textbook/model-validation-residual-analysis
-    exercises: /exercises/model-validation-residual-analysis
   domain: scientific-computing
   module: scientific-computing-core
   level: introductory
   tags:
     - scientific-computing
     - scientific-computing-core
-- id: hotspot-matrix
-  title: Hotspot Matrix
-  course: foundation
-  order: 2001
-  summary: Hotspot Matrixを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
-  prerequisites: []
-  estimated_minutes:
-    slides: 20
-    textbook: 45
-    exercises: 30
-  routes:
-    home: /courses/foundation/hotspot-matrix
-    slides: /slides/hotspot-matrix/
-    textbook: /textbook/hotspot-matrix
-    exercises: /exercises/hotspot-matrix
-  domain: probability-statistics
-  module: statistics-estimation
-  level: planned
-  tags:
-    - probability-statistics
-    - statistics-estimation

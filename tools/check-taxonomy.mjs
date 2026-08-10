@@ -28,6 +28,8 @@ export function validateTaxonomy({ categories, domains, modules, topics, paths, 
   for (const module of modules.modules) {
     if (!domainIds.has(module.domain)) errors.push(`module ${module.id}: unknown domain ${module.domain}`)
   }
+  const domainsWithModules = new Set(modules.modules.map((module) => module.domain))
+  for (const domain of domains.domains) if (!domainsWithModules.has(domain.id)) errors.push(`domain ${domain.id}: no module is registered`)
   const moduleDomain = new Map(modules.modules.map((module) => [module.id, module.domain]))
   for (const topic of topics) {
     if (!domainIds.has(topic.domain)) errors.push(`topic ${topic.id}: unknown domain ${topic.domain}`)

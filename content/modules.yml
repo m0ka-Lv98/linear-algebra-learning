@@ -22,3 +22,9 @@ modules:
   - { id: scientific-computing-core, domain: scientific-computing, title: Scientific Computing }
   - { id: complex-analysis-core, domain: complex-analysis, title: Complex Analysis }
   - { id: mathematical-modeling-core, domain: mathematical-modeling, title: Mathematical Modeling }
+  - { id: geometry-tensors-core, domain: geometry-tensors, title: Geometry & Tensors }
+  - { id: control-systems-core, domain: control-systems, title: Control Systems }
+  - { id: information-theory-core, domain: information-theory, title: Information Theory }
+  - { id: signal-processing-core, domain: signal-processing, title: Signal Processing }
+  - { id: computational-biology-core, domain: computational-biology, title: Computational Biology }
+  - { id: spectral-cytometry-core, domain: spectral-cytometry, title: Spectral Cytometry }

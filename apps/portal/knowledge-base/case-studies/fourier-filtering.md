@@ -6,8 +6,8 @@
 
 ## 必要なTopic
 
-- [Fourier基底とDFT](/knowledge-base/topics#mat-fourier-bases-dft)
-- [filteringと正則化](/knowledge-base/topics#mat-filtering-regularization)
+- [Fourier基底とDFT](/knowledge-base/topics/mat-fourier-bases-dft)
+- [filteringと正則化](/knowledge-base/topics/mat-filtering-regularization)
 
 ## 接続先
 

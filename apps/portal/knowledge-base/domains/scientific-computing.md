@@ -6,4 +6,4 @@
 
 ## Scientific Computing
 
-[Model reduction](/knowledge-base/topics#model-reduction) / [Model validation and residual analysis](/knowledge-base/topics#model-validation-residual-analysis)
+[Model reduction](/knowledge-base/topics/model-reduction) / [Model validation and residual analysis](/knowledge-base/topics/model-validation-residual-analysis)

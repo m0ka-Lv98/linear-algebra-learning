@@ -3,3 +3,7 @@
 
 **Domain:** `geometry-tensors`
 **Category:** `engineering-mathematics`
+
+## Geometry & Tensors
+
+Topic metadata is being prepared.

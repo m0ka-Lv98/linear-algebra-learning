@@ -15,7 +15,7 @@ const byId = new Map(topics.map((topic) => [topic.id, topic]))
 const domainById = new Map(domains.map((domain) => [domain.id, domain]))
 const moduleById = new Map(modules.map((module) => [module.id, module]))
 const slug = (value) => String(value).replace(/[^a-z0-9-]/gi, '-').toLowerCase()
-const topicLink = (topic) => `[${topic.title}](/knowledge-base/topics#${topic.id})`
+const topicLink = (topic) => `[${topic.title}](/knowledge-base/topics/${topic.id})`
 const artifactLinks = (topic) => topic.status === 'planned' ? '本文・演習・スライドは準備中です。' : `[テーマホーム](${topic.routes.home}) / [教科書](${topic.routes.textbook}) / [演習](${topic.routes.exercises}) / [スライド](${topic.routes.slides})`
 const write = async (file, body) => { await mkdir(path.dirname(file), { recursive: true }); await writeFile(file, `<!-- GENERATED: knowledge-base -->\n${body.trim()}\n`) }
 
@@ -78,15 +78,15 @@ ${study.requires.map((id) => byId.has(id) ? `- ${topicLink(byId.get(id))}` : `- 
 
 ${study.connects.map((id) => `- \`${id}\``).join('\n')}`)
 }
-const topicSections = topics.map((topic) => {
+const topicPages = topics.map((topic) => {
   const next = topics.filter((candidate) => (candidate.prerequisites ?? []).includes(topic.id)).slice(0, 8)
   const relatedPaths = paths.filter((learningPath) => learningPath.topics.includes(topic.id))
   const relatedCases = cases.filter((study) => study.requires.includes(topic.id))
   const domain = domainById.get(topic.domain)
   const module = moduleById.get(topic.module)
-  return `<a id="${topic.id}"></a>\n## ${topic.title}
+  return { topic, body: `# ${topic.title}
 
-**Domain:** [${domain?.title_ja ?? topic.domain}](./domains/${topic.domain})
+**Domain:** [${domain?.title_ja ?? topic.domain}](../domains/${topic.domain})
 **Module:** ${module?.title ?? topic.module}
 **Level:** ${topic.level}
 **Status:** ${topic.status}
@@ -102,19 +102,20 @@ ${next.map(topicLink).join(' / ') || '登録なし'}
 
 ## Learning Path
 
-${relatedPaths.map((learningPath) => `[${learningPath.title}](./paths/${learningPath.id})`).join(' / ') || '登録なし'}
+${relatedPaths.map((learningPath) => `[${learningPath.title}](../paths/${learningPath.id})`).join(' / ') || '登録なし'}
 
 ## Case Study
 
-${relatedCases.map((study) => `[${study.title}](./case-studies/${study.id})`).join(' / ') || '登録なし'}
+${relatedCases.map((study) => `[${study.title}](../case-studies/${study.id})`).join(' / ') || '登録なし'}
 
 ## 教材
 
-${artifactLinks(topic)}`
-}).join('\n\n---\n\n')
+${artifactLinks(topic)}` }
+})
+for (const page of topicPages) await write(path.join(kb, 'topics', `${page.topic.id}.md`), page.body)
 await write(path.join(kb, 'topics.md'), `# 全Topic
 
-全${topics.length} TopicをDomain・Module・Level・Statusで検索できます。各見出しにPrerequisite、後続Topic、Learning Path、Case Study、教材リンクをまとめています。
+全${topics.length} TopicをDomain・Module・Level・Statusで検索できます。各TopicページにPrerequisite、後続Topic、Learning Path、Case Study、教材リンクをまとめています。
 
-${topicSections}`)
+${topics.map((topic) => `- ${topicLink(topic)} — ${topic.domain} / ${topic.module} / ${topic.status}`).join('\n')}`)
 console.log(`knowledge-base pages generated: ${topics.length} topic pages, ${domains.length} domain pages, ${paths.length} paths, ${cases.length} case studies`)

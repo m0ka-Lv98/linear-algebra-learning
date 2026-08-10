@@ -7,7 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const topicFile = path.join(root, 'content/topics.yml')
 
 const planned = [
-  ['mat-gram-matrix', 'Gram matrix', 'linear-algebra-core'], ['hotspot-matrix', 'Hotspot Matrix', 'statistics-estimation'], ['stat-fisher-information-matrix', 'Fisher information matrix', 'statistics-estimation'],
+  ['mat-gram-matrix', 'Gram matrix', 'linear-algebra-core'], ['stat-fisher-information-matrix', 'Fisher information matrix', 'statistics-estimation'],
   ['stat-estimator-covariance', 'Estimator covariance', 'statistics-estimation'], ['stat-vif-collinearity', 'VIF and collinearity', 'statistics-estimation'],
   ['stat-wls-fisher-information', 'WLS Fisher information', 'statistics-estimation'], ['stat-model-misspecification', 'Model misspecification', 'statistics-estimation'],
   ['mat-scalar-by-vector-derivative', 'Scalar-by-vector derivative', 'matrix-calculus-differentiation'], ['mat-vector-by-vector-derivative', 'Vector-by-vector derivative', 'matrix-calculus-differentiation'],
@@ -67,7 +67,8 @@ const moduleDomain = (module) => module === 'matrix-calculus-differentiation' ? 
 function enrich(topic) {
   if (topic.status === 'planned' && plannedModule.has(topic.id)) {
     const module = plannedModule.get(topic.id)
-    return { ...topic, domain: moduleDomain(module), module, tags: [moduleDomain(module), module] }
+    const { course, order, routes, ...metadata } = topic
+    return { ...metadata, domain: moduleDomain(module), module, tags: [moduleDomain(module), module] }
   }
   const prefix = topic.id.split('-')[0]
   let domain = domainByPrefix[prefix] ?? domainByCourse[topic.course] ?? 'mathematical-foundations'
@@ -79,13 +80,30 @@ function enrich(topic) {
   return { ...topic, domain, module, level: topic.course === 'foundation' ? 'introductory' : 'undergraduate', tags: [domain, module] }
 }
 
+const moduleLast = new Map()
+function plannedPrerequisites(id, module) {
+  const previous = moduleLast.get(module)
+  moduleLast.set(module, id)
+  if (id === 'stat-fisher-information-matrix') return ['stat-likelihood-maximum-likelihood', 'prob-multivariate-normal-distribution']
+  if (id === 'stat-estimator-covariance') return ['stat-fisher-information-matrix']
+  if (id === 'stat-vif-collinearity') return ['stat-estimator-covariance']
+  if (id === 'stat-wls-fisher-information') return ['mat-wls-inverse-variance', 'stat-fisher-information-matrix']
+  if (id === 'stat-model-misspecification') return ['stat-likelihood-maximum-likelihood']
+  return previous ? [previous] : []
+}
+
 const source = await readFile(topicFile, 'utf8')
-const topics = parse(source).map(enrich)
+const topics = parse(source).map(enrich).filter((topic) => topic.id !== 'hotspot-matrix')
 const ids = new Set(topics.map((topic) => topic.id))
 for (const [index, [id, title, module]] of planned.entries()) {
   if (ids.has(id)) continue
   const domain = moduleDomain(module)
-  topics.push({ id, title, course: 'foundation', order: 2000 + index, summary: `${title}を工学数学Knowledge Baseへ接続するための計画Topic`, status: 'planned', prerequisites: [], estimated_minutes: { slides: 20, textbook: 45, exercises: 30 }, routes: { home: `/courses/foundation/${id}`, slides: `/slides/${id}/`, textbook: `/textbook/${id}`, exercises: `/exercises/${id}` }, domain, module, level: 'planned', tags: [domain, module] })
+  topics.push({ id, title, summary: `${title}を工学数学Knowledge Baseへ接続するための計画Topic`, status: 'planned', prerequisites: plannedPrerequisites(id, module), estimated_minutes: { slides: 20, textbook: 45, exercises: 30 }, domain, module, level: 'planned', tags: [domain, module] })
+}
+moduleLast.clear()
+for (const [id] of planned) {
+  const topic = topics.find((candidate) => candidate.id === id)
+  if (topic) topic.prerequisites = plannedPrerequisites(id, topic.module)
 }
 const write = process.argv.includes('--write') || !process.argv.includes('--check')
 if (write) await writeFile(topicFile, stringify(topics, { lineWidth: 120 }))

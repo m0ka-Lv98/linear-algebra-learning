@@ -3,3 +3,7 @@
 
 **Domain:** `signal-processing`
 **Category:** `applications`
+
+## Signal Processing
+
+Topic metadata is being prepared.

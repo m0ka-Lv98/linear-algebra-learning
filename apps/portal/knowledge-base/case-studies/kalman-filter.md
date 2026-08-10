@@ -6,8 +6,8 @@
 
 ## 必要なTopic
 
-- [推定量・バイアス・分散・MSE](/knowledge-base/topics#stat-estimators-bias-variance-mse)
-- [WLSと逆分散重み](/knowledge-base/topics#mat-wls-inverse-variance)
+- [推定量・バイアス・分散・MSE](/knowledge-base/topics/stat-estimators-bias-variance-mse)
+- [WLSと逆分散重み](/knowledge-base/topics/mat-wls-inverse-variance)
 
 ## 接続先
 
