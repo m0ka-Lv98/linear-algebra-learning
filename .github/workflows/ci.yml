@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SLIDE_BUILD_CONCURRENCY: 4
+      NODE_OPTIONS: --max-old-space-size=6144
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
