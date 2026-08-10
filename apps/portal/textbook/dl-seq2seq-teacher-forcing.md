@@ -22,27 +22,27 @@ encoderは入力系列を表現へ変換し、decoderは過去token条件付き�
 |---|---|
 | $x_{1:m}$ | 入力系列 |
 | $y_{1:n}$ | 出力系列 |
-| $p_θ(y_t|y_{<t},x)$ | 次token分布 |
+| $p_θ(y_t|y_{\lt t},x)$ | 次token分布 |
 
 この表にない新しい記号を使う場合は、その直前で意味を定義する。
 
 ## 中心となる式
 
 $$
-\mathcal L=-\sum_{t=1}^n\log p_\theta(y_t\mid y_{<t},x)
+\mathcal L=-\sum_{t=1}^n\log p_\theta(y_t\mid y_{\lt t},x)
 $$
 
 ## なぜこの式になるのか
 
-1. chain rule of probabilityで $p(y|x)=∏_t p(y_t|y_{<t},x)$。
+1. chain rule of probabilityで $p(y|x)=∏_t p(y_t|y_{\lt t},x)$。
 2. negative logを取ると和になりtoken-level cross entropyになる。
-3. teacher forcingは各条件 $y_{<t}$ にground-truth prefixを使う。
+3. teacher forcingは各条件 $y_{\lt t}$ にground-truth prefixを使う。
 
 ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
 
 ## 例題：小さい設定で最後まで追う
 
-翻訳でsource文をencoderへ入れ、decoderは<BOS>からtarget tokenを順に予測する。
+翻訳でsource文をencoderへ入れ、decoderは`&lt;BOS&gt;`からtarget tokenを順に予測する。
 
 ### 答案で書く順序
 
