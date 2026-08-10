@@ -1,158 +1,75 @@
 # PCAの幾何学：教科書
 
-Course 07｜データ解析の行列手法｜Topic 03/20
+Course 07｜データ解析
 
-## このTopicは、前の何を受けて始まるか
+## このTopicの中心問題
 
-前Topic `mat-covariance-scatter-matrices` で得た概念を使い、ここでは PCAの幾何学 へ進む。
+「分散最大化」と「再構成誤差最小化」が、なぜ同じ主成分を与えるのか。
 
-前提として使うのは `mat-covariance-scatter-matrices`、`orthogonal-projection` です。
+## まず直感
 
-## まず直感を作る
+中心化dataを単位ベクトルuへ射影したときのエネルギーを最大化する方向が第一主成分。Pythagorasにより全エネルギー=射影エネルギー+直交残差エネルギーなので、一方の最大化は他方の最小化と同値。
 
-PCAはデータの分散が大きい直交方向を順に選び、低次元へ射影する。
+## 図で固定する
 
+<img src="/visuals/course-07/mat-pca-geometry.png" alt="PCAの幾何学の図解" style="max-height: 460px; display:block; margin:0 auto;" />
 
+図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
 
-## 図の解説
+## 記号・型・意味
 
-<img src="/visuals/course-07/mat-pca-geometry.png" alt="PCAの幾何学の図解" style="max-height: 440px; display:block; margin:0 auto;" />
+| 記号 | 意味 |
+|---|---|
+| $X∈R^{n×p}$ | 行がsampleの中心化data行列 |
+| $u∈R^p$ | ||u||=1の射影方向 |
+| $Xu$ | 各sampleのscore |
 
-細長い点群と主成分軸、射影点を描く。 点群の最も長い方向が第一主成分である。各点をその軸へ直交射影した座標の分散が最大になる方向を探す問題が固有値/SVDへつながる。
+この表にない新しい記号を使う場合は、その直前で意味を定義する。
 
-## 記号・型・次元
-
-- $v\in\mathbb R^p,\|v\|=1$：projection direction
-- $z=X_cv$：scores
-- $S$：covariance
-
-
-## 正式な定義・代表式
-
-PCA first componentはprojected variance $v^TSv$ をunit vector制約で最大化する。solutionはSの最大eigenvalue eigenvector。
-
-代表式は
+## 中心となる式
 
 $$
-\max_{\|\mathbf{v}\|_2=1}\mathbf{v}^{\mathsf T}\mathbf{S}\mathbf{v}
+\max_{\|u\|=1}\|Xu\|^2\iff\min_{\|u\|=1}\|X-Xuu^T\|_F^2
 $$
 
-です。
+## なぜこの式になるのか
 
-## なぜこの式・結論になるのか
+1. 各row x_iを span(u) とその直交補へ分解する。
+2. $||x_i||²=(x_i^Tu)²+||x_i-(x_i^Tu)u||²$。
+3. iについて足すと左辺総energyはuに依存しない。
+4. したがってscore energy最大化とresidual energy最小化が同値。Rayleigh quotientからuはX^TXの最大固有値固有ベクトル。
 
-### 1. project variance
+ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
 
-$Var(z)=(n-1)^{-1}\|X_cv\|²=v^TSv$。
+## 例題：小さい設定で最後まで追う
 
-### 2. unit constraint
+細長い楕円状点群では長軸方向uが第一PC。そこへ射影すると分散を最も保ち、直交再構成残差が最小。
 
-scaleを自由にするとvを大きくしてvarianceを無限増加できるので $v^Tv=1$。
+### 答案で書く順序
 
-### 3. Lagrange condition
+1. 与えられた量と求める量を定義する。
+2. 適用する式の成立条件を確認する。
+3. 代入または式変形を1段ずつ書く。
+4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
 
-$L=v^TSv-\lambda(v^Tv-1)$。gradient=0で $Sv=\lambda v$。最大Rayleigh quotientは最大eigenvalue。
+## 何を間違えやすいか
 
-## 教科書が省略しやすい一段を補う
+- centerしないPCAでは「分散」解釈が変わる。
+- feature scalingにより主成分が大きく変わり得る。
 
+## 自分で確認する問い
 
-### variance最大化とreconstruction error最小化が同じ方向を選ぶ
+- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
+- 導出の各段階で使った仮定を1つずつ言えるか。
+- 成立条件を1つ外した最小反例または失敗例を作れるか。
+- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
 
-unit vector vへprojectしたscoreはz=X_cv。そのvarianceは $v^TSv$。constraint $\|v\|=1$ の下で最大化しLagrange multiplierを使うと $Sv=\lambda v$、最大eigenvalueのeigenvectorがPC1。
+## 後続Courseへの接続
 
-一方rank-1 reconstructionは各pointをspan(v)へ直交射影する。Pythagorasより total squared norm = projected energy + residual energy。totalはvに依存しないのでprojected variance最大化はresidual squared error最小化と同値。二つのPCA定義が別公式ではなく同じorthogonal decompositionから出る。
+このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
 
+## 参考
 
-
-## 途中を飛ばさず全体をつなぐ
-
-### PCAの幾何学の導出を一本につなげる
-
-PCA first componentはprojected variance $v^TSv$ をunit vector制約で最大化する。solutionはSの最大eigenvalue eigenvector。
-
-#### 1. project variance
-
-まず出発点を固定する。 $Var(z)=(n-1)^{-1}\|X_cv\|²=v^TSv$。 次に必要になるのは「unit constraint」である。
-
-#### 2. unit constraint
-
-ここまでで得た結果を次の段階へ渡す。 scaleを自由にするとvを大きくしてvarianceを無限増加できるので $v^Tv=1$。 次に必要になるのは「Lagrange condition」である。
-
-#### 3. Lagrange condition
-
-最後に、前二段階の結果をまとめて結論へ進む。 $L=v^TSv-\lambda(v^Tv-1)$。gradient=0で $Sv=\lambda v$。最大Rayleigh quotientは最大eigenvalue。
-
-#### 代表式へ戻す
-
-以上をまとめた中心式は
-
-$$
-\max_{\|\mathbf{v}\|_2=1}\mathbf{v}^{\mathsf T}\mathbf{S}\mathbf{v}
-$$
-
-である。ここでは式だけを新しい事実として追加しているのではなく、上の各段階で定義した量・仮定・変形を一つの形に圧縮している。したがって式を使うときは、途中で必要だった条件が保たれている範囲までしか結論を延長できない。
-
-### 具体例と一般式を往復する
-
-本文の第一例は次の設定である。
-
-ellipse cloudの長軸がPC1、短軸PC2。eigenvalueは各axisのvariance。
-
-この例は特定の数値だけを覚えるためではない。上の導出で現れた量を小さい設定で実際に計算し、代表式の左辺・右辺が同じ対象を表していることを確認するためのものである。第二例では
-
-centerしないPCAではoriginからmean方向がdominantになることがあり、通常のvariance interpretationが変わる。
-
-と条件を変えている。二つを比較すると、数値や入力が変わっても残る構造と、仮定を変えたために変化する結論を分離できる。
-
-### どこまで結論を信頼できるか
-
-このTopicの境界を示す例は次である。
-
-PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。
-
-この失敗例は、単に「例外がある」という注意ではない。上の導出を逆にたどると、どの段階で必要条件が失われ、その後の式変形または解釈を続けられなくなるかを特定できる。したがって反例は定理の外側を覚えるためではなく、定理が何を仮定していたかを確認するために使う。
-
-## 例題1：小さな数値で最後まで計算する
-
-ellipse cloudの長軸がPC1、短軸PC2。eigenvalueは各axisのvariance。
-
-## 例題2：条件を少し変えて、本質が数値依存でないことを確認する
-
-centerしないPCAではoriginからmean方向がdominantになることがあり、通常のvariance interpretationが変わる。
-
-## 成立条件と、条件を外したときに何が壊れるか
-
-- PCA前の中心化を忘れない。
-- 分散最大方向が必ず意味的に重要とは限らない。
-- PCAの幾何学の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。
-
-## よくある誤解を分解する
-
-- PCAの幾何学の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-
-PCAの幾何学では、式へ数値を代入するだけでは不十分である。PCAはlabelを使わないのでclass separation最大化とは限らない。大variance nuisanceがPC1になることも。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
-
-## 実装・数値計算では何に注意するか
-
-covarianceを形成せずcentered XのSVDを使うと安定/効率的。explained variance ratioだけでrを自動決定しない。
-
-## ここから一段だけ発展する
-
-PCA eigenvectorsとXのright singular vectorsが一致する関係を次Topicで導く。
-
-
-## このTopicを理解できたか確認する問い
-
-- 「project variance」を式を見ずに説明できるか
-- 「Lagrange condition」までの論理を一段ずつ再現できるか
-- PCAの幾何学の条件を1つ外した反例を説明できるか
-
-## 外部教材との照合
-
-- [MIT OCW 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
-- [Boyd & Vandenberghe, Introduction to Applied Linear Algebra](https://web.stanford.edu/~boyd/vmls/)
+- PCA via SVD/eigendecomposition
 
 [演習へ](/exercises/mat-pca-geometry)　|　[スライドへ](/slides/mat-pca-geometry/)

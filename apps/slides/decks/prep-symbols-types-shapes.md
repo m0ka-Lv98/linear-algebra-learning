@@ -2,7 +2,7 @@
 theme: default
 routerMode: hash
 layout: cover
-title: 数式・記号・型・次元
+title: "数式・記号・型・次元"
 ---
 
 # 数式・記号・型・次元
@@ -10,114 +10,62 @@ title: 数式・記号・型・次元
 Course 00｜学習準備
 
 ---
-layout: center
----
 
 ## 今回の問い
 
-数式を読む前に、スカラー・ベクトル・行列・テンソルの型と次元を追跡する習慣を身につける。
+式を計算する前に、scalar・vector・matrix・tensorの型とshapeをどう確認するか。
 
 ---
 
-## 到達目標
+## 直感
 
-- スカラー、ベクトル、行列、テンソルを区別し、それぞれの型とshapeを説明できる
-- 式の各項について次元整合性を確認し、成立しない演算を発見できる
-- 数学上の次元とNumPy配列のndim/shapeを区別できる
+値が同じでも型・shapeが違えば許される演算が違う。数式の「何を表すか」と実装の「どう格納するか」を分離して読む。
 
 ---
 
-## なぜ型と次元から始めるのか
+## 図解
 
-数式の意味を理解する前に「何を入力し、何を出力する式か」を確認すると、多くの誤読を早い段階で防げる。
-
-例えば $\mathbf{A}\mathbf{x}$ を見たとき、行列 $\mathbf{A}$ の列数とベクトル $\mathbf{x}$ の要素数が一致しなければ、値を計算する以前に式は定義できない。型と次元は単なる記法上の約束ではなく、数式を静的に検査するための手掛かりである。
+<img src="./assets/course-00/prep-symbols-types-shapes.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
 ---
 
-## スカラー・ベクトル・行列
+## 中心式
 
-スカラーは一つの数であり、この教材では通常の小文字 $a,x,\alpha$ で表す。
-
-ベクトルは複数の成分を順序付きで並べた対象で、太字小文字 $\mathbf{x}$ を用いる。$\mathbf{x}\in\mathbb{R}^n$ は実数成分を $n$ 個持つベクトルである。
-
----
-
-## テンソルと「次元」という語の曖昧さ
-
-テンソルという語は分野によって厳密な意味が異なるが、このCourse 00では多次元配列を読む準備として、3軸以上を持つ配列状の量を便宜的にテンソルと呼ぶ。
-
-重要なのは「次元」という語を区別することである。$\mathbb{R}^5$ のベクトル空間の次元は5だが、NumPyでshapeが `(5,)` の配列の `ndim` は1である。
+$$
+A\mathbf{x}\in\mathbb R^m\quad(A\in\mathbb R^{m\times n},\;\mathbf{x}\in\mathbb R^n)
+$$
 
 ---
 
-## 成分と添字
+## 導出
 
-ベクトル $\mathbf{x}\in\mathbb{R}^n$ の第 $i$ 成分を $x_i$ と書く。
-
-行列 $\mathbf{A}\in\mathbb{R}^{m\times n}$ の第 $i$ 行第 $j$ 列を $a_{ij}$ と書く。添字の範囲を暗黙にしない習慣をつける。
-
----
-
-## 加算・スカラー倍・要素ごとの演算
-
-ベクトル同士の加算 $\mathbf{x}+\mathbf{y}$ は同じ空間に属するとき、すなわち両方が $\mathbb{R}^n$ に属するときに定義できる。
-
-行列加算もshapeが一致する必要がある。スカラー $c$ とベクトルの積 $c\mathbf{x}$ は各成分を $c$ 倍する。
+1. 行列Aの各rowとxの内積が出力1成分になる。
+2. Aにはm rowsがあるので出力はm成分。
+3. inner dimension n が一致しなければ行列積は定義できない。
 
 ---
 
-## 転置とshape
+## 小さい例
 
-$\mathbf{A}\in\mathbb{R}^{m\times n}$ の転置 $\mathbf{A}^{\mathsf T}$ は $\mathbb{R}^{n\times m}$ に属する。
-
-転置は値を単に並べ替える操作ではなく、行と列の役割を入れ替える。ベクトルを列ベクトルとして扱う数式では $\mathbf{x}^{\mathsf T}\mathbf{y}$ が内積になる。
+Aが2×3、xが3成分ならAxは2成分。xが2成分ならAxは未定義。
 
 ---
 
-## 内積の型を予測する
+## 条件を外すと
 
-$\mathbf{x},\mathbf{y}\in\mathbb{R}^n$ に対し $\mathbf{x}^{\mathsf T}\mathbf{y}$ は一つの数、つまりスカラーになる。
-
-成分表示では $\sum_{i=1}^n x_i y_i$ である。計算前に「$1\times n$ と $n\times1$ を掛けるので $1\times1$」とshapeを追うと理解しやすい。
-
----
-
-## 行列ベクトル積
-
-$\mathbf{A}\in\mathbb{R}^{m\times n}$ と $\mathbf{x}\in\mathbb{R}^n$ なら、$\mathbf{A}\mathbf{x}\in\mathbb{R}^m$ である。
-
-内側の $n$ が一致し、外側の $m$ が出力に残る。第 $i$ 成分は $y_i=\sum_{j=1}^n a_{ij}x_j$ で、行列の第 $i$ 行と入力ベクトルの内積である。
-
----
-
-## 基本式
-
-$\mathbf{x}\in\mathbb{R}^n$
-
-$\mathbf{A}\in\mathbb{R}^{m\times n}$
-
-$\mathbf{A}\mathbf{x}\in\mathbb{R}^{m}$
-
----
-
-## よくある誤解
-
-- 数学の「次元」とNumPyの`ndim`は同じ意味である
-- 要素数が同じならshapeが違っても同じ対象である
-- NumPyで実行できる演算は必ず数学的にも意図通りである
+- 数学のvector次元nとNumPy ndimを混同しない。
 
 ---
 
 ## 理解確認
 
-1. スカラー、ベクトル、行列、テンソルを区別し、それぞれの型とshapeを説明できる
-2. 代表式の記号と条件を説明できるか。
-3. 誤解を反例で否定できるか。
+- 式の各記号を定義できるか。
+- 導出を1段ずつ再現できるか。
+- 反例を1つ作れるか。
 
 ---
 
-## 演習へ
+## 教科書と演習
 
 [教科書](../../textbook/prep-symbols-types-shapes)
 

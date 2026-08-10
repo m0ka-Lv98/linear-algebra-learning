@@ -21,7 +21,7 @@
   summary: 集合・関数・写像の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-symbols-types-shapes
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -38,7 +38,7 @@
   summary: 総和・積・添字の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-symbols-types-shapes
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -55,7 +55,7 @@
   summary: 指数と対数の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-symbols-types-shapes
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -65,14 +65,84 @@
     slides: /slides/prep-exponents-logarithms/
     textbook: /textbook/prep-exponents-logarithms
     exercises: /exercises/prep-exponents-logarithms
+- id: prep-trigonometry-radians-unit-circle
+  title: 三角関数・ラジアン・単位円
+  course: foundation
+  order: 5
+  summary: 単位円上の点を角度で動かすと、横座標が cos、縦座標が sin になる。ラジアンは円弧長そのものなので、微小角と微小変位を同じ尺度で比較できる。
+  status: draft
+  prerequisites:
+    - prep-exponents-logarithms
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/prep-trigonometry-radians-unit-circle
+    slides: /slides/prep-trigonometry-radians-unit-circle/
+    textbook: /textbook/prep-trigonometry-radians-unit-circle
+    exercises: /exercises/prep-trigonometry-radians-unit-circle
+- id: prep-absolute-values-inequalities-intervals
+  title: 絶対値・不等式・区間
+  course: foundation
+  order: 6
+  summary: "|x-a| は実数直線上で x と a の距離。したがって |x-a|<r は「a から距離 r 未満」の区間を表す。極限の ε–δ 記法にもそのままつながる。"
+  status: draft
+  prerequisites:
+    - prep-symbols-types-shapes
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/prep-absolute-values-inequalities-intervals
+    slides: /slides/prep-absolute-values-inequalities-intervals/
+    textbook: /textbook/prep-absolute-values-inequalities-intervals
+    exercises: /exercises/prep-absolute-values-inequalities-intervals
+- id: prep-complex-numbers-euler-form
+  title: 複素数・極形式・Euler公式
+  course: foundation
+  order: 7
+  summary: 複素数 z=a+bi は平面上のベクトルとみなせる。極形式では大きさ r と角度 θ に分け、掛け算が「大きさを掛け、角度を足す」操作になる。Fourier・固有値・振動の共通言語になる。
+  status: draft
+  prerequisites:
+    - prep-trigonometry-radians-unit-circle
+    - prep-exponents-logarithms
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/prep-complex-numbers-euler-form
+    slides: /slides/prep-complex-numbers-euler-form/
+    textbook: /textbook/prep-complex-numbers-euler-form
+    exercises: /exercises/prep-complex-numbers-euler-form
+- id: prep-sequences-basics
+  title: 数列・収束の初歩
+  course: foundation
+  order: 8
+  summary: 数列は自然数 n を入力して数 a_n を返す関数。極限は「十分後ろの項を全部、目標値の任意に小さい近傍へ入れられる」という主張。
+  status: draft
+  prerequisites:
+    - prep-sums-products-indices
+    - prep-absolute-values-inequalities-intervals
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/prep-sequences-basics
+    slides: /slides/prep-sequences-basics/
+    textbook: /textbook/prep-sequences-basics
+    exercises: /exercises/prep-sequences-basics
 - id: prep-definitions-theorems-proofs
   title: 定義・命題・証明の読み方
   course: foundation
-  order: 5
+  order: 9
   summary: 定義・命題・証明の読み方の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-sets-functions-mappings
+    - prep-sets-functions-mappings
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -85,11 +155,11 @@
 - id: prep-python-expressions-functions
   title: Pythonの式・変数・関数
   course: foundation
-  order: 6
+  order: 10
   summary: Pythonの式・変数・関数の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-symbols-types-shapes
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -102,12 +172,12 @@
 - id: prep-numpy-arrays-shapes
   title: NumPy配列・shape・indexing
   course: foundation
-  order: 7
+  order: 11
   summary: NumPy配列・shape・indexingの定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-python-expressions-functions
-  - prep-symbols-types-shapes
+    - prep-python-expressions-functions
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -120,11 +190,11 @@
 - id: prep-numerical-checks-reproducibility
   title: 数値検算と再現性
   course: foundation
-  order: 8
+  order: 12
   summary: 数値検算と再現性の定義、計算手順、成立条件を整理し、学習準備の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-numpy-arrays-shapes
+    - prep-numpy-arrays-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -141,8 +211,8 @@
   summary: 関数・極限・連続の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-sets-functions-mappings
-  - prep-exponents-logarithms
+    - prep-sets-functions-mappings
+    - prep-exponents-logarithms
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -159,7 +229,7 @@
   summary: 微分と変化率の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-functions-limits-continuity
+    - calc-functions-limits-continuity
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -176,7 +246,7 @@
   summary: 微分法則と一変数の連鎖律の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-derivatives-rates
+    - calc-derivatives-rates
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -186,14 +256,31 @@
     slides: /slides/calc-differentiation-rules-chain-rule/
     textbook: /textbook/calc-differentiation-rules-chain-rule
     exercises: /exercises/calc-differentiation-rules-chain-rule
+- id: calc-implicit-inverse-functions
+  title: 陰関数微分と逆関数
+  course: foundation
+  order: 104
+  summary: F(x,y)=0 で定まる曲線上では y も x に依存して動く。両辺を x で微分すると、y を含む項には連鎖律で y′ が現れ、それを解けば接線の傾きが得られる。
+  status: draft
+  prerequisites:
+    - calc-differentiation-rules-chain-rule
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-implicit-inverse-functions
+    slides: /slides/calc-implicit-inverse-functions/
+    textbook: /textbook/calc-implicit-inverse-functions
+    exercises: /exercises/calc-implicit-inverse-functions
 - id: calc-one-variable-optimization
   title: 一変数の最適化
   course: foundation
-  order: 104
+  order: 105
   summary: 一変数の最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-differentiation-rules-chain-rule
+    - calc-differentiation-rules-chain-rule
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -203,14 +290,32 @@
     slides: /slides/calc-one-variable-optimization/
     textbook: /textbook/calc-one-variable-optimization
     exercises: /exercises/calc-one-variable-optimization
+- id: calc-mean-value-theorem
+  title: 平均値の定理
+  course: foundation
+  order: 106
+  summary: 区間の両端を結ぶ割線と平行な接線が途中に存在する、という局所微分と大域変化を結ぶ定理。単調性、誤差評価、収束証明の基礎になる。
+  status: draft
+  prerequisites:
+    - calc-functions-limits-continuity
+    - calc-derivatives-rates
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-mean-value-theorem
+    slides: /slides/calc-mean-value-theorem/
+    textbook: /textbook/calc-mean-value-theorem
+    exercises: /exercises/calc-mean-value-theorem
 - id: calc-integrals-fundamental-theorem
   title: 積分と微積分学の基本定理
   course: foundation
-  order: 105
+  order: 107
   summary: 積分と微積分学の基本定理の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-derivatives-rates
+    - calc-derivatives-rates
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -223,11 +328,11 @@
 - id: calc-taylor-approximation
   title: Taylor展開と局所近似
   course: foundation
-  order: 106
+  order: 108
   summary: Taylor展開と局所近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-differentiation-rules-chain-rule
+    - calc-differentiation-rules-chain-rule
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -237,15 +342,51 @@
     slides: /slides/calc-taylor-approximation/
     textbook: /textbook/calc-taylor-approximation
     exercises: /exercises/calc-taylor-approximation
+- id: calc-infinite-series-convergence
+  title: 無限級数と収束判定
+  course: foundation
+  order: 109
+  summary: 無限級数は「無限に足す操作」を直接定義せず、最初のN項までの部分和 S_N を作り、その数列が収束するかで定義する。
+  status: draft
+  prerequisites:
+    - prep-sequences-basics
+    - calc-integrals-fundamental-theorem
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-infinite-series-convergence
+    slides: /slides/calc-infinite-series-convergence/
+    textbook: /textbook/calc-infinite-series-convergence
+    exercises: /exercises/calc-infinite-series-convergence
+- id: calc-taylor-series-remainder
+  title: Taylor級数・剰余・収束半径
+  course: foundation
+  order: 110
+  summary: Taylor多項式を高次数へしただけでは自動的に関数へ一致しない。差 R_n(x) が0へ行くことを別に確認する必要がある。
+  status: draft
+  prerequisites:
+    - calc-taylor-approximation
+    - calc-infinite-series-convergence
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-taylor-series-remainder
+    slides: /slides/calc-taylor-series-remainder/
+    textbook: /textbook/calc-taylor-series-remainder
+    exercises: /exercises/calc-taylor-series-remainder
 - id: calc-multivariable-functions-partial-derivatives
   title: 多変数関数と偏微分
   course: foundation
-  order: 107
+  order: 111
   summary: 多変数関数と偏微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-differentiation-rules-chain-rule
-  - prep-symbols-types-shapes
+    - calc-differentiation-rules-chain-rule
+    - prep-symbols-types-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -255,14 +396,86 @@
     slides: /slides/calc-multivariable-functions-partial-derivatives/
     textbook: /textbook/calc-multivariable-functions-partial-derivatives
     exercises: /exercises/calc-multivariable-functions-partial-derivatives
+- id: calc-multiple-integrals
+  title: 重積分
+  course: foundation
+  order: 112
+  summary: 領域を小さな長方形や直方体へ分割し、各セルでの関数値×セル面積（体積）を足す。極限を取ると重積分になる。
+  status: draft
+  prerequisites:
+    - calc-integrals-fundamental-theorem
+    - calc-multivariable-functions-partial-derivatives
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-multiple-integrals
+    slides: /slides/calc-multiple-integrals/
+    textbook: /textbook/calc-multiple-integrals
+    exercises: /exercises/calc-multiple-integrals
+- id: calc-change-of-variables-jacobian
+  title: 変数変換とJacobian determinant
+  course: foundation
+  order: 113
+  summary: Jacobian matrixは局所的な線形変換。小さな長方形は平行四辺形へ移り、その面積倍率が determinant の絶対値になる。
+  status: draft
+  prerequisites:
+    - calc-total-derivative-jacobian
+    - calc-multiple-integrals
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-change-of-variables-jacobian
+    slides: /slides/calc-change-of-variables-jacobian/
+    textbook: /textbook/calc-change-of-variables-jacobian
+    exercises: /exercises/calc-change-of-variables-jacobian
+- id: calc-parametric-polar-curves
+  title: 媒介変数表示と極座標
+  course: foundation
+  order: 114
+  summary: 曲線を時間tに沿って動く点 (x(t),y(t)) として表せば、縦線を含む曲線も自然に表現できる。極座標は距離rと角度θで点を表す。
+  status: draft
+  prerequisites:
+    - prep-trigonometry-radians-unit-circle
+    - calc-derivatives-rates
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-parametric-polar-curves
+    slides: /slides/calc-parametric-polar-curves/
+    textbook: /textbook/calc-parametric-polar-curves
+    exercises: /exercises/calc-parametric-polar-curves
+- id: calc-vector-fields-line-integrals
+  title: ベクトル場と線積分
+  course: foundation
+  order: 115
+  summary: 力場Fの中を曲線Cに沿って動くと、微小変位drに平行な力成分だけが仕事をする。内積 F·dr を経路全体で積分する。
+  status: draft
+  prerequisites:
+    - calc-parametric-polar-curves
+    - calc-gradient-directional-derivative
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/calc-vector-fields-line-integrals
+    slides: /slides/calc-vector-fields-line-integrals/
+    textbook: /textbook/calc-vector-fields-line-integrals
+    exercises: /exercises/calc-vector-fields-line-integrals
 - id: calc-gradient-directional-derivative
   title: 勾配と方向微分
   course: foundation
-  order: 108
+  order: 116
   summary: 勾配と方向微分の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-multivariable-functions-partial-derivatives
+    - calc-multivariable-functions-partial-derivatives
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -275,12 +488,12 @@
 - id: calc-total-derivative-jacobian
   title: 全微分とJacobian
   course: foundation
-  order: 109
+  order: 117
   summary: 全微分とJacobianの定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-gradient-directional-derivative
-  - prep-numpy-arrays-shapes
+    - calc-gradient-directional-derivative
+    - prep-numpy-arrays-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -293,12 +506,12 @@
 - id: calc-hessian-second-order
   title: Hessianと二次近似
   course: foundation
-  order: 110
+  order: 118
   summary: Hessianと二次近似の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-total-derivative-jacobian
-  - calc-taylor-approximation
+    - calc-total-derivative-jacobian
+    - calc-taylor-approximation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -311,12 +524,12 @@
 - id: calc-multivariable-chain-rule
   title: 多変数の連鎖律
   course: foundation
-  order: 111
+  order: 119
   summary: 多変数の連鎖律の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-total-derivative-jacobian
-  - calc-differentiation-rules-chain-rule
+    - calc-total-derivative-jacobian
+    - calc-differentiation-rules-chain-rule
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -329,12 +542,12 @@
 - id: calc-unconstrained-optimization
   title: 多変数の制約なし最適化
   course: foundation
-  order: 112
+  order: 120
   summary: 多変数の制約なし最適化の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-gradient-directional-derivative
-  - calc-hessian-second-order
+    - calc-gradient-directional-derivative
+    - calc-hessian-second-order
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -347,12 +560,12 @@
 - id: calc-lagrange-multipliers
   title: Lagrange乗数法
   course: foundation
-  order: 113
+  order: 121
   summary: Lagrange乗数法の定義、計算手順、成立条件を整理し、微積分の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-gradient-directional-derivative
-  - calc-unconstrained-optimization
+    - calc-gradient-directional-derivative
+    - calc-unconstrained-optimization
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -369,8 +582,8 @@
   summary: ベクトルと線形結合の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-symbols-types-shapes
-  - prep-sums-products-indices
+    - prep-symbols-types-shapes
+    - prep-sums-products-indices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -387,7 +600,7 @@
   summary: 行列をデータと線形写像として見るの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-vectors-linear-combinations
+    - la-vectors-linear-combinations
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -404,8 +617,8 @@
   summary: 行列積の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-matrices-data-linear-maps
-  - prep-sums-products-indices
+    - la-matrices-data-linear-maps
+    - prep-sums-products-indices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -422,7 +635,7 @@
   summary: 連立一次方程式とガウス消去法の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-matrix-multiplication
+    - la-matrix-multiplication
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -439,7 +652,7 @@
   summary: 可逆性と逆行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-linear-systems-elimination
+    - la-linear-systems-elimination
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -456,7 +669,7 @@
   summary: LU分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-linear-systems-elimination
+    - la-linear-systems-elimination
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -473,7 +686,7 @@
   summary: spanと部分空間の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-vectors-linear-combinations
+    - la-vectors-linear-combinations
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -490,8 +703,8 @@
   summary: 列空間と零空間の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-span-subspaces
-  - la-linear-systems-elimination
+    - la-span-subspaces
+    - la-linear-systems-elimination
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -508,7 +721,7 @@
   summary: 線形独立と線形従属の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-span-subspaces
+    - la-span-subspaces
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -525,7 +738,7 @@
   summary: 基底・座標・次元の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-linear-independence
+    - la-linear-independence
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -542,8 +755,8 @@
   summary: 階数とrank-nullityの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-column-space-null-space
-  - la-basis-coordinates-dimension
+    - la-column-space-null-space
+    - la-basis-coordinates-dimension
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -560,8 +773,8 @@
   summary: 線形写像と基底変換の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-basis-coordinates-dimension
-  - la-matrices-data-linear-maps
+    - la-basis-coordinates-dimension
+    - la-matrices-data-linear-maps
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -578,7 +791,7 @@
   summary: 内積・ノルム・角度の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-vectors-linear-combinations
+    - la-vectors-linear-combinations
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -595,8 +808,8 @@
   summary: 直交基底と正規直交基底の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-inner-products-norms-angles
-  - la-basis-coordinates-dimension
+    - la-inner-products-norms-angles
+    - la-basis-coordinates-dimension
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -609,13 +822,13 @@
 - id: orthogonal-projection
   title: 直交射影
   course: foundation
-  order: 215
+  order: 2001
   summary: 直交射影の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-span-subspaces
-  - la-inner-products-norms-angles
-  - la-orthogonal-orthonormal-bases
+    - la-span-subspaces
+    - la-inner-products-norms-angles
+    - la-orthogonal-orthonormal-bases
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -628,12 +841,12 @@
 - id: la-gram-schmidt-qr
   title: Gram–Schmidt法とQR分解
   course: foundation
-  order: 216
+  order: 215
   summary: Gram–Schmidt法とQR分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-orthogonal-orthonormal-bases
-  - orthogonal-projection
+    - la-orthogonal-orthonormal-bases
+    - orthogonal-projection
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -646,12 +859,12 @@
 - id: la-least-squares-geometry
   title: 最小二乗法の幾何学
   course: foundation
-  order: 217
+  order: 216
   summary: 最小二乗法の幾何学の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - orthogonal-projection
-  - la-column-space-null-space
+    - orthogonal-projection
+    - la-column-space-null-space
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -664,12 +877,12 @@
 - id: la-least-squares-computation-pseudoinverse
   title: 最小二乗法の計算と擬似逆行列
   course: foundation
-  order: 218
+  order: 217
   summary: 最小二乗法の計算と擬似逆行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-least-squares-geometry
-  - la-gram-schmidt-qr
+    - la-least-squares-geometry
+    - la-gram-schmidt-qr
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -682,11 +895,11 @@
 - id: la-weighted-least-squares-introduction
   title: 重み付き最小二乗法の導入
   course: foundation
-  order: 219
+  order: 218
   summary: 重み付き最小二乗法の導入の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-least-squares-geometry
+    - la-least-squares-geometry
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -699,11 +912,11 @@
 - id: la-determinants-volume-invertibility
   title: 行列式・体積・可逆性
   course: foundation
-  order: 220
+  order: 219
   summary: 行列式・体積・可逆性の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-invertibility-inverse-matrices
+    - la-invertibility-inverse-matrices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -716,12 +929,12 @@
 - id: la-eigenvalues-eigenvectors
   title: 固有値と固有ベクトル
   course: foundation
-  order: 221
+  order: 220
   summary: 固有値と固有ベクトルの定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-invertibility-inverse-matrices
-  - la-determinants-volume-invertibility
+    - la-invertibility-inverse-matrices
+    - la-determinants-volume-invertibility
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -734,12 +947,12 @@
 - id: la-diagonalization-matrix-powers
   title: 対角化と行列の累乗
   course: foundation
-  order: 222
+  order: 221
   summary: 対角化と行列の累乗の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-eigenvalues-eigenvectors
-  - la-basis-coordinates-dimension
+    - la-eigenvalues-eigenvectors
+    - la-basis-coordinates-dimension
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -752,12 +965,12 @@
 - id: la-symmetric-matrices-spectral-theorem
   title: 対称行列とスペクトル定理
   course: foundation
-  order: 223
+  order: 222
   summary: 対称行列とスペクトル定理の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-eigenvalues-eigenvectors
-  - la-orthogonal-orthonormal-bases
+    - la-eigenvalues-eigenvectors
+    - la-orthogonal-orthonormal-bases
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -770,12 +983,12 @@
 - id: la-quadratic-forms-positive-definite
   title: 二次形式と正定値行列
   course: foundation
-  order: 224
+  order: 223
   summary: 二次形式と正定値行列の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-symmetric-matrices-spectral-theorem
-  - calc-hessian-second-order
+    - la-symmetric-matrices-spectral-theorem
+    - calc-hessian-second-order
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -788,12 +1001,12 @@
 - id: la-cholesky-factorization
   title: Cholesky分解
   course: foundation
-  order: 225
+  order: 224
   summary: Cholesky分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-quadratic-forms-positive-definite
-  - la-lu-factorization
+    - la-quadratic-forms-positive-definite
+    - la-lu-factorization
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -806,12 +1019,12 @@
 - id: la-singular-value-decomposition
   title: 特異値分解
   course: foundation
-  order: 226
+  order: 225
   summary: 特異値分解の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-symmetric-matrices-spectral-theorem
-  - la-rank-rank-nullity
+    - la-symmetric-matrices-spectral-theorem
+    - la-rank-rank-nullity
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -824,12 +1037,12 @@
 - id: la-pseudoinverse-rank-deficient-systems
   title: 擬似逆行列とrank不足の連立方程式
   course: foundation
-  order: 227
+  order: 226
   summary: 擬似逆行列とrank不足の連立方程式の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-singular-value-decomposition
-  - la-least-squares-computation-pseudoinverse
+    - la-singular-value-decomposition
+    - la-least-squares-computation-pseudoinverse
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -842,11 +1055,11 @@
 - id: la-low-rank-approximation
   title: 低ランク近似
   course: foundation
-  order: 228
+  order: 227
   summary: 低ランク近似の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-singular-value-decomposition
+    - la-singular-value-decomposition
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -859,12 +1072,12 @@
 - id: la-matrix-norms-condition-number
   title: 行列ノルムと条件数
   course: foundation
-  order: 229
+  order: 228
   summary: 行列ノルムと条件数の定義、計算手順、成立条件を整理し、線形代数の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-singular-value-decomposition
-  - la-inner-products-norms-angles
+    - la-singular-value-decomposition
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -881,8 +1094,8 @@
   summary: 数え上げ・標本空間・事象の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-sets-functions-mappings
-  - prep-sums-products-indices
+    - prep-sets-functions-mappings
+    - prep-sums-products-indices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -899,7 +1112,7 @@
   summary: 確率の公理と事象の演算の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-counting-sample-spaces
+    - prob-counting-sample-spaces
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -916,7 +1129,7 @@
   summary: 条件付き確率と独立の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-axioms-event-operations
+    - prob-axioms-event-operations
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -933,7 +1146,7 @@
   summary: Bayesの定理の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-conditional-probability-independence
+    - prob-conditional-probability-independence
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -950,8 +1163,8 @@
   summary: 確率変数・CDF・PMF・PDFの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-axioms-event-operations
-  - prep-exponents-logarithms
+    - prob-axioms-event-operations
+    - prep-exponents-logarithms
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -968,8 +1181,8 @@
   summary: 期待値・分散・モーメントの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-random-variables-cdf-pmf-pdf
-  - calc-integrals-fundamental-theorem
+    - prob-random-variables-cdf-pmf-pdf
+    - calc-integrals-fundamental-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -986,8 +1199,8 @@
   summary: 同時分布・周辺分布・条件付き分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-conditional-probability-independence
-  - prob-random-variables-cdf-pmf-pdf
+    - prob-conditional-probability-independence
+    - prob-random-variables-cdf-pmf-pdf
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1004,8 +1217,8 @@
   summary: 共分散と相関の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-expectation-variance-moments
-  - prob-joint-marginal-conditional-distributions
+    - prob-expectation-variance-moments
+    - prob-joint-marginal-conditional-distributions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1022,8 +1235,8 @@
   summary: 主要な離散分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-random-variables-cdf-pmf-pdf
-  - prob-expectation-variance-moments
+    - prob-random-variables-cdf-pmf-pdf
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1040,9 +1253,9 @@
   summary: 主要な連続分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-random-variables-cdf-pmf-pdf
-  - prob-expectation-variance-moments
-  - calc-integrals-fundamental-theorem
+    - prob-random-variables-cdf-pmf-pdf
+    - prob-expectation-variance-moments
+    - calc-integrals-fundamental-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1059,9 +1272,9 @@
   summary: 確率変数の変換と和の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-joint-marginal-conditional-distributions
-  - prob-discrete-distributions
-  - prob-continuous-distributions
+    - prob-joint-marginal-conditional-distributions
+    - prob-discrete-distributions
+    - prob-continuous-distributions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1078,8 +1291,8 @@
   summary: 大数の法則と中心極限定理の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-expectation-variance-moments
-  - prob-transformations-sums-random-variables
+    - prob-expectation-variance-moments
+    - prob-transformations-sums-random-variables
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1089,16 +1302,34 @@
     slides: /slides/prob-laws-large-numbers-central-limit-theorem/
     textbook: /textbook/prob-laws-large-numbers-central-limit-theorem
     exercises: /exercises/prob-laws-large-numbers-central-limit-theorem
+- id: stat-t-chi-square-sampling-distributions
+  title: t分布・χ²分布と標本分布
+  course: foundation
+  order: 313
+  summary: 平均の標準化に未知σの代わりに標本標準偏差Sを使うと、分母にもランダム性が入る。その追加不確実性がt分布の厚い裾として現れる。
+  status: draft
+  prerequisites:
+    - prob-continuous-distributions
+    - prob-laws-large-numbers-central-limit-theorem
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/stat-t-chi-square-sampling-distributions
+    slides: /slides/stat-t-chi-square-sampling-distributions/
+    textbook: /textbook/stat-t-chi-square-sampling-distributions
+    exercises: /exercises/stat-t-chi-square-sampling-distributions
 - id: prob-multivariate-normal-distribution
   title: 多変量正規分布
   course: foundation
-  order: 313
+  order: 314
   summary: 多変量正規分布の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-covariance-correlation
-  - prob-continuous-distributions
-  - la-quadratic-forms-positive-definite
+    - prob-covariance-correlation
+    - prob-continuous-distributions
+    - la-quadratic-forms-positive-definite
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1111,12 +1342,12 @@
 - id: stat-estimators-bias-variance-mse
   title: 推定量・バイアス・分散・MSE
   course: foundation
-  order: 314
+  order: 315
   summary: 推定量・バイアス・分散・MSEの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-expectation-variance-moments
-  - prob-laws-large-numbers-central-limit-theorem
+    - prob-expectation-variance-moments
+    - prob-laws-large-numbers-central-limit-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1129,14 +1360,14 @@
 - id: stat-likelihood-maximum-likelihood
   title: 尤度と最尤推定
   course: foundation
-  order: 315
+  order: 316
   summary: 尤度と最尤推定の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-estimators-bias-variance-mse
-  - prob-discrete-distributions
-  - prob-continuous-distributions
-  - prep-exponents-logarithms
+    - stat-estimators-bias-variance-mse
+    - prob-discrete-distributions
+    - prob-continuous-distributions
+    - prep-exponents-logarithms
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1146,15 +1377,33 @@
     slides: /slides/stat-likelihood-maximum-likelihood/
     textbook: /textbook/stat-likelihood-maximum-likelihood
     exercises: /exercises/stat-likelihood-maximum-likelihood
+- id: stat-fisher-information-asymptotic-mle
+  title: Fisher情報量とMLEの漸近分布
+  course: foundation
+  order: 317
+  summary: 真のパラメータ付近でlog-likelihoodが急に曲がるほど、少しパラメータをずらしたときデータ分布が大きく変わる。これを平均曲率として測るのがFisher情報量。
+  status: draft
+  prerequisites:
+    - stat-likelihood-maximum-likelihood
+    - calc-hessian-second-order
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/stat-fisher-information-asymptotic-mle
+    slides: /slides/stat-fisher-information-asymptotic-mle/
+    textbook: /textbook/stat-fisher-information-asymptotic-mle
+    exercises: /exercises/stat-fisher-information-asymptotic-mle
 - id: stat-bayesian-inference-map
   title: Bayesian推論とMAP推定
   course: foundation
-  order: 316
+  order: 318
   summary: Bayesian推論とMAP推定の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-bayes-theorem
-  - stat-likelihood-maximum-likelihood
+    - prob-bayes-theorem
+    - stat-likelihood-maximum-likelihood
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1167,13 +1416,13 @@
 - id: stat-confidence-intervals
   title: 信頼区間
   course: foundation
-  order: 317
+  order: 319
   summary: 信頼区間の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-estimators-bias-variance-mse
-  - prob-laws-large-numbers-central-limit-theorem
-  - stat-likelihood-maximum-likelihood
+    - stat-estimators-bias-variance-mse
+    - prob-laws-large-numbers-central-limit-theorem
+    - stat-likelihood-maximum-likelihood
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1183,14 +1432,32 @@
     slides: /slides/stat-confidence-intervals/
     textbook: /textbook/stat-confidence-intervals
     exercises: /exercises/stat-confidence-intervals
+- id: stat-bootstrap-permutation-resampling
+  title: bootstrap・permutation・再標本化
+  course: foundation
+  order: 320
+  summary: bootstrapは観測された経験分布を「仮の母集団」として復元抽出し、統計量を何度も計算する。permutation testは帰無仮説下で交換可能なラベルを並べ替えて帰無分布を作る。
+  status: draft
+  prerequisites:
+    - stat-estimators-bias-variance-mse
+    - stat-confidence-intervals
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/stat-bootstrap-permutation-resampling
+    slides: /slides/stat-bootstrap-permutation-resampling/
+    textbook: /textbook/stat-bootstrap-permutation-resampling
+    exercises: /exercises/stat-bootstrap-permutation-resampling
 - id: stat-hypothesis-testing
   title: 仮説検定
   course: foundation
-  order: 318
+  order: 321
   summary: 仮説検定の定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-confidence-intervals
+    - stat-confidence-intervals
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1200,17 +1467,52 @@
     slides: /slides/stat-hypothesis-testing/
     textbook: /textbook/stat-hypothesis-testing
     exercises: /exercises/stat-hypothesis-testing
+- id: stat-power-sample-size
+  title: 検定力と標本サイズ
+  course: foundation
+  order: 322
+  summary: 検定力は、実際に特定の効果があるときに帰無仮説を棄却できる確率。効果量・ノイズ・標本数・有意水準の関数で、事前のsample size設計につながる。
+  status: draft
+  prerequisites:
+    - stat-hypothesis-testing
+    - stat-confidence-intervals
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/stat-power-sample-size
+    slides: /slides/stat-power-sample-size/
+    textbook: /textbook/stat-power-sample-size
+    exercises: /exercises/stat-power-sample-size
+- id: stat-multiple-testing-fdr
+  title: 多重検定とFDR
+  course: foundation
+  order: 323
+  summary: 各検定の誤陽性率が小さくても、検定数が増えると少なくとも1つ誤陽性を出す確率が上がる。FWERとFDRは異なる誤り基準を制御する。
+  status: draft
+  prerequisites:
+    - stat-hypothesis-testing
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/stat-multiple-testing-fdr
+    slides: /slides/stat-multiple-testing-fdr/
+    textbook: /textbook/stat-multiple-testing-fdr
+    exercises: /exercises/stat-multiple-testing-fdr
 - id: stat-linear-regression-probabilistic-model
   title: 線形回帰の確率モデル
   course: foundation
-  order: 319
+  order: 324
   summary: 線形回帰の確率モデルの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-covariance-correlation
-  - prob-multivariate-normal-distribution
-  - stat-likelihood-maximum-likelihood
-  - la-least-squares-geometry
+    - prob-covariance-correlation
+    - prob-multivariate-normal-distribution
+    - stat-likelihood-maximum-likelihood
+    - la-least-squares-geometry
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1223,14 +1525,14 @@
 - id: stat-entropy-cross-entropy-kl-divergence
   title: エントロピー・交差エントロピー・KLダイバージェンス
   course: foundation
-  order: 320
+  order: 325
   summary: エントロピー・交差エントロピー・KLダイバージェンスの定義、計算手順、成立条件を整理し、確率統計の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-discrete-distributions
-  - prob-continuous-distributions
-  - stat-likelihood-maximum-likelihood
-  - prep-exponents-logarithms
+    - prob-discrete-distributions
+    - prob-continuous-distributions
+    - stat-likelihood-maximum-likelihood
+    - prep-exponents-logarithms
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1247,7 +1549,7 @@
   summary: 命題・論理演算・真理値表の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-definitions-theorems-proofs
+    - prep-definitions-theorems-proofs
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1264,8 +1566,8 @@
   summary: 述語・量化記号・否定の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-propositions-connectives-truth-tables
-  - prep-sets-functions-mappings
+    - dm-propositions-connectives-truth-tables
+    - prep-sets-functions-mappings
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1282,8 +1584,8 @@
   summary: 含意・同値・必要十分条件の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-propositions-connectives-truth-tables
-  - dm-predicates-quantifiers-negation
+    - dm-propositions-connectives-truth-tables
+    - dm-predicates-quantifiers-negation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1300,7 +1602,7 @@
   summary: 直接証明・対偶・背理法・場合分けの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-implication-equivalence-conditions
+    - dm-implication-equivalence-conditions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1317,8 +1619,8 @@
   summary: 数学的帰納法・強い帰納法・整列原理の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-proof-methods
-  - prep-sums-products-indices
+    - dm-proof-methods
+    - prep-sums-products-indices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1335,8 +1637,8 @@
   summary: 関係・同値関係・半順序の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-sets-functions-mappings
-  - dm-predicates-quantifiers-negation
+    - prep-sets-functions-mappings
+    - dm-predicates-quantifiers-negation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1353,7 +1655,7 @@
   summary: 整除性と合同算術の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-proof-methods
+    - dm-proof-methods
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1370,8 +1672,8 @@
   summary: 加法原理・乗法原理・鳩の巣原理の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-proof-methods
-  - prep-sums-products-indices
+    - dm-proof-methods
+    - prep-sums-products-indices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1388,7 +1690,7 @@
   summary: 順列・組合せ・二項係数の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-counting-principles-pigeonhole
+    - dm-counting-principles-pigeonhole
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1405,8 +1707,8 @@
   summary: 包含排除原理と二重数え上げの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-counting-principles-pigeonhole
-  - dm-permutations-combinations-binomial
+    - dm-counting-principles-pigeonhole
+    - dm-permutations-combinations-binomial
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1423,8 +1725,8 @@
   summary: アルゴリズムの仕様と正しさの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-proof-methods
-  - prep-python-expressions-functions
+    - dm-proof-methods
+    - prep-python-expressions-functions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1441,8 +1743,8 @@
   summary: ループ不変量と停止性の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-algorithm-specifications-correctness
-  - dm-induction-well-ordering
+    - dm-algorithm-specifications-correctness
+    - dm-induction-well-ordering
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1452,15 +1754,33 @@
     slides: /slides/dm-loop-invariants-termination/
     textbook: /textbook/dm-loop-invariants-termination
     exercises: /exercises/dm-loop-invariants-termination
+- id: dm-state-machines-invariants
+  title: 状態機械と不変量
+  course: foundation
+  order: 413
+  summary: 状態機械は「状態」と「許される遷移」を明示する。不変量は初期状態で真で、遷移しても真のまま残る性質なので、到達可能状態全体を一括して制約できる。
+  status: draft
+  prerequisites:
+    - dm-loop-invariants-termination
+    - dm-proof-methods
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/dm-state-machines-invariants
+    slides: /slides/dm-state-machines-invariants/
+    textbook: /textbook/dm-state-machines-invariants
+    exercises: /exercises/dm-state-machines-invariants
 - id: dm-asymptotic-notation-growth-rates
   title: 漸近記法と増加率
   course: foundation
-  order: 413
+  order: 414
   summary: 漸近記法と増加率の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-exponents-logarithms
-  - prep-sums-products-indices
+    - prep-exponents-logarithms
+    - prep-sums-products-indices
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1473,12 +1793,12 @@
 - id: dm-recurrence-relations
   title: 漸化式
   course: foundation
-  order: 414
+  order: 415
   summary: 漸化式の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-induction-well-ordering
-  - dm-asymptotic-notation-growth-rates
+    - dm-induction-well-ordering
+    - dm-asymptotic-notation-growth-rates
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1488,14 +1808,32 @@
     slides: /slides/dm-recurrence-relations/
     textbook: /textbook/dm-recurrence-relations
     exercises: /exercises/dm-recurrence-relations
+- id: dm-generating-functions
+  title: 母関数
+  course: foundation
+  order: 416
+  summary: 母関数 A(x)=Σa_nx^n は、係数に数列を保存した形式的power series。index shiftがxの掛け算へ変換されるため、漸化式を方程式として解ける。
+  status: draft
+  prerequisites:
+    - dm-recurrence-relations
+    - prep-sums-products-indices
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/dm-generating-functions
+    slides: /slides/dm-generating-functions/
+    textbook: /textbook/dm-generating-functions
+    exercises: /exercises/dm-generating-functions
 - id: dm-divide-conquer-master-theorem
   title: 分割統治法とMaster theorem
   course: foundation
-  order: 415
+  order: 417
   summary: 分割統治法とMaster theoremの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-recurrence-relations
+    - dm-recurrence-relations
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1508,12 +1846,12 @@
 - id: dm-graphs-representations-degrees
   title: グラフ・表現・次数
   course: foundation
-  order: 416
+  order: 418
   summary: グラフ・表現・次数の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-relations-equivalence-partial-orders
-  - prep-numpy-arrays-shapes
+    - dm-relations-equivalence-partial-orders
+    - prep-numpy-arrays-shapes
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1523,14 +1861,49 @@
     slides: /slides/dm-graphs-representations-degrees/
     textbook: /textbook/dm-graphs-representations-degrees
     exercises: /exercises/dm-graphs-representations-degrees
+- id: dm-graph-coloring
+  title: グラフ彩色
+  course: foundation
+  order: 419
+  summary: 彩色は「衝突する対象を異なる資源へ割り当てる」問題。時間割、register allocation、周波数割当などへ直結する。
+  status: draft
+  prerequisites:
+    - dm-graphs-representations-degrees
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/dm-graph-coloring
+    slides: /slides/dm-graph-coloring/
+    textbook: /textbook/dm-graph-coloring
+    exercises: /exercises/dm-graph-coloring
+- id: dm-bipartite-matching-hall
+  title: 二部matchingとHallの定理
+  course: foundation
+  order: 420
+  summary: matchingは端点を共有しない辺集合。Hallの条件は、左側のどんな部分集合を取っても候補となる右頂点が人数以上あることを要求する。
+  status: draft
+  prerequisites:
+    - dm-graphs-representations-degrees
+    - dm-counting-principles-pigeonhole
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/dm-bipartite-matching-hall
+    slides: /slides/dm-bipartite-matching-hall/
+    textbook: /textbook/dm-bipartite-matching-hall
+    exercises: /exercises/dm-bipartite-matching-hall
 - id: dm-paths-cycles-connectivity
   title: 道・閉路・連結性
   course: foundation
-  order: 417
+  order: 421
   summary: 道・閉路・連結性の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-graphs-representations-degrees
+    - dm-graphs-representations-degrees
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1543,12 +1916,12 @@
 - id: dm-trees-spanning-trees
   title: 木と全域木
   course: foundation
-  order: 418
+  order: 422
   summary: 木と全域木の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-paths-cycles-connectivity
-  - dm-induction-well-ordering
+    - dm-paths-cycles-connectivity
+    - dm-induction-well-ordering
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1561,12 +1934,12 @@
 - id: dm-directed-graphs-dags-topological-order
   title: 有向グラフ・DAG・トポロジカル順序
   course: foundation
-  order: 419
+  order: 423
   summary: 有向グラフ・DAG・トポロジカル順序の定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-graphs-representations-degrees
-  - dm-loop-invariants-termination
+    - dm-graphs-representations-degrees
+    - dm-loop-invariants-termination
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1579,12 +1952,12 @@
 - id: dm-discrete-probability-indicators-randomized-algorithms
   title: 離散確率・指示変数・乱択アルゴリズム
   course: foundation
-  order: 420
+  order: 424
   summary: 離散確率・指示変数・乱択アルゴリズムの定義、計算手順、成立条件を整理し、離散数学と証明の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-counting-principles-pigeonhole
-  - dm-algorithm-specifications-correctness
+    - dm-counting-principles-pigeonhole
+    - dm-algorithm-specifications-correctness
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1601,8 +1974,8 @@
   summary: 浮動小数点数と丸めの定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-numerical-checks-reproducibility
-  - prep-python-expressions-functions
+    - prep-numerical-checks-reproducibility
+    - prep-python-expressions-functions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1619,8 +1992,8 @@
   summary: 誤差・条件数・数値安定性の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-floating-point-rounding
-  - la-matrix-norms-condition-number
+    - num-floating-point-rounding
+    - la-matrix-norms-condition-number
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1637,8 +2010,8 @@
   summary: 収束次数と停止条件の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-errors-conditioning-stability
-  - calc-functions-limits-continuity
+    - num-errors-conditioning-stability
+    - calc-functions-limits-continuity
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1655,8 +2028,8 @@
   summary: 非線形方程式の求根法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-convergence-orders-stopping
-  - calc-derivatives-rates
+    - num-convergence-orders-stopping
+    - calc-derivatives-rates
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1673,8 +2046,8 @@
   summary: 多項式補間の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-errors-conditioning-stability
-  - la-linear-systems-elimination
+    - num-errors-conditioning-stability
+    - la-linear-systems-elimination
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1691,8 +2064,8 @@
   summary: splineと区分的近似の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-polynomial-interpolation
-  - calc-derivatives-rates
+    - num-polynomial-interpolation
+    - calc-derivatives-rates
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1709,8 +2082,8 @@
   summary: 数値微分の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-errors-conditioning-stability
-  - calc-taylor-approximation
+    - num-errors-conditioning-stability
+    - calc-taylor-approximation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1727,9 +2100,9 @@
   summary: 数値積分と求積法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-errors-conditioning-stability
-  - calc-integrals-fundamental-theorem
-  - num-polynomial-interpolation
+    - num-errors-conditioning-stability
+    - calc-integrals-fundamental-theorem
+    - num-polynomial-interpolation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1746,8 +2119,8 @@
   summary: 連立方程式の直接法とpivotingの定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-lu-factorization
-  - num-errors-conditioning-stability
+    - la-lu-factorization
+    - num-errors-conditioning-stability
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1764,8 +2137,8 @@
   summary: 連立方程式の反復法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-direct-solvers-pivoting
-  - la-eigenvalues-eigenvectors
+    - num-direct-solvers-pivoting
+    - la-eigenvalues-eigenvectors
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1782,8 +2155,8 @@
   summary: 疎行列と前処理の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-iterative-linear-solvers
-  - dm-graphs-representations-degrees
+    - num-iterative-linear-solvers
+    - dm-graphs-representations-degrees
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1800,9 +2173,9 @@
   summary: 最小二乗法の数値解法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-least-squares-computation-pseudoinverse
-  - la-gram-schmidt-qr
-  - num-errors-conditioning-stability
+    - la-least-squares-computation-pseudoinverse
+    - la-gram-schmidt-qr
+    - num-errors-conditioning-stability
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1819,9 +2192,9 @@
   summary: 固有値計算・べき乗法・QR法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-eigenvalues-eigenvectors
-  - la-gram-schmidt-qr
-  - num-convergence-orders-stopping
+    - la-eigenvalues-eigenvectors
+    - la-gram-schmidt-qr
+    - num-convergence-orders-stopping
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1838,9 +2211,9 @@
   summary: SVDと低ランク計算の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-singular-value-decomposition
-  - la-low-rank-approximation
-  - num-eigenvalue-power-qr
+    - la-singular-value-decomposition
+    - la-low-rank-approximation
+    - num-eigenvalue-power-qr
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1857,9 +2230,9 @@
   summary: 正則化と悪条件・不適切問題の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-least-squares-qr-svd
-  - num-svd-low-rank-computation
-  - la-matrix-norms-condition-number
+    - num-least-squares-qr-svd
+    - num-svd-low-rank-computation
+    - la-matrix-norms-condition-number
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1876,9 +2249,9 @@
   summary: 乱択数値線形代数の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-svd-low-rank-computation
-  - prob-expectation-variance-moments
-  - dm-discrete-probability-indicators-randomized-algorithms
+    - num-svd-low-rank-computation
+    - prob-expectation-variance-moments
+    - dm-discrete-probability-indicators-randomized-algorithms
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1895,9 +2268,9 @@
   summary: 常微分方程式・Euler法・Runge–Kutta法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-derivatives-rates
-  - calc-integrals-fundamental-theorem
-  - num-convergence-orders-stopping
+    - calc-derivatives-rates
+    - calc-integrals-fundamental-theorem
+    - num-convergence-orders-stopping
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1914,8 +2287,8 @@
   summary: ODEの安定性・硬さ・陰解法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-ode-euler-runge-kutta
-  - num-errors-conditioning-stability
+    - num-ode-euler-runge-kutta
+    - num-errors-conditioning-stability
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1932,9 +2305,9 @@
   summary: Monte Carlo数値計算法の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-laws-large-numbers-central-limit-theorem
-  - num-numerical-integration-quadrature
-  - prep-numerical-checks-reproducibility
+    - prob-laws-large-numbers-central-limit-theorem
+    - num-numerical-integration-quadrature
+    - prep-numerical-checks-reproducibility
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1951,9 +2324,9 @@
   summary: 数値計算の検証・benchmark・再現性の定義、計算手順、成立条件を整理し、数値計算の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-convergence-orders-stopping
-  - num-floating-point-rounding
-  - prep-numerical-checks-reproducibility
+    - num-convergence-orders-stopping
+    - num-floating-point-rounding
+    - prep-numerical-checks-reproducibility
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1970,8 +2343,8 @@
   summary: 最適化問題の定式化の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-unconstrained-optimization
-  - calc-lagrange-multipliers
+    - calc-unconstrained-optimization
+    - calc-lagrange-multipliers
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1988,8 +2361,8 @@
   summary: 凸集合と凸関数の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-problem-formulation-objectives-constraints
-  - la-span-subspaces
+    - opt-problem-formulation-objectives-constraints
+    - la-span-subspaces
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -1999,15 +2372,33 @@
     slides: /slides/opt-convex-sets-functions/
     textbook: /textbook/opt-convex-sets-functions
     exercises: /exercises/opt-convex-sets-functions
+- id: opt-subgradients-nonsmooth
+  title: 劣勾配と非滑らか最適化
+  course: foundation
+  order: 603
+  summary: 凸関数では接線の代わりに「関数を下から支える直線・超平面」の傾きを使える。その傾き集合がsubdifferential。
+  status: draft
+  prerequisites:
+    - opt-convex-sets-functions
+    - calc-gradient-directional-derivative
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/opt-subgradients-nonsmooth
+    slides: /slides/opt-subgradients-nonsmooth/
+    textbook: /textbook/opt-subgradients-nonsmooth
+    exercises: /exercises/opt-subgradients-nonsmooth
 - id: opt-smoothness-strong-convexity
   title: 滑らかさと強凸性
   course: foundation
-  order: 603
+  order: 604
   summary: 滑らかさと強凸性の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-convex-sets-functions
-  - calc-hessian-second-order
+    - opt-convex-sets-functions
+    - calc-hessian-second-order
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2020,11 +2411,11 @@
 - id: opt-optimality-conditions
   title: 最適性条件
   course: foundation
-  order: 604
+  order: 605
   summary: 最適性条件の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-smoothness-strong-convexity
+    - opt-smoothness-strong-convexity
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2037,12 +2428,12 @@
 - id: opt-line-search-step-size
   title: line searchとstep size
   course: foundation
-  order: 605
+  order: 606
   summary: line searchとstep sizeの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-optimality-conditions
-  - num-convergence-orders-stopping
+    - opt-optimality-conditions
+    - num-convergence-orders-stopping
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2055,11 +2446,11 @@
 - id: opt-gradient-descent-convergence
   title: 勾配降下法と収束
   course: foundation
-  order: 606
+  order: 607
   summary: 勾配降下法と収束の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-line-search-step-size
+    - opt-line-search-step-size
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2072,11 +2463,11 @@
 - id: opt-momentum-accelerated-gradient
   title: momentumと加速勾配法
   course: foundation
-  order: 607
+  order: 608
   summary: momentumと加速勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-gradient-descent-convergence
+    - opt-gradient-descent-convergence
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2089,12 +2480,12 @@
 - id: opt-newton-quasi-newton
   title: Newton法と準Newton法
   course: foundation
-  order: 608
+  order: 609
   summary: Newton法と準Newton法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-gradient-descent-convergence
-  - calc-hessian-second-order
+    - opt-gradient-descent-convergence
+    - calc-hessian-second-order
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2107,11 +2498,11 @@
 - id: opt-trust-region-methods
   title: trust region法
   course: foundation
-  order: 609
+  order: 610
   summary: trust region法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-newton-quasi-newton
+    - opt-newton-quasi-newton
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2124,12 +2515,12 @@
 - id: opt-coordinate-conjugate-directions
   title: 座標降下法と共役方向
   course: foundation
-  order: 610
+  order: 611
   summary: 座標降下法と共役方向の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-gradient-descent-convergence
-  - num-iterative-linear-solvers
+    - opt-gradient-descent-convergence
+    - num-iterative-linear-solvers
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2142,12 +2533,12 @@
 - id: opt-equality-constrained-kkt
   title: 等式制約とKKT条件
   course: foundation
-  order: 611
+  order: 612
   summary: 等式制約とKKT条件の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-lagrange-multipliers
-  - opt-optimality-conditions
+    - calc-lagrange-multipliers
+    - opt-optimality-conditions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2157,14 +2548,32 @@
     slides: /slides/opt-equality-constrained-kkt/
     textbook: /textbook/opt-equality-constrained-kkt
     exercises: /exercises/opt-equality-constrained-kkt
+- id: opt-tangent-normal-cones-cq
+  title: 接錐・法錐・制約資格条件
+  course: foundation
+  order: 613
+  summary: 最適点から一次的に動ける方向の集合がtangent cone。その全方向へ目的関数を減らせない条件は、負の勾配がtangent coneの極coneであるnormal coneに入ること。KKTはnormal coneを制約勾配で表現した形。
+  status: draft
+  prerequisites:
+    - opt-optimality-conditions
+    - calc-lagrange-multipliers
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/opt-tangent-normal-cones-cq
+    slides: /slides/opt-tangent-normal-cones-cq/
+    textbook: /textbook/opt-tangent-normal-cones-cq
+    exercises: /exercises/opt-tangent-normal-cones-cq
 - id: opt-inequality-constraints-kkt
   title: 不等式制約と相補性
   course: foundation
-  order: 612
+  order: 614
   summary: 不等式制約と相補性の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-equality-constrained-kkt
+    - opt-equality-constrained-kkt
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2177,12 +2586,12 @@
 - id: opt-projected-gradient
   title: 射影勾配法
   course: foundation
-  order: 613
+  order: 615
   summary: 射影勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-convex-sets-functions
-  - orthogonal-projection
+    - opt-convex-sets-functions
+    - orthogonal-projection
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2195,12 +2604,12 @@
 - id: opt-barrier-interior-point
   title: barrier法と内点法
   course: foundation
-  order: 614
+  order: 616
   summary: barrier法と内点法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-inequality-constraints-kkt
-  - prep-exponents-logarithms
+    - opt-inequality-constraints-kkt
+    - prep-exponents-logarithms
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2213,11 +2622,11 @@
 - id: opt-duality-dual-gradient
   title: Lagrange双対とdual gradient
   course: foundation
-  order: 615
+  order: 617
   summary: Lagrange双対とdual gradientの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-inequality-constraints-kkt
+    - opt-inequality-constraints-kkt
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2227,15 +2636,33 @@
     slides: /slides/opt-duality-dual-gradient/
     textbook: /textbook/opt-duality-dual-gradient
     exercises: /exercises/opt-duality-dual-gradient
+- id: opt-fenchel-duality-conjugates
+  title: Fenchel共役とFenchel双対
+  course: foundation
+  order: 618
+  summary: 共役 f*(y) は「傾きyを持つ線形関数がfからどれだけ上へ離れられるか」の最大値。Fenchel–Young不等式を通じてprimalとdualを結ぶ。
+  status: draft
+  prerequisites:
+    - opt-duality-dual-gradient
+    - opt-subgradients-nonsmooth
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/opt-fenchel-duality-conjugates
+    slides: /slides/opt-fenchel-duality-conjugates/
+    textbook: /textbook/opt-fenchel-duality-conjugates
+    exercises: /exercises/opt-fenchel-duality-conjugates
 - id: opt-proximal-gradient
   title: 近接勾配法
   course: foundation
-  order: 616
+  order: 619
   summary: 近接勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-projected-gradient
-  - opt-convex-sets-functions
+    - opt-projected-gradient
+    - opt-convex-sets-functions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2245,15 +2672,34 @@
     slides: /slides/opt-proximal-gradient/
     textbook: /textbook/opt-proximal-gradient
     exercises: /exercises/opt-proximal-gradient
+- id: opt-mirror-descent-bregman
+  title: Mirror descentとBregman divergence
+  course: foundation
+  order: 620
+  summary: mirror descentは、現在点近傍をEuclidean二乗距離で罰する代わりに、strictly convexなmirror mapが作るBregman divergenceを使う。
+  status: draft
+  prerequisites:
+    - opt-convex-sets-functions
+    - opt-gradient-descent-convergence
+    - opt-fenchel-duality-conjugates
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/opt-mirror-descent-bregman
+    slides: /slides/opt-mirror-descent-bregman/
+    textbook: /textbook/opt-mirror-descent-bregman
+    exercises: /exercises/opt-mirror-descent-bregman
 - id: opt-stochastic-gradient
   title: 確率的勾配法
   course: foundation
-  order: 617
+  order: 621
   summary: 確率的勾配法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-gradient-descent-convergence
-  - prob-expectation-variance-moments
+    - opt-gradient-descent-convergence
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2266,11 +2712,11 @@
 - id: opt-adaptive-optimizers
   title: adaptive optimizer
   course: foundation
-  order: 618
+  order: 622
   summary: adaptive optimizerの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-stochastic-gradient
+    - opt-stochastic-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2283,12 +2729,12 @@
 - id: opt-admm-splitting
   title: ADMMと分割法
   course: foundation
-  order: 619
+  order: 623
   summary: ADMMと分割法の定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-duality-dual-gradient
-  - opt-proximal-gradient
+    - opt-duality-dual-gradient
+    - opt-proximal-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2301,12 +2747,12 @@
 - id: opt-nonconvex-diagnostics-hyperparameters
   title: 非凸最適化の診断とhyperparameter
   course: foundation
-  order: 620
+  order: 624
   summary: 非凸最適化の診断とhyperparameterの定義、計算手順、成立条件を整理し、最適化の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-adaptive-optimizers
-  - num-verification-benchmarking-reproducibility
+    - opt-adaptive-optimizers
+    - num-verification-benchmarking-reproducibility
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2323,8 +2769,8 @@
   summary: データ行列・中心化・標準化の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-numpy-arrays-shapes
-  - stat-linear-regression-probabilistic-model
+    - prep-numpy-arrays-shapes
+    - stat-linear-regression-probabilistic-model
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2341,8 +2787,8 @@
   summary: 共分散行列とscatter matrixの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-covariance-correlation
-  - la-symmetric-matrices-spectral-theorem
+    - prob-covariance-correlation
+    - la-symmetric-matrices-spectral-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2359,8 +2805,8 @@
   summary: PCAの幾何学の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-covariance-scatter-matrices
-  - orthogonal-projection
+    - mat-covariance-scatter-matrices
+    - orthogonal-projection
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2377,8 +2823,8 @@
   summary: PCAのSVD計算の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-pca-geometry
-  - num-svd-low-rank-computation
+    - mat-pca-geometry
+    - num-svd-low-rank-computation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2395,8 +2841,8 @@
   summary: whiteningとMahalanobis距離の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-multivariate-normal-distribution
-  - la-quadratic-forms-positive-definite
+    - prob-multivariate-normal-distribution
+    - la-quadratic-forms-positive-definite
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2413,8 +2859,8 @@
   summary: OLSとdesign matrixの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-least-squares-geometry
-  - stat-linear-regression-probabilistic-model
+    - la-least-squares-geometry
+    - stat-linear-regression-probabilistic-model
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2431,8 +2877,8 @@
   summary: WLSと逆分散重みの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-weighted-least-squares-introduction
-  - stat-linear-regression-probabilistic-model
+    - la-weighted-least-squares-introduction
+    - stat-linear-regression-probabilistic-model
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2449,8 +2895,8 @@
   summary: GLSと相関誤差の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-wls-inverse-variance
-  - prob-multivariate-normal-distribution
+    - mat-wls-inverse-variance
+    - prob-multivariate-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2467,8 +2913,8 @@
   summary: ridge・Lasso・Elastic Netの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-regularization-ill-posed-problems
-  - opt-proximal-gradient
+    - num-regularization-ill-posed-problems
+    - opt-proximal-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2485,8 +2931,8 @@
   summary: robust regressionとM推定の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-estimators-bias-variance-mse
-  - opt-problem-formulation-objectives-constraints
+    - stat-estimators-bias-variance-mse
+    - opt-problem-formulation-objectives-constraints
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2503,8 +2949,8 @@
   summary: Fourier基底とDFTの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-exponents-logarithms
-  - la-orthogonal-orthonormal-bases
+    - prep-exponents-logarithms
+    - la-orthogonal-orthonormal-bases
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2521,8 +2967,8 @@
   summary: 畳み込みと線形時不変系の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-fourier-bases-dft
-  - la-matrices-data-linear-maps
+    - mat-fourier-bases-dft
+    - la-matrices-data-linear-maps
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2539,8 +2985,8 @@
   summary: filteringと正則化の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-convolution-linear-systems
-  - num-regularization-ill-posed-problems
+    - mat-convolution-linear-systems
+    - num-regularization-ill-posed-problems
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2557,8 +3003,8 @@
   summary: 非負値行列因子分解の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-low-rank-approximation
-  - opt-projected-gradient
+    - la-low-rank-approximation
+    - opt-projected-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2575,8 +3021,8 @@
   summary: 独立成分分析の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-joint-marginal-conditional-distributions
-  - mat-whitening-mahalanobis
+    - prob-joint-marginal-conditional-distributions
+    - mat-whitening-mahalanobis
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2593,8 +3039,8 @@
   summary: 正準相関分析の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-covariance-correlation
-  - la-singular-value-decomposition
+    - prob-covariance-correlation
+    - la-singular-value-decomposition
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2611,8 +3057,8 @@
   summary: random projectionとJohnson–Lindenstraussの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-randomized-numerical-linear-algebra
-  - prob-laws-large-numbers-central-limit-theorem
+    - num-randomized-numerical-linear-algebra
+    - prob-laws-large-numbers-central-limit-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2629,8 +3075,8 @@
   summary: matrix completionの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-low-rank-approximation
-  - opt-proximal-gradient
+    - la-low-rank-approximation
+    - opt-proximal-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2647,8 +3093,8 @@
   summary: グラフspectral methodの定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-graphs-representations-degrees
-  - la-symmetric-matrices-spectral-theorem
+    - dm-graphs-representations-degrees
+    - la-symmetric-matrices-spectral-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2665,8 +3111,8 @@
   summary: tensorと多重線形構造の定義、計算手順、成立条件を整理し、データ解析の行列手法の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prep-symbols-types-shapes
-  - la-singular-value-decomposition
+    - prep-symbols-types-shapes
+    - la-singular-value-decomposition
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2683,8 +3129,8 @@
   summary: 機械学習問題の定式化とdata splitの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-estimators-bias-variance-mse
-  - opt-problem-formulation-objectives-constraints
+    - stat-estimators-bias-variance-mse
+    - opt-problem-formulation-objectives-constraints
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2694,15 +3140,106 @@
     slides: /slides/ml-problem-formulation-data-splits/
     textbook: /textbook/ml-problem-formulation-data-splits
     exercises: /exercises/ml-problem-formulation-data-splits
+- id: ml-empirical-risk-generalization
+  title: 経験リスク・期待リスク・汎化
+  course: foundation
+  order: 802
+  summary: 学習で直接最小化できるのは有限標本の経験リスク。目的は母集団分布に対する期待リスクなので、両者のgapを理解するのがgeneralization。
+  status: draft
+  prerequisites:
+    - prob-expectation-variance-moments
+    - opt-problem-formulation-objectives-constraints
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/ml-empirical-risk-generalization
+    slides: /slides/ml-empirical-risk-generalization/
+    textbook: /textbook/ml-empirical-risk-generalization
+    exercises: /exercises/ml-empirical-risk-generalization
+- id: ml-mdp-bellman-equations
+  title: MDPとBellman方程式
+  course: foundation
+  order: 803
+  summary: MDPは現在状態が与えられれば未来の遷移分布が過去全体に依存しないMarkov性を仮定する。価値関数は将来報酬の割引和の期待値。
+  status: draft
+  prerequisites:
+    - prob-conditional-probability-independence
+    - prep-sums-products-indices
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/ml-mdp-bellman-equations
+    slides: /slides/ml-mdp-bellman-equations/
+    textbook: /textbook/ml-mdp-bellman-equations
+    exercises: /exercises/ml-mdp-bellman-equations
+- id: ml-dynamic-programming-value-policy-iteration
+  title: value iterationとpolicy iteration
+  course: foundation
+  order: 804
+  summary: 最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
+  status: draft
+  prerequisites:
+    - ml-mdp-bellman-equations
+    - num-convergence-orders-stopping
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/ml-dynamic-programming-value-policy-iteration
+    slides: /slides/ml-dynamic-programming-value-policy-iteration/
+    textbook: /textbook/ml-dynamic-programming-value-policy-iteration
+    exercises: /exercises/ml-dynamic-programming-value-policy-iteration
+- id: ml-monte-carlo-td-q-learning
+  title: Monte Carlo・TD・Q-learning
+  course: foundation
+  order: 805
+  summary: Monte Carloはepisode完了後の実returnをtargetにする。TDは1step先の現在推定値をbootstrapping targetにする。Q-learningはoff-policy TD control。
+  status: draft
+  prerequisites:
+    - ml-mdp-bellman-equations
+    - opt-stochastic-gradient
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/ml-monte-carlo-td-q-learning
+    slides: /slides/ml-monte-carlo-td-q-learning/
+    textbook: /textbook/ml-monte-carlo-td-q-learning
+    exercises: /exercises/ml-monte-carlo-td-q-learning
+- id: ml-policy-gradient-reinforce
+  title: policy gradientとREINFORCE
+  course: foundation
+  order: 806
+  summary: trajectory確率のlog微分を使うと、環境遷移を微分せずに期待returnのgradientをpolicyのlog-probabilityで表せる。
+  status: draft
+  prerequisites:
+    - ml-mdp-bellman-equations
+    - opt-stochastic-gradient
+    - prob-expectation-variance-moments
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/ml-policy-gradient-reinforce
+    slides: /slides/ml-policy-gradient-reinforce/
+    textbook: /textbook/ml-policy-gradient-reinforce
+    exercises: /exercises/ml-policy-gradient-reinforce
 - id: ml-linear-regression
   title: 線形回帰
   course: foundation
-  order: 802
+  order: 807
   summary: 線形回帰の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-ols-design-matrices
-  - opt-gradient-descent-convergence
+    - mat-ols-design-matrices
+    - opt-gradient-descent-convergence
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2715,12 +3252,12 @@
 - id: ml-logistic-regression
   title: logistic回帰
   course: foundation
-  order: 803
+  order: 808
   summary: logistic回帰の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-likelihood-maximum-likelihood
-  - opt-convex-sets-functions
+    - stat-likelihood-maximum-likelihood
+    - opt-convex-sets-functions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2733,12 +3270,12 @@
 - id: ml-softmax-multiclass
   title: softmaxと多クラス分類
   course: foundation
-  order: 804
+  order: 809
   summary: softmaxと多クラス分類の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-logistic-regression
-  - stat-entropy-cross-entropy-kl-divergence
+    - ml-logistic-regression
+    - stat-entropy-cross-entropy-kl-divergence
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2751,12 +3288,12 @@
 - id: ml-generative-classifiers-naive-bayes-lda
   title: 生成的分類器・Naive Bayes・LDA
   course: foundation
-  order: 805
+  order: 810
   summary: 生成的分類器・Naive Bayes・LDAの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-bayes-theorem
-  - prob-multivariate-normal-distribution
+    - prob-bayes-theorem
+    - prob-multivariate-normal-distribution
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2769,12 +3306,12 @@
 - id: ml-knn-distance-methods
   title: k近傍法と距離学習
   course: foundation
-  order: 806
+  order: 811
   summary: k近傍法と距離学習の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-inner-products-norms-angles
-  - ml-problem-formulation-data-splits
+    - la-inner-products-norms-angles
+    - ml-problem-formulation-data-splits
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2787,12 +3324,12 @@
 - id: ml-decision-trees
   title: 決定木
   course: foundation
-  order: 807
+  order: 812
   summary: 決定木の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-entropy-cross-entropy-kl-divergence
-  - dm-algorithm-specifications-correctness
+    - stat-entropy-cross-entropy-kl-divergence
+    - dm-algorithm-specifications-correctness
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2805,12 +3342,12 @@
 - id: ml-ensembles-bagging-random-forests
   title: baggingとrandom forest
   course: foundation
-  order: 808
+  order: 813
   summary: baggingとrandom forestの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-decision-trees
-  - prob-expectation-variance-moments
+    - ml-decision-trees
+    - prob-expectation-variance-moments
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2823,12 +3360,12 @@
 - id: ml-boosting-gradient-boosting
   title: boostingとgradient boosting
   course: foundation
-  order: 809
+  order: 814
   summary: boostingとgradient boostingの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-decision-trees
-  - opt-gradient-descent-convergence
+    - ml-decision-trees
+    - opt-gradient-descent-convergence
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2841,12 +3378,12 @@
 - id: ml-svm-margin-kernels
   title: SVM・margin・kernel
   course: foundation
-  order: 810
+  order: 815
   summary: SVM・margin・kernelの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-inequality-constraints-kkt
-  - la-inner-products-norms-angles
+    - opt-inequality-constraints-kkt
+    - la-inner-products-norms-angles
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2859,12 +3396,12 @@
 - id: ml-kernel-methods-feature-maps
   title: kernel methodと特徴写像
   course: foundation
-  order: 811
+  order: 816
   summary: kernel methodと特徴写像の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-svm-margin-kernels
-  - la-quadratic-forms-positive-definite
+    - ml-svm-margin-kernels
+    - la-quadratic-forms-positive-definite
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2877,12 +3414,12 @@
 - id: ml-clustering-kmeans-hierarchical
   title: k-meansと階層clustering
   course: foundation
-  order: 812
+  order: 817
   summary: k-meansと階層clusteringの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-inner-products-norms-angles
-  - opt-coordinate-conjugate-directions
+    - la-inner-products-norms-angles
+    - opt-coordinate-conjugate-directions
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2895,12 +3432,12 @@
 - id: ml-gmm-em
   title: Gaussian mixtureとEM
   course: foundation
-  order: 813
+  order: 818
   summary: Gaussian mixtureとEMの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-multivariate-normal-distribution
-  - stat-likelihood-maximum-likelihood
+    - prob-multivariate-normal-distribution
+    - stat-likelihood-maximum-likelihood
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2913,12 +3450,12 @@
 - id: ml-dimensionality-reduction-pca-manifold
   title: 次元削減・PCA・manifold
   course: foundation
-  order: 814
+  order: 819
   summary: 次元削減・PCA・manifoldの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-pca-svd-computation
-  - ml-problem-formulation-data-splits
+    - mat-pca-svd-computation
+    - ml-problem-formulation-data-splits
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2931,12 +3468,12 @@
 - id: ml-anomaly-detection
   title: 異常検知
   course: foundation
-  order: 815
+  order: 820
   summary: 異常検知の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-multivariate-normal-distribution
-  - ml-gmm-em
+    - prob-multivariate-normal-distribution
+    - ml-gmm-em
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2949,12 +3486,12 @@
 - id: ml-feature-engineering-selection
   title: 特徴量設計と特徴選択
   course: foundation
-  order: 816
+  order: 821
   summary: 特徴量設計と特徴選択の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-data-matrices-centering-scaling
-  - mat-ridge-lasso-elastic-net
+    - mat-data-matrices-centering-scaling
+    - mat-ridge-lasso-elastic-net
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2967,12 +3504,12 @@
 - id: ml-bias-variance-regularization
   title: bias–varianceと正則化
   course: foundation
-  order: 817
+  order: 822
   summary: bias–varianceと正則化の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-estimators-bias-variance-mse
-  - ml-problem-formulation-data-splits
+    - stat-estimators-bias-variance-mse
+    - ml-problem-formulation-data-splits
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -2985,12 +3522,12 @@
 - id: ml-model-selection-cross-validation
   title: model selectionとcross-validation
   course: foundation
-  order: 818
+  order: 823
   summary: model selectionとcross-validationの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-bias-variance-regularization
-  - prob-laws-large-numbers-central-limit-theorem
+    - ml-bias-variance-regularization
+    - prob-laws-large-numbers-central-limit-theorem
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3003,12 +3540,12 @@
 - id: ml-metrics-calibration-imbalance
   title: 評価指標・calibration・class imbalance
   course: foundation
-  order: 819
+  order: 824
   summary: 評価指標・calibration・class imbalanceの定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-hypothesis-testing
-  - ml-softmax-multiclass
+    - stat-hypothesis-testing
+    - ml-softmax-multiclass
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3021,12 +3558,12 @@
 - id: ml-uncertainty-interpretability-monitoring
   title: 不確実性・解釈・監視
   course: foundation
-  order: 820
+  order: 825
   summary: 不確実性・解釈・監視の定義、計算手順、成立条件を整理し、機械学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-bayesian-inference-map
-  - ml-model-selection-cross-validation
+    - stat-bayesian-inference-map
+    - ml-model-selection-cross-validation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3043,8 +3580,8 @@
   summary: perceptronと多層networkの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-logistic-regression
-  - calc-multivariable-chain-rule
+    - ml-logistic-regression
+    - calc-multivariable-chain-rule
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3061,8 +3598,8 @@
   summary: 誤差逆伝播と計算graphの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - calc-multivariable-chain-rule
-  - dm-directed-graphs-dags-topological-order
+    - calc-multivariable-chain-rule
+    - dm-directed-graphs-dags-topological-order
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3079,8 +3616,8 @@
   summary: activation関数とlossの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-entropy-cross-entropy-kl-divergence
-  - ml-softmax-multiclass
+    - stat-entropy-cross-entropy-kl-divergence
+    - ml-softmax-multiclass
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3097,8 +3634,8 @@
   summary: 初期化とnormalizationの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-expectation-variance-moments
-  - dl-backprop-computation-graphs
+    - prob-expectation-variance-moments
+    - dl-backprop-computation-graphs
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3115,8 +3652,8 @@
   summary: 深層学習の最適化と正則化の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-adaptive-optimizers
-  - ml-bias-variance-regularization
+    - opt-adaptive-optimizers
+    - ml-bias-variance-regularization
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3133,8 +3670,8 @@
   summary: CNNと畳み込みの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-convolution-linear-systems
-  - dl-perceptron-mlp
+    - mat-convolution-linear-systems
+    - dl-perceptron-mlp
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3151,8 +3688,8 @@
   summary: RNNと系列modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-perceptron-mlp
-  - dm-recurrence-relations
+    - dl-perceptron-mlp
+    - dm-recurrence-relations
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3162,15 +3699,33 @@
     slides: /slides/dl-rnn-sequence-models/
     textbook: /textbook/dl-rnn-sequence-models
     exercises: /exercises/dl-rnn-sequence-models
+- id: dl-seq2seq-teacher-forcing
+  title: seq2seq・encoder-decoder・teacher forcing
+  course: foundation
+  order: 908
+  summary: encoderは入力系列を表現へ変換し、decoderは過去token条件付きで次token分布を生成する。teacher forcingでは訓練時に正解prefixを与える。
+  status: draft
+  prerequisites:
+    - dl-rnn-sequence-models
+    - ml-softmax-multiclass
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/dl-seq2seq-teacher-forcing
+    slides: /slides/dl-seq2seq-teacher-forcing/
+    textbook: /textbook/dl-seq2seq-teacher-forcing
+    exercises: /exercises/dl-seq2seq-teacher-forcing
 - id: dl-attention-mechanism
   title: attention機構
   course: foundation
-  order: 908
+  order: 909
   summary: attention機構の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-matrix-multiplication
-  - ml-softmax-multiclass
+    - la-matrix-multiplication
+    - ml-softmax-multiclass
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3183,12 +3738,12 @@
 - id: dl-transformers
   title: Transformer
   course: foundation
-  order: 909
+  order: 910
   summary: Transformerの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-attention-mechanism
-  - dl-initialization-normalization
+    - dl-attention-mechanism
+    - dl-initialization-normalization
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3198,14 +3753,33 @@
     slides: /slides/dl-transformers/
     textbook: /textbook/dl-transformers
     exercises: /exercises/dl-transformers
+- id: dl-deep-reinforcement-learning
+  title: Deep Reinforcement Learning
+  course: foundation
+  order: 911
+  summary: 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
+  status: draft
+  prerequisites:
+    - ml-policy-gradient-reinforce
+    - ml-monte-carlo-td-q-learning
+    - dl-perceptron-mlp
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/dl-deep-reinforcement-learning
+    slides: /slides/dl-deep-reinforcement-learning/
+    textbook: /textbook/dl-deep-reinforcement-learning
+    exercises: /exercises/dl-deep-reinforcement-learning
 - id: dl-normalization-residuals
   title: residual connectionとnormalization
   course: foundation
-  order: 910
+  order: 912
   summary: residual connectionとnormalizationの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-initialization-normalization
+    - dl-initialization-normalization
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3218,12 +3792,12 @@
 - id: dl-autoencoders-vae
   title: autoencoderとVAE
   course: foundation
-  order: 911
+  order: 913
   summary: autoencoderとVAEの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-dimensionality-reduction-pca-manifold
-  - stat-bayesian-inference-map
+    - ml-dimensionality-reduction-pca-manifold
+    - stat-bayesian-inference-map
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3236,12 +3810,12 @@
 - id: dl-gans-adversarial-training
   title: GANとadversarial training
   course: foundation
-  order: 912
+  order: 914
   summary: GANとadversarial trainingの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-likelihood-maximum-likelihood
-  - opt-nonconvex-diagnostics-hyperparameters
+    - stat-likelihood-maximum-likelihood
+    - opt-nonconvex-diagnostics-hyperparameters
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3254,12 +3828,12 @@
 - id: dl-diffusion-score-models
   title: diffusionとscore model
   course: foundation
-  order: 913
+  order: 915
   summary: diffusionとscore modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - prob-continuous-distributions
-  - num-ode-euler-runge-kutta
+    - prob-continuous-distributions
+    - num-ode-euler-runge-kutta
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3272,12 +3846,12 @@
 - id: dl-self-supervised-contrastive
   title: 自己教師あり・contrastive学習
   course: foundation
-  order: 914
+  order: 916
   summary: 自己教師あり・contrastive学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-inner-products-norms-angles
-  - ml-feature-engineering-selection
+    - la-inner-products-norms-angles
+    - ml-feature-engineering-selection
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3290,12 +3864,12 @@
 - id: dl-embeddings-representation-learning
   title: embeddingと表現学習
   course: foundation
-  order: 915
+  order: 917
   summary: embeddingと表現学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-low-rank-approximation
-  - dl-self-supervised-contrastive
+    - la-low-rank-approximation
+    - dl-self-supervised-contrastive
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3308,12 +3882,12 @@
 - id: dl-graph-neural-networks
   title: graph neural network
   course: foundation
-  order: 916
+  order: 918
   summary: graph neural networkの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - mat-graph-spectral-methods
-  - dm-graphs-representations-degrees
+    - mat-graph-spectral-methods
+    - dm-graphs-representations-degrees
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3326,12 +3900,12 @@
 - id: dl-multimodal-models
   title: multimodal model
   course: foundation
-  order: 917
+  order: 919
   summary: multimodal modelの定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-attention-mechanism
-  - dl-embeddings-representation-learning
+    - dl-attention-mechanism
+    - dl-embeddings-representation-learning
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3344,12 +3918,12 @@
 - id: dl-scaling-distributed-training
   title: scalingと分散学習
   course: foundation
-  order: 918
+  order: 920
   summary: scalingと分散学習の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-verification-benchmarking-reproducibility
-  - opt-stochastic-gradient
+    - num-verification-benchmarking-reproducibility
+    - opt-stochastic-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3362,12 +3936,12 @@
 - id: dl-efficient-training-inference
   title: 効率的学習と推論
   course: foundation
-  order: 919
+  order: 921
   summary: 効率的学習と推論の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-svd-low-rank-computation
-  - dl-scaling-distributed-training
+    - num-svd-low-rank-computation
+    - dl-scaling-distributed-training
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3380,12 +3954,12 @@
 - id: dl-evaluation-robustness-safety
   title: 深層modelの評価・robustness・安全性
   course: foundation
-  order: 920
+  order: 922
   summary: 深層modelの評価・robustness・安全性の定義、計算手順、成立条件を整理し、深層学習の後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-uncertainty-interpretability-monitoring
-  - stat-hypothesis-testing
+    - ml-uncertainty-interpretability-monitoring
+    - stat-hypothesis-testing
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3402,8 +3976,8 @@
   summary: Foundation modelの設計原理の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-transformers
-  - dl-scaling-distributed-training
+    - dl-transformers
+    - dl-scaling-distributed-training
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3420,8 +3994,8 @@
   summary: tokenization・embedding・contextの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-embeddings-representation-learning
-  - dl-transformers
+    - dl-embeddings-representation-learning
+    - dl-transformers
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3438,8 +4012,8 @@
   summary: pretrainingとscaling lawの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - frontier-foundation-model-paradigm
-  - dl-scaling-distributed-training
+    - frontier-foundation-model-paradigm
+    - dl-scaling-distributed-training
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3456,8 +4030,8 @@
   summary: in-context learningとprompt設計の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - frontier-tokenization-embeddings-context
-  - ml-problem-formulation-data-splits
+    - frontier-tokenization-embeddings-context
+    - ml-problem-formulation-data-splits
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3474,8 +4048,8 @@
   summary: parameter-efficient fine-tuningの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-efficient-training-inference
-  - opt-proximal-gradient
+    - dl-efficient-training-inference
+    - opt-proximal-gradient
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3485,15 +4059,70 @@
     slides: /slides/frontier-parameter-efficient-finetuning/
     textbook: /textbook/frontier-parameter-efficient-finetuning
     exercises: /exercises/frontier-parameter-efficient-finetuning
+- id: frontier-supervised-finetuning-instruction-tuning
+  title: SFT・instruction tuning
+  course: foundation
+  order: 1006
+  summary: SFTはinstruction-response pairに対するconditional language modeling。base modelの次token予測能力を、望ましい会話・指示応答分布へ寄せる。
+  status: draft
+  prerequisites:
+    - dl-transformers
+    - frontier-parameter-efficient-finetuning
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-supervised-finetuning-instruction-tuning
+    slides: /slides/frontier-supervised-finetuning-instruction-tuning/
+    textbook: /textbook/frontier-supervised-finetuning-instruction-tuning
+    exercises: /exercises/frontier-supervised-finetuning-instruction-tuning
+- id: frontier-rlhf-reward-model-ppo-kl
+  title: RLHF：reward model・PPO・KL制御
+  course: foundation
+  order: 1007
+  summary: まずchosen/rejected比較からreward modelを学び、そのrewardを最大化するようpolicyをRLで更新する。ただしreward modelの穴を突くoveroptimizationを抑えるためreference policyとのKL penaltyを使う。
+  status: draft
+  prerequisites:
+    - frontier-supervised-finetuning-instruction-tuning
+    - ml-policy-gradient-reinforce
+    - dl-deep-reinforcement-learning
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-rlhf-reward-model-ppo-kl
+    slides: /slides/frontier-rlhf-reward-model-ppo-kl/
+    textbook: /textbook/frontier-rlhf-reward-model-ppo-kl
+    exercises: /exercises/frontier-rlhf-reward-model-ppo-kl
+- id: frontier-reasoning-rl-rlvr
+  title: 推論RLとverifiable reward
+  course: foundation
+  order: 1008
+  summary: verifiable taskでは最終答案の正誤、unit test、formal checkerなどをrewardとして使える。人間preferenceより低コストで大量sampleを評価できる一方、reward仕様の範囲外の品質は保証しない。
+  status: draft
+  prerequisites:
+    - frontier-rlhf-reward-model-ppo-kl
+    - ml-policy-gradient-reinforce
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-reasoning-rl-rlvr
+    slides: /slides/frontier-reasoning-rl-rlvr/
+    textbook: /textbook/frontier-reasoning-rl-rlvr
+    exercises: /exercises/frontier-reasoning-rl-rlvr
 - id: frontier-retrieval-augmented-generation
   title: Retrieval-Augmented Generation
   course: foundation
-  order: 1006
+  order: 1009
   summary: Retrieval-Augmented Generationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - frontier-foundation-model-paradigm
-  - ml-knn-distance-methods
+    - frontier-foundation-model-paradigm
+    - ml-knn-distance-methods
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3506,12 +4135,12 @@
 - id: frontier-vector-databases-search
   title: vector searchとindex
   course: foundation
-  order: 1007
+  order: 1010
   summary: vector searchとindexの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - la-inner-products-norms-angles
-  - ml-knn-distance-methods
+    - la-inner-products-norms-angles
+    - ml-knn-distance-methods
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3521,15 +4150,33 @@
     slides: /slides/frontier-vector-databases-search/
     textbook: /textbook/frontier-vector-databases-search
     exercises: /exercises/frontier-vector-databases-search
+- id: frontier-rag-reranking-evaluation
+  title: RAG：chunking・reranking・評価
+  course: foundation
+  order: 1011
+  summary: 最終回答だけを見ると原因が分からない。まず必要根拠をtop-kへ取れたか、rerankerが上位へ持ち上げたか、generatorが根拠を正しく使ったかを分離評価する。
+  status: draft
+  prerequisites:
+    - frontier-retrieval-augmented-generation
+    - frontier-vector-databases-search
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-rag-reranking-evaluation
+    slides: /slides/frontier-rag-reranking-evaluation/
+    textbook: /textbook/frontier-rag-reranking-evaluation
+    exercises: /exercises/frontier-rag-reranking-evaluation
 - id: frontier-tool-use-function-calling
   title: tool useとfunction calling
   course: foundation
-  order: 1008
+  order: 1012
   summary: tool useとfunction callingの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dm-algorithm-specifications-correctness
-  - frontier-in-context-learning-prompting
+    - dm-algorithm-specifications-correctness
+    - frontier-in-context-learning-prompting
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3542,12 +4189,12 @@
 - id: frontier-agents-planning-memory
   title: agent・planning・memory
   course: foundation
-  order: 1009
+  order: 1013
   summary: agent・planning・memoryの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - frontier-tool-use-function-calling
-  - dm-directed-graphs-dags-topological-order
+    - frontier-tool-use-function-calling
+    - dm-directed-graphs-dags-topological-order
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3557,15 +4204,33 @@
     slides: /slides/frontier-agents-planning-memory/
     textbook: /textbook/frontier-agents-planning-memory
     exercises: /exercises/frontier-agents-planning-memory
+- id: frontier-tool-security-prompt-injection
+  title: tool useのsecurity boundaryとprompt injection
+  course: foundation
+  order: 1014
+  summary: tool-using agentではmodel outputが外部作用へつながる。untrusted contentはdataとして扱い、権限・引数schema・確認・sandbox等の境界で実行能力を制限する必要がある。
+  status: draft
+  prerequisites:
+    - frontier-tool-use-function-calling
+    - frontier-agents-planning-memory
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-tool-security-prompt-injection
+    slides: /slides/frontier-tool-security-prompt-injection/
+    textbook: /textbook/frontier-tool-security-prompt-injection
+    exercises: /exercises/frontier-tool-security-prompt-injection
 - id: frontier-multi-agent-systems
   title: multi-agent system
   course: foundation
-  order: 1010
+  order: 1015
   summary: multi-agent systemの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - frontier-agents-planning-memory
-  - dm-graphs-representations-degrees
+    - frontier-agents-planning-memory
+    - dm-graphs-representations-degrees
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3578,12 +4243,12 @@
 - id: frontier-rlhf-preference-optimization
   title: RLHFとpreference optimization
   course: foundation
-  order: 1011
+  order: 1016
   summary: RLHFとpreference optimizationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - opt-stochastic-gradient
-  - ml-logistic-regression
+    - opt-stochastic-gradient
+    - ml-logistic-regression
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3596,12 +4261,12 @@
 - id: frontier-alignment-safety-policies
   title: alignment・安全policy・red teaming
   course: foundation
-  order: 1012
+  order: 1017
   summary: alignment・安全policy・red teamingの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-evaluation-robustness-safety
-  - frontier-rlhf-preference-optimization
+    - dl-evaluation-robustness-safety
+    - frontier-rlhf-preference-optimization
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3614,12 +4279,12 @@
 - id: frontier-foundation-model-evaluation
   title: Foundation model評価
   course: foundation
-  order: 1013
+  order: 1018
   summary: Foundation model評価の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-metrics-calibration-imbalance
-  - stat-hypothesis-testing
+    - ml-metrics-calibration-imbalance
+    - stat-hypothesis-testing
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3632,12 +4297,12 @@
 - id: frontier-interpretability-mechanistic
   title: mechanistic interpretability
   course: foundation
-  order: 1014
+  order: 1019
   summary: mechanistic interpretabilityの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-attention-mechanism
-  - la-linear-maps-change-of-basis
+    - dl-attention-mechanism
+    - la-linear-maps-change-of-basis
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3650,12 +4315,12 @@
 - id: frontier-uncertainty-calibration-abstention
   title: 不確実性・calibration・abstention
   course: foundation
-  order: 1015
+  order: 1020
   summary: 不確実性・calibration・abstentionの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-uncertainty-interpretability-monitoring
-  - stat-confidence-intervals
+    - ml-uncertainty-interpretability-monitoring
+    - stat-confidence-intervals
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3668,12 +4333,12 @@
 - id: frontier-quantization-sparsity-moe
   title: quantization・sparsity・Mixture of Experts
   course: foundation
-  order: 1016
+  order: 1021
   summary: quantization・sparsity・Mixture of Expertsの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - dl-efficient-training-inference
-  - num-sparse-matrices-preconditioning
+    - dl-efficient-training-inference
+    - num-sparse-matrices-preconditioning
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3683,15 +4348,50 @@
     slides: /slides/frontier-quantization-sparsity-moe/
     textbook: /textbook/frontier-quantization-sparsity-moe
     exercises: /exercises/frontier-quantization-sparsity-moe
+- id: frontier-inference-prefill-decode-kv-cache
+  title: LLM推論：prefill・decode・KV cache
+  course: foundation
+  order: 1022
+  summary: prefillはprompt全tokenを並列に処理しmatrix multiplicationが大きい。decodeは過去K/Vをcacheして1 tokenずつ進み、batchやmodelによってmemory bandwidth支配になりやすい。
+  status: draft
+  prerequisites:
+    - dl-transformers
+    - dl-efficient-training-inference
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-inference-prefill-decode-kv-cache
+    slides: /slides/frontier-inference-prefill-decode-kv-cache/
+    textbook: /textbook/frontier-inference-prefill-decode-kv-cache
+    exercises: /exercises/frontier-inference-prefill-decode-kv-cache
+- id: frontier-serving-batching-speculative-decoding
+  title: LLM serving・continuous batching・speculative decoding
+  course: foundation
+  order: 1023
+  summary: requestごとに生成長が違うため固定batchはGPU slotを無駄にしやすい。continuous batchingはdecode step単位でrequestを入替える。speculative decodingは小modelのdraftを大modelがまとめて検証する。
+  status: draft
+  prerequisites:
+    - frontier-inference-prefill-decode-kv-cache
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-serving-batching-speculative-decoding
+    slides: /slides/frontier-serving-batching-speculative-decoding/
+    textbook: /textbook/frontier-serving-batching-speculative-decoding
+    exercises: /exercises/frontier-serving-batching-speculative-decoding
 - id: frontier-long-context-memory
   title: long contextとmemory
   course: foundation
-  order: 1017
+  order: 1024
   summary: long contextとmemoryの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - frontier-agents-planning-memory
-  - dl-attention-mechanism
+    - frontier-agents-planning-memory
+    - dl-attention-mechanism
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3704,12 +4404,12 @@
 - id: frontier-synthetic-data-data-curation
   title: synthetic dataとdata curation
   course: foundation
-  order: 1018
+  order: 1025
   summary: synthetic dataとdata curationの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - ml-problem-formulation-data-splits
-  - frontier-foundation-model-evaluation
+    - ml-problem-formulation-data-splits
+    - frontier-foundation-model-evaluation
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3719,15 +4419,33 @@
     slides: /slides/frontier-synthetic-data-data-curation/
     textbook: /textbook/frontier-synthetic-data-data-curation
     exercises: /exercises/frontier-synthetic-data-data-curation
+- id: frontier-data-dedup-mixtures-contamination
+  title: pretraining data：dedup・mixture・contamination
+  course: foundation
+  order: 1026
+  summary: training dataは単なる量ではなく分布。重複は特定sampleを過度に重み付けし、mixture weightは能力配分を変え、evaluation setの混入は測定を汚染する。
+  status: draft
+  prerequisites:
+    - frontier-pretraining-scaling-laws
+    - frontier-synthetic-data-data-curation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  routes:
+    home: /courses/foundation/frontier-data-dedup-mixtures-contamination
+    slides: /slides/frontier-data-dedup-mixtures-contamination/
+    textbook: /textbook/frontier-data-dedup-mixtures-contamination
+    exercises: /exercises/frontier-data-dedup-mixtures-contamination
 - id: frontier-scientific-machine-learning
   title: Scientific Machine Learning
   course: foundation
-  order: 1019
+  order: 1027
   summary: Scientific Machine Learningの定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - num-ode-euler-runge-kutta
-  - dl-perceptron-mlp
+    - num-ode-euler-runge-kutta
+    - dl-perceptron-mlp
   estimated_minutes:
     slides: 20
     textbook: 65
@@ -3740,12 +4458,12 @@
 - id: frontier-privacy-governance-research-practice
   title: privacy・governance・研究実践
   course: foundation
-  order: 1020
+  order: 1028
   summary: privacy・governance・研究実践の定義、計算手順、成立条件を整理し、Frontierの後続Topicへ接続する
   status: draft
   prerequisites:
-  - stat-bayesian-inference-map
-  - frontier-alignment-safety-policies
+    - stat-bayesian-inference-map
+    - frontier-alignment-safety-policies
   estimated_minutes:
     slides: 20
     textbook: 65

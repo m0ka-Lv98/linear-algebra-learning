@@ -1,7 +1,6 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
 layout: cover
 title: "logistic回帰"
 ---
@@ -11,116 +10,64 @@ title: "logistic回帰"
 Course 08｜機械学習
 
 ---
-layout: center
----
 
 ## 今回の問い
 
-logistic回帰で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
-
----
-
-## 到達目標
-
-- logistic回帰の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+Bernoulli確率modelからcross entropy、gradient、Hessianがどう一続きに導かれるか。
 
 ---
 
 ## 直感
 
-分類器は入力からクラス確率またはスコアを作り、決定境界でクラスを分ける。
-
-**前提:** stat-likelihood-maximum-likelihood, opt-convex-sets-functions
+logit z=x^Tβをsigmoidで確率pへ写し、観測y∈{0,1}をBernoulliと仮定する。lossは任意に選んだ罰則でなくnegative log-likelihood。
 
 ---
 
 ## 図解
 
-<img src="./assets/course-08/ml-logistic-regression.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-08/ml-logistic-regression.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
 ---
 
-## 図を見るポイント
-
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+## 中心式
 
 $$
-p(y=1\mid\mathbf{x})=\sigma(\mathbf{x}^{\mathsf T}\mathbf{w}+b)
+\mathcal L(\beta)=-\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)]
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出
+
+1. Bernoulli likelihood $p_i^{y_i}(1-p_i)^{1-y_i}$ を全sampleで掛ける。
+2. logを取りnegativeにするとcross entropyの和。
+3. $dL/dz_i=p_i-y_i$ が整理され、gradientは $X^T(p-y)$。
+4. さらに微分するとHessian $X^T R X$, R=diag(p_i(1-p_i))≥0 なのでconvex。
 
 ---
 
-## 式をどう読むか
+## 小さい例
 
-- **対象:** logistic回帰
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+1sample x=1, y=1, z=0ならp=0.5、dL/dz=-0.5なのでgradient descentはzを上げる。
 
 ---
 
-## 小さな例
+## 条件を外すと
 
-2クラス点群と確率等高線、decision boundaryを描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
-
----
-
-## 動き／思考実験で確認
-
-<img src="./assets/course-08/ml-logistic-regression.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- 確率出力とhard labelを区別する。
-- 閾値は目的に応じて調整する。
-- logistic回帰の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
----
-
-## よくある誤解
-
-- logistic回帰の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
-
----
-
-## 数値・実装で検算
-
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
-
----
-
-## 後続分野への接続
-
-logistic回帰は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+- sigmoid出力へlogを直接計算してoverflow/underflowさせない。
+- 完全分離では非正則化MLEが発散し得る。
 
 ---
 
 ## 理解確認
 
-- logistic回帰を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 式の各記号を定義できるか。
+- 導出を1段ずつ再現できるか。
+- 反例を1つ作れるか。
+
+---
+
+## 教科書と演習
 
 [教科書](../../textbook/ml-logistic-regression)
 

@@ -1,283 +1,76 @@
-# 特異値分解（SVD）：教科書
+# 特異値分解：教科書
 
-Course 02｜線形代数｜Topic 26/29
+Course 02｜線形代数
 
-## このTopicの位置づけ
+## このTopicの中心問題
 
-固有分解は基本的に正方行列の自己写像を扱う。一方、データ行列や最小二乗の $\mathbf A$ は長方形でもよい。SVDは任意の $m\times n$ 行列を、入力側の直交基底・軸ごとの伸縮・出力側の直交基底に分ける。
+任意の実行列を「直交回転→軸方向scale→直交回転」に分解できるのはなぜか。
 
-**前提知識**：固有値、対称行列、正定値・半正定値、正規直交基底。
+## まず直感
 
-## まず直感を作る
+A^T Aは対称半正定値なので直交固有分解できる。その固有ベクトルを入力側の軸とし、Aが各軸をどれだけ伸ばすかの平方根が特異値になる。
 
-SVDは「回転（または反射）→ 軸ごとの伸縮 → 回転（または反射）」である。複雑な長方形行列でも、適切な入力方向を選べば各方向が互いに混ざらず、単に $\sigma_i$ 倍されて対応する出力方向へ移る。
+## 図で固定する
 
-## 図の解説
+<img src="/visuals/course-02/la-singular-value-decomposition.png" alt="特異値分解の図解" style="max-height: 460px; display:block; margin:0 auto;" />
 
-<img src="/visuals/course-02/la-singular-value-decomposition.png" alt="特異値分解（SVD）の図解" style="max-height: 430px; display:block; margin: 0 auto;" />
+図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
 
-図は左から、入力の単位円、$\mathbf V^T$ で右特異ベクトル座標へ回転した円、$\mathbf\Sigma$ で各軸を異なる倍率に伸ばした楕円、$\mathbf U$ で出力方向へ回転した最終形を並べている。
+## 記号・型・意味
 
-特異値 $\sigma_i$ は楕円の半軸長に対応する。$\sigma_i=0$ の方向があれば、その軸は完全に潰れて低次元になる。
+| 記号 | 意味 |
+|---|---|
+| $A∈R^{m×n}$ | 対象行列 |
+| $V$ | 右特異ベクトル |
+| $Σ$ | 非負特異値の対角行列 |
+| $U$ | 左特異ベクトル |
 
-## 記号・型・次元
+この表にない新しい記号を使う場合は、その直前で意味を定義する。
 
-- $\mathbf A\in\mathbb R^{m\times n}$。
-- $\mathbf V\in\mathbb R^{n\times n}$：右特異ベクトルを列にもつ直交行列。
-- $\mathbf U\in\mathbb R^{m\times m}$：左特異ベクトルを列にもつ直交行列。
-- $\mathbf\Sigma\in\mathbb R^{m\times n}$：非負特異値 $\sigma_1\ge\cdots\ge0$ を対角に持つ。
-- $r=\operatorname{rank}(\mathbf A)$：正の特異値の個数。
-
-
-## 正式な定義
-
-任意の実行列について
+## 中心となる式
 
 $$
-\boxed{\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T}
+A=U\Sigma V^T
 $$
 
-というSVDが存在する。
+## なぜこの式になるのか
 
-## なぜこの式・定理になるのか
+1. $A^TA$ は対称半正定値なので $A^TA=VΛV^T$, Λ≥0。
+2. $σ_i=√λ_i$ と置く。σ_i>0では $u_i=Av_i/σ_i$ と定義すると互いに直交する。
+3. 零特異値に対応する部分はkernelと直交補空間を補ってUを完成させる。
+4. $Av_i=σ_i u_i$ を列ごとにまとめて $AV=UΣ$、よってA=UΣV^T。
 
-### 1. なぜ $\mathbf A^T\mathbf A$ から始めるのか
+ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
 
-$\mathbf A^T\mathbf A$ は$n\times n$の対称半正定値行列。したがってスペクトル定理により
+## 例題：小さい設定で最後まで追う
 
-$$
-\mathbf A^T\mathbf A
-=\mathbf V\mathbf\Lambda\mathbf V^T
-$$
+rank1行列では特異値は1個だけ非零で、A=σ_1u_1v_1^T。入力v_1方向だけを出力u_1方向へ写す。
 
-と直交対角化できる。半正定値なので固有値 $\lambda_i\ge0$。
+### 答案で書く順序
 
-### 2. 特異値を平方根で定義する
+1. 与えられた量と求める量を定義する。
+2. 適用する式の成立条件を確認する。
+3. 代入または式変形を1段ずつ書く。
+4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
 
-$$
-\sigma_i=\sqrt{\lambda_i}\ge0.
-$$
+## 何を間違えやすいか
 
-右固有ベクトル $\mathbf v_i$ について
+- A自体の固有値分解とSVDを混同しない。
+- σ_iはA^TAの固有値そのものではなく平方根。
 
-$$
-\mathbf A^T\mathbf A\mathbf v_i
-=\sigma_i^2\mathbf v_i.
-$$
+## 自分で確認する問い
 
-両辺の内積を $\mathbf v_i^T$ で取ると
+- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
+- 導出の各段階で使った仮定を1つずつ言えるか。
+- 成立条件を1つ外した最小反例または失敗例を作れるか。
+- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
 
-$$
-\|\mathbf A\mathbf v_i\|_2^2=\sigma_i^2.
-$$
+## 後続Courseへの接続
 
-$\|\mathbf v_i\|=1$ なので、$\sigma_i$ は方向 $\mathbf v_i$ を $\mathbf A$ が何倍の長さへ伸ばすかを表す。
+このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
 
-### 3. 左特異ベクトルを作る
+## 参考
 
-$\sigma_i>0$ の方向で
+- MIT linear algebra SVD
 
-$$
-\mathbf u_i=\frac{\mathbf A\mathbf v_i}{\sigma_i}
-$$
-
-と定義する。すると
-
-$$
-\mathbf A\mathbf v_i=\sigma_i\mathbf u_i.
-$$
-
-また$i\ne j$について
-
-$$
-\mathbf u_i^T\mathbf u_j
-=\frac{\mathbf v_i^T\mathbf A^T\mathbf A\mathbf v_j}{\sigma_i\sigma_j}
-=\frac{\sigma_j^2\mathbf v_i^T\mathbf v_j}{\sigma_i\sigma_j}=0,
-$$
-
-かつ $\|\mathbf u_i\|=1$。よって左特異ベクトルも正規直交。
-
-### 4. 行列全体を再構成する
-
-$\mathbf A\mathbf v_i=\sigma_i\mathbf u_i$ を列ごとにまとめると
-
-$$
-\mathbf A\mathbf V=\mathbf U\mathbf\Sigma.
-$$
-
-右から $\mathbf V^T$ を掛け、$\mathbf V\mathbf V^T=\mathbf I$ を使えば
-
-$$
-\boxed{\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T}.
-$$
-
-### 5. rankとの関係
-
-$\sigma_i=0$ なら $\mathbf A\mathbf v_i=0$ なので $\mathbf v_i\in N(\mathbf A)$。正の特異値方向だけが出力へ残る。したがって
-
-$$
-\operatorname{rank}(\mathbf A)=\#\{i:\sigma_i>0\}.
-$$
-
-## 小さな数値例を最後まで計算する
-
-$$
-\mathbf A=\begin{bmatrix}3&0\\0&1\end{bmatrix}
-$$
-
-はすでに特異方向が座標軸なので、$\mathbf U=\mathbf V=\mathbf I$、$\mathbf\Sigma=\operatorname{diag}(3,1)$。単位円は横3倍、縦1倍の楕円になる。
-
-非対角行列では、$\mathbf V^T$ と $\mathbf U$ がこの軸を回転して配置する。
-
-## もう一段丁寧に：SVDを $\mathbf A^T\mathbf A$ から組み立てる
-
-### 1. なぜ $\mathbf A^T\mathbf A$ を見るのか
-
-一般の $\mathbf A\in\mathbb R^{m\times n}$ は矩形でもよく、固有値問題 $\mathbf A\mathbf v=\lambda\mathbf v$ はそのままでは定義できない。一方
-
-$$
-\mathbf A^T\mathbf A\in\mathbb R^{n\times n}
-$$
-
-は必ず正方・対称で、さらに
-
-$$
-\mathbf x^T\mathbf A^T\mathbf A\mathbf x
-=\|\mathbf A\mathbf x\|_2^2\ge0
-$$
-
-なのでpositive semidefiniteである。spectral theoremを安全に使える。
-
-### 2. 右特異ベクトルと特異値
-
-$\mathbf A^T\mathbf A$ のorthonormal eigenvectorsを $\mathbf v_i$、固有値を $\lambda_i\ge0$ とする。
-
-$$
-\mathbf A^T\mathbf A\mathbf v_i
-=\lambda_i\mathbf v_i.
-$$
-
-特異値を
-
-$$
-\boxed{\sigma_i=\sqrt{\lambda_i}\ge0}
-$$
-
-と定義する。平方根を取る理由は、$\mathbf A^T\mathbf A$ が長さの**二乗**を測っているからである。
-
-### 3. 左特異ベクトルを構成する
-
-$\sigma_i>0$ に対して
-
-$$
-\boxed{\mathbf u_i=\frac{\mathbf A\mathbf v_i}{\sigma_i}}
-$$
-
-と定める。ノルムを計算すると
-
-$$
-\begin{aligned}
-\|\mathbf u_i\|_2^2
-&=\frac1{\sigma_i^2}
-\mathbf v_i^T\mathbf A^T\mathbf A\mathbf v_i\\
-&=\frac{\lambda_i}{\sigma_i^2}
-\mathbf v_i^T\mathbf v_i\\
-&=1.
-\end{aligned}
-$$
-
-異なる $i,j$ についても
-
-$$
-\mathbf u_i^T\mathbf u_j
-=\frac{1}{\sigma_i\sigma_j}
-\mathbf v_i^T\mathbf A^T\mathbf A\mathbf v_j
-=0
-$$
-
-となるので、左特異ベクトルもorthonormal。
-
-### 4. 基本関係 $Av_i=\sigma_i u_i$
-
-定義から
-
-$$
-\boxed{\mathbf A\mathbf v_i=\sigma_i\mathbf u_i}.
-$$
-
-つまり入力のorthonormal direction $\mathbf v_i$ を $\mathbf A$ に通すと、出力側のorthonormal direction $\mathbf u_i$ へ向きが移り、長さが $\sigma_i$ 倍される。SVDの図で「rotate → stretch → rotate」と描く理由がこの一式に凝縮されている。
-
-### 5. 行列全体を再構成する
-
-$\mathbf V=[\mathbf v_1\cdots\mathbf v_n]$、$\mathbf U$ に左特異ベクトルを並べ、$\mathbf\Sigma$ の対角に $\sigma_i$ を置く。各basis vectorに対する関係をまとめると
-
-$$
-\mathbf A\mathbf V=\mathbf U\mathbf\Sigma.
-$$
-
-$\mathbf V$ はorthogonalなので右から $\mathbf V^T$ を掛け、
-
-$$
-\boxed{\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T}.
-$$
-
-### 6. rankが非零特異値の個数になる理由
-
-$\sigma_i=0$ なら
-
-$$
-\mathbf A\mathbf v_i=\mathbf0,
-$$
-
-したがって $\mathbf v_i$ はnull space方向。$\sigma_i>0$ の方向だけが非零出力 $\sigma_i\mathbf u_i$ を作り、それらの $\mathbf u_i$ は独立である。よって
-
-$$
-\operatorname{rank}(\mathbf A)
-=\#\{i:\sigma_i>0\}.
-$$
-
-### 7. reduced SVDのshape
-
-rankを $r$ とすると、非零特異値だけを残して
-
-$$
-\mathbf A=\mathbf U_r\mathbf\Sigma_r\mathbf V_r^T
-$$
-
-と書ける。ここで
-
-$$
-\mathbf U_r\in\mathbb R^{m\times r},\quad
-\mathbf\Sigma_r\in\mathbb R^{r\times r},\quad
-\mathbf V_r\in\mathbb R^{n\times r}.
-$$
-
-この形は低ランク近似や擬似逆で特に重要になる。
-
-## 成立条件・壊れる場合
-
-SVDは固有分解と違い、長方形行列にも必ず存在する。特異値は非負実数。$\mathbf A$ がrank deficientなら0特異値が現れる。特異ベクトルは重複特異値の部分空間内では一意でない。
-
-## ここから発展
-
-SVDを得ると、擬似逆、最小ノルム解、低rank近似、condition numberがほぼ直接読める。次の3 TopicはSVDを基盤に順番に構築する。
-
-
-## このTopicの理解確認
-
-- $\mathbf A^T\mathbf A$ を見る理由を「square・symmetric・positive semidefinite」の三点から説明できるか。
-- $\sigma_i=\sqrt{\lambda_i}$ と $u_i=Av_i/\sigma_i$ を導けるか。
-- $\mathbf A=\mathbf U\mathbf\Sigma\mathbf V^T$ をbasis-vector relationsから再構成できるか。
-
-## 外部教材との照合
-
-
-- [MIT OpenCourseWare 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
-- [Georgia Tech Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/)
-
-- [MIT OpenCourseWare 18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/)
-
-
-## 演習
-
-[このTopicの10問の演習](/exercises/la-singular-value-decomposition)
+[演習へ](/exercises/la-singular-value-decomposition)　|　[スライドへ](/slides/la-singular-value-decomposition/)

@@ -1,0 +1,686 @@
+- id: prep-trigonometry-radians-unit-circle
+  title: 三角関数・ラジアン・単位円
+  course_id: '00'
+  insert_after: prep-exponents-logarithms
+  summary: 単位円上の点を角度で動かすと、横座標が cos、縦座標が sin になる。ラジアンは円弧長そのものなので、微小角と微小変位を同じ尺度で比較できる。
+  prerequisites:
+  - prep-exponents-logarithms
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 角度をラジアンで測ると、なぜ微積分の三角関数公式が自然な形になるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: prep-absolute-values-inequalities-intervals
+  title: 絶対値・不等式・区間
+  course_id: '00'
+  insert_after: prep-trigonometry-radians-unit-circle
+  summary: '|x-a| は実数直線上で x と a の距離。したがって |x-a|<r は「a から距離 r 未満」の区間を表す。極限の ε–δ 記法にもそのままつながる。'
+  prerequisites:
+  - prep-symbols-types-shapes
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 絶対値を「場合分け」ではなく距離として読むと、不等式はどう整理できるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: prep-complex-numbers-euler-form
+  title: 複素数・極形式・Euler公式
+  course_id: '00'
+  insert_after: prep-absolute-values-inequalities-intervals
+  summary: 複素数 z=a+bi は平面上のベクトルとみなせる。極形式では大きさ r と角度 θ に分け、掛け算が「大きさを掛け、角度を足す」操作になる。Fourier・固有値・振動の共通言語になる。
+  prerequisites:
+  - prep-trigonometry-radians-unit-circle
+  - prep-exponents-logarithms
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 複素数の掛け算を、平面上の回転と拡大としてどう読むか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: prep-sequences-basics
+  title: 数列・収束の初歩
+  course_id: '00'
+  insert_after: prep-complex-numbers-euler-form
+  summary: 数列は自然数 n を入力して数 a_n を返す関数。極限は「十分後ろの項を全部、目標値の任意に小さい近傍へ入れられる」という主張。
+  prerequisites:
+  - prep-sums-products-indices
+  - prep-absolute-values-inequalities-intervals
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 「nを大きくすると近づく」を、数列の収束としてどう厳密に書くか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-implicit-inverse-functions
+  title: 陰関数微分と逆関数
+  course_id: '01'
+  insert_after: calc-differentiation-rules-chain-rule
+  summary: F(x,y)=0 で定まる曲線上では y も x に依存して動く。両辺を x で微分すると、y を含む項には連鎖律で y′ が現れ、それを解けば接線の傾きが得られる。
+  prerequisites:
+  - calc-differentiation-rules-chain-rule
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - yを明示的に解けない式でも、なぜ dy/dx を計算できるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-mean-value-theorem
+  title: 平均値の定理
+  course_id: '01'
+  insert_after: calc-one-variable-optimization
+  summary: 区間の両端を結ぶ割線と平行な接線が途中に存在する、という局所微分と大域変化を結ぶ定理。単調性、誤差評価、収束証明の基礎になる。
+  prerequisites:
+  - calc-functions-limits-continuity
+  - calc-derivatives-rates
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 区間全体の平均変化率と、ある一点の瞬間変化率が一致するのはなぜか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-infinite-series-convergence
+  title: 無限級数と収束判定
+  course_id: '01'
+  insert_after: calc-taylor-approximation
+  summary: 無限級数は「無限に足す操作」を直接定義せず、最初のN項までの部分和 S_N を作り、その数列が収束するかで定義する。
+  prerequisites:
+  - prep-sequences-basics
+  - calc-integrals-fundamental-theorem
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 無限個の項を足すとは何を意味し、どの条件で有限値へ収束するのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-taylor-series-remainder
+  title: Taylor級数・剰余・収束半径
+  course_id: '01'
+  insert_after: calc-infinite-series-convergence
+  summary: Taylor多項式を高次数へしただけでは自動的に関数へ一致しない。差 R_n(x) が0へ行くことを別に確認する必要がある。
+  prerequisites:
+  - calc-taylor-approximation
+  - calc-infinite-series-convergence
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 有限次数のTaylor近似を無限級数へ伸ばすと、いつ元の関数そのものになるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-multiple-integrals
+  title: 重積分
+  course_id: '01'
+  insert_after: calc-multivariable-functions-partial-derivatives
+  summary: 領域を小さな長方形や直方体へ分割し、各セルでの関数値×セル面積（体積）を足す。極限を取ると重積分になる。
+  prerequisites:
+  - calc-integrals-fundamental-theorem
+  - calc-multivariable-functions-partial-derivatives
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 1変数の「面積の足し上げ」は、2変数・3変数でどのように拡張されるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-change-of-variables-jacobian
+  title: 変数変換とJacobian determinant
+  course_id: '01'
+  insert_after: calc-multiple-integrals
+  summary: Jacobian matrixは局所的な線形変換。小さな長方形は平行四辺形へ移り、その面積倍率が determinant の絶対値になる。
+  prerequisites:
+  - calc-total-derivative-jacobian
+  - calc-multiple-integrals
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 座標変換で積分するとき、なぜJacobian determinantの絶対値を掛けるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-parametric-polar-curves
+  title: 媒介変数表示と極座標
+  course_id: '01'
+  insert_after: calc-change-of-variables-jacobian
+  summary: 曲線を時間tに沿って動く点 (x(t),y(t)) として表せば、縦線を含む曲線も自然に表現できる。極座標は距離rと角度θで点を表す。
+  prerequisites:
+  - prep-trigonometry-radians-unit-circle
+  - calc-derivatives-rates
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - xを独立変数にできない曲線を、媒介変数や極座標でどう扱うか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: calc-vector-fields-line-integrals
+  title: ベクトル場と線積分
+  course_id: '01'
+  insert_after: calc-parametric-polar-curves
+  summary: 力場Fの中を曲線Cに沿って動くと、微小変位drに平行な力成分だけが仕事をする。内積 F·dr を経路全体で積分する。
+  prerequisites:
+  - calc-parametric-polar-curves
+  - calc-gradient-directional-derivative
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 空間の各点にベクトルがあるとき、曲線に沿った仕事をどう足し上げるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: stat-t-chi-square-sampling-distributions
+  title: t分布・χ²分布と標本分布
+  course_id: '03'
+  insert_after: prob-laws-large-numbers-central-limit-theorem
+  summary: 平均の標準化に未知σの代わりに標本標準偏差Sを使うと、分母にもランダム性が入る。その追加不確実性がt分布の厚い裾として現れる。
+  prerequisites:
+  - prob-continuous-distributions
+  - prob-laws-large-numbers-central-limit-theorem
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 母分散が未知のとき、なぜ標準正規ではなくt分布が現れるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: stat-bootstrap-permutation-resampling
+  title: bootstrap・permutation・再標本化
+  course_id: '03'
+  insert_after: stat-confidence-intervals
+  summary: bootstrapは観測された経験分布を「仮の母集団」として復元抽出し、統計量を何度も計算する。permutation testは帰無仮説下で交換可能なラベルを並べ替えて帰無分布を作る。
+  prerequisites:
+  - stat-estimators-bias-variance-mse
+  - stat-confidence-intervals
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 解析的な標本分布が難しい統計量の不確実性を、データからどう近似するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: stat-power-sample-size
+  title: 検定力と標本サイズ
+  course_id: '03'
+  insert_after: stat-hypothesis-testing
+  summary: 検定力は、実際に特定の効果があるときに帰無仮説を棄却できる確率。効果量・ノイズ・標本数・有意水準の関数で、事前のsample size設計につながる。
+  prerequisites:
+  - stat-hypothesis-testing
+  - stat-confidence-intervals
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 「有意差が出なかった」を、効果がない証拠とみなしてよいのはいつか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: stat-multiple-testing-fdr
+  title: 多重検定とFDR
+  course_id: '03'
+  insert_after: stat-power-sample-size
+  summary: 各検定の誤陽性率が小さくても、検定数が増えると少なくとも1つ誤陽性を出す確率が上がる。FWERとFDRは異なる誤り基準を制御する。
+  prerequisites:
+  - stat-hypothesis-testing
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 何百・何千個も検定すると、なぜ偶然の有意差が増え、どう制御するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: stat-fisher-information-asymptotic-mle
+  title: Fisher情報量とMLEの漸近分布
+  course_id: '03'
+  insert_after: stat-likelihood-maximum-likelihood
+  summary: 真のパラメータ付近でlog-likelihoodが急に曲がるほど、少しパラメータをずらしたときデータ分布が大きく変わる。これを平均曲率として測るのがFisher情報量。
+  prerequisites:
+  - stat-likelihood-maximum-likelihood
+  - calc-hessian-second-order
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 尤度の「尖り具合」が、推定量の精度とどう結びつくか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: dm-state-machines-invariants
+  title: 状態機械と不変量
+  course_id: '04'
+  insert_after: dm-loop-invariants-termination
+  summary: 状態機械は「状態」と「許される遷移」を明示する。不変量は初期状態で真で、遷移しても真のまま残る性質なので、到達可能状態全体を一括して制約できる。
+  prerequisites:
+  - dm-loop-invariants-termination
+  - dm-proof-methods
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 時間とともに状態が変わる系の正しさを、毎step追わずにどう証明するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: dm-graph-coloring
+  title: グラフ彩色
+  course_id: '04'
+  insert_after: dm-graphs-representations-degrees
+  summary: 彩色は「衝突する対象を異なる資源へ割り当てる」問題。時間割、register allocation、周波数割当などへ直結する。
+  prerequisites:
+  - dm-graphs-representations-degrees
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 隣接頂点が同じ色を持たないようにする最小色数は、グラフ構造とどう関係するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: dm-bipartite-matching-hall
+  title: 二部matchingとHallの定理
+  course_id: '04'
+  insert_after: dm-graph-coloring
+  summary: matchingは端点を共有しない辺集合。Hallの条件は、左側のどんな部分集合を取っても候補となる右頂点が人数以上あることを要求する。
+  prerequisites:
+  - dm-graphs-representations-degrees
+  - dm-counting-principles-pigeonhole
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 左側の全頂点を重複なく右側へ割り当てられる条件は何か。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: dm-generating-functions
+  title: 母関数
+  course_id: '04'
+  insert_after: dm-recurrence-relations
+  summary: 母関数 A(x)=Σa_nx^n は、係数に数列を保存した形式的power series。index shiftがxの掛け算へ変換されるため、漸化式を方程式として解ける。
+  prerequisites:
+  - dm-recurrence-relations
+  - prep-sums-products-indices
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 数列全体を1本の形式的な級数へ埋め込むと、漸化式がなぜ代数計算へ変わるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: opt-subgradients-nonsmooth
+  title: 劣勾配と非滑らか最適化
+  course_id: '06'
+  insert_after: opt-convex-sets-functions
+  summary: 凸関数では接線の代わりに「関数を下から支える直線・超平面」の傾きを使える。その傾き集合がsubdifferential。
+  prerequisites:
+  - opt-convex-sets-functions
+  - calc-gradient-directional-derivative
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - '|x|やL1正則化のように微分できない点があっても、凸最適化をどう続けるか。'
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: opt-tangent-normal-cones-cq
+  title: 接錐・法錐・制約資格条件
+  course_id: '06'
+  insert_after: opt-equality-constrained-kkt
+  summary: 最適点から一次的に動ける方向の集合がtangent cone。その全方向へ目的関数を減らせない条件は、負の勾配がtangent coneの極coneであるnormal
+    coneに入ること。KKTはnormal coneを制約勾配で表現した形。
+  prerequisites:
+  - opt-optimality-conditions
+  - calc-lagrange-multipliers
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - KKTのstationarityは、なぜ「目的勾配と制約法線の釣り合い」になるのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: opt-fenchel-duality-conjugates
+  title: Fenchel共役とFenchel双対
+  course_id: '06'
+  insert_after: opt-duality-dual-gradient
+  summary: 共役 f*(y) は「傾きyを持つ線形関数がfからどれだけ上へ離れられるか」の最大値。Fenchel–Young不等式を通じてprimalとdualを結ぶ。
+  prerequisites:
+  - opt-duality-dual-gradient
+  - opt-subgradients-nonsmooth
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 関数を傾き空間へ写すFenchel共役が、なぜ双対問題と正則化の理解に役立つか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: opt-mirror-descent-bregman
+  title: Mirror descentとBregman divergence
+  course_id: '06'
+  insert_after: opt-proximal-gradient
+  summary: mirror descentは、現在点近傍をEuclidean二乗距離で罰する代わりに、strictly convexなmirror mapが作るBregman
+    divergenceを使う。
+  prerequisites:
+  - opt-convex-sets-functions
+  - opt-gradient-descent-convergence
+  - opt-fenchel-duality-conjugates
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - Euclidean距離が自然でない確率simplexなどで、勾配法のgeometryをどう変えるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: ml-empirical-risk-generalization
+  title: 経験リスク・期待リスク・汎化
+  course_id: 08
+  insert_after: ml-problem-formulation-data-splits
+  summary: 学習で直接最小化できるのは有限標本の経験リスク。目的は母集団分布に対する期待リスクなので、両者のgapを理解するのがgeneralization。
+  prerequisites:
+  - prob-expectation-variance-moments
+  - opt-problem-formulation-objectives-constraints
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - training lossを下げることと、未知データで良い予測をすることはなぜ同じではないのか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: ml-mdp-bellman-equations
+  title: MDPとBellman方程式
+  course_id: 08
+  insert_after: ml-empirical-risk-generalization
+  summary: MDPは現在状態が与えられれば未来の遷移分布が過去全体に依存しないMarkov性を仮定する。価値関数は将来報酬の割引和の期待値。
+  prerequisites:
+  - prob-conditional-probability-independence
+  - prep-sums-products-indices
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 逐次意思決定を、状態・行動・報酬・遷移の確率modelとしてどう定式化するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: ml-dynamic-programming-value-policy-iteration
+  title: value iterationとpolicy iteration
+  course_id: 08
+  insert_after: ml-mdp-bellman-equations
+  summary: 最適Bellman operatorは「1step行動を選び、その後も最適に行動する」backup。γ<1ならsup normでcontractionなので反復が一意の固定点V*へ収束する。
+  prerequisites:
+  - ml-mdp-bellman-equations
+  - num-convergence-orders-stopping
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - modelが既知のMDPで、最適policyをBellman operatorの反復からどう求めるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: ml-monte-carlo-td-q-learning
+  title: Monte Carlo・TD・Q-learning
+  course_id: 08
+  insert_after: ml-dynamic-programming-value-policy-iteration
+  summary: Monte Carloはepisode完了後の実returnをtargetにする。TDは1step先の現在推定値をbootstrapping
+    targetにする。Q-learningはoff-policy TD control。
+  prerequisites:
+  - ml-mdp-bellman-equations
+  - opt-stochastic-gradient
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 遷移modelが未知でも、経験sampleだけから価値関数をどう学ぶか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: ml-policy-gradient-reinforce
+  title: policy gradientとREINFORCE
+  course_id: 08
+  insert_after: ml-monte-carlo-td-q-learning
+  summary: trajectory確率のlog微分を使うと、環境遷移を微分せずに期待returnのgradientをpolicyのlog-probabilityで表せる。
+  prerequisites:
+  - ml-mdp-bellman-equations
+  - opt-stochastic-gradient
+  - prob-expectation-variance-moments
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 価値のargmaxを介さず、確率policyそのものを期待returnが増える方向へどう更新するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: dl-seq2seq-teacher-forcing
+  title: seq2seq・encoder-decoder・teacher forcing
+  course_id: 09
+  insert_after: dl-rnn-sequence-models
+  summary: encoderは入力系列を表現へ変換し、decoderは過去token条件付きで次token分布を生成する。teacher forcingでは訓練時に正解prefixを与える。
+  prerequisites:
+  - dl-rnn-sequence-models
+  - ml-softmax-multiclass
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 入力長と出力長が異なる系列変換を、encoderとdecoderへ分けてどう学習するか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: dl-deep-reinforcement-learning
+  title: Deep Reinforcement Learning
+  course_id: 09
+  insert_after: dl-transformers
+  summary: 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget
+    networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
+  prerequisites:
+  - ml-policy-gradient-reinforce
+  - ml-monte-carlo-td-q-learning
+  - dl-perceptron-mlp
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 表形式のQやpolicyをニューラルnetworkへ置き換えると、何が可能になり、何が不安定になるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-supervised-finetuning-instruction-tuning
+  title: SFT・instruction tuning
+  course_id: '10'
+  insert_after: frontier-parameter-efficient-finetuning
+  summary: SFTはinstruction-response pairに対するconditional language modeling。base modelの次token予測能力を、望ましい会話・指示応答分布へ寄せる。
+  prerequisites:
+  - dl-transformers
+  - frontier-parameter-efficient-finetuning
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - pretrained LMを「指示に従うmodel」へ変える最初の段階は何を最適化しているか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-rlhf-reward-model-ppo-kl
+  title: RLHF：reward model・PPO・KL制御
+  course_id: '10'
+  insert_after: frontier-supervised-finetuning-instruction-tuning
+  summary: まずchosen/rejected比較からreward modelを学び、そのrewardを最大化するようpolicyをRLで更新する。ただしreward
+    modelの穴を突くoveroptimizationを抑えるためreference policyとのKL penaltyを使う。
+  prerequisites:
+  - frontier-supervised-finetuning-instruction-tuning
+  - ml-policy-gradient-reinforce
+  - dl-deep-reinforcement-learning
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 人間のpairwise preferenceをrewardへ変換し、policyをreferenceから離しすぎず改善する標準RLHF pipelineはどうつながるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-reasoning-rl-rlvr
+  title: 推論RLとverifiable reward
+  course_id: '10'
+  insert_after: frontier-rlhf-reward-model-ppo-kl
+  summary: verifiable taskでは最終答案の正誤、unit test、formal checkerなどをrewardとして使える。人間preferenceより低コストで大量sampleを評価できる一方、reward仕様の範囲外の品質は保証しない。
+  prerequisites:
+  - frontier-rlhf-reward-model-ppo-kl
+  - ml-policy-gradient-reinforce
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 数学・codingのように答えを自動検証できる課題では、preference modelを介さずどのようにRL信号を作れるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-inference-prefill-decode-kv-cache
+  title: LLM推論：prefill・decode・KV cache
+  course_id: '10'
+  insert_after: frontier-quantization-sparsity-moe
+  summary: prefillはprompt全tokenを並列に処理しmatrix multiplicationが大きい。decodeは過去K/Vをcacheして1
+    tokenずつ進み、batchやmodelによってmemory bandwidth支配になりやすい。
+  prerequisites:
+  - dl-transformers
+  - dl-efficient-training-inference
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - LLM inferenceでprompt処理と1 tokenずつの生成は、計算特性がなぜ異なるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-serving-batching-speculative-decoding
+  title: LLM serving・continuous batching・speculative decoding
+  course_id: '10'
+  insert_after: frontier-inference-prefill-decode-kv-cache
+  summary: requestごとに生成長が違うため固定batchはGPU slotを無駄にしやすい。continuous batchingはdecode step単位でrequestを入替える。speculative
+    decodingは小modelのdraftを大modelがまとめて検証する。
+  prerequisites:
+  - frontier-inference-prefill-decode-kv-cache
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 複数requestを低latencyかつ高throughputで処理するため、serving systemは何をscheduleするか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-data-dedup-mixtures-contamination
+  title: pretraining data：dedup・mixture・contamination
+  course_id: '10'
+  insert_after: frontier-synthetic-data-data-curation
+  summary: training dataは単なる量ではなく分布。重複は特定sampleを過度に重み付けし、mixture weightは能力配分を変え、evaluation
+    setの混入は測定を汚染する。
+  prerequisites:
+  - frontier-pretraining-scaling-laws
+  - frontier-synthetic-data-data-curation
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 同じtoken数でも、重複・domain mixture・benchmark contaminationで学習結果がなぜ変わるか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-rag-reranking-evaluation
+  title: RAG：chunking・reranking・評価
+  course_id: '10'
+  insert_after: frontier-vector-databases-search
+  summary: 最終回答だけを見ると原因が分からない。まず必要根拠をtop-kへ取れたか、rerankerが上位へ持ち上げたか、generatorが根拠を正しく使ったかを分離評価する。
+  prerequisites:
+  - frontier-retrieval-augmented-generation
+  - frontier-vector-databases-search
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - RAGの失敗をretrieval・reranking・generationへ分解して、どこが悪いか測るにはどうするか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる
+- id: frontier-tool-security-prompt-injection
+  title: tool useのsecurity boundaryとprompt injection
+  course_id: '10'
+  insert_after: frontier-agents-planning-memory
+  summary: tool-using agentではmodel outputが外部作用へつながる。untrusted contentはdataとして扱い、権限・引数schema・確認・sandbox等の境界で実行能力を制限する必要がある。
+  prerequisites:
+  - frontier-tool-use-function-calling
+  - frontier-agents-planning-memory
+  implementation_course: foundation
+  estimated_minutes:
+    slides: 25
+    textbook: 75
+    exercises: 60
+  outcomes:
+  - 外部documentやweb内容を読むagentで、なぜ「読んだ文字列」を「実行すべき命令」と同一視してはいけないか。
+  - 中心式の記号と成立条件を説明できる
+  - 小さい例と反例で検算できる

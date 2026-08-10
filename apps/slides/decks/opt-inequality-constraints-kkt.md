@@ -1,126 +1,73 @@
 ---
 theme: default
 routerMode: hash
-generatedBy: course02-10-refined-v1
 layout: cover
-title: "不等式制約と相補性"
+title: "不等式制約・相補性・KKT"
 ---
 
-# 不等式制約と相補性
+# 不等式制約・相補性・KKT
 
 Course 06｜最適化
 
 ---
-layout: center
----
 
 ## 今回の問い
 
-不等式制約と相補性で、何を入力し、代表式がどの量を出力し、どの成立条件を外すと結果が壊れるのか。
-
----
-
-## 到達目標
-
-- 不等式制約と相補性の定義と代表式を言葉で説明できる
-- 図と式の対応を説明できる
-- 小さな例で成立条件と失敗条件を検算できる
+KKT条件を公式として暗記せず、feasible directionとnormal coneからどう導くか。
 
 ---
 
 ## 直感
 
-制約付き最適化では自由に動ける方向が限定され、最適点で目的勾配と制約の法線が釣り合う。
-
-**前提:** opt-equality-constrained-kkt
+最適点では実行可能な一次方向へ目的を下げられない。したがって負の目的勾配はfeasible tangent coneのpolarであるnormal coneに入る。CQの下でnormal coneをactive constraint gradientの非負結合として表すとKKTになる。
 
 ---
 
 ## 図解
 
-<img src="./assets/course-06/opt-inequality-constraints-kkt.png" style="max-height: 330px; display:block; margin:0 auto;" />
+<img src="./assets/course-06/opt-inequality-constraints-kkt.png" style="max-height: 350px; display:block; margin:0 auto;" />
 
 ---
 
-## 図を見るポイント
-
-- 軸・node・矢印・領域が何を表すか確認する
-- 代表式の各項と図の要素を対応づける
-- 条件を変えたとき、どこが変化するか予測する
-
----
-
-## 代表式
+## 中心式
 
 $$
-\lambda_i g_i(\mathbf{x})=0,\quad\lambda_i\ge0
+\nabla f(x^*)+\sum_i\lambda_i\nabla g_i(x^*)=0,\quad \lambda_i g_i(x^*)=0
 $$
 
-左辺の出力 → 右辺の操作 → 入力の型の順で読む。
+---
+
+## 導出
+
+1. 局所最小では全feasible direction dに対し∇f^T d≥0。
+2. よって-∇f∈N_C。
+3. LICQ/Slater等の適切な条件下でactive constraintのgradientがnormal coneを生成する。
+4. inactive constraintはg_i<0なので局所境界を作らずλ_i=0。activeではg_i=0でλ_i≥0が可能。
 
 ---
 
-## 式をどう読むか
+## 小さい例
 
-- **対象:** 不等式制約、相補性
-- shape・次元・定義域を先に確定する
-- 計算後に符号・大きさ・残差・確率などを図と照合する
+min (x-2)² s.t. x≤1。x*=1、f′=-2、g′=1なので -2+λ=0→λ=2。x≤3ならx*=2はinactiveでλ=0。
 
 ---
 
-## 小さな例
+## 条件を外すと
 
-等高線と制約曲線、接点を描く。
-
-最小の非自明な設定で、手計算と実装を照合する。
-
----
-
-## 動き／思考実験で確認
-
-<img src="./assets/course-06/opt-inequality-constraints-kkt.gif" style="max-height: 310px; display:block; margin:0 auto;" />
-
-- 各frameで、何が固定され何が更新されるかを追う。
-
----
-
-## 成立条件
-
-- KKT条件には制約資格条件が関わる。
-- 不等式制約では相補性を確認する。
-- 不等式制約と相補性の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
----
-
-## よくある誤解
-
-- 不等式制約と相補性の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-- 数学上の次元と配列のshapeを混同する
-
----
-
-## 数値・実装で検算
-
-1. 小さい入力を作る
-2. 定義式から期待値を手で求める
-3. NumPy等の実装結果と比較する
-4. shape・残差・許容誤差・seedを記録する
-
----
-
-## 後続分野への接続
-
-不等式制約と相補性は、後続の数値計算・データ解析・機械学習で前提となる。
-
-このTopicの量が、後続で入力・目的関数・制約・診断のどれとして使われるか確認する。
+- CQ failureではKKTが必要条件にならない場合がある。
+- 非凸ではKKTだけでglobal optimalityを保証しない。
 
 ---
 
 ## 理解確認
 
-- 不等式制約と相補性を図→式→小例の順で説明できるか
-- 条件を1つ外した反例を作れるか
+- 式の各記号を定義できるか。
+- 導出を1段ずつ再現できるか。
+- 反例を1つ作れるか。
+
+---
+
+## 教科書と演習
 
 [教科書](../../textbook/opt-inequality-constraints-kkt)
 

@@ -1,168 +1,75 @@
-# 不等式制約と相補性：教科書
+# 不等式制約・相補性・KKT：教科書
 
-Course 06｜最適化｜Topic 12/20
+Course 06｜最適化
 
-## このTopicは、前の何を受けて始まるか
+## このTopicの中心問題
 
-前Topic `opt-equality-constrained-kkt` で得た概念を使い、ここでは 不等式制約と相補性 へ進む。
+KKT条件を公式として暗記せず、feasible directionとnormal coneからどう導くか。
 
-前提として使うのは `opt-equality-constrained-kkt` です。
+## まず直感
 
-## まず直感を作る
+最適点では実行可能な一次方向へ目的を下げられない。したがって負の目的勾配はfeasible tangent coneのpolarであるnormal coneに入る。CQの下でnormal coneをactive constraint gradientの非負結合として表すとKKTになる。
 
-制約付き最適化では自由に動ける方向が限定され、最適点で目的勾配と制約の法線が釣り合う。
+## 図で固定する
 
+<img src="/visuals/course-06/opt-inequality-constraints-kkt.png" alt="不等式制約・相補性・KKTの図解" style="max-height: 460px; display:block; margin:0 auto;" />
 
+図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
 
-## 図の解説
+## 記号・型・意味
 
-<img src="/visuals/course-06/opt-inequality-constraints-kkt.png" alt="不等式制約と相補性の図解" style="max-height: 440px; display:block; margin:0 auto;" />
+| 記号 | 意味 |
+|---|---|
+| $g_i(x)≤0$ | 不等式制約 |
+| $λ_i≥0$ | Lagrange multiplier |
+| $T_C,N_C$ | 接錐・法錐 |
 
-等高線と制約曲線、接点を描く。 制約境界上の接線方向では目的関数を一次的に改善できない。そのため目的gradientは境界の法線、すなわち制約gradientの線形結合になる。
+この表にない新しい記号を使う場合は、その直前で意味を定義する。
 
-## 記号・型・次元
-
-- $g_i(x)\le0$
-- $\lambda_i\ge0$
-- $\lambda_i g_i(x)=0$：complementarity
-
-
-## 正式な定義・代表式
-
-convex問題でconstraint qualification下、KKTはprimal feasibility, dual feasibility, stationarity, complementarityからなる。active constraintだけがpositive multiplierを持ち得る。
-
-代表式は
+## 中心となる式
 
 $$
-\lambda_i g_i(\mathbf{x})=0,\quad\lambda_i\ge0
+\nabla f(x^*)+\sum_i\lambda_i\nabla g_i(x^*)=0,\quad \lambda_i g_i(x^*)=0
 $$
 
-です。
+## なぜこの式になるのか
 
-## なぜこの式・結論になるのか
+1. 局所最小では全feasible direction dに対し∇f^T d≥0。
+2. よって-∇f∈N_C。
+3. LICQ/Slater等の適切な条件下でactive constraintのgradientがnormal coneを生成する。
+4. inactive constraintはg_i<0なので局所境界を作らずλ_i=0。activeではg_i=0でλ_i≥0が可能。
 
-### 1. inactive constraint
+ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
 
-$g_i(x*)<0$ なら境界から余裕があり、そのconstraintはlocal tangentを制限しない。したがってλ_i=0がcomplementarityで表される。
+## 例題：小さい設定で最後まで追う
 
-### 2. active constraint
+min (x-2)² s.t. x≤1。x*=1、f′=-2、g′=1なので -2+λ=0→λ=2。x≤3ならx*=2はinactiveでλ=0。
 
-$g_i=0$ ではλ_i≥0がobjective gradientをfeasible側へ支えるnormal forceの係数。
+### 答案で書く順序
 
-### 3. stationarity
+1. 与えられた量と求める量を定義する。
+2. 適用する式の成立条件を確認する。
+3. 代入または式変形を1段ずつ書く。
+4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
 
-$\nabla f+\sum_iλ_i\nabla g_i=0$。等式の場合と同じnormal spanに、active inequality normalが加わる。
+## 何を間違えやすいか
 
-## 教科書が省略しやすい一段を補う
+- CQ failureではKKTが必要条件にならない場合がある。
+- 非凸ではKKTだけでglobal optimalityを保証しない。
 
+## 自分で確認する問い
 
-### complementary slacknessはactive constraintだけがforceを持つことを表す
+- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
+- 導出の各段階で使った仮定を1つずつ言えるか。
+- 成立条件を1つ外した最小反例または失敗例を作れるか。
+- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
 
-inequality $g_i(x)\le0$ へmultiplier $\lambda_i\ge0$ を付ける。constraintがstrictly inactive $g_i<0$ なら、その境界はcurrent optimumを押していないので $\lambda_i=0$。activeならg_i=0でlambdaは正でもよい。これを一式で
-$$
-\lambda_i g_i(x)=0
-$$
-と書くのがcomplementary slackness。
+## 後続Courseへの接続
 
-KKTはstationarity, primal feasibility, dual feasibility, complementary slackness。convex problemで適切なconstraint qualification（Slater等）があれば必要十分になる。非凸ではKKT pointがglobal optimumとは限らない。
+このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
 
+## 参考
 
-### 1D exampleでcomplementarityを見る
-
-$\min (x-2)^2$ s.t. x≤1。unconstrained optimum2はinfeasibleなのでboundary x*=1。constraint g=x-1≤0、gradient f'=2(x-2)=-2 at x=1。stationarity $-2+\lambda=0$ からλ=2>0、g=0なのでλg=0。
-
-もしconstraint x≤3ならunconstrained optimum2がfeasibleでg=-1<0、stationarityにconstraint force不要なのでλ=0。active/inactiveとmultiplierの関係を具体的に確認できる。
-
-## 途中を飛ばさず全体をつなぐ
-
-### 不等式制約と相補性の導出を一本につなげる
-
-convex問題でconstraint qualification下、KKTはprimal feasibility, dual feasibility, stationarity, complementarityからなる。active constraintだけがpositive multiplierを持ち得る。
-
-#### 1. inactive constraint
-
-まず出発点を固定する。 $g_i(x*)<0$ なら境界から余裕があり、そのconstraintはlocal tangentを制限しない。したがってλ_i=0がcomplementarityで表される。 次に必要になるのは「active constraint」である。
-
-#### 2. active constraint
-
-ここまでで得た結果を次の段階へ渡す。 $g_i=0$ ではλ_i≥0がobjective gradientをfeasible側へ支えるnormal forceの係数。 次に必要になるのは「stationarity」である。
-
-#### 3. stationarity
-
-最後に、前二段階の結果をまとめて結論へ進む。 $\nabla f+\sum_iλ_i\nabla g_i=0$。等式の場合と同じnormal spanに、active inequality normalが加わる。
-
-#### 代表式へ戻す
-
-以上をまとめた中心式は
-
-$$
-\lambda_i g_i(\mathbf{x})=0,\quad\lambda_i\ge0
-$$
-
-である。ここでは式だけを新しい事実として追加しているのではなく、上の各段階で定義した量・仮定・変形を一つの形に圧縮している。したがって式を使うときは、途中で必要だった条件が保たれている範囲までしか結論を延長できない。
-
-### 具体例と一般式を往復する
-
-本文の第一例は次の設定である。
-
-minimize (x-2)² subject x≤1。unconstrained min2はinfeasible、境界x*=1。g=x-1, gradient f=-2 at1なので -2+λ=0→λ=2。
-
-この例は特定の数値だけを覚えるためではない。上の導出で現れた量を小さい設定で実際に計算し、代表式の左辺・右辺が同じ対象を表していることを確認するためのものである。第二例では
-
-同じobjectiveでconstraint x≤3ならunconstrained x=2 feasibleかつinactive、λ=0。
-
-と条件を変えている。二つを比較すると、数値や入力が変わっても残る構造と、仮定を変えたために変化する結論を分離できる。
-
-### どこまで結論を信頼できるか
-
-このTopicの境界を示す例は次である。
-
-nonconvexではKKTを満たしてもglobal optimumとは限らない。constraint qualification failureでoptimumがKKTを満たさないことも。
-
-この失敗例は、単に「例外がある」という注意ではない。上の導出を逆にたどると、どの段階で必要条件が失われ、その後の式変形または解釈を続けられなくなるかを特定できる。したがって反例は定理の外側を覚えるためではなく、定理が何を仮定していたかを確認するために使う。
-
-## 例題1：小さな数値で最後まで計算する
-
-minimize (x-2)² subject x≤1。unconstrained min2はinfeasible、境界x*=1。g=x-1, gradient f=-2 at1なので -2+λ=0→λ=2。
-
-## 例題2：条件を少し変えて、本質が数値依存でないことを確認する
-
-同じobjectiveでconstraint x≤3ならunconstrained x=2 feasibleかつinactive、λ=0。
-
-## 成立条件と、条件を外したときに何が壊れるか
-
-- KKT条件には制約資格条件が関わる。
-- 不等式制約では相補性を確認する。
-- 不等式制約と相補性の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-nonconvexではKKTを満たしてもglobal optimumとは限らない。constraint qualification failureでoptimumがKKTを満たさないことも。
-
-## よくある誤解を分解する
-
-- 不等式制約と相補性の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-
-不等式制約と相補性では、式へ数値を代入するだけでは不十分である。nonconvexではKKTを満たしてもglobal optimumとは限らない。constraint qualification failureでoptimumがKKTを満たさないことも。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
-
-## 実装・数値計算では何に注意するか
-
-solver statusとKKT residual、constraint violation、dual signを確認。scaling不良でresidual解釈が難しくなる。
-
-## ここから一段だけ発展する
-
-simple convex setへ直接projectionできる場合、multiplierを明示せずprojected gradientでfeasibilityを保てる。
-
-
-## このTopicを理解できたか確認する問い
-
-- 「inactive constraint」を式を見ずに説明できるか
-- 「stationarity」までの論理を一段ずつ再現できるか
-- 不等式制約と相補性の条件を1つ外した反例を説明できるか
-
-## 外部教材との照合
-
-- [MIT OCW 6.079 Introduction to Convex Optimization](https://ocw.mit.edu/courses/6-079-introduction-to-convex-optimization-fall-2009/)
-- [MIT OCW 6.7220J Nonlinear Optimization](https://ocw.mit.edu/courses/6-7220j-nonlinear-optimization-spring-2025/)
-- [Boyd & Vandenberghe, Convex Optimization](https://web.stanford.edu/~boyd/cvxbook/)
+- Boyd & Vandenberghe Convex Optimization
 
 [演習へ](/exercises/opt-inequality-constraints-kkt)　|　[スライドへ](/slides/opt-inequality-constraints-kkt/)

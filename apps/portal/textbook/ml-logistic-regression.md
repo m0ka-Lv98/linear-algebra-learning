@@ -1,167 +1,75 @@
 # logistic回帰：教科書
 
-Course 08｜機械学習｜Topic 03/20
+Course 08｜機械学習
 
-## このTopicは、前の何を受けて始まるか
+## このTopicの中心問題
 
-前Topic `ml-linear-regression` で得た概念を使い、ここでは logistic回帰 へ進む。
+Bernoulli確率modelからcross entropy、gradient、Hessianがどう一続きに導かれるか。
 
-前提として使うのは `stat-likelihood-maximum-likelihood`、`opt-convex-sets-functions` です。
+## まず直感
 
-## まず直感を作る
+logit z=x^Tβをsigmoidで確率pへ写し、観測y∈{0,1}をBernoulliと仮定する。lossは任意に選んだ罰則でなくnegative log-likelihood。
 
-分類器は入力からクラス確率またはスコアを作り、決定境界でクラスを分ける。
+## 図で固定する
 
+<img src="/visuals/course-08/ml-logistic-regression.png" alt="logistic回帰の図解" style="max-height: 460px; display:block; margin:0 auto;" />
 
+図を先に見て、式の記号がどの軸・点・矢印・分布・反復に対応するかを確認する。図は公式の代替ではなく、定義と式変形が表す幾何・確率・計算過程を固定するために使う。
 
-## 図の解説
+## 記号・型・意味
 
-<img src="/visuals/course-08/ml-logistic-regression.png" alt="logistic回帰の図解" style="max-height: 440px; display:block; margin:0 auto;" />
+| 記号 | 意味 |
+|---|---|
+| $z=Xβ$ | logit |
+| $p=σ(z)$ | 予測確率 |
+| $y∈{0,1}^n$ | label |
 
-2クラス点群と確率等高線、decision boundaryを描く。 背景の確率面がP(y=1|x)、その0.5等高線がdecision boundary、点が観測データである。モデルの連続な確率出力と離散な最終分類を区別できる。
+この表にない新しい記号を使う場合は、その直前で意味を定義する。
 
-## 記号・型・次元
-
-- $z=x^Tw+b$
-- $\sigma(z)=1/(1+e^{-z})$
-- $p=P(Y=1|x)$
-
-
-## 正式な定義・代表式
-
-logistic regressionはlog-oddsをlinear model $\log[p/(1-p)]=z$ と仮定し、Bernoulli likelihoodを最大化する。
-
-代表式は
+## 中心となる式
 
 $$
-p(y=1\mid\mathbf{x})=\sigma(\mathbf{x}^{\mathsf T}\mathbf{w}+b)
+\mathcal L(\beta)=-\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)]
 $$
 
-です。
+## なぜこの式になるのか
 
-## なぜこの式・結論になるのか
+1. Bernoulli likelihood $p_i^{y_i}(1-p_i)^{1-y_i}$ を全sampleで掛ける。
+2. logを取りnegativeにするとcross entropyの和。
+3. $dL/dz_i=p_i-y_i$ が整理され、gradientは $X^T(p-y)$。
+4. さらに微分するとHessian $X^T R X$, R=diag(p_i(1-p_i))≥0 なのでconvex。
 
-### 1. log-oddsからprobability
+ここで重要なのは、最後の式だけを覚えないことである。各段階で何を仮定し、どの定義・定理・近似を使ったかを言える状態を目標にする。
 
-$p/(1-p)=e^z$ をpについて解くと $p=e^z/(1+e^z)=\sigma(z)$。
+## 例題：小さい設定で最後まで追う
 
-### 2. negative log likelihood
+1sample x=1, y=1, z=0ならp=0.5、dL/dz=-0.5なのでgradient descentはzを上げる。
 
-Bernoulli likelihood $p^y(1-p)^{1-y}$ の-negative logはbinary cross entropy。
+### 答案で書く順序
 
-### 3. decision boundary
+1. 与えられた量と求める量を定義する。
+2. 適用する式の成立条件を確認する。
+3. 代入または式変形を1段ずつ書く。
+4. 最後に符号・単位・shape・確率範囲・極端な入力のいずれかで検算する。
 
-p=0.5 iff z=0なのでboundaryは $x^Tw+b=0$。thresholdを変えるとboundary levelが変わる。
+## 何を間違えやすいか
 
-## 教科書が省略しやすい一段を補う
+- sigmoid出力へlogを直接計算してoverflow/underflowさせない。
+- 完全分離では非正則化MLEが発散し得る。
 
+## 自分で確認する問い
 
-### log-odds仮定からlossと境界まで一続きに導く
+- 中心式を見ずに、左辺と右辺が何を表すか説明できるか。
+- 導出の各段階で使った仮定を1つずつ言えるか。
+- 成立条件を1つ外した最小反例または失敗例を作れるか。
+- 数値を変えても残る構造と、数値に依存する結論を分離できるか。
 
-linear score $z=\mathbf w^T\mathbf x+b$ をlog-oddsと置く：$\log\{p/(1-p)\}=z$。指数を取って $p/(1-p)=e^z$、pについて解けば $p=1/(1+e^{-z})$。この段階でsigmoidは「便利な0–1変換」として選んだのではなく、log-oddsをlinearにする仮定から必然的に出る。
+## 後続Courseへの接続
 
-Bernoulli likelihoodは $p^y(1-p)^{1-y}$。negative logを取ると $-y\log p-(1-y)\log(1-p)$、datasetで足したものがbinary cross entropy。decision threshold 0.5ならp=0.5⇔z=0なのでhyperplane $\mathbf w^T\mathbf x+b=0$ が境界。loss、probability、hard classificationは同じものではなく三段階を分ける。
+このTopicは単独の公式集としてではなく、後続の数値計算・確率統計・最適化・機械学習で再利用する前提として扱う。後で同じ式が現れたときは、ここで定義した量と成立条件まで戻って確認する。
 
+## 参考
 
-### cross entropyをzだけの式へ変えて数値安定性を見る
-
-y∈{0,1}, p=σ(z)とするとlossは $-y\log\sigma(z)-(1-y)\log(1-\sigma(z))$。これは
-$$
-\log(1+e^z)-yz
-$$
-と同値。zが非常に負/正でもsoftplus/logaddexpを使えば、sigmoidを先に0/1へ丸めてlog(0)を取る危険を避けられる。
-
-微分はσ(z)-y、二階微分はσ(z)(1-σ(z))≥0。linear logitsならobjectiveはconvexで、local optimum問題はない（regularity/separationによるfinite solution issuesは別）。
-
-## 途中を飛ばさず全体をつなぐ
-
-### logistic回帰の導出を一本につなげる
-
-logistic regressionはlog-oddsをlinear model $\log[p/(1-p)]=z$ と仮定し、Bernoulli likelihoodを最大化する。
-
-#### 1. log-oddsからprobability
-
-まず出発点を固定する。 $p/(1-p)=e^z$ をpについて解くと $p=e^z/(1+e^z)=\sigma(z)$。 次に必要になるのは「negative log likelihood」である。
-
-#### 2. negative log likelihood
-
-ここまでで得た結果を次の段階へ渡す。 Bernoulli likelihood $p^y(1-p)^{1-y}$ の-negative logはbinary cross entropy。 次に必要になるのは「decision boundary」である。
-
-#### 3. decision boundary
-
-最後に、前二段階の結果をまとめて結論へ進む。 p=0.5 iff z=0なのでboundaryは $x^Tw+b=0$。thresholdを変えるとboundary levelが変わる。
-
-#### 代表式へ戻す
-
-以上をまとめた中心式は
-
-$$
-p(y=1\mid\mathbf{x})=\sigma(\mathbf{x}^{\mathsf T}\mathbf{w}+b)
-$$
-
-である。ここでは式だけを新しい事実として追加しているのではなく、上の各段階で定義した量・仮定・変形を一つの形に圧縮している。したがって式を使うときは、途中で必要だった条件が保たれている範囲までしか結論を延長できない。
-
-### 具体例と一般式を往復する
-
-本文の第一例は次の設定である。
-
-z=ln3ならodds3:1、p=3/4。linear score差はprobability差として非線形に圧縮。
-
-この例は特定の数値だけを覚えるためではない。上の導出で現れた量を小さい設定で実際に計算し、代表式の左辺・右辺が同じ対象を表していることを確認するためのものである。第二例では
-
-class imbalanceでthreshold0.5がbestとは限らない。precision/recall costで選ぶ。
-
-と条件を変えている。二つを比較すると、数値や入力が変わっても残る構造と、仮定を変えたために変化する結論を分離できる。
-
-### どこまで結論を信頼できるか
-
-このTopicの境界を示す例は次である。
-
-sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。
-
-この失敗例は、単に「例外がある」という注意ではない。上の導出を逆にたどると、どの段階で必要条件が失われ、その後の式変形または解釈を続けられなくなるかを特定できる。したがって反例は定理の外側を覚えるためではなく、定理が何を仮定していたかを確認するために使う。
-
-## 例題1：小さな数値で最後まで計算する
-
-z=ln3ならodds3:1、p=3/4。linear score差はprobability差として非線形に圧縮。
-
-## 例題2：条件を少し変えて、本質が数値依存でないことを確認する
-
-class imbalanceでthreshold0.5がbestとは限らない。precision/recall costで選ぶ。
-
-## 成立条件と、条件を外したときに何が壊れるか
-
-- 確率出力とhard labelを区別する。
-- 閾値は目的に応じて調整する。
-- logistic回帰の定義と計算手順を区別し、数値例だけで一般性を判断しない。
-
-sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。
-
-## よくある誤解を分解する
-
-- logistic回帰の定義と計算手順を同一視する
-- 成立条件を確認せず公式を適用する
-
-logistic回帰では、式へ数値を代入するだけでは不十分である。sigmoid出力はmodel probabilityであり自動的にcalibratedではない。misspecification/regularizationでずれる。 という失敗例が示すように、式を使える条件と結論の範囲を区別する必要がある。
-
-## 実装・数値計算では何に注意するか
-
-stable `logaddexp`/BCEWithLogitsを使いsigmoid後logを直接取らない。
-
-## ここから一段だけ発展する
-
-binaryをK classesへ一般化するとsoftmax。
-
-
-## このTopicを理解できたか確認する問い
-
-- 「log-oddsからprobability」を式を見ずに説明できるか
-- 「decision boundary」までの論理を一段ずつ再現できるか
-- logistic回帰の条件を1つ外した反例を説明できるか
-
-## 外部教材との照合
-
-- [Stanford CS229 Machine Learning](https://cs229.stanford.edu/)
-- [MIT 6.390 Introduction to Machine Learning](https://introml.mit.edu/)
+- Stanford CS229 logistic regression
 
 [演習へ](/exercises/ml-logistic-regression)　|　[スライドへ](/slides/ml-logistic-regression/)

@@ -1,0 +1,1669 @@
+{
+  "files": [
+    {
+      "path": ".github/workflows/pages.yml",
+      "bytes": 3794,
+      "sha256": "99b9eb67e41da72c376ba9dd6013e993ff088df6e45dba6720f49c380d994f88"
+    },
+    {
+      "path": "AUDIT_MANIFEST.json",
+      "bytes": 2354,
+      "sha256": "93e0117a41ab30ca4c63e093f7638887b168e9113ffcccb7669bbd3f7613ed18"
+    },
+    {
+      "path": "AUDIT_OVERLAY_README.md",
+      "bytes": 2457,
+      "sha256": "8750c30b73446acd147ded2955c9f3dae5bfac1e2517728cd3b12e59d1c69a4d"
+    },
+    {
+      "path": "QA_REPORT.json",
+      "bytes": 305,
+      "sha256": "86e6f902049ec52f38dec980c0a23b3e862e75387586ec1712a65d02b789dbd3"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-change-of-variables-jacobian.md",
+      "bytes": 634,
+      "sha256": "eedb235d8170d81850242c39825bdad61a3c23fbf64f04a0c8830ae72b34986b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-implicit-inverse-functions.md",
+      "bytes": 657,
+      "sha256": "7a4a8d3758ca04d29be4cbb0233575e3139c701b5990a2cc5fabadf2f9a0e1b9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-infinite-series-convergence.md",
+      "bytes": 635,
+      "sha256": "d6b450613dacbfb986913183da8b2ecb0d1b7ec00167a3451c473927bf08fee6"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-mean-value-theorem.md",
+      "bytes": 629,
+      "sha256": "88402243d07eb06d7296c46436180fa4aa1a1fa29d613eefd96468bf5f9d06ea"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-multiple-integrals.md",
+      "bytes": 586,
+      "sha256": "1f1a877a50ddbd6b535a09741c475064c69cca97192e6faa8ff491faab52a873"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-parametric-polar-curves.md",
+      "bytes": 626,
+      "sha256": "69a2cd0a1d8e6041813fc3476afa135cc7190732b87bfe3a76e6dc0b21eaba32"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-taylor-series-remainder.md",
+      "bytes": 638,
+      "sha256": "46cfe6db3830ce64d27604be8a0fb9950e6faff7e0dc6d0a73c58fa20fbeefe4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/calc-vector-fields-line-integrals.md",
+      "bytes": 637,
+      "sha256": "54cb480c36114522aea6c5fc48ede955e2a24045de4ef10c5f6784d8f714cdc7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-deep-reinforcement-learning.md",
+      "bytes": 703,
+      "sha256": "1557443d20d85f5ef97e27b4cfc0ff25e0684e088a75538924ef08c837efe46a"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dl-seq2seq-teacher-forcing.md",
+      "bytes": 656,
+      "sha256": "61ee257a43f2c37c6ad4c424cb572e5742c00c6df0140e0b04a1545456b897a9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-bipartite-matching-hall.md",
+      "bytes": 626,
+      "sha256": "51844aa05e53727a0d4a7e3fdddc1b9a33b82987c43b8e23bf8c708cf187ca22"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-generating-functions.md",
+      "bytes": 627,
+      "sha256": "203fdc7c2654b19f52558c06d15fcf0f2162a7e09fc15d9bca69e33905bdd8bb"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-graph-coloring.md",
+      "bytes": 588,
+      "sha256": "a5e08b7c63cfa8aaf51e3bdd64fb5c0886f497aafd3e171ec05b4037edb41bcf"
+    },
+    {
+      "path": "apps/portal/courses/foundation/dm-state-machines-invariants.md",
+      "bytes": 681,
+      "sha256": "2f588fd563d5a4feada754c005c72b4f4175fa0a6124233960dbcf3bfe55086d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-data-dedup-mixtures-contamination.md",
+      "bytes": 731,
+      "sha256": "019ad8bf14227fa17f01c766d079dcab3cd51987b1c55b6e79ae74bb0ab63983"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-inference-prefill-decode-kv-cache.md",
+      "bytes": 716,
+      "sha256": "20fe2225abae24bb47a68e3dac7a6979da8d82c4bd0f2cb611207759abac887c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-rag-reranking-evaluation.md",
+      "bytes": 710,
+      "sha256": "e89b40284b43fed94c2199f64fa1c99b3d79e6ab2473bd6b66e056c43550f67d"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-reasoning-rl-rlvr.md",
+      "bytes": 737,
+      "sha256": "ebe444dfcabfa6e2be82384feebbff98d87139075d63b859e13a15c9e9be511f"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-rlhf-reward-model-ppo-kl.md",
+      "bytes": 773,
+      "sha256": "9b2299a7d5323040a307fcb413b22e5fe823ccdeabe0cc1b06ad31dfba95d11b"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-serving-batching-speculative-decoding.md",
+      "bytes": 795,
+      "sha256": "4cdb831eed71e76aeeddf83e6e224e526ddd0a4ccca7e5e9a9ca1ae341a328e4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-supervised-finetuning-instruction-tuning.md",
+      "bytes": 697,
+      "sha256": "84a9734a96df98222375b38f118a740f7dbf67543dc94e064ad17e1d09c017b8"
+    },
+    {
+      "path": "apps/portal/courses/foundation/frontier-tool-security-prompt-injection.md",
+      "bytes": 771,
+      "sha256": "bca978d8cc9df56886403bd5da8d33753f92f2ad4bcc9b26a1d222f10ccd10b9"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-dynamic-programming-value-policy-iteration.md",
+      "bytes": 703,
+      "sha256": "4a42de312a83873baa1883a3768e17ac094b04a3c33be9ce07fb89e138faaadc"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-empirical-risk-generalization.md",
+      "bytes": 698,
+      "sha256": "949d5a4455e7d3b078939565453973d18050cffff61960bf901dc35701a65a5c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-mdp-bellman-equations.md",
+      "bytes": 632,
+      "sha256": "d08784b2954dd2c6c813fb726b4b88ab935d8a5e4ecf22ecccc3243fc3cf4670"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-monte-carlo-td-q-learning.md",
+      "bytes": 622,
+      "sha256": "b9c31f84643963c8c15d5b2c875fb187510a95f66d9e5f8e3cea4e3959f97ce4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/ml-policy-gradient-reinforce.md",
+      "bytes": 620,
+      "sha256": "63c483c6827d8c2151d81c922a0ad5cc1fcc85fa279702e4d6bcdfdddb3be8e0"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-fenchel-duality-conjugates.md",
+      "bytes": 651,
+      "sha256": "9716e9f3dd492d28ed73010c0c6a1f650f55c050d1a6a72bd8dff252be94df8c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-mirror-descent-bregman.md",
+      "bytes": 622,
+      "sha256": "a526bcf3350d75dbc5262c8b853155f7c130a1327873c1b981a1392eebf05351"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-subgradients-nonsmooth.md",
+      "bytes": 619,
+      "sha256": "fd103a161c374d42e1b0388802c11140ce092d447ff7b82cce9f6301603787d4"
+    },
+    {
+      "path": "apps/portal/courses/foundation/opt-tangent-normal-cones-cq.md",
+      "bytes": 724,
+      "sha256": "981c4e7bff460ef6d9f500af9572c57e2131078f9cdf44890651524fccca8b24"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-absolute-values-inequalities-intervals.md",
+      "bytes": 706,
+      "sha256": "40205ab386094796ee5bd683305ca082ee8abe1ba1124d7ae6e91be77fcaf453"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-complex-numbers-euler-form.md",
+      "bytes": 707,
+      "sha256": "c29599a533be01f333c05cd281e5f67c7e2f2b504584fa4b45750333959a3fd2"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-sequences-basics.md",
+      "bytes": 617,
+      "sha256": "db941c384e410398c868a259c8b57251967ee4252a61ce7be8b8c7ab8ad39fe3"
+    },
+    {
+      "path": "apps/portal/courses/foundation/prep-trigonometry-radians-unit-circle.md",
+      "bytes": 713,
+      "sha256": "03513215c504266382997767080b59bc56b0b6f0a94b7fb51367ef052a9597d3"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-bootstrap-permutation-resampling.md",
+      "bytes": 740,
+      "sha256": "a34bb59a32b03432a5aabf215315c17739402599808e51f29ae7faf5597c1c87"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-fisher-information-asymptotic-mle.md",
+      "bytes": 697,
+      "sha256": "d394975a98b04c2f91a2cd519b3539514bd1d673e95d78cae523f771784f9a82"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-multiple-testing-fdr.md",
+      "bytes": 628,
+      "sha256": "552e6994200c7bad7f6a4d26e4c7981f18e19bed386376f8ab1832e78cd46c3c"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-power-sample-size.md",
+      "bytes": 652,
+      "sha256": "4b5caf2e4933db21ab176f2177e484b54ddef7263b8f10e28d34418ea30021d7"
+    },
+    {
+      "path": "apps/portal/courses/foundation/stat-t-chi-square-sampling-distributions.md",
+      "bytes": 684,
+      "sha256": "3e6d312bc1d5c3bc81f55c6d386c19c81973d392943d25bd61d574a81a653911"
+    },
+    {
+      "path": "apps/portal/exercises/calc-change-of-variables-jacobian.md",
+      "bytes": 3812,
+      "sha256": "9281899d2eaab5bb4077e9e0183f6e6c704c92bb6118f092e1588bc25fa79731"
+    },
+    {
+      "path": "apps/portal/exercises/calc-implicit-inverse-functions.md",
+      "bytes": 3750,
+      "sha256": "e9ff50cd550074759712d4897729700f10b6147846ddb7c798dff7e8999fa686"
+    },
+    {
+      "path": "apps/portal/exercises/calc-infinite-series-convergence.md",
+      "bytes": 3860,
+      "sha256": "c7a7ac9675aa7f18748d2364d8e8c2e7641e84ed748f9f6662c390fe3fe621be"
+    },
+    {
+      "path": "apps/portal/exercises/calc-mean-value-theorem.md",
+      "bytes": 3665,
+      "sha256": "b41182033ad2ef64c25ca059f57837d6f1a01d23a69f7c1a7db9e374bb096119"
+    },
+    {
+      "path": "apps/portal/exercises/calc-multiple-integrals.md",
+      "bytes": 3525,
+      "sha256": "8452eccfa5ec311dbfab6a7e0f10931bdd19fbd540e1fa211012442a21d55f6c"
+    },
+    {
+      "path": "apps/portal/exercises/calc-parametric-polar-curves.md",
+      "bytes": 3723,
+      "sha256": "0068b530373e760708b7354b762e39602b6a8fbfcc1548366e43098c4deb84fd"
+    },
+    {
+      "path": "apps/portal/exercises/calc-taylor-series-remainder.md",
+      "bytes": 4032,
+      "sha256": "51b6fd5ff0da417b8063f0c93ce6d1f9e0b89e25d26a1a50d753b0654304771a"
+    },
+    {
+      "path": "apps/portal/exercises/calc-vector-fields-line-integrals.md",
+      "bytes": 3995,
+      "sha256": "6605edd05c09cbd58ffcd9e48708672aba6d022bed1f6678bea7c72af61843d2"
+    },
+    {
+      "path": "apps/portal/exercises/dl-deep-reinforcement-learning.md",
+      "bytes": 4380,
+      "sha256": "161eb33aeaf012b98a80ce2184ebf65fcc34d87345ada3f0684bc0f4ae0bb55f"
+    },
+    {
+      "path": "apps/portal/exercises/dl-seq2seq-teacher-forcing.md",
+      "bytes": 4093,
+      "sha256": "f7a994581f8d79a59e22e8f0a6f5d60b472c91ccd4649e34f358fc6c637f6a67"
+    },
+    {
+      "path": "apps/portal/exercises/dm-bipartite-matching-hall.md",
+      "bytes": 4083,
+      "sha256": "b646c6ee21b3b9830623225b4275c57baddcbaa44e4681d6f7ebf9276afb59a7"
+    },
+    {
+      "path": "apps/portal/exercises/dm-generating-functions.md",
+      "bytes": 3648,
+      "sha256": "681de5c7dc02e75a1ecff3b857999e8e224284997ac2342711dc4873d57d1510"
+    },
+    {
+      "path": "apps/portal/exercises/dm-graph-coloring.md",
+      "bytes": 3653,
+      "sha256": "2688975e5318560d9f0760c5447a02f5465f07e57aab8760c7bfb43e7671302c"
+    },
+    {
+      "path": "apps/portal/exercises/dm-state-machines-invariants.md",
+      "bytes": 3937,
+      "sha256": "629a017c090520fb420d2237fa7d6e3fe7fa5e5eb084775cacd6fc7a15898c6d"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-data-dedup-mixtures-contamination.md",
+      "bytes": 4150,
+      "sha256": "3d1775305679c6a46c5ab81309aa23f3ebe8263139d867630a205bb00064856e"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-inference-prefill-decode-kv-cache.md",
+      "bytes": 4239,
+      "sha256": "b24b0d90c92aa3635265788a53712359924251e5e265070e6110bb50bb8acaee"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-rag-reranking-evaluation.md",
+      "bytes": 4220,
+      "sha256": "cbd81cad7f1fe22682767316baea6c05af53a990164c7e7bda09ead0ce911b45"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-reasoning-rl-rlvr.md",
+      "bytes": 4201,
+      "sha256": "f07d30ddf851aca731e4374c2dc53cf2b172aa3341eb73154ecc2b2a718bed6f"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-rlhf-reward-model-ppo-kl.md",
+      "bytes": 4346,
+      "sha256": "038f57dda6fef6562eb89bbc6e1b428fcce8b7e9b461d84302098bdcb360db42"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-serving-batching-speculative-decoding.md",
+      "bytes": 4482,
+      "sha256": "604eff8e9d70c29b518e91edb18f92c7458379d143e21f0a2be6a67a21bcc789"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-supervised-finetuning-instruction-tuning.md",
+      "bytes": 3910,
+      "sha256": "1849cbec1dfb247ccda14d2631cf4e2719220eb80449a296627a3892fbb51a33"
+    },
+    {
+      "path": "apps/portal/exercises/frontier-tool-security-prompt-injection.md",
+      "bytes": 4288,
+      "sha256": "f8f59992d1d458d45a73c334e74166f6271dfc4a2029dd5e4f5c8940b81e4721"
+    },
+    {
+      "path": "apps/portal/exercises/ml-dynamic-programming-value-policy-iteration.md",
+      "bytes": 4148,
+      "sha256": "0fd41665979b6bb3ae0ac99f4ceddab7137d8d0773e0faa4f2847b52a7f8537d"
+    },
+    {
+      "path": "apps/portal/exercises/ml-empirical-risk-generalization.md",
+      "bytes": 4235,
+      "sha256": "1cae8fb6d6acf15ea36d40838d5a25638c0c6a3175e4534134f0c0689ebc4449"
+    },
+    {
+      "path": "apps/portal/exercises/ml-mdp-bellman-equations.md",
+      "bytes": 3811,
+      "sha256": "ac3199b93c5d5126e6f005e68fcfd23ea309e890ba1b80f2ceb811d16ea78c01"
+    },
+    {
+      "path": "apps/portal/exercises/ml-monte-carlo-td-q-learning.md",
+      "bytes": 4110,
+      "sha256": "0b12098d726af3e5dca226be7bb02f67c6774ef3106cbdcf05ca2d31003944c9"
+    },
+    {
+      "path": "apps/portal/exercises/ml-policy-gradient-reinforce.md",
+      "bytes": 4120,
+      "sha256": "78558618e513d70a7cafb726bf9ddfee701f8bc7297b558dfa21a598f263f551"
+    },
+    {
+      "path": "apps/portal/exercises/opt-fenchel-duality-conjugates.md",
+      "bytes": 3719,
+      "sha256": "b95c6d29a95d1aced5612ba1691dcd781ad3671922477ed348db6cd542b89ee6"
+    },
+    {
+      "path": "apps/portal/exercises/opt-mirror-descent-bregman.md",
+      "bytes": 3939,
+      "sha256": "25ec10252c7fa19e6a2e5fb984f7767483f26f55b0b309a4112b2334724b2fa7"
+    },
+    {
+      "path": "apps/portal/exercises/opt-subgradients-nonsmooth.md",
+      "bytes": 3951,
+      "sha256": "1b1dfef6cd68a901dc879a234590ce76b594d239e2732339aaba7b1ea81d5f95"
+    },
+    {
+      "path": "apps/portal/exercises/opt-tangent-normal-cones-cq.md",
+      "bytes": 4075,
+      "sha256": "dc77b7f81997c2d0e1689f9f27728cad4363bd2d2fb33813c15521e73180ac0b"
+    },
+    {
+      "path": "apps/portal/exercises/prep-absolute-values-inequalities-intervals.md",
+      "bytes": 3729,
+      "sha256": "2da2a8d9f9fea6b7e8eafc69c48b6141366927fae894c82713a189bcd71cf26e"
+    },
+    {
+      "path": "apps/portal/exercises/prep-complex-numbers-euler-form.md",
+      "bytes": 3834,
+      "sha256": "2437f61c6325d88685eab0c4d120fb3cb7c012eaad301625c76d0ae70141ead0"
+    },
+    {
+      "path": "apps/portal/exercises/prep-sequences-basics.md",
+      "bytes": 3939,
+      "sha256": "8d506d8b59e5e1b3691b170bc96535a59b1be0b55014c755446a5b80516c9260"
+    },
+    {
+      "path": "apps/portal/exercises/prep-trigonometry-radians-unit-circle.md",
+      "bytes": 3874,
+      "sha256": "3f022b681223536ea0e317fb18bd56ac9012af06173306f7b89ddd3c39ec0603"
+    },
+    {
+      "path": "apps/portal/exercises/stat-bootstrap-permutation-resampling.md",
+      "bytes": 4188,
+      "sha256": "06ee3ee7da616ece4c917ad4daea6568cade47a0dbea8395f7ebe9c0e40b5b7f"
+    },
+    {
+      "path": "apps/portal/exercises/stat-fisher-information-asymptotic-mle.md",
+      "bytes": 4098,
+      "sha256": "d16ec72615c4ab6dda9a2babd27eea613e2f22a9e72f864772a6e641e0571998"
+    },
+    {
+      "path": "apps/portal/exercises/stat-multiple-testing-fdr.md",
+      "bytes": 3752,
+      "sha256": "f6079df77f2c5701818fbe93bf31f42a7e7f680aa89d9f12ae41c5003f21b6fc"
+    },
+    {
+      "path": "apps/portal/exercises/stat-power-sample-size.md",
+      "bytes": 3969,
+      "sha256": "51ee271b7c6c98fdd344ed62691fa8fd43653af6947b1bb8a129ab627f264c99"
+    },
+    {
+      "path": "apps/portal/exercises/stat-t-chi-square-sampling-distributions.md",
+      "bytes": 3942,
+      "sha256": "7fb676877662dfdbc300092d32f137c3b8d1c1aaf39419ba283d93cc9be8038e"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-absolute-values-inequalities-intervals.png",
+      "bytes": 9079,
+      "sha256": "cd5df16b34918c08aaad2259d12c5bd33b292a8169b2018af8b50728d339a800"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-complex-numbers-euler-form.png",
+      "bytes": 49598,
+      "sha256": "f3a366cef98a1ebdfe1d63a533bec697a9f1234fef9cd21d3c15b610dbd285dd"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-definitions-theorems-proofs.png",
+      "bytes": 21778,
+      "sha256": "81a2bc02dadb222c3251dfaebb365d02f70fd009e314974dfe739fde1f90d945"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-exponents-logarithms.png",
+      "bytes": 46190,
+      "sha256": "87cb2c93ec45b18a0f5e1230bd320677f28a87ae0e304732a247aa2e53aaf477"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-numerical-checks-reproducibility.png",
+      "bytes": 35832,
+      "sha256": "7dc6f190221fc13e5407f27f617725511cd8452f869b924534f16ba38a65d7f2"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-numpy-arrays-shapes.png",
+      "bytes": 28257,
+      "sha256": "398ba0ccfe144ccc7eba38345fbe65a6d49f8a762337079b6fece102a0fe061c"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-python-expressions-functions.png",
+      "bytes": 29225,
+      "sha256": "75f05e75bb09bca948fa1284c1e2fc4915f833be8e93886ded6485fc2b4e7f75"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-sequences-basics.png",
+      "bytes": 24688,
+      "sha256": "0d1b46915922b0e0949efb70cc4719a924b926bd47585681022be0cb2dd9a8ea"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-sets-functions-mappings.png",
+      "bytes": 37071,
+      "sha256": "b40426a0871e1d7d46db9000e459ec399c2c612c4e40f0b8dd05ab4cd6b5214d"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-sums-products-indices.png",
+      "bytes": 24406,
+      "sha256": "d39160820b42b77e0320a66ed01bb2cf89bd63063650fffdff4acf88bc0bd68f"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-symbols-types-shapes.png",
+      "bytes": 25340,
+      "sha256": "4682a62108543c45b5dfbae5caabf42c349d2007b67e1f9dedcd51f0a972fd10"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-00/prep-trigonometry-radians-unit-circle.png",
+      "bytes": 43020,
+      "sha256": "60ee15fd6824ce43b720aa89db2daf2df4a0a9d1a4fc9d1b2182f123c53d83ae"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-change-of-variables-jacobian.gif",
+      "bytes": 402297,
+      "sha256": "ae79907a70a1e6bc0c902363bab619a44e8997bf3f3a01a387042ab6d996350a"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-change-of-variables-jacobian.png",
+      "bytes": 88588,
+      "sha256": "655acbadae0958ffca0b177d3f6cdd2a1d54812d01b82f87e0bd9bf0d96a56fc"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-implicit-inverse-functions.png",
+      "bytes": 36398,
+      "sha256": "28e4b05e265f272f65d1b24b9bdbebf1165bdd8ade5d0ce64c5af2d06f285fd3"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-infinite-series-convergence.gif",
+      "bytes": 95356,
+      "sha256": "65f87b9ccf94527c208d21ec80fa38e523702e22b222923ca61f0dd53d39f7b4"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-infinite-series-convergence.png",
+      "bytes": 23526,
+      "sha256": "8a9c8c31788160d22dac1e30564f51547e2065c31fbb735ee4f01153c27fee4b"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-mean-value-theorem.png",
+      "bytes": 49476,
+      "sha256": "6fca8d276a6c718c60e3cd7f233b1cfb9fd824033affcee9ec61cebf0c66f6ee"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-multiple-integrals.png",
+      "bytes": 22163,
+      "sha256": "c5d151371d9092b8bafb723a56c7a178a11f73e0ab28583f4d5c5061ba5755a1"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-parametric-polar-curves.png",
+      "bytes": 47442,
+      "sha256": "c65de9236b8bfd29e16a0448bade33eb9165d097f232c3ceaba1e756c30d1f86"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-taylor-approximation.png",
+      "bytes": 48634,
+      "sha256": "dc9523d3b9f1da4d41d20b2c6d28dc3c3c67b28ec40b47fe4c9562557f9299d3"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-taylor-series-remainder.png",
+      "bytes": 48634,
+      "sha256": "dc9523d3b9f1da4d41d20b2c6d28dc3c3c67b28ec40b47fe4c9562557f9299d3"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-01/calc-vector-fields-line-integrals.png",
+      "bytes": 65307,
+      "sha256": "99ed257bb101b66f57a6b67bc0a3d5d713055e79ee9060c2bac98e1e2a5adde3"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-02/la-singular-value-decomposition.png",
+      "bytes": 52492,
+      "sha256": "a23f2e93e6146ac949e2a687de50355c5ce4531637cd46514b9c1dde7d6766f5"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-bootstrap-permutation-resampling.gif",
+      "bytes": 197671,
+      "sha256": "2f8496a866ab7ee98037050dec196f7686604fa45053a471c2c2cb4f0892346a"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-bootstrap-permutation-resampling.png",
+      "bytes": 25566,
+      "sha256": "b360a10de3496f31f9c3f7f43dab5299c7178aa92ed65e3755eef5f3c1c8a74a"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-confidence-intervals.png",
+      "bytes": 32834,
+      "sha256": "0e88283ac1dae94b46662cd60e29860b42feb785d0ad0a58e17c7a42766896b5"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-fisher-information-asymptotic-mle.png",
+      "bytes": 52928,
+      "sha256": "7bf2e92383605b2dc229e69413c22ca55a5debfc5f2e3809eccf558775b2537a"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-multiple-testing-fdr.png",
+      "bytes": 33612,
+      "sha256": "260db3607500700a5407f7ebfeb69e5d8fb8185dc99a07ce5b8aa2af6bec4be1"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-power-sample-size.png",
+      "bytes": 58056,
+      "sha256": "24680e86e763eb9f9a19eff9f45087ddc5b76376dd24799165053a4324688ea8"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-03/stat-t-chi-square-sampling-distributions.png",
+      "bytes": 73798,
+      "sha256": "e6619b77e99b479a5f008c6afcf3d7f1147aee634d5057cae97a9997ed9edb5a"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-04/dm-bipartite-matching-hall.png",
+      "bytes": 20531,
+      "sha256": "0c217e686b65c04651b75e9dc4bd9fc079ac4d7172db1bb06657e3e0a68db2d3"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-04/dm-generating-functions.png",
+      "bytes": 22362,
+      "sha256": "fc7ddf8979074125e13c2161788f7d93291dee7ec5bd0a87c4612ea39c57e6fa"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-04/dm-graph-coloring.png",
+      "bytes": 43259,
+      "sha256": "6e49d92380e4071165b5d8c4a28c98d5c3259c5b5e470237de47b8124d8bf620"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-04/dm-state-machines-invariants.png",
+      "bytes": 44697,
+      "sha256": "3d343f8183094cb458e352350c5cd695b1ad13908baa41e897fac8cdae5ecd5b"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-06/opt-fenchel-duality-conjugates.png",
+      "bytes": 37788,
+      "sha256": "eb5ccd95eeb8dea2d0ea7a5b96a943b025fceedd7b4b80d915a4cfb3ee0fbcdb"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-06/opt-inequality-constraints-kkt.png",
+      "bytes": 27207,
+      "sha256": "1aa1f9ac2d13481e1064cb52f57c1ee083206785e4122d394e275d578f8ea1fb"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-06/opt-mirror-descent-bregman.png",
+      "bytes": 24058,
+      "sha256": "16adb5a4370ebc52560d418a2dfcf35cbb93bd9aa647d4905765ea289bcd9560"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-06/opt-subgradients-nonsmooth.png",
+      "bytes": 68956,
+      "sha256": "b0b9b6c377e680da6b5af93e23975e01d41e1432e76245b890aec10dcbfa9aee"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-06/opt-tangent-normal-cones-cq.png",
+      "bytes": 27207,
+      "sha256": "1aa1f9ac2d13481e1064cb52f57c1ee083206785e4122d394e275d578f8ea1fb"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-07/mat-pca-geometry.png",
+      "bytes": 35770,
+      "sha256": "77fbcfcde1e6c1719ac70d35c441156848782bc732fcab10bbb8598af56c747d"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-07/mat-wls-inverse-variance.png",
+      "bytes": 34484,
+      "sha256": "3ac7fc69044b9b403f61a8903cbce9fbf16cb26dfa61f806a5ada79dd7018e50"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-dynamic-programming-value-policy-iteration.gif",
+      "bytes": 78036,
+      "sha256": "d18294d657ffbc68e768aeea6b19760e3c9b415677f1edd32663e895d43f2364"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-dynamic-programming-value-policy-iteration.png",
+      "bytes": 71973,
+      "sha256": "39d1aeeacaddbfae0297819f3f8fb28424275b0c58feb70d6488a099e7cc4e3e"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-empirical-risk-generalization.png",
+      "bytes": 51855,
+      "sha256": "8aacf8db5cabcfc75efe2ca60da746ff936a649e660d01a74b21b1a4a335810c"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-logistic-regression.png",
+      "bytes": 33030,
+      "sha256": "a812722955b752e285b5474b08f5f89d70d1ba8d564f4f95129866bd51396f7d"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-mdp-bellman-equations.png",
+      "bytes": 26712,
+      "sha256": "9cac441dcc83b85e5d102a7bd3f5cac8875d6f0dd0b4e3f74f6036f656d8f897"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-monte-carlo-td-q-learning.gif",
+      "bytes": 112890,
+      "sha256": "f767ed8ff24eecc1c672a785d7f02437df9165f65acc9673b63fb4b71af3b66b"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-monte-carlo-td-q-learning.png",
+      "bytes": 33150,
+      "sha256": "6ea2f237c58bf95aeac3451843210854ea72c87b1c8cbd0fa5df177a98c804a9"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-08/ml-policy-gradient-reinforce.png",
+      "bytes": 36198,
+      "sha256": "933d560605b65b212b4003e4f480639f7d14aacf24397f35d662a69c717a3aa6"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-09/dl-activation-loss-functions.png",
+      "bytes": 38511,
+      "sha256": "83094433cd988de30c1b8b6a64e3587f17708d1987aeb2b2716c53d5850f740e"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-09/dl-attention-mechanism.png",
+      "bytes": 30787,
+      "sha256": "9eca52e3d880822cd8d1a80a03717c987b0751ec62fb46206c750012a57a2c1a"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-09/dl-deep-reinforcement-learning.png",
+      "bytes": 86956,
+      "sha256": "8fee749f0ae45ab8bebf14b830b8524e08b0bae65a51bbbce74fdcfd206bdb14"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-09/dl-seq2seq-teacher-forcing.png",
+      "bytes": 20159,
+      "sha256": "4c3f3380f2c8b17bc52a2b7687ca5e075dcd734fdb57ac050f0791c4eb56bcc7"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-data-dedup-mixtures-contamination.png",
+      "bytes": 29824,
+      "sha256": "f26dac54fb5f5d83e48e65c6d02c9f7f8f33bdd560279ee07bdcd102b3320032"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-inference-prefill-decode-kv-cache.gif",
+      "bytes": 65277,
+      "sha256": "d8d72c2ae155c060cc192bc85ce83e75efc4da7faab540134aadb06b2cce7dd0"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-inference-prefill-decode-kv-cache.png",
+      "bytes": 46257,
+      "sha256": "9d68a8d4e843f2d54261a876226dc56a8d6ffaf5bb6fbd891bb130d062fdd380"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-rag-reranking-evaluation.png",
+      "bytes": 21915,
+      "sha256": "39e85fb27a59d0223128529f91b93a27f2ed6653ab042fbdea74accfcde251c9"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-reasoning-rl-rlvr.png",
+      "bytes": 23703,
+      "sha256": "2cb083da98649a9865c9558a6e588d61be3759a518b548b2b009f09b690653cf"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-rlhf-preference-optimization.png",
+      "bytes": 38398,
+      "sha256": "2b1108457bb36187d5c848aa354aef700f6518bbf7cfbdbe4d5e8e4b7bee2add"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-rlhf-reward-model-ppo-kl.png",
+      "bytes": 21722,
+      "sha256": "2cc3faa1526ff7b2047dc566473494b11a8df6132d1bd13f41692891606aee64"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-serving-batching-speculative-decoding.png",
+      "bytes": 27905,
+      "sha256": "070a580e5f9f346d68b5bf741a1482170783e38b9f525d77a0559d223f7d66fe"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-supervised-finetuning-instruction-tuning.png",
+      "bytes": 19725,
+      "sha256": "1cc46bf0c3a9e773c25b709023a6cb3128788c983271c386983895990f29bbee"
+    },
+    {
+      "path": "apps/portal/public/visuals/course-10/frontier-tool-security-prompt-injection.png",
+      "bytes": 19905,
+      "sha256": "4273907148982327a6a10ea8394d5ec7945c38e24c814207f028810b49f16a15"
+    },
+    {
+      "path": "apps/portal/textbook/calc-change-of-variables-jacobian.md",
+      "bytes": 3230,
+      "sha256": "2ff6ab5e7c3dce39f3feba4b14668c9c7edd790c97cd743db43581e177b862c1"
+    },
+    {
+      "path": "apps/portal/textbook/calc-implicit-inverse-functions.md",
+      "bytes": 2978,
+      "sha256": "cdfc38993c3e83e01e7a9c238f46eef45584da55555ed2ce561bd7eb8af56010"
+    },
+    {
+      "path": "apps/portal/textbook/calc-infinite-series-convergence.md",
+      "bytes": 3213,
+      "sha256": "5e970ec2f5a7349d4eeae3f0ccf994ec6f6f4e4c9348c6b48a54aa8acb7d3114"
+    },
+    {
+      "path": "apps/portal/textbook/calc-mean-value-theorem.md",
+      "bytes": 2913,
+      "sha256": "350073212bea04ee854c4080ce165e9ca00c63f03d473fbd6437d02285ca8a65"
+    },
+    {
+      "path": "apps/portal/textbook/calc-multiple-integrals.md",
+      "bytes": 2852,
+      "sha256": "5df4c0fb4de6895df4fbde72e4a1fe0f1b65158586860782d06e8e1a728f14d2"
+    },
+    {
+      "path": "apps/portal/textbook/calc-parametric-polar-curves.md",
+      "bytes": 2871,
+      "sha256": "ce22ea58be4dbe4156aa7e68e24b53be8406f90612cf8b8faaff1e96c1ce30dd"
+    },
+    {
+      "path": "apps/portal/textbook/calc-taylor-approximation.md",
+      "bytes": 3036,
+      "sha256": "c2dc43da2c496ae00c19f5d64a40b080c776a0022d9d2b898c6f6f6cb9d656d5"
+    },
+    {
+      "path": "apps/portal/textbook/calc-taylor-series-remainder.md",
+      "bytes": 3087,
+      "sha256": "cae1aa789ba438c18fc6d815332cb67872f90c1e3410309fd02db083fa340666"
+    },
+    {
+      "path": "apps/portal/textbook/calc-vector-fields-line-integrals.md",
+      "bytes": 2948,
+      "sha256": "5296cb1b3a4af82130c9ce50e8a06f33c2fd863844f81c78e5a7116a14491db7"
+    },
+    {
+      "path": "apps/portal/textbook/dl-activation-loss-functions.md",
+      "bytes": 3117,
+      "sha256": "94abca26d2b4e28bc00773703530463fb93d86d80ca700d996c8cdaaae7adbbf"
+    },
+    {
+      "path": "apps/portal/textbook/dl-attention-mechanism.md",
+      "bytes": 3090,
+      "sha256": "fcb02a74ce8e040321f9f7aa0e0388a60958f71f9cb87d9b2e201be7eafcb254"
+    },
+    {
+      "path": "apps/portal/textbook/dl-deep-reinforcement-learning.md",
+      "bytes": 3214,
+      "sha256": "bfd502e619660cb706f539147832c3a9ee2ab3b1d6c12640eee0d61ca5498f28"
+    },
+    {
+      "path": "apps/portal/textbook/dl-seq2seq-teacher-forcing.md",
+      "bytes": 3082,
+      "sha256": "5b49ebfd9a718d8194b381f54e751f825aee949308655a413505b2e43ec204d7"
+    },
+    {
+      "path": "apps/portal/textbook/dm-bipartite-matching-hall.md",
+      "bytes": 3117,
+      "sha256": "942ead6a0c22917d346519a3328af2d166e3cff6a544e8bf128cd6526b357080"
+    },
+    {
+      "path": "apps/portal/textbook/dm-generating-functions.md",
+      "bytes": 2932,
+      "sha256": "901073e470d4c8fd7f59e166c7644df11b880e5b14607821464da937c8be83d7"
+    },
+    {
+      "path": "apps/portal/textbook/dm-graph-coloring.md",
+      "bytes": 2885,
+      "sha256": "6d9c5bc3fb5610b65d46a988728aa8ea74538cd85848e438434fb80a39d9c0fb"
+    },
+    {
+      "path": "apps/portal/textbook/dm-state-machines-invariants.md",
+      "bytes": 3081,
+      "sha256": "784e1d19132a6e5c01e2c2d199aa668d896d12b4cdf5835b89a4ad6a87c25025"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-data-dedup-mixtures-contamination.md",
+      "bytes": 3208,
+      "sha256": "fa8a9b0943e1440aad057eb0bc6344d61f2ba398bd693a9d7a97c4375fe8ac07"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-inference-prefill-decode-kv-cache.md",
+      "bytes": 3394,
+      "sha256": "a5d0c7a9c1178b86fb37d3868ed8f73d1dbd4ef84e8a4d8aff05aaa241e49d2a"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-rag-reranking-evaluation.md",
+      "bytes": 3269,
+      "sha256": "735eafe7aca3bc199a07a33e743aec0d873cd58866268a51616b5c13f1d99b6b"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-reasoning-rl-rlvr.md",
+      "bytes": 3170,
+      "sha256": "dc33c0b987cec0a67b46bcd21c1843d3a928ce6da3b82d5a97a290c51e27979f"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-rlhf-preference-optimization.md",
+      "bytes": 3594,
+      "sha256": "1f72e181272f627c4d18372e97bc9c8999cf8fad963412e15fb2e588c6b0de2e"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-rlhf-reward-model-ppo-kl.md",
+      "bytes": 3299,
+      "sha256": "70d817b37ff09e9e19f924fc01dd3ac67458de1a046d837d2e8a2e5d7f9ea7b1"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-serving-batching-speculative-decoding.md",
+      "bytes": 3334,
+      "sha256": "b83f7475b7be7f1180a881eaf8dae766e7e5798a9decf8e4d165566fc0a98c7e"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-supervised-finetuning-instruction-tuning.md",
+      "bytes": 3054,
+      "sha256": "f0fe0bffb94b598270c5fddcb31fda63e2c62f3b3e0d7465102f8b277b014c9a"
+    },
+    {
+      "path": "apps/portal/textbook/frontier-tool-security-prompt-injection.md",
+      "bytes": 3312,
+      "sha256": "d2c9f7c9e5b6d17091d680dcec7b6a62d821a063907e349152f07dd14045a11b"
+    },
+    {
+      "path": "apps/portal/textbook/la-singular-value-decomposition.md",
+      "bytes": 3159,
+      "sha256": "983644eb75f4638e9cc502223cdb368cbe3fc90c265b65ec429635b125a9eda9"
+    },
+    {
+      "path": "apps/portal/textbook/mat-pca-geometry.md",
+      "bytes": 3235,
+      "sha256": "083884143faf680fa6d95984bae3735269532ecf65857df3c4d5696cc5aae66d"
+    },
+    {
+      "path": "apps/portal/textbook/mat-wls-inverse-variance.md",
+      "bytes": 3136,
+      "sha256": "18344a4f817b15769265546aff29c63b9dbc13c865c6de13229dfc2b4f0be534"
+    },
+    {
+      "path": "apps/portal/textbook/ml-dynamic-programming-value-policy-iteration.md",
+      "bytes": 3396,
+      "sha256": "bfe70aad73b72fba59061089e6a978ef297d93bd49ab0a9f8f477a327ef9c80e"
+    },
+    {
+      "path": "apps/portal/textbook/ml-empirical-risk-generalization.md",
+      "bytes": 3173,
+      "sha256": "e3a2dfccd3e783a50867458821e4a6fad75d67dbfbf0e61d0234a0216ff748b0"
+    },
+    {
+      "path": "apps/portal/textbook/ml-logistic-regression.md",
+      "bytes": 3011,
+      "sha256": "1696dba9215d27dba10cbf0619c7a7ec6f1e4973ee01a413ddeafbf630118ab7"
+    },
+    {
+      "path": "apps/portal/textbook/ml-mdp-bellman-equations.md",
+      "bytes": 2985,
+      "sha256": "f53001ac60d56d16fe560cf8c2b3a92e4fa61d9272cc306691d89f59ddbf09f9"
+    },
+    {
+      "path": "apps/portal/textbook/ml-monte-carlo-td-q-learning.md",
+      "bytes": 3250,
+      "sha256": "46f43a8152487edb994ecbd1b64ac33722b2fb3b8366d39bc963b6043476a877"
+    },
+    {
+      "path": "apps/portal/textbook/ml-policy-gradient-reinforce.md",
+      "bytes": 3139,
+      "sha256": "b5eb4c41bda4b8722ca087534becd67c8b7c56a17164bebc749e3aacbeeec2b9"
+    },
+    {
+      "path": "apps/portal/textbook/opt-fenchel-duality-conjugates.md",
+      "bytes": 2915,
+      "sha256": "0c01fad468cd3b52af3936cc986a8aa8733cf8dca5a91214f7967b0f7c64b5e8"
+    },
+    {
+      "path": "apps/portal/textbook/opt-inequality-constraints-kkt.md",
+      "bytes": 3279,
+      "sha256": "7c1e9f12f5e9e2bf3b17f44458dac68bc7f98ff845742b40d6a59707970133e4"
+    },
+    {
+      "path": "apps/portal/textbook/opt-mirror-descent-bregman.md",
+      "bytes": 2955,
+      "sha256": "0489a7844893a00706be751e88c85ceaa3c046e757b76ce73a8e81d094913121"
+    },
+    {
+      "path": "apps/portal/textbook/opt-subgradients-nonsmooth.md",
+      "bytes": 3035,
+      "sha256": "d3979fd2e5d78ecd11ad8727c9eec0e903de7ee442758f76ebc1bcd3a62dc00c"
+    },
+    {
+      "path": "apps/portal/textbook/opt-tangent-normal-cones-cq.md",
+      "bytes": 3280,
+      "sha256": "dbc4714d25e1934700c035133be0cf1b7f666d30ba9cf2a1aabb634bd50fbedc"
+    },
+    {
+      "path": "apps/portal/textbook/prep-absolute-values-inequalities-intervals.md",
+      "bytes": 2964,
+      "sha256": "dba234a82f74ce131e6a9636b68093c748daf7a527089862e1f419d960f3466a"
+    },
+    {
+      "path": "apps/portal/textbook/prep-complex-numbers-euler-form.md",
+      "bytes": 3017,
+      "sha256": "3e59a85b2c603906e36a9fc3cb4a78150331e16d974888f8341b36475d69d60a"
+    },
+    {
+      "path": "apps/portal/textbook/prep-definitions-theorems-proofs.md",
+      "bytes": 2860,
+      "sha256": "e3c99b6234a851d11b7e82a3ee0120c900c1c457f4fe2e7d72183e96dec2ee91"
+    },
+    {
+      "path": "apps/portal/textbook/prep-exponents-logarithms.md",
+      "bytes": 2650,
+      "sha256": "83f81c1ac69706f55897c419ab01bcac78f78a50a50bff944af9d47a0cf64432"
+    },
+    {
+      "path": "apps/portal/textbook/prep-numerical-checks-reproducibility.md",
+      "bytes": 2977,
+      "sha256": "a4ad48c0bd5b8911beeda944ec566e6a220a9d84be4590e92cd46e2e8b7185b2"
+    },
+    {
+      "path": "apps/portal/textbook/prep-numpy-arrays-shapes.md",
+      "bytes": 2751,
+      "sha256": "fa6430866fe6dc2b62715287fb1644083c5312d1d79a1f32cf45b9753bc1165d"
+    },
+    {
+      "path": "apps/portal/textbook/prep-python-expressions-functions.md",
+      "bytes": 2780,
+      "sha256": "0bcc1045424552f23e8564aad49fae54be8b9d83ee60a339d4a5f0f5a071a339"
+    },
+    {
+      "path": "apps/portal/textbook/prep-sequences-basics.md",
+      "bytes": 2977,
+      "sha256": "0fe4013ca86e97eb3ad69940a9b87581cea675fded5b2b8c1e34a7cb6e559157"
+    },
+    {
+      "path": "apps/portal/textbook/prep-sets-functions-mappings.md",
+      "bytes": 2835,
+      "sha256": "6dc7ea63e7acb47c01b3bdba5a9951fa4d6b9d20802f9d6bd6f1a19bec30dd4a"
+    },
+    {
+      "path": "apps/portal/textbook/prep-sums-products-indices.md",
+      "bytes": 2667,
+      "sha256": "4aacb071c6651b571ee83eccd69ffb6dc4e9ee30664ac9ea5156b5c68d9816b4"
+    },
+    {
+      "path": "apps/portal/textbook/prep-symbols-types-shapes.md",
+      "bytes": 2945,
+      "sha256": "93aeaee76526ab81ce143be8604c386a9910dab5f39906517264ea2b50b070bd"
+    },
+    {
+      "path": "apps/portal/textbook/prep-trigonometry-radians-unit-circle.md",
+      "bytes": 3089,
+      "sha256": "f70299d77f02e6daaa02fd2390ae89926906eb56cf690684b15d0289eb5ff784"
+    },
+    {
+      "path": "apps/portal/textbook/stat-bootstrap-permutation-resampling.md",
+      "bytes": 3430,
+      "sha256": "8d5f1a0d92f204b37c0ac2c380d9e48625ca94752795af72b29b422127a2c4b0"
+    },
+    {
+      "path": "apps/portal/textbook/stat-confidence-intervals.md",
+      "bytes": 3217,
+      "sha256": "2c02078419ddd969b375aa07b9ab51c0920df8826bac571f461193329937f8b6"
+    },
+    {
+      "path": "apps/portal/textbook/stat-fisher-information-asymptotic-mle.md",
+      "bytes": 3153,
+      "sha256": "93901dab67e1dcf2c657382625c32c9f4d3930e49a4b66d6c12847e7326d6ce6"
+    },
+    {
+      "path": "apps/portal/textbook/stat-multiple-testing-fdr.md",
+      "bytes": 2936,
+      "sha256": "17e13900cd9c9ab6f50f20de6aac5ad266c9bdd9e4411708c31f7ed224b675ff"
+    },
+    {
+      "path": "apps/portal/textbook/stat-power-sample-size.md",
+      "bytes": 3047,
+      "sha256": "25de1b6b96655c134f3f4506402120b1eb330c985b876ca1401498cf4b4889c1"
+    },
+    {
+      "path": "apps/portal/textbook/stat-t-chi-square-sampling-distributions.md",
+      "bytes": 3090,
+      "sha256": "b498baf58541f0003ec987cc48af55d6faa7137aec934f0aa0c02881482864a3"
+    },
+    {
+      "path": "apps/slides/build.mjs",
+      "bytes": 1827,
+      "sha256": "0f549e5c3b681fff4f89c310586ba9b73e18ed480fc1b05b929f847ac03ed1d7"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-absolute-values-inequalities-intervals.png",
+      "bytes": 9079,
+      "sha256": "cd5df16b34918c08aaad2259d12c5bd33b292a8169b2018af8b50728d339a800"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-complex-numbers-euler-form.png",
+      "bytes": 49598,
+      "sha256": "f3a366cef98a1ebdfe1d63a533bec697a9f1234fef9cd21d3c15b610dbd285dd"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-definitions-theorems-proofs.png",
+      "bytes": 21778,
+      "sha256": "81a2bc02dadb222c3251dfaebb365d02f70fd009e314974dfe739fde1f90d945"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-exponents-logarithms.png",
+      "bytes": 46190,
+      "sha256": "87cb2c93ec45b18a0f5e1230bd320677f28a87ae0e304732a247aa2e53aaf477"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-numerical-checks-reproducibility.png",
+      "bytes": 35832,
+      "sha256": "7dc6f190221fc13e5407f27f617725511cd8452f869b924534f16ba38a65d7f2"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-numpy-arrays-shapes.png",
+      "bytes": 28257,
+      "sha256": "398ba0ccfe144ccc7eba38345fbe65a6d49f8a762337079b6fece102a0fe061c"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-python-expressions-functions.png",
+      "bytes": 29225,
+      "sha256": "75f05e75bb09bca948fa1284c1e2fc4915f833be8e93886ded6485fc2b4e7f75"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-sequences-basics.png",
+      "bytes": 24688,
+      "sha256": "0d1b46915922b0e0949efb70cc4719a924b926bd47585681022be0cb2dd9a8ea"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-sets-functions-mappings.png",
+      "bytes": 37071,
+      "sha256": "b40426a0871e1d7d46db9000e459ec399c2c612c4e40f0b8dd05ab4cd6b5214d"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-sums-products-indices.png",
+      "bytes": 24406,
+      "sha256": "d39160820b42b77e0320a66ed01bb2cf89bd63063650fffdff4acf88bc0bd68f"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-symbols-types-shapes.png",
+      "bytes": 25340,
+      "sha256": "4682a62108543c45b5dfbae5caabf42c349d2007b67e1f9dedcd51f0a972fd10"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-00/prep-trigonometry-radians-unit-circle.png",
+      "bytes": 43020,
+      "sha256": "60ee15fd6824ce43b720aa89db2daf2df4a0a9d1a4fc9d1b2182f123c53d83ae"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-change-of-variables-jacobian.gif",
+      "bytes": 402297,
+      "sha256": "ae79907a70a1e6bc0c902363bab619a44e8997bf3f3a01a387042ab6d996350a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-change-of-variables-jacobian.png",
+      "bytes": 88588,
+      "sha256": "655acbadae0958ffca0b177d3f6cdd2a1d54812d01b82f87e0bd9bf0d96a56fc"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-implicit-inverse-functions.png",
+      "bytes": 36398,
+      "sha256": "28e4b05e265f272f65d1b24b9bdbebf1165bdd8ade5d0ce64c5af2d06f285fd3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-infinite-series-convergence.gif",
+      "bytes": 95356,
+      "sha256": "65f87b9ccf94527c208d21ec80fa38e523702e22b222923ca61f0dd53d39f7b4"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-infinite-series-convergence.png",
+      "bytes": 23526,
+      "sha256": "8a9c8c31788160d22dac1e30564f51547e2065c31fbb735ee4f01153c27fee4b"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-mean-value-theorem.png",
+      "bytes": 49476,
+      "sha256": "6fca8d276a6c718c60e3cd7f233b1cfb9fd824033affcee9ec61cebf0c66f6ee"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-multiple-integrals.png",
+      "bytes": 22163,
+      "sha256": "c5d151371d9092b8bafb723a56c7a178a11f73e0ab28583f4d5c5061ba5755a1"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-parametric-polar-curves.png",
+      "bytes": 47442,
+      "sha256": "c65de9236b8bfd29e16a0448bade33eb9165d097f232c3ceaba1e756c30d1f86"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-taylor-approximation.png",
+      "bytes": 48634,
+      "sha256": "dc9523d3b9f1da4d41d20b2c6d28dc3c3c67b28ec40b47fe4c9562557f9299d3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-taylor-series-remainder.png",
+      "bytes": 48634,
+      "sha256": "dc9523d3b9f1da4d41d20b2c6d28dc3c3c67b28ec40b47fe4c9562557f9299d3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-01/calc-vector-fields-line-integrals.png",
+      "bytes": 65307,
+      "sha256": "99ed257bb101b66f57a6b67bc0a3d5d713055e79ee9060c2bac98e1e2a5adde3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-02/la-singular-value-decomposition.png",
+      "bytes": 52492,
+      "sha256": "a23f2e93e6146ac949e2a687de50355c5ce4531637cd46514b9c1dde7d6766f5"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-bootstrap-permutation-resampling.gif",
+      "bytes": 197671,
+      "sha256": "2f8496a866ab7ee98037050dec196f7686604fa45053a471c2c2cb4f0892346a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-bootstrap-permutation-resampling.png",
+      "bytes": 25566,
+      "sha256": "b360a10de3496f31f9c3f7f43dab5299c7178aa92ed65e3755eef5f3c1c8a74a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-confidence-intervals.png",
+      "bytes": 32834,
+      "sha256": "0e88283ac1dae94b46662cd60e29860b42feb785d0ad0a58e17c7a42766896b5"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-fisher-information-asymptotic-mle.png",
+      "bytes": 52928,
+      "sha256": "7bf2e92383605b2dc229e69413c22ca55a5debfc5f2e3809eccf558775b2537a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-multiple-testing-fdr.png",
+      "bytes": 33612,
+      "sha256": "260db3607500700a5407f7ebfeb69e5d8fb8185dc99a07ce5b8aa2af6bec4be1"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-power-sample-size.png",
+      "bytes": 58056,
+      "sha256": "24680e86e763eb9f9a19eff9f45087ddc5b76376dd24799165053a4324688ea8"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-03/stat-t-chi-square-sampling-distributions.png",
+      "bytes": 73798,
+      "sha256": "e6619b77e99b479a5f008c6afcf3d7f1147aee634d5057cae97a9997ed9edb5a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-04/dm-bipartite-matching-hall.png",
+      "bytes": 20531,
+      "sha256": "0c217e686b65c04651b75e9dc4bd9fc079ac4d7172db1bb06657e3e0a68db2d3"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-04/dm-generating-functions.png",
+      "bytes": 22362,
+      "sha256": "fc7ddf8979074125e13c2161788f7d93291dee7ec5bd0a87c4612ea39c57e6fa"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-04/dm-graph-coloring.png",
+      "bytes": 43259,
+      "sha256": "6e49d92380e4071165b5d8c4a28c98d5c3259c5b5e470237de47b8124d8bf620"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-04/dm-state-machines-invariants.png",
+      "bytes": 44697,
+      "sha256": "3d343f8183094cb458e352350c5cd695b1ad13908baa41e897fac8cdae5ecd5b"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-06/opt-fenchel-duality-conjugates.png",
+      "bytes": 37788,
+      "sha256": "eb5ccd95eeb8dea2d0ea7a5b96a943b025fceedd7b4b80d915a4cfb3ee0fbcdb"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-06/opt-inequality-constraints-kkt.png",
+      "bytes": 27207,
+      "sha256": "1aa1f9ac2d13481e1064cb52f57c1ee083206785e4122d394e275d578f8ea1fb"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-06/opt-mirror-descent-bregman.png",
+      "bytes": 24058,
+      "sha256": "16adb5a4370ebc52560d418a2dfcf35cbb93bd9aa647d4905765ea289bcd9560"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-06/opt-subgradients-nonsmooth.png",
+      "bytes": 68956,
+      "sha256": "b0b9b6c377e680da6b5af93e23975e01d41e1432e76245b890aec10dcbfa9aee"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-06/opt-tangent-normal-cones-cq.png",
+      "bytes": 27207,
+      "sha256": "1aa1f9ac2d13481e1064cb52f57c1ee083206785e4122d394e275d578f8ea1fb"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-07/mat-pca-geometry.png",
+      "bytes": 35770,
+      "sha256": "77fbcfcde1e6c1719ac70d35c441156848782bc732fcab10bbb8598af56c747d"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-07/mat-wls-inverse-variance.png",
+      "bytes": 34484,
+      "sha256": "3ac7fc69044b9b403f61a8903cbce9fbf16cb26dfa61f806a5ada79dd7018e50"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-dynamic-programming-value-policy-iteration.gif",
+      "bytes": 78036,
+      "sha256": "d18294d657ffbc68e768aeea6b19760e3c9b415677f1edd32663e895d43f2364"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-dynamic-programming-value-policy-iteration.png",
+      "bytes": 71973,
+      "sha256": "39d1aeeacaddbfae0297819f3f8fb28424275b0c58feb70d6488a099e7cc4e3e"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-empirical-risk-generalization.png",
+      "bytes": 51855,
+      "sha256": "8aacf8db5cabcfc75efe2ca60da746ff936a649e660d01a74b21b1a4a335810c"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-logistic-regression.png",
+      "bytes": 33030,
+      "sha256": "a812722955b752e285b5474b08f5f89d70d1ba8d564f4f95129866bd51396f7d"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-mdp-bellman-equations.png",
+      "bytes": 26712,
+      "sha256": "9cac441dcc83b85e5d102a7bd3f5cac8875d6f0dd0b4e3f74f6036f656d8f897"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-monte-carlo-td-q-learning.gif",
+      "bytes": 112890,
+      "sha256": "f767ed8ff24eecc1c672a785d7f02437df9165f65acc9673b63fb4b71af3b66b"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-monte-carlo-td-q-learning.png",
+      "bytes": 33150,
+      "sha256": "6ea2f237c58bf95aeac3451843210854ea72c87b1c8cbd0fa5df177a98c804a9"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-08/ml-policy-gradient-reinforce.png",
+      "bytes": 36198,
+      "sha256": "933d560605b65b212b4003e4f480639f7d14aacf24397f35d662a69c717a3aa6"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-09/dl-activation-loss-functions.png",
+      "bytes": 38511,
+      "sha256": "83094433cd988de30c1b8b6a64e3587f17708d1987aeb2b2716c53d5850f740e"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-09/dl-attention-mechanism.png",
+      "bytes": 30787,
+      "sha256": "9eca52e3d880822cd8d1a80a03717c987b0751ec62fb46206c750012a57a2c1a"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-09/dl-deep-reinforcement-learning.png",
+      "bytes": 86956,
+      "sha256": "8fee749f0ae45ab8bebf14b830b8524e08b0bae65a51bbbce74fdcfd206bdb14"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-09/dl-seq2seq-teacher-forcing.png",
+      "bytes": 20159,
+      "sha256": "4c3f3380f2c8b17bc52a2b7687ca5e075dcd734fdb57ac050f0791c4eb56bcc7"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-data-dedup-mixtures-contamination.png",
+      "bytes": 29824,
+      "sha256": "f26dac54fb5f5d83e48e65c6d02c9f7f8f33bdd560279ee07bdcd102b3320032"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-inference-prefill-decode-kv-cache.gif",
+      "bytes": 65277,
+      "sha256": "d8d72c2ae155c060cc192bc85ce83e75efc4da7faab540134aadb06b2cce7dd0"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-inference-prefill-decode-kv-cache.png",
+      "bytes": 46257,
+      "sha256": "9d68a8d4e843f2d54261a876226dc56a8d6ffaf5bb6fbd891bb130d062fdd380"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-rag-reranking-evaluation.png",
+      "bytes": 21915,
+      "sha256": "39e85fb27a59d0223128529f91b93a27f2ed6653ab042fbdea74accfcde251c9"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-reasoning-rl-rlvr.png",
+      "bytes": 23703,
+      "sha256": "2cb083da98649a9865c9558a6e588d61be3759a518b548b2b009f09b690653cf"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-rlhf-preference-optimization.png",
+      "bytes": 38398,
+      "sha256": "2b1108457bb36187d5c848aa354aef700f6518bbf7cfbdbe4d5e8e4b7bee2add"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-rlhf-reward-model-ppo-kl.png",
+      "bytes": 21722,
+      "sha256": "2cc3faa1526ff7b2047dc566473494b11a8df6132d1bd13f41692891606aee64"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-serving-batching-speculative-decoding.png",
+      "bytes": 27905,
+      "sha256": "070a580e5f9f346d68b5bf741a1482170783e38b9f525d77a0559d223f7d66fe"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-supervised-finetuning-instruction-tuning.png",
+      "bytes": 19725,
+      "sha256": "1cc46bf0c3a9e773c25b709023a6cb3128788c983271c386983895990f29bbee"
+    },
+    {
+      "path": "apps/slides/decks/assets/course-10/frontier-tool-security-prompt-injection.png",
+      "bytes": 19905,
+      "sha256": "4273907148982327a6a10ea8394d5ec7945c38e24c814207f028810b49f16a15"
+    },
+    {
+      "path": "apps/slides/decks/calc-change-of-variables-jacobian.md",
+      "bytes": 1627,
+      "sha256": "6832f3ce03ff48947df27ab53fbe4d93dcedf66d8c833483cf1bc313cb1795cc"
+    },
+    {
+      "path": "apps/slides/decks/calc-implicit-inverse-functions.md",
+      "bytes": 1401,
+      "sha256": "17301967c9192b7c034441cebc586232e9dd34a2992a2113ab0462bdd7e9b247"
+    },
+    {
+      "path": "apps/slides/decks/calc-infinite-series-convergence.md",
+      "bytes": 1616,
+      "sha256": "a036ffaf0be9db89dd6a48e2d62cb3c9f16935a1593012eb0b43c26d23d098bd"
+    },
+    {
+      "path": "apps/slides/decks/calc-mean-value-theorem.md",
+      "bytes": 1367,
+      "sha256": "8492bb6715b7e9803e71ae76271ac688daa95d2a2c2c8626d8e8539f5b0102df"
+    },
+    {
+      "path": "apps/slides/decks/calc-multiple-integrals.md",
+      "bytes": 1325,
+      "sha256": "313ec88aa4f414ee73b21884120aad5c378d43c44aa353f3526a5c199f4982f6"
+    },
+    {
+      "path": "apps/slides/decks/calc-parametric-polar-curves.md",
+      "bytes": 1324,
+      "sha256": "f5d7d0398f0c2bca2ce219ec70d24f92591a860be281e1a67b8e9df70f7edcf5"
+    },
+    {
+      "path": "apps/slides/decks/calc-taylor-approximation.md",
+      "bytes": 1524,
+      "sha256": "f71f5696fc0875ec0dfa5b64b69ddf08d67bc38ff90b5e4d7fc39279b0f90a6e"
+    },
+    {
+      "path": "apps/slides/decks/calc-taylor-series-remainder.md",
+      "bytes": 1561,
+      "sha256": "5d131cee10d1ffd297c6120d1724c77cefbd35a4c0f5561aa1335a6ef187e813"
+    },
+    {
+      "path": "apps/slides/decks/calc-vector-fields-line-integrals.md",
+      "bytes": 1424,
+      "sha256": "9ffb584d6b6f7c838881dc3c63876df99c23555c5fa26686f81370d36884a65f"
+    },
+    {
+      "path": "apps/slides/decks/dl-activation-loss-functions.md",
+      "bytes": 1594,
+      "sha256": "138d25d24fef326bb5a3c242c160d891f77eaeaaab577375cf216caa13ae23a3"
+    },
+    {
+      "path": "apps/slides/decks/dl-attention-mechanism.md",
+      "bytes": 1554,
+      "sha256": "c90c0963b8dfb1b3ce471ce20e98b8186f9e17fb47bfd084617e9186194eb646"
+    },
+    {
+      "path": "apps/slides/decks/dl-deep-reinforcement-learning.md",
+      "bytes": 1659,
+      "sha256": "9a2aac26dee47a2a5495f1f07acdd1d8d43062ad6365620536f2c53f962babed"
+    },
+    {
+      "path": "apps/slides/decks/dl-seq2seq-teacher-forcing.md",
+      "bytes": 1550,
+      "sha256": "c0a8bea2986f331c14bed5eebe0a02686ec674b39e3c26151b01a8ba11a735e3"
+    },
+    {
+      "path": "apps/slides/decks/dm-bipartite-matching-hall.md",
+      "bytes": 1573,
+      "sha256": "b1e7b83f0721f9238cf5f9ed5f4428087e53610b0faff3ece2ded65d903f1b0e"
+    },
+    {
+      "path": "apps/slides/decks/dm-generating-functions.md",
+      "bytes": 1392,
+      "sha256": "5fb8c2ce2f1a9a602a5480b5e3fe4fec56f2e3762d620efd9e89361fdd726518"
+    },
+    {
+      "path": "apps/slides/decks/dm-graph-coloring.md",
+      "bytes": 1348,
+      "sha256": "fa8f39276a626a5d255817d5cfa57759df7da98059111441289a5e11002dc4e2"
+    },
+    {
+      "path": "apps/slides/decks/dm-state-machines-invariants.md",
+      "bytes": 1524,
+      "sha256": "81cd1962a0edece3a17f749230a4e0f2c16ca199d4fdbaa0710b71de47073b27"
+    },
+    {
+      "path": "apps/slides/decks/frontier-data-dedup-mixtures-contamination.md",
+      "bytes": 1656,
+      "sha256": "dddc0f50a1b7218e7f81c858072b2ff972ab34378b6fccf7f6075ea4291333a0"
+    },
+    {
+      "path": "apps/slides/decks/frontier-inference-prefill-decode-kv-cache.md",
+      "bytes": 1784,
+      "sha256": "13b771876681be9217e52c6e650671ce3a99580a3b059e3724e08dc172679b0f"
+    },
+    {
+      "path": "apps/slides/decks/frontier-rag-reranking-evaluation.md",
+      "bytes": 1674,
+      "sha256": "0d9cfcd6fc12f388e2e8debddf87031e0567fdf3df6b5543d6bc20eda28c1cdc"
+    },
+    {
+      "path": "apps/slides/decks/frontier-reasoning-rl-rlvr.md",
+      "bytes": 1626,
+      "sha256": "599d74db0e0127ea61234981a0bc9c982ab39aa7a8d077b97f60fd109f1652f2"
+    },
+    {
+      "path": "apps/slides/decks/frontier-rlhf-preference-optimization.md",
+      "bytes": 2018,
+      "sha256": "6331c117756b16bb155b11f79501d512e2423f0e3199ef52f7f1fb4454db00ff"
+    },
+    {
+      "path": "apps/slides/decks/frontier-rlhf-reward-model-ppo-kl.md",
+      "bytes": 1723,
+      "sha256": "8ac8dd53675e4613b147e65f2633da56b8122f6aa9f5449be75f9d16d5ba0bc3"
+    },
+    {
+      "path": "apps/slides/decks/frontier-serving-batching-speculative-decoding.md",
+      "bytes": 1777,
+      "sha256": "1fe42c55df847081f4f46324f4e696cf872d1137ff7c986789f63baa6e6bcee7"
+    },
+    {
+      "path": "apps/slides/decks/frontier-supervised-finetuning-instruction-tuning.md",
+      "bytes": 1540,
+      "sha256": "6bac9d4b6c33f52d561c6e6f12eb9324958473120a99f870f06f40e2e529f4c7"
+    },
+    {
+      "path": "apps/slides/decks/frontier-tool-security-prompt-injection.md",
+      "bytes": 1725,
+      "sha256": "1b207ee514296dac5c1cf88f654e6db8eae81601c0dd4196fb2b2e23c9c5ac6d"
+    },
+    {
+      "path": "apps/slides/decks/la-singular-value-decomposition.md",
+      "bytes": 1594,
+      "sha256": "1ea0a13f57e6fa5282b6777977cbf149655bca8a81f0631a8540aad3f6207399"
+    },
+    {
+      "path": "apps/slides/decks/mat-pca-geometry.md",
+      "bytes": 1678,
+      "sha256": "90528e16e459e84b1a248e4c6096961078668e0c89fa0608fb30a8e086302aa5"
+    },
+    {
+      "path": "apps/slides/decks/mat-wls-inverse-variance.md",
+      "bytes": 1595,
+      "sha256": "590c55ec2c288ea4286e10d6bf47d4df7651b369a018befaafa4a3c11a9d38d7"
+    },
+    {
+      "path": "apps/slides/decks/ml-dynamic-programming-value-policy-iteration.md",
+      "bytes": 1788,
+      "sha256": "bff9f1c9ba2fdaffcfa5f06ab6a6f690ffb9e992a3bf1468b44a59a4112e862b"
+    },
+    {
+      "path": "apps/slides/decks/ml-empirical-risk-generalization.md",
+      "bytes": 1624,
+      "sha256": "cf545c21d2f2d4f010de4529245f7e5e7567be09269f781dc70c5497e792ee17"
+    },
+    {
+      "path": "apps/slides/decks/ml-logistic-regression.md",
+      "bytes": 1499,
+      "sha256": "dfc59795be0d854a21986a85f74883b32579e46f29ab55727471ec62cb596893"
+    },
+    {
+      "path": "apps/slides/decks/ml-mdp-bellman-equations.md",
+      "bytes": 1422,
+      "sha256": "2e7196baa7d9b4204c1c11ded5be7a2fd2427b974ba8dc92d530ce106f49c623"
+    },
+    {
+      "path": "apps/slides/decks/ml-monte-carlo-td-q-learning.md",
+      "bytes": 1699,
+      "sha256": "3e4726af6476ac257335c25d43ecaf15b0cb9a2401330cd0315795f0f41d7deb"
+    },
+    {
+      "path": "apps/slides/decks/ml-policy-gradient-reinforce.md",
+      "bytes": 1587,
+      "sha256": "5aa62c2e5896d0e69f31b93ad6f3713489a2251e15b45a66577f45f6e078b1d0"
+    },
+    {
+      "path": "apps/slides/decks/opt-fenchel-duality-conjugates.md",
+      "bytes": 1404,
+      "sha256": "bb94eb5bd66025c75067a90ee2102ac1d5f2793e37a4c16d0e9780f0ff409f9c"
+    },
+    {
+      "path": "apps/slides/decks/opt-inequality-constraints-kkt.md",
+      "bytes": 1733,
+      "sha256": "12e538778f0e9c207f1398f9993b8b7a9dc89813ad3da8d50c1f30f8831e5cf2"
+    },
+    {
+      "path": "apps/slides/decks/opt-mirror-descent-bregman.md",
+      "bytes": 1435,
+      "sha256": "4931c29abe396d289846593d5adbaf65b2ae652694d5dba944aea5701db54879"
+    },
+    {
+      "path": "apps/slides/decks/opt-subgradients-nonsmooth.md",
+      "bytes": 1502,
+      "sha256": "dcbec080fb490027c5e87d7f78908ecd2b59111b4a565bbe2299c65d67d2b3f2"
+    },
+    {
+      "path": "apps/slides/decks/opt-tangent-normal-cones-cq.md",
+      "bytes": 1715,
+      "sha256": "6a0bc1bc10c3625ce2a4d00329b7182a616e476a580385af7a748f78fd432946"
+    },
+    {
+      "path": "apps/slides/decks/prep-absolute-values-inequalities-intervals.md",
+      "bytes": 1452,
+      "sha256": "a53f7396fa782bf28d68bc3ebff82f21af8153b0dccff635317b1405f27d0f6d"
+    },
+    {
+      "path": "apps/slides/decks/prep-complex-numbers-euler-form.md",
+      "bytes": 1480,
+      "sha256": "14f42a93c026bd12e01071c6ec32b1f08a3a2924fb950123d4594e8895fb5bca"
+    },
+    {
+      "path": "apps/slides/decks/prep-definitions-theorems-proofs.md",
+      "bytes": 1346,
+      "sha256": "88e7d07e583cb041943c165216f6283aae2fc827aea20996da67b3e0a8938708"
+    },
+    {
+      "path": "apps/slides/decks/prep-exponents-logarithms.md",
+      "bytes": 1150,
+      "sha256": "fe4c5c9294c9f2a427015df4612d20783c77fbde7252287c4813651f00f1421c"
+    },
+    {
+      "path": "apps/slides/decks/prep-numerical-checks-reproducibility.md",
+      "bytes": 1474,
+      "sha256": "1bbe78e99e8c7df90800a2784a2a4261180f9cd099a7d8969663642eb9f0c0ff"
+    },
+    {
+      "path": "apps/slides/decks/prep-numpy-arrays-shapes.md",
+      "bytes": 1249,
+      "sha256": "183fea1a7f244bed03073a9c17b6edeb3b2ba23a35755ee0eb077234d4ef1bb6"
+    },
+    {
+      "path": "apps/slides/decks/prep-python-expressions-functions.md",
+      "bytes": 1284,
+      "sha256": "1ce707573df3c5bb10454f4f7a418774f16e7e327ef3782af2cdda2c1ba7e7ca"
+    },
+    {
+      "path": "apps/slides/decks/prep-sequences-basics.md",
+      "bytes": 1416,
+      "sha256": "7c0072c9e938664eaeb02020c7a79f08f02edab765481a63743afcd8d0fdc806"
+    },
+    {
+      "path": "apps/slides/decks/prep-sets-functions-mappings.md",
+      "bytes": 1331,
+      "sha256": "3be5d2b7bd3504012bc530c13184ea5fecc06887c5551119e6a6239caa067361"
+    },
+    {
+      "path": "apps/slides/decks/prep-sums-products-indices.md",
+      "bytes": 1184,
+      "sha256": "5dce5784a98dba8cdd90441347c43cbf3a42acdd8c98431df568063b53f098d6"
+    },
+    {
+      "path": "apps/slides/decks/prep-symbols-types-shapes.md",
+      "bytes": 1392,
+      "sha256": "9883dab60fbac843039886a3315f3d17c59ab8b09f68b72e5fdd29cdf37f4d96"
+    },
+    {
+      "path": "apps/slides/decks/prep-trigonometry-radians-unit-circle.md",
+      "bytes": 1528,
+      "sha256": "d73cd4b96d28a1af9d8e14b137dbb7a491e3772b758ae7219bc7ee5647f440f2"
+    },
+    {
+      "path": "apps/slides/decks/stat-bootstrap-permutation-resampling.md",
+      "bytes": 1835,
+      "sha256": "399f56685534568c3c20b9ef2377efc3617bf17bd6c230adc4e05e110d635c41"
+    },
+    {
+      "path": "apps/slides/decks/stat-confidence-intervals.md",
+      "bytes": 1635,
+      "sha256": "4eb633baada143ce5a9ccc32f1596b32b587cb3460dac8eb14f555890d7ed9fe"
+    },
+    {
+      "path": "apps/slides/decks/stat-fisher-information-asymptotic-mle.md",
+      "bytes": 1618,
+      "sha256": "0ac876e7f46ddc2ced0e974fa68052aba73b9d17837ddd7667a3e606731b6c48"
+    },
+    {
+      "path": "apps/slides/decks/stat-multiple-testing-fdr.md",
+      "bytes": 1422,
+      "sha256": "65eb6b1bda90c7a7ef08816e03b33a560906941022ff1869472dd3ebc8bf1901"
+    },
+    {
+      "path": "apps/slides/decks/stat-power-sample-size.md",
+      "bytes": 1503,
+      "sha256": "3fb1213798147140f40f03a75cd400ed4d83f29f62018c5ec960a6044c305410"
+    },
+    {
+      "path": "apps/slides/decks/stat-t-chi-square-sampling-distributions.md",
+      "bytes": 1552,
+      "sha256": "37bb575819f36e24dcb6c9a5c5f9342fb4f331e6a7a6197f89394cb5dd3846eb"
+    },
+    {
+      "path": "content/audit-additions.yml",
+      "bytes": 30333,
+      "sha256": "4a29d52e8f26aaea1455796fe7191bb55194e22b6963fb6e6d144f3cb470fafc"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1072,
+      "sha256": "5642b6cacd83764ff3c546369f1c0c1511fbb7722cfab3ca1884a9d4081f42b6"
+    },
+    {
+      "path": "tools/apply-audit-curriculum.mjs",
+      "bytes": 2953,
+      "sha256": "4833e3e9b63737f62e67ed543435ff4b02e1469eccd7889251d46c38e6b10271"
+    },
+    {
+      "path": "tools/check-learning-quality.mjs",
+      "bytes": 2604,
+      "sha256": "db993f4fc64f39673353332cd0a62a4ea6937e898b1bd9a1323d2b050ed637e6"
+    }
+  ]
+}
