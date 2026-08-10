@@ -2,7 +2,6 @@
 theme: default
 routerMode: hash
 generatedBy: course01-10-curated-upgrade-v2
-generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "直接証明・対偶・背理法・場合分け"
 ---

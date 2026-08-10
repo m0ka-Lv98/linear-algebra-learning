@@ -2,7 +2,6 @@
 theme: default
 routerMode: hash
 generatedBy: course01-10-curated-upgrade-v2
-generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "微分法則と一変数の連鎖律"
 ---

@@ -2,7 +2,6 @@
 theme: default
 routerMode: hash
 generatedBy: course01-10-curated-upgrade-v2
-generatedBy: textbook-plus-sequential-v3
 layout: cover
 title: "数学的帰納法・強い帰納法・整列原理"
 ---
