@@ -15,7 +15,7 @@
 
 ## 次に学ぶTopic
 
-[ridge・Lasso・Elastic Net](/knowledge-base/topics/mat-ridge-lasso-elastic-net) / [filteringと正則化](/knowledge-base/topics/mat-filtering-regularization)
+[ridge・Lasso・Elastic Net](/knowledge-base/topics/mat-ridge-lasso-elastic-net) / [filteringと正則化](/knowledge-base/topics/mat-filtering-regularization) / [Tikhonov regularization](/knowledge-base/topics/inv-tikhonov-regularization)
 
 ## Learning Path
 

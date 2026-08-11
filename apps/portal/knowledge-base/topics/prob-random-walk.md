@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Characteristic function](/knowledge-base/topics/prob-characteristic-functions)
+- [Bernoulli distribution](/knowledge-base/topics/prob-bernoulli-distribution)
+- [期待値・分散・モーメント](/knowledge-base/topics/prob-expectation-variance-moments)
 
 ## 次に学ぶTopic
 

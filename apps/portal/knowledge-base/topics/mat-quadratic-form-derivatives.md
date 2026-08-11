@@ -4,16 +4,17 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
-- [Trace trick](/knowledge-base/topics/mat-trace-trick)
+- [Scalar-by-vector derivative](/knowledge-base/topics/mat-scalar-by-vector-derivative)
+- [二次形式と正定値行列](/knowledge-base/topics/la-quadratic-forms-positive-definite)
 
 ## 次に学ぶTopic
 
-[Inverse matrix derivative](/knowledge-base/topics/mat-inverse-matrix-derivative)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-quadratic-form-derivatives) / [教科書](/textbook/mat-quadratic-form-derivatives) / [演習](/exercises/mat-quadratic-form-derivatives) / [スライド](/slides/mat-quadratic-form-derivatives/)

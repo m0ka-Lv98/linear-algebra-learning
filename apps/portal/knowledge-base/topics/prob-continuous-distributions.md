@@ -15,7 +15,7 @@
 
 ## 次に学ぶTopic
 
-[確率変数の変換と和](/knowledge-base/topics/prob-transformations-sums-random-variables) / [t分布・χ²分布と標本分布](/knowledge-base/topics/stat-t-chi-square-sampling-distributions) / [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution) / [尤度と最尤推定](/knowledge-base/topics/stat-likelihood-maximum-likelihood) / [エントロピー・交差エントロピー・KLダイバージェンス](/knowledge-base/topics/stat-entropy-cross-entropy-kl-divergence) / [diffusionとscore model](/knowledge-base/topics/dl-diffusion-score-models)
+[確率変数の変換と和](/knowledge-base/topics/prob-transformations-sums-random-variables) / [t分布・χ²分布と標本分布](/knowledge-base/topics/stat-t-chi-square-sampling-distributions) / [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution) / [尤度と最尤推定](/knowledge-base/topics/stat-likelihood-maximum-likelihood) / [エントロピー・交差エントロピー・KLダイバージェンス](/knowledge-base/topics/stat-entropy-cross-entropy-kl-divergence) / [diffusionとscore model](/knowledge-base/topics/dl-diffusion-score-models) / [Gaussian distribution](/knowledge-base/topics/prob-gaussian-distribution)
 
 ## Learning Path
 

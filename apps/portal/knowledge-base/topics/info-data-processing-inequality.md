@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[Maximum entropy](/knowledge-base/topics/info-maximum-entropy)
+登録なし
 
 ## Learning Path
 

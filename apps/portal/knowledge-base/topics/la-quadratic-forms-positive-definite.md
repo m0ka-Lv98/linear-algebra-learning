@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[Cholesky分解](/knowledge-base/topics/la-cholesky-factorization) / [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution) / [whiteningとMahalanobis距離](/knowledge-base/topics/mat-whitening-mahalanobis) / [kernel methodと特徴写像](/knowledge-base/topics/ml-kernel-methods-feature-maps)
+[Cholesky分解](/knowledge-base/topics/la-cholesky-factorization) / [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution) / [whiteningとMahalanobis距離](/knowledge-base/topics/mat-whitening-mahalanobis) / [kernel methodと特徴写像](/knowledge-base/topics/ml-kernel-methods-feature-maps) / [Quadratic form derivatives](/knowledge-base/topics/mat-quadratic-form-derivatives) / [Conjugate gradient](/knowledge-base/topics/num-conjugate-gradient)
 
 ## Learning Path
 

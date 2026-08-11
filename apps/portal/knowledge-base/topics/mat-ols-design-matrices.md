@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[線形回帰](/knowledge-base/topics/ml-linear-regression)
+[線形回帰](/knowledge-base/topics/ml-linear-regression) / [Generalized linear models](/knowledge-base/topics/stat-generalized-linear-models)
 
 ## Learning Path
 

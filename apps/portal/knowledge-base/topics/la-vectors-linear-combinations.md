@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[行列をデータと線形写像として見る](/knowledge-base/topics/la-matrices-data-linear-maps) / [spanと部分空間](/knowledge-base/topics/la-span-subspaces) / [内積・ノルム・角度](/knowledge-base/topics/la-inner-products-norms-angles)
+[行列をデータと線形写像として見る](/knowledge-base/topics/la-matrices-data-linear-maps) / [spanと部分空間](/knowledge-base/topics/la-span-subspaces) / [内積・ノルム・角度](/knowledge-base/topics/la-inner-products-norms-angles) / [Scalar-by-vector derivative](/knowledge-base/topics/mat-scalar-by-vector-derivative)
 
 ## Learning Path
 

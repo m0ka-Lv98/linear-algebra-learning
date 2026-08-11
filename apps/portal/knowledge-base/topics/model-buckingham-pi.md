@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Dimensional analysis](/knowledge-base/topics/model-dimensional-analysis)
+- [Nondimensionalization](/knowledge-base/topics/model-nondimensionalization)
 
 ## 次に学ぶTopic
 
-[Nondimensionalization](/knowledge-base/topics/model-nondimensionalization)
+登録なし
 
 ## Learning Path
 

@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[多変数の制約なし最適化](/knowledge-base/topics/calc-unconstrained-optimization) / [二次形式と正定値行列](/knowledge-base/topics/la-quadratic-forms-positive-definite) / [Fisher情報量とMLEの漸近分布](/knowledge-base/topics/stat-fisher-information-asymptotic-mle) / [滑らかさと強凸性](/knowledge-base/topics/opt-smoothness-strong-convexity) / [Newton法と準Newton法](/knowledge-base/topics/opt-newton-quasi-newton)
+[多変数の制約なし最適化](/knowledge-base/topics/calc-unconstrained-optimization) / [二次形式と正定値行列](/knowledge-base/topics/la-quadratic-forms-positive-definite) / [Fisher情報量とMLEの漸近分布](/knowledge-base/topics/stat-fisher-information-asymptotic-mle) / [滑らかさと強凸性](/knowledge-base/topics/opt-smoothness-strong-convexity) / [Newton法と準Newton法](/knowledge-base/topics/opt-newton-quasi-newton) / [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix) / [BFGS](/knowledge-base/topics/opt-bfgs)
 
 ## Learning Path
 

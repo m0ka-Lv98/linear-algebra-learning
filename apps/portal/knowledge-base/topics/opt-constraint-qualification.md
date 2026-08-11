@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Tangent and normal cones](/knowledge-base/topics/opt-tangent-normal-cones)
+- [Lagrange乗数法](/knowledge-base/topics/calc-lagrange-multipliers)
 
 ## 次に学ぶTopic
 
-[Fenchel duality](/knowledge-base/topics/opt-fenchel-duality)
+登録なし
 
 ## Learning Path
 

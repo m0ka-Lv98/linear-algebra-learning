@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-なし
+- [誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability)
+- [浮動小数点数と丸め](/knowledge-base/topics/num-floating-point-rounding)
 
 ## 次に学ぶTopic
 
-[Chebyshev approximation](/knowledge-base/topics/num-chebyshev-approximation)
+登録なし
 
 ## Learning Path
 

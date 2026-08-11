@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[splineと区分的近似](/knowledge-base/topics/num-splines-piecewise-approximation) / [数値積分と求積法](/knowledge-base/topics/num-numerical-integration-quadrature)
+[splineと区分的近似](/knowledge-base/topics/num-splines-piecewise-approximation) / [数値積分と求積法](/knowledge-base/topics/num-numerical-integration-quadrature) / [Chebyshev approximation](/knowledge-base/topics/num-chebyshev-approximation)
 
 ## Learning Path
 

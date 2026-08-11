@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Krylov subspace methods](/knowledge-base/topics/num-krylov-subspace)
+- [二次形式と正定値行列](/knowledge-base/topics/la-quadratic-forms-positive-definite)
 
 ## 次に学ぶTopic
 

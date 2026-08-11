@@ -9,7 +9,9 @@
 
 ## Prerequisites
 
-- [Green functions](/knowledge-base/topics/pde-green-functions)
+- [Heat equation](/knowledge-base/topics/pde-heat-equation)
+- [Wave equation](/knowledge-base/topics/pde-wave-equation)
+- [特異値分解](/knowledge-base/topics/la-singular-value-decomposition)
 
 ## 次に学ぶTopic
 

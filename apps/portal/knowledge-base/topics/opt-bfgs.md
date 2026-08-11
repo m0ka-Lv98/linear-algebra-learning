@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-なし
+- [勾配降下法と収束](/knowledge-base/topics/opt-gradient-descent-convergence)
+- [Hessianと二次近似](/knowledge-base/topics/calc-hessian-second-order)
 
 ## 次に学ぶTopic
 
-[Subgradient](/knowledge-base/topics/opt-subgradient)
+登録なし
 
 ## Learning Path
 

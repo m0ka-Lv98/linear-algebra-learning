@@ -4,12 +4,13 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
 
-- [STFT and spectrogram](/knowledge-base/topics/sig-stft-spectrogram)
+- [積分と微積分学の基本定理](/knowledge-base/topics/calc-integrals-fundamental-theorem)
+- [Continuous-time signals](/knowledge-base/topics/sig-continuous-time-signals)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-laplace-transform) / [教科書](/textbook/sig-laplace-transform) / [演習](/exercises/sig-laplace-transform) / [スライド](/slides/sig-laplace-transform/)

@@ -4,12 +4,13 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
 - [Sufficient statistics](/knowledge-base/topics/stat-sufficient-statistics)
+- [尤度と最尤推定](/knowledge-base/topics/stat-likelihood-maximum-likelihood)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-exponential-family) / [教科書](/textbook/stat-exponential-family) / [演習](/exercises/stat-exponential-family) / [スライド](/slides/stat-exponential-family/)

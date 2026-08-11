@@ -4,16 +4,17 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
 - [Generalized linear models](/knowledge-base/topics/stat-generalized-linear-models)
+- [Poisson distribution](/knowledge-base/topics/prob-poisson-distribution)
 
 ## 次に学ぶTopic
 
-[Covariance estimation](/knowledge-base/topics/stat-covariance-estimation)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-poisson-regression) / [教科書](/textbook/stat-poisson-regression) / [演習](/exercises/stat-poisson-regression) / [スライド](/slides/stat-poisson-regression/)

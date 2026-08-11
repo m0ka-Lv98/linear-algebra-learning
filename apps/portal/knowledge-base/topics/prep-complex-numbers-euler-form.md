@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-登録なし
+[Characteristic function](/knowledge-base/topics/prob-characteristic-functions) / [Fourier series](/knowledge-base/topics/sig-fourier-series) / [Analytic functions](/knowledge-base/topics/complex-analytic-functions)
 
 ## Learning Path
 

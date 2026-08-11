@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[劣勾配と非滑らか最適化](/knowledge-base/topics/opt-subgradients-nonsmooth) / [滑らかさと強凸性](/knowledge-base/topics/opt-smoothness-strong-convexity) / [射影勾配法](/knowledge-base/topics/opt-projected-gradient) / [近接勾配法](/knowledge-base/topics/opt-proximal-gradient) / [Mirror descentとBregman divergence](/knowledge-base/topics/opt-mirror-descent-bregman) / [logistic回帰](/knowledge-base/topics/ml-logistic-regression)
+[劣勾配と非滑らか最適化](/knowledge-base/topics/opt-subgradients-nonsmooth) / [滑らかさと強凸性](/knowledge-base/topics/opt-smoothness-strong-convexity) / [射影勾配法](/knowledge-base/topics/opt-projected-gradient) / [近接勾配法](/knowledge-base/topics/opt-proximal-gradient) / [Mirror descentとBregman divergence](/knowledge-base/topics/opt-mirror-descent-bregman) / [logistic回帰](/knowledge-base/topics/ml-logistic-regression) / [Subgradient](/knowledge-base/topics/opt-subgradient) / [Fenchel duality](/knowledge-base/topics/opt-fenchel-duality)
 
 ## Learning Path
 

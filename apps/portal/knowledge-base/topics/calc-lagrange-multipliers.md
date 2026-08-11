@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[最適化問題の定式化](/knowledge-base/topics/opt-problem-formulation-objectives-constraints) / [等式制約とKKT条件](/knowledge-base/topics/opt-equality-constrained-kkt) / [接錐・法錐・制約資格条件](/knowledge-base/topics/opt-tangent-normal-cones-cq)
+[最適化問題の定式化](/knowledge-base/topics/opt-problem-formulation-objectives-constraints) / [等式制約とKKT条件](/knowledge-base/topics/opt-equality-constrained-kkt) / [接錐・法錐・制約資格条件](/knowledge-base/topics/opt-tangent-normal-cones-cq) / [Constraint qualification](/knowledge-base/topics/opt-constraint-qualification) / [Fenchel duality](/knowledge-base/topics/opt-fenchel-duality)
 
 ## Learning Path
 

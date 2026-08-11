@@ -4,7 +4,7 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[Automatic differentiation](/knowledge-base/topics/mat-automatic-differentiation)
+[Reverse-mode AD](/knowledge-base/topics/mat-reverse-mode-ad)
 
 ## Learning Path
 
@@ -25,4 +25,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-vector-jacobian-product) / [教科書](/textbook/mat-vector-jacobian-product) / [演習](/exercises/mat-vector-jacobian-product) / [スライド](/slides/mat-vector-jacobian-product/)

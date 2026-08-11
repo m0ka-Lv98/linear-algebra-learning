@@ -15,11 +15,11 @@
 
 ## 次に学ぶTopic
 
-[線形回帰の確率モデル](/knowledge-base/topics/stat-linear-regression-probabilistic-model) / [whiteningとMahalanobis距離](/knowledge-base/topics/mat-whitening-mahalanobis) / [GLSと相関誤差](/knowledge-base/topics/mat-gls-correlated-errors) / [生成的分類器・Naive Bayes・LDA](/knowledge-base/topics/ml-generative-classifiers-naive-bayes-lda) / [Gaussian mixtureとEM](/knowledge-base/topics/ml-gmm-em) / [異常検知](/knowledge-base/topics/ml-anomaly-detection) / [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix)
+[線形回帰の確率モデル](/knowledge-base/topics/stat-linear-regression-probabilistic-model) / [whiteningとMahalanobis距離](/knowledge-base/topics/mat-whitening-mahalanobis) / [GLSと相関誤差](/knowledge-base/topics/mat-gls-correlated-errors) / [生成的分類器・Naive Bayes・LDA](/knowledge-base/topics/ml-generative-classifiers-naive-bayes-lda) / [Gaussian mixtureとEM](/knowledge-base/topics/ml-gmm-em) / [異常検知](/knowledge-base/topics/ml-anomaly-detection) / [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix) / [Dirichlet distribution](/knowledge-base/topics/prob-dirichlet-distribution)
 
 ## Learning Path
 
-[機械学習の数学](../paths/machine-learning-mathematics) / [統計推定](../paths/statistical-estimation) / [Hotspot Matrixを理解する](../paths/hotspot-matrix)
+[機械学習の数学](../paths/machine-learning-mathematics) / [統計推定](../paths/statistical-estimation) / [Spectral Cytometryの数学](../paths/spectral-cytometry-mathematics) / [Hotspot Matrixを理解する](../paths/hotspot-matrix)
 
 ## Case Study
 

@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Buckingham Pi theorem](/knowledge-base/topics/model-buckingham-pi)
+- [Dimensional analysis](/knowledge-base/topics/model-dimensional-analysis)
+- [微分と変化率](/knowledge-base/topics/calc-derivatives-rates)
 
 ## 次に学ぶTopic
 
-[Sensitivity analysis](/knowledge-base/topics/model-sensitivity-analysis)
+[Buckingham Pi theorem](/knowledge-base/topics/model-buckingham-pi) / [Sensitivity analysis](/knowledge-base/topics/model-sensitivity-analysis)
 
 ## Learning Path
 

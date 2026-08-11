@@ -4,11 +4,12 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
 
+- [Continuous-time signals](/knowledge-base/topics/sig-continuous-time-signals)
 - [Discrete-time signals](/knowledge-base/topics/sig-discrete-time-signals)
 
 ## 次に学ぶTopic
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-impulse-step) / [教科書](/textbook/sig-impulse-step) / [演習](/exercises/sig-impulse-step) / [スライド](/slides/sig-impulse-step/)

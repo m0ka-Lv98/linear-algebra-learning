@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[重積分](/knowledge-base/topics/calc-multiple-integrals) / [勾配と方向微分](/knowledge-base/topics/calc-gradient-directional-derivative)
+[重積分](/knowledge-base/topics/calc-multiple-integrals) / [勾配と方向微分](/knowledge-base/topics/calc-gradient-directional-derivative) / [Scalar-by-vector derivative](/knowledge-base/topics/mat-scalar-by-vector-derivative) / [Delta method](/knowledge-base/topics/stat-delta-method) / [Phase plane and stability](/knowledge-base/topics/ode-phase-plane-stability) / [PDE classification](/knowledge-base/topics/pde-classification) / [Analytic functions](/knowledge-base/topics/complex-analytic-functions) / [Calculus of variations](/knowledge-base/topics/opt-calculus-variations)
 
 ## Learning Path
 

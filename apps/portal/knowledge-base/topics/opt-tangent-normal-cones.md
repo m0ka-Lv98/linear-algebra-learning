@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Subgradient](/knowledge-base/topics/opt-subgradient)
+- [最適化問題の定式化](/knowledge-base/topics/opt-problem-formulation-objectives-constraints)
+- [内積・ノルム・角度](/knowledge-base/topics/la-inner-products-norms-angles)
 
 ## 次に学ぶTopic
 

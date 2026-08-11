@@ -4,12 +4,13 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
-- [Error propagation](/knowledge-base/topics/stat-error-propagation)
+- [尤度と最尤推定](/knowledge-base/topics/stat-likelihood-maximum-likelihood)
+- [条件付き確率と独立](/knowledge-base/topics/prob-conditional-probability-independence)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-sufficient-statistics) / [教科書](/textbook/stat-sufficient-statistics) / [演習](/exercises/stat-sufficient-statistics) / [スライド](/slides/stat-sufficient-statistics/)

@@ -15,7 +15,7 @@
 
 ## 次に学ぶTopic
 
-[Monte Carlo数値計算法](/knowledge-base/topics/num-monte-carlo-methods)
+[Monte Carlo数値計算法](/knowledge-base/topics/num-monte-carlo-methods) / [Adaptive quadrature](/knowledge-base/topics/num-adaptive-quadrature)
 
 ## Learning Path
 

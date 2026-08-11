@@ -253,37 +253,37 @@
 - [pretraining data：dedup・mixture・contamination](/knowledge-base/topics/frontier-data-dedup-mixtures-contamination) — foundation-models / foundation-models-core / draft
 - [Scientific Machine Learning](/knowledge-base/topics/frontier-scientific-machine-learning) — foundation-models / foundation-models-core / draft
 - [privacy・governance・研究実践](/knowledge-base/topics/frontier-privacy-governance-research-practice) — foundation-models / foundation-models-core / draft
-- [Gram matrix](/knowledge-base/topics/mat-gram-matrix) — linear-algebra / linear-algebra-core / planned
-- [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix) — probability-statistics / statistics-estimation / planned
-- [Estimator covariance](/knowledge-base/topics/stat-estimator-covariance) — probability-statistics / statistics-estimation / planned
-- [VIF and collinearity](/knowledge-base/topics/stat-vif-collinearity) — probability-statistics / statistics-estimation / planned
-- [WLS Fisher information](/knowledge-base/topics/stat-wls-fisher-information) — probability-statistics / statistics-estimation / planned
-- [Model misspecification](/knowledge-base/topics/stat-model-misspecification) — probability-statistics / statistics-estimation / planned
-- [Scalar-by-vector derivative](/knowledge-base/topics/mat-scalar-by-vector-derivative) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Vector-by-vector derivative](/knowledge-base/topics/mat-vector-by-vector-derivative) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Scalar-by-matrix derivative](/knowledge-base/topics/mat-scalar-by-matrix-derivative) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Vector-by-matrix derivative](/knowledge-base/topics/mat-vector-by-matrix-derivative) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Matrix differential](/knowledge-base/topics/mat-matrix-differential) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Trace trick](/knowledge-base/topics/mat-trace-trick) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Quadratic form derivatives](/knowledge-base/topics/mat-quadratic-form-derivatives) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Inverse matrix derivative](/knowledge-base/topics/mat-inverse-matrix-derivative) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Log-determinant derivative](/knowledge-base/topics/mat-log-determinant-derivative) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Matrix chain rule](/knowledge-base/topics/mat-matrix-chain-rule) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Jacobian-vector product](/knowledge-base/topics/mat-jacobian-vector-product) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Vector-Jacobian product](/knowledge-base/topics/mat-vector-jacobian-product) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Automatic differentiation](/knowledge-base/topics/mat-automatic-differentiation) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Forward-mode AD](/knowledge-base/topics/mat-forward-mode-ad) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Reverse-mode AD](/knowledge-base/topics/mat-reverse-mode-ad) — matrix-calculus / matrix-calculus-differentiation / planned
-- [vec operator](/knowledge-base/topics/mat-vec-operator) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Kronecker product](/knowledge-base/topics/mat-kronecker-product) — matrix-calculus / matrix-calculus-differentiation / planned
-- [Bernoulli distribution](/knowledge-base/topics/prob-bernoulli-distribution) — probability-statistics / probability-discrete-distributions / planned
-- [Binomial distribution](/knowledge-base/topics/prob-binomial-distribution) — probability-statistics / probability-discrete-distributions / planned
-- [Poisson distribution](/knowledge-base/topics/prob-poisson-distribution) — probability-statistics / probability-discrete-distributions / planned
-- [Gaussian distribution](/knowledge-base/topics/prob-gaussian-distribution) — probability-statistics / probability-continuous-distributions / planned
-- [Log-normal distribution](/knowledge-base/topics/prob-log-normal-distribution) — probability-statistics / probability-continuous-distributions / planned
-- [Student t distribution](/knowledge-base/topics/prob-student-t-distribution) — probability-statistics / probability-continuous-distributions / planned
-- [Dirichlet distribution](/knowledge-base/topics/prob-dirichlet-distribution) — probability-statistics / probability-continuous-distributions / planned
-- [Gaussian mixture](/knowledge-base/topics/prob-gaussian-mixture) — probability-statistics / probability-continuous-distributions / planned
+- [Gram matrix](/knowledge-base/topics/mat-gram-matrix) — linear-algebra / linear-algebra-core / draft
+- [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix) — probability-statistics / statistics-estimation / draft
+- [Estimator covariance](/knowledge-base/topics/stat-estimator-covariance) — probability-statistics / statistics-estimation / draft
+- [VIF and collinearity](/knowledge-base/topics/stat-vif-collinearity) — probability-statistics / statistics-estimation / draft
+- [WLS Fisher information](/knowledge-base/topics/stat-wls-fisher-information) — probability-statistics / statistics-estimation / draft
+- [Model misspecification](/knowledge-base/topics/stat-model-misspecification) — probability-statistics / statistics-estimation / draft
+- [Scalar-by-vector derivative](/knowledge-base/topics/mat-scalar-by-vector-derivative) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Vector-by-vector derivative](/knowledge-base/topics/mat-vector-by-vector-derivative) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Scalar-by-matrix derivative](/knowledge-base/topics/mat-scalar-by-matrix-derivative) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Vector-by-matrix derivative](/knowledge-base/topics/mat-vector-by-matrix-derivative) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Matrix differential](/knowledge-base/topics/mat-matrix-differential) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Trace trick](/knowledge-base/topics/mat-trace-trick) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Quadratic form derivatives](/knowledge-base/topics/mat-quadratic-form-derivatives) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Inverse matrix derivative](/knowledge-base/topics/mat-inverse-matrix-derivative) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Log-determinant derivative](/knowledge-base/topics/mat-log-determinant-derivative) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Matrix chain rule](/knowledge-base/topics/mat-matrix-chain-rule) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Jacobian-vector product](/knowledge-base/topics/mat-jacobian-vector-product) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Vector-Jacobian product](/knowledge-base/topics/mat-vector-jacobian-product) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Automatic differentiation](/knowledge-base/topics/mat-automatic-differentiation) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Forward-mode AD](/knowledge-base/topics/mat-forward-mode-ad) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Reverse-mode AD](/knowledge-base/topics/mat-reverse-mode-ad) — matrix-calculus / matrix-calculus-differentiation / draft
+- [vec operator](/knowledge-base/topics/mat-vec-operator) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Kronecker product](/knowledge-base/topics/mat-kronecker-product) — matrix-calculus / matrix-calculus-differentiation / draft
+- [Bernoulli distribution](/knowledge-base/topics/prob-bernoulli-distribution) — probability-statistics / probability-discrete-distributions / draft
+- [Binomial distribution](/knowledge-base/topics/prob-binomial-distribution) — probability-statistics / probability-discrete-distributions / draft
+- [Poisson distribution](/knowledge-base/topics/prob-poisson-distribution) — probability-statistics / probability-discrete-distributions / draft
+- [Gaussian distribution](/knowledge-base/topics/prob-gaussian-distribution) — probability-statistics / probability-continuous-distributions / draft
+- [Log-normal distribution](/knowledge-base/topics/prob-log-normal-distribution) — probability-statistics / probability-continuous-distributions / draft
+- [Student t distribution](/knowledge-base/topics/prob-student-t-distribution) — probability-statistics / probability-continuous-distributions / draft
+- [Dirichlet distribution](/knowledge-base/topics/prob-dirichlet-distribution) — probability-statistics / probability-continuous-distributions / draft
+- [Gaussian mixture](/knowledge-base/topics/prob-gaussian-mixture) — probability-statistics / probability-continuous-distributions / draft
 - [Probability generating function](/knowledge-base/topics/prob-generating-functions) — stochastic-processes / probability-processes / planned
 - [Moment generating function](/knowledge-base/topics/prob-moment-generating-functions) — stochastic-processes / probability-processes / planned
 - [Characteristic function](/knowledge-base/topics/prob-characteristic-functions) — stochastic-processes / probability-processes / planned
@@ -293,36 +293,36 @@
 - [Brownian motion](/knowledge-base/topics/prob-brownian-motion) — stochastic-processes / probability-processes / planned
 - [Gaussian process](/knowledge-base/topics/prob-gaussian-process) — stochastic-processes / probability-processes / planned
 - [Stationarity and autocorrelation](/knowledge-base/topics/prob-stationarity-autocorrelation) — stochastic-processes / probability-processes / planned
-- [Cramér–Rao lower bound](/knowledge-base/topics/stat-cramer-rao-lower-bound) — probability-statistics / statistics-estimation / planned
-- [Observed information](/knowledge-base/topics/stat-observed-information) — probability-statistics / statistics-estimation / planned
-- [Identifiability](/knowledge-base/topics/stat-identifiability) — probability-statistics / statistics-estimation / planned
-- [Delta method](/knowledge-base/topics/stat-delta-method) — probability-statistics / statistics-estimation / planned
-- [Error propagation](/knowledge-base/topics/stat-error-propagation) — probability-statistics / statistics-estimation / planned
-- [Sufficient statistics](/knowledge-base/topics/stat-sufficient-statistics) — probability-statistics / statistics-estimation / planned
-- [Exponential family](/knowledge-base/topics/stat-exponential-family) — probability-statistics / statistics-estimation / planned
-- [Generalized linear models](/knowledge-base/topics/stat-generalized-linear-models) — probability-statistics / statistics-estimation / planned
-- [Poisson regression](/knowledge-base/topics/stat-poisson-regression) — probability-statistics / statistics-estimation / planned
-- [Covariance estimation](/knowledge-base/topics/stat-covariance-estimation) — probability-statistics / statistics-estimation / planned
-- [Experimental design](/knowledge-base/topics/stat-experimental-design) — probability-statistics / statistics-estimation / planned
-- [Optimal experimental design](/knowledge-base/topics/stat-optimal-experimental-design) — probability-statistics / statistics-estimation / planned
-- [Sandwich covariance](/knowledge-base/topics/stat-sandwich-covariance) — probability-statistics / statistics-estimation / planned
-- [Continuous-time signals](/knowledge-base/topics/sig-continuous-time-signals) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Discrete-time signals](/knowledge-base/topics/sig-discrete-time-signals) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Impulse and step signals](/knowledge-base/topics/sig-impulse-step) — signals-systems-transforms / signals-fourier-analysis / planned
-- [LTI systems](/knowledge-base/topics/sig-lti-systems) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Impulse response](/knowledge-base/topics/sig-impulse-response) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Convolution](/knowledge-base/topics/sig-convolution) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Correlation](/knowledge-base/topics/sig-correlation) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Autocorrelation](/knowledge-base/topics/sig-autocorrelation) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Fourier series](/knowledge-base/topics/sig-fourier-series) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Continuous Fourier transform](/knowledge-base/topics/sig-fourier-transform) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Convolution theorem](/knowledge-base/topics/sig-convolution-theorem) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Parseval theorem](/knowledge-base/topics/sig-parseval-theorem) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Discrete Fourier transform](/knowledge-base/topics/sig-dft) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Fast Fourier transform](/knowledge-base/topics/sig-fft) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Sampling theorem and aliasing](/knowledge-base/topics/sig-sampling-theorem-aliasing) — signals-systems-transforms / signals-fourier-analysis / planned
-- [STFT and spectrogram](/knowledge-base/topics/sig-stft-spectrogram) — signals-systems-transforms / signals-fourier-analysis / planned
-- [Laplace transform](/knowledge-base/topics/sig-laplace-transform) — signals-systems-transforms / signals-fourier-analysis / planned
+- [Cramér–Rao lower bound](/knowledge-base/topics/stat-cramer-rao-lower-bound) — probability-statistics / statistics-estimation / draft
+- [Observed information](/knowledge-base/topics/stat-observed-information) — probability-statistics / statistics-estimation / draft
+- [Identifiability](/knowledge-base/topics/stat-identifiability) — probability-statistics / statistics-estimation / draft
+- [Delta method](/knowledge-base/topics/stat-delta-method) — probability-statistics / statistics-estimation / draft
+- [Error propagation](/knowledge-base/topics/stat-error-propagation) — probability-statistics / statistics-estimation / draft
+- [Sufficient statistics](/knowledge-base/topics/stat-sufficient-statistics) — probability-statistics / statistics-estimation / draft
+- [Exponential family](/knowledge-base/topics/stat-exponential-family) — probability-statistics / statistics-estimation / draft
+- [Generalized linear models](/knowledge-base/topics/stat-generalized-linear-models) — probability-statistics / statistics-estimation / draft
+- [Poisson regression](/knowledge-base/topics/stat-poisson-regression) — probability-statistics / statistics-estimation / draft
+- [Covariance estimation](/knowledge-base/topics/stat-covariance-estimation) — probability-statistics / statistics-estimation / draft
+- [Experimental design](/knowledge-base/topics/stat-experimental-design) — probability-statistics / statistics-estimation / draft
+- [Optimal experimental design](/knowledge-base/topics/stat-optimal-experimental-design) — probability-statistics / statistics-estimation / draft
+- [Sandwich covariance](/knowledge-base/topics/stat-sandwich-covariance) — probability-statistics / statistics-estimation / draft
+- [Continuous-time signals](/knowledge-base/topics/sig-continuous-time-signals) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Discrete-time signals](/knowledge-base/topics/sig-discrete-time-signals) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Impulse and step signals](/knowledge-base/topics/sig-impulse-step) — signals-systems-transforms / signals-fourier-analysis / draft
+- [LTI systems](/knowledge-base/topics/sig-lti-systems) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Impulse response](/knowledge-base/topics/sig-impulse-response) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Convolution](/knowledge-base/topics/sig-convolution) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Correlation](/knowledge-base/topics/sig-correlation) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Autocorrelation](/knowledge-base/topics/sig-autocorrelation) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Fourier series](/knowledge-base/topics/sig-fourier-series) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Continuous Fourier transform](/knowledge-base/topics/sig-fourier-transform) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Convolution theorem](/knowledge-base/topics/sig-convolution-theorem) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Parseval theorem](/knowledge-base/topics/sig-parseval-theorem) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Discrete Fourier transform](/knowledge-base/topics/sig-dft) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Fast Fourier transform](/knowledge-base/topics/sig-fft) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Sampling theorem and aliasing](/knowledge-base/topics/sig-sampling-theorem-aliasing) — signals-systems-transforms / signals-fourier-analysis / draft
+- [STFT and spectrogram](/knowledge-base/topics/sig-stft-spectrogram) — signals-systems-transforms / signals-fourier-analysis / draft
+- [Laplace transform](/knowledge-base/topics/sig-laplace-transform) — signals-systems-transforms / signals-fourier-analysis / draft
 - [First-order ODE](/knowledge-base/topics/ode-first-order) — differential-equations / differential-equations-core / planned
 - [Second-order ODE](/knowledge-base/topics/ode-second-order) — differential-equations / differential-equations-core / planned
 - [Systems of ODE](/knowledge-base/topics/ode-systems) — differential-equations / differential-equations-core / planned

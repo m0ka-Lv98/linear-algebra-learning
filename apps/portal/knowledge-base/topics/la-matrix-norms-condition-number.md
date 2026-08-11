@@ -18,7 +18,7 @@
 
 ## Learning Path
 
-[Hotspot Matrixを理解する](../paths/hotspot-matrix)
+[Spectral Cytometryの数学](../paths/spectral-cytometry-mathematics) / [Hotspot Matrixを理解する](../paths/hotspot-matrix)
 
 ## Case Study
 

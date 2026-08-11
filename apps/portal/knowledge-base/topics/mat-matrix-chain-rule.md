@@ -4,16 +4,17 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
-- [Log-determinant derivative](/knowledge-base/topics/mat-log-determinant-derivative)
+- [Vector-by-vector derivative](/knowledge-base/topics/mat-vector-by-vector-derivative)
+- [Vector-by-matrix derivative](/knowledge-base/topics/mat-vector-by-matrix-derivative)
 
 ## 次に学ぶTopic
 
-[Jacobian-vector product](/knowledge-base/topics/mat-jacobian-vector-product)
+[Automatic differentiation](/knowledge-base/topics/mat-automatic-differentiation)
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-matrix-chain-rule) / [教科書](/textbook/mat-matrix-chain-rule) / [演習](/exercises/mat-matrix-chain-rule) / [スライド](/slides/mat-matrix-chain-rule/)

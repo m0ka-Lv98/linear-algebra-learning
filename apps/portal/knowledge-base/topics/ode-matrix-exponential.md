@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Systems of ODE](/knowledge-base/topics/ode-systems)
+- [Matrix differential](/knowledge-base/topics/mat-matrix-differential)
 
 ## 次に学ぶTopic
 
-[Phase plane and stability](/knowledge-base/topics/ode-phase-plane-stability)
+登録なし
 
 ## Learning Path
 

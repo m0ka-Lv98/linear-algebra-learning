@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [System identification](/knowledge-base/topics/inv-system-identification)
+- [Systems of ODE](/knowledge-base/topics/ode-systems)
 
 ## 次に学ぶTopic
 
-[Sensitivity matrices](/knowledge-base/topics/inv-sensitivity-matrices)
+登録なし
 
 ## Learning Path
 

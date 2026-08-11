@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Cauchy–Riemann equations](/knowledge-base/topics/complex-cauchy-riemann)
+- [積分と微積分学の基本定理](/knowledge-base/topics/calc-integrals-fundamental-theorem)
 
 ## 次に学ぶTopic
 

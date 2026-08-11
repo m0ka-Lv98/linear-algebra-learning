@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Wiener filter](/knowledge-base/topics/inv-wiener-filter)
+- [Recursive least squares](/knowledge-base/topics/inv-recursive-least-squares)
+- [LTI systems](/knowledge-base/topics/sig-lti-systems)
 
 ## 次に学ぶTopic
 

@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Tikhonov regularization](/knowledge-base/topics/inv-tikhonov-regularization)
+- [Linear inverse problems](/knowledge-base/topics/inv-linear-inverse-problems)
+- [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution)
 
 ## 次に学ぶTopic
 
-[Recursive least squares](/knowledge-base/topics/inv-recursive-least-squares)
+登録なし
 
 ## Learning Path
 

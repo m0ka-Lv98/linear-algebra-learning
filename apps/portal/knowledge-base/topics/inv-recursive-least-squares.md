@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Bayesian inverse problems](/knowledge-base/topics/inv-bayesian-inverse-problems)
+- [Linear inverse problems](/knowledge-base/topics/inv-linear-inverse-problems)
+- [WLSと逆分散重み](/knowledge-base/topics/mat-wls-inverse-variance)
 
 ## 次に学ぶTopic
 
-[Kalman filter](/knowledge-base/topics/inv-kalman-filter)
+[Kalman filter](/knowledge-base/topics/inv-kalman-filter) / [System identification](/knowledge-base/topics/inv-system-identification)
 
 ## Learning Path
 

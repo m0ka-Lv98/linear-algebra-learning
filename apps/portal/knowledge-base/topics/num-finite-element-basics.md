@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Finite difference](/knowledge-base/topics/num-finite-difference)
+- [内積・ノルム・角度](/knowledge-base/topics/la-inner-products-norms-angles)
 
 ## 次に学ぶTopic
 

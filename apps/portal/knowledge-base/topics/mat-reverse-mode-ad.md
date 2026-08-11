@@ -4,16 +4,17 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
-- [Forward-mode AD](/knowledge-base/topics/mat-forward-mode-ad)
+- [Automatic differentiation](/knowledge-base/topics/mat-automatic-differentiation)
+- [Vector-Jacobian product](/knowledge-base/topics/mat-vector-jacobian-product)
 
 ## 次に学ぶTopic
 
-[vec operator](/knowledge-base/topics/mat-vec-operator)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-reverse-mode-ad) / [教科書](/textbook/mat-reverse-mode-ad) / [演習](/exercises/mat-reverse-mode-ad) / [スライド](/slides/mat-reverse-mode-ad/)

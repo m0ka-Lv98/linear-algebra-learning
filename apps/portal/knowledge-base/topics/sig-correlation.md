@@ -4,12 +4,13 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
 
 - [Convolution](/knowledge-base/topics/sig-convolution)
+- [共分散と相関](/knowledge-base/topics/prob-covariance-correlation)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-correlation) / [教科書](/textbook/sig-correlation) / [演習](/exercises/sig-correlation) / [スライド](/slides/sig-correlation/)

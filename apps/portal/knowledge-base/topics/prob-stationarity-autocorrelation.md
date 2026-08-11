@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Gaussian process](/knowledge-base/topics/prob-gaussian-process)
+- [共分散と相関](/knowledge-base/topics/prob-covariance-correlation)
 
 ## 次に学ぶTopic
 
-登録なし
+[Autocorrelation](/knowledge-base/topics/sig-autocorrelation)
 
 ## Learning Path
 

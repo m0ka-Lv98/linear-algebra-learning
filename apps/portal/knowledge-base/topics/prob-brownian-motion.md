@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Poisson process](/knowledge-base/topics/prob-poisson-process)
+- [Gaussian distribution](/knowledge-base/topics/prob-gaussian-distribution)
 
 ## 次に学ぶTopic
 

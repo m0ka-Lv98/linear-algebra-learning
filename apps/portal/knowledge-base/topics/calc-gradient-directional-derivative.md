@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[ベクトル場と線積分](/knowledge-base/topics/calc-vector-fields-line-integrals) / [全微分とJacobian](/knowledge-base/topics/calc-total-derivative-jacobian) / [多変数の制約なし最適化](/knowledge-base/topics/calc-unconstrained-optimization) / [Lagrange乗数法](/knowledge-base/topics/calc-lagrange-multipliers) / [劣勾配と非滑らか最適化](/knowledge-base/topics/opt-subgradients-nonsmooth)
+[ベクトル場と線積分](/knowledge-base/topics/calc-vector-fields-line-integrals) / [全微分とJacobian](/knowledge-base/topics/calc-total-derivative-jacobian) / [多変数の制約なし最適化](/knowledge-base/topics/calc-unconstrained-optimization) / [Lagrange乗数法](/knowledge-base/topics/calc-lagrange-multipliers) / [劣勾配と非滑らか最適化](/knowledge-base/topics/opt-subgradients-nonsmooth) / [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix)
 
 ## Learning Path
 

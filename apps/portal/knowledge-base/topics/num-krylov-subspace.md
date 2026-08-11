@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Adaptive quadrature](/knowledge-base/topics/num-adaptive-quadrature)
+- [行列積](/knowledge-base/topics/la-matrix-multiplication)
+- [固有値と固有ベクトル](/knowledge-base/topics/la-eigenvalues-eigenvectors)
 
 ## 次に学ぶTopic
 
-[Conjugate gradient](/knowledge-base/topics/num-conjugate-gradient)
+[Conjugate gradient](/knowledge-base/topics/num-conjugate-gradient) / [GMRES](/knowledge-base/topics/num-gmres)
 
 ## Learning Path
 

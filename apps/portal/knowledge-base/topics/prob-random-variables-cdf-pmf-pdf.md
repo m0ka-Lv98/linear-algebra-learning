@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[期待値・分散・モーメント](/knowledge-base/topics/prob-expectation-variance-moments) / [同時分布・周辺分布・条件付き分布](/knowledge-base/topics/prob-joint-marginal-conditional-distributions) / [主要な離散分布](/knowledge-base/topics/prob-discrete-distributions) / [主要な連続分布](/knowledge-base/topics/prob-continuous-distributions)
+[期待値・分散・モーメント](/knowledge-base/topics/prob-expectation-variance-moments) / [同時分布・周辺分布・条件付き分布](/knowledge-base/topics/prob-joint-marginal-conditional-distributions) / [主要な離散分布](/knowledge-base/topics/prob-discrete-distributions) / [主要な連続分布](/knowledge-base/topics/prob-continuous-distributions) / [Bernoulli distribution](/knowledge-base/topics/prob-bernoulli-distribution) / [Probability generating function](/knowledge-base/topics/prob-generating-functions) / [Discrete-time signals](/knowledge-base/topics/sig-discrete-time-signals)
 
 ## Learning Path
 

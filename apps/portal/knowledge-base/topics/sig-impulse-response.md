@@ -4,7 +4,7 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
@@ -25,4 +25,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-impulse-response) / [教科書](/textbook/sig-impulse-response) / [演習](/exercises/sig-impulse-response) / [スライド](/slides/sig-impulse-response/)

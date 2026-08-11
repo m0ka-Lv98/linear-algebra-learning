@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Backward error analysis](/knowledge-base/topics/num-backward-error-analysis)
+- [多項式補間](/knowledge-base/topics/num-polynomial-interpolation)
+- [関数・極限・連続](/knowledge-base/topics/calc-functions-limits-continuity)
 
 ## 次に学ぶTopic
 
-[Adaptive quadrature](/knowledge-base/topics/num-adaptive-quadrature)
+登録なし
 
 ## Learning Path
 

@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Extended Kalman filter](/knowledge-base/topics/inv-extended-kalman-filter)
+- [Continuous Fourier transform](/knowledge-base/topics/sig-fourier-transform)
+- [共分散と相関](/knowledge-base/topics/prob-covariance-correlation)
 
 ## 次に学ぶTopic
 
-[System identification](/knowledge-base/topics/inv-system-identification)
+登録なし
 
 ## Learning Path
 

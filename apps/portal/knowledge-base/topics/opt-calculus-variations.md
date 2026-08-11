@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Bregman divergence](/knowledge-base/topics/opt-bregman-divergence)
+- [多変数関数と偏微分](/knowledge-base/topics/calc-multivariable-functions-partial-derivatives)
+- [First-order ODE](/knowledge-base/topics/ode-first-order)
 
 ## 次に学ぶTopic
 

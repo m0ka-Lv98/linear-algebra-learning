@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Wave equation](/knowledge-base/topics/pde-wave-equation)
+- [PDE classification](/knowledge-base/topics/pde-classification)
+- [内積・ノルム・角度](/knowledge-base/topics/la-inner-products-norms-angles)
 
 ## 次に学ぶTopic
 

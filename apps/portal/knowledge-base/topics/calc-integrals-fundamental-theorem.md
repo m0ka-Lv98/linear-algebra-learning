@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[無限級数と収束判定](/knowledge-base/topics/calc-infinite-series-convergence) / [重積分](/knowledge-base/topics/calc-multiple-integrals) / [期待値・分散・モーメント](/knowledge-base/topics/prob-expectation-variance-moments) / [主要な連続分布](/knowledge-base/topics/prob-continuous-distributions) / [数値積分と求積法](/knowledge-base/topics/num-numerical-integration-quadrature) / [常微分方程式・Euler法・Runge–Kutta法](/knowledge-base/topics/num-ode-euler-runge-kutta)
+[無限級数と収束判定](/knowledge-base/topics/calc-infinite-series-convergence) / [重積分](/knowledge-base/topics/calc-multiple-integrals) / [期待値・分散・モーメント](/knowledge-base/topics/prob-expectation-variance-moments) / [主要な連続分布](/knowledge-base/topics/prob-continuous-distributions) / [数値積分と求積法](/knowledge-base/topics/num-numerical-integration-quadrature) / [常微分方程式・Euler法・Runge–Kutta法](/knowledge-base/topics/num-ode-euler-runge-kutta) / [Fourier series](/knowledge-base/topics/sig-fourier-series) / [Laplace transform](/knowledge-base/topics/sig-laplace-transform)
 
 ## Learning Path
 

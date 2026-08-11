@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Finite element basics](/knowledge-base/topics/num-finite-element-basics)
+- [Fourier series](/knowledge-base/topics/sig-fourier-series)
 
 ## 次に学ぶTopic
 

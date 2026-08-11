@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Sandwich covariance](/knowledge-base/topics/stat-sandwich-covariance)
+- [エントロピー・交差エントロピー・KLダイバージェンス](/knowledge-base/topics/stat-entropy-cross-entropy-kl-divergence)
+- [Gaussian mixture](/knowledge-base/topics/prob-gaussian-mixture)
 
 ## 次に学ぶTopic
 
-[Mutual information](/knowledge-base/topics/info-mutual-information)
+登録なし
 
 ## Learning Path
 

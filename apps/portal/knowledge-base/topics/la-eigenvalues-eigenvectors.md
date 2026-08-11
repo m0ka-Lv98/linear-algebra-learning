@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[対角化と行列の累乗](/knowledge-base/topics/la-diagonalization-matrix-powers) / [対称行列とスペクトル定理](/knowledge-base/topics/la-symmetric-matrices-spectral-theorem) / [連立方程式の反復法](/knowledge-base/topics/num-iterative-linear-solvers) / [固有値計算・べき乗法・QR法](/knowledge-base/topics/num-eigenvalue-power-qr)
+[対角化と行列の累乗](/knowledge-base/topics/la-diagonalization-matrix-powers) / [対称行列とスペクトル定理](/knowledge-base/topics/la-symmetric-matrices-spectral-theorem) / [連立方程式の反復法](/knowledge-base/topics/num-iterative-linear-solvers) / [固有値計算・べき乗法・QR法](/knowledge-base/topics/num-eigenvalue-power-qr) / [Krylov subspace methods](/knowledge-base/topics/num-krylov-subspace)
 
 ## Learning Path
 

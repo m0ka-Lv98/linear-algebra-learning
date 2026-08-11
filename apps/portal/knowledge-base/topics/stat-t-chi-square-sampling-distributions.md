@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-登録なし
+[Student t distribution](/knowledge-base/topics/prob-student-t-distribution)
 
 ## Learning Path
 

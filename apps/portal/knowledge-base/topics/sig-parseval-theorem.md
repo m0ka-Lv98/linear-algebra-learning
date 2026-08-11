@@ -4,16 +4,17 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
 
-- [Convolution theorem](/knowledge-base/topics/sig-convolution-theorem)
+- [Fourier series](/knowledge-base/topics/sig-fourier-series)
+- [内積・ノルム・角度](/knowledge-base/topics/la-inner-products-norms-angles)
 
 ## 次に学ぶTopic
 
-[Discrete Fourier transform](/knowledge-base/topics/sig-dft)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-parseval-theorem) / [教科書](/textbook/sig-parseval-theorem) / [演習](/exercises/sig-parseval-theorem) / [スライド](/slides/sig-parseval-theorem/)

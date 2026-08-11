@@ -4,12 +4,13 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
-- [Quadratic form derivatives](/knowledge-base/topics/mat-quadratic-form-derivatives)
+- [Matrix differential](/knowledge-base/topics/mat-matrix-differential)
+- [可逆性と逆行列](/knowledge-base/topics/la-invertibility-inverse-matrices)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-inverse-matrix-derivative) / [教科書](/textbook/mat-inverse-matrix-derivative) / [演習](/exercises/mat-inverse-matrix-derivative) / [スライド](/slides/mat-inverse-matrix-derivative/)

@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability) / [数値計算の検証・benchmark・再現性](/knowledge-base/topics/num-verification-benchmarking-reproducibility)
+[誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability) / [数値計算の検証・benchmark・再現性](/knowledge-base/topics/num-verification-benchmarking-reproducibility) / [Backward error analysis](/knowledge-base/topics/num-backward-error-analysis)
 
 ## Learning Path
 

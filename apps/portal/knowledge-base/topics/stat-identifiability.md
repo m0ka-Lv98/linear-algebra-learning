@@ -4,20 +4,21 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
-- [Observed information](/knowledge-base/topics/stat-observed-information)
+- [尤度と最尤推定](/knowledge-base/topics/stat-likelihood-maximum-likelihood)
+- [Model misspecification](/knowledge-base/topics/stat-model-misspecification)
 
 ## 次に学ぶTopic
 
-[Delta method](/knowledge-base/topics/stat-delta-method)
+[Experimental design](/knowledge-base/topics/stat-experimental-design) / [Well-posedness and ill-posedness](/knowledge-base/topics/inv-well-posedness)
 
 ## Learning Path
 
-登録なし
+[Spectral Cytometryの数学](../paths/spectral-cytometry-mathematics)
 
 ## Case Study
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-identifiability) / [教科書](/textbook/stat-identifiability) / [演習](/exercises/stat-identifiability) / [スライド](/slides/stat-identifiability/)

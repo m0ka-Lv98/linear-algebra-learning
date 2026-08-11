@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Nonlinear inverse problems](/knowledge-base/topics/inv-nonlinear-inverse-problems)
+- [Linear inverse problems](/knowledge-base/topics/inv-linear-inverse-problems)
+- [正則化と悪条件・不適切問題](/knowledge-base/topics/num-regularization-ill-posed-problems)
 
 ## 次に学ぶTopic
 
-[Bayesian inverse problems](/knowledge-base/topics/inv-bayesian-inverse-problems)
+登録なし
 
 ## Learning Path
 

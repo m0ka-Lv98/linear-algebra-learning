@@ -4,16 +4,17 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
-- [Matrix chain rule](/knowledge-base/topics/mat-matrix-chain-rule)
+- [Vector-by-vector derivative](/knowledge-base/topics/mat-vector-by-vector-derivative)
+- [行列積](/knowledge-base/topics/la-matrix-multiplication)
 
 ## 次に学ぶTopic
 
-[Vector-Jacobian product](/knowledge-base/topics/mat-vector-jacobian-product)
+[Vector-Jacobian product](/knowledge-base/topics/mat-vector-jacobian-product) / [Automatic differentiation](/knowledge-base/topics/mat-automatic-differentiation) / [Forward-mode AD](/knowledge-base/topics/mat-forward-mode-ad) / [Sensitivity matrices](/knowledge-base/topics/inv-sensitivity-matrices)
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-jacobian-vector-product) / [教科書](/textbook/mat-jacobian-vector-product) / [演習](/exercises/mat-jacobian-vector-product) / [スライド](/slides/mat-jacobian-vector-product/)

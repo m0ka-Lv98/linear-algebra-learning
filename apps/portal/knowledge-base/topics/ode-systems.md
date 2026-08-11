@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Second-order ODE](/knowledge-base/topics/ode-second-order)
+- [First-order ODE](/knowledge-base/topics/ode-first-order)
+- [行列積](/knowledge-base/topics/la-matrix-multiplication)
 
 ## 次に学ぶTopic
 
-[Matrix exponential](/knowledge-base/topics/ode-matrix-exponential)
+[Matrix exponential](/knowledge-base/topics/ode-matrix-exponential) / [Phase plane and stability](/knowledge-base/topics/ode-phase-plane-stability) / [Boundary value problems](/knowledge-base/topics/ode-boundary-value-problems) / [Optimal control basics](/knowledge-base/topics/opt-optimal-control-basics) / [Kalman filter](/knowledge-base/topics/inv-kalman-filter) / [Observability](/knowledge-base/topics/inv-observability)
 
 ## Learning Path
 

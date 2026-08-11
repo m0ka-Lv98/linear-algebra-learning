@@ -4,16 +4,17 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
-- [Model misspecification](/knowledge-base/topics/stat-model-misspecification)
+- [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix)
+- [Estimator covariance](/knowledge-base/topics/stat-estimator-covariance)
 
 ## 次に学ぶTopic
 
-[Observed information](/knowledge-base/topics/stat-observed-information)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-cramer-rao-lower-bound) / [教科書](/textbook/stat-cramer-rao-lower-bound) / [演習](/exercises/stat-cramer-rao-lower-bound) / [スライド](/slides/stat-cramer-rao-lower-bound/)

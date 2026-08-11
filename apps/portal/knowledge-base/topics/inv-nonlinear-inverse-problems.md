@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Linear inverse problems](/knowledge-base/topics/inv-linear-inverse-problems)
+- [多変数関数と偏微分](/knowledge-base/topics/calc-multivariable-functions-partial-derivatives)
 
 ## 次に学ぶTopic
 
-[Tikhonov regularization](/knowledge-base/topics/inv-tikhonov-regularization)
+[Extended Kalman filter](/knowledge-base/topics/inv-extended-kalman-filter) / [Sensitivity matrices](/knowledge-base/topics/inv-sensitivity-matrices)
 
 ## Learning Path
 

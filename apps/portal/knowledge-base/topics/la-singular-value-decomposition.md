@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[擬似逆行列とrank不足の連立方程式](/knowledge-base/topics/la-pseudoinverse-rank-deficient-systems) / [低ランク近似](/knowledge-base/topics/la-low-rank-approximation) / [行列ノルムと条件数](/knowledge-base/topics/la-matrix-norms-condition-number) / [SVDと低ランク計算](/knowledge-base/topics/num-svd-low-rank-computation) / [正準相関分析](/knowledge-base/topics/mat-cca-multiview) / [tensorと多重線形構造](/knowledge-base/topics/mat-tensors-multilinear-overview)
+[擬似逆行列とrank不足の連立方程式](/knowledge-base/topics/la-pseudoinverse-rank-deficient-systems) / [低ランク近似](/knowledge-base/topics/la-low-rank-approximation) / [行列ノルムと条件数](/knowledge-base/topics/la-matrix-norms-condition-number) / [SVDと低ランク計算](/knowledge-base/topics/num-svd-low-rank-computation) / [正準相関分析](/knowledge-base/topics/mat-cca-multiview) / [tensorと多重線形構造](/knowledge-base/topics/mat-tensors-multilinear-overview) / [Eigenfunction expansion](/knowledge-base/topics/pde-eigenfunction-expansion) / [Model reduction](/knowledge-base/topics/model-reduction)
 
 ## Learning Path
 

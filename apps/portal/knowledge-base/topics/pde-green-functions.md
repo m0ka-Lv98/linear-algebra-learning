@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Laplace equation](/knowledge-base/topics/pde-laplace-equation)
+- [Convolution](/knowledge-base/topics/sig-convolution)
 
 ## 次に学ぶTopic
 
-[Eigenfunction expansion](/knowledge-base/topics/pde-eigenfunction-expansion)
+登録なし
 
 ## Learning Path
 

@@ -9,7 +9,7 @@
 
 ## Prerequisites
 
-- [Markov chain](/knowledge-base/topics/prob-markov-chains)
+- [Poisson distribution](/knowledge-base/topics/prob-poisson-distribution)
 
 ## 次に学ぶTopic
 

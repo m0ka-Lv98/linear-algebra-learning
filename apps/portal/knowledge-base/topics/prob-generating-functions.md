@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-なし
+- [確率変数・CDF・PMF・PDF](/knowledge-base/topics/prob-random-variables-cdf-pmf-pdf)
+- [期待値・分散・モーメント](/knowledge-base/topics/prob-expectation-variance-moments)
 
 ## 次に学ぶTopic
 

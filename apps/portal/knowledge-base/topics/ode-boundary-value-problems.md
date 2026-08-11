@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Phase plane and stability](/knowledge-base/topics/ode-phase-plane-stability)
+- [Second-order ODE](/knowledge-base/topics/ode-second-order)
+- [Systems of ODE](/knowledge-base/topics/ode-systems)
 
 ## 次に学ぶTopic
 
-[PDE classification](/knowledge-base/topics/pde-classification)
+登録なし
 
 ## Learning Path
 

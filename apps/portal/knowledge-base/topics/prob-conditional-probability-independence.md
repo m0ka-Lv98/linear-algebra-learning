@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[Bayesの定理](/knowledge-base/topics/prob-bayes-theorem) / [同時分布・周辺分布・条件付き分布](/knowledge-base/topics/prob-joint-marginal-conditional-distributions) / [MDPとBellman方程式](/knowledge-base/topics/ml-mdp-bellman-equations)
+[Bayesの定理](/knowledge-base/topics/prob-bayes-theorem) / [同時分布・周辺分布・条件付き分布](/knowledge-base/topics/prob-joint-marginal-conditional-distributions) / [MDPとBellman方程式](/knowledge-base/topics/ml-mdp-bellman-equations) / [Markov chain](/knowledge-base/topics/prob-markov-chains) / [Sufficient statistics](/knowledge-base/topics/stat-sufficient-statistics) / [Mutual information](/knowledge-base/topics/info-mutual-information) / [Maximum entropy](/knowledge-base/topics/info-maximum-entropy)
 
 ## Learning Path
 

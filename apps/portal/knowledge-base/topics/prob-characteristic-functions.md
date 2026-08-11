@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Moment generating function](/knowledge-base/topics/prob-moment-generating-functions)
+- [複素数・極形式・Euler公式](/knowledge-base/topics/prep-complex-numbers-euler-form)
 
 ## 次に学ぶTopic
 
-[Random walk](/knowledge-base/topics/prob-random-walk)
+登録なし
 
 ## Learning Path
 

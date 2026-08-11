@@ -4,16 +4,17 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
-- [Poisson regression](/knowledge-base/topics/stat-poisson-regression)
+- [共分散と相関](/knowledge-base/topics/prob-covariance-correlation)
+- [Estimator covariance](/knowledge-base/topics/stat-estimator-covariance)
 
 ## 次に学ぶTopic
 
-[Experimental design](/knowledge-base/topics/stat-experimental-design)
+[Sandwich covariance](/knowledge-base/topics/stat-sandwich-covariance) / [Model validation and residual analysis](/knowledge-base/topics/model-validation-residual-analysis)
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-covariance-estimation) / [教科書](/textbook/stat-covariance-estimation) / [演習](/exercises/stat-covariance-estimation) / [スライド](/slides/stat-covariance-estimation/)

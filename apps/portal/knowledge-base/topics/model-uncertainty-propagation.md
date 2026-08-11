@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Sensitivity analysis](/knowledge-base/topics/model-sensitivity-analysis)
+- [Error propagation](/knowledge-base/topics/stat-error-propagation)
 
 ## 次に学ぶTopic
 

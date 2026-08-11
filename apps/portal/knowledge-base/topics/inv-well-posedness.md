@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-なし
+- [誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability)
+- [Identifiability](/knowledge-base/topics/stat-identifiability)
 
 ## 次に学ぶTopic
 

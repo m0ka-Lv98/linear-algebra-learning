@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
+- [Krylov subspace methods](/knowledge-base/topics/num-krylov-subspace)
 - [Conjugate gradient](/knowledge-base/topics/num-conjugate-gradient)
 
 ## 次に学ぶTopic
 
-[Sparse linear algebra](/knowledge-base/topics/num-sparse-linear-algebra)
+登録なし
 
 ## Learning Path
 

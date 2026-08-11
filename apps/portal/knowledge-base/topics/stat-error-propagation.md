@@ -4,16 +4,17 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
 - [Delta method](/knowledge-base/topics/stat-delta-method)
+- [共分散と相関](/knowledge-base/topics/prob-covariance-correlation)
 
 ## 次に学ぶTopic
 
-[Sufficient statistics](/knowledge-base/topics/stat-sufficient-statistics)
+[Uncertainty propagation](/knowledge-base/topics/model-uncertainty-propagation)
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-error-propagation) / [教科書](/textbook/stat-error-propagation) / [演習](/exercises/stat-error-propagation) / [スライド](/slides/stat-error-propagation/)

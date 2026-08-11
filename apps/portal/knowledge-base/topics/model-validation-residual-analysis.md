@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Model reduction](/knowledge-base/topics/model-reduction)
+- [Covariance estimation](/knowledge-base/topics/stat-covariance-estimation)
 
 ## 次に学ぶTopic
 

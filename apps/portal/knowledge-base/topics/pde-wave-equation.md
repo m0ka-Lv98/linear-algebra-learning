@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Heat equation](/knowledge-base/topics/pde-heat-equation)
+- [PDE classification](/knowledge-base/topics/pde-classification)
+- [Fourier series](/knowledge-base/topics/sig-fourier-series)
 
 ## 次に学ぶTopic
 
-[Laplace equation](/knowledge-base/topics/pde-laplace-equation)
+[Eigenfunction expansion](/knowledge-base/topics/pde-eigenfunction-expansion)
 
 ## Learning Path
 

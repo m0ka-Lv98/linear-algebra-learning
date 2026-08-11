@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[GLSと相関誤差](/knowledge-base/topics/mat-gls-correlated-errors) / [WLS Fisher information](/knowledge-base/topics/stat-wls-fisher-information)
+[GLSと相関誤差](/knowledge-base/topics/mat-gls-correlated-errors) / [WLS Fisher information](/knowledge-base/topics/stat-wls-fisher-information) / [Recursive least squares](/knowledge-base/topics/inv-recursive-least-squares)
 
 ## Learning Path
 

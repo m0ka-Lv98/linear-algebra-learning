@@ -5,18 +5,24 @@ import { parse } from 'yaml'
 export const COURSES = ['foundation', 'wlsm', 'machine-learning', 'frontier']
 export const STATUSES = ['planned', 'draft', 'review', 'published']
 export const TOPIC_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+const knowledgeBaseNative = (topic) => topic?.delivery === 'knowledge-base'
 
 export function topicPaths(topic) {
-  return {
-    home: `apps/portal/courses/${topic.course}/${topic.id}.md`,
+  const common = {
     textbook: `apps/portal/textbook/${topic.id}.md`,
     exercises: `apps/portal/exercises/${topic.id}.md`,
     slides: `apps/slides/decks/${topic.id}.md`
   }
+  return knowledgeBaseNative(topic) ? common : { home: `apps/portal/courses/${topic.course}/${topic.id}.md`, ...common }
 }
 
 export function expectedRoutes(topic) {
-  return {
+  return knowledgeBaseNative(topic) ? {
+    home: `/knowledge-base/topics/${topic.id}`,
+    slides: `/slides/${topic.id}/`,
+    textbook: `/textbook/${topic.id}`,
+    exercises: `/exercises/${topic.id}`
+  } : {
     home: `/courses/${topic.course}/${topic.id}`,
     slides: `/slides/${topic.id}/`,
     textbook: `/textbook/${topic.id}`,
@@ -29,12 +35,16 @@ export function validateTopic(topic, index = 0) {
   const warnings = []
   const label = `topics[${index}]`
   const required = ['id', 'title', 'summary', 'status', 'prerequisites', 'estimated_minutes']
-  if (topic?.status !== 'planned') required.push('course', 'order', 'routes')
+  if (topic?.status !== 'planned') {
+    required.push('routes')
+    if (!knowledgeBaseNative(topic)) required.push('course', 'order')
+  }
   for (const field of required) if (!(field in (topic ?? {}))) errors.push(`${label}.${field} is required`)
   if (typeof topic?.id !== 'string' || !TOPIC_ID_PATTERN.test(topic.id)) errors.push(`${label}.id must contain lowercase letters, numbers, and hyphens only`)
   if (typeof topic?.title !== 'string' || !topic.title.trim()) errors.push(`${label}.title must not be empty`)
-  if (topic?.status !== 'planned' && !COURSES.includes(topic?.course)) errors.push(`${label}.course must be one of: ${COURSES.join(', ')}`)
-  if (topic?.status !== 'planned' && (!Number.isInteger(topic?.order) || topic.order < 0)) errors.push(`${label}.order must be a non-negative integer`)
+  if (topic?.status !== 'planned' && !knowledgeBaseNative(topic) && !COURSES.includes(topic?.course)) errors.push(`${label}.course must be one of: ${COURSES.join(', ')}`)
+  if (topic?.status !== 'planned' && !knowledgeBaseNative(topic) && (!Number.isInteger(topic?.order) || topic.order < 0)) errors.push(`${label}.order must be a non-negative integer`)
+  if (topic?.delivery != null && topic.delivery !== 'knowledge-base') errors.push(`${label}.delivery must be knowledge-base when present`)
   if (typeof topic?.summary !== 'string' || !topic.summary.trim()) errors.push(`${label}.summary must not be empty`)
   if (!STATUSES.includes(topic?.status)) errors.push(`${label}.status must be one of: ${STATUSES.join(', ')}`)
   if (!Array.isArray(topic?.prerequisites) || topic.prerequisites.some((item) => typeof item !== 'string')) errors.push(`${label}.prerequisites must be an array of strings`)
@@ -44,7 +54,7 @@ export function validateTopic(topic, index = 0) {
   }
   const routes = topic?.routes
   if (topic?.status !== 'planned') for (const field of ['home', 'slides', 'textbook', 'exercises']) if (typeof routes?.[field] !== 'string') errors.push(`${label}.routes.${field} is required`)
-  if (topic?.status !== 'planned' && routes && typeof topic?.id === 'string' && typeof topic?.course === 'string') {
+  if (topic?.status !== 'planned' && routes && typeof topic?.id === 'string' && (knowledgeBaseNative(topic) || typeof topic?.course === 'string')) {
     const expected = expectedRoutes(topic)
     for (const field of Object.keys(expected)) if (routes[field] !== expected[field]) errors.push(`${label}.routes.${field} must be ${expected[field]}`)
   }
@@ -95,7 +105,7 @@ export async function validateTopicFiles(root, topic) {
   for (const [kind, relative] of Object.entries(paths)) {
     try { contents[kind] = await readFile(path.join(root, relative), 'utf8') } catch { contents[kind] = '' }
   }
-  if (!contents.home.includes(`/slides/${topic.id}/`) || !contents.home.includes(`/textbook/${topic.id}`) || !contents.home.includes(`/exercises/${topic.id}`)) errors.push(`${topic.id}: topic home must link to slides, textbook, and exercises`)
+  if (!knowledgeBaseNative(topic) && (!contents.home.includes(`/slides/${topic.id}/`) || !contents.home.includes(`/textbook/${topic.id}`) || !contents.home.includes(`/exercises/${topic.id}`))) errors.push(`${topic.id}: topic home must link to slides, textbook, and exercises`)
   if (!contents.textbook.includes(`/exercises/${topic.id}`)) errors.push(`${topic.id}: textbook must link to exercises`)
   if (!contents.exercises.includes(`/textbook/${topic.id}`)) errors.push(`${topic.id}: exercises must link to textbook`)
   if (!contents.slides.includes(`textbook/${topic.id}`) || !contents.slides.includes(`exercises/${topic.id}`)) errors.push(`${topic.id}: slides must link to textbook and exercises`)

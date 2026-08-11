@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Brownian motion](/knowledge-base/topics/prob-brownian-motion)
+- [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution)
 
 ## 次に学ぶTopic
 

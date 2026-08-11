@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[微分と変化率](/knowledge-base/topics/calc-derivatives-rates) / [平均値の定理](/knowledge-base/topics/calc-mean-value-theorem) / [収束次数と停止条件](/knowledge-base/topics/num-convergence-orders-stopping)
+[微分と変化率](/knowledge-base/topics/calc-derivatives-rates) / [平均値の定理](/knowledge-base/topics/calc-mean-value-theorem) / [収束次数と停止条件](/knowledge-base/topics/num-convergence-orders-stopping) / [Continuous-time signals](/knowledge-base/topics/sig-continuous-time-signals) / [Chebyshev approximation](/knowledge-base/topics/num-chebyshev-approximation)
 
 ## Learning Path
 

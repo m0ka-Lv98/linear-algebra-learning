@@ -4,16 +4,17 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
-- [Optimal experimental design](/knowledge-base/topics/stat-optimal-experimental-design)
+- [Generalized linear models](/knowledge-base/topics/stat-generalized-linear-models)
+- [Covariance estimation](/knowledge-base/topics/stat-covariance-estimation)
 
 ## 次に学ぶTopic
 
-[Jensen–Shannon divergence](/knowledge-base/topics/info-jensen-shannon-divergence)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-sandwich-covariance) / [教科書](/textbook/stat-sandwich-covariance) / [演習](/exercises/stat-sandwich-covariance) / [スライド](/slides/stat-sandwich-covariance/)

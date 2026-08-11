@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [BFGS](/knowledge-base/topics/opt-bfgs)
+- [勾配降下法と収束](/knowledge-base/topics/opt-gradient-descent-convergence)
+- [凸集合と凸関数](/knowledge-base/topics/opt-convex-sets-functions)
 
 ## 次に学ぶTopic
 
-[Tangent and normal cones](/knowledge-base/topics/opt-tangent-normal-cones)
+登録なし
 
 ## Learning Path
 

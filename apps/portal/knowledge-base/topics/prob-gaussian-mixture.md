@@ -4,16 +4,16 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Continuous Distributions
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, probability-continuous-distributions
 
 ## Prerequisites
 
-- [Dirichlet distribution](/knowledge-base/topics/prob-dirichlet-distribution)
+- [Gaussian distribution](/knowledge-base/topics/prob-gaussian-distribution)
 
 ## 次に学ぶTopic
 
-登録なし
+[Jensen–Shannon divergence](/knowledge-base/topics/info-jensen-shannon-divergence)
 
 ## Learning Path
 
@@ -25,4 +25,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/prob-gaussian-mixture) / [教科書](/textbook/prob-gaussian-mixture) / [演習](/exercises/prob-gaussian-mixture) / [スライド](/slides/prob-gaussian-mixture/)

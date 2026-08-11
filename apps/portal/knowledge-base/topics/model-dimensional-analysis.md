@@ -9,11 +9,11 @@
 
 ## Prerequisites
 
-なし
+- [数式・記号・型・次元](/knowledge-base/topics/prep-symbols-types-shapes)
 
 ## 次に学ぶTopic
 
-[Buckingham Pi theorem](/knowledge-base/topics/model-buckingham-pi)
+[Buckingham Pi theorem](/knowledge-base/topics/model-buckingham-pi) / [Nondimensionalization](/knowledge-base/topics/model-nondimensionalization)
 
 ## Learning Path
 

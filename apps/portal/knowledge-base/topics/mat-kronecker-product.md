@@ -4,12 +4,13 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
 - [vec operator](/knowledge-base/topics/mat-vec-operator)
+- [行列積](/knowledge-base/topics/la-matrix-multiplication)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-kronecker-product) / [教科書](/textbook/mat-kronecker-product) / [演習](/exercises/mat-kronecker-product) / [スライド](/slides/mat-kronecker-product/)

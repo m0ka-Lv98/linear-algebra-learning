@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[momentumと加速勾配法](/knowledge-base/topics/opt-momentum-accelerated-gradient) / [Newton法と準Newton法](/knowledge-base/topics/opt-newton-quasi-newton) / [座標降下法と共役方向](/knowledge-base/topics/opt-coordinate-conjugate-directions) / [Mirror descentとBregman divergence](/knowledge-base/topics/opt-mirror-descent-bregman) / [確率的勾配法](/knowledge-base/topics/opt-stochastic-gradient) / [線形回帰](/knowledge-base/topics/ml-linear-regression) / [boostingとgradient boosting](/knowledge-base/topics/ml-boosting-gradient-boosting)
+[momentumと加速勾配法](/knowledge-base/topics/opt-momentum-accelerated-gradient) / [Newton法と準Newton法](/knowledge-base/topics/opt-newton-quasi-newton) / [座標降下法と共役方向](/knowledge-base/topics/opt-coordinate-conjugate-directions) / [Mirror descentとBregman divergence](/knowledge-base/topics/opt-mirror-descent-bregman) / [確率的勾配法](/knowledge-base/topics/opt-stochastic-gradient) / [線形回帰](/knowledge-base/topics/ml-linear-regression) / [boostingとgradient boosting](/knowledge-base/topics/ml-boosting-gradient-boosting) / [BFGS](/knowledge-base/topics/opt-bfgs)
 
 ## Learning Path
 

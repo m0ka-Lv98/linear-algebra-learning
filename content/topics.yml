@@ -3410,8 +3410,7 @@
   title: 接錐・法錐・制約資格条件
   course: foundation
   order: 613
-  summary: 最適点から一次的に動ける方向の集合がtangent cone。その全方向へ目的関数を減らせない条件は、負の勾配がtangent coneの極coneであるnormal coneに入ること。KKTはnormal
-    coneを制約勾配で表現した形。
+  summary: 最適点から一次的に動ける方向の集合がtangent cone。その全方向へ目的関数を減らせない条件は、負の勾配がtangent coneの極coneであるnormal coneに入ること。KKTはnormal coneを制約勾配で表現した形。
   status: draft
   prerequisites:
     - opt-optimality-conditions
@@ -5018,8 +5017,7 @@
   title: Deep Reinforcement Learning
   course: foundation
   order: 917
-  summary: 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget
-    networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
+  summary: 高次元stateでは表を持てないためfunction approximationを使う。DQNはQ-learningにreplay bufferとtarget networkを加え、PPO等のactor-criticではpolicyとvalueを同時学習する。
   status: draft
   prerequisites:
     - ml-policy-gradient-reinforce
@@ -5449,8 +5447,7 @@
   title: RLHF：reward model・PPO・KL制御
   course: foundation
   order: 1007
-  summary: まずchosen/rejected比較からreward modelを学び、そのrewardを最大化するようpolicyをRLで更新する。ただしreward
-    modelの穴を突くoveroptimizationを抑えるためreference policyとのKL penaltyを使う。
+  summary: まずchosen/rejected比較からreward modelを学び、そのrewardを最大化するようpolicyをRLで更新する。ただしreward modelの穴を突くoveroptimizationを抑えるためreference policyとのKL penaltyを使う。
   status: draft
   prerequisites:
     - frontier-supervised-finetuning-instruction-tuning
@@ -5476,8 +5473,7 @@
   title: 推論RLとverifiable reward
   course: foundation
   order: 1009
-  summary: verifiable taskでは最終答案の正誤、unit test、formal
-    checkerなどをrewardとして使える。人間preferenceより低コストで大量sampleを評価できる一方、reward仕様の範囲外の品質は保証しない。
+  summary: verifiable taskでは最終答案の正誤、unit test、formal checkerなどをrewardとして使える。人間preferenceより低コストで大量sampleを評価できる一方、reward仕様の範囲外の品質は保証しない。
   status: draft
   prerequisites:
     - frontier-rlhf-reward-model-ppo-kl
@@ -5813,8 +5809,7 @@
   title: LLM推論：prefill・decode・KV cache
   course: foundation
   order: 1022
-  summary: prefillはprompt全tokenを並列に処理しmatrix multiplicationが大きい。decodeは過去K/Vをcacheして1 tokenずつ進み、batchやmodelによってmemory
-    bandwidth支配になりやすい。
+  summary: prefillはprompt全tokenを並列に処理しmatrix multiplicationが大きい。decodeは過去K/Vをcacheして1 tokenずつ進み、batchやmodelによってmemory bandwidth支配になりやすい。
   status: draft
   prerequisites:
     - dl-transformers
@@ -5838,8 +5833,7 @@
   title: LLM serving・continuous batching・speculative decoding
   course: foundation
   order: 1023
-  summary: requestごとに生成長が違うため固定batchはGPU slotを無駄にしやすい。continuous batchingはdecode step単位でrequestを入替える。speculative
-    decodingは小modelのdraftを大modelがまとめて検証する。
+  summary: requestごとに生成長が違うため固定batchはGPU slotを無駄にしやすい。continuous batchingはdecode step単位でrequestを入替える。speculative decodingは小modelのdraftを大modelがまとめて検証する。
   status: draft
   prerequisites:
     - frontier-inference-prefill-decode-kv-cache
@@ -5981,7 +5975,7 @@
 - id: mat-gram-matrix
   title: Gram matrix
   summary: Gram matrixを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - la-inner-products-norms-angles
     - la-matrix-multiplication
@@ -5995,10 +5989,16 @@
   tags:
     - linear-algebra
     - linear-algebra-core
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-gram-matrix
+    slides: /slides/mat-gram-matrix/
+    textbook: /textbook/mat-gram-matrix
+    exercises: /exercises/mat-gram-matrix
 - id: stat-fisher-information-matrix
   title: Fisher information matrix
   summary: Fisher information matrixを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-likelihood-maximum-likelihood
     - prob-multivariate-normal-distribution
@@ -6015,10 +6015,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-fisher-information-matrix
+    slides: /slides/stat-fisher-information-matrix/
+    textbook: /textbook/stat-fisher-information-matrix
+    exercises: /exercises/stat-fisher-information-matrix
 - id: stat-estimator-covariance
   title: Estimator covariance
   summary: Estimator covarianceを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-fisher-information-matrix
     - prob-covariance-correlation
@@ -6032,10 +6038,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-estimator-covariance
+    slides: /slides/stat-estimator-covariance/
+    textbook: /textbook/stat-estimator-covariance
+    exercises: /exercises/stat-estimator-covariance
 - id: stat-vif-collinearity
   title: VIF and collinearity
   summary: VIF and collinearityを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-estimator-covariance
     - mat-gram-matrix
@@ -6049,10 +6061,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-vif-collinearity
+    slides: /slides/stat-vif-collinearity/
+    textbook: /textbook/stat-vif-collinearity
+    exercises: /exercises/stat-vif-collinearity
 - id: stat-wls-fisher-information
   title: WLS Fisher information
   summary: WLS Fisher informationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-wls-inverse-variance
     - stat-fisher-information-matrix
@@ -6067,10 +6085,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-wls-fisher-information
+    slides: /slides/stat-wls-fisher-information/
+    textbook: /textbook/stat-wls-fisher-information
+    exercises: /exercises/stat-wls-fisher-information
 - id: stat-model-misspecification
   title: Model misspecification
   summary: Model misspecificationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-likelihood-maximum-likelihood
     - stat-estimator-covariance
@@ -6084,10 +6108,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-model-misspecification
+    slides: /slides/stat-model-misspecification/
+    textbook: /textbook/stat-model-misspecification
+    exercises: /exercises/stat-model-misspecification
 - id: mat-scalar-by-vector-derivative
   title: Scalar-by-vector derivative
   summary: Scalar-by-vector derivativeを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - calc-derivatives-rates
     - calc-multivariable-functions-partial-derivatives
@@ -6103,10 +6133,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-scalar-by-vector-derivative
+    slides: /slides/mat-scalar-by-vector-derivative/
+    textbook: /textbook/mat-scalar-by-vector-derivative
+    exercises: /exercises/mat-scalar-by-vector-derivative
 - id: mat-vector-by-vector-derivative
   title: Vector-by-vector derivative
   summary: Vector-by-vector derivativeを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-scalar-by-vector-derivative
   estimated_minutes:
@@ -6119,10 +6155,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-vector-by-vector-derivative
+    slides: /slides/mat-vector-by-vector-derivative/
+    textbook: /textbook/mat-vector-by-vector-derivative
+    exercises: /exercises/mat-vector-by-vector-derivative
 - id: mat-scalar-by-matrix-derivative
   title: Scalar-by-matrix derivative
   summary: Scalar-by-matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-scalar-by-vector-derivative
     - la-matrix-multiplication
@@ -6136,10 +6178,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-scalar-by-matrix-derivative
+    slides: /slides/mat-scalar-by-matrix-derivative/
+    textbook: /textbook/mat-scalar-by-matrix-derivative
+    exercises: /exercises/mat-scalar-by-matrix-derivative
 - id: mat-vector-by-matrix-derivative
   title: Vector-by-matrix derivative
   summary: Vector-by-matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-vector-by-vector-derivative
     - mat-scalar-by-matrix-derivative
@@ -6153,10 +6201,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-vector-by-matrix-derivative
+    slides: /slides/mat-vector-by-matrix-derivative/
+    textbook: /textbook/mat-vector-by-matrix-derivative
+    exercises: /exercises/mat-vector-by-matrix-derivative
 - id: mat-matrix-differential
   title: Matrix differential
   summary: Matrix differentialを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-scalar-by-matrix-derivative
     - mat-vector-by-matrix-derivative
@@ -6170,10 +6224,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-matrix-differential
+    slides: /slides/mat-matrix-differential/
+    textbook: /textbook/mat-matrix-differential
+    exercises: /exercises/mat-matrix-differential
 - id: mat-trace-trick
   title: Trace trick
   summary: Trace trickを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-matrix-differential
     - mat-gram-matrix
@@ -6187,10 +6247,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-trace-trick
+    slides: /slides/mat-trace-trick/
+    textbook: /textbook/mat-trace-trick
+    exercises: /exercises/mat-trace-trick
 - id: mat-quadratic-form-derivatives
   title: Quadratic form derivatives
   summary: Quadratic form derivativesを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-scalar-by-vector-derivative
     - la-quadratic-forms-positive-definite
@@ -6204,10 +6270,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-quadratic-form-derivatives
+    slides: /slides/mat-quadratic-form-derivatives/
+    textbook: /textbook/mat-quadratic-form-derivatives
+    exercises: /exercises/mat-quadratic-form-derivatives
 - id: mat-inverse-matrix-derivative
   title: Inverse matrix derivative
   summary: Inverse matrix derivativeを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-matrix-differential
     - la-invertibility-inverse-matrices
@@ -6221,10 +6293,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-inverse-matrix-derivative
+    slides: /slides/mat-inverse-matrix-derivative/
+    textbook: /textbook/mat-inverse-matrix-derivative
+    exercises: /exercises/mat-inverse-matrix-derivative
 - id: mat-log-determinant-derivative
   title: Log-determinant derivative
   summary: Log-determinant derivativeを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-inverse-matrix-derivative
     - mat-matrix-differential
@@ -6238,10 +6316,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-log-determinant-derivative
+    slides: /slides/mat-log-determinant-derivative/
+    textbook: /textbook/mat-log-determinant-derivative
+    exercises: /exercises/mat-log-determinant-derivative
 - id: mat-matrix-chain-rule
   title: Matrix chain rule
   summary: Matrix chain ruleを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-vector-by-vector-derivative
     - mat-vector-by-matrix-derivative
@@ -6255,10 +6339,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-matrix-chain-rule
+    slides: /slides/mat-matrix-chain-rule/
+    textbook: /textbook/mat-matrix-chain-rule
+    exercises: /exercises/mat-matrix-chain-rule
 - id: mat-jacobian-vector-product
   title: Jacobian-vector product
   summary: Jacobian-vector productを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-vector-by-vector-derivative
     - la-matrix-multiplication
@@ -6272,10 +6362,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-jacobian-vector-product
+    slides: /slides/mat-jacobian-vector-product/
+    textbook: /textbook/mat-jacobian-vector-product
+    exercises: /exercises/mat-jacobian-vector-product
 - id: mat-vector-jacobian-product
   title: Vector-Jacobian product
   summary: Vector-Jacobian productを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-jacobian-vector-product
   estimated_minutes:
@@ -6288,10 +6384,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-vector-jacobian-product
+    slides: /slides/mat-vector-jacobian-product/
+    textbook: /textbook/mat-vector-jacobian-product
+    exercises: /exercises/mat-vector-jacobian-product
 - id: mat-automatic-differentiation
   title: Automatic differentiation
   summary: Automatic differentiationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-matrix-chain-rule
     - mat-jacobian-vector-product
@@ -6305,10 +6407,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-automatic-differentiation
+    slides: /slides/mat-automatic-differentiation/
+    textbook: /textbook/mat-automatic-differentiation
+    exercises: /exercises/mat-automatic-differentiation
 - id: mat-forward-mode-ad
   title: Forward-mode AD
   summary: Forward-mode ADを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-automatic-differentiation
     - mat-jacobian-vector-product
@@ -6322,10 +6430,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-forward-mode-ad
+    slides: /slides/mat-forward-mode-ad/
+    textbook: /textbook/mat-forward-mode-ad
+    exercises: /exercises/mat-forward-mode-ad
 - id: mat-reverse-mode-ad
   title: Reverse-mode AD
   summary: Reverse-mode ADを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-automatic-differentiation
     - mat-vector-jacobian-product
@@ -6339,10 +6453,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-reverse-mode-ad
+    slides: /slides/mat-reverse-mode-ad/
+    textbook: /textbook/mat-reverse-mode-ad
+    exercises: /exercises/mat-reverse-mode-ad
 - id: mat-vec-operator
   title: vec operator
   summary: vec operatorを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-matrix-differential
     - prep-symbols-types-shapes
@@ -6356,10 +6476,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-vec-operator
+    slides: /slides/mat-vec-operator/
+    textbook: /textbook/mat-vec-operator
+    exercises: /exercises/mat-vec-operator
 - id: mat-kronecker-product
   title: Kronecker product
   summary: Kronecker productを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - mat-vec-operator
     - la-matrix-multiplication
@@ -6373,10 +6499,16 @@
   tags:
     - matrix-calculus
     - matrix-calculus-differentiation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/mat-kronecker-product
+    slides: /slides/mat-kronecker-product/
+    textbook: /textbook/mat-kronecker-product
+    exercises: /exercises/mat-kronecker-product
 - id: prob-bernoulli-distribution
   title: Bernoulli distribution
   summary: Bernoulli distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-random-variables-cdf-pmf-pdf
   estimated_minutes:
@@ -6389,10 +6521,16 @@
   tags:
     - probability-statistics
     - probability-discrete-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-bernoulli-distribution
+    slides: /slides/prob-bernoulli-distribution/
+    textbook: /textbook/prob-bernoulli-distribution
+    exercises: /exercises/prob-bernoulli-distribution
 - id: prob-binomial-distribution
   title: Binomial distribution
   summary: Binomial distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-bernoulli-distribution
     - prob-expectation-variance-moments
@@ -6406,10 +6544,16 @@
   tags:
     - probability-statistics
     - probability-discrete-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-binomial-distribution
+    slides: /slides/prob-binomial-distribution/
+    textbook: /textbook/prob-binomial-distribution
+    exercises: /exercises/prob-binomial-distribution
 - id: prob-poisson-distribution
   title: Poisson distribution
   summary: Poisson distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-binomial-distribution
     - prob-expectation-variance-moments
@@ -6423,10 +6567,16 @@
   tags:
     - probability-statistics
     - probability-discrete-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-poisson-distribution
+    slides: /slides/prob-poisson-distribution/
+    textbook: /textbook/prob-poisson-distribution
+    exercises: /exercises/prob-poisson-distribution
 - id: prob-gaussian-distribution
   title: Gaussian distribution
   summary: Gaussian distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-continuous-distributions
     - prob-expectation-variance-moments
@@ -6440,10 +6590,16 @@
   tags:
     - probability-statistics
     - probability-continuous-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-gaussian-distribution
+    slides: /slides/prob-gaussian-distribution/
+    textbook: /textbook/prob-gaussian-distribution
+    exercises: /exercises/prob-gaussian-distribution
 - id: prob-log-normal-distribution
   title: Log-normal distribution
   summary: Log-normal distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-gaussian-distribution
   estimated_minutes:
@@ -6456,10 +6612,16 @@
   tags:
     - probability-statistics
     - probability-continuous-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-log-normal-distribution
+    slides: /slides/prob-log-normal-distribution/
+    textbook: /textbook/prob-log-normal-distribution
+    exercises: /exercises/prob-log-normal-distribution
 - id: prob-student-t-distribution
   title: Student t distribution
   summary: Student t distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-gaussian-distribution
     - stat-t-chi-square-sampling-distributions
@@ -6474,10 +6636,16 @@
   tags:
     - probability-statistics
     - probability-continuous-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-student-t-distribution
+    slides: /slides/prob-student-t-distribution/
+    textbook: /textbook/prob-student-t-distribution
+    exercises: /exercises/prob-student-t-distribution
 - id: prob-dirichlet-distribution
   title: Dirichlet distribution
   summary: Dirichlet distributionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-multivariate-normal-distribution
     - prob-expectation-variance-moments
@@ -6491,10 +6659,16 @@
   tags:
     - probability-statistics
     - probability-continuous-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-dirichlet-distribution
+    slides: /slides/prob-dirichlet-distribution/
+    textbook: /textbook/prob-dirichlet-distribution
+    exercises: /exercises/prob-dirichlet-distribution
 - id: prob-gaussian-mixture
   title: Gaussian mixture
   summary: Gaussian mixtureを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-gaussian-distribution
   estimated_minutes:
@@ -6507,6 +6681,12 @@
   tags:
     - probability-statistics
     - probability-continuous-distributions
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/prob-gaussian-mixture
+    slides: /slides/prob-gaussian-mixture/
+    textbook: /textbook/prob-gaussian-mixture
+    exercises: /exercises/prob-gaussian-mixture
 - id: prob-generating-functions
   title: Probability generating function
   summary: Probability generating functionを工学数学Knowledge Baseへ接続するための計画Topic
@@ -6661,7 +6841,7 @@
 - id: stat-cramer-rao-lower-bound
   title: Cramér–Rao lower bound
   summary: Cramér–Rao lower boundを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-fisher-information-matrix
     - stat-estimator-covariance
@@ -6675,10 +6855,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-cramer-rao-lower-bound
+    slides: /slides/stat-cramer-rao-lower-bound/
+    textbook: /textbook/stat-cramer-rao-lower-bound
+    exercises: /exercises/stat-cramer-rao-lower-bound
 - id: stat-observed-information
   title: Observed information
   summary: Observed informationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-likelihood-maximum-likelihood
     - stat-fisher-information-matrix
@@ -6692,10 +6878,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-observed-information
+    slides: /slides/stat-observed-information/
+    textbook: /textbook/stat-observed-information
+    exercises: /exercises/stat-observed-information
 - id: stat-identifiability
   title: Identifiability
   summary: Identifiabilityを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-likelihood-maximum-likelihood
     - stat-model-misspecification
@@ -6709,10 +6901,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-identifiability
+    slides: /slides/stat-identifiability/
+    textbook: /textbook/stat-identifiability
+    exercises: /exercises/stat-identifiability
 - id: stat-delta-method
   title: Delta method
   summary: Delta methodを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - calc-multivariable-functions-partial-derivatives
     - stat-estimator-covariance
@@ -6726,10 +6924,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-delta-method
+    slides: /slides/stat-delta-method/
+    textbook: /textbook/stat-delta-method
+    exercises: /exercises/stat-delta-method
 - id: stat-error-propagation
   title: Error propagation
   summary: Error propagationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-delta-method
     - prob-covariance-correlation
@@ -6743,10 +6947,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-error-propagation
+    slides: /slides/stat-error-propagation/
+    textbook: /textbook/stat-error-propagation
+    exercises: /exercises/stat-error-propagation
 - id: stat-sufficient-statistics
   title: Sufficient statistics
   summary: Sufficient statisticsを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-likelihood-maximum-likelihood
     - prob-conditional-probability-independence
@@ -6760,10 +6970,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-sufficient-statistics
+    slides: /slides/stat-sufficient-statistics/
+    textbook: /textbook/stat-sufficient-statistics
+    exercises: /exercises/stat-sufficient-statistics
 - id: stat-exponential-family
   title: Exponential family
   summary: Exponential familyを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-sufficient-statistics
     - stat-likelihood-maximum-likelihood
@@ -6777,10 +6993,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-exponential-family
+    slides: /slides/stat-exponential-family/
+    textbook: /textbook/stat-exponential-family
+    exercises: /exercises/stat-exponential-family
 - id: stat-generalized-linear-models
   title: Generalized linear models
   summary: Generalized linear modelsを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-exponential-family
     - mat-ols-design-matrices
@@ -6794,10 +7016,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-generalized-linear-models
+    slides: /slides/stat-generalized-linear-models/
+    textbook: /textbook/stat-generalized-linear-models
+    exercises: /exercises/stat-generalized-linear-models
 - id: stat-poisson-regression
   title: Poisson regression
   summary: Poisson regressionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-generalized-linear-models
     - prob-poisson-distribution
@@ -6811,10 +7039,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-poisson-regression
+    slides: /slides/stat-poisson-regression/
+    textbook: /textbook/stat-poisson-regression
+    exercises: /exercises/stat-poisson-regression
 - id: stat-covariance-estimation
   title: Covariance estimation
   summary: Covariance estimationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - prob-covariance-correlation
     - stat-estimator-covariance
@@ -6828,10 +7062,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-covariance-estimation
+    slides: /slides/stat-covariance-estimation/
+    textbook: /textbook/stat-covariance-estimation
+    exercises: /exercises/stat-covariance-estimation
 - id: stat-experimental-design
   title: Experimental design
   summary: Experimental designを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-estimator-covariance
     - stat-identifiability
@@ -6845,10 +7085,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-experimental-design
+    slides: /slides/stat-experimental-design/
+    textbook: /textbook/stat-experimental-design
+    exercises: /exercises/stat-experimental-design
 - id: stat-optimal-experimental-design
   title: Optimal experimental design
   summary: Optimal experimental designを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-experimental-design
     - stat-fisher-information-matrix
@@ -6862,10 +7108,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-optimal-experimental-design
+    slides: /slides/stat-optimal-experimental-design/
+    textbook: /textbook/stat-optimal-experimental-design
+    exercises: /exercises/stat-optimal-experimental-design
 - id: stat-sandwich-covariance
   title: Sandwich covariance
   summary: Sandwich covarianceを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - stat-generalized-linear-models
     - stat-covariance-estimation
@@ -6879,10 +7131,16 @@
   tags:
     - probability-statistics
     - statistics-estimation
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/stat-sandwich-covariance
+    slides: /slides/stat-sandwich-covariance/
+    textbook: /textbook/stat-sandwich-covariance
+    exercises: /exercises/stat-sandwich-covariance
 - id: sig-continuous-time-signals
   title: Continuous-time signals
   summary: Continuous-time signalsを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - calc-functions-limits-continuity
   estimated_minutes:
@@ -6895,10 +7153,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-continuous-time-signals
+    slides: /slides/sig-continuous-time-signals/
+    textbook: /textbook/sig-continuous-time-signals
+    exercises: /exercises/sig-continuous-time-signals
 - id: sig-discrete-time-signals
   title: Discrete-time signals
   summary: Discrete-time signalsを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-continuous-time-signals
     - prob-random-variables-cdf-pmf-pdf
@@ -6912,10 +7176,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-discrete-time-signals
+    slides: /slides/sig-discrete-time-signals/
+    textbook: /textbook/sig-discrete-time-signals
+    exercises: /exercises/sig-discrete-time-signals
 - id: sig-impulse-step
   title: Impulse and step signals
   summary: Impulse and step signalsを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-continuous-time-signals
     - sig-discrete-time-signals
@@ -6929,10 +7199,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-impulse-step
+    slides: /slides/sig-impulse-step/
+    textbook: /textbook/sig-impulse-step
+    exercises: /exercises/sig-impulse-step
 - id: sig-lti-systems
   title: LTI systems
   summary: LTI systemsを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-impulse-step
     - la-matrix-multiplication
@@ -6946,10 +7222,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-lti-systems
+    slides: /slides/sig-lti-systems/
+    textbook: /textbook/sig-lti-systems
+    exercises: /exercises/sig-lti-systems
 - id: sig-impulse-response
   title: Impulse response
   summary: Impulse responseを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-lti-systems
   estimated_minutes:
@@ -6962,10 +7244,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-impulse-response
+    slides: /slides/sig-impulse-response/
+    textbook: /textbook/sig-impulse-response
+    exercises: /exercises/sig-impulse-response
 - id: sig-convolution
   title: Convolution
   summary: Convolutionを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-impulse-response
     - la-inner-products-norms-angles
@@ -6979,10 +7267,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-convolution
+    slides: /slides/sig-convolution/
+    textbook: /textbook/sig-convolution
+    exercises: /exercises/sig-convolution
 - id: sig-correlation
   title: Correlation
   summary: Correlationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-convolution
     - prob-covariance-correlation
@@ -6996,10 +7290,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-correlation
+    slides: /slides/sig-correlation/
+    textbook: /textbook/sig-correlation
+    exercises: /exercises/sig-correlation
 - id: sig-autocorrelation
   title: Autocorrelation
   summary: Autocorrelationを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-correlation
     - prob-stationarity-autocorrelation
@@ -7013,10 +7313,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-autocorrelation
+    slides: /slides/sig-autocorrelation/
+    textbook: /textbook/sig-autocorrelation
+    exercises: /exercises/sig-autocorrelation
 - id: sig-fourier-series
   title: Fourier series
   summary: Fourier seriesを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - calc-integrals-fundamental-theorem
     - la-inner-products-norms-angles
@@ -7031,10 +7337,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-fourier-series
+    slides: /slides/sig-fourier-series/
+    textbook: /textbook/sig-fourier-series
+    exercises: /exercises/sig-fourier-series
 - id: sig-fourier-transform
   title: Continuous Fourier transform
   summary: Continuous Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-fourier-series
     - sig-continuous-time-signals
@@ -7048,10 +7360,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-fourier-transform
+    slides: /slides/sig-fourier-transform/
+    textbook: /textbook/sig-fourier-transform
+    exercises: /exercises/sig-fourier-transform
 - id: sig-convolution-theorem
   title: Convolution theorem
   summary: Convolution theoremを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-fourier-transform
     - sig-convolution
@@ -7065,10 +7383,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-convolution-theorem
+    slides: /slides/sig-convolution-theorem/
+    textbook: /textbook/sig-convolution-theorem
+    exercises: /exercises/sig-convolution-theorem
 - id: sig-parseval-theorem
   title: Parseval theorem
   summary: Parseval theoremを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-fourier-series
     - la-inner-products-norms-angles
@@ -7082,10 +7406,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-parseval-theorem
+    slides: /slides/sig-parseval-theorem/
+    textbook: /textbook/sig-parseval-theorem
+    exercises: /exercises/sig-parseval-theorem
 - id: sig-dft
   title: Discrete Fourier transform
   summary: Discrete Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-fourier-series
     - sig-discrete-time-signals
@@ -7099,10 +7429,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-dft
+    slides: /slides/sig-dft/
+    textbook: /textbook/sig-dft
+    exercises: /exercises/sig-dft
 - id: sig-fft
   title: Fast Fourier transform
   summary: Fast Fourier transformを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-dft
   estimated_minutes:
@@ -7115,10 +7451,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-fft
+    slides: /slides/sig-fft/
+    textbook: /textbook/sig-fft
+    exercises: /exercises/sig-fft
 - id: sig-sampling-theorem-aliasing
   title: Sampling theorem and aliasing
   summary: Sampling theorem and aliasingを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-fourier-transform
     - sig-dft
@@ -7132,10 +7474,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-sampling-theorem-aliasing
+    slides: /slides/sig-sampling-theorem-aliasing/
+    textbook: /textbook/sig-sampling-theorem-aliasing
+    exercises: /exercises/sig-sampling-theorem-aliasing
 - id: sig-stft-spectrogram
   title: STFT and spectrogram
   summary: STFT and spectrogramを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - sig-fourier-transform
     - sig-sampling-theorem-aliasing
@@ -7149,10 +7497,16 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-stft-spectrogram
+    slides: /slides/sig-stft-spectrogram/
+    textbook: /textbook/sig-stft-spectrogram
+    exercises: /exercises/sig-stft-spectrogram
 - id: sig-laplace-transform
   title: Laplace transform
   summary: Laplace transformを工学数学Knowledge Baseへ接続するための計画Topic
-  status: planned
+  status: draft
   prerequisites:
     - calc-integrals-fundamental-theorem
     - sig-continuous-time-signals
@@ -7166,6 +7520,12 @@
   tags:
     - signals-systems-transforms
     - signals-fourier-analysis
+  delivery: knowledge-base
+  routes:
+    home: /knowledge-base/topics/sig-laplace-transform
+    slides: /slides/sig-laplace-transform/
+    textbook: /textbook/sig-laplace-transform
+    exercises: /exercises/sig-laplace-transform
 - id: ode-first-order
   title: First-order ODE
   summary: First-order ODEを工学数学Knowledge Baseへ接続するための計画Topic

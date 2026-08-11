@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Matrix exponential](/knowledge-base/topics/ode-matrix-exponential)
+- [Systems of ODE](/knowledge-base/topics/ode-systems)
+- [多変数関数と偏微分](/knowledge-base/topics/calc-multivariable-functions-partial-derivatives)
 
 ## 次に学ぶTopic
 
-[Boundary value problems](/knowledge-base/topics/ode-boundary-value-problems)
+登録なし
 
 ## Learning Path
 

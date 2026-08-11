@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [First-order ODE](/knowledge-base/topics/ode-first-order)
+- [微分と変化率](/knowledge-base/topics/calc-derivatives-rates)
 
 ## 次に学ぶTopic
 
-[Systems of ODE](/knowledge-base/topics/ode-systems)
+[Boundary value problems](/knowledge-base/topics/ode-boundary-value-problems)
 
 ## Learning Path
 

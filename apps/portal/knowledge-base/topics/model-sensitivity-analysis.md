@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Nondimensionalization](/knowledge-base/topics/model-nondimensionalization)
+- [Sensitivity matrices](/knowledge-base/topics/inv-sensitivity-matrices)
 
 ## 次に学ぶTopic
 

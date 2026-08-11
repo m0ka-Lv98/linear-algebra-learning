@@ -4,7 +4,7 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Continuous Distributions
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, probability-continuous-distributions
 
 ## Prerequisites
@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[Student t distribution](/knowledge-base/topics/prob-student-t-distribution)
+登録なし
 
 ## Learning Path
 
@@ -25,4 +25,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/prob-log-normal-distribution) / [教科書](/textbook/prob-log-normal-distribution) / [演習](/exercises/prob-log-normal-distribution) / [スライド](/slides/prob-log-normal-distribution/)

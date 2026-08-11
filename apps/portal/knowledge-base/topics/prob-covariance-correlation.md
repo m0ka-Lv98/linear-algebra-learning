@@ -14,11 +14,11 @@
 
 ## 次に学ぶTopic
 
-[多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution) / [線形回帰の確率モデル](/knowledge-base/topics/stat-linear-regression-probabilistic-model) / [共分散行列とscatter matrix](/knowledge-base/topics/mat-covariance-scatter-matrices) / [正準相関分析](/knowledge-base/topics/mat-cca-multiview)
+[多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution) / [線形回帰の確率モデル](/knowledge-base/topics/stat-linear-regression-probabilistic-model) / [共分散行列とscatter matrix](/knowledge-base/topics/mat-covariance-scatter-matrices) / [正準相関分析](/knowledge-base/topics/mat-cca-multiview) / [Fisher information matrix](/knowledge-base/topics/stat-fisher-information-matrix) / [Estimator covariance](/knowledge-base/topics/stat-estimator-covariance) / [Stationarity and autocorrelation](/knowledge-base/topics/prob-stationarity-autocorrelation) / [Error propagation](/knowledge-base/topics/stat-error-propagation)
 
 ## Learning Path
 
-[工学数学コア](../paths/engineering-mathematics-core) / [統計推定](../paths/statistical-estimation) / [Hotspot Matrixを理解する](../paths/hotspot-matrix)
+[工学数学コア](../paths/engineering-mathematics-core) / [統計推定](../paths/statistical-estimation) / [Spectral Cytometryの数学](../paths/spectral-cytometry-mathematics) / [Hotspot Matrixを理解する](../paths/hotspot-matrix)
 
 ## Case Study
 

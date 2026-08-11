@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[凸集合と凸関数](/knowledge-base/topics/opt-convex-sets-functions) / [robust regressionとM推定](/knowledge-base/topics/mat-robust-regression-m-estimators) / [機械学習問題の定式化とdata split](/knowledge-base/topics/ml-problem-formulation-data-splits) / [経験リスク・期待リスク・汎化](/knowledge-base/topics/ml-empirical-risk-generalization)
+[凸集合と凸関数](/knowledge-base/topics/opt-convex-sets-functions) / [robust regressionとM推定](/knowledge-base/topics/mat-robust-regression-m-estimators) / [機械学習問題の定式化とdata split](/knowledge-base/topics/ml-problem-formulation-data-splits) / [経験リスク・期待リスク・汎化](/knowledge-base/topics/ml-empirical-risk-generalization) / [Tangent and normal cones](/knowledge-base/topics/opt-tangent-normal-cones)
 
 ## Learning Path
 

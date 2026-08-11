@@ -16,7 +16,7 @@
 
 ## 次に学ぶTopic
 
-[softmaxと多クラス分類](/knowledge-base/topics/ml-softmax-multiclass) / [決定木](/knowledge-base/topics/ml-decision-trees) / [activation関数とloss](/knowledge-base/topics/dl-activation-loss-functions)
+[softmaxと多クラス分類](/knowledge-base/topics/ml-softmax-multiclass) / [決定木](/knowledge-base/topics/ml-decision-trees) / [activation関数とloss](/knowledge-base/topics/dl-activation-loss-functions) / [Bregman divergence](/knowledge-base/topics/opt-bregman-divergence) / [Jensen–Shannon divergence](/knowledge-base/topics/info-jensen-shannon-divergence) / [Mutual information](/knowledge-base/topics/info-mutual-information) / [Maximum entropy](/knowledge-base/topics/info-maximum-entropy)
 
 ## Learning Path
 

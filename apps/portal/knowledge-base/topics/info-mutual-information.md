@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Jensen–Shannon divergence](/knowledge-base/topics/info-jensen-shannon-divergence)
+- [条件付き確率と独立](/knowledge-base/topics/prob-conditional-probability-independence)
+- [エントロピー・交差エントロピー・KLダイバージェンス](/knowledge-base/topics/stat-entropy-cross-entropy-kl-divergence)
 
 ## 次に学ぶTopic
 

@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
+- [条件付き確率と独立](/knowledge-base/topics/prob-conditional-probability-independence)
 - [Random walk](/knowledge-base/topics/prob-random-walk)
 
 ## 次に学ぶTopic
 
-[Poisson process](/knowledge-base/topics/prob-poisson-process)
+登録なし
 
 ## Learning Path
 

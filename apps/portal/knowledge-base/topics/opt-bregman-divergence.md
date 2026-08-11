@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Mirror descent](/knowledge-base/topics/opt-mirror-descent)
+- [凸集合と凸関数](/knowledge-base/topics/opt-convex-sets-functions)
+- [エントロピー・交差エントロピー・KLダイバージェンス](/knowledge-base/topics/stat-entropy-cross-entropy-kl-divergence)
 
 ## 次に学ぶTopic
 
-[Calculus of variations](/knowledge-base/topics/opt-calculus-variations)
+[Mirror descent](/knowledge-base/topics/opt-mirror-descent)
 
 ## Learning Path
 

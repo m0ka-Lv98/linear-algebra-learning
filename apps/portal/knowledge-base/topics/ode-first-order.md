@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-なし
+- [微分と変化率](/knowledge-base/topics/calc-derivatives-rates)
+- [積分と微積分学の基本定理](/knowledge-base/topics/calc-integrals-fundamental-theorem)
 
 ## 次に学ぶTopic
 
-[Second-order ODE](/knowledge-base/topics/ode-second-order)
+[Second-order ODE](/knowledge-base/topics/ode-second-order) / [Systems of ODE](/knowledge-base/topics/ode-systems) / [PDE classification](/knowledge-base/topics/pde-classification) / [Calculus of variations](/knowledge-base/topics/opt-calculus-variations)
 
 ## Learning Path
 

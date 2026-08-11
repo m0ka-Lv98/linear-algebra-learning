@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Sensitivity matrices](/knowledge-base/topics/inv-sensitivity-matrices)
+- [共分散と相関](/knowledge-base/topics/prob-covariance-correlation)
 
 ## 次に学ぶTopic
 

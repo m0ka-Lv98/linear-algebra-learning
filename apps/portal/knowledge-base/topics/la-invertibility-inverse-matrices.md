@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[行列式・体積・可逆性](/knowledge-base/topics/la-determinants-volume-invertibility) / [固有値と固有ベクトル](/knowledge-base/topics/la-eigenvalues-eigenvectors)
+[行列式・体積・可逆性](/knowledge-base/topics/la-determinants-volume-invertibility) / [固有値と固有ベクトル](/knowledge-base/topics/la-eigenvalues-eigenvectors) / [Inverse matrix derivative](/knowledge-base/topics/mat-inverse-matrix-derivative)
 
 ## Learning Path
 

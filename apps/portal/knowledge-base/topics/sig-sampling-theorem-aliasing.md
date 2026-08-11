@@ -4,12 +4,13 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
 
-- [Fast Fourier transform](/knowledge-base/topics/sig-fft)
+- [Continuous Fourier transform](/knowledge-base/topics/sig-fourier-transform)
+- [Discrete Fourier transform](/knowledge-base/topics/sig-dft)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-sampling-theorem-aliasing) / [教科書](/textbook/sig-sampling-theorem-aliasing) / [演習](/exercises/sig-sampling-theorem-aliasing) / [スライド](/slides/sig-sampling-theorem-aliasing/)

@@ -10,6 +10,7 @@
 ## Prerequisites
 
 - [Calculus of variations](/knowledge-base/topics/opt-calculus-variations)
+- [Systems of ODE](/knowledge-base/topics/ode-systems)
 
 ## 次に学ぶTopic
 

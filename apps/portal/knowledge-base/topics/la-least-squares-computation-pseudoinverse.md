@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[擬似逆行列とrank不足の連立方程式](/knowledge-base/topics/la-pseudoinverse-rank-deficient-systems) / [最小二乗法の数値解法](/knowledge-base/topics/num-least-squares-qr-svd)
+[擬似逆行列とrank不足の連立方程式](/knowledge-base/topics/la-pseudoinverse-rank-deficient-systems) / [最小二乗法の数値解法](/knowledge-base/topics/num-least-squares-qr-svd) / [Linear inverse problems](/knowledge-base/topics/inv-linear-inverse-problems)
 
 ## Learning Path
 

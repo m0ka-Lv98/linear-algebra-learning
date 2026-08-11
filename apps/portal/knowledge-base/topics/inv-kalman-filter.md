@@ -10,6 +10,8 @@
 ## Prerequisites
 
 - [Recursive least squares](/knowledge-base/topics/inv-recursive-least-squares)
+- [Systems of ODE](/knowledge-base/topics/ode-systems)
+- [多変量正規分布](/knowledge-base/topics/prob-multivariate-normal-distribution)
 
 ## 次に学ぶTopic
 

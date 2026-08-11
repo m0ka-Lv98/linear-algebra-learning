@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Data processing inequality](/knowledge-base/topics/info-data-processing-inequality)
+- [エントロピー・交差エントロピー・KLダイバージェンス](/knowledge-base/topics/stat-entropy-cross-entropy-kl-divergence)
+- [条件付き確率と独立](/knowledge-base/topics/prob-conditional-probability-independence)
 
 ## 次に学ぶTopic
 

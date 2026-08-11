@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Well-posedness and ill-posedness](/knowledge-base/topics/inv-well-posedness)
+- [最小二乗法の計算と擬似逆行列](/knowledge-base/topics/la-least-squares-computation-pseudoinverse)
 
 ## 次に学ぶTopic
 
-[Nonlinear inverse problems](/knowledge-base/topics/inv-nonlinear-inverse-problems)
+[Nonlinear inverse problems](/knowledge-base/topics/inv-nonlinear-inverse-problems) / [Tikhonov regularization](/knowledge-base/topics/inv-tikhonov-regularization) / [Bayesian inverse problems](/knowledge-base/topics/inv-bayesian-inverse-problems) / [Recursive least squares](/knowledge-base/topics/inv-recursive-least-squares)
 
 ## Learning Path
 

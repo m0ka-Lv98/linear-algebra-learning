@@ -4,16 +4,17 @@
 **Domain:** [信号・システム・変換](../domains/signals-systems-transforms)
 **Module:** Signals & Fourier Analysis
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** signals-systems-transforms, signals-fourier-analysis
 
 ## Prerequisites
 
-- [Parseval theorem](/knowledge-base/topics/sig-parseval-theorem)
+- [Fourier series](/knowledge-base/topics/sig-fourier-series)
+- [Discrete-time signals](/knowledge-base/topics/sig-discrete-time-signals)
 
 ## 次に学ぶTopic
 
-[Fast Fourier transform](/knowledge-base/topics/sig-fft)
+[Fast Fourier transform](/knowledge-base/topics/sig-fft) / [Sampling theorem and aliasing](/knowledge-base/topics/sig-sampling-theorem-aliasing)
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/sig-dft) / [教科書](/textbook/sig-dft) / [演習](/exercises/sig-dft) / [スライド](/slides/sig-dft/)

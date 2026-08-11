@@ -4,16 +4,16 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Discrete Distributions
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, probability-discrete-distributions
 
 ## Prerequisites
 
-なし
+- [確率変数・CDF・PMF・PDF](/knowledge-base/topics/prob-random-variables-cdf-pmf-pdf)
 
 ## 次に学ぶTopic
 
-[Binomial distribution](/knowledge-base/topics/prob-binomial-distribution)
+[Binomial distribution](/knowledge-base/topics/prob-binomial-distribution) / [Random walk](/knowledge-base/topics/prob-random-walk)
 
 ## Learning Path
 
@@ -25,4 +25,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/prob-bernoulli-distribution) / [教科書](/textbook/prob-bernoulli-distribution) / [演習](/exercises/prob-bernoulli-distribution) / [スライド](/slides/prob-bernoulli-distribution/)

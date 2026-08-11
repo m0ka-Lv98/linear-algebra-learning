@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Constraint qualification](/knowledge-base/topics/opt-constraint-qualification)
+- [凸集合と凸関数](/knowledge-base/topics/opt-convex-sets-functions)
+- [Lagrange乗数法](/knowledge-base/topics/calc-lagrange-multipliers)
 
 ## 次に学ぶTopic
 

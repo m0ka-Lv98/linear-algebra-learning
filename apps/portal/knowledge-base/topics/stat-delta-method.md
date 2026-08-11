@@ -4,12 +4,13 @@
 **Domain:** [確率・統計](../domains/probability-statistics)
 **Module:** Statistics & Estimation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** probability-statistics, statistics-estimation
 
 ## Prerequisites
 
-- [Identifiability](/knowledge-base/topics/stat-identifiability)
+- [多変数関数と偏微分](/knowledge-base/topics/calc-multivariable-functions-partial-derivatives)
+- [Estimator covariance](/knowledge-base/topics/stat-estimator-covariance)
 
 ## 次に学ぶTopic
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/stat-delta-method) / [教科書](/textbook/stat-delta-method) / [演習](/exercises/stat-delta-method) / [スライド](/slides/stat-delta-method/)

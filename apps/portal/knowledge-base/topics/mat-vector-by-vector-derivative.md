@@ -4,7 +4,7 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
@@ -13,7 +13,7 @@
 
 ## 次に学ぶTopic
 
-[Scalar-by-matrix derivative](/knowledge-base/topics/mat-scalar-by-matrix-derivative)
+[Vector-by-matrix derivative](/knowledge-base/topics/mat-vector-by-matrix-derivative) / [Matrix chain rule](/knowledge-base/topics/mat-matrix-chain-rule) / [Jacobian-vector product](/knowledge-base/topics/mat-jacobian-vector-product)
 
 ## Learning Path
 
@@ -25,4 +25,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-vector-by-vector-derivative) / [教科書](/textbook/mat-vector-by-vector-derivative) / [演習](/exercises/mat-vector-by-vector-derivative) / [スライド](/slides/mat-vector-by-vector-derivative/)

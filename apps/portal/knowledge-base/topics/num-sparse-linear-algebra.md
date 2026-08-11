@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [GMRES](/knowledge-base/topics/num-gmres)
+- [行列積](/knowledge-base/topics/la-matrix-multiplication)
+- [誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability)
 
 ## 次に学ぶTopic
 
-[Finite difference](/knowledge-base/topics/num-finite-difference)
+[Model reduction](/knowledge-base/topics/model-reduction)
 
 ## Learning Path
 

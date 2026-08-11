@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [PDE classification](/knowledge-base/topics/pde-classification)
+- [Fourier series](/knowledge-base/topics/sig-fourier-series)
 
 ## 次に学ぶTopic
 
-[Wave equation](/knowledge-base/topics/pde-wave-equation)
+[Eigenfunction expansion](/knowledge-base/topics/pde-eigenfunction-expansion)
 
 ## Learning Path
 

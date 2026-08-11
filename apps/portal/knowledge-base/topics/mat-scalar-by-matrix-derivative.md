@@ -4,16 +4,17 @@
 **Domain:** [行列微分](../domains/matrix-calculus)
 **Module:** Matrix Calculus & Differentiation
 **Level:** introductory
-**Status:** planned
+**Status:** draft
 **Tags:** matrix-calculus, matrix-calculus-differentiation
 
 ## Prerequisites
 
-- [Vector-by-vector derivative](/knowledge-base/topics/mat-vector-by-vector-derivative)
+- [Scalar-by-vector derivative](/knowledge-base/topics/mat-scalar-by-vector-derivative)
+- [行列積](/knowledge-base/topics/la-matrix-multiplication)
 
 ## 次に学ぶTopic
 
-[Vector-by-matrix derivative](/knowledge-base/topics/mat-vector-by-matrix-derivative)
+[Vector-by-matrix derivative](/knowledge-base/topics/mat-vector-by-matrix-derivative) / [Matrix differential](/knowledge-base/topics/mat-matrix-differential)
 
 ## Learning Path
 
@@ -25,4 +26,4 @@
 
 ## 教材
 
-本文・演習・スライドは準備中です。
+[テーマホーム](/knowledge-base/topics/mat-scalar-by-matrix-derivative) / [教科書](/textbook/mat-scalar-by-matrix-derivative) / [演習](/exercises/mat-scalar-by-matrix-derivative) / [スライド](/slides/mat-scalar-by-matrix-derivative/)

@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Fenchel duality](/knowledge-base/topics/opt-fenchel-duality)
+- [Bregman divergence](/knowledge-base/topics/opt-bregman-divergence)
 
 ## 次に学ぶTopic
 
-[Bregman divergence](/knowledge-base/topics/opt-bregman-divergence)
+登録なし
 
 ## Learning Path
 

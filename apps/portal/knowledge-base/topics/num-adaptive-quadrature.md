@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Chebyshev approximation](/knowledge-base/topics/num-chebyshev-approximation)
+- [数値積分と求積法](/knowledge-base/topics/num-numerical-integration-quadrature)
+- [誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability)
 
 ## 次に学ぶTopic
 
-[Krylov subspace methods](/knowledge-base/topics/num-krylov-subspace)
+登録なし
 
 ## Learning Path
 

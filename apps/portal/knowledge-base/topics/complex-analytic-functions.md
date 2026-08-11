@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-なし
+- [複素数・極形式・Euler公式](/knowledge-base/topics/prep-complex-numbers-euler-form)
+- [多変数関数と偏微分](/knowledge-base/topics/calc-multivariable-functions-partial-derivatives)
 
 ## 次に学ぶTopic
 

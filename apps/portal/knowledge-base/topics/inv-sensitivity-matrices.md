@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Observability](/knowledge-base/topics/inv-observability)
+- [Nonlinear inverse problems](/knowledge-base/topics/inv-nonlinear-inverse-problems)
+- [Jacobian-vector product](/knowledge-base/topics/mat-jacobian-vector-product)
 
 ## 次に学ぶTopic
 
-[Uncertainty ellipsoids](/knowledge-base/topics/inv-uncertainty-ellipsoids)
+[Uncertainty ellipsoids](/knowledge-base/topics/inv-uncertainty-ellipsoids) / [Sensitivity analysis](/knowledge-base/topics/model-sensitivity-analysis)
 
 ## Learning Path
 

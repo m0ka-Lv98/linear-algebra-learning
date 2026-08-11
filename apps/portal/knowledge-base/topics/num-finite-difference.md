@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-- [Sparse linear algebra](/knowledge-base/topics/num-sparse-linear-algebra)
+- [微分と変化率](/knowledge-base/topics/calc-derivatives-rates)
+- [誤差・条件数・数値安定性](/knowledge-base/topics/num-errors-conditioning-stability)
 
 ## 次に学ぶTopic
 

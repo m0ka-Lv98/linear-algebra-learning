@@ -9,11 +9,12 @@
 
 ## Prerequisites
 
-- [Boundary value problems](/knowledge-base/topics/ode-boundary-value-problems)
+- [多変数関数と偏微分](/knowledge-base/topics/calc-multivariable-functions-partial-derivatives)
+- [First-order ODE](/knowledge-base/topics/ode-first-order)
 
 ## 次に学ぶTopic
 
-[Heat equation](/knowledge-base/topics/pde-heat-equation)
+[Heat equation](/knowledge-base/topics/pde-heat-equation) / [Wave equation](/knowledge-base/topics/pde-wave-equation) / [Laplace equation](/knowledge-base/topics/pde-laplace-equation)
 
 ## Learning Path
 

@@ -9,7 +9,8 @@
 
 ## Prerequisites
 
-なし
+- [特異値分解](/knowledge-base/topics/la-singular-value-decomposition)
+- [Sparse linear algebra](/knowledge-base/topics/num-sparse-linear-algebra)
 
 ## 次に学ぶTopic
 

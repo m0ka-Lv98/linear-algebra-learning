@@ -14,7 +14,7 @@
 
 ## 次に学ぶTopic
 
-[連立一次方程式とガウス消去法](/knowledge-base/topics/la-linear-systems-elimination) / [attention機構](/knowledge-base/topics/dl-attention-mechanism)
+[連立一次方程式とガウス消去法](/knowledge-base/topics/la-linear-systems-elimination) / [attention機構](/knowledge-base/topics/dl-attention-mechanism) / [Gram matrix](/knowledge-base/topics/mat-gram-matrix) / [Scalar-by-matrix derivative](/knowledge-base/topics/mat-scalar-by-matrix-derivative) / [Jacobian-vector product](/knowledge-base/topics/mat-jacobian-vector-product) / [Kronecker product](/knowledge-base/topics/mat-kronecker-product) / [LTI systems](/knowledge-base/topics/sig-lti-systems) / [Systems of ODE](/knowledge-base/topics/ode-systems)
 
 ## Learning Path
 

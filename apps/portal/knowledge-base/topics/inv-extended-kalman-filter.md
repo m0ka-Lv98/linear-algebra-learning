@@ -10,10 +10,11 @@
 ## Prerequisites
 
 - [Kalman filter](/knowledge-base/topics/inv-kalman-filter)
+- [Nonlinear inverse problems](/knowledge-base/topics/inv-nonlinear-inverse-problems)
 
 ## 次に学ぶTopic
 
-[Wiener filter](/knowledge-base/topics/inv-wiener-filter)
+登録なし
 
 ## Learning Path
 

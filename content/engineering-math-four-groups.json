@@ -1,0 +1,544 @@
+[
+  {
+    "id": "mat-gram-matrix",
+    "title": "Gram matrix",
+    "group": "matrix",
+    "prerequisites": [
+      "la-inner-products-norms-angles",
+      "la-matrix-multiplication"
+    ]
+  },
+  {
+    "id": "mat-scalar-by-vector-derivative",
+    "title": "スカラーをベクトルで微分する",
+    "group": "matrix",
+    "prerequisites": [
+      "calc-derivatives-rates",
+      "calc-multivariable-functions-partial-derivatives",
+      "la-vectors-linear-combinations"
+    ]
+  },
+  {
+    "id": "mat-vector-by-vector-derivative",
+    "title": "ベクトルをベクトルで微分する：Jacobian",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-scalar-by-vector-derivative"
+    ]
+  },
+  {
+    "id": "mat-scalar-by-matrix-derivative",
+    "title": "スカラーを行列で微分する",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-scalar-by-vector-derivative",
+      "la-matrix-multiplication"
+    ]
+  },
+  {
+    "id": "mat-vector-by-matrix-derivative",
+    "title": "ベクトルを行列で微分する",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-vector-by-vector-derivative",
+      "mat-scalar-by-matrix-derivative"
+    ]
+  },
+  {
+    "id": "mat-matrix-differential",
+    "title": "Matrix differential",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-scalar-by-matrix-derivative",
+      "mat-vector-by-matrix-derivative"
+    ]
+  },
+  {
+    "id": "mat-trace-trick",
+    "title": "Trace trick",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-matrix-differential",
+      "mat-gram-matrix"
+    ]
+  },
+  {
+    "id": "mat-quadratic-form-derivatives",
+    "title": "Quadratic form derivatives",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-scalar-by-vector-derivative",
+      "la-quadratic-forms-positive-definite"
+    ]
+  },
+  {
+    "id": "mat-inverse-matrix-derivative",
+    "title": "Inverse matrix derivative",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-matrix-differential",
+      "la-invertibility-inverse-matrices"
+    ]
+  },
+  {
+    "id": "mat-log-determinant-derivative",
+    "title": "Log-determinant derivative",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-inverse-matrix-derivative",
+      "mat-matrix-differential"
+    ]
+  },
+  {
+    "id": "mat-matrix-chain-rule",
+    "title": "Matrix chain rule",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-vector-by-vector-derivative",
+      "mat-vector-by-matrix-derivative"
+    ]
+  },
+  {
+    "id": "mat-jacobian-vector-product",
+    "title": "Jacobian-vector product (JVP)",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-vector-by-vector-derivative",
+      "la-matrix-multiplication"
+    ]
+  },
+  {
+    "id": "mat-vector-jacobian-product",
+    "title": "Vector-Jacobian product (VJP)",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-jacobian-vector-product"
+    ]
+  },
+  {
+    "id": "mat-automatic-differentiation",
+    "title": "Automatic differentiation",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-matrix-chain-rule",
+      "mat-jacobian-vector-product"
+    ]
+  },
+  {
+    "id": "mat-forward-mode-ad",
+    "title": "Forward-mode AD",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-automatic-differentiation",
+      "mat-jacobian-vector-product"
+    ]
+  },
+  {
+    "id": "mat-reverse-mode-ad",
+    "title": "Reverse-mode AD",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-automatic-differentiation",
+      "mat-vector-jacobian-product"
+    ]
+  },
+  {
+    "id": "mat-vec-operator",
+    "title": "vec operator",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-matrix-differential"
+    ]
+  },
+  {
+    "id": "mat-kronecker-product",
+    "title": "Kronecker product",
+    "group": "matrix",
+    "prerequisites": [
+      "mat-vec-operator",
+      "la-matrix-multiplication"
+    ]
+  },
+  {
+    "id": "prob-bernoulli-distribution",
+    "title": "Bernoulli分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-random-variables-cdf-pmf-pdf"
+    ]
+  },
+  {
+    "id": "prob-binomial-distribution",
+    "title": "Binomial分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-bernoulli-distribution",
+      "prob-expectation-variance-moments"
+    ]
+  },
+  {
+    "id": "prob-poisson-distribution",
+    "title": "Poisson分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-binomial-distribution",
+      "prob-expectation-variance-moments"
+    ]
+  },
+  {
+    "id": "prob-gaussian-distribution",
+    "title": "Gaussian（正規）分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-continuous-distributions",
+      "prob-expectation-variance-moments"
+    ]
+  },
+  {
+    "id": "prob-log-normal-distribution",
+    "title": "Log-normal分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-gaussian-distribution"
+    ]
+  },
+  {
+    "id": "prob-student-t-distribution",
+    "title": "Student t分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-gaussian-distribution",
+      "stat-t-chi-square-sampling-distributions"
+    ]
+  },
+  {
+    "id": "prob-dirichlet-distribution",
+    "title": "Dirichlet分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-multivariate-normal-distribution",
+      "prob-expectation-variance-moments"
+    ]
+  },
+  {
+    "id": "prob-gaussian-mixture",
+    "title": "Gaussian mixture modelの分布",
+    "group": "prob",
+    "prerequisites": [
+      "prob-gaussian-distribution"
+    ]
+  },
+  {
+    "id": "stat-fisher-information-matrix",
+    "title": "Fisher情報行列",
+    "group": "stat",
+    "prerequisites": [
+      "stat-likelihood-maximum-likelihood",
+      "prob-multivariate-normal-distribution",
+      "calc-gradient-directional-derivative",
+      "calc-hessian-second-order"
+    ]
+  },
+  {
+    "id": "stat-estimator-covariance",
+    "title": "推定量の共分散",
+    "group": "stat",
+    "prerequisites": [
+      "stat-fisher-information-matrix",
+      "prob-covariance-correlation"
+    ]
+  },
+  {
+    "id": "stat-vif-collinearity",
+    "title": "VIFとcollinearity",
+    "group": "stat",
+    "prerequisites": [
+      "stat-estimator-covariance",
+      "mat-gram-matrix"
+    ]
+  },
+  {
+    "id": "stat-wls-fisher-information",
+    "title": "WLSのFisher情報",
+    "group": "stat",
+    "prerequisites": [
+      "mat-wls-inverse-variance",
+      "stat-fisher-information-matrix",
+      "stat-estimator-covariance"
+    ]
+  },
+  {
+    "id": "stat-model-misspecification",
+    "title": "Model misspecification",
+    "group": "stat",
+    "prerequisites": [
+      "stat-likelihood-maximum-likelihood",
+      "stat-estimator-covariance"
+    ]
+  },
+  {
+    "id": "stat-cramer-rao-lower-bound",
+    "title": "Cramér–Rao下界",
+    "group": "stat",
+    "prerequisites": [
+      "stat-fisher-information-matrix",
+      "stat-estimator-covariance"
+    ]
+  },
+  {
+    "id": "stat-observed-information",
+    "title": "Observed information",
+    "group": "stat",
+    "prerequisites": [
+      "stat-likelihood-maximum-likelihood",
+      "stat-fisher-information-matrix"
+    ]
+  },
+  {
+    "id": "stat-identifiability",
+    "title": "Identifiability",
+    "group": "stat",
+    "prerequisites": [
+      "stat-likelihood-maximum-likelihood",
+      "stat-model-misspecification"
+    ]
+  },
+  {
+    "id": "stat-delta-method",
+    "title": "Delta method",
+    "group": "stat",
+    "prerequisites": [
+      "calc-multivariable-functions-partial-derivatives",
+      "stat-estimator-covariance"
+    ]
+  },
+  {
+    "id": "stat-error-propagation",
+    "title": "誤差伝播",
+    "group": "stat",
+    "prerequisites": [
+      "stat-delta-method",
+      "prob-covariance-correlation"
+    ]
+  },
+  {
+    "id": "stat-sufficient-statistics",
+    "title": "十分統計量",
+    "group": "stat",
+    "prerequisites": [
+      "stat-likelihood-maximum-likelihood",
+      "prob-conditional-probability-independence"
+    ]
+  },
+  {
+    "id": "stat-exponential-family",
+    "title": "指数型分布族",
+    "group": "stat",
+    "prerequisites": [
+      "stat-sufficient-statistics",
+      "stat-likelihood-maximum-likelihood"
+    ]
+  },
+  {
+    "id": "stat-generalized-linear-models",
+    "title": "Generalized linear models",
+    "group": "stat",
+    "prerequisites": [
+      "stat-exponential-family",
+      "mat-ols-design-matrices"
+    ]
+  },
+  {
+    "id": "stat-poisson-regression",
+    "title": "Poisson regression",
+    "group": "stat",
+    "prerequisites": [
+      "stat-generalized-linear-models",
+      "prob-poisson-distribution"
+    ]
+  },
+  {
+    "id": "stat-covariance-estimation",
+    "title": "Covariance estimation",
+    "group": "stat",
+    "prerequisites": [
+      "prob-covariance-correlation",
+      "stat-estimator-covariance"
+    ]
+  },
+  {
+    "id": "stat-experimental-design",
+    "title": "Experimental design",
+    "group": "stat",
+    "prerequisites": [
+      "stat-estimator-covariance",
+      "stat-identifiability"
+    ]
+  },
+  {
+    "id": "stat-optimal-experimental-design",
+    "title": "Optimal experimental design",
+    "group": "stat",
+    "prerequisites": [
+      "stat-experimental-design",
+      "stat-fisher-information-matrix"
+    ]
+  },
+  {
+    "id": "stat-sandwich-covariance",
+    "title": "Sandwich covariance",
+    "group": "stat",
+    "prerequisites": [
+      "stat-generalized-linear-models",
+      "stat-covariance-estimation"
+    ]
+  },
+  {
+    "id": "sig-continuous-time-signals",
+    "title": "連続時間信号",
+    "group": "signal",
+    "prerequisites": [
+      "calc-functions-limits-continuity"
+    ]
+  },
+  {
+    "id": "sig-discrete-time-signals",
+    "title": "離散時間信号",
+    "group": "signal",
+    "prerequisites": [
+      "sig-continuous-time-signals"
+    ]
+  },
+  {
+    "id": "sig-impulse-step",
+    "title": "Impulseとstep信号",
+    "group": "signal",
+    "prerequisites": [
+      "sig-continuous-time-signals",
+      "sig-discrete-time-signals"
+    ]
+  },
+  {
+    "id": "sig-lti-systems",
+    "title": "LTI system",
+    "group": "signal",
+    "prerequisites": [
+      "sig-impulse-step"
+    ]
+  },
+  {
+    "id": "sig-impulse-response",
+    "title": "Impulse response",
+    "group": "signal",
+    "prerequisites": [
+      "sig-lti-systems"
+    ]
+  },
+  {
+    "id": "sig-convolution",
+    "title": "Convolution",
+    "group": "signal",
+    "prerequisites": [
+      "sig-impulse-response"
+    ]
+  },
+  {
+    "id": "sig-correlation",
+    "title": "Correlation",
+    "group": "signal",
+    "prerequisites": [
+      "sig-convolution",
+      "prob-covariance-correlation"
+    ]
+  },
+  {
+    "id": "sig-autocorrelation",
+    "title": "Autocorrelation",
+    "group": "signal",
+    "prerequisites": [
+      "sig-correlation",
+      "prob-stationarity-autocorrelation"
+    ]
+  },
+  {
+    "id": "sig-fourier-series",
+    "title": "Fourier series",
+    "group": "signal",
+    "prerequisites": [
+      "calc-integrals-fundamental-theorem",
+      "la-inner-products-norms-angles",
+      "prep-complex-numbers-euler-form"
+    ]
+  },
+  {
+    "id": "sig-fourier-transform",
+    "title": "Continuous Fourier transform",
+    "group": "signal",
+    "prerequisites": [
+      "sig-fourier-series",
+      "sig-continuous-time-signals"
+    ]
+  },
+  {
+    "id": "sig-convolution-theorem",
+    "title": "Convolution theorem",
+    "group": "signal",
+    "prerequisites": [
+      "sig-fourier-transform",
+      "sig-convolution"
+    ]
+  },
+  {
+    "id": "sig-parseval-theorem",
+    "title": "Parseval theorem",
+    "group": "signal",
+    "prerequisites": [
+      "sig-fourier-series",
+      "la-inner-products-norms-angles"
+    ]
+  },
+  {
+    "id": "sig-dft",
+    "title": "Discrete Fourier transform",
+    "group": "signal",
+    "prerequisites": [
+      "sig-fourier-series",
+      "sig-discrete-time-signals"
+    ]
+  },
+  {
+    "id": "sig-fft",
+    "title": "Fast Fourier transform",
+    "group": "signal",
+    "prerequisites": [
+      "sig-dft"
+    ]
+  },
+  {
+    "id": "sig-sampling-theorem-aliasing",
+    "title": "Sampling theoremとaliasing",
+    "group": "signal",
+    "prerequisites": [
+      "sig-fourier-transform",
+      "sig-dft"
+    ]
+  },
+  {
+    "id": "sig-stft-spectrogram",
+    "title": "STFTとspectrogram",
+    "group": "signal",
+    "prerequisites": [
+      "sig-fourier-transform",
+      "sig-sampling-theorem-aliasing"
+    ]
+  },
+  {
+    "id": "sig-laplace-transform",
+    "title": "Laplace transform",
+    "group": "signal",
+    "prerequisites": [
+      "calc-integrals-fundamental-theorem",
+      "sig-continuous-time-signals"
+    ]
+  }
+]
