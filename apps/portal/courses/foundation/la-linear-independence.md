@@ -1,9 +1,5 @@
 # 線形独立と線形従属
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第209 Topic。vector・spaces。
-
 ## 今回解く問い
 
 線形独立とは「どのベクトルも他のベクトルの線形結合で作れない」こと。独立なら係数表現に冗長性がない。
@@ -22,18 +18,3 @@ Course 02「線形代数」第209 Topic。vector・spaces。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、9/29。
-
-## 教材
-
-- [スライド](/slides/la-linear-independence/)
-- [教科書](/textbook/la-linear-independence)
-- [演習](/exercises/la-linear-independence)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-column-space-null-space)
-- [次のTopic](/courses/foundation/la-basis-coordinates-dimension)

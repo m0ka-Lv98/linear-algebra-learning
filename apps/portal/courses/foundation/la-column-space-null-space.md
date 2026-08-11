@@ -1,9 +1,5 @@
 # 列空間と零空間
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第208 Topic。vector・spaces。
-
 ## 今回解く問い
 
 列空間は「Aが出力として作れるもの」、零空間は「Aが見えなくしてしまう入力」を表す。$Ax=b$ の解の存在と一意性を、この2つで整理できる。
@@ -23,18 +19,3 @@ Course 02「線形代数」第208 Topic。vector・spaces。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、8/29。
-
-## 教材
-
-- [スライド](/slides/la-column-space-null-space/)
-- [教科書](/textbook/la-column-space-null-space)
-- [演習](/exercises/la-column-space-null-space)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-span-subspaces)
-- [次のTopic](/courses/foundation/la-linear-independence)

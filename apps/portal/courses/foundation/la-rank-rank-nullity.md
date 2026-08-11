@@ -1,9 +1,5 @@
 # 階数とrank-nullity
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第211 Topic。vector・spaces。
-
 ## 今回解く問い
 
 rankは行列が保っている独立な情報の数、nullityは失っている入力方向の数である。入力次元はこの二つへ分解される。
@@ -23,18 +19,3 @@ rankは行列が保っている独立な情報の数、nullityは失っている
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、11/29。
-
-## 教材
-
-- [スライド](/slides/la-rank-rank-nullity/)
-- [教科書](/textbook/la-rank-rank-nullity)
-- [演習](/exercises/la-rank-rank-nullity)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-basis-coordinates-dimension)
-- [次のTopic](/courses/foundation/la-linear-maps-change-of-basis)

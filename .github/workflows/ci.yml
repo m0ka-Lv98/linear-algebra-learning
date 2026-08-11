@@ -30,6 +30,8 @@ jobs:
         env:
           BASE_PATH: /linear-algebra-learning/
         run: pnpm --filter @linear-algebra/slides build -- --topics prep-symbols-types-shapes,calc-derivatives-rates,num-root-finding
+      - name: Audit built Portal links
+        run: node tools/audit-built-links.mjs apps/portal/.vitepress/dist
       - name: Verify smoke outputs
         run: |
           test -f apps/portal/.vitepress/dist/index.html

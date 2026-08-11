@@ -13,4 +13,25 @@
 .resume-card { border: 1px solid var(--vp-c-brand-soft); background: var(--vp-c-brand-soft); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0 2rem; }
 .resume-card h2 { margin: .2rem 0 1rem; }
 .eyebrow { color: var(--vp-c-brand-1); font-weight: 700; margin: 0; }
+.course-progress-card { border: 1px solid var(--vp-c-brand-soft); background: var(--vp-c-brand-soft); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0 2rem; display: grid; grid-template-columns: 1fr auto; gap: .75rem 1rem; align-items: center; }
+.course-progress-card h2 { margin: .15rem 0 .5rem; }
+.course-progress-card p { margin: .25rem 0; }
+.progress-meter { height: 10px; border-radius: 999px; overflow: hidden; background: var(--vp-c-bg); grid-column: 1 / -1; }
+.progress-meter-bar { height: 100%; border-radius: inherit; background: var(--vp-c-brand-1); transition: width .2s ease; }
+.progress-percent { font-weight: 700; text-align: right; }
+.course-unit { scroll-margin-top: 5rem; margin: 2.5rem 0; }
+.course-unit-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; border-bottom: 1px solid var(--vp-c-divider); }
+.course-unit-heading h2 { margin-bottom: .5rem; }
+.course-unit-heading span { color: var(--vp-c-text-2); font-size: .9rem; }
+.topic-list { list-style: none; padding: 0; margin: .75rem 0 0; }
+.topic-row { display: grid; grid-template-columns: 1.6rem 1fr; gap: .35rem; align-items: baseline; padding: .45rem .5rem; border-radius: 6px; }
+.topic-row a { color: var(--vp-c-text-1); text-decoration: none; }
+.topic-row a:hover { color: var(--vp-c-brand-1); }
+.topic-row-current { background: var(--vp-c-brand-soft); font-weight: 650; }
+.topic-row-completed .topic-state { color: var(--vp-c-green-1); font-weight: 700; }
+.topic-state { font-weight: 650; }
+.topic-number { color: var(--vp-c-text-2); font-variant-numeric: tabular-nums; }
+.completed-badge { color: var(--vp-c-green-1); font-weight: 650; }
+.course-complete { border: 1px solid var(--vp-c-green-1); border-radius: 10px; padding: 1rem; margin: 2rem 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @media (max-width: 640px) { .topic-footer > a { max-width: 100%; } .topic-footer .vp-button { order: -1; width: 100%; } }

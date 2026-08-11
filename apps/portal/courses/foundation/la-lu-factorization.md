@@ -1,9 +1,5 @@
 # LU分解
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第206 Topic。vectors・matrices・systems。
-
 ## 今回解く問い
 
 LU分解はガウス消去を「一度分解として保存」する方法である。$L$ に消去係数、$U$ に消去後の上三角行列を持たせる。
@@ -22,18 +18,3 @@ LU分解はガウス消去を「一度分解として保存」する方法であ
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、6/29。
-
-## 教材
-
-- [スライド](/slides/la-lu-factorization/)
-- [教科書](/textbook/la-lu-factorization)
-- [演習](/exercises/la-lu-factorization)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-invertibility-inverse-matrices)
-- [次のTopic](/courses/foundation/la-span-subspaces)

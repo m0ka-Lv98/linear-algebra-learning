@@ -1,9 +1,5 @@
 # 直交基底と正規直交基底
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第214 Topic。orthogonality・least・squares。
-
 ## 今回解く問い
 
 直交基底では各方向が干渉しない。さらに長さ1へ正規化した正規直交基底なら、座標係数は単純な内積で取り出せる。
@@ -23,18 +19,3 @@ Course 02「線形代数」第214 Topic。orthogonality・least・squares。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、14/29。
-
-## 教材
-
-- [スライド](/slides/la-orthogonal-orthonormal-bases/)
-- [教科書](/textbook/la-orthogonal-orthonormal-bases)
-- [演習](/exercises/la-orthogonal-orthonormal-bases)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-inner-products-norms-angles)
-- [次のTopic](/courses/foundation/orthogonal-projection)

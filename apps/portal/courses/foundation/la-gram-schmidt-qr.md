@@ -1,9 +1,5 @@
 # Gram–Schmidt法とQR分解
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第216 Topic。orthogonality・least・squares。
-
 ## 今回解く問い
 
 Gram–Schmidt法は、同じspanを保ったまま、ベクトル集合から互いに直交する方向を順番に取り出す。QR分解はその結果を行列としてまとめたもの。
@@ -23,18 +19,3 @@ Gram–Schmidt法は、同じspanを保ったまま、ベクトル集合から�
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、16/29。
-
-## 教材
-
-- [スライド](/slides/la-gram-schmidt-qr/)
-- [教科書](/textbook/la-gram-schmidt-qr)
-- [演習](/exercises/la-gram-schmidt-qr)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/orthogonal-projection)
-- [次のTopic](/courses/foundation/la-least-squares-geometry)

@@ -1,9 +1,5 @@
 # 数式・記号・型・次元
 
-## Course・Unit内での位置付け
-
-Course 00「学習準備」の第1 Topic。後続Courseの数式・コードを安全に読むための基礎を整える。
-
 ## 今回解く問い
 
 数式を読む前に、スカラー・ベクトル・行列・テンソルの型と次元を追跡する習慣を身につける。
@@ -26,21 +22,3 @@ Course 00の開始Topic
 ## 想定学習時間
 
 スライド20分 / 教科書70分 / 演習60分
-
-## 学習順序
-
-1. スライドで概念と全体像を確認する。
-2. 教科書で定義・例・注意点を読む。
-3. 演習を自力で解き、ヒントは必要な段階だけ開く。
-4. 完全解答と自分の説明を比較し、誤解を修正する。
-
-## 教材
-
-- [スライド](/slides/prep-symbols-types-shapes/)
-- [教科書](/textbook/prep-symbols-types-shapes)
-- [演習](/exercises/prep-symbols-types-shapes)
-
-## 前後Topic
-
-- 前：Course 00の開始Topic
-- 次：[集合・関数・写像](/courses/foundation/prep-sets-functions-mappings)

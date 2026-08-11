@@ -105,7 +105,9 @@ export async function validateTopicFiles(root, topic) {
   for (const [kind, relative] of Object.entries(paths)) {
     try { contents[kind] = await readFile(path.join(root, relative), 'utf8') } catch { contents[kind] = '' }
   }
-  if (!knowledgeBaseNative(topic) && (!contents.home.includes(`/slides/${topic.id}/`) || !contents.home.includes(`/textbook/${topic.id}`) || !contents.home.includes(`/exercises/${topic.id}`))) errors.push(`${topic.id}: topic home must link to slides, textbook, and exercises`)
+  // Topic Home navigation is rendered by the surface-aware VitePress theme.
+  // Keep artifact cross-links validated on textbook/exercises/slides, while
+  // allowing the Topic Markdown to focus on learning content.
   if (!contents.textbook.includes(`/exercises/${topic.id}`)) errors.push(`${topic.id}: textbook must link to exercises`)
   if (!contents.exercises.includes(`/textbook/${topic.id}`)) errors.push(`${topic.id}: exercises must link to textbook`)
   if (!contents.slides.includes(`textbook/${topic.id}`) || !contents.slides.includes(`exercises/${topic.id}`)) errors.push(`${topic.id}: slides must link to textbook and exercises`)

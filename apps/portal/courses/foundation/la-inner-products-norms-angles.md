@@ -1,9 +1,5 @@
 # 内積・ノルム・角度
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第213 Topic。orthogonality・least・squares。
-
 ## 今回解く問い
 
 内積は二つのベクトルの「向きの一致度」を数値化し、ノルムは長さを与える。角度はこの二つを正規化した量として得られる。
@@ -22,18 +18,3 @@ Course 02「線形代数」第213 Topic。orthogonality・least・squares。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、13/29。
-
-## 教材
-
-- [スライド](/slides/la-inner-products-norms-angles/)
-- [教科書](/textbook/la-inner-products-norms-angles)
-- [演習](/exercises/la-inner-products-norms-angles)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-linear-maps-change-of-basis)
-- [次のTopic](/courses/foundation/la-orthogonal-orthonormal-bases)

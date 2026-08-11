@@ -1,9 +1,5 @@
 # Cholesky分解
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第225 Topic。eigenvalues・positive・definite。
-
 ## 今回解く問い
 
 Cholesky分解は対称正定値行列に特化した「平方根のような」三角分解。一般LUより構造を利用でき、計算量・メモリ・安定性の面で有利。
@@ -23,18 +19,3 @@ Cholesky分解は対称正定値行列に特化した「平方根のような」
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、25/29。
-
-## 教材
-
-- [スライド](/slides/la-cholesky-factorization/)
-- [教科書](/textbook/la-cholesky-factorization)
-- [演習](/exercises/la-cholesky-factorization)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-quadratic-forms-positive-definite)
-- [次のTopic](/courses/foundation/la-singular-value-decomposition)

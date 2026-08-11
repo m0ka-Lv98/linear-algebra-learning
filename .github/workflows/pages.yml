@@ -49,6 +49,7 @@ jobs:
           BASE_PATH=/linear-algebra-learning/ pnpm build:portal
           mkdir -p dist
           cp -R apps/portal/.vitepress/dist/. dist/
+          node tools/audit-built-links.mjs dist
       - name: Audit learning-material quality
         run: node tools/check-learning-quality.mjs
       - name: Assert build did not mutate source files

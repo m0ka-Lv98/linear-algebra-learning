@@ -1,9 +1,5 @@
 # ベクトルと線形結合
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第201 Topic。vectors・matrices・systems。
-
 ## 今回解く問い
 
 ベクトルは「向きと大きさを持つ矢印」だけでなく、複数の量を順序付きでまとめた対象である。線形結合は、既知のベクトルをスカラー倍して足し、新しいベクトルを作る最も基本的な操作である。
@@ -23,18 +19,3 @@ Course 02「線形代数」第201 Topic。vectors・matrices・systems。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、1/29。
-
-## 教材
-
-- [スライド](/slides/la-vectors-linear-combinations/)
-- [教科書](/textbook/la-vectors-linear-combinations)
-- [演習](/exercises/la-vectors-linear-combinations)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/calc-lagrange-multipliers)
-- [次のTopic](/courses/foundation/la-matrices-data-linear-maps)

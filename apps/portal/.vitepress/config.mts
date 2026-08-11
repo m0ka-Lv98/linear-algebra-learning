@@ -25,6 +25,18 @@ const courseSidebar = courseIds.map((course) => ({
 }))
 const allTopicPages = topics.slice().sort((a: any, b: any) => String(a.course).localeCompare(String(b.course)) || a.order - b.order)
 
+function learningMap() {
+  return allTopicPages.map((topic: any) => ({
+    id: topic.implementation_topic ?? topic.id,
+    title: topic.title,
+    course: String(topic.course).padStart(2, '0'),
+    path: topicPath(topic),
+    textbook: `/textbook/${topic.implementation_topic ?? topic.id}`,
+    exercises: `/exercises/${topic.implementation_topic ?? topic.id}`,
+    slides: `/slides/${topic.implementation_topic ?? topic.id}/`
+  }))
+}
+
 function uxTopicForPath(path: string) {
   const match = path.match(/^\/(?:courses\/foundation|textbook|exercises)\/(.+?)(?:\.html)?\/?$/)
   if (!match) return undefined
@@ -35,6 +47,7 @@ function uxTopicForPath(path: string) {
     if (!reference) return undefined
     return {
       id, title: reference.title, course: 'KB', courseName: 'Knowledge Base', unitTitle: reference.module ?? reference.domain,
+      unitId: reference.module ?? reference.domain, surface: path.startsWith('/textbook/') ? 'textbook' : path.startsWith('/exercises/') ? 'exercises' : 'topic',
       index: 0, total: 0, home: `/knowledge-base/topics/${id}`, textbook: `/textbook/${id}`, exercises: `/exercises/${id}`, slides: `/slides/${id}/`,
       courseOverview: '/knowledge-base/topics'
     }
@@ -47,8 +60,9 @@ function uxTopicForPath(path: string) {
   const next = index >= 0 && index < courseTopics.length - 1 ? courseTopics[index + 1] : undefined
   return {
     id, title: topic.title, course, courseName: courseNames[course] ?? `Course ${course}`,
-    unitTitle: unit?.title ?? 'Course overview', index: index + 1, total: courseTopics.length,
+    unitTitle: unit?.title ?? 'Course overview', unitId: unit?.id, index: index + 1, total: courseTopics.length,
     home: topicPath(topic), textbook: `/textbook/${id}`, exercises: `/exercises/${id}`, slides: `/slides/${id}/`,
+    surface: path.startsWith('/textbook/') ? 'textbook' : path.startsWith('/exercises/') ? 'exercises' : 'topic',
     previous: previous ? { title: previous.title, link: topicPath(previous) } : undefined,
     next: next ? { title: next.title, link: topicPath(next) } : undefined,
     courseOverview: `/courses/${course}/`, nextCourse: course === '10' ? undefined : `/courses/${String(Number(course) + 1).padStart(2, '0')}/`
@@ -58,21 +72,56 @@ function uxTopicForPath(path: string) {
 export default defineConfig({
   title: '数学・データ解析・AI学習ポータル',
   description: '基礎数学から数値計算、最適化、機械学習、深層学習、Frontierへ',
+  lang: 'ja-JP',
   base,
   cleanUrls: true,
-  head: [['style', {}, `.VPLocalNavOutlineDropdown { display: none !important; }`]],
+  head: [],
+  transformHtml(code) {
+    const prefix = base === '/' ? '' : base.replace(/\/$/, '')
+    return code.replaceAll('src="/visuals/', `src="${prefix}/visuals/`)
+  },
   transformPageData(pageData) {
-    const uxTopic = uxTopicForPath(`/${pageData.relativePath.replace(/\.md$/, '')}`)
+    const rawPagePath = `/${pageData.relativePath.replace(/\.md$/, '')}`
+    const pagePath = rawPagePath.replace(/\/index$/, '') || '/'
+    const uxTopic = uxTopicForPath(pagePath)
     if (uxTopic) pageData.frontmatter.uxTopic = uxTopic
+    const courseMatch = pagePath.match(/^\/courses\/(\d{2})\/?$/)
+    if (courseMatch) {
+      const course = courseMatch[1]
+      const courseTopics = allTopicPages.filter((candidate: any) => String(candidate.course).padStart(2, '0') === course)
+      const courseUnits = units.filter((unit: any) => String(unit.course).padStart(2, '0') === course).sort((a: any, b: any) => a.order - b.order)
+      pageData.frontmatter.uxCourse = {
+        course, name: courseNames[course] ?? `Course ${course}`,
+        topics: courseTopics.map((topic: any, index: number) => ({
+          id: topic.implementation_topic ?? topic.id, title: topic.title, unit: topic.unit,
+          unitTitle: courseUnits.find((unit: any) => unit.id === topic.unit)?.title ?? 'Course',
+          index: index + 1, total: courseTopics.length, link: topicPath(topic)
+        })),
+        units: courseUnits.map((unit: any) => ({ id: unit.id, title: unit.title }))
+      }
+    }
+    if (pagePath === '/courses' || pagePath === '/courses/') {
+      pageData.frontmatter.uxCatalog = courseIds.map((course) => {
+        const courseTopics = allTopicPages.filter((topic: any) => String(topic.course).padStart(2, '0') === course)
+        const courseUnits = units.filter((unit: any) => String(unit.course).padStart(2, '0') === course)
+        return {
+          course, name: courseNames[course] ?? `Course ${course}`,
+          description: `${courseNames[course] ?? 'Course'}を順序立てて学ぶためのTopic群。`,
+          topicCount: courseTopics.length, unitCount: courseUnits.length,
+          firstPath: topicPath(courseTopics[0]), topicIds: courseTopics.map((topic: any) => topic.implementation_topic ?? topic.id)
+        }
+      })
+    }
+    if (pagePath === '/' || pagePath === '/index') pageData.frontmatter.uxLearningMap = learningMap()
   },
   markdown: {
     math: true,
     config(md) {
+      const prefix = base === '/' ? '' : base.replace(/\/$/, '')
       const defaultLinkOpen = md.renderer.rules.link_open ?? ((tokens, idx, options, _env, self) => self.renderToken(tokens, idx, options))
       md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
         const href = tokens[idx].attrGet('href')
         if (href?.startsWith('/slides/')) {
-          const prefix = base === '/' ? '' : base.replace(/\/$/, '')
           tokens[idx].attrSet('href', `${prefix}${href}`)
           tokens[idx].attrSet('target', '_self')
         }
@@ -80,10 +129,10 @@ export default defineConfig({
       }
     }
   },
-  ignoreDeadLinks: [/^\/(slides|textbook|exercises)\//],
+  ignoreDeadLinks: [/^\/slides\//],
   themeConfig: {
-    aside: false,
-    outline: false,
+    aside: true,
+    outline: { level: [2, 3] },
     search: { provider: 'local' },
     nav: [
       { text: 'コース', link: '/courses/' },

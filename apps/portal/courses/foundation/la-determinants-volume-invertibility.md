@@ -1,9 +1,5 @@
 # 行列式・体積・可逆性
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第220 Topic。eigenvalues・positive・definite。
-
 ## 今回解く問い
 
 行列式は、線形写像が向き付き体積を何倍にするかを表す一つのスカラー。0なら少なくとも1方向を潰して体積が0になり、可逆でない。
@@ -22,18 +18,3 @@ Course 02「線形代数」第220 Topic。eigenvalues・positive・definite。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、20/29。
-
-## 教材
-
-- [スライド](/slides/la-determinants-volume-invertibility/)
-- [教科書](/textbook/la-determinants-volume-invertibility)
-- [演習](/exercises/la-determinants-volume-invertibility)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-weighted-least-squares-introduction)
-- [次のTopic](/courses/foundation/la-eigenvalues-eigenvectors)

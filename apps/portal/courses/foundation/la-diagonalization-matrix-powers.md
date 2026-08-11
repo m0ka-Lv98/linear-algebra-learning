@@ -1,9 +1,5 @@
 # 対角化と行列の累乗
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第222 Topic。eigenvalues・positive・definite。
-
 ## 今回解く問い
 
 十分な数の独立な固有ベクトルがあると、行列を固有ベクトル基底で見るだけで対角行列になる。すると累乗は固有値を累乗するだけになる。
@@ -23,18 +19,3 @@ Course 02「線形代数」第222 Topic。eigenvalues・positive・definite。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、22/29。
-
-## 教材
-
-- [スライド](/slides/la-diagonalization-matrix-powers/)
-- [教科書](/textbook/la-diagonalization-matrix-powers)
-- [演習](/exercises/la-diagonalization-matrix-powers)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-eigenvalues-eigenvectors)
-- [次のTopic](/courses/foundation/la-symmetric-matrices-spectral-theorem)

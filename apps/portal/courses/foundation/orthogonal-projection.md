@@ -1,9 +1,5 @@
 # 直交射影
 
-## Course・Unit内での位置付け
-
-Course 02「線形代数」第215 Topic。orthogonality・least・squares。
-
 ## 今回解く問い
 
 直交射影は、ある部分空間の中で元のベクトルに最も近い点を選ぶ操作。残差はその部分空間に直交する。
@@ -24,18 +20,3 @@ Course 02「線形代数」第215 Topic。orthogonality・least・squares。
 ## 想定学習時間
 
 スライド25分 / 教科書75分 / 演習60分
-
-## 学習順序
-
-Course 02の29 Topic中、15/29。
-
-## 教材
-
-- [スライド](/slides/orthogonal-projection/)
-- [教科書](/textbook/orthogonal-projection)
-- [演習](/exercises/orthogonal-projection)
-
-## 前後Topic
-
-- [前のTopic](/courses/foundation/la-orthogonal-orthonormal-bases)
-- [次のTopic](/courses/foundation/la-gram-schmidt-qr)
