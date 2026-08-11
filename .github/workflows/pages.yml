@@ -42,7 +42,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Build site
         env:
-          NODE_OPTIONS: --max-old-space-size=6144
+          NODE_OPTIONS: --max-old-space-size=10240
         run: |
           set -euo pipefail
           rm -rf dist
