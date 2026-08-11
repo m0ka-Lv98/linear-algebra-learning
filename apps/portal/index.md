@@ -1,30 +1,36 @@
-# 数学・データ解析・AI学習ポータル
+# 数学・データ解析・AIを、順序立てて学ぶ
 
-Course 00の学習準備から、微積分、線形代数、確率統計、離散数学、数値計算、最適化、データ解析、機械学習、深層学習、Frontierまでを一貫した表記で学ぶ。
+基礎数学から線形代数、確率統計、最適化、機械学習までをTopic単位で学習できます。
 
-## 学習を開始する
+<HomeResume />
 
-- **Course 00：学習準備** — [数式・記号・型・次元から開始](/courses/foundation/prep-symbols-types-shapes)
-- **Course 01：微積分** — [関数・極限・連続から開始](/courses/foundation/calc-functions-limits-continuity)
-- **Course 02：線形代数** — [ベクトルと線形結合から開始](/courses/foundation/la-vectors-linear-combinations)
-- **Course 03：確率統計** — [数え上げ・標本空間・事象から開始](/courses/foundation/prob-counting-sample-spaces)
-- **Course 04：離散数学と証明** — [命題・論理演算・真理値表から開始](/courses/foundation/dm-propositions-connectives-truth-tables)
-- **Course 05：数値計算** — [浮動小数点数と丸めから開始](/courses/foundation/num-floating-point-rounding)
-- **Course 06：最適化** — [最適化問題の定式化から開始](/courses/foundation/opt-problem-formulation-objectives-constraints)
-- **Course 07：データ解析の行列手法** — [データ行列・中心化・標準化から開始](/courses/foundation/mat-data-matrices-centering-scaling)
-- **Course 08：機械学習** — [機械学習問題の定式化とdata splitから開始](/courses/foundation/ml-problem-formulation-data-splits)
-- **Course 09：深層学習** — [perceptronと多層networkから開始](/courses/foundation/dl-perceptron-mlp)
-- **Course 10：Frontier** — [Foundation modelの設計原理から開始](/courses/foundation/frontier-foundation-model-paradigm)
+## 学習を始める
 
-## 教材構成
+<a class="vp-button brand" href="/courses/">コースから学ぶ</a>
+<a class="vp-button" href="/knowledge-base/topics">Topicを探す</a>
 
-各Topicにはテーマホーム、概要スライド、詳細教科書、10問の演習と完全解答がある。
+## コースから選ぶ
 
-## Topic Knowledge Base
+### 基礎
 
-Courseの一本道に加えて、数学分野・目的別の学習経路・応用事例からTopicを探せます。
+- [Course 00：学習準備](/courses/00/) — 数式・記号・Pythonの準備
+- [Course 01：微積分](/courses/01/) — 極限・微分・積分・多変数
+- [Course 02：線形代数](/courses/02/) — ベクトル・行列・最小二乗・SVD
+- [Course 03：確率統計](/courses/03/) — 確率・分布・推定・情報量
+- [Course 04：離散数学と証明](/courses/04/) — 論理・証明・アルゴリズム
 
-- [数学分野から探す](/knowledge-base/domains)
-- [目的から学ぶ](/knowledge-base/paths)
-- [応用から探す](/knowledge-base/case-studies)
-- [全Topic](/knowledge-base/topics)
+### 数値・データ解析
+
+- [Course 05：数値計算](/courses/05/) — 誤差・数値線形代数・数値実験
+- [Course 06：最適化](/courses/06/) — 凸性・勾配法・制約・双対
+- [Course 07：データ解析の行列手法](/courses/07/) — PCA・回帰・WLS・信号
+
+### AI
+
+- [Course 08：機械学習](/courses/08/) — 教師あり・教師なし学習と評価
+- [Course 09：深層学習](/courses/09/) — 深層ネットワーク・生成・安全性
+- [Course 10：Frontier](/courses/10/) — Foundation model・RAG・agent
+
+## 参照モード
+
+特定の概念を調べるときは、[Topicを探す](/knowledge-base/topics)やナビゲーションの検索を利用してください。Knowledge Baseは、Courseの順序とは別の辞書・リファレンスです。

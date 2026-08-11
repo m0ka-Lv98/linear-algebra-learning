@@ -1,0 +1,16 @@
+.topic-context { margin: 0 0 1.5rem; }
+.topic-breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem; color: var(--vp-c-text-2); font-size: .9rem; margin-bottom: .7rem; }
+.topic-breadcrumb a { color: var(--vp-c-brand-1); }
+.topic-position { font-weight: 650; margin-bottom: .8rem; }
+.learning-stepper, .topic-actions, .topic-footer { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+.learning-stepper { border-block: 1px solid var(--vp-c-divider); padding: .65rem 0; }
+.learning-stepper a { color: var(--vp-c-text-2); }
+.topic-actions { margin-top: 1rem; }
+.vp-button { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--vp-c-divider); border-radius: 8px; padding: .55rem .85rem; color: var(--vp-c-brand-1); font-weight: 600; text-decoration: none; background: var(--vp-c-bg-soft); }
+.vp-button.brand { color: #fff; border-color: var(--vp-c-brand-1); background: var(--vp-c-brand-1); }
+.topic-footer { justify-content: space-between; border-top: 1px solid var(--vp-c-divider); margin-top: 2.5rem; padding-top: 1.2rem; }
+.topic-footer > a { max-width: 35%; color: var(--vp-c-brand-1); }
+.resume-card { border: 1px solid var(--vp-c-brand-soft); background: var(--vp-c-brand-soft); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0 2rem; }
+.resume-card h2 { margin: .2rem 0 1rem; }
+.eyebrow { color: var(--vp-c-brand-1); font-weight: 700; margin: 0; }
+@media (max-width: 640px) { .topic-footer > a { max-width: 100%; } .topic-footer .vp-button { order: -1; width: 100%; } }
