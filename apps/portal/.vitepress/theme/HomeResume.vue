@@ -4,12 +4,17 @@ import { useData, withBase } from 'vitepress'
 
 type Entry = { id: string; title: string; course: string; path: string; textbook: string; exercises: string; slides: string }
 type Progress = { completedTopicIds?: string[]; currentTopicId?: string; currentSurface?: string; currentPath?: string }
-const { frontmatter } = useData()
+const { frontmatter, site } = useData()
 const progress = ref<Progress>({})
 const key = 'linear-algebra-learning.progress.v1'
 const map = computed<Entry[]>(() => frontmatter.value.uxLearningMap ?? [])
 const current = computed(() => map.value.find((entry) => entry.id === progress.value.currentTopicId))
-const path = computed(() => progress.value.currentPath || current.value?.path)
+const path = computed(() => {
+  const value = progress.value.currentPath || current.value?.path
+  if (!value) return undefined
+  const base = site.value.base ?? '/'
+  return base !== '/' && value.startsWith(base) ? value.slice(base.length - 1) : value
+})
 const surfaceLabel = computed(() => ({ topic: '概要', slides: 'スライド', textbook: '教科書', exercises: '演習' }[progress.value.currentSurface ?? 'topic'] ?? '概要'))
 onMounted(() => {
   try {
